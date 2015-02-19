@@ -1,2 +1,3 @@
 <h1>Collections#index</h1>
-<%= react_component 'DemoComponent', {} %>
+<%= @collections_url %>
+<%= react_component('CollectionsList', collectionsUrl: @collections_url) %>
