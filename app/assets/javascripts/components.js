@@ -27,6 +27,6 @@ PreviousSection = require('./components/PreviousSection');
 NextSection = require('./components/NextSection');
 
 // Items
-
+ItemLink = require('./components/ItemLink');
 //
 Thumbnail = require('./components/Thumbnail');

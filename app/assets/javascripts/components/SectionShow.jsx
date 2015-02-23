@@ -31,13 +31,9 @@ var SectionShow = React.createClass({
           <div dangerouslySetInnerHTML={{__html: this.state.section.description}} />
           <Thumbnail image={this.state.section.image} thumbnailType="small" />
           <div>{this.props.sectionsUrl}</div>
-          <h3>Item</h3>
-          <div>{this.state.section.item.id}</div>
-          <div>{this.state.section.item.slug}</div>
-          <div>{this.state.section.item.title}</div>
-
-          <PreviousSection section={this.state.section} />
-          <NextSection section={this.state.section} />
+          <ItemLink item={this.state.section.item} />
+          <PreviousSection section={this.state.section.previousSection} />
+          <NextSection section={this.state.section.nextSection} />
         </div>
       );
     } else {
