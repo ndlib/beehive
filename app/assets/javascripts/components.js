@@ -23,6 +23,8 @@ SectionsList = require('./components/SectionsList');
 SectionsListItem = require('./components/SectionsListItem');
 SectionLink = require('./components/SectionLink');
 SectionShow = require('./components/SectionShow');
+PreviousSection = require('./components/PreviousSection');
+NextSection = require('./components/NextSection');
 
 // Items
 
