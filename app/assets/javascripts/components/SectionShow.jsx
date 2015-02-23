@@ -32,8 +32,6 @@ var SectionShow = React.createClass({
           <Thumbnail image={this.state.section.image} thumbnailType="small" />
           <div>{this.props.sectionsUrl}</div>
           <ItemLink item={this.state.section.item} />
-          <PreviousSection section={this.state.section.previousSection} />
-          <NextSection section={this.state.section.nextSection} />
         </div>
       );
     } else {

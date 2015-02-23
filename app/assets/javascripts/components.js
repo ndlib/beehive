@@ -4,8 +4,6 @@
 
 React = require('react');
 
-// put components here
-
 // Collections
 CollectionsList = require('./components/CollectionsList');
 CollectionsListItem = require('./components/CollectionsListItem');
@@ -27,6 +25,12 @@ PreviousSection = require('./components/PreviousSection');
 NextSection = require('./components/NextSection');
 
 // Items
+ItemsList = require('./components/ItemsList');
+ItemsListItem = require('./components/ItemsListItem');
+ItemShow = require('./components/ItemShow');
 ItemLink = require('./components/ItemLink');
-//
+
+// Other
+MetadataList = require('./components/MetadataList');
+MetadataItem = require('./components/MetadataItem');
 Thumbnail = require('./components/Thumbnail');
