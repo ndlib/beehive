@@ -32,6 +32,7 @@ var ItemShow = React.createClass({
           <Thumbnail image={this.state.item.image} thumbnailType="small" />
           <div>{this.props.itemsUrl}</div>
           <MetadataList metadata={this.state.item.metadata} />
+          <div>TODO SUBITEMS</div>
         </div>
       );
     } else {
