@@ -4,12 +4,12 @@ class CollectionsController < ApplicationController
   end
 
   def show
-    @collections_url =  params[:id]
+    @collections_url =  collections_api_base + "/" + params[:id] + "/showcases"
   end
 
   private
 
-    def collections_api_base
-      Rails.configuration.beehive_url + "/v1/collections"
-    end
+  def collections_api_base
+    Rails.configuration.beehive_url + "/v1/collections"
+  end
 end
