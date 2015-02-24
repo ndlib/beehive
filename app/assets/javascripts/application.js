@@ -13,5 +13,7 @@
 //= require_self
 //= require jquery_ujs
 //= require components
+//= require "bootstrap-material-design/material"
+//= require "bootstrap-material-design/ripples"
 
 $ = jQuery = require('jquery');
