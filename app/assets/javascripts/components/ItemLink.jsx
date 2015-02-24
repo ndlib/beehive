@@ -11,10 +11,10 @@ var ItemLink = React.createClass({
   render: function() {
     var item = this.props.item;
     console.log(item);
-    var url = "/" + encodeURIComponent(item['id']) + "/" + encodeURIComponent(item['slug']);
+    var url = document.URL + "/items/" + encodeURIComponent(item['id']) + "/" + encodeURIComponent(item['slug']);
     return (
       <div>
-        <h4>Item</h4>
+        <h4><a href={url}>Item</a></h4>
         <div>{item.id}</div>
         <div>{item.slug}</div>
         <div>{item.title}</div>
