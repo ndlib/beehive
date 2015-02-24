@@ -23,7 +23,7 @@ var CollectionShow = React.createClass({
   render: function() {
     if (this.state.collection) {
       return (
-        <div>
+        <div className="collection-show">
           <h2>Collection</h2>
           <div>{this.state.collection.id}</div>
           <div>{this.state.collection.slug}</div>
