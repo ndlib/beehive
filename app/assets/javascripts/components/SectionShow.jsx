@@ -14,6 +14,8 @@ var SectionShow = React.createClass({
   componentDidMount: function() {
     $.get(this.props.sectionsUrl, function(result) {
       this.setState({
+        collection: result,
+        showcase: result.showcases,
         section: result.showcases.sections,
       })
     }.bind(this));

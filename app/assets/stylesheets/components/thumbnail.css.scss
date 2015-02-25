@@ -1,0 +1,31 @@
+.hc-thumbnail {
+  height: 200px;
+  width: 200px;
+  display: inline-block;
+}
+
+.hc-thumbnail-helper {
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.hc-thumbnail-image {
+  max-height: 100%;
+  max-width: 100%;
+  vertical-align: middle;
+  display: inline-block;
+  height: auto;
+  width: auto;
+  opacity: 1;
+}
+
+.hc-thumbnail-loading {
+  background-image: asset-url('ajax-loader.gif');
+  background-position: center;
+  background-repeat: no-repeat;
+
+  .hc-thumbnail-image {
+    opacity: 0;
+  }
+}

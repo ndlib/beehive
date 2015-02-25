@@ -44,7 +44,6 @@ var CollectionsList = React.createClass({
     return (
       <div className="collections-list">
         <div className="container">
-          <h1>Collections</h1>
           <div className="row">
             {collectionNodes}
           </div>

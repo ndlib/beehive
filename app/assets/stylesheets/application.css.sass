@@ -10,8 +10,17 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+ *= require bootstrap_and_overrides
+ *= require dropzone
+ *= require dropzone-overrides
+ *= require people-search
+ *= require jquery-ui
+ *= require items
+ *= require menu-bar
+ *= require nav_bar
+ *= require_tree ./components
+ *= require sections
+ *= require bootstrap-material-design
+ *= require ui-customizations
  *= require_self
- *=  require bootstrap-material-design/material
- *=  require bootstrap-material-design/ripples
  */

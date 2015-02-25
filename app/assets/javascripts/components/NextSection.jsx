@@ -13,7 +13,7 @@ var NextSection = React.createClass({
     var url = "/" + encodeURIComponent(section['id']) + "/" + encodeURIComponent(section['slug']);
     return (
       <div>
-        <h4>Next Section</h4>
+        <h4><a href={url}>Next Section</a></h4>
         <div>{section.id}</div>
         <div>{section.slug}</div>
         <div>{section.title}</div>
