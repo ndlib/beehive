@@ -22,8 +22,15 @@ var ShowcasesList = React.createClass({
   render: function() {
     var showcaseNodes = this.state.showcases.map(function(showcase, index) {
       var nodes = [];
+      if (index > 0) {
+        if (index%3 == 0) {
+          nodes.push ((
+            <div className="clearfix"></div>
+          ));
+        }
+      }
       nodes.push((
-        <div>
+        <div className="col-sm-4" key={showcase['@id']}>
           <ShowcasesListItem showcase={showcase} />
         </div>
       ));
@@ -31,7 +38,7 @@ var ShowcasesList = React.createClass({
     });
     return (
       <div>
-        <h2>Showcase List</h2>
+        <h2>Showcases</h2>
         <div>{showcaseNodes}</div>
       </div>
     );

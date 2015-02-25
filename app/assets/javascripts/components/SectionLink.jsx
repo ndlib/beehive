@@ -17,7 +17,7 @@ var SectionLink = React.createClass({
     return (
       <div>
         <a className={this.props.className} href={url}>
-        <Thumbnail image={section.image} thumbnailType="small" />
+        <Thumbnail image={section.image} thumbnailType="medium" />
         <div>{title}</div>
         </a>
       </div>

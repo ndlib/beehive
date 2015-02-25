@@ -23,12 +23,12 @@ var CollectionShow = React.createClass({
   render: function() {
     if (this.state.collection) {
       return (
-        <div className="collection-show">
-          <div>{this.state.collection.id}</div>
-          <div>{this.state.collection.slug}</div>
-          <div>{this.state.collection.title}</div>
-          <div dangerouslySetInnerHTML={{__html: this.state.collection.description}} />
-          <Thumbnail image={this.state.collection.image} thumbnailType="small" />
+        <div className="jumbotron">
+          <div className="container collection-show">
+            <h1>{this.state.collection.title}</h1>
+            <p dangerouslySetInnerHTML={{__html: this.state.collection.description}} />
+            <Thumbnail image={this.state.collection.image} thumbnailType="small" />
+          </div>
         </div>
       );
     } else {
