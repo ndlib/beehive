@@ -13,7 +13,6 @@ var SectionsList = React.createClass({
     };
   },
   componentDidMount: function() {
-    console.log('set state');
     $.get(this.props.sectionsUrl, function(result) {
       this.setState({
         sections: result.showcases.sections,
@@ -21,21 +20,19 @@ var SectionsList = React.createClass({
     }.bind(this));
   },
   render: function() {
-  console.log(this.state);
     if(this.state.sections) {
       var sectionNodes = this.state.sections.map(function(section, index) {
         var nodes = [];
         nodes.push((
-          <div>
+          <div className="col-sm-4" key={section['@id']}>
             <SectionsListItem section={section} />
           </div>
         ));
         return nodes;
       });
       return (
-        <div>
-          <h2>Section List</h2>
-          <div>{sectionNodes}</div>
+        <div className="section">
+          {sectionNodes}
         </div>
       );
     } else {

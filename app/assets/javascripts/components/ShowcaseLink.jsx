@@ -13,7 +13,6 @@ var ShowcaseLink = React.createClass({
       url = url + '/' + this.props.path;
     }
     var title = this.props.title || showcase.title;
-    console.log(showcase);
     return (
       <div>
         <a className={this.props.className} href={url}>

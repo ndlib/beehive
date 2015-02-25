@@ -13,7 +13,6 @@ var ItemsList = React.createClass({
     };
   },
   componentDidMount: function() {
-    console.log('set state');
     $.get(this.props.itemsUrl, function(result) {
       this.setState({
         items: result.showcases.items,
@@ -21,7 +20,6 @@ var ItemsList = React.createClass({
     }.bind(this));
   },
   render: function() {
-  console.log(this.state);
     if(this.state.items) {
       var itemNodes = this.state.items.map(function(item, index) {
         var nodes = [];

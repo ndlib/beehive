@@ -37,9 +37,11 @@ var ShowcasesList = React.createClass({
       return nodes;
     });
     return (
-      <div>
-        <h2>Showcases</h2>
-        <div>{showcaseNodes}</div>
+      <div className="showcases-list">
+        <div className="container">
+          <h2>Showcases</h2>
+          <div className="row">{showcaseNodes}</div>
+        </div>
       </div>
     );
   }

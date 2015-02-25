@@ -7,7 +7,6 @@ var MetadataList = React.createClass({
     metadata: React.PropTypes.object.isRequired,
   },
   render: function() {
-    console.log(this.props.metadata);
      var metadataNodes = this.props.metadata.map(function(metadata, index) {
       var nodes = [];
       nodes.push((

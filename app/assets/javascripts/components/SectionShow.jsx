@@ -22,7 +22,6 @@ var SectionShow = React.createClass({
   },
 
   render: function() {
-    console.log(this.state);
     if (this.state.section) {
       return (
         <div>
@@ -32,7 +31,6 @@ var SectionShow = React.createClass({
           <div>{this.state.section.title}</div>
           <div dangerouslySetInnerHTML={{__html: this.state.section.description}} />
           <Thumbnail image={this.state.section.image} thumbnailType="medium" />
-          <div>{this.props.sectionsUrl}</div>
           <ItemLink item={this.state.section.item} />
           <PreviousSection section={this.state.section.previousSection} />
           <NextSection section={this.state.section.nextSection} />

@@ -1,5 +1,7 @@
-<h1>Showcases#show</h1>
-<%= react_component('CollectionShow', collectionsUrl: @collections_url) %>
-<%= react_component('ShowcaseShow', showcasesUrl: @showcases_url) %>
-<%= react_component('SectionsList', sectionsUrl: @showcases_url) %>
+<div class="sections-list">
+  <div class="container">
+    <%= react_component('ShowcaseShow', showcasesUrl: @showcases_url) %>
+    <%= react_component('SectionsList', sectionsUrl: @showcases_url) %>
+  </div>
+</div>
 

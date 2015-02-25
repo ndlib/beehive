@@ -20,7 +20,6 @@ var ItemShow = React.createClass({
   },
 
   render: function() {
-    console.log(this.state);
     if (this.state.item) {
       return (
         <div>

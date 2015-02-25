@@ -9,7 +9,6 @@ var PreviousSection = React.createClass({
   },
 
   render: function() {
-    console.log(this.props);
     var section = this.props.section;
     var url = "/" + encodeURIComponent(section['id']) + "/" + encodeURIComponent(section['slug']);
     return (
