@@ -1,8 +1,8 @@
-//app/assets/javascripts/components/ShowcaseShow.jsx
+//app/assets/javascripts/components/ShowcaseTitleSection.jsx
 var React = require('react');
 
-var ShowcaseShow = React.createClass({
-  displayName: 'Showcase Show',
+var ShowcaseTitleSection = React.createClass({
+  displayName: 'Showcase Title Section',
   propTypes: {
     showcasesUrl: React.PropTypes.string.isRequired,
   },
@@ -37,4 +37,4 @@ var ShowcaseShow = React.createClass({
 });
 
 // each file will export exactly one component
-module.exports = ShowcaseShow;
+module.exports = ShowcaseTitleSection;

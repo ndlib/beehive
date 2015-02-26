@@ -25,12 +25,9 @@ var SectionShow = React.createClass({
     if (this.state.section) {
       return (
         <div>
-          <h2>Section</h2>
-          <div>{this.state.section.id}</div>
-          <div>{this.state.section.slug}</div>
-          <div>{this.state.section.title}</div>
+          <h2>{this.state.section.title}</h2>
           <div dangerouslySetInnerHTML={{__html: this.state.section.description}} />
-          <Thumbnail image={this.state.section.image} thumbnailType="medium" />
+          <OpenseadragonViewer image={this.state.section.image} containerID={this.state.section.id} />
           <ItemLink item={this.state.section.item} />
           <PreviousSection section={this.state.section.previousSection} />
           <NextSection section={this.state.section.nextSection} />

@@ -14,7 +14,7 @@ CollectionShow = require('./components/CollectionShow');
 ShowcasesList = require('./components/ShowcasesList');
 ShowcasesListItem = require('./components/ShowcasesListItem');
 ShowcaseLink = require('./components/ShowcaseLink');
-ShowcaseShow = require('./components/ShowcaseShow');
+ShowcaseTitleSection = require('./components/ShowcaseTitleSection');
 
 // Sections
 SectionsList = require('./components/SectionsList');
@@ -34,3 +34,4 @@ ItemLink = require('./components/ItemLink');
 MetadataList = require('./components/MetadataList');
 MetadataItem = require('./components/MetadataItem');
 Thumbnail = require('./components/Thumbnail');
+OpenseadragonViewer  = require('./components/OpenseadragonViewer');

@@ -4,7 +4,7 @@ var React = require('react');
 var MetadataList = React.createClass({
   displayName: 'Metadata List',
   propTypes: {
-    metadata: React.PropTypes.object.isRequired,
+    metadata: React.PropTypes.array.isRequired,
   },
   render: function() {
      var metadataNodes = this.props.metadata.map(function(metadata, index) {
