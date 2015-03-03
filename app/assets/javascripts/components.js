@@ -32,6 +32,7 @@ ShowcaseEditorTitle = require('./components/ShowcaseEditorTitle');
 SectionsList = require('./components/SectionsList');
 SectionsListItem = require('./components/SectionsListItem');
 SectionLink = require('./components/SectionLink');
+SectionShowPage= require('./components/SectionShowPage');
 SectionShow = require('./components/SectionShow');
 PreviousSection = require('./components/PreviousSection');
 NextSection = require('./components/NextSection');

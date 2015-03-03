@@ -4,8 +4,7 @@ var React = require('react');
 var ItemLink = React.createClass({
   displayName: 'Item Link',
   propTypes: {
-    section: React.PropTypes.object.isRequired,
-
+    item: React.PropTypes.object.isRequired,
   },
 
   render: function() {
