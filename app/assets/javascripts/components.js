@@ -24,6 +24,7 @@ ShowcasesList = require('./components/ShowcasesList');
 ShowcasesListItem = require('./components/ShowcasesListItem');
 ShowcaseLink = require('./components/ShowcaseLink');
 ShowcaseTitleSection = require('./components/ShowcaseTitleSection');
+ShowcaseShowPage = require('./components/ShowcaseShowPage');
 ShowcaseShow = require('./components/ShowcaseShow');
 ShowcaseEditorTitle = require('./components/ShowcaseEditorTitle');
 
