@@ -5,38 +5,32 @@ var SectionsList = React.createClass({
   displayName: 'Sections List',
 
   propTypes: {
-    sectionsUrl: React.PropTypes.string.isRequired,
+    sections: React.PropTypes.array.isRequired,
   },
-  getInitialState: function() {
+  style: function() {
     return {
-      sections: [],
-    };
-  },
-  componentDidMount: function() {
-    $.get(this.props.sectionsUrl, function(result) {
-      this.setState({
-        sections: result.showcases.sections,
-      })
-    }.bind(this));
+      height: '100%',
+      display: 'inline-block',
+      paddingRight: '175px',
+    }
   },
   render: function() {
-    if(this.state.sections) {
-      var sectionNodes = this.state.sections.map(function(section, index) {
+    if(this.props.sections) {
+      var sectionNodes = this.props.sections.map(function(section, index) {
         var nodes = [];
+
         nodes.push((
-          <div className="col-sm-4" key={section['@id']}>
-            <SectionsListItem section={section} />
-          </div>
+          <Section section={section} />
         ));
         return nodes;
       });
       return (
-        <div className="section">
+        <div id="sections-content-inner" className="sections-content-inner" style={this.style()}>
           {sectionNodes}
         </div>
       );
     } else {
-      return <div>LOADING</div>;
+      return (<Loading />);
     }
   }
 });

@@ -6,6 +6,7 @@ var Thumbnail = React.createClass({
   propTypes: {
     image: React.PropTypes.object,
     thumbnailType: React.PropTypes.string,
+    style: React.PropTypes.object
   },
 
   getInitialState: function() {
@@ -17,6 +18,14 @@ var Thumbnail = React.createClass({
       return {
         image: null
       };
+    }
+  },
+
+  style: function() {
+    if (this.props.style) {
+      return this.props.style;
+    } else {
+      return {}
     }
   },
 
@@ -35,7 +44,7 @@ var Thumbnail = React.createClass({
   render: function() {
     return (
       <span>
-        <img src={this.thumbnailSrc()} className="hc-thumbnail-image"/>
+        <img src={this.thumbnailSrc()} className="hc-thumbnail-image" />
       </span>
     );
   }
