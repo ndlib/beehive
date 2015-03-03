@@ -4,6 +4,10 @@
 
 React = require('react');
 
+// Layout
+PageHeader = require('./components/layout/PageHeader');
+TitleBar = require('./components/layout/TitleBar');
+
 // Collections
 CollectionsList = require('./components/CollectionsList');
 CollectionsListItem = require('./components/CollectionsListItem');
