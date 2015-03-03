@@ -5,10 +5,13 @@
 React = require('react');
 
 // Layout
+Layout = require('./components/layout/Layout');
 PageHeader = require('./components/layout/PageHeader');
 TitleBar = require('./components/layout/TitleBar');
+PageContent = require('./components/layout/PageContent');
 
 // Collections
+CollectionsListPage = require('./components/CollectionsListPage');
 CollectionsList = require('./components/CollectionsList');
 CollectionsListItem = require('./components/CollectionsListItem');
 CollectionLink = require('./components/CollectionLink');

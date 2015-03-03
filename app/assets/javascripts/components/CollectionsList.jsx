@@ -5,27 +5,11 @@ var CollectionsList = React.createClass({
   displayName: 'Collections List',
 
   propTypes: {
-    collectionsUrl: React.PropTypes.string.isRequired,
+    collections: React.PropTypes.array,
   },
-
-  getInitialState: function() {
-    return {
-      collections: [],
-    };
-  },
-
-  componentDidMount: function() {
-    $.get(this.props.collectionsUrl, function(result) {
-      this.setState({
-        collections: result,
-      })
-    }.bind(this));
-  },
-
 
   render: function() {
-
-    var collectionNodes = this.state.collections.map(function(collection, index) {
+    var collectionNodes = this.props.collections.map(function(collection, index) {
       var nodes = [];
       if (index > 0) {
         if (index%3 == 0) {
