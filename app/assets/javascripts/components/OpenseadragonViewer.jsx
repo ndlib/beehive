@@ -16,9 +16,7 @@ var OpenseadragonViewer = React.createClass({
   },
 
   componentDidMount: function() {
-    $.get(this.props.image, function(result) {
-      this.buildViewer(result);
-    }.bind(this));
+    this.buildViewer(this.props.image);
   },
 
   shouldComponentUpdate: function(nextProps, nextState) {
@@ -46,7 +44,12 @@ var OpenseadragonViewer = React.createClass({
   },
 
   buildViewer: function(image) {
-    var options = this.legacyOptions(image);
+    var options;
+    if (/^http:\/\/localhost/.test(image.contentUrl)) {
+      options = this.legacyOptions(image);
+    } else {
+      options = this.dziOptions(image);
+    }
     var viewer = OpenSeadragon(options);
     console.log(viewer)
     var escapeHandler = function(event) {

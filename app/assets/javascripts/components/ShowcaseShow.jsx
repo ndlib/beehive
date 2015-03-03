@@ -4,20 +4,9 @@ var React = require('react');
 var ShowcaseShow = React.createClass({
   displayName: 'Showcase Show',
   propTypes: {
-    showcasesUrl: React.PropTypes.string.isRequired,
+    showcase: React.PropTypes.object,
   },
-  getInitialState: function() {
-    return {
-      showcase: null,
-    };
-  },
-  componentDidMount: function() {
-    $.get(this.props.showcasesUrl, function(result) {
-      this.setState({
-        showcase: result.showcases,
-      })
-    }.bind(this));
-  },
+
   style: function() {
     return {
       position: 'relative',
@@ -34,11 +23,11 @@ var ShowcaseShow = React.createClass({
     };
   },
   render: function() {
-    if (this.state.showcase) {
+    if (this.props.showcase) {
       return (
         <div style={this.style()}>
-          <ShowcaseEditorTitle showcase={this.state.showcase} />
-          <SectionsList sections={this.state.showcase.sections} />
+          <ShowcaseEditorTitle showcase={this.props.showcase} />
+          <SectionsList sections={this.props.showcase.sections} />
         </div>
       )
     } else {

@@ -9,18 +9,6 @@ var Thumbnail = React.createClass({
     style: React.PropTypes.object
   },
 
-  getInitialState: function() {
-    if (this.props.image) {
-      return {
-        image: this.props.image,
-      };
-    } else {
-      return {
-        image: null
-      };
-    }
-  },
-
   style: function() {
     if (this.props.style) {
       return this.props.style;
@@ -30,11 +18,11 @@ var Thumbnail = React.createClass({
   },
 
   thumbnailSrc: function() {
-    if (this.state.image) {
+    if (this.props.image) {
       if (this.props.thumbnailType) {
-        return this.state.image['thumbnail/' + this.props.thumbnailType].contentUrl;
+        return this.props.image['thumbnail/' + this.props.thumbnailType].contentUrl;
       } else {
-        return this.state.image.contentUrl;
+        return this.props.image.contentUrl;
       }
     } else {
       return '/images/blank.png';
