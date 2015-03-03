@@ -2,16 +2,17 @@
 var React = require('react');
 
 var CollectionPageHeader = React.createClass({
+  mixins: [CollectionUrlMixin],
+
   propTypes: {
     collection: React.PropTypes.object.isRequired,
   },
 
   render: function() {
-    var url = "/" + encodeURIComponent(this.props.collection.id) + "/" + encodeURIComponent(this.props.collection.slug);
     return (
       <PageHeader>
         <TitleBar>
-          <a className="navbar-brand" href={url}>
+          <a className="navbar-brand" href={this.collectionUrl(this.props.collection)}>
             {this.props.collection.title}
           </a>
         </TitleBar>

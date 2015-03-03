@@ -4,6 +4,9 @@
 
 React = require('react');
 
+// Mixins
+CollectionUrlMixin = require('./mixins/CollectionUrlMixin');
+
 // Layout
 Layout = require('./components/layout/Layout');
 PageHeader = require('./components/layout/PageHeader');
