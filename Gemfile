@@ -19,6 +19,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'react-rails', '~> 1.0.0.pre', github: 'reactjs/react-rails'
 gem 'browserify-rails', '~>0.5'
 
+gem 'showdown-rails'
+
 # CSS
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'

@@ -13,6 +13,7 @@
 //= require_self
 //= require jquery_ujs
 //= require openseadragon
+//= require showdown
 //= require components
 //= require "bootstrap-material-design/material"
 //= require "bootstrap-material-design/ripples"

@@ -15,6 +15,9 @@ ShowcasesList = require('./components/ShowcasesList');
 ShowcasesListItem = require('./components/ShowcasesListItem');
 ShowcaseLink = require('./components/ShowcaseLink');
 ShowcaseTitleSection = require('./components/ShowcaseTitleSection');
+ShowcaseShow = require('./components/ShowcaseShow');
+ShowcaseEditorTitle = require('./components/ShowcaseEditorTitle');
+
 
 // Sections
 SectionsList = require('./components/SectionsList');
@@ -23,6 +26,10 @@ SectionLink = require('./components/SectionLink');
 SectionShow = require('./components/SectionShow');
 PreviousSection = require('./components/PreviousSection');
 NextSection = require('./components/NextSection');
+Section = require('./components/Section');
+SectionImage = require('./components/SectionImage');
+SectionDescription = require('./components/SectionDescription');
+
 
 // Items
 ItemsList = require('./components/ItemsList');
@@ -35,3 +42,4 @@ MetadataList = require('./components/MetadataList');
 MetadataItem = require('./components/MetadataItem');
 Thumbnail = require('./components/Thumbnail');
 OpenseadragonViewer  = require('./components/OpenseadragonViewer');
+Loading= require('./components/Loading');
