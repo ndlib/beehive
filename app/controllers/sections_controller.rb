@@ -2,8 +2,7 @@ class SectionsController < ApplicationController
   before_action :set_collections_url
 
   def show
-    @showcases_url =  @collections_url + "/showcases/" + params[:showcase_id]
-    @sections_url =  @collections_url + "/sections/" + params[:section_id]
+    @sections_url = "#{@collections_url}/sections/#{params[:id]}"
   end
 
   private

@@ -2,17 +2,19 @@
 var React = require('react');
 
 var ItemLink = React.createClass({
+  mixins: [CollectionUrlMixin],
+
   displayName: 'Item Link',
+
   propTypes: {
     item: React.PropTypes.object.isRequired,
   },
 
   render: function() {
     var item = this.props.item;
-    var url = document.URL + "/items/" + encodeURIComponent(item['id']) + "/" + encodeURIComponent(item['slug']);
     return (
       <div>
-        <h4><a href={url}>Item</a></h4>
+        <h4><a href={this.itemUrl(item)}>Item</a></h4>
         <div>{item.id}</div>
         <div>{item.slug}</div>
         <div>{item.title}</div>
