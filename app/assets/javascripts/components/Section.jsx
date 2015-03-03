@@ -22,9 +22,9 @@ var Section = React.createClass({
 
 
   render: function() {
-    var image = false
+    var image;
     if (this.props.section.image) {
-      image = <SectionImage section={this.props.section} />
+      image = (<SectionImage section={this.props.section} />);
     }
     return (
       <div className="section" style={this.style()}>
