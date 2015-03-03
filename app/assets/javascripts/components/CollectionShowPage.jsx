@@ -44,7 +44,7 @@ var CollectionShowPage = React.createClass({
     }
     return (
       <Layout>
-        <PageHeader />
+        <CollectionPageHeader collection={this.state.collection} />
         <PageContent>
           <CollectionShow collection={this.state.collection} />
           {showcasesList}

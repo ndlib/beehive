@@ -9,6 +9,7 @@ Layout = require('./components/layout/Layout');
 PageHeader = require('./components/layout/PageHeader');
 TitleBar = require('./components/layout/TitleBar');
 PageContent = require('./components/layout/PageContent');
+CollectionPageHeader = require('./components/layout/CollectionPageHeader');
 
 // Collections
 CollectionsListPage = require('./components/CollectionsListPage');
