@@ -5,22 +5,11 @@ var ShowcasesList = React.createClass({
   displayName: 'Showcases List',
 
   propTypes: {
-    showcasesUrl: React.PropTypes.string.isRequired,
+    showcases: React.PropTypes.array.isRequired,
   },
-  getInitialState: function() {
-    return {
-      showcases: [],
-    };
-  },
-  componentDidMount: function() {
-    $.get(this.props.showcasesUrl, function(result) {
-      this.setState({
-        showcases: result.showcases,
-      })
-    }.bind(this));
-  },
+
   render: function() {
-    var showcaseNodes = this.state.showcases.map(function(showcase, index) {
+    var showcaseNodes = this.props.showcases.map(function(showcase, index) {
       var nodes = [];
       if (index > 0) {
         if (index%3 == 0) {

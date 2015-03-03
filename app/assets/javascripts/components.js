@@ -15,6 +15,7 @@ CollectionsListPage = require('./components/CollectionsListPage');
 CollectionsList = require('./components/CollectionsList');
 CollectionsListItem = require('./components/CollectionsListItem');
 CollectionLink = require('./components/CollectionLink');
+CollectionShowPage = require('./components/CollectionShowPage');
 CollectionShow = require('./components/CollectionShow');
 
 // Showcases
