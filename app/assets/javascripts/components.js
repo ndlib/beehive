@@ -44,6 +44,7 @@ SectionDescription = require('./components/SectionDescription');
 // Items
 ItemsList = require('./components/ItemsList');
 ItemsListItem = require('./components/ItemsListItem');
+ItemShowPage = require('./components/ItemShowPage');
 ItemShow = require('./components/ItemShow');
 ItemLink = require('./components/ItemLink');
 
