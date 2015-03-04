@@ -17,7 +17,7 @@ var ItemShow = React.createClass({
               <Details item={this.props.item} />
             </div>
             <div className="col-md-8">
-              <OpenseadragonViewer image={this.props.item.image} containerID={this.props.item.id} height="600" />
+              <OpenseadragonViewer image={this.props.item.image} containerID={this.props.item.id} height={600} />
             </div>
 
           </div>

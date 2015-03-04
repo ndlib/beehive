@@ -2,6 +2,8 @@
 var React = require('react');
 
 var SectionImage = React.createClass({
+  mixins: [CollectionUrlMixin],
+
   displayName: 'Section Image',
 
   propTypes: {
@@ -17,33 +19,27 @@ var SectionImage = React.createClass({
     };
   },
 
-  captionStyle: function() {
-    return {
-      backgroundColor: 'white',
-      position: 'absolute',
-      bottom: '2em',
-      right: '1em',
-      padding: '0.5em',
-      whiteSpace: 'normal',
-    };
-  },
-
   imageStyle: function() {
     return {
       height: '100%',
     };
   },
 
-  render: function () {
-    var caption = "";
-    if (this.props.section.caption) {
-      caption = (<div className="section-caption" style={this.captionStyle()}>{this.props.section.caption}</div>)
-    }
+  linkStyle: function() {
+    return {
+      display: 'block',
+      height: '100%',
+      color: 'inherit',
+    };
+  },
 
+  render: function () {
     return (
       <div className="section-container section-container-image" style={this.style()}>
-        <Thumbnail image={this.props.section.image} thumbnailType="medium" style={this.imageStyle()} title={this.props.section.title} alt={caption} />
-        { caption }
+        <a href={this.itemUrl(this.props.section.item)} style={this.linkStyle()}>
+          <Thumbnail image={this.props.section.image} thumbnailType="medium" style={this.imageStyle()} title={this.props.section.title} alt={this.props.section.caption} />
+          <SectionCaption caption={this.props.section.caption} />
+        </a>
       </div>
     );
   }

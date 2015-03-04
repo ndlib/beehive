@@ -46,6 +46,7 @@ PreviousSection = require('./components/PreviousSection');
 NextSection = require('./components/NextSection');
 Section = require('./components/Section');
 SectionImage = require('./components/SectionImage');
+SectionCaption = require('./components/SectionCaption');
 SectionDescription = require('./components/SectionDescription');
 
 
