@@ -1,18 +1,5 @@
 $brand-primary: #2c5882 !default;
+$text-color: #fff;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
-/*
- * UI Admin
-*/
-
-.page_header h1 {
-  display: inline;
-  vertical-align: middle;
-  margin-right: 15px;
-}
-
-.panel {
-  margin-bottom: 40px;
-}
