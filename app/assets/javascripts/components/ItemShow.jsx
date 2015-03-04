@@ -16,6 +16,7 @@ var ItemShow = React.createClass({
           <div className="description" dangerouslySetInnerHTML={{__html: this.props.item.description}} />
           <OpenseadragonViewer image={this.props.item.image} containerID={this.props.item.id} />
           <MetadataList metadata={this.props.item.metadata} />
+/*
           <div>
             <dl>
               <dt>API Link</dt>
@@ -30,7 +31,7 @@ var ItemShow = React.createClass({
               <dd>{this.props.item.slug}</dd>
             </dl>
           </div>
-          <div>TODO SUBITEMS</div>
+*/
         </div>
       );
     } else {
