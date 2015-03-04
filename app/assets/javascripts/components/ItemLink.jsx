@@ -14,10 +14,10 @@ var ItemLink = React.createClass({
     var item = this.props.item;
     return (
       <div>
-        <h4><a href={this.itemUrl(item)}>Item</a></h4>
-        <div>{item.id}</div>
-        <div>{item.slug}</div>
+        <a className={this.props.className} href={this.itemUrl(item)}>
+        <Thumbnail image={item.image} thumbnailType="medium" />
         <div>{item.title}</div>
+        </a>
       </div>
     );
   }

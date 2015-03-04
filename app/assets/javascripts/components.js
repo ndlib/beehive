@@ -19,6 +19,7 @@ CollectionsListPage = require('./components/pages/CollectionsListPage');
 CollectionShowPage = require('./components/pages/CollectionShowPage');
 ShowcaseShowPage = require('./components/pages/ShowcaseShowPage');
 SectionShowPage= require('./components/pages/SectionShowPage');
+ItemsListPage = require('./components/pages/ItemsListPage');
 ItemShowPage = require('./components/pages/ItemShowPage');
 
 // Collections
