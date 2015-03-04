@@ -12,25 +12,15 @@ var ItemShow = React.createClass({
       return (
         <div>
           <h2>{this.props.item.title}</h2>
+          <div className="row">
+            <div className="col-md-4">
+              <Details item={this.props.item} />
+            </div>
+            <div className="col-md-8">
+              <OpenseadragonViewer image={this.props.item.image} containerID={this.props.item.id} height="600" />
+            </div>
 
-          <div className="description" dangerouslySetInnerHTML={{__html: this.props.item.description}} />
-          <OpenseadragonViewer image={this.props.item.image} containerID={this.props.item.id} />
-          <MetadataList metadata={this.props.item.metadata} />
-          <div>
-            <dl>
-              <dt>API Link</dt>
-              <dd>{this.props.itemsUrl}</dd>
-            </dl>
-            <dl>
-              <dt>Unique ID</dt>
-              <dd>{this.props.item.id}</dd>
-            </dl>
-            <dl>
-              <dt>Title Slug</dt>
-              <dd>{this.props.item.slug}</dd>
-            </dl>
           </div>
-          <div>TODO SUBITEMS</div>
         </div>
       );
     } else {

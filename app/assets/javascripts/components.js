@@ -58,6 +58,7 @@ ItemLink = require('./components/ItemLink');
 // Other
 MetadataList = require('./components/MetadataList');
 MetadataItem = require('./components/MetadataItem');
+Details = require('./components/Details');
 Thumbnail = require('./components/Thumbnail');
 OpenseadragonViewer  = require('./components/OpenseadragonViewer');
 Loading= require('./components/Loading');

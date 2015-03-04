@@ -20,7 +20,7 @@ var SectionShow = React.createClass({
         </div>
       );
     } else {
-      return <div>LOADING</div>;
+      return <Loading />;
     }
 
   }
