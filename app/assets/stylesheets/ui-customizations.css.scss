@@ -62,8 +62,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', e
 }
 
 .navbar-right {
-	right:0;
+	right:30px;
 	left:auto;
+	margin-right: 0;
+
 }
 
 
@@ -83,10 +85,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', e
 }
 
 .navbar-default .title-bar .navbar-nav > li > a {
-	border-radius: 6px 6px 0 0 ;
-	color:$grey;
-	padding-bottom: 12px;
-
+	color: #fff;
 }
 
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
@@ -115,13 +114,18 @@ body .jumbotron, .container .jumbotron, .container-fluid .jumbotron {
 		text-align: center;
 		h1 {
 			text-transform: uppercase;
-			padding-top:2em;
+			padding:2em 0;
 		}
 	}
 
 	.collection-image {
 		float: right;
 		width: 40%;
+
+		img {
+			border:solid 5px #fff;
+			box-shadow: 0 0 8px 4px rgba(31, 31, 31, 0.4);
+		}
 	}
 }
 
@@ -154,6 +158,20 @@ body .jumbotron, .container .jumbotron, .container-fluid .jumbotron {
 	margin-bottom: .8em;
 }
 
+.showcases-list {
+	h2 {
+		color: #fff;
+	}
+}
+
+.showcase-list-item {
+	h3 {
+		margin:19px 0 0 ;
+	}
+	a {
+		color:$grey;
+	}
+}
 
 div.dataTables_filter {
 	padding:0;
