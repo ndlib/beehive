@@ -42,7 +42,7 @@ var SectionImage = React.createClass({
 
     return (
       <div className="section-container section-container-image" style={this.style()}>
-        <Thumbnail image={this.props.section.image} thumbnailType="medium" style={this.imageStyle()} />
+        <Thumbnail image={this.props.section.image} thumbnailType="medium" style={this.imageStyle()} title={this.props.section.title} alt={caption} />
         { caption }
       </div>
     );
