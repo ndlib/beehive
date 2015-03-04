@@ -5,40 +5,26 @@ var ItemsList = React.createClass({
   displayName: 'Items List',
 
   propTypes: {
-    itemsUrl: React.PropTypes.string.isRequired,
+    items: React.PropTypes.array,
   },
-  getInitialState: function() {
-    return {
-      items: [],
-    };
-  },
-  componentDidMount: function() {
-    $.get(this.props.itemsUrl, function(result) {
-      this.setState({
-        items: result.showcases.items,
-      })
-    }.bind(this));
-  },
+
   render: function() {
-    if(this.state.items) {
-      var itemNodes = this.state.items.map(function(item, index) {
-        var nodes = [];
-        nodes.push((
-          <div>
-            <ItemsListItem item={item} />
-          </div>
-        ));
-        return nodes;
-      });
-      return (
+    var itemNodes = this.props.items.map(function(item, index) {
+      var nodes = [];
+      nodes.push((
         <div>
-          <h2>Item List</h2>
-          <div>{itemNodes}</div>
+          <ItemsListItem item={item} />
         </div>
-      );
-    } else {
-      return <div>LOADING</div>;
-    }
+      ));
+      return nodes;
+    });
+    return (
+      <div>
+        <h2>Item List</h2>
+        <div>{itemNodes}</div>
+      </div>
+    );
+
   }
 });
 

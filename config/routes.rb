@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       get ':id/:slug', to: 'sections#show'
     end
     scope '/items' do
+      get '/', to: 'items#index'
       get ':id/:slug', to: 'items#show'
     end
   end
