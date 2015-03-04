@@ -10,16 +10,7 @@ var Details = React.createClass({
   render: function () {
     return (
       <div className="well item-details">
-        <div className="description" dangerouslySetInnerHTML={{__html: this.props.item.description}} />
         <MetadataList metadata={this.props.item.metadata} />
-        <dl>
-          <dt>Unique ID</dt>
-          <dd>{this.props.item.id}</dd>
-        </dl>
-        <dl>
-          <dt>Title Slug</dt>
-          <dd>{this.props.item.slug}</dd>
-        </dl>
       </div>
     );
   }
