@@ -6,7 +6,9 @@ var Thumbnail = React.createClass({
   propTypes: {
     image: React.PropTypes.object,
     thumbnailType: React.PropTypes.string,
-    style: React.PropTypes.object
+    style: React.PropTypes.object,
+    title: React.PropTypes.string,
+    alt: React.PropTypes.string,
   },
 
   style: function() {
@@ -32,7 +34,7 @@ var Thumbnail = React.createClass({
   render: function() {
     return (
       <span>
-        <img src={this.thumbnailSrc()} className="hc-thumbnail-image" />
+        <img src={this.thumbnailSrc()} className="hc-thumbnail-image" title={this.props.title} alt={this.props.alt} />
       </span>
     );
   }
