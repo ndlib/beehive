@@ -17,17 +17,6 @@ var SectionImage = React.createClass({
     };
   },
 
-  captionStyle: function() {
-    return {
-      backgroundColor: 'white',
-      position: 'absolute',
-      bottom: '2em',
-      right: '1em',
-      padding: '0.5em',
-      whiteSpace: 'normal',
-    };
-  },
-
   imageStyle: function() {
     return {
       height: '100%',
@@ -35,15 +24,10 @@ var SectionImage = React.createClass({
   },
 
   render: function () {
-    var caption = "";
-    if (this.props.section.caption) {
-      caption = (<div className="section-caption" style={this.captionStyle()}>{this.props.section.caption}</div>)
-    }
-
     return (
       <div className="section-container section-container-image" style={this.style()}>
-        <Thumbnail image={this.props.section.image} thumbnailType="medium" style={this.imageStyle()} title={this.props.section.title} alt={caption} />
-        { caption }
+        <Thumbnail image={this.props.section.image} thumbnailType="medium" style={this.imageStyle()} title={this.props.section.title} alt={this.props.section.caption} />
+        <SectionCaption caption={this.props.section.caption} />
       </div>
     );
   }
