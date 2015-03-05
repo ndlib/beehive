@@ -55,6 +55,8 @@ ItemsList = require('./components/ItemsList');
 ItemsListItem = require('./components/ItemsListItem');
 ItemShow = require('./components/ItemShow');
 ItemLink = require('./components/ItemLink');
+AdditionalResources = require('./components/AdditionalResources');
+AdditionalResourcesItem = require('./components/AdditionalResourcesItem');
 
 // Other
 MetadataList = require('./components/MetadataList');

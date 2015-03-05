@@ -8,6 +8,7 @@ var ItemLink = React.createClass({
 
   propTypes: {
     item: React.PropTypes.object.isRequired,
+    thumbnailType: React.PropTypes.string,
   },
 
   render: function() {
@@ -15,7 +16,7 @@ var ItemLink = React.createClass({
     return (
       <div>
         <a className={this.props.className} href={this.itemUrl(item)}>
-        <Thumbnail image={item.image} thumbnailType="medium" />
+        <Thumbnail image={item.image} thumbnailType={ this.props.thumbnailType === 'undefined' ? "medium" : this.props.thumbnailType} />
         <div>{item.title}</div>
         </a>
       </div>
