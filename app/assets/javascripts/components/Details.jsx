@@ -11,6 +11,7 @@ var Details = React.createClass({
     return (
       <div className="well item-details">
         <MetadataList metadata={this.props.item.metadata} />
+        <AdditionalResources items={this.props.item.items} />
       </div>
     );
   }

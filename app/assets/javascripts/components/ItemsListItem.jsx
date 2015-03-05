@@ -3,9 +3,11 @@ var React = require('react');
 
 var ItemsListItem = React.createClass({
   displayName: 'Items List Item',
+
   propTypes: {
     item: React.PropTypes.object.isRequired,
   },
+
   render: function() {
       return (
       <div className="well item-list-item">
