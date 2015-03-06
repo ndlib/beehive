@@ -57,6 +57,7 @@ ItemShow = require('./components/ItemShow');
 ItemLink = require('./components/ItemLink');
 AdditionalResources = require('./components/AdditionalResources');
 AdditionalResourcesItem = require('./components/AdditionalResourcesItem');
+ItemDescriptionTeaser = require('./components/ItemDescriptionTeaser');
 
 // Other
 MetadataList = require('./components/MetadataList');
