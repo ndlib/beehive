@@ -32,9 +32,10 @@ var Thumbnail = React.createClass({
   },
 
   render: function() {
+    var classString = "hc-thumbnail-image " + this.props.thumbnailType;
     return (
       <span>
-        <img src={this.thumbnailSrc()} className="hc-thumbnail-image" title={this.props.title} alt={this.props.alt} />
+        <img src={this.thumbnailSrc()} className={classString} title={this.props.title} alt={this.props.alt} />
       </span>
     );
   }

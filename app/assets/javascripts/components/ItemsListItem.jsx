@@ -11,7 +11,7 @@ var ItemsListItem = React.createClass({
   render: function() {
       return (
       <div className="well item-list-item">
-        <ItemLink item={this.props.item} />
+        <ItemLink item={this.props.item} showDescription={true} thumbnailType="small" />
       </div>
     );
   }

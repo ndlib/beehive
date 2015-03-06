@@ -9,6 +9,7 @@ var CollectionPageHeader = React.createClass({
   },
 
   render: function() {
+    var itemBrowseUrl = "/" + this.props.collection.id + "/" + this.props.collection.slug + "/items";
     return (
       <PageHeader>
         <TitleBar>
@@ -16,7 +17,7 @@ var CollectionPageHeader = React.createClass({
             {this.props.collection.title}
           </a>
           <ul className="nav navbar-nav navbar-right">
-            <li><a href="#">Right Side Link</a></li>
+            <li><a href={itemBrowseUrl}>Browse Items</a></li>
           </ul>
         </TitleBar>
       </PageHeader>
