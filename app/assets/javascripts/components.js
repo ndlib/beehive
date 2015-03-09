@@ -22,6 +22,12 @@ SectionShowPage= require('./components/pages/SectionShowPage');
 ItemsListPage = require('./components/pages/ItemsListPage');
 ItemShowPage = require('./components/pages/ItemShowPage');
 
+// Embed Codes
+CollectionEmbed = require('./components/embeds/CollectionEmbed');
+ShowcaseEmbed = require('./components/embeds/ShowcaseEmbed');
+SectionEmbed = require('./components/embeds/SectionEmbed');
+ItemEmbed = require('./components/embeds/ItemEmbed');
+
 // Collections
 CollectionsList = require('./components/CollectionsList');
 CollectionsListItem = require('./components/CollectionsListItem');
