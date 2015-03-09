@@ -14,12 +14,9 @@ var PreviousSection = React.createClass({
   render: function() {
     var section = this.props.section;
     return (
-      <div>
-        <h4><a href={this.sectionUrl(section)}>Previous Section</a></h4>
-        <div>{section.id}</div>
-        <div>{section.slug}</div>
-        <div>{section.title}</div>
-      </div>
+    <a href={this.sectionUrl(section)} className="prev-button half-circle-button">
+      <div className="direction">&lsaquo;</div>
+    </a>
     );
   }
 });

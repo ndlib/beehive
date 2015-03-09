@@ -1,0 +1,32 @@
+.half-circle-button {
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0;
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.4);
+  color: black;
+  text-align: center;
+  line-height: 100px;
+  font-size: 50px;
+  position: absolute;
+  top: 50%;
+  z-index: 100;
+    &:hover, &:active {
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.6);
+    color: black;
+  }
+}
+.next-button {
+  right: -70px;
+  .direction {
+    margin-left: -50px;
+  }
+}
+.prev-button {
+  left: -70px;
+  .direction {
+    margin-right: -50px;
+  }
+}
