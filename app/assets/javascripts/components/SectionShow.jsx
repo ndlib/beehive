@@ -8,8 +8,8 @@ var SectionShow = React.createClass({
   },
 
   render: function() {
+    var item ="";
     if (this.props.section) {
-      var item;
       if (this.props.section.item) {
         item = (<ItemShow item={this.props.section.item} />);
       }
@@ -19,11 +19,11 @@ var SectionShow = React.createClass({
           <PreviousSection section={this.props.section.previousSection} />
           <NextSection section={this.props.section.nextSection} />
           <div className="row">
-            <div className="col-md-6">
+            <div className="col-md-12">
+              <div className="section-description">
+                <div dangerouslySetInnerHTML={{__html: this.props.section.description}} />
+              </div>
               {item}
-            </div>
-            <div className="col-md-6">
-              <div dangerouslySetInnerHTML={{__html: this.props.section.description}} />
             </div>
           </div>
         </div>

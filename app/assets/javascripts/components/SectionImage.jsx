@@ -25,21 +25,11 @@ var SectionImage = React.createClass({
     };
   },
 
-  linkStyle: function() {
-    return {
-      display: 'block',
-      height: '100%',
-      color: 'inherit',
-    };
-  },
-
   render: function () {
     return (
       <div className="section-container section-container-image" style={this.style()}>
-        <a href={this.itemUrl(this.props.section.item)} style={this.linkStyle()}>
           <Thumbnail image={this.props.section.image} thumbnailType="medium" style={this.imageStyle()} title={this.props.section.title} alt={this.props.section.caption} />
           <SectionCaption caption={this.props.section.caption} />
-        </a>
       </div>
     );
   }

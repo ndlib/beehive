@@ -2,6 +2,7 @@
 var React = require('react');
 
 var Section = React.createClass({
+  mixins: [CollectionUrlMixin],
   displayName: 'Section',
 
   propTypes: {
@@ -11,6 +12,14 @@ var Section = React.createClass({
   getInitialState: function() {
     return {
       hover: false
+    };
+  },
+
+  linkStyle: function() {
+    return {
+      display: 'block',
+      height: '100%',
+      color: 'inherit',
     };
   },
 
@@ -44,10 +53,12 @@ var Section = React.createClass({
       image = (<SectionImage section={this.props.section} />);
     }
     return (
-      <div className="section" style={this.style()} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} >
+      <section className="section" style={this.style()} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} >
+      <a href={this.sectionUrl(this.props.section)} style={this.linkStyle()}>
         {image}
         <SectionDescription section={this.props.section} />
-      </div>
+        </a>
+      </section>
     );
   }
 });
