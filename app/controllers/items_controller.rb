@@ -5,6 +5,13 @@ class ItemsController < ApplicationController
     @items_url = "#{@collections_url}/items"
   end
 
+  def embed
+    @items_url = "#{@collections_url}/items/#{params[:id]}"
+    respond_to do |format|
+      format.html {render :layout => 'embed'}
+    end
+  end
+
   def show
     @items_url = "#{@collections_url}/items/#{params[:id]}"
   end

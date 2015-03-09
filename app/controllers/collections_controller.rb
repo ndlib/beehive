@@ -1,6 +1,15 @@
 class CollectionsController < ApplicationController
+
+
   def index
     @collections_url = collections_api_base
+  end
+
+  def embed
+    @collections_url =  collections_api_base + "/" + params[:id] + "/showcases"
+    respond_to do |format|
+      format.html {render :layout => 'embed'}
+    end
   end
 
   def show
