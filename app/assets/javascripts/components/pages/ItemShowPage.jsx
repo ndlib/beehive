@@ -1,4 +1,4 @@
-//app/assets/javascripts/components/CollectionShow.jsx
+//app/assets/javascripts/components/ItemShowPage.jsx
 var React = require('react');
 
 var ItemShowPage = React.createClass({
