@@ -8,7 +8,6 @@ var SectionShow = React.createClass({
   },
 
   render: function() {
-    console.log(this.props);
     var item ="";
     if (this.props.section) {
       if (this.props.section.item) {
