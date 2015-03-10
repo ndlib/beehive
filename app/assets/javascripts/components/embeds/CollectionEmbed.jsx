@@ -42,17 +42,12 @@ var CollectionEmbed = React.createClass({
   },
 
   render: function() {
-    var showcasesList;
-    if (this.state.collection.showcases) {
-      showcasesList = (
-        <ShowcasesList showcases={this.state.collection.showcases} />
-      );
-    }
     return (
-        <div className="collection">
-          <CollectionShow collection={this.state.collection} />
-          {showcasesList}
-        </div>
+      <div className="collection">
+        <h2>{this.state.collection.title}</h2>
+        <Thumbnail image={this.state.collection.image} thumbnailType="small" />
+        <p dangerouslySetInnerHTML={{__html: this.state.collection.description}} />
+      </div>
     );
   }
 });

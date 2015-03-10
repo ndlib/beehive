@@ -42,9 +42,18 @@ var SectionEmbed = React.createClass({
   },
 
   render: function() {
-    return (
-      <SectionShow section={this.state.section} />
-    );
+    if (this.state.section != null) {
+      return (
+        <div className="section">
+          <h2>{this.state.section.title}</h2>
+          <Thumbnail image={this.state.section.image} thumbnailType="small" />
+          <p dangerouslySetInnerHTML={{__html: this.state.section.description}} />
+        </div>
+      );
+    }
+    else {
+      return (<Loading />);
+    }
   }
 });
 

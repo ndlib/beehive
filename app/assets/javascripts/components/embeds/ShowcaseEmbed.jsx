@@ -40,9 +40,18 @@ var ShowcaseEmbed = React.createClass({
   },
 
   render: function() {
-    return (
-      <ShowcaseShow showcase={this.state.showcase} />
-    );
+    if (this.state.showcase != null) {
+      return (
+        <div className="showcase">
+          <h2>{this.state.showcase.title}</h2>
+          <Thumbnail image={this.state.showcase.image} thumbnailType="small" />
+          <p dangerouslySetInnerHTML={{__html: this.state.showcase.description}} />
+        </div>
+      );
+    }
+    else {
+      return (<Loading />);
+    }
   }
 });
 
