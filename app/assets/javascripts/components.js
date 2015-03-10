@@ -22,47 +22,53 @@ SectionShowPage= require('./components/pages/SectionShowPage');
 ItemsListPage = require('./components/pages/ItemsListPage');
 ItemShowPage = require('./components/pages/ItemShowPage');
 
+// Embed Codes
+CollectionEmbed = require('./components/embeds/CollectionEmbed');
+ShowcaseEmbed = require('./components/embeds/ShowcaseEmbed');
+SectionEmbed = require('./components/embeds/SectionEmbed');
+ItemEmbed = require('./components/embeds/ItemEmbed');
+
 // Collections
-CollectionsList = require('./components/CollectionsList');
-CollectionsListItem = require('./components/CollectionsListItem');
-CollectionLink = require('./components/CollectionLink');
-CollectionShow = require('./components/CollectionShow');
+CollectionsList = require('./components/collection/CollectionsList');
+CollectionsListItem = require('./components/collection/CollectionsListItem');
+CollectionLink = require('./components/collection/CollectionLink');
+CollectionShow = require('./components/collection/CollectionShow');
 
 // Showcases
-ShowcasesList = require('./components/ShowcasesList');
-ShowcasesListItem = require('./components/ShowcasesListItem');
-ShowcaseLink = require('./components/ShowcaseLink');
-ShowcaseTitleSection = require('./components/ShowcaseTitleSection');
-ShowcaseShow = require('./components/ShowcaseShow');
-ShowcaseEditorTitle = require('./components/ShowcaseEditorTitle');
+ShowcasesList = require('./components/showcase/ShowcasesList');
+ShowcasesListItem = require('./components/showcase/ShowcasesListItem');
+ShowcaseLink = require('./components/showcase/ShowcaseLink');
+ShowcaseTitleSection = require('./components/showcase/ShowcaseTitleSection');
+ShowcaseShow = require('./components/showcase/ShowcaseShow');
+ShowcaseEditorTitle = require('./components/showcase/ShowcaseEditorTitle');
 
 
 // Sections
-SectionsList = require('./components/SectionsList');
-SectionsListItem = require('./components/SectionsListItem');
-SectionLink = require('./components/SectionLink');
-SectionShow = require('./components/SectionShow');
-PreviousSection = require('./components/PreviousSection');
-NextSection = require('./components/NextSection');
-Section = require('./components/Section');
-SectionImage = require('./components/SectionImage');
-SectionCaption = require('./components/SectionCaption');
-SectionDescription = require('./components/SectionDescription');
+SectionsList = require('./components/section/SectionsList');
+SectionsListItem = require('./components/section/SectionsListItem');
+SectionLink = require('./components/section/SectionLink');
+SectionShow = require('./components/section/SectionShow');
+PreviousSection = require('./components/section/PreviousSection');
+NextSection = require('./components/section/NextSection');
+Section = require('./components/section/Section');
+SectionImage = require('./components/section/SectionImage');
+SectionCaption = require('./components/section/SectionCaption');
+SectionDescription = require('./components/section/SectionDescription');
 
 
 // Items
-ItemsList = require('./components/ItemsList');
-ItemsListItem = require('./components/ItemsListItem');
-ItemShow = require('./components/ItemShow');
-ItemLink = require('./components/ItemLink');
-AdditionalResources = require('./components/AdditionalResources');
-AdditionalResourcesItem = require('./components/AdditionalResourcesItem');
-ItemDescriptionTeaser = require('./components/ItemDescriptionTeaser');
+ItemsList = require('./components/item/ItemsList');
+ItemsListItem = require('./components/item/ItemsListItem');
+ItemShow = require('./components/item/ItemShow');
+ItemLink = require('./components/item/ItemLink');
+AdditionalResources = require('./components/item/AdditionalResources');
+AdditionalResourcesItem = require('./components/item/AdditionalResourcesItem');
+ItemDescriptionTeaser = require('./components/item/ItemDescriptionTeaser');
 
 // Other
-MetadataList = require('./components/MetadataList');
-MetadataItem = require('./components/MetadataItem');
-Details = require('./components/Details');
-Thumbnail = require('./components/Thumbnail');
-OpenseadragonViewer  = require('./components/OpenseadragonViewer');
-Loading= require('./components/Loading');
+MetadataList = require('./components/other/MetadataList');
+MetadataItem = require('./components/other/MetadataItem');
+Details = require('./components/other/Details');
+Thumbnail = require('./components/other/Thumbnail');
+OpenseadragonViewer  = require('./components/other/OpenseadragonViewer');
+Loading= require('./components/other/Loading');

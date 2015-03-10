@@ -1,18 +1,20 @@
-//app/assets/javascripts/components/ItemShowPage.jsx
+//app/assets/javascripts/components/SectionEmbed.jsx
 var React = require('react');
 
-var ItemShowPage = React.createClass({
+var SectionEmbed = React.createClass({
   propTypes: {
     collection: React.PropTypes.oneOfType([
       React.PropTypes.string,
       React.PropTypes.object,
     ]),
+    params: React.PropTypes.object,
   },
 
   getInitialState: function() {
     return {
       collection: {},
-      item: null,
+      showcase: null,
+      section: null
     };
   },
 
@@ -33,21 +35,27 @@ var ItemShowPage = React.createClass({
   setValues: function(collection) {
     this.setState({
       collection: collection,
-      item: collection.items,
+      showcase: collection.showcases,
+      section: collection.showcases.sections,
+      params: this.props.params,
     });
   },
 
   render: function() {
-    return (
-      <Layout>
-        <CollectionPageHeader collection={this.state.collection} />
-        <PageContent>
-          <ItemShow item={this.state.item} />
-        </PageContent>
-      </Layout>
-    );
+    if (this.state.section != null) {
+      return (
+        <div className="section">
+          <h2>{this.state.section.title}</h2>
+          <Thumbnail image={this.state.section.image} thumbnailType="small" />
+          <p dangerouslySetInnerHTML={{__html: this.state.section.description}} />
+        </div>
+      );
+    }
+    else {
+      return (<Loading />);
+    }
   }
 });
 
 // each file will export exactly one component
-module.exports = ItemShowPage;
+module.exports = SectionEmbed;
