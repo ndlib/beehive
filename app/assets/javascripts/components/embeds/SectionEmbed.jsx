@@ -7,6 +7,7 @@ var SectionEmbed = React.createClass({
       React.PropTypes.string,
       React.PropTypes.object,
     ]),
+    params: React.PropTypes.object,
   },
 
   getInitialState: function() {
@@ -36,6 +37,7 @@ var SectionEmbed = React.createClass({
       collection: collection,
       showcase: collection.showcases,
       section: collection.showcases.sections,
+      params: this.props.params,
     });
   },
 

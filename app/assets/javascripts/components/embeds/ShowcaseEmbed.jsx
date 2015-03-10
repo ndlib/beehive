@@ -7,6 +7,7 @@ var ShowcaseEmbed = React.createClass({
       React.PropTypes.string,
       React.PropTypes.object,
     ]),
+    params: React.PropTypes.object,
   },
 
   getInitialState: function() {
@@ -34,6 +35,7 @@ var ShowcaseEmbed = React.createClass({
     this.setState({
       collection: collection,
       showcase: collection.showcases,
+      params: this.props.params,
     });
   },
 

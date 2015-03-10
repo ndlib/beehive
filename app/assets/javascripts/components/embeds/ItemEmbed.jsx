@@ -7,10 +7,10 @@ var ItemEmbed = React.createClass({
       React.PropTypes.string,
       React.PropTypes.object,
     ]),
+    params: React.PropTypes.object,
   },
 
   getInitialState: function() {
-    console.log('gi');
     return {
       collection: {},
       item: null,
@@ -18,7 +18,6 @@ var ItemEmbed = React.createClass({
   },
 
   componentDidMount: function() {
-    console.log('cdi');
     if ('object' == typeof(this.props.collection)) {
       this.setValues(this.props.collection);
     } else {
@@ -36,10 +35,12 @@ var ItemEmbed = React.createClass({
     this.setState({
       collection: collection,
       item: collection.items,
+      params: this.props.params,
     });
   },
 
   render: function() {
+    console.log(this);
     return (
       <ItemShow item={this.state.item} />
     );

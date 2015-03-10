@@ -9,6 +9,7 @@ var CollectionEmbed = React.createClass({
       React.PropTypes.string,
       React.PropTypes.object,
     ]),
+    params: React.PropTypes.object,
   },
 
   getInitialState: function() {
@@ -19,9 +20,7 @@ var CollectionEmbed = React.createClass({
 
   componentDidMount: function() {
     if ('object' == typeof(this.props.collection)) {
-      this.setState({
-        collection: this.props.collection,
-      });
+      this.setValues(this.props.collection);
     } else {
       this.loadRemoteCollection()
     }
@@ -33,6 +32,13 @@ var CollectionEmbed = React.createClass({
         collection: result,
       });
     }.bind(this));
+  },
+
+  setValues: function(collection) {
+    this.setState({
+      collection: collection,
+      params: this.props.params,
+    });
   },
 
   render: function() {
