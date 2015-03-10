@@ -1,5 +1,5 @@
 class CollectionsController < ApplicationController
-
+  after_action :allow_iframe, only: :embed
 
   def index
     @collections_url = collections_api_base
@@ -20,5 +20,9 @@ class CollectionsController < ApplicationController
 
   def collections_api_base
     Rails.configuration.beehive_url + "/v1/collections"
+  end
+
+  def allow_iframe
+    response.headers.except! 'X-Frame-Options'
   end
 end
