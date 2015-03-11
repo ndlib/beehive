@@ -1,22 +1,22 @@
 class ShowcasesController < ApplicationController
-  before_action :set_collections_url
+  before_action :showcases_api_base
   after_action :allow_iframe, only: :embed
 
   def embed
-    @showcases_url =  @collections_url + "/showcases/" + params[:id]
+    @showcases_url =  showcases_api_base + params[:id]
     respond_to do |format|
       format.html {render :layout => 'embed'}
     end
   end
 
   def show
-    @showcases_url =  @collections_url + "/showcases/" + params[:id]
+    @showcases_url =  showcases_api_base + params[:id]
   end
 
   private
 
-  def set_collections_url
-    @collections_url = Rails.configuration.beehive_url + "/v1/collections/" + params[:collection_id]
+  def showcases_api_base
+    Rails.configuration.beehive_url + "/v1/showcases/"
   end
 
   def allow_iframe
