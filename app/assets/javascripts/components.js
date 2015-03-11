@@ -53,7 +53,7 @@ NextSection = require('./components/section/NextSection');
 Section = require('./components/section/Section');
 SectionCaption = require('./components/section/SectionCaption');
 SectionDescription = require('./components/section/SectionDescription');
-
+SectionImage = require('./components/section/SectionImage');
 
 // Items
 ItemsList = require('./components/item/ItemsList');
