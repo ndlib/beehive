@@ -1,4 +1,4 @@
-//app/assets/javascripts/components/SectionImage.jsx
+//app/assets/javascripts/components/SectionCaption.jsx
 var React = require('react');
 
 var SectionCaption = React.createClass({
