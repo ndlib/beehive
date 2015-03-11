@@ -49,13 +49,9 @@ var Section = React.createClass({
 
   render: function() {
     var image;
-    if (this.props.section.image) {
-      image = (<SectionImage section={this.props.section} />);
-    }
     return (
       <section className="section" style={this.style()} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} >
       <a href={this.sectionUrl(this.props.section)} style={this.linkStyle()}>
-        {image}
         <SectionDescription section={this.props.section} />
         </a>
       </section>

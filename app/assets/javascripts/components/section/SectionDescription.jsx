@@ -1,4 +1,4 @@
-//app/assets/javascripts/components/SectionImage.jsx
+//app/assets/javascripts/components/SectionDescription.jsx
 var React = require('react');
 
 var converter = new Showdown.converter()
