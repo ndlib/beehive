@@ -5,6 +5,7 @@ $blue :#2c5882;
 body {
 	background: #333;
 	background-image: image_url('black-linen.png');
+	padding-bottom: 60px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -107,7 +108,7 @@ body .jumbotron, .container .jumbotron, .container-fluid .jumbotron {
 		color: #fff;
 	}
 
-
+}
 .jumbotron .collection-text{
 	float: left;
 	clear: left;
@@ -118,7 +119,7 @@ body .jumbotron, .container .jumbotron, .container-fluid .jumbotron {
 		padding:2em 0;
 
 	}
-
+}
 
 .jumbotron .collection-image {
 	float: right;
@@ -134,9 +135,12 @@ body .jumbotron, .container .jumbotron, .container-fluid .jumbotron {
 	width: 100%;
 	float: left;
 }
+
 .clear {
 	clear:both;
 }
+
+
 .container .jumbotron, .container-fluid .jumbotron {
 	padding:120px 30px 20px;
 	border:solid 1px #fff;
@@ -189,9 +193,31 @@ div.dataTables_filter {
 }
 
 #footer {
+	background-color: #2b2a2a;
+	background-image:linear-gradient(to top, #2b2a2a 0%, #393838 140%);
+	padding:0px;
 	.pull-right{
 		padding-right: 15px;
 		a {float: right;}
+	}
+	.pull-left {
+		padding-left: 0;
+	}
+	.hesburgh-logo {
+		width:100px;
+		margin-top:8px;
+		margin-bottom:8px;
+	}
+	position: fixed;
+	bottom:0;
+	left:0;
+	right: 0;
+	.btn {
+		margin:0;
+		border-radius: 0;
+		padding:10px 12px;
+		font-size: 18px;
+		line-height: 1em;
 	}
 }
 
@@ -397,9 +423,6 @@ div.dataTables_filter {
 
 
 
-.panel-heading .pull-right .btn {
-
-}
 
 .hc-image-zoom-button-outer .btn {
 	padding:8px;
