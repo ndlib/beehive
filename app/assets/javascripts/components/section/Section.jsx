@@ -48,11 +48,11 @@ var Section = React.createClass({
   },
 
   render: function() {
-    var image;
     return (
       <section className="section" style={this.style()} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} >
       <a href={this.sectionUrl(this.props.section)} style={this.linkStyle()}>
         <SectionDescription section={this.props.section} />
+        <SectionImage section={this.props.section}/>
         </a>
       </section>
     );
