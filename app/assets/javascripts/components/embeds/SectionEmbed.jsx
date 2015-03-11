@@ -46,7 +46,7 @@ var SectionEmbed = React.createClass({
       return (
         <div className="section">
           <h2>{this.state.section.title}</h2>
-          <Thumbnail image={this.state.section.image} thumbnailType="small" />
+          <SectionImage section={this.state.section} />
           <p dangerouslySetInnerHTML={{__html: this.state.section.description}} />
         </div>
       );
