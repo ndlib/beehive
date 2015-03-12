@@ -1,18 +1,19 @@
-//app/assets/javascripts/components/ItemShowPage.jsx
+//app/assets/javascripts/components/ShowcaseEmbed.jsx
 var React = require('react');
 
-var ItemShowPage = React.createClass({
+var ShowcaseEmbed = React.createClass({
   propTypes: {
     collection: React.PropTypes.oneOfType([
       React.PropTypes.string,
       React.PropTypes.object,
     ]),
+    params: React.PropTypes.object,
   },
 
   getInitialState: function() {
     return {
       collection: {},
-      item: null,
+      showcase: null,
     };
   },
 
@@ -33,21 +34,26 @@ var ItemShowPage = React.createClass({
   setValues: function(collection) {
     this.setState({
       collection: collection,
-      item: collection.items,
+      showcase: collection.showcases,
+      params: this.props.params,
     });
   },
 
   render: function() {
-    return (
-      <Layout>
-        <CollectionPageHeader collection={this.state.collection} />
-        <PageContent>
-          <ItemShow item={this.state.item} />
-        </PageContent>
-      </Layout>
-    );
+    if (this.state.showcase != null) {
+      return (
+        <div className="showcase">
+          <h2>{this.state.showcase.title}</h2>
+          <Thumbnail image={this.state.showcase.image} thumbnailType="small" />
+          <p dangerouslySetInnerHTML={{__html: this.state.showcase.description}} />
+        </div>
+      );
+    }
+    else {
+      return (<Loading />);
+    }
   }
 });
 
 // each file will export exactly one component
-module.exports = ItemShowPage;
+module.exports = ShowcaseEmbed;

@@ -8,19 +8,28 @@ var SectionShow = React.createClass({
   },
 
   render: function() {
+    var item ="";
     if (this.props.section) {
+      if (this.props.section.item) {
+        item = (<ItemShow item={this.props.section.item} />);
+      }
       return (
         <div>
           <h2>{this.props.section.title}</h2>
-          <div dangerouslySetInnerHTML={{__html: this.props.section.description}} />
-          <OpenseadragonViewer image={this.props.section.image} containerID={this.props.section.id} />
-          <ItemLink item={this.props.section.item} />
           <PreviousSection section={this.props.section.previousSection} />
           <NextSection section={this.props.section.nextSection} />
+          <div className="row">
+            <div className="col-md-12">
+              <div className="section-description">
+                <div dangerouslySetInnerHTML={{__html: this.props.section.description}} />
+              </div>
+              {item}
+            </div>
+          </div>
         </div>
       );
     } else {
-      return <div>LOADING</div>;
+      return <Loading />;
     }
 
   }

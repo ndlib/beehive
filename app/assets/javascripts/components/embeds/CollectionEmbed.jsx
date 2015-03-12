@@ -1,18 +1,20 @@
-//app/assets/javascripts/components/ItemShowPage.jsx
+//app/assets/javascripts/components/CollectionEmbed.jsx
 var React = require('react');
 
-var ItemShowPage = React.createClass({
+var CollectionEmbed = React.createClass({
+  displayName: 'Collection Show Page',
+
   propTypes: {
     collection: React.PropTypes.oneOfType([
       React.PropTypes.string,
       React.PropTypes.object,
     ]),
+    params: React.PropTypes.object,
   },
 
   getInitialState: function() {
     return {
       collection: {},
-      item: null,
     };
   },
 
@@ -26,28 +28,29 @@ var ItemShowPage = React.createClass({
 
   loadRemoteCollection: function() {
     $.get(this.props.collection, function(result) {
-      this.setValues(result);
+      this.setState({
+        collection: result,
+      });
     }.bind(this));
   },
 
   setValues: function(collection) {
     this.setState({
       collection: collection,
-      item: collection.items,
+      params: this.props.params,
     });
   },
 
   render: function() {
     return (
-      <Layout>
-        <CollectionPageHeader collection={this.state.collection} />
-        <PageContent>
-          <ItemShow item={this.state.item} />
-        </PageContent>
-      </Layout>
+      <div className="collection">
+        <h2>{this.state.collection.title}</h2>
+        <Thumbnail image={this.state.collection.image} thumbnailType="small" />
+        <p dangerouslySetInnerHTML={{__html: this.state.collection.description}} />
+      </div>
     );
   }
 });
 
 // each file will export exactly one component
-module.exports = ItemShowPage;
+module.exports = CollectionEmbed;

@@ -6,6 +6,7 @@ var OpenseadragonViewer = React.createClass({
     image: React.PropTypes.object,
     containerID: React.PropTypes.string.isRequired,
     fullPage: React.PropTypes.bool,
+    height: React.PropTypes.number,
   },
 
   getInitialState: function() {
@@ -51,7 +52,6 @@ var OpenseadragonViewer = React.createClass({
       options = this.dziOptions(image);
     }
     var viewer = OpenSeadragon(options);
-    console.log(viewer)
     var escapeHandler = function(event) {
       if (event.keyCode === 27) {
         this.fullPageOff();
@@ -109,9 +109,15 @@ var OpenseadragonViewer = React.createClass({
     return options;
   },
 
+  style: function() {
+    return {
+      height: "" + this.props.height + "px",
+    };
+  },
+
   render: function() {
     return (
-      <div className="hc-openseadragon-viewer" id={this.props.containerID}></div>
+      <div className="hc-openseadragon-viewer" id={this.props.containerID} style={this.style()}></div>
     );
   }
 });

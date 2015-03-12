@@ -4,7 +4,7 @@ var React = require('react');
 var Loading = React.createClass({
 
   render: function() {
-    return (<div>LOADING!</div>)
+    return (<div className="loading"><img src="/images/ajax-loader.gif" /></div>)
   }
 
 });
