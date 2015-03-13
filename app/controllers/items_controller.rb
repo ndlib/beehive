@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
   end
 
   def embed
-    @items_url = @collections_url + "/items/" + params[:id]
+    @items_url =  Rails.configuration.beehive_url + "/v1/items/" + params[:id]
     respond_to do |format|
       format.html {render :layout => 'embed'}
     end
