@@ -7,14 +7,16 @@ var SectionDescription = React.createClass({
   propTypes: {
     section: React.PropTypes.object.isRequired
   },
+
   style: function() {
     return {
       display: 'inline-block',
       padding: '5px',
       width: '300px',
-      overflow: 'scroll',
+      overflow: 'hidden',
       height: '100%',
       whiteSpace: 'normal',
+      'text-overflow': 'ellipsis',
     };
   },
 
@@ -23,13 +25,12 @@ var SectionDescription = React.createClass({
     if (this.props.section.description) {
       rawMarkup = this.props.section.description.toString();
     }
-    console.log(this.props.section);
 
     if (rawMarkup) {
       return (
         <div className="section-container section-container-text" style={this.style()}>
           <h2>{this.props.section.title}</h2>
-          <div className="section-description" dangerouslySetInnerHTML={{__html: rawMarkup}}  />
+          <DescriptionTeaser description={rawMarkup} />
         </div>
       );
     } else {

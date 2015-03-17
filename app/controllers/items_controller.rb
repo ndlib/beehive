@@ -1,26 +1,25 @@
 class ItemsController < ApplicationController
-  before_action :items_api_base
+  before_action :set_collections_url
   after_action :allow_iframe, only: :embed
 
   def index
-    @items_url = items_api_base
+    @items_url = @collections_url + "/items"
   end
 
   def embed
-    @items_url = items_api_base + params[:id]
+    @items_url =  Rails.configuration.beehive_url + "/v1/items/" + params[:id]
     respond_to do |format|
       format.html {render :layout => 'embed'}
     end
   end
 
   def show
-    @items_url = items_api_base + params[:id]
+    @items_url =  Rails.configuration.beehive_url + "/v1/items/" + params[:id]
   end
 
   private
-
-  def items_api_base
-    Rails.configuration.beehive_url + "/v1/items/"
+  def set_collections_url
+    @collections_url = Rails.configuration.beehive_url + "/v1/collections/" + params[:collection_id]
   end
 
   def allow_iframe

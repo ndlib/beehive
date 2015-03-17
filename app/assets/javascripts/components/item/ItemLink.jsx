@@ -17,7 +17,7 @@ var ItemLink = React.createClass({
     var item = this.props.item;
     var descriptionText = "";
     if(this.props.showDescription) {
-      descriptionText = (<ItemDescriptionTeaser item={item} />);
+      descriptionText = (<DescriptionTeaser description={item.description} />);
     }
     return (
       <div className="item">

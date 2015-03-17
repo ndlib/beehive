@@ -62,12 +62,13 @@ ItemShow = require('./components/item/ItemShow');
 ItemLink = require('./components/item/ItemLink');
 AdditionalResources = require('./components/item/AdditionalResources');
 AdditionalResourcesItem = require('./components/item/AdditionalResourcesItem');
-ItemDescriptionTeaser = require('./components/item/ItemDescriptionTeaser');
+
 
 // Other
 MetadataList = require('./components/other/MetadataList');
 MetadataItem = require('./components/other/MetadataItem');
 Details = require('./components/other/Details');
+DescriptionTeaser = require('./components/other/DescriptionTeaser');
 Thumbnail = require('./components/other/Thumbnail');
 OpenseadragonViewer  = require('./components/other/OpenseadragonViewer');
 Loading= require('./components/other/Loading');
