@@ -13,7 +13,7 @@ var DescriptionTeaser = React.createClass({
   style: function() {
     return {
       overflow: 'hidden',
-      'text-overflow': 'ellipsis',
+      textOverflow: 'ellipsis',
     };
   },
 
