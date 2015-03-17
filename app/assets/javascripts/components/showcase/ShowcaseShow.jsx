@@ -25,7 +25,7 @@ var ShowcaseShow = React.createClass({
   render: function() {
     if (this.props.showcase) {
       return (
-        <div style={this.style()}>
+        <div id="main-showcase" style={this.style()}>
           <ShowcaseEditorTitle showcase={this.props.showcase} />
           <SectionsList sections={this.props.showcase.sections} />
         </div>
