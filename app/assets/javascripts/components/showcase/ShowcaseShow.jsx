@@ -27,7 +27,7 @@ var ShowcaseShow = React.createClass({
       height: '500px',
       top: 0,
       left: 0,
-      border: '1px solid #bed5cd',
+
       padding: '10px',
       marginBottom: '2em',
     };
