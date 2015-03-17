@@ -1,21 +1,21 @@
-//app/assets/javascripts/components/ItemDescriptionTeaser.jsx
+//app/assets/javascripts/components/DescriptionTeaser.jsx
 var React = require('react');
 
-var ItemDescriptionTeaser = React.createClass({
+var DescriptionTeaser = React.createClass({
   displayName: "Teaser Text",
 
   propTypes: {
-    item: React.PropTypes.object.isRequired,
+    description: React.PropTypes.string,
     showDescription: React.PropTypes.bool,
     length: React.PropTypes.number,
   },
 
   render: function() {
-    var trimmedDescription = this.props.item.description;
-    if(trimmedDescription.length > this.props.length) {
-      if(this.props.length === 'undefined') {
+    var trimmedDescription = this.props.description;
+    if(this.props.length == null) {
         this.props.length = 200;
-      }
+    }
+    if(trimmedDescription.length > this.props.length) {
       trimmedDescription = trimmedDescription.substr(0, this.props.length) + "&hellip;";
     }
     return (
@@ -24,4 +24,4 @@ var ItemDescriptionTeaser = React.createClass({
   }
 });
 
-module.exports = ItemDescriptionTeaser;
+module.exports = DescriptionTeaser;

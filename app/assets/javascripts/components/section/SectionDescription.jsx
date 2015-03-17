@@ -23,13 +23,12 @@ var SectionDescription = React.createClass({
     if (this.props.section.description) {
       rawMarkup = this.props.section.description.toString();
     }
-    console.log(this.props.section);
 
     if (rawMarkup) {
       return (
         <div className="section-container section-container-text" style={this.style()}>
           <h2>{this.props.section.title}</h2>
-          <div className="section-description" dangerouslySetInnerHTML={{__html: rawMarkup}}  />
+          <DescriptionTeaser description={rawMarkup} length="800" />
         </div>
       );
     } else {
