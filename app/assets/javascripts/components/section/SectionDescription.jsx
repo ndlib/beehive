@@ -16,7 +16,7 @@ var SectionDescription = React.createClass({
       overflow: 'hidden',
       height: '100%',
       whiteSpace: 'normal',
-      'text-overflow': 'ellipsis',
+      textOverflow: 'ellipsis',
     };
   },
 
