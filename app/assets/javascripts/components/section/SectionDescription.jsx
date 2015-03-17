@@ -23,6 +23,7 @@ var SectionDescription = React.createClass({
     if (this.props.section.description) {
       rawMarkup = this.props.section.description.toString();
     }
+    console.log(this.props.section);
 
     if (rawMarkup) {
       return (
