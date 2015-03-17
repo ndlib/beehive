@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @items_url = @collections_url + "/items/" + params[:id]
+    @items_url =  Rails.configuration.beehive_url + "/v1/items/" + params[:id]
   end
 
   private
