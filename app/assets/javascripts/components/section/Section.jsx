@@ -25,7 +25,7 @@ var Section = React.createClass({
 
   style: function() {
     return {
-      border: '1px solid lightgrey',
+      //border: '1px solid lightgrey',
       display: 'inline-block',
       verticalAlign: 'top',
       position: 'relative',

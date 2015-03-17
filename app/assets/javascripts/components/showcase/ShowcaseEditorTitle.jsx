@@ -10,13 +10,14 @@ var ShowcaseEditorTitle = React.createClass({
 
   style: function() {
     return {
-      border: '1px solid lightgrey',
+      //border: '1px solid lightgrey',
       display: 'inline-block',
       verticalAlign: 'top',
       position: 'relative',
       padding: '5px',
       height: '100%',
       marginRight: '10px',
+      //backgroundImage: 'url(http://localhost:3019/images/honeycomb/000/001/000/001/medium/Debut_of_Dazzler.jpg)',
     };
   },
 
@@ -33,8 +34,8 @@ var ShowcaseEditorTitle = React.createClass({
     return (
       <div className="showcase-title-page" style={this.style()}>
         <h2>{this.props.showcase.title}</h2>
-        <div  dangerouslySetInnerHTML={{__html: description}}  />
-        <Thumbnail image={this.props.showcase.image} thumbnailType="small" />
+        <div className="showcase-title-description" dangerouslySetInnerHTML={{__html: description}}  />
+        <div className="cover"><Thumbnail image={this.props.showcase.image} thumbnailType="medium" /></div>
       </div>
     );
   }
