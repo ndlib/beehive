@@ -13,8 +13,8 @@ var ShowcaseShow = React.createClass({
       height: '500px',
       top: 0,
       left: 0,
-      overflowX: 'hidden',
-      overflowY: 'hidden',
+      overflowX: 'visible',
+      overflowY: 'visible',
     };
   },
     styleOuter: function() {
