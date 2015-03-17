@@ -10,16 +10,17 @@ var DescriptionTeaser = React.createClass({
     length: React.PropTypes.number,
   },
 
+  style: function() {
+    return {
+      overflow: 'hidden',
+      'text-overflow': 'ellipsis',
+    };
+  },
+
   render: function() {
     var trimmedDescription = this.props.description;
-    if(this.props.length == null) {
-        this.props.length = 200;
-    }
-    if(trimmedDescription.length > this.props.length) {
-      trimmedDescription = trimmedDescription.substr(0, this.props.length) + "&hellip;";
-    }
     return (
-      <div className='item-description' dangerouslySetInnerHTML={{__html: trimmedDescription}}  />
+      <div className='item-description' dangerouslySetInnerHTML={{__html: trimmedDescription}}  style={this.style()} />
     );
   }
 });

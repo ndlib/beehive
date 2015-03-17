@@ -7,6 +7,7 @@ var SectionDescription = React.createClass({
   propTypes: {
     section: React.PropTypes.object.isRequired
   },
+
   style: function() {
     return {
       display: 'inline-block',
@@ -15,6 +16,7 @@ var SectionDescription = React.createClass({
       overflow: 'hidden',
       height: '100%',
       whiteSpace: 'normal',
+      'text-overflow': 'ellipsis',
     };
   },
 
@@ -28,7 +30,7 @@ var SectionDescription = React.createClass({
       return (
         <div className="section-container section-container-text" style={this.style()}>
           <h2>{this.props.section.title}</h2>
-          <DescriptionTeaser description={rawMarkup} length="800" />
+          <DescriptionTeaser description={rawMarkup} />
         </div>
       );
     } else {
