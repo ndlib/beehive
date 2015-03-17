@@ -6,7 +6,7 @@ var PageHeader = React.createClass({
     return (
       <div className="container-fluid content">
         <div className="row row-fluid">
-          <div className="col-lg-12">
+          <div className="col-lg-12 showcase">
             {this.props.children}
           </div>
         </div>

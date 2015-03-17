@@ -107,6 +107,7 @@ body .jumbotron, .container .jumbotron, .container-fluid .jumbotron {
 	* {
 		color: #fff;
 	}
+
 }
 .jumbotron .collection-text{
 	float: left;
@@ -116,6 +117,7 @@ body .jumbotron, .container .jumbotron, .container-fluid .jumbotron {
 	h1 {
 		text-transform: uppercase;
 		padding:2em 0;
+
 	}
 }
 
@@ -216,6 +218,8 @@ div.dataTables_filter {
 		padding:10px 12px;
 		font-size: 18px;
 		line-height: 1em;
+		background:transparent;
+		
 	}
 }
 
@@ -424,6 +428,67 @@ div.dataTables_filter {
 
 .hc-image-zoom-button-outer .btn {
 	padding:8px;
+}
+
+.container-fluid {
+	padding:0;
+}
+
+.showcase {
+	padding:0;
+}
+
+.showcase-title-page {
+	max-width: 600px;
+	margin-left: 25%;
+	overflow: hidden;
+	div {
+		white-space: normal;
+	}
+	h2 {
+		text-align: center;
+		margin-top:25%;
+		font-size: 40px;
+		text-shadow: 2px 0px #333;
+		text-transform: uppercase;
+	}
+	.showcase-title-description {
+		text-align: center;
+		font-size: 22px;
+		text-shadow: 2px 2px 0px #333;
+		margin:0 30px;
+	}
+	.cover {
+		position: absolute;
+		left: 0;
+		top:0;
+		z-index: -1;
+		width: 100%;
+		opacity: .7;
+
+		overflow: hidden;
+
+		img {
+			width:100%;
+
+			height: auto !important;
+			display: block;
+		}
+	}
+}
+
+.section {
+	text-align: center;
+
+}
+
+.section-container-text {
+	font-size:26px;
+	overflow-x:hidden !important;
+}
+
+.section-container-image img {
+	border:solid 3px #fff;
 }
 
 @import "_material-design-overwrites.scss";
