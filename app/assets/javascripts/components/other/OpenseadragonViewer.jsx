@@ -93,6 +93,7 @@ var OpenseadragonViewer = React.createClass({
   },
 
   legacyOptions: function(image) {
+    console.log(image);
     var options;
     options = this.baseOptions();
     options.tileSources = {
@@ -100,7 +101,7 @@ var OpenseadragonViewer = React.createClass({
       type: 'legacy-image-pyramid',
       levels: [
         {
-          url: image['thumbnail/dzi'].contentUrl,
+          url: image.contentUrl,
           height: parseInt(image.height),
           width: parseInt(image.width)
         }
