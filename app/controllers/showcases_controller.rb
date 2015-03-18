@@ -1,5 +1,5 @@
 class ShowcasesController < ApplicationController
-  before_action :showcases_api_base
+  before_action :showcases_api_base, except: :embed
   after_action :allow_iframe, only: :embed
 
   def embed
