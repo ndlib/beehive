@@ -1,5 +1,5 @@
 class SectionsController < ApplicationController
-  before_action :sections_api_base
+  before_action :sections_api_base, except: :embed
   after_action :allow_iframe, only: :embed
 
   def embed

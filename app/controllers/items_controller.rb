@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_collections_url
+  before_action :set_collections_url, except: :embed
   after_action :allow_iframe, only: :embed
 
   def index

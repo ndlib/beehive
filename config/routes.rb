@@ -17,17 +17,15 @@ Rails.application.routes.draw do
   end
 
   scope '/embed' do
-    get '/:id/:slug', to: 'collections#embed'
-    scope '/:collection_id/:collection_slug' do
-      scope '/showcases' do
-        get ':id/:slug', to: 'showcases#embed'
-      end
-      scope '/sections' do
-        get ':id/:slug', to: 'sections#embed'
-      end
-      scope '/items' do
-        get ':id/:slug', to: 'items#embed'
-      end
+    get '/:id/', to: 'collections#embed'
+    scope '/showcases' do
+      get ':id/', to: 'showcases#embed'
+    end
+    scope '/sections' do
+      get ':id/', to: 'sections#embed'
+    end
+    scope '/items' do
+      get ':id/', to: 'items#embed'
     end
 
   end
