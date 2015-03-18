@@ -12,7 +12,7 @@ var SectionDescription = React.createClass({
     return {
       display: 'inline-block',
       padding: '5px',
-      width: '300px',
+      width: '500px',
       overflow: 'hidden',
       height: '100%',
       whiteSpace: 'normal',
