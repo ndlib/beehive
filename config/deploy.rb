@@ -16,7 +16,7 @@ set :deploy_to, '/home/app/beehive'
 
 # Default value for :linked_files is []
 # set :linked_files, %w{config/database.yml}
-set :linked_files, %w{config/secrets.yml config/database.yml}
+set :linked_files, %w{config/secrets.yml}
 
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets public/system vendor/bundle}
 
