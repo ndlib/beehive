@@ -22,6 +22,8 @@ set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets public/system vendor/bun
 
 set :default_env, { path: "/opt/ruby/current/bin:$PATH" }
 
+set :npm_flags '--no-spin'
+
 namespace :deploy do
 
   desc 'Restart application'
