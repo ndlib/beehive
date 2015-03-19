@@ -18,7 +18,7 @@ set :deploy_to, '/home/app/beehive'
 # set :linked_files, %w{config/database.yml}
 set :linked_files, %w{config/secrets.yml config/database.yml}
 
-set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets public/system}
+set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets public/system vendor/bundle}
 
 set :default_env, { path: "/opt/ruby/current/bin:$PATH" }
 
