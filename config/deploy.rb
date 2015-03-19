@@ -26,11 +26,11 @@ set :npm_flags, '--no-spin'
 
 namespace :deploy do
 
-  desc 'Restart application'
-  
   task :migrate do
     puts "    Skipping migration"
   end
+
+  desc 'Restart application'
 
   task :restart do
     on roles(:web), in: :sequence, wait: 5 do
