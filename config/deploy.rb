@@ -26,6 +26,7 @@ set :npm_flags, '--no-spin'
 
 namespace :deploy do
 
+  Rake::Task["migrate"].clear_actions
   task :migrate do ; end
 
   desc 'Restart application'
