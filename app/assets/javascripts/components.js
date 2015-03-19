@@ -54,6 +54,7 @@ Section = require('./components/section/Section');
 SectionCaption = require('./components/section/SectionCaption');
 SectionDescription = require('./components/section/SectionDescription');
 SectionImage = require('./components/section/SectionImage');
+SectionsModalList = require('./components/section/SectionsModalList');
 
 // Items
 ItemsList = require('./components/item/ItemsList');
@@ -67,6 +68,7 @@ AdditionalResourcesItem = require('./components/item/AdditionalResourcesItem');
 Modal = require('./components/modal/Modal');
 Copyright = require('./components/modal/Copyright');
 Info = require('./components/modal/Info');
+SectionModal = require('./components/modal/SectionModal');
 
 // Other
 MetadataList = require('./components/other/MetadataList');
