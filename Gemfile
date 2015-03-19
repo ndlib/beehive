@@ -30,6 +30,11 @@ gem 'autoprefixer-rails'
 gem "hesburgh_infrastructure", git: 'https://github.com/ndlib/hesburgh_infrastructure.git'
 gem "hesburgh_api", git: 'https://github.com/ndlib/hesburgh_api.git'
 
+# Use Capistrano for deployment
+gem 'capistrano', '~> 3.1'
+gem 'capistrano-rails', '~> 1.1'
+gem 'capistrano-npm'
+
 group :development, :test do
   gem "pry"
   gem "rspec-rails"
@@ -47,10 +52,6 @@ group :development, :test do
   gem "guard-spring"
 
   gem 'coveralls', require: false
-
-  # Use Capistrano for deployment
-  gem 'capistrano', '~> 3.1'
-  gem 'capistrano-rails', '~> 1.1'
 
   gem 'web-console', '~> 2.0'
 end
