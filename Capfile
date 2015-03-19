@@ -7,6 +7,9 @@ require 'capistrano/deploy'
 # Include all rails deployment tasks
 require 'capistrano/rails'
 
+# Include npm extensions
+require 'capistrano/npm'
+
 # Include tasks from other gems included in your Gemfile
 #
 # For documentation on these, see for example:
