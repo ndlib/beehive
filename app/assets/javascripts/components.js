@@ -63,6 +63,10 @@ ItemLink = require('./components/item/ItemLink');
 AdditionalResources = require('./components/item/AdditionalResources');
 AdditionalResourcesItem = require('./components/item/AdditionalResourcesItem');
 
+// Modal
+Modal = require('./components/modal/Modal');
+Copyright = require('./components/modal/Copyright');
+Info = require('./components/modal/Info');
 
 // Other
 MetadataList = require('./components/other/MetadataList');
