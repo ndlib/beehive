@@ -4,7 +4,7 @@ lock '3.3.5'
 set :application, 'beehive'
 set :repo_url, 'https://github.com/ndlib/beehive.git'
 
-logger.level = Logger::INFO
+set :logger_level, :info
 
 # Default branch is :master
 if fetch(:stage).to_s == 'production'
