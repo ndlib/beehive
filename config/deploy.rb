@@ -26,9 +26,7 @@ set :npm_flags, '--no-spin'
 
 namespace :deploy do
 
-  task :migrate do
-    puts "    Skipping migration"
-  end
+  task :migrate do ; end
 
   desc 'Restart application'
 
