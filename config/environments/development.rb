@@ -37,4 +37,6 @@ Rails.application.configure do
 
   # config/environments/development.rb
   config.react.variant = :development
+
+  config.beehive_url =  "http://localhost:3017"
 end

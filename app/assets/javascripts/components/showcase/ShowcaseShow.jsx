@@ -7,6 +7,8 @@ var ShowcaseShow = React.createClass({
     showcase: React.PropTypes.object,
   },
 
+
+
   styleInner: function() {
     return {
       position: 'absolute',
@@ -30,6 +32,10 @@ var ShowcaseShow = React.createClass({
 
       padding: '10px',
       marginBottom: '2em',
+
+      //backgroundImage: 'url(' + this.props.showcase.image.contentUrl + ')',
+      backgroundRepeat:'no-repeat',
+      backgroundSize:'cover',
     };
   },
 
@@ -58,8 +64,19 @@ var ShowcaseShow = React.createClass({
 
     }
   },
+
+componentWillMount: function(){
+  document.body.className = "showcase-bg";
+  
+},
+componentWillUnmount: function(){
+    document.body.style.backgroundImage = null;
+},
+
   render: function() {
+
     if (this.props.showcase) {
+      document.body.style.backgroundImage = "url(" + this.props.showcase.image.contentUrl + ")";
       return (
         <div id="showcase-outer" style={this.styleOuter()} onWheel={this.onWheel}>
           <div id="showcase-inner" style={this.styleInner()}>

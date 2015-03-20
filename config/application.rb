@@ -29,8 +29,6 @@ module Beehive
     config.react.variant      = :production
     config.react.addons       = true
     config.browserify_rails.commandline_options = "--transform reactify --extension=\".jsx\""
-    #config.beehive_url =  "http://private-31400-honeycomb.apiary-mock.com"
-    config.beehive_url =  "http://localhost:3017"
 
     config.assets.precompile = [ Proc.new{ |path| !File.extname(path).in?(['.js', '.css', '.map', '.gzip', ''] ) }, /(?:\/|\\|\A)application\.(css|js)$/ ]
   end
