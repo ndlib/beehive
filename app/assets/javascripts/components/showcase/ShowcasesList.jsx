@@ -25,14 +25,19 @@ var ShowcasesList = React.createClass({
       ));
       return nodes;
     });
-    return (
-      <div className="showcases-list">
-        <div className="container">
-          <h2>Showcases</h2>
-          <div className="row">{showcaseNodes}</div>
+    if (showcaseNodes.length > 0) {
+      return (
+        <div className="showcases-list">
+          <div className="container">
+            <h2>Showcases</h2>
+            <div className="row">{showcaseNodes}</div>
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
+    else {
+      return (<span/>);
+    }
   }
 });
 
