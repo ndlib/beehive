@@ -36,15 +36,25 @@ var ShowcaseShowPage = React.createClass({
       showcase: collection.showcases,
     });
   },
-
+  modals: function() {
+    if(this.state.showcase) {
+      return (<SectionsModalList sections={this.state.showcase.sections} />);
+    }
+    else {
+      return (<span />);
+    }
+  },
   render: function() {
     return (
-      <Layout>
-        <CollectionPageHeader collection={this.state.collection} />
-        <PageContent>
-          <ShowcaseShow showcase={this.state.showcase} />
-        </PageContent>
-      </Layout>
+      <div>
+        {this.modals()}
+        <Layout>
+          <CollectionPageHeader collection={this.state.collection} />
+          <PageContent>
+            <ShowcaseShow showcase={this.state.showcase} />
+          </PageContent>
+        </Layout>
+      </div>
     );
   }
 });
