@@ -35,7 +35,7 @@ var ShowcaseEditorTitle = React.createClass({
       <div className="showcase-title-page" style={this.style()}>
         <h2>{this.props.showcase.title}</h2>
         <div className="showcase-title-description" dangerouslySetInnerHTML={{__html: description}}  />
-        <div className="cover"><Thumbnail image={this.props.showcase.image} thumbnailType="medium" /></div>
+        
       </div>
     );
   }
