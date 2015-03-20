@@ -28,28 +28,29 @@ var ItemShow = React.createClass({
 
   detailsStyle: function() {
     return {
-      display: this.state.showDetails ? 'block' : 'none',
+
+      height: this.state.showDetails ? '80%' : '0',
+      width: this.state.showDetails ? '30%' : '0',
     };
   },
 
   render: function() {
     if (this.props.item) {
       return (
-        <div><button className="btn btn-default btn-raised pull-right" onClick={this.toggleDetails} style={this.detailsButtonStyle()}>
+        <div><button className="btn btn-default btn-raised pull-right btn-details" onClick={this.toggleDetails} style={this.detailsButtonStyle()}>
             <i className={this.state.showDetails ? "mdi-navigation-unfold-less" : "mdi-navigation-unfold-more"}></i>
             Details
           </button>
           <h2>{this.props.item.title}</h2>
 
           <div className="row">
-            <div className={this.state.showDetails ? "col-md-8" : "col-md-12"} style={{transition: 'initial'}}>
+            <div className={"col-md-12"} style={{transition: 'initial'}}>
               <OpenseadragonViewer image={this.props.item.image} containerID={this.props.item.id} height={600} />
             </div>
-            <div className="col-md-4" style={this.detailsStyle()}>
-              <Details item={this.props.item} />
-            </div>
+
 
           </div>
+          <div className="details" style={this.detailsStyle()}><Details item={this.props.item}  /></div>
         </div>
       );
     } else {
