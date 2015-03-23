@@ -42,8 +42,17 @@ var ShowcaseShow = React.createClass({
   onWheel: function(event) {
     event.preventDefault();
     var newPosition = 0;
-    var scrollSpeed = 100;
-    if (event.deltaY > 0) {
+    var scrollSpeed = 30;
+    var scrollTolerance = 2;
+    var deltaScroll = 0;
+    if(Math.abs(event.deltaX) > Math.abs(event.deltaY)) {
+      deltaScroll = event.deltaX;
+    }
+    else {
+      deltaScroll = event.deltaY;
+    }
+    console.log(deltaScroll);
+    if (deltaScroll > scrollTolerance) {
       var maxLeft = $("#showcase-inner").prop("scrollWidth") - $("#showcase-outer").width();
       if($("#showcase-inner").position().left > -maxLeft) {
         newPosition = $("#showcase-inner").position().left - scrollSpeed;
@@ -53,7 +62,7 @@ var ShowcaseShow = React.createClass({
         $("#showcase-inner").css({"left" : -maxLeft + "px"})
       }
     }
-    else if (event.deltaY < 0) {
+    else if (deltaScroll < -scrollTolerance) {
       if ($("#showcase-inner").position().left < 0) {
         newPosition = $("#showcase-inner").position().left + scrollSpeed;
         $("#showcase-inner").css({"left" : newPosition + "px"})
