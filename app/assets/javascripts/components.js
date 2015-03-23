@@ -6,6 +6,7 @@ React = require('react');
 
 // Mixins
 CollectionUrlMixin = require('./mixins/CollectionUrlMixin');
+HorizontalScrollMixin = require('./mixins/HorizontalScrollMixin');
 
 // Layout
 Layout = require('./components/layout/Layout');
