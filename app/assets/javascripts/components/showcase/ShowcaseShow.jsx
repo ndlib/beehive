@@ -2,12 +2,11 @@
 var React = require('react');
 
 var ShowcaseShow = React.createClass({
+  mixins: [HorizontalScrollMixin],
   displayName: 'Showcase Show',
   propTypes: {
     showcase: React.PropTypes.object,
   },
-
-
 
   styleInner: function() {
     return {
@@ -39,31 +38,6 @@ var ShowcaseShow = React.createClass({
     };
   },
 
-  onWheel: function(event) {
-    event.preventDefault();
-    var newPosition = 0;
-    var scrollSpeed = 100;
-    if (event.deltaY > 0) {
-      var maxLeft = $("#showcase-inner").prop("scrollWidth") - $("#showcase-outer").width();
-      if($("#showcase-inner").position().left > -maxLeft) {
-        newPosition = $("#showcase-inner").position().left - scrollSpeed;
-        $("#showcase-inner").css({"left" : newPosition + "px"})
-      }
-      else {
-        $("#showcase-inner").css({"left" : -maxLeft + "px"})
-      }
-    }
-    else if (event.deltaY < 0) {
-      if ($("#showcase-inner").position().left < 0) {
-        newPosition = $("#showcase-inner").position().left + scrollSpeed;
-        $("#showcase-inner").css({"left" : newPosition + "px"})
-      }
-      else {
-        $("#showcase-inner").css({"left" : "0px"})
-      }
-
-    }
-  },
 
 componentWillMount: function(){
   document.body.className = "showcase-bg";
