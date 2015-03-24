@@ -497,9 +497,10 @@ div.dataTables_filter {
 }
 
 .section-container-text {
-	font-family:Georgia, "Times New Roman",  Serif;
-	font-size: 22px;
-	line-height: 1.5em;
+	
+	font-size: 15px;
+	line-height: 25px;
+	color: lightgray;
 	overflow-x:hidden !important;
 	padding:8px 15px !important;
 	background:rgba(0,0,0,.85);
@@ -575,6 +576,17 @@ div.dataTables_filter {
 		background:transparent;
 		box-shadow: none;
 
+	}
+}
+
+#copy .modal-dialog, #info .modal-dialog {
+	bottom:50px;
+	position:absolute;
+	width:20%;
+	left:0;
+	margin:0;
+	button.close {
+		top:12px;
 	}
 }
 
