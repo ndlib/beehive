@@ -31,11 +31,16 @@ var Thumbnail = React.createClass({
     }
   },
 
+  thumbnailCaption: function() {
+      alt_html = this.props.alt;
+      return $(alt_html).text();
+  },
+
   render: function() {
     var classString = "hc-thumbnail-image " + this.props.thumbnailType;
     return (
       <span>
-        <img src={this.thumbnailSrc()} className={classString} title={this.props.title} alt={this.props.alt} />
+        <img src={this.thumbnailSrc()} className={classString} title={this.thumbnailCaption()} alt={this.thumbnailCaption()} />
       </span>
     );
   }

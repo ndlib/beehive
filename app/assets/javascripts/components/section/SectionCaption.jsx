@@ -29,9 +29,7 @@ var SectionCaption = React.createClass({
 
   render: function () {
     return (
-      <div className="section-caption" style={this.style()}>
-        {this.props.caption}
-      </div>
+        <div className="section-caption" style={this.style()} dangerouslySetInnerHTML={{__html: this.props.caption}}/>
     );
   }
 
