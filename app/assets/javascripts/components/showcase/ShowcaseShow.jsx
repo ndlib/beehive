@@ -18,7 +18,8 @@ var ShowcaseShow = React.createClass({
       overflowY: 'visible',
     };
   },
-    styleOuter: function() {
+
+  styleOuter: function() {
     return {
       position: 'relative',
       overflowY: 'hidden',
@@ -41,7 +42,7 @@ var ShowcaseShow = React.createClass({
 
 componentWillMount: function(){
   document.body.className = "showcase-bg";
-  
+
 },
 componentWillUnmount: function(){
     document.body.style.backgroundImage = null;
