@@ -11,8 +11,8 @@ var SectionCaption = React.createClass({
   style: function() {
     if (this.props.caption) {
       return {
-        backgroundColor: 'rgba(255,255,255,.5)',
-        color: '#333',
+        backgroundColor: 'rgba(0,0,0,.5)',
+        color: '#fff',
         position: 'absolute',
         bottom: '1em',
         right: '0em',
