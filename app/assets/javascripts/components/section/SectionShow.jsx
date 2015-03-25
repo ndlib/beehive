@@ -14,30 +14,45 @@ var SectionShow = React.createClass({
     var prev = "";
     var next = "";
     if (this.props.section) {
-      if (this.props.section.item) {
-        item = (<ItemShow item={this.props.section.item} />);
-      }
+
       if (this.props.previousSection) {
         prev = (<PreviousSection section={this.props.previousSection} />);
       }
       if (this.props.nextSection) {
         next = (<NextSection section={this.props.nextSection} />);
       }
-      return (
+      if (this.props.section.item) {
+        item = (<ItemShow item={this.props.section.item} additionalDetails={this.props.section.description}/>);
+        // layout for section with item
+        return (
         <div>
-          <h2>{this.props.section.title}</h2>
           {prev}
           {next}
           <div className="row">
             <div className="col-md-12">
-              <div className="section-description">
-                <div dangerouslySetInnerHTML={{__html: this.props.section.description}} />
-              </div>
               {item}
             </div>
           </div>
         </div>
       );
+      }
+      else {
+        // layout for section without item
+        return (
+          <div>
+            <h2>{this.props.section.title}</h2>
+            {prev}
+            {next}
+            <div className="row">
+              <div className="col-md-12">
+                <div className="section-description">
+                  <div dangerouslySetInnerHTML={{__html: this.props.section.description}} />
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      }
     } else {
       return <Loading />;
     }

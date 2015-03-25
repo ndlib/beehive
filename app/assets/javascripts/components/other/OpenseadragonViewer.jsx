@@ -93,7 +93,7 @@ var OpenseadragonViewer = React.createClass({
   },
 
   legacyOptions: function(image) {
-    console.log(image);
+    //console.log(image);
     var options;
     options = this.baseOptions();
     options.tileSources = {
