@@ -5,6 +5,8 @@ var SectionShow = React.createClass({
   displayName: 'Section Show',
   propTypes: {
     section: React.PropTypes.object,
+    previousSection: React.PropTypes.string,
+    nextSection: React.PropTypes.string,
   },
 
   render: function() {
@@ -12,15 +14,16 @@ var SectionShow = React.createClass({
     var item = "";
     var prev = "";
     var next = "";
+    console.log(this.props.section);
     if (this.props.section) {
       if (this.props.section.item) {
         item = (<ItemShow item={this.props.section.item} />);
       }
-      if (this.props.section.previousSection) {
-        prev = (<PreviousSection section={this.props.section.previousSection} />);
+      if (this.props.previousSection) {
+        prev = (<PreviousSection section={this.props.previousSection} />);
       }
-      if (this.props.section.nextSection) {
-        next = (<NextSection section={this.props.section.nextSection} />);
+      if (this.props.nextSection) {
+        next = (<NextSection section={this.props.nextSection} />);
       }
       return (
         <div>
