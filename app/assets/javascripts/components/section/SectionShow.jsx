@@ -10,11 +10,9 @@ var SectionShow = React.createClass({
   },
 
   render: function() {
-  console.log(this);
     var item = "";
     var prev = "";
     var next = "";
-    console.log(this.props.section);
     if (this.props.section) {
       if (this.props.section.item) {
         item = (<ItemShow item={this.props.section.item} />);
