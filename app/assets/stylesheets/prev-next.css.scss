@@ -10,7 +10,7 @@
   line-height: 100px;
   font-size: 50px;
   position: absolute;
-  top: 50%;
+  top: 300px;
   z-index: 100;
     &:hover, &:active {
     text-decoration: none;
@@ -19,14 +19,17 @@
   }
 }
 .next-button {
-  right: -70px;
+  right: -60px;
   .direction {
     margin-left: -50px;
   }
 }
 .prev-button {
-  left: -70px;
+  left: -60px;
   .direction {
     margin-right: -50px;
   }
+}
+.modal-body {
+  overflow: hidden;
 }
