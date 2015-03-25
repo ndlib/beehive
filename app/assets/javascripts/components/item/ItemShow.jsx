@@ -6,6 +6,7 @@ var ItemShow = React.createClass({
 
   propTypes: {
     item: React.PropTypes.object,
+    additionalDetails: React.PropTypes.string,
   },
 
   getInitialState: function() {
@@ -50,7 +51,7 @@ var ItemShow = React.createClass({
 
 
           </div>
-          <div className="details" style={this.detailsStyle()}><Details item={this.props.item}  /></div>
+          <div className="details" style={this.detailsStyle()}><Details item={this.props.item} additionalDetails={this.props.additionalDetails} /></div>
         </div>
       );
     } else {
