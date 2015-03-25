@@ -18,5 +18,7 @@
 //= require bootstrap
 //= require "bootstrap-material-design/material"
 //= require "bootstrap-material-design/ripples"
+//= require perfect-scrollbar.jquery
+//= require plugins
 
 $ = jQuery = require('jquery');

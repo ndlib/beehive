@@ -15,6 +15,27 @@ body.showcase-bg {
 	background-size: cover;
 }
 
+body:-webkit-full-screen  {
+
+	background-image: image_url('black-linen.png') !important;
+	background-repeat:repeat !important;
+	background-size:auto !important;
+}
+
+body:-moz-full-screen {
+	background-image: image_url('black-linen.png') !important;
+	background-repeat:repeat !important;
+	background-size:auto !important;
+}
+
+body:fullscreen {
+	background-image: image_url('black-linen.png') !important;
+	background-repeat:repeat !important;
+	background-size:auto !important;
+}
+
+
+
 h1, h2, h3, h4, h5, h6 {
 	margin-top:0;
 }
@@ -136,6 +157,11 @@ body .jumbotron, .container .jumbotron, .container-fluid .jumbotron {
 		box-shadow: 0 0 8px 4px rgba(31, 31, 31, 0.4);
 
 	}
+	img[src="/images/blank.png"] {
+		border:none;
+		box-shadow: none;
+
+	}
 }
 
 .collection-show {
@@ -197,6 +223,16 @@ div.dataTables_filter {
 		}
 	}
 
+}
+
+#showcase-outer {
+	overflow-x:scroll !important;
+	position:relative;
+
+}
+
+.showcase-title-page, .sections-content-inner {
+	height:95% !important;
 }
 
 #footer {
@@ -519,9 +555,9 @@ div.dataTables_filter {
 		position:absolute;
 		top:2px;
 		right:2px;
-		width:35px;
+		width:45px;
 		text-shadow: 2px 2px 2px #333;
-		opacity:.8;
+		opacity:.6;
 	}
 }
 
@@ -587,6 +623,27 @@ div.dataTables_filter {
 	margin:0;
 	button.close {
 		top:12px;
+	}
+}
+
+/*scroll bars*/
+
+#test {
+	background:black;
+	
+}
+
+.ps-container > .ps-scrollbar-x-rail {
+
+	display:block !important;
+	transition:none;
+	height:15px;
+
+	width:50%;
+	margin-left:25%;
+	margin-right:25%;
+	.ps-scrollbar-x {
+		height:15px;
 	}
 }
 
