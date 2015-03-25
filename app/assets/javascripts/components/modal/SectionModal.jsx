@@ -5,11 +5,13 @@ var SectionModal = React.createClass({
   displayName: 'Section Modal',
   propTypes: {
     section: React.PropTypes.object.isRequired,
+    previousSection: React.PropTypes.string,
+    nextSection: React.PropTypes.string,
   },
 
   sectionPage: function() {
     return (
-       <SectionShow section={this.props.section} />
+       <SectionShow section={this.props.section} previousSection={this.props.previousSection} nextSection={this.props.nextSection} />
     );
   },
 

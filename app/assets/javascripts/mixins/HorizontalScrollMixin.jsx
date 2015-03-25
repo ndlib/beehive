@@ -11,7 +11,6 @@ HorizontalScrollMixin = {
     else {
       deltaScroll = event.deltaY;
     }
-    console.log(deltaScroll);
     if (deltaScroll > scrollTolerance) {
       var maxLeft = $("#showcase-inner").prop("scrollWidth") - $("#showcase-outer").width();
       if($("#showcase-inner").position().left > -maxLeft) {

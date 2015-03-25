@@ -10,10 +10,15 @@ var SectionsModalList = React.createClass({
 
   render: function() {
     if(this.props.sections) {
+      var modalNodeIDs = this.props.sections.map(function(section, index) {
+        return section.id;
+      });
       var modalNodes = this.props.sections.map(function(section, index) {
         var nodes = [];
+        var previousNode = modalNodeIDs[index - 1];
+        var nextNode = modalNodeIDs[index + 1];
         nodes.push((
-          <SectionModal section={section} />
+          <SectionModal section={section} previousSection={previousNode} nextSection={nextNode} />
         ));
         return nodes;
       });
