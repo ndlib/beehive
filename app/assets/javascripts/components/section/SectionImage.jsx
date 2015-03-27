@@ -38,7 +38,6 @@ var SectionImage = React.createClass({
         <div className="section-container section-container-image" style={this.style()}>
             <Thumbnail image={this.props.section.item.image} thumbnailType="medium" style={this.imageStyle()} title={this.props.section.title} alt={this.props.section.caption} />
             <SectionCaption caption={this.props.section.caption} />
-
             {transcriptIcon}
         </div>
       );
