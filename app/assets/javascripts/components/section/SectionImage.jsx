@@ -27,11 +27,18 @@ var SectionImage = React.createClass({
 
   render: function () {
     if (this.props.section.item != null) {
+      var transcriptIcon = '';
+      this.props.section.item.metadata.forEach(function(i){
+        if(i.label === "Transcript") {
+          transcriptIcon = (<img src="/images/transcript.gif" className="section-transcript" title="Click for transcript" alt="Transcript Available" />);
+        }
+      });
+
       return (
         <div className="section-container section-container-image" style={this.style()}>
             <Thumbnail image={this.props.section.item.image} thumbnailType="medium" style={this.imageStyle()} title={this.props.section.title} alt={this.props.section.caption} />
             <SectionCaption caption={this.props.section.caption} />
-            <img src="/assets/transcript.gif" className="section-transcript"/>
+            {transcriptIcon}
         </div>
       );
     } else {
