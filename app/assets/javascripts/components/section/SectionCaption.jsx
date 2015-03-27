@@ -15,7 +15,7 @@ var SectionCaption = React.createClass({
         color: '#fff',
         position: 'absolute',
         bottom: '1em',
-        right: '0em',
+        right: '3px',
         marginLeft: '20%',
         padding: '0.5em',
         whiteSpace: 'normal',

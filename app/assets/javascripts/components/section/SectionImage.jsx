@@ -30,7 +30,7 @@ var SectionImage = React.createClass({
       var transcriptIcon = '';
       this.props.section.item.metadata.forEach(function(i){
         if(i.label === "Transcript") {
-          transcriptIcon = (<img src="/images/transcript.gif" className="section-transcript" title="Click for transcript" alt="Transcript Available" />);
+          transcriptIcon = (<img src="/images/transcript.gif" className="section-transcript" title="Click to view transcript" alt="Click to view transcript" />);
         }
       });
 
@@ -38,7 +38,11 @@ var SectionImage = React.createClass({
         <div className="section-container section-container-image" style={this.style()}>
             <Thumbnail image={this.props.section.item.image} thumbnailType="medium" style={this.imageStyle()} title={this.props.section.title} alt={this.props.section.caption} />
             <SectionCaption caption={this.props.section.caption} />
+<<<<<<< HEAD
             {transcriptIcon}
+=======
+            <img src="/assets/transcript.gif" className="section-transcript" title="Read Transcript"/>
+>>>>>>> Fullscreen background image fix and showcase scrollbar is back (and seems to be working on iOS). Also included the custom scrollbar plugin that is working on a test box under the showcase but not on the actual showcase (seems to be a reactor conflict).
         </div>
       );
     } else {
