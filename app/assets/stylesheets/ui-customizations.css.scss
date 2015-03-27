@@ -13,6 +13,7 @@ body {
 body.showcase-bg {
 	background-repeat: no-repeat;
 	background-size: cover;
+	background-position:left 50px;
 }
 
 body:-webkit-full-screen  {
@@ -62,12 +63,12 @@ h1, h2, h3, h4, h5, h6 {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d9a500', endColorstr='#a98000',GradientType=0 );
 	*/
 
-background: -moz-linear-gradient(top,  rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.8)), color-stop(100%,rgba(0,0,0,0.2)));
-background: -webkit-linear-gradient(top,  rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.2) 100%);
-background: -o-linear-gradient(top,  rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.2) 100%);
-background: -ms-linear-gradient(top,  rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.2) 100%);
-background: linear-gradient(to bottom,  rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.7) 100%);
+background: -moz-linear-gradient(top,  rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.9) 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.9)), color-stop(100%,rgba(0,0,0,0.4)));
+background: -webkit-linear-gradient(top,  rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.4) 100%);
+background: -o-linear-gradient(top,  rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.4) 100%);
+background: -ms-linear-gradient(top,  rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.4) 100%);
+background: linear-gradient(to bottom,  rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.8) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', endColorstr='#33000000',GradientType=0 );
 	border-bottom:solid 1px #999;
 }
@@ -494,15 +495,15 @@ div.dataTables_filter {
 	}
 	h2 {
 		text-align: center;
-		margin-top:25%;
+		margin-top:15%;
 		font-size: 50px;
 		text-shadow: 2px 2px 3px #333;
 		text-transform: uppercase;
 		font-family: GPCMed;
+		white-space: normal;
 	}
 	.showcase-title-description {
 		text-align: center;
-		font-family:Georgia, "Times New Roman",  Serif;
 		font-size: 22px;
 		line-height: 30px;
 		text-shadow: 2px 2px 0px #333;
@@ -527,10 +528,7 @@ div.dataTables_filter {
 	}
 }
 
-.section {
-	
 
-}
 
 .section-container-text {
 	
@@ -567,12 +565,14 @@ div.dataTables_filter {
 }
 
 .modal-lg {
-	width:96%;
+	width:100%;
+	margin:110px auto 0;
 	
 }
 
 .modal-content {
 	background:#333;
+	height:100%;
 }
 
 #banner {
@@ -581,18 +581,58 @@ div.dataTables_filter {
 }
 
 .modal-header {
+	padding:0 !important;
+	min-height:0;
 	button.close {
 		z-index: 200;
 		position: absolute;
-		top:90px;
-		right:12px;
+		top:18px;
+		right:18px;
+		opacity: .7;
+		border:solid 1px #fff;
+			border-radius:3px;
+		span {
+			color:#fff;
+			padding:0 8px;
+			text-shadow: 0 1px 0 #000;
+			font-size:34px;
+			
+			line-height:1em;
+		}
+	}
+	button.close:hover {
+		opacity: .9;
+	}
+}
+
+.modal.fade .modal-dialog {
+	transition: none;
+	transform: scale(.8,.8);
+}
+
+.modal.in .modal-dialog {
+	transform:none !important;
+	transition: all .2s ease-in-out; 
+	transform: scale(1,1);
+}
+
+
+
+.loading {
+	text-align:center;
+}
+
+.item-detail {
+	
+	h2 {
+		margin-bottom:20px;
 	}
 }
 
 .btn-details {
 	position: absolute;
-	right:2em;
-	top:34px;
+	right:2.8em;
+	top:4.5em;
 	margin:0;
 	z-index:200;
 }
@@ -600,14 +640,15 @@ div.dataTables_filter {
 .details {
 
 	position: absolute;
-	right:2em;
-	top:5em;
+	right:2.8em;
+	top:7em;
 	transition-property: width, height;
 	transition-duration: .3s;
 	overflow-y:scroll;
 	background:rgba(244,244,244,.8);
 	border-radius:4px;
 	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 10px rgba(0, 0, 0, 0.16);
+	max-width:350px;
 	.well {
 		background:transparent;
 		box-shadow: none;
