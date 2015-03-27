@@ -494,11 +494,12 @@ div.dataTables_filter {
 	}
 	h2 {
 		text-align: center;
-		margin-top:25%;
+		margin-top:15%;
 		font-size: 50px;
 		text-shadow: 2px 2px 3px #333;
 		text-transform: uppercase;
 		font-family: GPCMed;
+		white-space: normal;
 	}
 	.showcase-title-description {
 		text-align: center;
@@ -527,10 +528,7 @@ div.dataTables_filter {
 	}
 }
 
-.section {
-	
 
-}
 
 .section-container-text {
 	
@@ -589,10 +587,18 @@ div.dataTables_filter {
 	}
 }
 
+.loading {
+	text-align:center;
+}
+
+.item-detail {
+	padding-top:4em;
+}
+
 .btn-details {
 	position: absolute;
 	right:2em;
-	top:34px;
+	top:4em;
 	margin:0;
 	z-index:200;
 }
@@ -601,7 +607,7 @@ div.dataTables_filter {
 
 	position: absolute;
 	right:2em;
-	top:5em;
+	top:6.5em;
 	transition-property: width, height;
 	transition-duration: .3s;
 	overflow-y:scroll;

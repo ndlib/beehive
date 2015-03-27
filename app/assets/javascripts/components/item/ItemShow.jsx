@@ -38,7 +38,7 @@ var ItemShow = React.createClass({
   render: function() {
     if (this.props.item) {
       return (
-        <div><button className="btn btn-default btn-raised pull-right btn-details" onClick={this.toggleDetails} style={this.detailsButtonStyle()}>
+        <div className="item-detail"><button className="btn btn-default btn-raised pull-right btn-details" onClick={this.toggleDetails} style={this.detailsButtonStyle()}>
             <i className={this.state.showDetails ? "mdi-navigation-unfold-less" : "mdi-navigation-unfold-more"}></i>
             Details
           </button>
