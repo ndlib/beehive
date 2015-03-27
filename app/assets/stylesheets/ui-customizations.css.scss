@@ -48,8 +48,21 @@ h1, h2, h3, h4, h5, h6 {
 	margin:0;
 }
 
+.navbar {
+	margin:0;
+}
+
 .navbar.navbar, .navbar-default.navbar {
 	background-color: transparent;
+}
+
+.navbar .navbar-brand {
+	height:50px;
+	line-height:1em;
+}
+
+.navbar-nav > li > a {
+	padding:15px !important;
 }
 
 .title-bar {
@@ -63,19 +76,26 @@ h1, h2, h3, h4, h5, h6 {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d9a500', endColorstr='#a98000',GradientType=0 );
 	*/
 
-background: -moz-linear-gradient(top,  rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.9) 100%);
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.9)), color-stop(100%,rgba(0,0,0,0.4)));
-background: -webkit-linear-gradient(top,  rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.4) 100%);
-background: -o-linear-gradient(top,  rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.4) 100%);
-background: -ms-linear-gradient(top,  rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.4) 100%);
-background: linear-gradient(to bottom,  rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.8) 100%);
+background: -moz-linear-gradient(top,  rgba(51,51,51,0.4) 0%, rgba(51,51,51,0.9) 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(51,51,51,0.9)), color-stop(100%,rgba(51,51,51,0.4)));
+background: -webkit-linear-gradient(top,  rgba(51,51,51,0.9) 0%,rgba(51,51,51,0.4) 100%);
+background: -o-linear-gradient(top,  rgba(51,51,51,0.9) 0%,rgba(51,51,51,0.4) 100%);
+background: -ms-linear-gradient(top,  rgba(51,51,51,0.9) 0%,rgba(51,51,51,0.4) 100%);
+background: linear-gradient(to bottom,  rgba(51,51,51,0.5) 0%,rgba(51,51,51,0.8) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', endColorstr='#33000000',GradientType=0 );
 	border-bottom:solid 1px #999;
+	background:rgba(51,51,51,.95);
+	background:rgba(0, 0, 0, 0.86);
 }
 
 .navbar-default .title-bar .navbar-brand {
 	color: #fff;
 	margin-left: 15px;
+	opacity:.85;
+}
+
+.navbar-default .title-bar .navbar-brand:hover {
+	opacity:1;
 }
 
 .navbar-collapse {
@@ -98,7 +118,32 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', e
 
 }
 
-
+.showcases-title-bar {
+	background: -moz-linear-gradient(top,  rgba(51,51,51,0.9) 0%, rgba(51,51,51,0.4) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(51,51,51,0.4)), color-stop(100%,rgba(51,51,51,0.9)));
+	background: -webkit-linear-gradient(top,  rgba(51,51,51,0.4) 0%,rgba(51,51,51,0.9) 100%);
+	background: -o-linear-gradient(top,  rgba(51,51,51,0.4) 0%,rgba(51,51,51,0.9) 100%);
+	background: -ms-linear-gradient(top,  rgba(51,51,51,0.4) 0%,rgba(51,51,51,0.9) 100%);
+	background: linear-gradient(to bottom,  rgba(51,51,51,0.9) 0%,rgba(51,51,51,0.4) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', endColorstr='#33000000',GradientType=0 );
+border-bottom:solid 1px #999;
+	.container {
+		margin:0;
+		padding:0 40px;
+	}
+	h2 {
+		font-size: 16px;
+		text-transform: uppercase;
+		font-family: GPCMed;
+		font-weight: normal;
+		padding:8px 0;
+		margin:0;
+		letter-spacing: 1.1px;
+	}
+	margin-bottom:5px;
+	z-index:5000;
+	position: relative;
+}
 
 .collections {
 	display: none;
@@ -240,6 +285,7 @@ div.dataTables_filter {
 	background-color: #2b2a2a;
 	background-image:linear-gradient(to top, #2b2a2a 0%, #393838 140%);
 	padding:0px;
+	z-index:6000;
 	.pull-right{
 		padding-right: 15px;
 		a {float: right;}
@@ -537,7 +583,7 @@ div.dataTables_filter {
 	color: lightgray;
 	overflow-x:hidden !important;
 	padding:8px 15px !important;
-	background:rgba(0,0,0,.85);
+	background:rgba(51,51,51,.85);
 	border:solid 3px #fff;
 
 
@@ -566,8 +612,9 @@ div.dataTables_filter {
 
 .modal-lg {
 	width:100%;
-	margin:110px auto 0;
-	
+	margin:133px auto 0;
+
+	height:calc(100% - 133px);
 }
 
 .modal-content {
@@ -611,7 +658,7 @@ div.dataTables_filter {
 }
 
 .modal.in .modal-dialog {
-	transform:none !important;
+	transform:none ;
 	transition: all .2s ease-in-out; 
 	transform: scale(1,1);
 }
@@ -687,5 +734,7 @@ div.dataTables_filter {
 		height:15px;
 	}
 }
+
+
 
 @import "_material-design-overwrites.scss";
