@@ -30,7 +30,7 @@ var ItemShow = React.createClass({
   detailsStyle: function() {
     return {
 
-      height: this.state.showDetails ? '80%' : '0',
+      height: this.state.showDetails ? '60%' : '0',
       width: this.state.showDetails ? '30%' : '0',
     };
   },
