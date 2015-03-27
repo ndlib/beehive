@@ -32,12 +32,16 @@ var Thumbnail = React.createClass({
   },
 
   thumbnailCaption: function() {
-      alt_html = this.props.alt;
-      return $(alt_html).text();
+      var alt_html = this.props.alt;
+      // text() chokes on plaintext, so to ensure we have html wrap it in a div
+      var str = $("<div>" + alt_html + "</div>").text();
+      // then fix quotes
+      return str.replace("\"", "'");
   },
 
   render: function() {
     var classString = "hc-thumbnail-image " + this.props.thumbnailType;
+    console.log(this.thumbnailCaption());
     return (
       <span>
         <img src={this.thumbnailSrc()} className={classString} title={this.props.title} alt={this.thumbnailCaption()} />
