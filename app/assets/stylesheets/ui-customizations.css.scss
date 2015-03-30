@@ -660,6 +660,10 @@ div.dataTables_filter {
 	}
 }
 
+.modal-dialog {
+    position: fixed;
+}
+
 #copy .modal-dialog, #info .modal-dialog {
 	bottom:50px;
 	position:absolute;
@@ -669,6 +673,10 @@ div.dataTables_filter {
 	button.close {
 		top:12px;
 	}
+}
+
+body.modal-open {
+    overflow: hidden;
 }
 
 /*scroll bars*/
