@@ -50,8 +50,6 @@ SectionsList = require('./components/section/SectionsList');
 SectionsListItem = require('./components/section/SectionsListItem');
 SectionLink = require('./components/section/SectionLink');
 SectionShow = require('./components/section/SectionShow');
-PreviousSection = require('./components/section/PreviousSection');
-NextSection = require('./components/section/NextSection');
 Section = require('./components/section/Section');
 SectionCaption = require('./components/section/SectionCaption');
 SectionDescription = require('./components/section/SectionDescription');
@@ -65,12 +63,14 @@ ItemShow = require('./components/item/ItemShow');
 ItemLink = require('./components/item/ItemLink');
 AdditionalResources = require('./components/item/AdditionalResources');
 AdditionalResourcesItem = require('./components/item/AdditionalResourcesItem');
+ItemsModalList = require('./components/item/ItemsModalList');
 
 // Modal
 Modal = require('./components/modal/Modal');
 Copyright = require('./components/modal/Copyright');
 Info = require('./components/modal/Info');
 SectionModal = require('./components/modal/SectionModal');
+ItemModal = require('./components/modal/ItemModal');
 
 // Other
 MetadataList = require('./components/other/MetadataList');
@@ -80,3 +80,5 @@ DescriptionTeaser = require('./components/other/DescriptionTeaser');
 Thumbnail = require('./components/other/Thumbnail');
 OpenseadragonViewer  = require('./components/other/OpenseadragonViewer');
 Loading= require('./components/other/Loading');
+PreviousModal = require('./components/other/PreviousModal');
+NextModal = require('./components/other/NextModal');

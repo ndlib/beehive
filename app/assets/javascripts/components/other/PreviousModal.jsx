@@ -1,13 +1,13 @@
 //app/assets/javascripts/components/PreviousSection.jsx
 var React = require('react');
 
-var PreviousSection = React.createClass({
+var PreviousModal = React.createClass({
   mixins: [CollectionUrlMixin, PrevNextMixin],
 
-  displayName: 'Previous Section Link',
+  displayName: 'Previous Modal Link',
 
   render: function() {
-    var section = this.props.section;
+    var id = this.props.id;
     return (
     <a href="#" onClick={this.clickAction} className="prev-button half-circle-button">
       <div className="direction">&lsaquo;</div>
@@ -17,4 +17,4 @@ var PreviousSection = React.createClass({
 });
 
 // each file will export exactly one component
-module.exports = PreviousSection;
+module.exports = PreviousModal;
