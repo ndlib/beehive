@@ -421,7 +421,7 @@ function bindClickRailHandler(element, i) {
   i.event.bind(i.scrollbarXRail, 'click', function (e) {
     var halfOfScrollbarLength = h.toInt(i.scrollbarXWidth / 2);
     var positionLeft = e.pageX - pageOffset(i.scrollbarXRail).left - halfOfScrollbarLength;
-    console.log(e.pageX, i.scrollbarXRail.offsetLeft);
+    //console.log(e.pageX, i.scrollbarXRail.offsetLeft);
     var maxPositionLeft = i.containerWidth - i.scrollbarXWidth;
     var positionRatio = positionLeft / maxPositionLeft;
 

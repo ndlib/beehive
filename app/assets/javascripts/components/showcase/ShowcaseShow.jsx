@@ -7,7 +7,7 @@ var ShowcaseShow = React.createClass({
     showcase: React.PropTypes.object,
   },
   componentDidUpdate: function() {
-    $('#showcase-outer').perfectScrollbar({useBothWheelAxes: true, suppressScrollY: true });
+    $('#showcase-outer').perfectScrollbar({useBothWheelAxes: false, suppressScrollY: true });
   },
 
   styleInner: function() {
