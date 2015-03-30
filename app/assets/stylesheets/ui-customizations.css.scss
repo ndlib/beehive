@@ -685,12 +685,16 @@ body.modal-open {
 	
 }
 
-.ps-scrollbar-x-rail {
-  opacity: 0.7 !important;
-  background-color: #dedede;
-  .ps-scrollbar-x {
-    background-color: #666 !important;
-  }
+#showcase-inner + .ps-scrollbar-x-rail {
+    opacity: 0.7 !important;
+    background-color: #dedede;
+    .ps-scrollbar-x {
+        background-color: #666 !important;
+    }
+}
+
+.modal-body .ps-scrollbar-y-rail {
+    right: 40px !important;
 }
 
 .ps-container > .ps-scrollbar-x-rail {

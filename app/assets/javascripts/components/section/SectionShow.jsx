@@ -9,9 +9,14 @@ var SectionShow = React.createClass({
     nextSection: React.PropTypes.string,
   },
 
+  componentDidMount: function() {
+    console.log(this.props.section.id);
+    $('#modal-' + this.props.section.id + ' .col-md-12').perfectScrollbar({useBothWheelAxes: true, suppressScrollX: true });
+  },
+
   textStyle: function(h) {
     return {
-      overflowY: "scroll",
+      overflowY: "hidden",
       height: h,
     }
   },
@@ -52,8 +57,8 @@ var SectionShow = React.createClass({
             {prev}
             {next}
             <div className="row">
-              <div className="col-md-12">
-                <div className="section-description" style={this.textStyle(textHeight)}>
+              <div className="col-md-12" style={this.textStyle(textHeight)}>
+                <div className="section-description" >
                   <div dangerouslySetInnerHTML={{__html: this.props.section.description}} />
                 </div>
               </div>
