@@ -577,7 +577,11 @@ div.dataTables_filter {
 
 #banner {
 	z-index:5000;
-	position: relative;
+	position: fixed;
+    width: 100%
+}
+#banner + div {
+    padding-top: 130px;
 }
 
 .modal-header {
