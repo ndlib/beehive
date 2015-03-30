@@ -9,11 +9,18 @@ var Modal = React.createClass({
     content: React.PropTypes.object.isRequired,
   },
 
+  setStyle: function(h) {
+    return {
+      height: h,
+    }
+  },
+
   render: function () {
+    var modalHeight = $(window).height() - 112;
     return (
       <div className="modal fade" id={this.props.id} tabIndex="-1">
-        <div className="modal-dialog modal-lg">
-          <div className="modal-content">
+        <div className="modal-dialog modal-lg" >
+          <div className="modal-content" style={this.setStyle(modalHeight)}>
             <div className="modal-header">
               <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>

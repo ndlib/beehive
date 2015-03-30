@@ -18,8 +18,6 @@
     <%= yield %>
     <%= react_component("Info") %>
     <%= react_component("Copyright") %>
-    <div id="test" style="width:500px;height:200px;position:relative;">
-    </div>
     <footer id="footer" class="container-fluid">
       <div class="row">
         <div class="col-sm-8 pull-left">
@@ -33,13 +31,5 @@
         </div>
       </div>
     </footer>
-    <script>
-      $(document).ready(function ($) {
-        $('#test').perfectScrollbar({
-          useBothWheelAxes:true,
-        });
-        $('#showcase-outer').perfectScrollbar();
-      });
-    </script>
   </body>
 </html>

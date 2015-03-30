@@ -9,6 +9,18 @@ var SectionShow = React.createClass({
     nextSection: React.PropTypes.string,
   },
 
+  componentDidMount: function() {
+    console.log(this.props.section.id);
+    $('#modal-' + this.props.section.id + ' .col-md-12').perfectScrollbar({useBothWheelAxes: true, suppressScrollX: true });
+  },
+
+  textStyle: function(h) {
+    return {
+      overflowY: "hidden",
+      height: h,
+    }
+  },
+
   render: function() {
     var item = "";
     var prev = "";
@@ -38,14 +50,15 @@ var SectionShow = React.createClass({
       }
       else {
         // layout for section without item
+        var textHeight = $(window).height() - $('#banner').height() - $(".modal-body h2").height() - $("footer").height() - 60;
         return (
           <div>
             <h2>{this.props.section.title}</h2>
             {prev}
             {next}
             <div className="row">
-              <div className="col-md-12">
-                <div className="section-description">
+              <div className="col-md-12" style={this.textStyle(textHeight)}>
+                <div className="section-description" >
                   <div dangerouslySetInnerHTML={{__html: this.props.section.description}} />
                 </div>
               </div>
