@@ -2,10 +2,12 @@
 var React = require('react');
 
 var ShowcaseShow = React.createClass({
-  mixins: [HorizontalScrollMixin],
   displayName: 'Showcase Show',
   propTypes: {
     showcase: React.PropTypes.object,
+  },
+  componentDidUpdate: function() {
+    $('#showcase-outer').perfectScrollbar({useBothWheelAxes: false, suppressScrollY: true });
   },
 
   styleInner: function() {

@@ -272,7 +272,6 @@ div.dataTables_filter {
 }
 
 #showcase-outer {
-	overflow-x:scroll !important;
 	position:relative;
 
 }
@@ -309,7 +308,7 @@ div.dataTables_filter {
 		font-size: 18px;
 		line-height: 1em;
 		background:transparent;
-		
+
 	}
 }
 
@@ -577,7 +576,7 @@ div.dataTables_filter {
 
 
 .section-container-text {
-	
+
 	font-size: 15px;
 	line-height: 25px;
 	color: lightgray;
@@ -624,7 +623,11 @@ div.dataTables_filter {
 
 #banner {
 	z-index:5000;
-	position: relative;
+	position: fixed;
+    width: 100%
+}
+#banner + div {
+    padding-top: 130px;
 }
 
 .modal-header {
@@ -643,7 +646,7 @@ div.dataTables_filter {
 			padding:0 8px;
 			text-shadow: 0 1px 0 #000;
 			font-size:34px;
-			
+
 			line-height:1em;
 		}
 	}
@@ -659,7 +662,7 @@ div.dataTables_filter {
 
 .modal.in .modal-dialog {
 	transform:none ;
-	transition: all .2s ease-in-out; 
+	transition: all .2s ease-in-out;
 	transform: scale(1,1);
 }
 
@@ -670,7 +673,7 @@ div.dataTables_filter {
 }
 
 .item-detail {
-	
+
 	h2 {
 		margin-bottom:20px;
 	}
@@ -703,6 +706,10 @@ div.dataTables_filter {
 	}
 }
 
+.modal-dialog {
+    position: fixed;
+}
+
 #copy .modal-dialog, #info .modal-dialog {
 	bottom:50px;
 	position:absolute;
@@ -714,11 +721,27 @@ div.dataTables_filter {
 	}
 }
 
+body.modal-open {
+    overflow: hidden;
+}
+
 /*scroll bars*/
 
 #test {
 	background:black;
-	
+
+}
+
+#showcase-inner + .ps-scrollbar-x-rail {
+    opacity: 0.7 !important;
+    background-color: #dedede;
+    .ps-scrollbar-x {
+        background-color: #666 !important;
+    }
+}
+
+.modal-body .ps-scrollbar-y-rail {
+    right: 40px !important;
 }
 
 .ps-container > .ps-scrollbar-x-rail {
@@ -734,7 +757,5 @@ div.dataTables_filter {
 		height:15px;
 	}
 }
-
-
 
 @import "_material-design-overwrites.scss";

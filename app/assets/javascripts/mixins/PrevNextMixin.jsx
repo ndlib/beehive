@@ -1,10 +1,10 @@
  var PrevNextMixin = {
   propTypes: {
-    section: React.PropTypes.string.isRequired,
+    id: React.PropTypes.string.isRequired,
   },
 
   modalID: function() {
-    return "#modal-" + this.props.section;
+    return "#modal-" + this.props.id;
   },
 
   clickAction: function(event) {

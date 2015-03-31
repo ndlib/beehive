@@ -41,12 +41,15 @@ var ItemsListPage = React.createClass({
 
   render: function() {
     return (
+    <div>
+      <ItemsModalList items={this.state.items} />
       <Layout>
-        <CollectionPageHeader collection={this.state.collection} />
-        <PageContent>
-          <ItemsList items={this.state.items} />
-        </PageContent>
-      </Layout>
+          <CollectionPageHeader collection={this.state.collection} />
+          <PageContent>
+            <ItemsList items={this.state.items} />
+          </PageContent>
+        </Layout>
+      </div>
     );
   }
 

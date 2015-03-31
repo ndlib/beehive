@@ -7,6 +7,8 @@ var ItemShow = React.createClass({
   propTypes: {
     item: React.PropTypes.object,
     additionalDetails: React.PropTypes.string,
+    previousItem: React.PropTypes.string,
+    nextItem: React.PropTypes.string,
   },
 
   getInitialState: function() {
@@ -36,14 +38,24 @@ var ItemShow = React.createClass({
   },
 
   render: function() {
+    var item = "";
+    var prev = "";
+    var next = "";
     if (this.props.item) {
+    if (this.props.previousItem) {
+        prev = (<PreviousModal id={this.props.previousItem} />);
+      }
+      if (this.props.nextItem) {
+        next = (<NextModal id={this.props.nextItem} />);
+      }
       return (
         <div className="item-detail"><button className="btn btn-default btn-raised pull-right btn-details" onClick={this.toggleDetails} style={this.detailsButtonStyle()}>
             <i className={this.state.showDetails ? "mdi-navigation-unfold-less" : "mdi-navigation-unfold-more"}></i>
             Details
           </button>
           <h2>{this.props.item.title}</h2>
-
+          {prev}
+          {next}
           <div className="row">
             <div className={"col-md-12"} style={{transition: 'initial'}}>
               <OpenseadragonViewer image={this.props.item.image} containerID={this.props.item.id} height={600} />
