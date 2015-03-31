@@ -10,7 +10,6 @@ var SectionShow = React.createClass({
   },
 
   componentDidMount: function() {
-    console.log(this.props.section.id);
     $('#modal-' + this.props.section.id + ' .col-md-12').perfectScrollbar({useBothWheelAxes: true, suppressScrollX: true });
   },
 
