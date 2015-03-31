@@ -10,14 +10,18 @@ var CollectionPageHeader = React.createClass({
 
   render: function() {
     var itemBrowseUrl = "/" + this.props.collection.id + "/" + this.props.collection.slug + "/items";
+    var showcaseBrowseUrl = "/" + this.props.collection.id + "/" + this.props.collection.slug + "/showcases";
     return (
       <PageHeader>
         <TitleBar>
           <a className="navbar-brand" href={this.collectionUrl(this.props.collection)}>
             {this.props.collection.title}
           </a>
-          <ul className="nav navbar-nav navbar-right">
-            <li><a href={itemBrowseUrl}>Browse Items</a></li>
+          <ul className="nav navbar-nav navbar-left">
+            <li><p>|</p></li>
+            <li><a href={showcaseBrowseUrl}>Showcases</a></li>
+            <li><p>|</p></li>
+            <li><a href={itemBrowseUrl}>Items</a></li>
           </ul>
         </TitleBar>
       </PageHeader>
