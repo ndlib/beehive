@@ -51,7 +51,7 @@ componentWillUnmount: function(){
 },
 
   render: function() {
-
+    console.log(this.props)
     if (this.props.showcase) {
       document.body.style.backgroundImage = "url(" + this.props.showcase.image.contentUrl + ")";
       return (

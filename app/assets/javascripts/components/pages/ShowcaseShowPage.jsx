@@ -51,6 +51,7 @@ var ShowcaseShowPage = React.createClass({
         <Layout>
           <CollectionPageHeader collection={this.state.collection} />
           <PageContent>
+            <ShowcaseTitleBar showcase={this.state.showcase} />
             <ShowcaseShow showcase={this.state.showcase} />
           </PageContent>
         </Layout>
