@@ -733,6 +733,22 @@ div.dataTables_filter {
 body.modal-open {
     overflow: hidden;
 }
+/* openseadragon */
+.os-toolbar {
+  width: 30px;
+  position: absolute !important;
+  z-index: 100;
+  a{
+    color: white;
+    &:hover {
+      text-decoration: none;
+      color: white;
+    }
+  }
+}
+.openseadragon-container {
+  z-index: 1;
+}
 
 /*scroll bars*/
 
