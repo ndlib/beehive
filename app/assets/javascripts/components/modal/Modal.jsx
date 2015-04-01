@@ -12,15 +12,17 @@ var Modal = React.createClass({
   setStyle: function(h) {
     return {
       height: h,
+      marginTop: $('#banner').height(),
+      width: '100%',
     }
   },
 
   render: function () {
-    var modalHeight = $(window).height() - 112;
+    var modalHeight = $(window).height() - $('#banner').height();
     return (
-      <div className="modal" id={this.props.id} tabIndex="-1">
-        <div className="modal-dialog modal-lg" >
-          <div className="modal-content" style={this.setStyle(modalHeight)}>
+      <div className="modal" id={this.props.id} tabIndex="-1"  >
+        <div className="modal-dialog modal-lg" style={this.setStyle(modalHeight)}>
+          <div className="modal-content">
             <div className="modal-header">
               <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
