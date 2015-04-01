@@ -708,6 +708,7 @@ div.dataTables_filter {
 	border-radius:4px;
 	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 10px rgba(0, 0, 0, 0.16);
 	max-width:350px;
+    z-index: 2;
 	.well {
 		background:transparent;
 		box-shadow: none;
