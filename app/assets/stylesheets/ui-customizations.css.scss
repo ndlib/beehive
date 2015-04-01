@@ -86,6 +86,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', e
 	border-bottom:solid 1px #999;
 	background:rgba(51,51,51,.95);
 	background:rgba(0, 0, 0, 0.86);
+
+max-height: 50px;
 }
 
 .navbar-default .title-bar .navbar-brand {
@@ -126,6 +128,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', e
 	background: linear-gradient(to bottom,  rgba(51,51,51,0.9) 0%,rgba(51,51,51,0.4) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', endColorstr='#33000000',GradientType=0 );
 border-bottom:solid 1px #999;
+    z-index: -1;
 	.container {
 		margin:0;
 		padding:0 40px;
@@ -140,7 +143,6 @@ border-bottom:solid 1px #999;
 		letter-spacing: 1.1px;
 	}
 	margin-bottom:5px;
-	z-index:5000;
 	position: relative;
 }
 
@@ -622,13 +624,6 @@ div.dataTables_filter {
 	margin:1em 3em;
 }
 
-.modal-lg {
-	width:100%;
-	margin:133px auto 0;
-
-	height:calc(100% - 133px);
-}
-
 .modal-content {
 	background:#333;
 	height:100%;
@@ -640,7 +635,7 @@ div.dataTables_filter {
     width: 100%
 }
 #banner + div {
-    padding-top: 111px;
+    padding-top: 100px;
 }
 
 .modal-header {
@@ -713,6 +708,7 @@ div.dataTables_filter {
 	border-radius:4px;
 	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 10px rgba(0, 0, 0, 0.16);
 	max-width:350px;
+    z-index: 2;
 	.well {
 		background:transparent;
 		box-shadow: none;
@@ -737,6 +733,22 @@ div.dataTables_filter {
 
 body.modal-open {
     overflow: hidden;
+}
+/* openseadragon */
+.os-toolbar {
+  width: 30px;
+  position: absolute !important;
+  z-index: 100;
+  a{
+    color: white;
+    &:hover {
+      text-decoration: none;
+      color: white;
+    }
+  }
+}
+.openseadragon-container {
+  z-index: 1;
 }
 
 /*scroll bars*/
