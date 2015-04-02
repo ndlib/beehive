@@ -46,13 +46,20 @@ var Section = React.createClass({
       hover: false
     });
   },
+
+  onClick: function() {
+    window.location.hash = "modal-" + this.props.section.id;
+  },
+
   targetID: function() {
     return "#modal-" + this.props.section.id;
   },
+
   render: function() {
+
     return (
       <section className="section" style={this.style()} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} >
-      <a href="#" data-toggle="modal" data-target={this.targetID()} style={this.linkStyle()}>
+      <a href={this.targetID()} data-toggle="modal" data-target={this.targetID()} style={this.linkStyle()} onClick={this.onClick}>
         <SectionDescription section={this.props.section} />
         <SectionImage section={this.props.section}/>
         </a>

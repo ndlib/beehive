@@ -12,6 +12,10 @@ var ItemLink = React.createClass({
     showDescription: React.PropTypes.bool,
   },
 
+  onClick: function() {
+    window.location.hash = "modal-" + this.props.item.id;
+  },
+
   linkStyle: function() {
     return {
       display: 'block',
@@ -33,7 +37,7 @@ var ItemLink = React.createClass({
     }
     return (
       <div className="item">
-        <a href="#" data-toggle="modal" data-target={this.targetID()} style={this.linkStyle()} className={this.props.className}>
+        <a href={this.targetID()} data-toggle="modal" data-target={this.targetID()} style={this.linkStyle()} className={this.props.className} onClick={this.onClick}>
           <Thumbnail image={item.image} thumbnailType={ this.props.thumbnailType === 'undefined' ? "medium" : this.props.thumbnailType} />
         </a>
         <div className="item-details">

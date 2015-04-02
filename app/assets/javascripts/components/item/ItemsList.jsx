@@ -8,6 +8,22 @@ var ItemsList = React.createClass({
     items: React.PropTypes.array,
   },
 
+  componentDidUpdate: function() {
+    this.checkHash();
+  },
+
+  componentDidMount: function() {
+    window.addEventListener("hashchange", this.checkHash, false);
+    this.checkHash();
+  },
+
+  checkHash: function() {
+    $(".modal").modal("hide");
+    if(window.location.hash) {
+      $(window.location.hash).modal('show');
+    }
+  },
+
   render: function() {
     var itemNodes = this.props.items.map(function(item, index) {
       var nodes = [];

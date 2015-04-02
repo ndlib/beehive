@@ -8,6 +8,19 @@ var ShowcaseShow = React.createClass({
   },
   componentDidUpdate: function() {
     $('#showcase-outer').perfectScrollbar({useBothWheelAxes: false, suppressScrollY: true });
+    this.checkHash();
+  },
+
+  componentDidMount: function() {
+    window.addEventListener("hashchange", this.checkHash, false);
+    this.checkHash();
+  },
+
+  checkHash: function() {
+    $(".modal").modal("hide");
+    if(window.location.hash) {
+      $(window.location.hash).modal('show');
+    }
   },
 
   styleInner: function() {
@@ -51,7 +64,6 @@ componentWillUnmount: function(){
 },
 
   render: function() {
-    console.log(this.props)
     if (this.props.showcase) {
       document.body.style.backgroundImage = "url(" + this.props.showcase.image.contentUrl + ")";
       return (
