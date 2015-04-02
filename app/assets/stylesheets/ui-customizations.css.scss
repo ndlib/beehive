@@ -270,6 +270,48 @@ body .jumbotron, .container .jumbotron, .container-fluid .jumbotron {
 	}
 }
 
+.flow-columns {
+	-webkit-column-count: 4;
+	-webkit-column-gap: 10px;
+	-webkit-column-fill: auto;
+	-moz-column-count: 4;
+	-moz-column-gap: 10px;
+	-moz-column-fill: auto;
+	column-count: 4;
+	column-gap: 15px;
+	column-fill: auto;
+}
+
+.item-block {
+	display: inline-block;
+	background: #FEFEFE;
+	border: 2px solid #FAFAFA;
+    border-radius: 2px;
+	box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+	margin: 0 2px 15px;
+	-webkit-column-break-inside: avoid;
+	-moz-column-break-inside: avoid;
+	column-break-inside: avoid;
+	padding: 5px;
+	background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
+	opacity: 1;
+
+	-webkit-transition: all .2s ease;
+	-moz-transition: all .2s ease;
+	-o-transition: all .2s ease;
+	transition: all .2s ease;
+    width: 100%;
+    span {
+      display: inline-block;
+      max-height: 400px;
+      overflow: hidden;
+      width: 100%;
+      img {
+        width: 100%;
+      }
+    }
+}
+
 div.dataTables_filter {
 	padding:0;
 	label {
@@ -686,6 +728,9 @@ div.dataTables_filter {
 	h2 {
 		margin-bottom:20px;
 	}
+}
+.items-list, .showcases-list {
+    margin-top: 20px;
 }
 
 .btn-details {
