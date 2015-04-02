@@ -13,7 +13,6 @@ var Modal = React.createClass({
     return {
       height: h,
       marginTop: $('#banner').height(),
-      width: '100%',
     }
   },
 
