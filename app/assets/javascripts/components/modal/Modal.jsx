@@ -20,11 +20,18 @@ var Modal = React.createClass({
     window.location.hash = '';
   },
 
+  onKeyDown: function(event) {
+    // if key is escape
+    if(event.keyCode == 27) {
+      this.removeHash();
+    }
+  },
+
   render: function () {
     var modalHeight = $(window).height() - $('#banner').height();
 
     return (
-      <div className="modal" id={this.props.id} tabIndex="-1"  >
+      <div className="modal" id={this.props.id} tabIndex="-1"  onKeyDown={this.onKeyDown}>
         <div className="modal-dialog modal-lg" style={this.setStyle(modalHeight)}>
           <div className="modal-content">
             <div className="modal-header">
