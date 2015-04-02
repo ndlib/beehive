@@ -10,6 +10,8 @@
   clickAction: function(event) {
     $(".modal").modal("hide");
     $(this.modalID()).modal("show");
+    window.location.hash = "modal-" + this.props.id;
+    event.preventDefault();
   },
 }
 

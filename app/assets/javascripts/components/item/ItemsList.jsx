@@ -8,6 +8,12 @@ var ItemsList = React.createClass({
     items: React.PropTypes.array,
   },
 
+  componentDidUpdate: function() {
+    if(window.location.hash) {
+      $(window.location.hash).modal('show');
+    }
+  },
+
   render: function() {
     var itemNodes = this.props.items.map(function(item, index) {
       var nodes = [];
