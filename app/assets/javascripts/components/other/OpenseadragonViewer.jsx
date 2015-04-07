@@ -62,7 +62,16 @@ var OpenseadragonViewer = React.createClass({
       image: image,
       viewer: viewer,
       escapeHandler: escapeHandler,
-    })
+    });
+
+    var disableKeyboard = function(event) {
+      event.eventSource.keyDownHandler = null;
+      event.eventSource.keyUpHandler = null;
+      event.eventSource.keyHandler = null;
+    }
+    viewer.addViewerInputHook({hooks: [
+        {tracker: 'viewer', handler: 'clickHandler', hookHandler: disableKeyboard}
+    ]});
   },
 
   baseOptions: function() {
@@ -100,7 +109,7 @@ var OpenseadragonViewer = React.createClass({
       springStiffness: 9,
       gestureSettingsMouse: {
         flickEnabled: true,
-        flickMomentum: 0.2
+        flickMomentum: 0.2,
       },
       gestureSettingsTouch: {
         flickMomentum: 0.2

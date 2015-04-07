@@ -13,6 +13,7 @@
 //= require_self
 //= require jquery_ujs
 //= require openseadragon
+//= require openseadragon-viewerinputhook
 //= require showdown
 //= require components
 //= require bootstrap
