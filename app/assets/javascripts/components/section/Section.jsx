@@ -55,10 +55,14 @@ var Section = React.createClass({
     return "#modal-" + this.props.section.id;
   },
 
+  sectionName: function() {
+    return "section-" + this.props.section.id;
+  },
+
   render: function() {
 
     return (
-      <section className="section" style={this.style()} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} >
+      <section className="section" style={this.style()} id={this.sectionName()} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} >
       <a href={this.targetID()} data-toggle="modal" data-target={this.targetID()} style={this.linkStyle()} onClick={this.onClick}>
         <SectionDescription section={this.props.section} />
         <SectionImage section={this.props.section}/>
