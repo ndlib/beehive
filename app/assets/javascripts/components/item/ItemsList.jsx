@@ -24,27 +24,27 @@ var ItemsList = React.createClass({
     }
   },
 
+  outerStyle: function() {
+    return {
+      width: '100%',
+    };
+  },
+
+
   render: function() {
     var itemNodes = this.props.items.map(function(item, index) {
       var nodes = [];
-      if (index > 0) {
-        if (index%3 == 0) {
-          nodes.push ((
-            <div className="clearfix"></div>
-          ));
-        }
-      }
       nodes.push((
-        <div  className="col-sm-4" key={item['@id']}>
+        <div key={item['@id']} className="item-block">
           <ItemsListItem item={item} />
         </div>
       ));
       return nodes;
     });
     return (
-      <div className="items-list">
-        <div className="container">
-          <div>{itemNodes}</div>
+      <div className="items-list" style={this.outerStyle()}>
+        <div className="container flow-columns">
+          {itemNodes}
         </div>
       </div>
     );
