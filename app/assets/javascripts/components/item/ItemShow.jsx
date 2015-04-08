@@ -10,6 +10,37 @@ var ItemShow = React.createClass({
     previousItem: React.PropTypes.string,
     nextItem: React.PropTypes.string,
   },
+componentDidMount: function() {
+    var id = '#modal-' + this.props.item.id;
+
+    // bind keypress to modal when it is shown
+    $(id).on('show.bs.modal', {props: this.props}, function (event) {
+      $(document).bind('keyup', {props: event.data.props},
+        function(event) {
+          // if left or up arrow
+          if(event.keyCode == 37 || event.keyCode == 38) {
+            if(event.data.props.previousItem) {
+              $('#modal-' + event.data.props.item.id).modal('hide');
+              $('#modal-' + event.data.props.previousItem).modal('show');
+              window.location.hash = 'modal-' +  event.data.props.previousItem;
+            }
+          }
+          // if right or down arrow
+          else if(event.keyCode == 39 || event.keyCode == 40) {
+            if(event.data.props.nextItem) {
+              $('#modal-' + event.data.props.item.id).modal('hide');
+              $('#modal-' + event.data.props.nextItem).modal('show');
+               window.location.hash = 'modal-' +  event.data.props.nextItem;
+            }
+          }
+        }
+      );
+    });
+    // remove keybindings when modal hidden
+    $(id).on('hide.bs.modal', function () {
+      $(document).unbind('keyup');
+    });
+  },
 
   getInitialState: function() {
     return {

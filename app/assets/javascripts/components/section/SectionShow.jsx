@@ -10,7 +10,36 @@ var SectionShow = React.createClass({
   },
 
   componentDidMount: function() {
-    $('#modal-' + this.props.section.id + ' .col-md-12').perfectScrollbar({useBothWheelAxes: true, suppressScrollX: true });
+    var id = '#modal-' + this.props.section.id;
+    $(id + ' .col-md-12').perfectScrollbar({useBothWheelAxes: true, suppressScrollX: true });
+
+    // bind keypress to modal when it is shown
+    $(id).on('show.bs.modal', {props: this.props}, function (event) {
+      $(document).bind('keyup', {props: event.data.props},
+        function(event) {
+          // if left or up arrow
+          if(event.keyCode == 37 || event.keyCode == 38) {
+            if(event.data.props.previousSection) {
+              $('#modal-' + event.data.props.section.id).modal('hide');
+              $('#modal-' + event.data.props.previousSection).modal('show');
+              window.location.hash = 'modal-' +  event.data.props.previousSection;
+            }
+          }
+          // if right or down arrow
+          else if(event.keyCode == 39 || event.keyCode == 40) {
+            if(event.data.props.nextSection) {
+              $('#modal-' + event.data.props.section.id).modal('hide');
+              $('#modal-' + event.data.props.nextSection).modal('show');
+               window.location.hash = 'modal-' +  event.data.props.nextSection;
+            }
+          }
+        }
+      );
+    });
+    // remove keybindings when modal hidden
+    $(id).on('hide.bs.modal', function () {
+      $(document).unbind('keyup');
+    });
   },
 
   textStyle: function(h) {
