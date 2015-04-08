@@ -17,7 +17,7 @@ var ShowcaseShow = React.createClass({
   },
 
   checkHash: function() {
-    //$(".modal").modal("hide");
+    $(".modal").modal("hide");
     if(window.location.hash) {
       $(window.location.hash).modal('show');
     }
