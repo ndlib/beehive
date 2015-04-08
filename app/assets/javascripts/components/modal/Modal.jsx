@@ -7,7 +7,6 @@ var Modal = React.createClass({
   propTypes: {
     id: React.PropTypes.string.isRequired,
     content: React.PropTypes.object.isRequired,
-    active: React.PropTypes.bool,
   },
 
   setStyle: function(h) {
