@@ -820,6 +820,24 @@ div.dataTables_filter {
 body.modal-open {
     overflow: hidden;
 }
+
+/* animation */
+#showcase-inner {
+  animation-duration: 1s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 50%;
+  }
+
+  to {
+    margin-left: 0%;
+  }
+}
+
+
 /* openseadragon */
 .os-toolbar {
   width: 30px;
