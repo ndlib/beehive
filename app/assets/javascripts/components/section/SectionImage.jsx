@@ -30,7 +30,7 @@ var SectionImage = React.createClass({
       var transcriptIcon = '';
       this.props.section.item.metadata.forEach(function(i){
         if(i.label === "Transcript") {
-          transcriptIcon = (<img src="/images/transcript.gif" className="section-transcript" title="Click to view transcript" alt="Click to view transcript" />);
+          transcriptIcon = (<img src="/images/blank.png" className="section-transcript" title="Click to view transcript" alt="Click to view transcript" />);
         }
       });
 
