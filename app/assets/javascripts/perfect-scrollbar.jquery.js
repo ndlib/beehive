@@ -449,9 +449,8 @@ function bindClickRailHandler(element, i) {
   i.event.bind(i.scrollbarX, 'click', stopPropagation);
   i.event.bind(i.scrollbarXRail, 'click', function (e) {
     var halfOfScrollbarLength = h.toInt(i.scrollbarXWidth / 2);
-    var positionLeft = e.pageX - pageOffset(i.scrollbarXRail).left - halfOfScrollbarLength;
-    //console.log(e.pageX, i.scrollbarXRail.offsetLeft);
-    var maxPositionLeft = i.containerWidth - i.scrollbarXWidth;
+    var positionLeft = i.railXRatio * (e.pageX - i.railXOffset.left - halfOfScrollbarLength);
+    var maxPositionLeft = i.railXRatio * (i.railXWidth - i.scrollbarXWidth);
     var positionRatio = positionLeft / maxPositionLeft;
 
     if (positionRatio < 0) {
@@ -486,9 +485,8 @@ function bindMouseScrollXHandler(element, i) {
   var currentPageX = null;
 
   function updateScrollLeft(deltaX) {
-    var newLeft = currentLeft + deltaX;
-    var maxLeft = i.containerWidth - i.scrollbarXWidth;
-
+    var newLeft = currentLeft + (deltaX * i.railXRatio);
+    var maxLeft = i.railXOffset.left + (i.railXRatio * (i.railXWidth - i.scrollbarXWidth));
     if (newLeft < 0) {
       i.scrollbarXLeft = 0;
     } else if (newLeft > maxLeft) {
@@ -497,7 +495,7 @@ function bindMouseScrollXHandler(element, i) {
       i.scrollbarXLeft = newLeft;
     }
 
-    var scrollLeft = h.toInt(i.scrollbarXLeft * (i.contentWidth - i.containerWidth) / (i.containerWidth - i.scrollbarXWidth));
+    var scrollLeft = h.toInt(i.scrollbarXLeft * (i.contentWidth - i.containerWidth) / (i.containerWidth - (i.railXRatio * i.scrollbarXWidth)));
     element.scrollLeft = scrollLeft;
   }
 
@@ -515,7 +513,7 @@ function bindMouseScrollXHandler(element, i) {
 
   i.event.bind(i.scrollbarX, 'mousedown', function (e) {
     currentPageX = e.pageX;
-    currentLeft = h.toInt(d.css(i.scrollbarX, 'left'));
+    currentLeft = h.toInt(d.css(i.scrollbarX, 'left')) * i.railXRatio;
     h.startScrolling(element, 'x');
 
     i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);
@@ -1207,6 +1205,8 @@ function Instance(element) {
   i.railBorderXWidth = h.toInt(d.css(i.scrollbarXRail, 'borderLeftWidth')) + h.toInt(d.css(i.scrollbarXRail, 'borderRightWidth'));
   i.railXMarginWidth = h.toInt(d.css(i.scrollbarXRail, 'marginLeft')) + h.toInt(d.css(i.scrollbarXRail, 'marginRight'));
   i.railXWidth = null;
+  i.railXRatio = null;
+  i.railXOffset = null;
 
   i.scrollbarYRail = d.appendTo(d.e('div', 'ps-scrollbar-y-rail'), element);
   i.scrollbarY = d.appendTo(d.e('div', 'ps-scrollbar-y'), i.scrollbarYRail);
@@ -1327,7 +1327,11 @@ module.exports = function (element) {
 
   if (!i.settings.suppressScrollX && i.containerWidth + i.settings.scrollXMarginOffset < i.contentWidth) {
     i.scrollbarXActive = true;
+    i.railBorderXWidth = h.toInt(d.css(i.scrollbarXRail, 'borderLeftWidth')) + h.toInt(d.css(i.scrollbarXRail, 'borderRightWidth'));
+    i.railXMarginWidth = h.toInt(d.css(i.scrollbarXRail, 'marginLeft')) + h.toInt(d.css(i.scrollbarXRail, 'marginRight'));
     i.railXWidth = i.containerWidth - i.railXMarginWidth;
+    i.railXRatio = i.containerWidth / i.railXWidth;
+    i.railXOffset = i.scrollbarXRail.getBoundingClientRect();
     i.scrollbarXWidth = getThumbSize(i, h.toInt(i.railXWidth * i.containerWidth / i.contentWidth));
     i.scrollbarXLeft = h.toInt(element.scrollLeft * (i.railXWidth - i.scrollbarXWidth) / (i.contentWidth - i.containerWidth));
   } else {
