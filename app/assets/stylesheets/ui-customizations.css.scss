@@ -600,9 +600,9 @@ div.dataTables_filter {
 	margin-left: auto;
     margin-right: auto;
 
-    max-width:50vw;
-    min-width: 50vw;
-    margin-left:25vw;
+    max-width:75vw;
+    min-width: 75vw;
+    margin-left:0;
 
 	overflow: hidden;
 	div {
@@ -820,6 +820,26 @@ div.dataTables_filter {
 body.modal-open {
     overflow: hidden;
 }
+
+/* animation */
+#showcase-inner {
+  animation-duration: 1.5s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  0% {
+    margin-left: 100%;
+  }
+  55% {
+    margin-left: -2%
+  }
+  100% {
+    margin-left: 0%;
+  }
+}
+
+
 /* openseadragon */
 .os-toolbar {
   width: 30px;
