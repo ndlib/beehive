@@ -11,9 +11,21 @@ var ShowcaseShow = React.createClass({
     this.checkHash();
   },
 
+  handleResize: function() {
+    if (this.props.showcase) {
+      $('#showcase-outer').perfectScrollbar('update');
+    }
+  },
+
   componentDidMount: function() {
     window.addEventListener("hashchange", this.checkHash, false);
+    window.addEventListener('resize', this.handleResize, false);
     this.checkHash();
+  },
+
+  componentWillUnmount: function() {
+    window.removeEventListener('hashchange', this.checkHash);
+    window.removeEventListener('resize', this.handleResize);
   },
 
   checkHash: function() {
