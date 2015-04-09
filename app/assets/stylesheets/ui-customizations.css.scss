@@ -90,15 +90,23 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', e
 max-height: 50px;
 }
 
+.navbar-default a {
+	opacity:.75;
+	color: #fff;
+}
+
+.navbar-default a:hover {
+	opacity:1;
+	text-decoration:underline !important;
+}
+
 .navbar-default .title-bar .navbar-brand {
 	color: #fff;
 	margin-left: 15px;
-	opacity:.85;
+	
 }
 
-.navbar-default .title-bar .navbar-brand:hover {
-	opacity:1;
-}
+
 
 .navbar-collapse {
 	position: relative;
@@ -591,6 +599,11 @@ div.dataTables_filter {
     min-width: 70vw;
 	margin-left: auto;
     margin-right: auto;
+
+    max-width:50vw;
+    min-width: 50vw;
+    margin-left:25vw;
+
 	overflow: hidden;
 	div {
 		white-space: normal;
@@ -653,11 +666,13 @@ div.dataTables_filter {
 	img.section-transcript {
 		border:none;
 		position:absolute;
-		top:2px;
-		right:2px;
-		width:45px;
-		text-shadow: 2px 2px 2px #333;
-		opacity:.6;
+		left:8px;
+		bottom:8px;
+		width:40px;
+		height: 40px;
+		opacity:.8;
+		background: image_url('transcript.png');
+		background-size:cover;
 	}
 }
 
@@ -674,7 +689,10 @@ div.dataTables_filter {
 #banner {
 	z-index:5000;
 	position: fixed;
-    width: 100%
+    width: 100%;
+    p {
+    	margin:0;
+    }
 }
 #banner + div {
     padding-top: 100px;
@@ -716,7 +734,9 @@ div.dataTables_filter {
 	transform: scale(1,1);
 }
 
-
+.os-toolbar i {
+	text-shadow: 1px 1px 1px #000;
+}
 
 
 .loading {
@@ -758,6 +778,17 @@ div.dataTables_filter {
 		background:transparent;
 		box-shadow: none;
 
+	}
+	.metadata-list {
+		dt {
+			margin-bottom:.3em;
+			font-size:15px;
+			font-family: serif;
+		}
+		dd {
+			font-size: 13px;
+			color:#555555;
+		}
 	}
 }
 
