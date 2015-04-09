@@ -7,25 +7,32 @@ var ShowcaseShow = React.createClass({
     showcase: React.PropTypes.object,
   },
   componentDidUpdate: function() {
-    $('#showcase-outer').perfectScrollbar({useBothWheelAxes: false, suppressScrollY: true });
+    if (this.props.showcase && !this.scrollbarInitialized) {
+      setTimeout(this.initializeScrollbar, 1000);
+    }
     this.checkHash();
   },
 
-  handleResize: function() {
-    if (this.props.showcase) {
+  initializeScrollbar: function() {
+    this.scrollbarInitialized = true;
+    $('#showcase-outer').perfectScrollbar({useBothWheelAxes: false, suppressScrollY: true });
+  },
+
+  updateScrollbar: function() {
+    if (this.scrollbarInitialized) {
       $('#showcase-outer').perfectScrollbar('update');
     }
   },
 
   componentDidMount: function() {
     window.addEventListener("hashchange", this.checkHash, false);
-    window.addEventListener('resize', this.handleResize, false);
+    window.addEventListener('resize', this.updateScrollbar, false);
     this.checkHash();
   },
 
   componentWillUnmount: function() {
     window.removeEventListener('hashchange', this.checkHash);
-    window.removeEventListener('resize', this.handleResize);
+    window.removeEventListener('resize', this.updateScrollbar);
   },
 
   checkHash: function() {

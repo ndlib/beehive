@@ -103,7 +103,7 @@ max-height: 50px;
 .navbar-default .title-bar .navbar-brand {
 	color: #fff;
 	margin-left: 15px;
-	
+
 }
 
 
@@ -864,19 +864,9 @@ body.modal-open {
 
 }
 
-#showcase-inner + .ps-scrollbar-x-rail {
-    opacity: 0.7 !important;
-    background-color: #dedede;
-    .ps-scrollbar-x {
-        background-color: #666 !important;
-    }
-}
+.ps-container {
 
-.modal-body .ps-scrollbar-y-rail {
-    right: 40px !important;
-}
-
-.ps-container > .ps-scrollbar-x-rail {
+  > .ps-scrollbar-x-rail {
 
 	display:block !important;
 	transition:none;
@@ -888,6 +878,30 @@ body.modal-open {
 	.ps-scrollbar-x {
 		height:15px;
 	}
+}
+
+  #showcase-inner + .ps-scrollbar-x-rail {
+    animation-duration: 0.5s;
+    animation-name: scrollfadein;
+    opacity: 0.7;
+    background-color: #dedede;
+    .ps-scrollbar-x {
+        background-color: #666;
+    }
+  }
+}
+
+@keyframes scrollfadein {
+  0% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+.modal-body .ps-container > .ps-scrollbar-y-rail {
+    right: 40px;
 }
 
 @import "_material-design-overwrites.scss";
