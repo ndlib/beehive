@@ -8,11 +8,18 @@ var ShowcaseTitleBar = React.createClass({
     showcase: React.PropTypes.object.isRequired,
   },
 
+  style: function() {
+    return {
+      opacity: '0',
+
+    };
+  },
+
+
   render: function() {
-    console.log(this.props);
     if (this.props.showcase) {
       return (
-        <div className="showcases-title-bar">
+        <div className="showcases-title-bar" id="showcases-title-bar" style={this.style()}>
           <div className="container">
             <div className="row">
               <h2>{this.props.showcase.title}</h2>
