@@ -60,7 +60,7 @@ var ShowcaseShow = React.createClass({
       overflowX: 'hidden',
       whiteSpace: 'nowrap',
       boxSizing: 'border-box',
-      height: '500px',
+      height: '520px',
       top: 0,
       left: 0,
 
