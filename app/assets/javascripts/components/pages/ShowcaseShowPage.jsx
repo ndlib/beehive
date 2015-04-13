@@ -47,6 +47,7 @@ var ShowcaseShowPage = React.createClass({
   render: function() {
     return (
       <div>
+        <div id="blur" />
         {this.modals()}
         <Layout>
           <CollectionPageHeader collection={this.state.collection} />
