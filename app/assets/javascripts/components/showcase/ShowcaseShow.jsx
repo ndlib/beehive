@@ -103,13 +103,13 @@ var ShowcaseShow = React.createClass({
 
   render: function() {
     if (this.props.showcase) {
-      document.body.style.backgroundImage = "url(" + this.props.showcase.image.contentUrl + ")";
+      document.body.style.backgroundImage = "url(\"" + this.props.showcase.image.contentUrl + "\")";
       var styles = {
         width: "100%",
         height: "100%",
         display: "block",
         position: "absolute",
-        "background-image": "url(" + this.props.showcase.image.contentUrl + ")",
+        "background-image": "url(\"" + this.props.showcase.image.contentUrl + "\")",
         "background-repeat": "no-repeat",
         "background-size": "100%",
         "z-index": "-1",
