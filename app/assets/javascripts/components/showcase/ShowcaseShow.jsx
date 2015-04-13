@@ -84,9 +84,8 @@ var ShowcaseShow = React.createClass({
   onScroll: function() {
     var x = $("#sections-content-inner").offset().left;
     var dx = $( window ).width() * .75;
-    var opacity = 1 - dx/x;
-    console.log(opacity);
-    $("#showcases-title-bar").css("opacity", 1 - x/1000);
+    var opacity = 1 - x/dx;
+    $("#showcases-title-bar").css("opacity", opacity);
   },
 
   render: function() {
