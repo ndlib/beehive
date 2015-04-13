@@ -78,19 +78,43 @@ var ShowcaseShow = React.createClass({
     document.body.className = "showcase-bg";
 
   },
+
   componentWillUnmount: function(){
       document.body.style.backgroundImage = null;
   },
+
   onScroll: function() {
     var x = $("#sections-content-inner").offset().left;
     var dx = $( window ).width() * .75;
     var opacity = 1 - x/dx;
     $("#showcases-title-bar").css("opacity", opacity);
+    var blurAmt = Math.min(Math.max(Math.floor((1 - x/dx) * 10), 0), 10);
+    var blurBrightness = Math.min(Math.max(Math.floor(100 - (1-x/dx) * 60), 70), 100);
+    var blurStr = "blur(" + blurAmt + "px) brightness(" + blurBrightness + "%)";
+    var blurStyle = {
+      "-webkit-filter": blurStr,
+      "-moz-filter": blurStr,
+      "-o-filter": blurStr,
+      "filter": blurStr,
+    };
+    $("#blur").css(blurStyle);
+    console.log(blurStr);
   },
 
   render: function() {
     if (this.props.showcase) {
-      document.body.style.backgroundImage = "url(" + this.props.showcase.image.contentUrl + ")";
+      document.body.style.backgroundImage = "url(\"" + this.props.showcase.image.contentUrl + "\")";
+      var styles = {
+        width: "100%",
+        height: "100%",
+        display: "block",
+        position: "absolute",
+        "background-image": "url(\"" + this.props.showcase.image.contentUrl + "\")",
+        "background-repeat": "no-repeat",
+        "background-size": "100%",
+        "z-index": "-1",
+      };
+      $('#blur').css(styles);
       return (
         <div id="showcase-outer" style={this.styleOuter()} onScroll={this.onScroll}>
           <div id="showcase-inner" style={this.styleInner()}>
