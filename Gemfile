@@ -19,6 +19,9 @@ gem 'browserify-rails', '~>0.5'
 
 gem 'showdown-rails'
 
+# For Errbit
+gem 'airbrake'
+
 # CSS
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
