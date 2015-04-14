@@ -1,6 +1,10 @@
 //app/assets/javascripts/components/ShowcaseShowPage.jsx
 var React = require('react');
 
+var maxHeight = 900;
+var minHeight = 160;
+var showcaseTitleHeight = 40;
+
 var ShowcaseShowPage = React.createClass({
   propTypes: {
     collection: React.PropTypes.oneOfType([
@@ -13,15 +17,26 @@ var ShowcaseShowPage = React.createClass({
     return {
       collection: {},
       showcase: null,
+      height: this.getHeight(),
     };
   },
 
-  componentDidMount: function() {
-    if ('object' == typeof(this.props.collection)) {
-      this.setValues(this.props.collection);
-    } else {
-      this.loadRemoteCollection()
+  getHeight: function() {
+    var top = ($('#banner').outerHeight() || 0);
+    var footerHeight = ($('#footer').outerHeight() || 0);
+    var height = $(window).height() - top - footerHeight;
+    if (height > maxHeight) {
+      height = maxHeight;
+    } else if (height < minHeight) {
+      height = minHeight;
     }
+    return height;
+  },
+
+  handleResize: function() {
+    this.setState({
+      height: this.getHeight(),
+    });
   },
 
   loadRemoteCollection: function() {
@@ -44,6 +59,21 @@ var ShowcaseShowPage = React.createClass({
       return (<span />);
     }
   },
+
+  componentDidMount: function() {
+    if ('object' == typeof(this.props.collection)) {
+      this.setValues(this.props.collection);
+    } else {
+      this.loadRemoteCollection()
+    }
+    window.addEventListener('resize', this.handleResize, false);
+    this.handleResize();
+  },
+
+  componentWillUnmount: function() {
+    window.removeEventListener('resize', this.handleResize);
+  },
+
   render: function() {
     return (
       <div>
@@ -51,8 +81,8 @@ var ShowcaseShowPage = React.createClass({
         <Layout>
           <CollectionPageHeader collection={this.state.collection} />
           <PageContent>
-            <ShowcaseTitleBar showcase={this.state.showcase} />
-            <ShowcaseShow showcase={this.state.showcase} />
+            <ShowcaseTitleBar height={showcaseTitleHeight} showcase={this.state.showcase} />
+            <ShowcaseShow height={this.state.height - showcaseTitleHeight} showcase={this.state.showcase} />
           </PageContent>
         </Layout>
       </div>

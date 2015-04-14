@@ -1,52 +1,26 @@
 //app/assets/javascripts/components/ShowcaseShow.jsx
 var React = require('react');
 
-var maxHeight = 860;
-var minHeight = 120;
-var scrollPadding = 41;
-var titleBarHeight = 39;
+var scrollPadding = 40;
 
 var ShowcaseShow = React.createClass({
   displayName: 'Showcase Show',
   propTypes: {
     showcase: React.PropTypes.object,
-  },
-
-  getInitialState: function() {
-    return {
-      height: this.getHeight(),
-    };
+    height: React.PropTypes.number.isRequired,
   },
 
   componentDidUpdate: function() {
     if (this.props.showcase && !this.scrollbarInitialized) {
-      setTimeout(this.handleResize, 100);
       setTimeout(this.initializeScrollbar, 1000);
     }
     this.checkHash();
+    this.updateScrollbar();
   },
 
   initializeScrollbar: function() {
     this.scrollbarInitialized = true;
     $('#showcase-outer').perfectScrollbar({useBothWheelAxes: false, suppressScrollY: true });
-  },
-
-  getHeight: function() {
-    var top = $('#banner').outerHeight() + titleBarHeight;
-    var footerHeight = $('#footer').outerHeight();
-    var height = $(window).height() - top - footerHeight;
-    if (height > maxHeight) {
-      height = maxHeight;
-    } else if (height < minHeight) {
-      height = minHeight;
-    }
-    return height;
-  },
-
-  handleResize: function() {
-    this.setState({
-      height: this.getHeight()
-    }, this.updateScrollbar);
   },
 
   updateScrollbar: function() {
@@ -57,13 +31,14 @@ var ShowcaseShow = React.createClass({
 
   componentDidMount: function() {
     window.addEventListener("hashchange", this.checkHash, false);
-    window.addEventListener('resize', this.handleResize, false);
+    // window.addEventListener('resize', this.handleResize, false);
     this.checkHash();
   },
 
   componentWillUnmount: function() {
     window.removeEventListener('hashchange', this.checkHash);
-    window.removeEventListener('resize', this.handleResize);
+    // .rwindowemoveEventListener('resize', this.handleResize);
+    document.body.style.backgroundImage = null;
   },
 
   checkHash: function() {
@@ -76,7 +51,7 @@ var ShowcaseShow = React.createClass({
   styleInner: function() {
     return {
       position: 'absolute',
-      height: (this.state.height - scrollPadding) + 'px',
+      height: (this.props.height - scrollPadding) + 'px',
       top: 0,
       left: 0,
       overflowX: 'visible',
@@ -91,7 +66,7 @@ var ShowcaseShow = React.createClass({
       overflowX: 'hidden',
       whiteSpace: 'nowrap',
       boxSizing: 'border-box',
-      height: this.state.height + 'px',
+      height: this.props.height + 'px',
       top: 0,
       left: 0,
 
@@ -104,14 +79,10 @@ var ShowcaseShow = React.createClass({
     };
   },
 
-
   componentWillMount: function(){
     document.body.className = "showcase-bg";
+  },
 
-  },
-  componentWillUnmount: function(){
-      document.body.style.backgroundImage = null;
-  },
   onScroll: function() {
     var x = $("#sections-content-inner").offset().left;
     var dx = $( window ).width() * .75;
@@ -125,8 +96,8 @@ var ShowcaseShow = React.createClass({
       return (
         <div id="showcase-outer" style={this.styleOuter()} onScroll={this.onScroll}>
           <div id="showcase-inner" style={this.styleInner()}>
-            <ShowcaseEditorTitle height={this.state.height - scrollPadding} showcase={this.props.showcase} />
-            <SectionsList height={this.state.height - scrollPadding} sections={this.props.showcase.sections} />
+            <ShowcaseEditorTitle height={this.props.height - scrollPadding} showcase={this.props.showcase} />
+            <SectionsList height={this.props.height - scrollPadding} sections={this.props.showcase.sections} />
           </div>
         </div>
       )
