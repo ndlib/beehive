@@ -19,7 +19,7 @@ var Section = React.createClass({
   linkStyle: function() {
     return {
       display: 'block',
-      height: '100%',
+      height: this.props.height + 'px',
       color: 'inherit',
     };
   },
@@ -65,8 +65,8 @@ var Section = React.createClass({
     return (
       <section className="section" style={this.style()} id={this.sectionName()} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} >
       <a href={this.targetID()} data-toggle="modal" data-target={this.targetID()} style={this.linkStyle()} onClick={this.onClick}>
-        <SectionDescription section={this.props.section} />
-        <SectionImage section={this.props.section}/>
+        <SectionDescription height={this.props.height} section={this.props.section} />
+        <SectionImage height={this.props.height} section={this.props.section}/>
         </a>
       </section>
     );
