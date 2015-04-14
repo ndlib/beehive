@@ -30,7 +30,6 @@ var Modal = React.createClass({
   },
 
   setModalStyles: function(e) {
-    console.log(e);
     this.modalElement.find('.modal-dialog').css(this.getStyleValues());
   },
 

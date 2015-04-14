@@ -10,42 +10,55 @@ var SectionShow = React.createClass({
   },
 
   componentDidMount: function() {
-    var id = '#modal-' + this.props.section.id;
-    $(id + ' .col-md-12').perfectScrollbar({useBothWheelAxes: true, suppressScrollX: true });
-
-    // bind keypress to modal when it is shown
-    $(id).on('show.bs.modal', {props: this.props}, function (event) {
-      $(document).bind('keyup', {props: event.data.props},
-        function(event) {
-          // if left or up arrow
-          if(event.keyCode == 37 || event.keyCode == 38) {
-            if(event.data.props.previousSection) {
-              $('#modal-' + event.data.props.section.id).modal('hide');
-              $('#modal-' + event.data.props.previousSection).modal('show');
-              window.location.hash = 'modal-' +  event.data.props.previousSection;
-            }
-          }
-          // if right or down arrow
-          else if(event.keyCode == 39 || event.keyCode == 40) {
-            if(event.data.props.nextSection) {
-              $('#modal-' + event.data.props.section.id).modal('hide');
-              $('#modal-' + event.data.props.nextSection).modal('show');
-               window.location.hash = 'modal-' +  event.data.props.nextSection;
-            }
-          }
-        }
-      );
-    });
-    // remove keybindings when modal hidden
-    $(id).on('hide.bs.modal', function () {
-      $(document).unbind('keyup');
-    });
+    var modal = $('#modal-' + this.props.section.id);
+    modal.on('show.bs.modal', this.modalShow);
+    modal.on('shown.bs.modal', this.modalShown);
+    modal.on('hide.bs.modal', this.modalHide);
   },
 
-  textStyle: function(h) {
-    return {
-      overflowY: "hidden",
-      height: h,
+  componentDidUpdate: function() {
+    this.setDescriptionHeight();
+  },
+
+  modalShow: function(event) {
+    $(document).bind('keyup', this.modalKeyup);
+  },
+
+  modalShown: function(event) {
+    this.modalVisible = true;
+    this.setDescriptionHeight();
+  },
+
+  modalKeyup: function(event) {
+    // bind keypress to modal when it is shown
+    if(event.keyCode == 37 || event.keyCode == 38) {
+      if(this.props.previousSection) {
+        $('#modal-' + this.props.section.id).modal('hide');
+        $('#modal-' + this.props.previousSection).modal('show');
+        window.location.hash = 'modal-' +  this.props.previousSection;
+      }
+    }
+    // if right or down arrow
+    else if(event.keyCode == 39 || event.keyCode == 40) {
+      if(this.props.nextSection) {
+        $('#modal-' + this.props.section.id).modal('hide');
+        $('#modal-' + this.props.nextSection).modal('show');
+         window.location.hash = 'modal-' +  this.props.nextSection;
+      }
+    }
+  },
+
+  modalHide: function(event) {
+    this.modalVisible = false;
+    $(document).off('keyup', this.modalKeyup);
+  },
+
+  setDescriptionHeight: function() {
+    if (this.modalVisible) {
+      var description = $('#modal-' + this.props.section.id).find('.section-description');
+      if (description.length > 0) {
+        description.height($(window).height() - description.offset().top - $('#banner').height());
+      }
     }
   },
 
@@ -78,15 +91,14 @@ var SectionShow = React.createClass({
       }
       else {
         // layout for section without item
-        var textHeight = $(window).height() - $('#banner').height() - $(".modal-body h2").height() - $("footer").height() - 60;
         return (
           <div>
             <h2>{this.props.section.title}</h2>
             {prev}
             {next}
             <div className="row">
-              <div className="col-md-12" style={this.textStyle(textHeight)}>
-                <div className="section-description" >
+              <div className="col-md-12">
+                <div className="section-description" ref="sectionDescription" style={{overflow: 'scroll'}}>
                   <div dangerouslySetInnerHTML={{__html: this.props.section.description}} />
                 </div>
               </div>
