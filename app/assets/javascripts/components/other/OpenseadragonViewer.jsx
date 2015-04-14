@@ -38,7 +38,7 @@ var OpenseadragonViewer = React.createClass({
     } else {
       this.fullPageOff();
     }
-    return false;
+    return true;
   },
 
   fullPageOn: function() {

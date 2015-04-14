@@ -8,10 +8,6 @@ var SectionShowDescription = React.createClass({
     height: React.PropTypes.number,
   },
 
-  componentDidUpdate: function() {
-    this.setDescriptionHeight();
-  },
-
   styles: function() {
     if (this.props.height) {
       return {
