@@ -7,11 +7,12 @@ var SectionModal = React.createClass({
     section: React.PropTypes.object.isRequired,
     previousSection: React.PropTypes.string,
     nextSection: React.PropTypes.string,
+    height: React.PropTypes.number.isRequired,
   },
 
   sectionPage: function() {
     return (
-       <SectionShow section={this.props.section} previousSection={this.props.previousSection} nextSection={this.props.nextSection} />
+       <SectionShow height={this.props.height} section={this.props.section} previousSection={this.props.previousSection} nextSection={this.props.nextSection} />
     );
   },
 
@@ -22,7 +23,7 @@ var SectionModal = React.createClass({
   render: function () {
     var sectionPage = this.sectionPage();
     return (
-      <Modal id={this.modalID()} content={sectionPage} />
+      <Modal height={this.props.height} id={this.modalID()} content={sectionPage} />
     );
   }
 });

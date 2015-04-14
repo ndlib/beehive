@@ -1,7 +1,7 @@
 //app/assets/javascripts/components/ShowcaseShowPage.jsx
 var React = require('react');
 
-var maxHeight = 900;
+var maxShowcaseHeight = 840;
 var minHeight = 160;
 var showcaseTitleHeight = 40;
 
@@ -25,9 +25,7 @@ var ShowcaseShowPage = React.createClass({
     var top = ($('#banner').outerHeight() || 0);
     var footerHeight = ($('#footer').outerHeight() || 0);
     var height = $(window).height() - top - footerHeight;
-    if (height > maxHeight) {
-      height = maxHeight;
-    } else if (height < minHeight) {
+    if (height < minHeight) {
       height = minHeight;
     }
     return height;
@@ -53,7 +51,7 @@ var ShowcaseShowPage = React.createClass({
   },
   modals: function() {
     if(this.state.showcase) {
-      return (<SectionsModalList sections={this.state.showcase.sections} />);
+      return (<SectionsModalList height={this.state.height} sections={this.state.showcase.sections} />);
     }
     else {
       return (<span />);
@@ -75,6 +73,10 @@ var ShowcaseShowPage = React.createClass({
   },
 
   render: function() {
+    var showcaseHeight = this.state.height - showcaseTitleHeight;
+    if (showcaseHeight > maxShowcaseHeight) {
+      showcaseHeight = maxShowcaseHeight;
+    }
     return (
       <div>
         {this.modals()}
@@ -82,7 +84,7 @@ var ShowcaseShowPage = React.createClass({
           <CollectionPageHeader collection={this.state.collection} />
           <PageContent>
             <ShowcaseTitleBar height={showcaseTitleHeight} showcase={this.state.showcase} />
-            <ShowcaseShow height={this.state.height - showcaseTitleHeight} showcase={this.state.showcase} />
+            <ShowcaseShow height={showcaseHeight} showcase={this.state.showcase} />
           </PageContent>
         </Layout>
       </div>

@@ -52,6 +52,7 @@ SectionsList = require('./components/section/SectionsList');
 SectionsListItem = require('./components/section/SectionsListItem');
 SectionLink = require('./components/section/SectionLink');
 SectionShow = require('./components/section/SectionShow');
+SectionShowDescription = require('./components/section/SectionShowDescription');
 Section = require('./components/section/Section');
 SectionCaption = require('./components/section/SectionCaption');
 SectionDescription = require('./components/section/SectionDescription');

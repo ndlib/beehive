@@ -7,26 +7,17 @@ var SectionShow = React.createClass({
     section: React.PropTypes.object,
     previousSection: React.PropTypes.string,
     nextSection: React.PropTypes.string,
+    height: React.PropTypes.number,
   },
 
   componentDidMount: function() {
     var modal = $('#modal-' + this.props.section.id);
     modal.on('show.bs.modal', this.modalShow);
-    modal.on('shown.bs.modal', this.modalShown);
     modal.on('hide.bs.modal', this.modalHide);
-  },
-
-  componentDidUpdate: function() {
-    this.setDescriptionHeight();
   },
 
   modalShow: function(event) {
     $(document).bind('keyup', this.modalKeyup);
-  },
-
-  modalShown: function(event) {
-    this.modalVisible = true;
-    this.setDescriptionHeight();
   },
 
   modalKeyup: function(event) {
@@ -51,15 +42,6 @@ var SectionShow = React.createClass({
   modalHide: function(event) {
     this.modalVisible = false;
     $(document).off('keyup', this.modalKeyup);
-  },
-
-  setDescriptionHeight: function() {
-    if (this.modalVisible) {
-      var description = $('#modal-' + this.props.section.id).find('.section-description');
-      if (description.length > 0) {
-        description.height($(window).height() - description.offset().top - $('#banner').height());
-      }
-    }
   },
 
   render: function() {
@@ -93,16 +75,9 @@ var SectionShow = React.createClass({
         // layout for section without item
         return (
           <div>
-            <h2>{this.props.section.title}</h2>
             {prev}
             {next}
-            <div className="row">
-              <div className="col-md-12">
-                <div className="section-description" ref="sectionDescription" style={{overflow: 'scroll'}}>
-                  <div dangerouslySetInnerHTML={{__html: this.props.section.description}} />
-                </div>
-              </div>
-            </div>
+            <SectionShowDescription height={this.props.height} section={this.props.section} />
           </div>
         );
       }
