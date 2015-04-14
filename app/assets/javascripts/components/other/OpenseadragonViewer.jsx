@@ -96,7 +96,6 @@ var OpenseadragonViewer = React.createClass({
     var rightID = 'right-' + this.props.containerID;
 
     OpenSeadragon.setString("Tooltips.Home","Reset image");
-    console.log(this.props.showNavigator);
     return {
       id: this.props.containerID,
       element: this.getDOMNode(),

@@ -2,10 +2,11 @@
 var React = require('react');
 
 var maxShowcaseHeight = 840;
-var minHeight = 160;
 var showcaseTitleHeight = 40;
 
 var ShowcaseShowPage = React.createClass({
+  mixins: [PageHeightMixin],
+
   propTypes: {
     collection: React.PropTypes.oneOfType([
       React.PropTypes.string,
@@ -17,24 +18,7 @@ var ShowcaseShowPage = React.createClass({
     return {
       collection: {},
       showcase: null,
-      height: this.getHeight(),
     };
-  },
-
-  getHeight: function() {
-    var top = ($('#banner').outerHeight() || 0);
-    var footerHeight = ($('#footer').outerHeight() || 0);
-    var height = $(window).height() - top - footerHeight;
-    if (height < minHeight) {
-      height = minHeight;
-    }
-    return height;
-  },
-
-  handleResize: function() {
-    this.setState({
-      height: this.getHeight(),
-    });
   },
 
   loadRemoteCollection: function() {
@@ -64,12 +48,6 @@ var ShowcaseShowPage = React.createClass({
     } else {
       this.loadRemoteCollection()
     }
-    window.addEventListener('resize', this.handleResize, false);
-    this.handleResize();
-  },
-
-  componentWillUnmount: function() {
-    window.removeEventListener('resize', this.handleResize);
   },
 
   render: function() {

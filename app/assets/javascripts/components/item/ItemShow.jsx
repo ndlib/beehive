@@ -119,22 +119,24 @@ var ItemShow = React.createClass({
         next = (<NextModal id={this.props.nextItem} />);
       }
       return (
-        <div className="item-detail" style={this.outerStyles()}>
-
-          <div style={this.headerStyles()}>
-            <h2>{this.props.item.title}</h2>
-          </div>
-          <button className="btn btn-default btn-raised pull-right btn-details" onClick={this.toggleDetails} style={this.detailsButtonStyle()}>
-            <i className={this.state.showDetails ? "mdi-navigation-unfold-less" : "mdi-navigation-unfold-more"}></i>
-            Details
-          </button>
+        <div>
           {prev}
           {next}
-          <div className="details" style={this.detailsStyle()}>
-            <Details item={this.props.item} additionalDetails={this.props.additionalDetails} />
-          </div>
-          <div className="item-detail-zoom" style={this.zoomStyles()}>
-            <OpenseadragonViewer image={this.props.item.image} containerID={this.props.item.id} height={this.props.height} toolbarTop={50} toolbarLeft={40} />
+          <div className="item-detail" style={this.outerStyles()}>
+
+            <div style={this.headerStyles()}>
+              <h2>{this.props.item.title}</h2>
+            </div>
+            <button className="btn btn-default btn-raised pull-right btn-details" onClick={this.toggleDetails} style={this.detailsButtonStyle()}>
+              <i className={this.state.showDetails ? "mdi-navigation-unfold-less" : "mdi-navigation-unfold-more"}></i>
+              Details
+            </button>
+            <div className="details" style={this.detailsStyle()}>
+              <Details item={this.props.item} additionalDetails={this.props.additionalDetails} />
+            </div>
+            <div className="item-detail-zoom" style={this.zoomStyles()}>
+              <OpenseadragonViewer image={this.props.item.image} containerID={this.props.item.id} height={this.props.height} toolbarTop={50} toolbarLeft={40} />
+            </div>
           </div>
         </div>
       );

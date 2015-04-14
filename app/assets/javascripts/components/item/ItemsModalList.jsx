@@ -6,6 +6,7 @@ var ItemsModalList = React.createClass({
 
   propTypes: {
     items: React.PropTypes.array.isRequired,
+    height: React.PropTypes.number.isRequired,
   },
 
   render: function() {
@@ -18,10 +19,10 @@ var ItemsModalList = React.createClass({
         var previousNode = modalNodeIDs[index - 1];
         var nextNode = modalNodeIDs[index + 1];
         nodes.push((
-          <ItemModal item={item} previousItem={previousNode} nextItem={nextNode} />
+          <ItemModal height={this.props.height} item={item} previousItem={previousNode} nextItem={nextNode} />
         ));
         return nodes;
-      });
+      }.bind(this));
 
       return (
         <div id="items-modals" className="items-modals">
