@@ -9,10 +9,12 @@ var Modal = React.createClass({
     content: React.PropTypes.object.isRequired,
   },
 
-  setStyle: function(h) {
+  getStyleValues: function() {
+    var bannerHeight = $('#banner').outerHeight();
+    var footerHeight = $('#footer').outerHeight();
     return {
-      height: h,
-      marginTop: $('#banner').height(),
+      height: $(window).height() - bannerHeight - footerHeight,
+      marginTop: bannerHeight,
     }
   },
 
@@ -27,12 +29,24 @@ var Modal = React.createClass({
     }
   },
 
-  render: function () {
-    var modalHeight = $(window).height() - $('#banner').height();
+  setModalStyles: function(e) {
+    console.log(e);
+    this.modalElement.find('.modal-dialog').css(this.getStyleValues());
+  },
 
+  componentDidMount: function() {
+    this.modalElement = $('#' + this.props.id)
+    this.modalElement.on('show.bs.modal', this.setModalStyles);
+  },
+
+  componentWillUnmount: function() {
+    this.modalElement.off('show.bs.modal', this.setModalStyles);
+  },
+
+  render: function () {
     return (
       <div className="modal" id={this.props.id} tabIndex="-1"  onKeyDown={this.onKeyDown}>
-        <div className="modal-dialog modal-lg" style={this.setStyle(modalHeight)}>
+        <div className="modal-dialog modal-lg">
           <div className="modal-content">
             <div className="modal-header">
               <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={this.removeHash}><span aria-hidden="true">&times;</span></button>
