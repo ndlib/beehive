@@ -45,11 +45,8 @@ var SectionShow = React.createClass({
   },
 
   render: function() {
-    var item = "";
-    var prev = "";
-    var next = "";
+    var prev, next;
     if (this.props.section) {
-
       if (this.props.previousSection) {
         prev = (<PreviousModal id={this.props.previousSection} />);
       }
@@ -57,21 +54,15 @@ var SectionShow = React.createClass({
         next = (<NextModal id={this.props.nextSection} />);
       }
       if (this.props.section.item) {
-        item = (<ItemShow item={this.props.section.item} additionalDetails={this.props.section.description}/>);
         // layout for section with item
         return (
-        <div>
-          {prev}
-          {next}
-          <div className="row">
-            <div className="col-md-12">
-              {item}
-            </div>
+          <div>
+            {prev}
+            {next}
+            <ItemShow height={this.props.height} item={this.props.section.item} additionalDetails={this.props.section.description}/>
           </div>
-        </div>
-      );
-      }
-      else {
+        );
+      } else {
         // layout for section without item
         return (
           <div>
