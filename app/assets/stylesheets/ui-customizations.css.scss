@@ -336,7 +336,6 @@ div.dataTables_filter {
 
 #showcase-outer {
 	position:relative;
-
 }
 
 .showcase-title-page, .sections-content-inner {
@@ -580,7 +579,10 @@ div.dataTables_filter {
 }
 
 
-
+.container-fluid.content {
+	background-image:linear-gradient(to bottom, rgba(0,0,0,.6) 0%,rgba(0,0,0,0) 45%,rgba(0,0,0,0) 100%);
+	background-repeat:repeat-x;
+}
 
 .hc-image-zoom-button-outer .btn {
 	padding:8px;
@@ -610,12 +612,15 @@ div.dataTables_filter {
 	}
 	h2 {
 		text-align: center;
-		margin-top:15%;
+		margin-top:6%;
 		font-size: 50px;
 		text-shadow: 2px 2px 3px #333;
 		text-transform: uppercase;
 		font-family: GPCMed;
 		white-space: normal;
+		border:solid 1px #fff;
+		border-width:1px 0;
+		padding:2% 0 ;
 	}
 	.showcase-title-description {
 		text-align: center;
@@ -647,14 +652,17 @@ div.dataTables_filter {
 
 .section-container-text {
 
-	font-size: 15px;
+	font-size: 14px;
 	line-height: 25px;
 	color: lightgray;
 	overflow-x:hidden !important;
 	padding:8px 15px !important;
 	background:rgba(51,51,51,.85);
 	border:solid 3px #fff;
-
+	h2 {
+		font-size:24px;
+		font-weight: bold;
+	}
 
 }
 
@@ -674,6 +682,32 @@ div.dataTables_filter {
 		background: image_url('transcript.png');
 		background-size:cover;
 	}
+}
+
+.section.pullquote .section-container-text {
+	font-size:34px;
+	line-height:1.5em;
+	font-family:serif;
+}
+
+.section.title .section-container-text {
+	h2 {
+		font-size:45px;
+		font-weight: normal;
+		text-align: center;
+	}
+
+	hr {
+
+	}
+
+	h3 {
+		text-align: center;
+	}
+}
+
+.section.medium .section-container-text {
+	font-size:20px;
 }
 
 .section-description {
