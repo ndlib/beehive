@@ -339,10 +339,6 @@ div.dataTables_filter {
 
 }
 
-.showcase-title-page, .sections-content-inner {
-	height:95% !important;
-}
-
 #footer {
 	background-color: #2b2a2a;
 	background-image:linear-gradient(to top, #2b2a2a 0%, #393838 140%);
@@ -610,7 +606,6 @@ div.dataTables_filter {
 	}
 	h2 {
 		text-align: center;
-		margin-top:15%;
 		font-size: 50px;
 		text-shadow: 2px 2px 3px #333;
 		text-transform: uppercase;
@@ -875,6 +870,7 @@ body.modal-open {
 	width:50%;
 	margin-left:25%;
 	margin-right:25%;
+  margin-bottom: 10px;
 	.ps-scrollbar-x {
 		height:15px;
 	}

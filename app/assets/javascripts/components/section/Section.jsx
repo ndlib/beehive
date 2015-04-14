@@ -7,6 +7,7 @@ var Section = React.createClass({
 
   propTypes: {
     section: React.PropTypes.object.isRequired,
+    height: React.PropTypes.number.isRequired,
   },
 
   getInitialState: function() {
@@ -31,7 +32,7 @@ var Section = React.createClass({
       position: 'relative',
       marginLeft: '10px',
       marginRight: '10px',
-      height: '100%',
+      height: this.props.height + 'px',
     };
   },
 
