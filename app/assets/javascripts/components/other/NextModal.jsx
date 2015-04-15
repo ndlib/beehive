@@ -11,7 +11,7 @@ var NextModal = React.createClass({
     var id = this.props.id;
     return (
     <a href="#" onClick={this.clickAction} className="next-button half-circle-button">
-      <div className="direction">&rsaquo;</div>
+      <i className="mdi-navigation-chevron-right"></i>
     </a>
     );
   }

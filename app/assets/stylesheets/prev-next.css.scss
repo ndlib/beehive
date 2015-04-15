@@ -1,14 +1,19 @@
+$circleSize: 100px;
+$circleOffset: $circleSize / 2 * -1;
+$iconSize: 40px;
+$iconTop: ($circleSize - $iconSize) / 2;
+$iconOffset: ($circleSize/2) - $iconSize;
+
 .half-circle-button {
   border-radius: 50%;
   display: inline-block;
   margin: 0;
-  width: 100px;
-  height: 100px;
+  width: $circleSize;
+  height: $circleSize;
   background: rgba(255, 255, 255, 0.4);
   color: black;
   text-align: center;
-  line-height: 100px;
-  font-size: 50px;
+  line-height: $circleSize;
   position: absolute;
   top: 300px;
   z-index: 100;
@@ -18,21 +23,27 @@
     background-color: rgba(255, 255, 255, 0.6);
     color: black;
   }
+
+  i {
+    position: absolute;
+    top: $iconTop;
+    font-size: $iconSize;
+  }
 }
 
 .next-button {
-  right: -60px;
+  right: $circleOffset;
 
-  .direction {
-    margin-left: -50px;
+  i {
+    left: $iconOffset;
   }
 }
 
 .prev-button {
-  left: -60px;
+  left: $circleOffset;
 
-  .direction {
-    margin-right: -50px;
+  i {
+    right: $iconOffset;
   }
 }
 
