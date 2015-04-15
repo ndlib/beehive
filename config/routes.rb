@@ -31,5 +31,7 @@ Rails.application.routes.draw do
 
   end
 
+  resources :styleguide
+
 
 end
