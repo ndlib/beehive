@@ -135,7 +135,7 @@ var ItemShow = React.createClass({
               <Details item={this.props.item} additionalDetails={this.props.additionalDetails} />
             </div>
             <div className="item-detail-zoom" style={this.zoomStyles()}>
-              <OpenseadragonViewer image={this.props.item.image} containerID={this.props.item.id} height={this.props.height} toolbarTop={50} toolbarLeft={40} />
+              <OpenseadragonViewer image={this.props.item.image} containerID={this.props.item.id} height={this.props.height} toolbarTop={60} toolbarLeft={40} showFullPageControl={false} />
             </div>
           </div>
         </div>
