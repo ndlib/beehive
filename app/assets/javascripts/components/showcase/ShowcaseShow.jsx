@@ -7,13 +7,32 @@ var ShowcaseShow = React.createClass({
     showcase: React.PropTypes.object,
   },
   componentDidUpdate: function() {
-    $('#showcase-outer').perfectScrollbar({useBothWheelAxes: false, suppressScrollY: true });
+    if (this.props.showcase && !this.scrollbarInitialized) {
+      setTimeout(this.initializeScrollbar, 1000);
+    }
     this.checkHash();
+  },
+
+  initializeScrollbar: function() {
+    this.scrollbarInitialized = true;
+    $('#showcase-outer').perfectScrollbar({useBothWheelAxes: false, suppressScrollY: true });
+  },
+
+  updateScrollbar: function() {
+    if (this.scrollbarInitialized) {
+      $('#showcase-outer').perfectScrollbar('update');
+    }
   },
 
   componentDidMount: function() {
     window.addEventListener("hashchange", this.checkHash, false);
+    window.addEventListener('resize', this.updateScrollbar, false);
     this.checkHash();
+  },
+
+  componentWillUnmount: function() {
+    window.removeEventListener('hashchange', this.checkHash);
+    window.removeEventListener('resize', this.updateScrollbar);
   },
 
   checkHash: function() {
@@ -41,7 +60,7 @@ var ShowcaseShow = React.createClass({
       overflowX: 'hidden',
       whiteSpace: 'nowrap',
       boxSizing: 'border-box',
-      height: '500px',
+      height: '520px',
       top: 0,
       left: 0,
 
@@ -55,19 +74,25 @@ var ShowcaseShow = React.createClass({
   },
 
 
-componentWillMount: function(){
-  document.body.className = "showcase-bg";
+  componentWillMount: function(){
+    document.body.className = "showcase-bg";
 
-},
-componentWillUnmount: function(){
-    document.body.style.backgroundImage = null;
-},
+  },
+  componentWillUnmount: function(){
+      document.body.style.backgroundImage = null;
+  },
+  onScroll: function() {
+    var x = $("#sections-content-inner").offset().left;
+    var dx = $( window ).width() * .75;
+    var opacity = 1 - x/dx;
+    $("#showcases-title-bar").css("opacity", opacity);
+  },
 
   render: function() {
     if (this.props.showcase) {
       document.body.style.backgroundImage = "url(" + this.props.showcase.image.contentUrl + ")";
       return (
-        <div id="showcase-outer" style={this.styleOuter()} onWheel={this.onWheel}>
+        <div id="showcase-outer" style={this.styleOuter()} onScroll={this.onScroll}>
           <div id="showcase-inner" style={this.styleInner()}>
             <ShowcaseEditorTitle showcase={this.props.showcase} />
             <SectionsList sections={this.props.showcase.sections} />

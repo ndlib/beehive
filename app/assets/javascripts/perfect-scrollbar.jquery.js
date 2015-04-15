@@ -1,3 +1,4 @@
+/* perfect-scrollbar v0.6.2 */
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 /* Copyright (c) 2015 Hyunje Alex Jun and other contributors
  * Licensed under the MIT License
@@ -166,7 +167,9 @@ exports.remove = function (element) {
   if (typeof element.remove !== 'undefined') {
     element.remove();
   } else {
-    element.parentNode.removeChild(element);
+    if (element.parentNode) {
+      element.parentNode.removeChild(element);
+    }
   }
 };
 
@@ -432,8 +435,8 @@ function bindClickRailHandler(element, i) {
   i.event.bind(i.scrollbarY, 'click', stopPropagation);
   i.event.bind(i.scrollbarYRail, 'click', function (e) {
     var halfOfScrollbarLength = h.toInt(i.scrollbarYHeight / 2);
-    var positionTop = e.pageY - pageOffset(i.scrollbarYRail).top - halfOfScrollbarLength;
-    var maxPositionTop = i.containerHeight - i.scrollbarYHeight;
+    var positionTop = i.railYRatio * (e.pageY - window.scrollY - pageOffset(i.scrollbarYRail).top - halfOfScrollbarLength);
+    var maxPositionTop = i.railYRatio * (i.railYHeight - i.scrollbarYHeight);
     var positionRatio = positionTop / maxPositionTop;
 
     if (positionRatio < 0) {
@@ -449,9 +452,8 @@ function bindClickRailHandler(element, i) {
   i.event.bind(i.scrollbarX, 'click', stopPropagation);
   i.event.bind(i.scrollbarXRail, 'click', function (e) {
     var halfOfScrollbarLength = h.toInt(i.scrollbarXWidth / 2);
-    var positionLeft = e.pageX - pageOffset(i.scrollbarXRail).left - halfOfScrollbarLength;
-    //console.log(e.pageX, i.scrollbarXRail.offsetLeft);
-    var maxPositionLeft = i.containerWidth - i.scrollbarXWidth;
+    var positionLeft = i.railXRatio * (e.pageX - window.scrollX - pageOffset(i.scrollbarXRail).left - halfOfScrollbarLength);
+    var maxPositionLeft = i.railXRatio * (i.railXWidth - i.scrollbarXWidth);
     var positionRatio = positionLeft / maxPositionLeft;
 
     if (positionRatio < 0) {
@@ -486,8 +488,8 @@ function bindMouseScrollXHandler(element, i) {
   var currentPageX = null;
 
   function updateScrollLeft(deltaX) {
-    var newLeft = currentLeft + deltaX;
-    var maxLeft = i.containerWidth - i.scrollbarXWidth;
+    var newLeft = currentLeft + (deltaX * i.railXRatio);
+    var maxLeft = i.scrollbarXRail.getBoundingClientRect().left + (i.railXRatio * (i.railXWidth - i.scrollbarXWidth));
 
     if (newLeft < 0) {
       i.scrollbarXLeft = 0;
@@ -497,7 +499,7 @@ function bindMouseScrollXHandler(element, i) {
       i.scrollbarXLeft = newLeft;
     }
 
-    var scrollLeft = h.toInt(i.scrollbarXLeft * (i.contentWidth - i.containerWidth) / (i.containerWidth - i.scrollbarXWidth));
+    var scrollLeft = h.toInt(i.scrollbarXLeft * (i.contentWidth - i.containerWidth) / (i.containerWidth - (i.railXRatio * i.scrollbarXWidth)));
     element.scrollLeft = scrollLeft;
   }
 
@@ -515,7 +517,7 @@ function bindMouseScrollXHandler(element, i) {
 
   i.event.bind(i.scrollbarX, 'mousedown', function (e) {
     currentPageX = e.pageX;
-    currentLeft = h.toInt(d.css(i.scrollbarX, 'left'));
+    currentLeft = h.toInt(d.css(i.scrollbarX, 'left')) * i.railXRatio;
     h.startScrolling(element, 'x');
 
     i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);
@@ -531,8 +533,8 @@ function bindMouseScrollYHandler(element, i) {
   var currentPageY = null;
 
   function updateScrollTop(deltaY) {
-    var newTop = currentTop + deltaY;
-    var maxTop = i.containerHeight - i.scrollbarYHeight;
+    var newTop = currentTop + (deltaY * i.railYRatio);
+    var maxTop = i.scrollbarYRail.getBoundingClientRect().top + (i.railYRatio * (i.railYHeight - i.scrollbarYHeight));
 
     if (newTop < 0) {
       i.scrollbarYTop = 0;
@@ -542,7 +544,7 @@ function bindMouseScrollYHandler(element, i) {
       i.scrollbarYTop = newTop;
     }
 
-    var scrollTop = h.toInt(i.scrollbarYTop * (i.contentHeight - i.containerHeight) / (i.containerHeight - i.scrollbarYHeight));
+    var scrollTop = h.toInt(i.scrollbarYTop * (i.contentHeight - i.containerHeight) / (i.containerHeight - (i.railYRatio * i.scrollbarYHeight)));
     element.scrollTop = scrollTop;
   }
 
@@ -560,7 +562,7 @@ function bindMouseScrollYHandler(element, i) {
 
   i.event.bind(i.scrollbarY, 'mousedown', function (e) {
     currentPageY = e.pageY;
-    currentTop = h.toInt(d.css(i.scrollbarY, 'top'));
+    currentTop = h.toInt(d.css(i.scrollbarY, 'top')) * i.railYRatio;
     h.startScrolling(element, 'y');
 
     i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);
@@ -758,6 +760,27 @@ function bindMouseWheelHandler(element, i) {
     return [deltaX, deltaY];
   }
 
+  function shouldBeConsumedByTextarea(deltaX, deltaY) {
+    var hoveredTextarea = element.querySelector('textarea:hover');
+    if (hoveredTextarea) {
+      var maxScrollTop = hoveredTextarea.scrollHeight - hoveredTextarea.clientHeight;
+      if (maxScrollTop > 0) {
+        if (!(hoveredTextarea.scrollTop === 0 && deltaY > 0) &&
+            !(hoveredTextarea.scrollTop === maxScrollTop && deltaY < 0)) {
+          return true;
+        }
+      }
+      var maxScrollLeft = hoveredTextarea.scrollLeft - hoveredTextarea.clientWidth;
+      if (maxScrollLeft > 0) {
+        if (!(hoveredTextarea.scrollLeft === 0 && deltaX < 0) &&
+            !(hoveredTextarea.scrollLeft === maxScrollLeft && deltaX > 0)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
   function mousewheelHandler(e) {
     // FIXME: this is a quick fix for the select problem in FF and IE.
     // If there comes an effective way to deal with the problem,
@@ -771,8 +794,12 @@ function bindMouseWheelHandler(element, i) {
     var deltaX = delta[0];
     var deltaY = delta[1];
 
+    if (shouldBeConsumedByTextarea(deltaX, deltaY)) {
+      return;
+    }
+
     shouldPrevent = false;
-    if (i.settings.useBothWheelAxes) {
+    if (!i.settings.useBothWheelAxes) {
       // deltaX will only be used for horizontal scrolling and deltaY will
       // only be used for vertical scrolling - this is the default
       element.scrollTop = element.scrollTop - (deltaY * i.settings.wheelSpeed);
@@ -780,18 +807,18 @@ function bindMouseWheelHandler(element, i) {
     } else if (i.scrollbarYActive && !i.scrollbarXActive) {
       // only vertical scrollbar is active and useBothWheelAxes option is
       // active, so let's scroll vertical bar using both mouse wheel axes
-      if (Math.abs(deltaY) > Math.abs(deltaX)) {
+      if (deltaY) {
         element.scrollTop = element.scrollTop - (deltaY * i.settings.wheelSpeed);
-      } else if (Math.abs(deltaY) < Math.abs(deltaX)){
+      } else {
         element.scrollTop = element.scrollTop + (deltaX * i.settings.wheelSpeed);
       }
       shouldPrevent = true;
     } else if (i.scrollbarXActive && !i.scrollbarYActive) {
       // useBothWheelAxes and only horizontal bar is active, so use both
       // wheel axes for horizontal bar
-      if (Math.abs(deltaY) < Math.abs(deltaX)) {
+      if (deltaX) {
         element.scrollLeft = element.scrollLeft + (deltaX * i.settings.wheelSpeed);
-      } else if (Math.abs(deltaY) > Math.abs(deltaX)){
+      } else {
         element.scrollLeft = element.scrollLeft - (deltaY * i.settings.wheelSpeed);
       }
       shouldPrevent = true;
@@ -1205,8 +1232,12 @@ function Instance(element) {
   i.isScrollbarXUsingBottom = i.scrollbarXBottom === i.scrollbarXBottom; // !isNaN
   i.scrollbarXTop = i.isScrollbarXUsingBottom ? null : h.toInt(d.css(i.scrollbarXRail, 'top'));
   i.railBorderXWidth = h.toInt(d.css(i.scrollbarXRail, 'borderLeftWidth')) + h.toInt(d.css(i.scrollbarXRail, 'borderRightWidth'));
+  // Set rail to display:block to calculate margins
+  d.css(i.scrollbarXRail, 'display', 'block');
   i.railXMarginWidth = h.toInt(d.css(i.scrollbarXRail, 'marginLeft')) + h.toInt(d.css(i.scrollbarXRail, 'marginRight'));
+  d.css(i.scrollbarXRail, 'display', '');
   i.railXWidth = null;
+  i.railXRatio = null;
 
   i.scrollbarYRail = d.appendTo(d.e('div', 'ps-scrollbar-y-rail'), element);
   i.scrollbarY = d.appendTo(d.e('div', 'ps-scrollbar-y'), i.scrollbarYRail);
@@ -1218,8 +1249,11 @@ function Instance(element) {
   i.scrollbarYLeft = i.isScrollbarYUsingRight ? null : h.toInt(d.css(i.scrollbarYRail, 'left'));
   i.scrollbarYOuterWidth = i.isRtl ? h.outerWidth(i.scrollbarY) : null;
   i.railBorderYWidth = h.toInt(d.css(i.scrollbarYRail, 'borderTopWidth')) + h.toInt(d.css(i.scrollbarYRail, 'borderBottomWidth'));
+  d.css(i.scrollbarYRail, 'display', 'block');
   i.railYMarginHeight = h.toInt(d.css(i.scrollbarYRail, 'marginTop')) + h.toInt(d.css(i.scrollbarYRail, 'marginBottom'));
+  d.css(i.scrollbarYRail, 'display', '');
   i.railYHeight = null;
+  i.railYRatio = null;
 }
 
 function getId(element) {
@@ -1325,9 +1359,17 @@ module.exports = function (element) {
   i.contentWidth = element.scrollWidth;
   i.contentHeight = element.scrollHeight;
 
+  if (!element.contains(i.scrollbarXRail)) {
+    d.appendTo(i.scrollbarXRail, element);
+  }
+  if (!element.contains(i.scrollbarYRail)) {
+    d.appendTo(i.scrollbarYRail, element);
+  }
+
   if (!i.settings.suppressScrollX && i.containerWidth + i.settings.scrollXMarginOffset < i.contentWidth) {
     i.scrollbarXActive = true;
     i.railXWidth = i.containerWidth - i.railXMarginWidth;
+    i.railXRatio = i.containerWidth / i.railXWidth;
     i.scrollbarXWidth = getThumbSize(i, h.toInt(i.railXWidth * i.containerWidth / i.contentWidth));
     i.scrollbarXLeft = h.toInt(element.scrollLeft * (i.railXWidth - i.scrollbarXWidth) / (i.contentWidth - i.containerWidth));
   } else {
@@ -1340,6 +1382,7 @@ module.exports = function (element) {
   if (!i.settings.suppressScrollY && i.containerHeight + i.settings.scrollYMarginOffset < i.contentHeight) {
     i.scrollbarYActive = true;
     i.railYHeight = i.containerHeight - i.railYMarginHeight;
+    i.railYRatio = i.containerHeight / i.railYHeight;
     i.scrollbarYHeight = getThumbSize(i, h.toInt(i.railYHeight * i.containerHeight / i.contentHeight));
     i.scrollbarYTop = h.toInt(element.scrollTop * (i.railYHeight - i.scrollbarYHeight) / (i.contentHeight - i.containerHeight));
   } else {
@@ -1369,29 +1412,27 @@ module.exports = function (element) {
 'use strict';
 
 var d = require('../lib/dom')
-  , destroy = require('./destroy')
-  , initialize = require('./initialize')
+  , h = require('../lib/helper')
   , instances = require('./instances')
   , updateGeometry = require('./update-geometry');
 
 module.exports = function (element) {
   var i = instances.get(element);
 
-  if (!i.scrollbarXRail || !element.contains(i.scrollbarXRail) ||
-      !i.scrollbarYRail || !element.contains(i.scrollbarYRail)) {
-    // If there's something wrong in the plugin, re-initialise.
-    destroy(element);
-    initialize(element);
-  } else {
-    // Hide scrollbars not to affect scrollWidth and scrollHeight
-    d.css(i.scrollbarXRail, 'display', 'none');
-    d.css(i.scrollbarYRail, 'display', 'none');
+  // Recalculate rail margins
+  d.css(i.scrollbarXRail, 'display', 'block');
+  d.css(i.scrollbarYRail, 'display', 'block');
+  i.railXMarginWidth = h.toInt(d.css(i.scrollbarXRail, 'marginLeft')) + h.toInt(d.css(i.scrollbarXRail, 'marginRight'));
+  i.railYMarginHeight = h.toInt(d.css(i.scrollbarYRail, 'marginTop')) + h.toInt(d.css(i.scrollbarYRail, 'marginBottom'));
 
-    updateGeometry(element);
+  // Hide scrollbars not to affect scrollWidth and scrollHeight
+  d.css(i.scrollbarXRail, 'display', 'none');
+  d.css(i.scrollbarYRail, 'display', 'none');
 
-    d.css(i.scrollbarXRail, 'display', 'block');
-    d.css(i.scrollbarYRail, 'display', 'block');
-  }
+  updateGeometry(element);
+
+  d.css(i.scrollbarXRail, 'display', '');
+  d.css(i.scrollbarYRail, 'display', '');
 };
 
-},{"../lib/dom":3,"./destroy":9,"./initialize":17,"./instances":18,"./update-geometry":19}]},{},[1]);
+},{"../lib/dom":3,"../lib/helper":6,"./instances":18,"./update-geometry":19}]},{},[1]);
