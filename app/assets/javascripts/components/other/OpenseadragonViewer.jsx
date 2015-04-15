@@ -104,6 +104,7 @@ var OpenseadragonViewer = React.createClass({
       id: this.props.containerID,
       element: this.getDOMNode(),
       prefixUrl: "/openseadragon/",
+      autoHideControls: false,
       showNavigator: this.props.showNavigator,
       showFullPageControl: this.props.showFullPageControl,
       navigatorHeight:   navigatorSize + 'px',
@@ -128,7 +129,9 @@ var OpenseadragonViewer = React.createClass({
       },
       gestureSettingsTouch: {
         flickMomentum: 0.2
-      }
+      },
+      animationTime: 2,
+      maxZoomPixelRatio: 1.5,
     };
   },
 
