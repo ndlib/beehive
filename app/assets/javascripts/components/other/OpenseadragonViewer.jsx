@@ -7,6 +7,18 @@ var OpenseadragonViewer = React.createClass({
     containerID: React.PropTypes.string.isRequired,
     fullPage: React.PropTypes.bool,
     height: React.PropTypes.number,
+    showNavigator: React.PropTypes.bool,
+    toolbarTop: React.PropTypes.number,
+    toolbarLeft: React.PropTypes.number
+  },
+
+  getDefaultProps: function() {
+    return {
+      height: 600,
+      showNavigator: true,
+      toolbarLeft: 0,
+      toolbarTop: 0,
+    };
   },
 
   getInitialState: function() {
@@ -26,7 +38,7 @@ var OpenseadragonViewer = React.createClass({
     } else {
       this.fullPageOff();
     }
-    return false;
+    return true;
   },
 
   fullPageOn: function() {
@@ -84,20 +96,18 @@ var OpenseadragonViewer = React.createClass({
     var rightID = 'right-' + this.props.containerID;
 
     OpenSeadragon.setString("Tooltips.Home","Reset image");
-
     return {
       id: this.props.containerID,
       element: this.getDOMNode(),
       prefixUrl: "/openseadragon/",
-      showNavigator: true,
-      navigatorPosition:   "BOTTOM_LEFT",
+      showNavigator: this.props.showNavigator,
       navigatorHeight:   "100px",
       navigatorWidth:    "100px",
       navigatorPosition: "ABSOLUTE",
-      navigatorTop:      "4px",
-      navigatorLeft:     "44px",
+      navigatorTop:      this.props.toolbarTop + 4 + 'px',
+      navigatorLeft:     this.props.toolbarLeft + 44 + 'px',
       showRotationControl: true,
-      immediateRender: true,
+      immediateRender: false,
       toolbar: toolbarDiv,
       zoomInButton:   zoomInID,
       zoomOutButton:  zoomOutID,
@@ -144,7 +154,7 @@ var OpenseadragonViewer = React.createClass({
 
   style: function() {
     return {
-      height: "" + this.props.height + "px",
+      height: "" + (this.props.height ? this.props.height : 600) + "px",
       overflow: 'hidden',
     };
   },
@@ -152,6 +162,8 @@ var OpenseadragonViewer = React.createClass({
   toolbarStyle: function() {
     return {
       fontSize: '30px',
+      top: this.props.toolbarTop,
+      left: this.props.toolbarLeft,
     };
   },
 

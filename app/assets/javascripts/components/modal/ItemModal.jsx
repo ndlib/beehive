@@ -7,11 +7,12 @@ var ItemModal = React.createClass({
     item: React.PropTypes.object.isRequired,
     previousItem: React.PropTypes.string,
     nextItem: React.PropTypes.string,
+    height: React.PropTypes.number.isRequired,
   },
 
   itemPage: function() {
     return (
-       <ItemShow item={this.props.item} previousItem={this.props.previousItem} nextItem={this.props.nextItem} />
+       <ItemShow height={this.props.height} item={this.props.item} previousItem={this.props.previousItem} nextItem={this.props.nextItem} />
     );
   },
 
@@ -22,7 +23,7 @@ var ItemModal = React.createClass({
   render: function () {
     var itemPage = this.itemPage();
     return (
-      <Modal id={this.modalID()} content={itemPage} />
+      <Modal height={this.props.height} id={this.modalID()} content={itemPage} />
     );
   }
 });

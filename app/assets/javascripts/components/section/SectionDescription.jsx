@@ -6,6 +6,7 @@ var converter = new Showdown.converter()
 var SectionDescription = React.createClass({
   propTypes: {
     section: React.PropTypes.object.isRequired,
+    height: React.PropTypes.number.isRequired,
   },
 
   style: function() {
@@ -14,7 +15,7 @@ var SectionDescription = React.createClass({
       padding: '5px',
       width: '400px',
       overflow: 'hidden',
-      height: '100%',
+      height: this.props.height + 'px',
       whiteSpace: 'normal',
       textOverflow: 'ellipsis',
     };

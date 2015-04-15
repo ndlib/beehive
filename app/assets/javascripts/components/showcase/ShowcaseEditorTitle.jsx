@@ -6,19 +6,44 @@ var converter = new Showdown.converter()
 var ShowcaseEditorTitle = React.createClass({
   propTypes: {
     showcase: React.PropTypes.object.isRequired,
+    height: React.PropTypes.number.isRequired,
   },
 
-  style: function() {
+  outerStyle: function() {
     return {
       //border: '1px solid lightgrey',
       display: 'inline-block',
       verticalAlign: 'top',
       position: 'relative',
       padding: '5px',
-      height: '100%',
+      height: this.props.height + 'px',
       marginRight: '10px',
       //backgroundImage: 'url(http://localhost:3019/images/honeycomb/000/001/000/001/medium/Debut_of_Dazzler.jpg)',
     };
+  },
+
+  innerStyle: function() {
+    return {
+      width: '100%',
+      display: 'inline-block',
+      verticalAlign: 'middle',
+    };
+  },
+
+  alignStyle: function() {
+    return {
+      height: this.props.height + 'px',
+      display: 'inline-block',
+      verticalAlign: 'middle',
+    };
+  },
+
+  headerStyle: function() {
+    var marginTop = Math.round(this.props.height * 0.35);
+
+    return {
+      // marginTop: marginTop + 'px',
+    }
   },
 
   editTitle: function() {
@@ -32,10 +57,12 @@ var ShowcaseEditorTitle = React.createClass({
     }
 
     return (
-      <div className="showcase-title-page" style={this.style()}>
-        <h2>{this.props.showcase.title}</h2>
-        <div className="showcase-title-description" dangerouslySetInnerHTML={{__html: description}}  />
-        
+      <div className="showcase-title-page" style={this.outerStyle()}>
+        <div style={this.alignStyle()}></div>
+        <div className="showcase-title-page-inner" style={this.innerStyle()}>
+          <h2 style={this.headerStyle()}>{this.props.showcase.title}</h2>
+          <div className="showcase-title-description" dangerouslySetInnerHTML={{__html: description}}  />
+        </div>
       </div>
     );
   }

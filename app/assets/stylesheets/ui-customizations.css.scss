@@ -7,7 +7,7 @@ $blue :#2c5882;
 body {
 	background: #333;
 	background-image: image_url('black-linen.png');
-	padding-bottom: 60px;
+	padding-bottom: 49px;
 }
 
 body.showcase-bg {
@@ -339,10 +339,6 @@ div.dataTables_filter {
 
 }
 
-.showcase-title-page, .sections-content-inner {
-	height:95% !important;
-}
-
 #footer {
 	background-color: #2b2a2a;
 	background-image:linear-gradient(to top, #2b2a2a 0%, #393838 140%);
@@ -610,7 +606,6 @@ div.dataTables_filter {
 	}
 	h2 {
 		text-align: center;
-		margin-top:15%;
 		font-size: 50px;
 		text-shadow: 2px 2px 3px #333;
 		text-transform: uppercase;
@@ -686,6 +681,12 @@ div.dataTables_filter {
 	height:100%;
 }
 
+.sections-modals, .items-modals {
+  .modal-content .modal-body {
+    padding: 0;
+  }
+}
+
 #banner {
 	z-index:5000;
 	position: fixed;
@@ -704,18 +705,16 @@ div.dataTables_filter {
 	button.close {
 		z-index: 200;
 		position: absolute;
-		top:18px;
-		right:18px;
+		top:10px;
+		right:10px;
 		opacity: .7;
 		border:solid 1px #fff;
-			border-radius:3px;
-		span {
+		border-radius:3px;
+    padding: 5px;
+		i {
 			color:#fff;
-			padding:0 8px;
-			text-shadow: 0 1px 0 #000;
 			font-size:34px;
-
-			line-height:1em;
+      text-shadow: 1px 1px 1px #000;
 		}
 	}
 	button.close:hover {
@@ -747,6 +746,7 @@ div.dataTables_filter {
 
 	h2 {
 		margin-bottom:20px;
+    text-shadow: 1px 1px 1px #000;
 	}
 }
 .items-list, .showcases-list {
@@ -875,6 +875,7 @@ body.modal-open {
 	width:50%;
 	margin-left:25%;
 	margin-right:25%;
+  margin-bottom: 10px;
 	.ps-scrollbar-x {
 		height:15px;
 	}

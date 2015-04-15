@@ -6,6 +6,7 @@ var SectionsModalList = React.createClass({
 
   propTypes: {
     sections: React.PropTypes.array.isRequired,
+    height: React.PropTypes.number.isRequired,
   },
 
   render: function() {
@@ -18,10 +19,10 @@ var SectionsModalList = React.createClass({
         var previousNode = modalNodeIDs[index - 1];
         var nextNode = modalNodeIDs[index + 1];
         nodes.push((
-          <SectionModal section={section} previousSection={previousNode} nextSection={nextNode} />
+          <SectionModal height={this.props.height} section={section} previousSection={previousNode} nextSection={nextNode} />
         ));
         return nodes;
-      });
+      }.bind(this));
 
       return (
         <div id="sections-modals" className="sections-modals">

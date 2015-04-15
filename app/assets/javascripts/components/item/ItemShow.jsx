@@ -9,8 +9,10 @@ var ItemShow = React.createClass({
     additionalDetails: React.PropTypes.string,
     previousItem: React.PropTypes.string,
     nextItem: React.PropTypes.string,
+    height: React.PropTypes.number,
   },
-componentDidMount: function() {
+
+  componentDidMount: function() {
     var id = '#modal-' + this.props.item.id;
 
     // bind keypress to modal when it is shown
@@ -54,6 +56,44 @@ componentDidMount: function() {
     });
   },
 
+  outerStyles: function() {
+    if (this.props.height) {
+      return {
+        height: this.props.height,
+        position: 'relative',
+      }
+    } else {
+      return {}
+    }
+  },
+
+  headerStyles: function() {
+    if (this.props.height) {
+      return {
+        position: 'absolute',
+        top: '10px',
+        left: '40px',
+        width: 'auto',
+        zIndex: 200,
+      }
+    } else {
+      return {}
+    }
+  },
+
+  zoomStyles: function() {
+    if (this.props.height) {
+      return {
+        height: this.props.height,
+        position: 'absolute',
+        top: 0,
+        width: '100%',
+      }
+    } else {
+      return {}
+    }
+  },
+
   detailsButtonStyle: function() {
     return {
       backgroundColor: this.state.showDetails ? '#ccc' : '#fff',
@@ -62,7 +102,6 @@ componentDidMount: function() {
 
   detailsStyle: function() {
     return {
-
       height: this.state.showDetails ? '60%' : '0',
       width: this.state.showDetails ? '30%' : '0',
     };
@@ -80,21 +119,25 @@ componentDidMount: function() {
         next = (<NextModal id={this.props.nextItem} />);
       }
       return (
-        <div className="item-detail"><button className="btn btn-default btn-raised pull-right btn-details" onClick={this.toggleDetails} style={this.detailsButtonStyle()}>
-            <i className={this.state.showDetails ? "mdi-navigation-unfold-less" : "mdi-navigation-unfold-more"}></i>
-            Details
-          </button>
-          <h2>{this.props.item.title}</h2>
+        <div>
           {prev}
           {next}
-          <div className="row">
-            <div className={"col-md-12"} style={{transition: 'initial'}}>
-              <OpenseadragonViewer image={this.props.item.image} containerID={this.props.item.id} height={600} />
+          <div className="item-detail" style={this.outerStyles()}>
+
+            <div style={this.headerStyles()}>
+              <h2>{this.props.item.title}</h2>
             </div>
-
-
+            <button className="btn btn-default btn-raised pull-right btn-details" onClick={this.toggleDetails} style={this.detailsButtonStyle()}>
+              <i className={this.state.showDetails ? "mdi-navigation-unfold-less" : "mdi-navigation-unfold-more"}></i>
+              Details
+            </button>
+            <div className="details" style={this.detailsStyle()}>
+              <Details item={this.props.item} additionalDetails={this.props.additionalDetails} />
+            </div>
+            <div className="item-detail-zoom" style={this.zoomStyles()}>
+              <OpenseadragonViewer image={this.props.item.image} containerID={this.props.item.id} height={this.props.height} toolbarTop={50} toolbarLeft={40} />
+            </div>
           </div>
-          <div className="details" style={this.detailsStyle()}><Details item={this.props.item} additionalDetails={this.props.additionalDetails} /></div>
         </div>
       );
     } else {
