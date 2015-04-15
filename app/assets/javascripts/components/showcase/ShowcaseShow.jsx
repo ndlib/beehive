@@ -20,12 +20,14 @@ var ShowcaseShow = React.createClass({
     }
   },
 
-  componentDidUpdate: function() {
+  componentDidUpdate: function(prevProps, prevState) {
     if (this.props.showcase && !this.scrollbarInitialized) {
       setTimeout(this.initializeScrollbar, 1000);
     }
     this.checkHash();
-    this.updateScrollbar();
+    if (this.props.height != prevProps.height) {
+      this.updateScrollbar();
+    }
   },
 
   initializeScrollbar: function() {
