@@ -108,15 +108,16 @@ var ItemShow = React.createClass({
   },
 
   render: function() {
-    var item = "";
-    var prev = "";
-    var next = "";
+    var prev, next, offsetTop;
+    if (this.props.height) {
+      offsetTop = this.props.height / 2;
+    }
     if (this.props.item) {
-    if (this.props.previousItem) {
-        prev = (<PreviousModal id={this.props.previousItem} />);
+      if (this.props.previousItem) {
+        prev = (<PreviousModal offsetTop={offsetTop} id={this.props.previousItem} />);
       }
       if (this.props.nextItem) {
-        next = (<NextModal id={this.props.nextItem} />);
+        next = (<NextModal offsetTop={offsetTop} id={this.props.nextItem} />);
       }
       return (
         <div>
