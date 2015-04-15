@@ -4,12 +4,20 @@ var React = require('react');
 var maxShowcaseHeight = 840;
 var showcaseTitleHeight = 40;
 var scrollPadding = 40;
+var titleSectionWidthPercent = 0.75;
 
 var ShowcaseShow = React.createClass({
   displayName: 'Showcase Show',
   propTypes: {
     showcase: React.PropTypes.object,
     height: React.PropTypes.number.isRequired,
+  },
+
+  getInitialState: function() {
+    return {
+      scrollOffsetLeft: 0,
+      titleSectionPercentVisible: 1,
+    }
   },
 
   componentDidUpdate: function() {
@@ -86,21 +94,16 @@ var ShowcaseShow = React.createClass({
   },
 
   onScroll: function() {
-    var x = $("#sections-content-inner").offset().left;
-    var dx = $( window ).width() * .75;
-    var opacity = 1 - x/dx;
-    $("#showcases-title-bar").css("opacity", opacity);
-    var blurAmt = Math.min(Math.max(Math.floor((1 - x/dx) * 10), 0), 10);
-    var blurBrightness = Math.min(Math.max(Math.floor(100 - (1-x/dx) * 60), 70), 100);
-    var blurStr = "blur(" + blurAmt + "px) brightness(" + blurBrightness + "%)";
-    var blurStyle = {
-      "-webkit-filter": blurStr,
-      "-moz-filter": blurStr,
-      "-o-filter": blurStr,
-      "filter": blurStr,
-    };
-    $("#blur").css(blurStyle);
-    console.log(blurStr);
+    var scrollLeft = $("#showcase-outer").get(0).scrollLeft;
+    var titleWidth = $(this.getDOMNode()).width() * titleSectionWidthPercent;
+    var percentVisible = 1 - scrollLeft/titleWidth;
+    if (percentVisible < 0) {
+      percentVisible = 0;
+    }
+    this.setState({
+      scrollOffsetLeft: scrollLeft,
+      titleSectionPercentVisible: percentVisible,
+    });
   },
 
   render: function() {
@@ -112,11 +115,11 @@ var ShowcaseShow = React.createClass({
     if (this.props.showcase) {
       return (
         <div>
-          <ShowcaseBackground height={this.props.height} showcase={this.props.showcase} />
-          <ShowcaseTitleBar height={showcaseTitleHeight} showcase={this.props.showcase} />
+          <ShowcaseBackground percentBlur={1 - this.state.titleSectionPercentVisible} height={this.props.height} showcase={this.props.showcase} />
+          <ShowcaseTitleBar percentFade={this.state.titleSectionPercentVisible} height={showcaseTitleHeight} showcase={this.props.showcase} />
           <div id="showcase-outer" style={this.styleOuter(showcaseHeight)} onScroll={this.onScroll}>
             <div id="showcase-inner" style={this.styleInner(showcaseInnerHeight)}>
-              <ShowcaseEditorTitle height={showcaseInnerHeight} showcase={this.props.showcase} />
+              <ShowcaseEditorTitle widthPercent={titleSectionWidthPercent} height={showcaseInnerHeight} showcase={this.props.showcase} />
               <SectionsList height={showcaseInnerHeight} sections={this.props.showcase.sections} />
             </div>
           </div>

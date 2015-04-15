@@ -5,9 +5,19 @@ var ShowcaseBackground = React.createClass({
   propTypes: {
     showcase: React.PropTypes.object.isRequired,
     height: React.PropTypes.number.isRequired,
+    percentBlur: React.PropTypes.number,
+  },
+
+  getDefaultProps: function() {
+    return {
+      percentBlur: 0,
+    }
   },
 
   style: function() {
+    var blurAmt = Math.min(Math.max(Math.floor((this.props.percentBlur) * 10), 0), 10);
+    var blurBrightness = Math.min(Math.max(Math.floor(100 - (this.props.percentBlur) * 60), 70), 100);
+    var blurStr = "blur(" + blurAmt + "px) brightness(" + blurBrightness + "%)";
     var backgroundImage;
     if (this.props.showcase.image) {
       backgroundImage = "url(\"" + this.props.showcase.image.contentUrl + "\")";
@@ -21,6 +31,10 @@ var ShowcaseBackground = React.createClass({
       backgroundRepeat: "no-repeat",
       backgroundSize: "100%",
       zIndex: "-1",
+      WebkitFilter: blurStr,
+      MozFilter: blurStr,
+      OFilter: blurStr,
+      filter: blurStr,
     };
   },
 

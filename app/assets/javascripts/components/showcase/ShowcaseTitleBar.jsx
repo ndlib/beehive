@@ -6,15 +6,20 @@ var ShowcaseTitleBar = React.createClass({
 
   propTypes: {
     showcase: React.PropTypes.object.isRequired,
+    percentFade: React.PropTypes.number,
+  },
+
+  getDefaultProps: function() {
+    return {
+      percentFade: 0,
+    }
   },
 
   style: function() {
     return {
-      opacity: '0',
-
+      opacity: 1 - this.props.percentFade,
     };
   },
-
 
   render: function() {
     if (this.props.showcase) {
