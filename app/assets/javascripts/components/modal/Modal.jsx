@@ -7,12 +7,17 @@ var Modal = React.createClass({
   propTypes: {
     id: React.PropTypes.string.isRequired,
     content: React.PropTypes.object.isRequired,
+    height: React.PropTypes.number,
   },
 
-  setStyle: function(h) {
-    return {
-      height: h,
-      marginTop: $('#banner').height(),
+  styles: function() {
+    if (this.props.height) {
+      return {
+        height: this.props.height,
+        marginTop: $('#banner').outerHeight(),
+      };
+    } else {
+      return {};
     }
   },
 
@@ -28,14 +33,12 @@ var Modal = React.createClass({
   },
 
   render: function () {
-    var modalHeight = $(window).height() - $('#banner').height();
-
     return (
       <div className="modal" id={this.props.id} tabIndex="-1"  onKeyDown={this.onKeyDown}>
-        <div className="modal-dialog modal-lg" style={this.setStyle(modalHeight)}>
+        <div className="modal-dialog modal-lg" style={this.styles()}>
           <div className="modal-content">
             <div className="modal-header">
-              <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={this.removeHash}><span aria-hidden="true">&times;</span></button>
+              <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={this.removeHash}><i className="mdi-content-clear"></i></button>
             </div>
             <div className="modal-body">{this.props.content}</div>
           </div>

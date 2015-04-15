@@ -7,12 +7,13 @@ var SectionImage = React.createClass({
   displayName: 'Section Image',
 
   propTypes: {
-    section: React.PropTypes.object.isRequired
+    section: React.PropTypes.object.isRequired,
+    height: React.PropTypes.number.isRequired,
   },
 
   style: function() {
     return {
-      height: '100%',
+      height: this.props.height + 'px',
       display: 'inline-block',
       verticalAlign: 'top',
       position: 'relative',
@@ -20,8 +21,10 @@ var SectionImage = React.createClass({
   },
 
   imageStyle: function() {
+    var aspectRatio = parseInt(this.props.section.item.image.width) / parseInt(this.props.section.item.image.height);
     return {
-      height: '100%',
+      height: this.props.height + 'px',
+      width: Math.round(this.props.height * aspectRatio) + 'px',
     };
   },
 

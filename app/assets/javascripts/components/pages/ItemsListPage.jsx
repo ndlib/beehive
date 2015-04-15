@@ -2,6 +2,8 @@
 var React = require('react');
 
 var ItemsListPage = React.createClass({
+  mixins: [PageHeightMixin],
+
   displayName: 'Items List Page',
 
   propTypes: {
@@ -42,11 +44,11 @@ var ItemsListPage = React.createClass({
   render: function() {
     return (
     <div>
-      <ItemsModalList items={this.state.items} />
+      <ItemsModalList height={this.state.height} items={this.state.items} />
       <Layout>
           <CollectionPageHeader collection={this.state.collection} />
           <PageContent>
-            <ItemsList items={this.state.items} />
+            <ItemsList height={this.state.height} items={this.state.items} />
           </PageContent>
         </Layout>
       </div>

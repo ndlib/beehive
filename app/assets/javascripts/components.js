@@ -7,6 +7,7 @@ React = require('react');
 // Mixins
 CollectionUrlMixin = require('./mixins/CollectionUrlMixin');
 HorizontalScrollMixin = require('./mixins/HorizontalScrollMixin');
+PageHeightMixin = require('./mixins/PageHeightMixin');
 PrevNextMixin = require('./mixins/PrevNextMixin');
 
 // Layout
@@ -52,6 +53,7 @@ SectionsList = require('./components/section/SectionsList');
 SectionsListItem = require('./components/section/SectionsListItem');
 SectionLink = require('./components/section/SectionLink');
 SectionShow = require('./components/section/SectionShow');
+SectionShowDescription = require('./components/section/SectionShowDescription');
 Section = require('./components/section/Section');
 SectionCaption = require('./components/section/SectionCaption');
 SectionDescription = require('./components/section/SectionDescription');

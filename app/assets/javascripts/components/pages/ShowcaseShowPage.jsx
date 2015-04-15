@@ -1,7 +1,12 @@
 //app/assets/javascripts/components/ShowcaseShowPage.jsx
 var React = require('react');
 
+var maxShowcaseHeight = 840;
+var showcaseTitleHeight = 40;
+
 var ShowcaseShowPage = React.createClass({
+  mixins: [PageHeightMixin],
+
   propTypes: {
     collection: React.PropTypes.oneOfType([
       React.PropTypes.string,
@@ -14,14 +19,6 @@ var ShowcaseShowPage = React.createClass({
       collection: {},
       showcase: null,
     };
-  },
-
-  componentDidMount: function() {
-    if ('object' == typeof(this.props.collection)) {
-      this.setValues(this.props.collection);
-    } else {
-      this.loadRemoteCollection()
-    }
   },
 
   loadRemoteCollection: function() {
@@ -38,21 +35,34 @@ var ShowcaseShowPage = React.createClass({
   },
   modals: function() {
     if(this.state.showcase) {
-      return (<SectionsModalList sections={this.state.showcase.sections} />);
+      return (<SectionsModalList height={this.state.height} sections={this.state.showcase.sections} />);
     }
     else {
       return (<span />);
     }
   },
+
+  componentDidMount: function() {
+    if ('object' == typeof(this.props.collection)) {
+      this.setValues(this.props.collection);
+    } else {
+      this.loadRemoteCollection()
+    }
+  },
+
   render: function() {
+    var showcaseHeight = this.state.height - showcaseTitleHeight;
+    if (showcaseHeight > maxShowcaseHeight) {
+      showcaseHeight = maxShowcaseHeight;
+    }
     return (
       <div>
         {this.modals()}
         <Layout>
           <CollectionPageHeader collection={this.state.collection} />
           <PageContent>
-            <ShowcaseTitleBar showcase={this.state.showcase} />
-            <ShowcaseShow showcase={this.state.showcase} />
+            <ShowcaseTitleBar height={showcaseTitleHeight} showcase={this.state.showcase} />
+            <ShowcaseShow height={showcaseHeight} showcase={this.state.showcase} />
           </PageContent>
         </Layout>
       </div>

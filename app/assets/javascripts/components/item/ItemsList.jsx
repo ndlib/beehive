@@ -6,6 +6,7 @@ var ItemsList = React.createClass({
 
   propTypes: {
     items: React.PropTypes.array,
+    height: React.PropTypes.number.isRequired,
   },
 
   componentDidUpdate: function() {
