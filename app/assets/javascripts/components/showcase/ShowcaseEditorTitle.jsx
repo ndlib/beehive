@@ -7,18 +7,24 @@ var ShowcaseEditorTitle = React.createClass({
   propTypes: {
     showcase: React.PropTypes.object.isRequired,
     height: React.PropTypes.number.isRequired,
+    widthPercent: React.PropTypes.number,
+  },
+
+  getDefaultProps: function() {
+    return {
+      widthPercent: 0.75,
+    }
   },
 
   outerStyle: function() {
     return {
-      //border: '1px solid lightgrey',
       display: 'inline-block',
       verticalAlign: 'top',
       position: 'relative',
       padding: '5px',
       height: this.props.height + 'px',
       marginRight: '10px',
-      //backgroundImage: 'url(http://localhost:3019/images/honeycomb/000/001/000/001/medium/Debut_of_Dazzler.jpg)',
+      width: Math.floor(this.props.widthPercent * 100) + 'vw',
     };
   },
 

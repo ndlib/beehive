@@ -46,7 +46,7 @@ ShowcaseTitleSection = require('./components/showcase/ShowcaseTitleSection');
 ShowcaseShow = require('./components/showcase/ShowcaseShow');
 ShowcaseEditorTitle = require('./components/showcase/ShowcaseEditorTitle');
 ShowcaseTitleBar = require('./components/showcase/ShowcaseTitleBar');
-
+ShowcaseBackground = require('./components/showcase/ShowcaseBackground');
 
 // Sections
 SectionsList = require('./components/section/SectionsList');
