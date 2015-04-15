@@ -12,24 +12,27 @@
   position: absolute;
   top: 300px;
   z-index: 100;
-    &:hover, &:active {
+  &:hover, &:active {
     text-decoration: none;
     background-color: rgba(255, 255, 255, 0.6);
     color: black;
   }
 }
+
 .next-button {
   right: -60px;
   .direction {
     margin-left: -50px;
   }
 }
+
 .prev-button {
   left: -60px;
   .direction {
     margin-right: -50px;
   }
 }
+
 .modal-body {
   overflow: hidden;
 }

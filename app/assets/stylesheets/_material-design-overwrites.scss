@@ -1,13 +1,12 @@
 a, a:hover, a:focus {
-	color:$blue;
+  color: $blue;
 }
 
-
 .form-control, .form-control:focus, .form-control.focus {
-	background-image: linear-gradient($blue, $blue), linear-gradient(#d2d2d2, #d2d2d2) !important;
+  background-image: linear-gradient($blue, $blue), linear-gradient(#d2d2d2, #d2d2d2) !important;
 }
 
 .panel-heading .pull-right .btn {
-	padding:8px 10px;
-		margin:-10px -10px -10px 10px !important;
+  padding: 8px 10px;
+  margin: -10px -10px -10px 10px !important;
 }
