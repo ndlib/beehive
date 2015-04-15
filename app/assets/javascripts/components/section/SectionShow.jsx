@@ -45,13 +45,16 @@ var SectionShow = React.createClass({
   },
 
   render: function() {
-    var prev, next;
+    var prev, next, offsetTop;
+    if (this.props.height) {
+      offsetTop = this.props.height / 2;
+    }
     if (this.props.section) {
       if (this.props.previousSection) {
-        prev = (<PreviousModal id={this.props.previousSection} />);
+        prev = (<PreviousModal offsetTop={offsetTop} id={this.props.previousSection} />);
       }
       if (this.props.nextSection) {
-        next = (<NextModal id={this.props.nextSection} />);
+        next = (<NextModal offsetTop={offsetTop} id={this.props.nextSection} />);
       }
       if (this.props.section.item) {
         // layout for section with item

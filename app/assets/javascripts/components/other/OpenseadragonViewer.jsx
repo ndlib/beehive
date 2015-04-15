@@ -1,6 +1,8 @@
 //app/assets/javascripts/components/OpenseadragonViewer.jsx
 var React = require('react');
 
+var navigatorSize = 100;
+
 var OpenseadragonViewer = React.createClass({
   propTypes: {
     image: React.PropTypes.object,
@@ -8,16 +10,18 @@ var OpenseadragonViewer = React.createClass({
     fullPage: React.PropTypes.bool,
     height: React.PropTypes.number,
     showNavigator: React.PropTypes.bool,
+    showFullPageControl: React.PropTypes.bool,
     toolbarTop: React.PropTypes.number,
-    toolbarLeft: React.PropTypes.number
+    toolbarLeft: React.PropTypes.number,
   },
 
   getDefaultProps: function() {
     return {
       height: 600,
       showNavigator: true,
-      toolbarLeft: 0,
-      toolbarTop: 0,
+      showFullPageControl: true,
+      toolbarLeft: 10,
+      toolbarTop: 10,
     };
   },
 
@@ -100,12 +104,14 @@ var OpenseadragonViewer = React.createClass({
       id: this.props.containerID,
       element: this.getDOMNode(),
       prefixUrl: "/openseadragon/",
+      autoHideControls: false,
       showNavigator: this.props.showNavigator,
-      navigatorHeight:   "100px",
-      navigatorWidth:    "100px",
+      showFullPageControl: this.props.showFullPageControl,
+      navigatorHeight:   navigatorSize + 'px',
+      navigatorWidth:    navigatorSize + 'px',
       navigatorPosition: "ABSOLUTE",
-      navigatorTop:      this.props.toolbarTop + 4 + 'px',
-      navigatorLeft:     this.props.toolbarLeft + 44 + 'px',
+      navigatorTop:      this.props.toolbarTop + 'px',
+      navigatorLeft:     this.props.toolbarLeft + 'px',
       showRotationControl: true,
       immediateRender: false,
       toolbar: toolbarDiv,
@@ -123,7 +129,9 @@ var OpenseadragonViewer = React.createClass({
       },
       gestureSettingsTouch: {
         flickMomentum: 0.2
-      }
+      },
+      animationTime: 2,
+      maxZoomPixelRatio: 1.5,
     };
   },
 
@@ -160,14 +168,19 @@ var OpenseadragonViewer = React.createClass({
   },
 
   toolbarStyle: function() {
+    var top = this.props.toolbarTop;
+    if (this.props.showNavigator) {
+      top += navigatorSize + 10;
+    }
     return {
       fontSize: '30px',
-      top: this.props.toolbarTop,
-      left: this.props.toolbarLeft,
+      top: top + 'px',
+      left: this.props.toolbarLeft + 'px',
     };
   },
 
   render: function() {
+    var fullPageControl;
     var toolbarID = 'toolbar-' + this.props.containerID;
     var zoomInID = 'zoom-in-' + this.props.containerID;
     var zoomOutID = 'zoom-out-' + this.props.containerID;
@@ -175,6 +188,11 @@ var OpenseadragonViewer = React.createClass({
     var fullID = 'full-page-' + this.props.containerID;
     var leftID = 'left-' + this.props.containerID;
     var rightID = 'right-' + this.props.containerID;
+    if (this.props.showFullPageControl) {
+      fullPageControl = (
+        <a id={fullID} href="#full-page"><i className="mdi-navigation-fullscreen"></i></a>
+      );
+    }
     return (
       <div className="hc-openseadragon-viewer" id={this.props.containerID} style={this.style()}>
         <div id={toolbarID} className="os-toolbar" style={this.toolbarStyle()}>
@@ -183,7 +201,7 @@ var OpenseadragonViewer = React.createClass({
           <a id={leftID} href="#rotate-left"><i className="mdi-image-rotate-left"></i></a>
           <a id={rightID} href="#rotate-right"><i className="mdi-image-rotate-right"></i></a>
           <a id={homeID} href="#home"><i className="mdi-navigation-refresh"></i></a>
-          <a id={fullID} href="#full-page"><i className="mdi-navigation-fullscreen"></i></a>
+          {fullPageControl}
         </div>
         <div ></div>
       </div>

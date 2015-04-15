@@ -1,14 +1,21 @@
+$circle-size: 70px;
+$circle-offset: $circle-size / 2 * -1;
+$icon-size: 30px;
+$icon-top: ($circle-size - $icon-size) / 2;
+$icon-offset: ($circle-size/2) - $icon-size;
+
 .half-circle-button {
   border-radius: 50%;
   display: inline-block;
   margin: 0;
-  width: 100px;
-  height: 100px;
+  // Setting a negative margin-top so top will be relative to the center of the button
+  margin-top: $circle-offset;
+  width: $circle-size;
+  height: $circle-size;
   background: rgba(255, 255, 255, 0.4);
   color: black;
   text-align: center;
-  line-height: 100px;
-  font-size: 50px;
+  line-height: $circle-size;
   position: absolute;
   top: 300px;
   z-index: 100;
@@ -18,21 +25,27 @@
     background-color: rgba(255, 255, 255, 0.6);
     color: black;
   }
+
+  i {
+    font-size: $icon-size;
+    position: absolute;
+    top: $icon-top;
+  }
 }
 
 .next-button {
-  right: -60px;
+  right: $circle-offset;
 
-  .direction {
-    margin-left: -50px;
+  i {
+    left: $icon-offset;
   }
 }
 
 .prev-button {
-  left: -60px;
+  left: $circle-offset;
 
-  .direction {
-    margin-right: -50px;
+  i {
+    right: $icon-offset;
   }
 }
 

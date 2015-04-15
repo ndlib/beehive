@@ -16,14 +16,6 @@ var Section = React.createClass({
     };
   },
 
-  linkStyle: function() {
-    return {
-      display: 'block',
-      height: this.props.height + 'px',
-      color: 'inherit',
-    };
-  },
-
   style: function() {
     return {
       //border: '1px solid lightgrey',
@@ -33,6 +25,7 @@ var Section = React.createClass({
       marginLeft: '10px',
       marginRight: '10px',
       height: this.props.height + 'px',
+      cursor: 'pointer',
     };
   },
 
@@ -48,12 +41,9 @@ var Section = React.createClass({
     });
   },
 
-  onClick: function() {
+  onClick: function(event) {
+    event.preventDefault();
     window.location.hash = "modal-" + this.props.section.id;
-  },
-
-  targetID: function() {
-    return "#modal-" + this.props.section.id;
   },
 
   sectionName: function() {
@@ -63,11 +53,9 @@ var Section = React.createClass({
   render: function() {
 
     return (
-      <section className="section" style={this.style()} id={this.sectionName()} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} >
-      <a href={this.targetID()} data-toggle="modal" data-target={this.targetID()} style={this.linkStyle()} onClick={this.onClick}>
+      <section className="section" style={this.style()} id={this.sectionName()} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} onClick={this.onClick}>
         <SectionDescription height={this.props.height} section={this.props.section} />
         <SectionImage height={this.props.height} section={this.props.section}/>
-        </a>
       </section>
     );
   }

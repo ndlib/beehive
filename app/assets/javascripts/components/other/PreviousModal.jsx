@@ -9,8 +9,8 @@ var PreviousModal = React.createClass({
   render: function() {
     var id = this.props.id;
     return (
-    <a href="#" onClick={this.clickAction} className="prev-button half-circle-button">
-      <div className="direction">&lsaquo;</div>
+    <a href="#" onClick={this.clickAction} className="prev-button half-circle-button" style={this.buttonStyles()}>
+      <i className="mdi-navigation-chevron-left"></i>
     </a>
     );
   }

@@ -102,21 +102,22 @@ var ItemShow = React.createClass({
 
   detailsStyle: function() {
     return {
-      height: this.state.showDetails ? '60%' : '0',
+      maxHeight: this.state.showDetails ? '70%' : '0',
       width: this.state.showDetails ? '30%' : '0',
     };
   },
 
   render: function() {
-    var item = "";
-    var prev = "";
-    var next = "";
+    var prev, next, offsetTop;
+    if (this.props.height) {
+      offsetTop = this.props.height / 2;
+    }
     if (this.props.item) {
-    if (this.props.previousItem) {
-        prev = (<PreviousModal id={this.props.previousItem} />);
+      if (this.props.previousItem) {
+        prev = (<PreviousModal offsetTop={offsetTop} id={this.props.previousItem} />);
       }
       if (this.props.nextItem) {
-        next = (<NextModal id={this.props.nextItem} />);
+        next = (<NextModal offsetTop={offsetTop} id={this.props.nextItem} />);
       }
       return (
         <div>
@@ -135,7 +136,7 @@ var ItemShow = React.createClass({
               <Details item={this.props.item} additionalDetails={this.props.additionalDetails} />
             </div>
             <div className="item-detail-zoom" style={this.zoomStyles()}>
-              <OpenseadragonViewer image={this.props.item.image} containerID={this.props.item.id} height={this.props.height} toolbarTop={50} toolbarLeft={40} />
+              <OpenseadragonViewer image={this.props.item.image} containerID={this.props.item.id} height={this.props.height} toolbarTop={60} toolbarLeft={40} showFullPageControl={false} />
             </div>
           </div>
         </div>

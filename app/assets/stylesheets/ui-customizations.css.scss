@@ -765,10 +765,6 @@ div.dataTables_filter {
   transform: scale(1, 1);
 }
 
-.os-toolbar i {
-  text-shadow: 1px 1px 1px #000;
-}
-
 .loading {
   text-align: center;
 }
@@ -815,6 +811,7 @@ div.dataTables_filter {
       margin-bottom: .3em;
       font-size: 15px;
       font-family: serif;
+      color: rgba(0, 0, 0, 0.84);
     }
 
     dd {
@@ -878,17 +875,21 @@ body.modal-open {
 
 /* openseadragon */
 .os-toolbar {
-  width: 30px;
   position: absolute !important;
   z-index: 100;
 
   a {
     color: white;
+    margin-right: 8px;
 
     &:hover {
       text-decoration: none;
       color: white;
     }
+  }
+
+  i {
+    text-shadow: 1px 1px 1px #000;
   }
 }
 
