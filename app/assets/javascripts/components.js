@@ -44,7 +44,7 @@ ShowcasesListItem = require('./components/showcase/ShowcasesListItem');
 ShowcaseLink = require('./components/showcase/ShowcaseLink');
 ShowcaseTitleSection = require('./components/showcase/ShowcaseTitleSection');
 ShowcaseShow = require('./components/showcase/ShowcaseShow');
-ShowcaseEditorTitle = require('./components/showcase/ShowcaseEditorTitle');
+ShowcaseTitle = require('./components/showcase/ShowcaseTitle');
 ShowcaseTitleBar = require('./components/showcase/ShowcaseTitleBar');
 ShowcaseBackground = require('./components/showcase/ShowcaseBackground');
 
