@@ -20,7 +20,7 @@ var ShowcaseShow = React.createClass({
 
   initializeScrollbar: function() {
     this.scrollbarInitialized = true;
-    $('#showcase-outer').perfectScrollbar({useBothWheelAxes: false, suppressScrollY: true });
+    $('#showcase-outer').perfectScrollbar({useBothWheelAxes: true, suppressScrollY: true });
   },
 
   updateScrollbar: function() {
