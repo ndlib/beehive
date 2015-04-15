@@ -1,5 +1,4 @@
 class CollectionsController < ApplicationController
-
   after_action :allow_iframe, only: :embed
 
   def index
