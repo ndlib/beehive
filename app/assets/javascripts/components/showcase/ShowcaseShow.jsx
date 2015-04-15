@@ -1,6 +1,8 @@
 //app/assets/javascripts/components/ShowcaseShow.jsx
 var React = require('react');
 
+var maxShowcaseHeight = 840;
+var showcaseTitleHeight = 40;
 var scrollPadding = 40;
 
 var ShowcaseShow = React.createClass({
@@ -48,10 +50,10 @@ var ShowcaseShow = React.createClass({
     }
   },
 
-  styleInner: function() {
+  styleInner: function(height) {
     return {
       position: 'absolute',
-      height: (this.props.height - scrollPadding) + 'px',
+      height: height + 'px',
       top: 0,
       left: 0,
       overflowX: 'visible',
@@ -59,14 +61,14 @@ var ShowcaseShow = React.createClass({
     };
   },
 
-  styleOuter: function() {
+  styleOuter: function(height) {
     return {
       position: 'relative',
       overflowY: 'hidden',
       overflowX: 'hidden',
       whiteSpace: 'nowrap',
       boxSizing: 'border-box',
-      height: this.props.height + 'px',
+      height: height + 'px',
       top: 0,
       left: 0,
 
@@ -102,24 +104,21 @@ var ShowcaseShow = React.createClass({
   },
 
   render: function() {
+    var showcaseHeight = this.props.height - showcaseTitleHeight;
+    if (showcaseHeight > maxShowcaseHeight) {
+      showcaseHeight = maxShowcaseHeight;
+    }
+    var showcaseInnerHeight = showcaseHeight - scrollPadding;
     if (this.props.showcase) {
-      document.body.style.backgroundImage = "url(\"" + this.props.showcase.image.contentUrl + "\")";
-      var styles = {
-        width: "100%",
-        height: "100%",
-        display: "block",
-        position: "absolute",
-        "background-image": "url(\"" + this.props.showcase.image.contentUrl + "\")",
-        "background-repeat": "no-repeat",
-        "background-size": "100%",
-        "z-index": "-1",
-      };
-      $('#blur').css(styles);
       return (
-        <div id="showcase-outer" style={this.styleOuter()} onScroll={this.onScroll}>
-          <div id="showcase-inner" style={this.styleInner()}>
-            <ShowcaseEditorTitle height={this.props.height - scrollPadding} showcase={this.props.showcase} />
-            <SectionsList height={this.props.height - scrollPadding} sections={this.props.showcase.sections} />
+        <div>
+          <ShowcaseBackground height={this.props.height} showcase={this.props.showcase} />
+          <ShowcaseTitleBar height={showcaseTitleHeight} showcase={this.props.showcase} />
+          <div id="showcase-outer" style={this.styleOuter(showcaseHeight)} onScroll={this.onScroll}>
+            <div id="showcase-inner" style={this.styleInner(showcaseInnerHeight)}>
+              <ShowcaseEditorTitle height={showcaseInnerHeight} showcase={this.props.showcase} />
+              <SectionsList height={showcaseInnerHeight} sections={this.props.showcase.sections} />
+            </div>
           </div>
         </div>
       )

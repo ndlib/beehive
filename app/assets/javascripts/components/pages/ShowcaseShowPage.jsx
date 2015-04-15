@@ -1,9 +1,6 @@
 //app/assets/javascripts/components/ShowcaseShowPage.jsx
 var React = require('react');
 
-var maxShowcaseHeight = 840;
-var showcaseTitleHeight = 40;
-
 var ShowcaseShowPage = React.createClass({
   mixins: [PageHeightMixin],
 
@@ -51,19 +48,13 @@ var ShowcaseShowPage = React.createClass({
   },
 
   render: function() {
-    var showcaseHeight = this.state.height - showcaseTitleHeight;
-    if (showcaseHeight > maxShowcaseHeight) {
-      showcaseHeight = maxShowcaseHeight;
-    }
     return (
       <div>
-        <div id="blur" />
         {this.modals()}
         <Layout>
           <CollectionPageHeader collection={this.state.collection} />
           <PageContent>
-            <ShowcaseTitleBar height={showcaseTitleHeight} showcase={this.state.showcase} />
-            <ShowcaseShow height={showcaseHeight} showcase={this.state.showcase} />
+            <ShowcaseShow height={this.state.height} showcase={this.state.showcase} />
           </PageContent>
         </Layout>
       </div>
