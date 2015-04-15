@@ -15,9 +15,9 @@ var ShowcaseBackground = React.createClass({
   },
 
   style: function() {
-    var blurAmt = Math.min(Math.max(Math.floor((this.props.percentBlur) * 10), 0), 10);
-    var blurBrightness = Math.min(Math.max(Math.floor(100 - (this.props.percentBlur) * 60), 70), 100);
-    var blurStr = "blur(" + blurAmt + "px) brightness(" + blurBrightness + "%)";
+    // var blurAmt = Math.min(Math.max(Math.floor((this.props.percentBlur) * 10), 0), 10);
+    // var blurBrightness = Math.min(Math.max(Math.floor(100 - (this.props.percentBlur) * 60), 70), 100);
+    // var blurStr = "blur(" + blurAmt + "px) brightness(" + blurBrightness + "%)";
     var backgroundImage;
     if (this.props.showcase.image) {
       backgroundImage = "url(\"" + this.props.showcase.image.contentUrl + "\")";
@@ -31,11 +31,20 @@ var ShowcaseBackground = React.createClass({
       backgroundRepeat: "no-repeat",
       backgroundSize: "100%",
       zIndex: "-1",
-      WebkitFilter: blurStr,
-      MozFilter: blurStr,
-      OFilter: blurStr,
-      filter: blurStr,
+      // WebkitFilter: blurStr,
+      // MozFilter: blurStr,
+      // OFilter: blurStr,
+      // filter: blurStr,
     };
+  },
+
+  coverStyle: function() {
+    return {
+      width: "100%",
+      height: this.props.height + 'px',
+      opacity: this.props.percentBlur / 1.5,
+      backgroundColor: '#000',
+    }
   },
 
   render: function() {
@@ -46,6 +55,8 @@ var ShowcaseBackground = React.createClass({
 
     return (
       <div id="blur" className="showcase-background" style={this.style()}>
+        <div className="showcase-background-cover" style={this.coverStyle()}>
+        </div>
       </div>
     );
   }
