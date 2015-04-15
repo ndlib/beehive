@@ -39,6 +39,8 @@ gem 'capistrano-rails', '~> 1.1'
 gem 'capistrano-npm'
 
 group :development, :test do
+  gem 'rubocop', require: false
+
   gem "pry"
   gem "rspec-rails"
   gem "rspec-collection_matchers"
