@@ -1,9 +1,9 @@
-//app/assets/javascripts/components/ShowcaseEditorTitle.jsx
+//app/assets/javascripts/components/ShowcaseTitle.jsx
 var React = require('react');
 
 var converter = new Showdown.converter()
 
-var ShowcaseEditorTitle = React.createClass({
+var ShowcaseTitle = React.createClass({
   propTypes: {
     showcase: React.PropTypes.object.isRequired,
     height: React.PropTypes.number.isRequired,
@@ -72,4 +72,4 @@ var ShowcaseEditorTitle = React.createClass({
 });
 
 // each file will export exactly one component
-module.exports = ShowcaseEditorTitle;
+module.exports = ShowcaseTitle;
