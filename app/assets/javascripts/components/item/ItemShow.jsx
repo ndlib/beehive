@@ -102,7 +102,7 @@ var ItemShow = React.createClass({
 
   detailsStyle: function() {
     return {
-      height: this.state.showDetails ? '60%' : '0',
+      maxHeight: this.state.showDetails ? '70%' : '0',
       width: this.state.showDetails ? '30%' : '0',
     };
   },
