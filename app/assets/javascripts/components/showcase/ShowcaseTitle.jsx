@@ -35,13 +35,6 @@ var ShowcaseTitle = React.createClass({
     };
   },
 
-  alignStyle: function() {
-    return {
-      height: this.props.height + 'px',
-      display: 'inline-block',
-    };
-  },
-
   headerStyle: function() {
     var marginTop = Math.round(this.props.height * 0.15);
     return {
