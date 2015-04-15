@@ -32,7 +32,6 @@ var ShowcaseEditorTitle = React.createClass({
     return {
       width: '100%',
       display: 'inline-block',
-      verticalAlign: 'middle',
     };
   },
 
@@ -40,15 +39,14 @@ var ShowcaseEditorTitle = React.createClass({
     return {
       height: this.props.height + 'px',
       display: 'inline-block',
-      verticalAlign: 'middle',
     };
   },
 
   headerStyle: function() {
-    var marginTop = Math.round(this.props.height * 0.35);
-
+    var marginTop = Math.round(this.props.height * 0.15);
+    console.log(marginTop);
     return {
-      // marginTop: marginTop + 'px',
+      marginTop: marginTop + 'px',
     }
   },
 
@@ -64,7 +62,6 @@ var ShowcaseEditorTitle = React.createClass({
 
     return (
       <div className="showcase-title-page" style={this.outerStyle()}>
-        <div style={this.alignStyle()}></div>
         <div className="showcase-title-page-inner" style={this.innerStyle()}>
           <h2 style={this.headerStyle()}>{this.props.showcase.title}</h2>
           <div className="showcase-title-description" dangerouslySetInnerHTML={{__html: description}}  />
