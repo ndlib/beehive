@@ -248,11 +248,7 @@ var cls = require('./class')
   , d = require('./dom');
 
 exports.toInt = function (x) {
-  if (typeof x === 'string') {
-    return parseInt(x, 10);
-  } else {
-    return ~~x;
-  }
+  return parseInt(x, 10) || 0;
 };
 
 exports.clone = function (obj) {
@@ -778,7 +774,7 @@ function bindMouseWheelHandler(element, i) {
     } else if (i.scrollbarYActive && !i.scrollbarXActive) {
       // only vertical scrollbar is active and useBothWheelAxes option is
       // active, so let's scroll vertical bar using both mouse wheel axes
-      if (deltaY) {
+      if (Math.abs(deltaY) > Math.abs(deltaX)) {
         element.scrollTop = element.scrollTop - (deltaY * i.settings.wheelSpeed);
       } else {
         element.scrollTop = element.scrollTop + (deltaX * i.settings.wheelSpeed);
@@ -787,7 +783,7 @@ function bindMouseWheelHandler(element, i) {
     } else if (i.scrollbarXActive && !i.scrollbarYActive) {
       // useBothWheelAxes and only horizontal bar is active, so use both
       // wheel axes for horizontal bar
-      if (deltaX) {
+      if (Math.abs(deltaX) > Math.abs(deltaY)) {
         element.scrollLeft = element.scrollLeft + (deltaX * i.settings.wheelSpeed);
       } else {
         element.scrollLeft = element.scrollLeft - (deltaY * i.settings.wheelSpeed);
