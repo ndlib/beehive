@@ -38,7 +38,7 @@ var Modal = React.createClass({
         <div className="modal-dialog modal-lg" style={this.styles()}>
           <div className="modal-content">
             <div className="modal-header">
-              <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={this.removeHash}><span aria-hidden="true">&times;</span></button>
+              <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={this.removeHash}><i className="mdi-content-clear"></i></button>
             </div>
             <div className="modal-body">{this.props.content}</div>
           </div>
