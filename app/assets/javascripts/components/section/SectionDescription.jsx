@@ -50,7 +50,7 @@ var SectionDescription = React.createClass({
   },
 
   render: function () {
-    var rawMarkup = false;
+    var rawMarkup;
     if (this.props.section.description) {
       rawMarkup = this.props.section.description.toString();
     }
@@ -64,7 +64,7 @@ var SectionDescription = React.createClass({
       }
     }
 
-    if (rawMarkup) {
+    if (rawMarkup || (this.props.section.title && this.props.section.item == null)) {
       return (
         <div className="section-container section-container-text" style={this.style()}>
           <h2>{this.props.section.title}</h2>
