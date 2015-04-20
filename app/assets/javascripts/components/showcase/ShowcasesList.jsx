@@ -11,15 +11,8 @@ var ShowcasesList = React.createClass({
   render: function() {
     var showcaseNodes = this.props.showcases.map(function(showcase, index) {
       var nodes = [];
-      if (index > 0) {
-        if (index%3 == 0) {
-          nodes.push ((
-            <div className="clearfix"></div>
-          ));
-        }
-      }
       nodes.push((
-        <div className="col-sm-4" key={showcase['@id']}>
+        <div className="showcase-block" key={showcase['@id']}>
           <ShowcasesListItem showcase={showcase} />
         </div>
       ));
@@ -28,9 +21,8 @@ var ShowcasesList = React.createClass({
     if (showcaseNodes.length > 0) {
       return (
         <div className="showcases-list">
-          <div className="container">
-            <h2>Showcases</h2>
-            <div className="row">{showcaseNodes}</div>
+          <div className="container flow-columns">
+            {showcaseNodes}
           </div>
         </div>
       );

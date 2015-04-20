@@ -8,9 +8,7 @@ var ShowcasesListItem = React.createClass({
   },
   render: function() {
       return (
-      <div className="well showcase-list-item">
-        <ShowcaseLink showcase={this.props.showcase} />
-      </div>
+        <ShowcaseLink showcase={this.props.showcase} showDescription={true} thumbnailType="medium" />
     );
   }
 });
