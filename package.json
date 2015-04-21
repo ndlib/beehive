@@ -21,7 +21,7 @@
     "scriptPreprocessor": "<rootDir>/__tests__/preprocessor.js",
     "moduleFileExtensions": [ "js", "jsx"],
     "unmockedModulePathPatterns": [
-      "react"
+      "react", "jquery"
     ],
     "testFileExtensions": ["js", "jsx"],
     "testPathIgnorePatterns": [ "preprocessor.js" ]
