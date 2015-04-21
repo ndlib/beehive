@@ -38,7 +38,7 @@ describe('Thumbnail', function() {
   });
 
   it('renders the the passed alt text', function(){
-    var thumbnail = TestUtils.renderIntoDocument(<Thumbnail image={image} alt="The alt text" />);
+  var thumbnail = TestUtils.renderIntoDocument(<Thumbnail image={image} alt="<p>The <span>alt</span> text</p>" />);
       expect(thumbnail.getDOMNode().alt).toBe("The alt text");
   });
 
