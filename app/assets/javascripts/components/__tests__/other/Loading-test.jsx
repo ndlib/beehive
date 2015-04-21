@@ -1,11 +1,11 @@
 // app/assets/javascripts/components/__tests__/Loading-test.jsx
-jest.dontMock('../other/Loading');
+jest.dontMock('../../other/Loading');
 
 
 describe('Loading', function() {
   var React = require('react/addons');
   var TestUtils = React.addons.TestUtils;
-  var Loading = require('../other/Loading');
+  var Loading = require('../../other/Loading');
 
   var loading = TestUtils.renderIntoDocument(<Loading/>);
 
