@@ -14,7 +14,7 @@ var jestConfig = {
         "jquery",
       ],
       testFileExtensions: [
-        """js",
+        "js",
         "jsx",
       ],
       testPathIgnorePatterns: [
