@@ -1,5 +1,6 @@
 //app/assets/javascripts/components/Thumbnail.jsx
 var React = require('react');
+$ = jQuery = require('jquery');
 
 var Thumbnail = React.createClass({
   displayName: 'Thumbnail',
@@ -42,9 +43,7 @@ var Thumbnail = React.createClass({
   render: function() {
     var classString = "hc-thumbnail-image " + this.props.thumbnailType;
     return (
-      <span>
         <img style={this.style()} src={this.thumbnailSrc()} className={classString} title={this.props.title} alt={this.thumbnailCaption()} />
-      </span>
     );
   }
 });
