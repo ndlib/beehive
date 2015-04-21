@@ -1,9 +1,10 @@
 {
   "name": "beehive",
+  "repository": "git@github.com:ndlib/beehive.git",
   "devDependencies": {
     "browserify": "~>6.3",
     "browserify-incremental": "^1.4.0",
-    "jest-cli": "^0.2.0",
+    "jest-cli": "^0.4.0",
     "jquery": "^2.1.1",
     "reactify": "^0.17.1",
     "react": "^0.12.0",
