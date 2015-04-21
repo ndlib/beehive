@@ -1,4 +1,4 @@
-// app/assets/javascripts/components/__tests__/Loading-test.jsx
+// app/assets/javascripts/components/__tests__/otherLoading-test.jsx
 jest.dontMock('../../other/Loading');
 
 
