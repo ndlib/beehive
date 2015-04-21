@@ -23,7 +23,7 @@ var jestConfig = {
   };
 
 gulp.task("test", function(done) {
-    jest.runCLI({ config : jestConfig }, ".", function() {""""""""
+    jest.runCLI({ config : jestConfig }, ".", function() {
         done();
     });
 });
