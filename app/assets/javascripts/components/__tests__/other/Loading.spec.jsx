@@ -1,7 +1,6 @@
 // app/assets/javascripts/components/__tests__/otherLoading-test.jsx
 jest.dontMock('../../other/Loading');
 
-
 describe('Loading', function() {
   var React = require('react/addons');
   var TestUtils = React.addons.TestUtils;
@@ -18,4 +17,5 @@ describe('Loading', function() {
     expect(loading.getDOMNode().firstChild.nodeName).toBe('IMG');
     expect(loading.getDOMNode().innerHTML).toContain('src="/images/ajax-loader.gif"');
   });
+
 });
