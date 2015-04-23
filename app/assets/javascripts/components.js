@@ -37,6 +37,7 @@ CollectionsList = require('./components/collection/CollectionsList');
 CollectionsListItem = require('./components/collection/CollectionsListItem');
 CollectionLink = require('./components/collection/CollectionLink');
 CollectionShow = require('./components/collection/CollectionShow');
+CollectionDescription = require('./components/collection/CollectionDescription');
 
 // Showcases
 ShowcasesList = require('./components/showcase/ShowcasesList');
@@ -75,6 +76,7 @@ Copyright = require('./components/modal/Copyright');
 Info = require('./components/modal/Info');
 SectionModal = require('./components/modal/SectionModal');
 ItemModal = require('./components/modal/ItemModal');
+CollectionDescriptionModal = require('./components/modal/CollectionDescriptionModal');
 
 // Other
 MetadataList = require('./components/other/MetadataList');
