@@ -38,22 +38,33 @@ var CollectionShow = React.createClass({
     };
   },
 
-  componentDidMount: function() {
-    // we need to re-call the render function because the heights were not available
-    // the first time we rendered.
-    this.forceUpdate();
+  getInitialState: function() {
+    return {
+      overflow: "",
+    };
   },
 
-  render: function() {
-    var overflow = "";
+  componentDidMount: function() {
+
+  },
+
+  componentDidUpdate: function() {
+      this.checkShowMore();
+  },
+
+  checkShowMore: function() {
     var outerHeight = $('#main-collection-description').outerHeight(true);
     var innerHeight = $('#main-collection-description .collection-description').outerHeight(true);
     console.log(outerHeight, innerHeight);
-    if(innerHeight !== null) {
-      if(outerHeight < innerHeight) {
-        overflow = (<div style={this.overflowStyle()}>MORE</div>);
+    if(innerHeight > outerHeight) {
+      if(this.state.overflow == "") {
+        this.setState({overflow: (<div style={this.overflowStyle()}>MORE</div>)});
       }
     }
+  },
+
+  render: function() {
+    var overflow = this.state.overflow;
     if (this.props.collection) {
       return (
         <div className="jumbotron">
@@ -68,8 +79,6 @@ var CollectionShow = React.createClass({
                 {overflow}
               </a>
             </div>
-
-
           </div><div className="clear">&nbsp;</div>
         </div>
       );
