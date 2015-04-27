@@ -55,7 +55,6 @@ var CollectionShow = React.createClass({
   checkShowMore: function() {
     var outerHeight = $('#main-collection-description').outerHeight(true);
     var innerHeight = $('#main-collection-description .collection-description').outerHeight(true);
-    console.log(outerHeight, innerHeight);
     if(innerHeight > outerHeight) {
       if(this.state.overflow == "") {
         this.setState({overflow: (<div style={this.overflowStyle()}>MORE</div>)});
