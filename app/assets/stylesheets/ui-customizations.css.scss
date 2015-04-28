@@ -10,109 +10,115 @@ body {
   background: #333;
   background-image: image_url("black-linen.png");
   padding-bottom: 49px;
-}
 
-body.collections-bg {
-  padding-bottom:0;
-
-  .title-bar.large {
-    display:none;
-  }
-}
-
-body.collections-bg .banner {
-  background-repeat:no-repeat;
-  background-size:cover;
-  background-position:left top;
-  background-image:image_url("home.jpg");
-  min-height: 450px;
-  position:relative;
-  -webkit-box-shadow: 0px 2px 10px 5px rgba(0,0,0,0.65);
--moz-box-shadow: 0px 2px 10px 5px rgba(0,0,0,0.65);
-box-shadow: 0px 2px 10px 5px rgba(0,0,0,0.65);
-
-  .container {
-    width: 100%;
-    margin:0 auto;
-    padding:60px;
-
-  }
-
-  h1 {
-    overflow: hidden;
-    width:400px;
-    height:0;
-    padding-top:166px;
-    background-image:image_url("dc.logo.png");
-    background-size:cover;
-    margin:0;
-  }
-
-  h3 {
-    overflow: hidden;
-    width:200px;
-    height:0;
-    padding-top:57px;
-    background-image:image_url("powered.png");
-    background-size:cover;
-    position:absolute;
-    right:60px;
-    bottom:60px;
-    margin:0;
-  }
-
-  p {
-    display: none;
-  }
-}
-
-body.collection {
-  padding-bottom:0;
-  min-height: 1000px;
-
-  .navbar-brand {
-    font-size:24px;
-    font-weight: 500;
-    font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
-  }
-
-  .jumbotron {
-    box-shadow:none;
+  &.collections-bg {
     padding-bottom:0;
 
-    h1 {
-      display: none;
+    .title-bar.large {
+      display:none;
     }
 
-    p {
-      font-size:18px;
+    .banner {
+      background-repeat:no-repeat;
+      background-size:cover;
+      background-position:left top;
+      background-image:image_url("home.jpg");
+      min-height: 450px;
+      position:relative;
+      -webkit-box-shadow: 0px 2px 10px 5px rgba(0,0,0,0.65);
+      -moz-box-shadow: 0px 2px 10px 5px rgba(0,0,0,0.65);
+      box-shadow: 0px 2px 10px 5px rgba(0,0,0,0.65);
+
+      .container {
+        width: 100%;
+        margin:0 auto;
+        padding:60px;
+
+      }
+
+      h1 {
+        overflow: hidden;
+        width:400px;
+        height:0;
+        padding-top:166px;
+        background-image:image_url("dc.logo.png");
+        background-size:cover;
+        margin:0;
+      }
+
+      h3 {
+        overflow: hidden;
+        width:200px;
+        height:0;
+        padding-top:57px;
+        background-image:image_url("powered.png");
+        background-size:cover;
+        position:absolute;
+        right:60px;
+        bottom:60px;
+        margin:0;
+      }
+
+      p {
+        display: none;
+      }
     }
+  }
+
+  &.collection {
+    padding-bottom:0;
+    min-height: 1000px;
+
+    .navbar-brand {
+      font-size:24px;
+      font-weight: 500;
+      font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+
+    .jumbotron {
+      box-shadow:none;
+      padding-bottom:0;
+
+      h1 {
+        display: none;
+      }
+
+      p {
+        font-size:18px;
+      }
+    }
+  }
+
+  &.showcase-bg {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left 50px;
+  }
+
+  &:-webkit-full-screen {
+    background-image: image_url("black-linen.png") !important;
+    background-repeat: repeat !important;
+    background-size: auto !important;
+  }
+
+  &:-moz-full-screen {
+    background-image: image_url("black-linen.png") !important;
+    background-repeat: repeat !important;
+    background-size: auto !important;
+  }
+
+  &:fullscreen {
+    background-image: image_url("black-linen.png") !important;
+    background-repeat: repeat !important;
+    background-size: auto !important;
+  }
+
+  &.modal-open {
+    overflow: hidden;
   }
 }
 
-body.showcase-bg {
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: left 50px;
-}
 
-body:-webkit-full-screen {
-  background-image: image_url("black-linen.png") !important;
-  background-repeat: repeat !important;
-  background-size: auto !important;
-}
-
-body:-moz-full-screen {
-  background-image: image_url("black-linen.png") !important;
-  background-repeat: repeat !important;
-  background-size: auto !important;
-}
-
-body:fullscreen {
-  background-image: image_url("black-linen.png") !important;
-  background-repeat: repeat !important;
-  background-size: auto !important;
-}
 
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
@@ -190,6 +196,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .collections-list {
   padding-top:60px;
+
   .container {
     width:100%;
     padding:0 50px;
@@ -455,11 +462,11 @@ div.dataTables_filter {
 
 body.collection {
   position:relative;
-}
 
-body.collection #footer {
-  position:absolute;
-  bottom:0;
+  #footer {
+    position:absolute;
+    bottom:0;
+  }
 }
 
 .btn-hollow {
@@ -969,9 +976,7 @@ body.collection #footer {
   }
 }
 
-body.modal-open {
-  overflow: hidden;
-}
+
 
 /* animation */
 #showcase-inner {
