@@ -8,6 +8,7 @@ var CollectionShow = React.createClass({
     collection: React.PropTypes.object.isRequired,
   },
 
+
   style: function() {
     return {
     };
@@ -21,7 +22,7 @@ var CollectionShow = React.createClass({
             <div className="collection-text">
               <h1>{this.props.collection.title}</h1>
               <div className="collection-image">
-                <Thumbnail image={this.props.collection.image} thumbnailType="small" />
+                <Thumbnail image={this.props.collection.image} thumbnailType="medium" />
               </div>
               <div className="collection-description">
                 <p dangerouslySetInnerHTML={{__html: this.props.collection.description}} />

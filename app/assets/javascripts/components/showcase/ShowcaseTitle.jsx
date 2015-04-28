@@ -30,8 +30,18 @@ var ShowcaseTitle = React.createClass({
 
   innerStyle: function() {
     return {
-      width: '100%',
+      width: '50vw',
+      marginLeft: '25vw',
       display: 'inline-block',
+      verticalAlign: 'top',
+    };
+  },
+
+  alignStyle: function() {
+    return {
+      height: this.props.height + 'px',
+      display: 'inline-block',
+      verticalAlign: 'middle',
     };
   },
 

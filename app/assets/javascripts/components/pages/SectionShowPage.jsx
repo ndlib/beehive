@@ -39,6 +39,7 @@ var SectionShowPage = React.createClass({
     });
   },
 
+
   render: function() {
     return (
       <Layout>

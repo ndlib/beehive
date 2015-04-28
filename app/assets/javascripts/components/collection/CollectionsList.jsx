@@ -8,6 +8,8 @@ var CollectionsList = React.createClass({
     collections: React.PropTypes.array,
   },
 
+
+
   render: function() {
     var collectionNodes = this.props.collections.map(function(collection, index) {
       var nodes = [];
@@ -29,6 +31,7 @@ var CollectionsList = React.createClass({
       <div className="collections-list">
         <div className="container">
           <div className="row">
+          <h2>Featured Collections</h2>
             {collectionNodes}
           </div>
         </div>
