@@ -12,7 +12,7 @@ var SectionShowDescription = React.createClass({
     if (this.props.height) {
       return {
         height: this.props.height + 'px',
-        overflow: 'scroll',
+        overflowY: 'scroll',
       };
     } else {
       return {};

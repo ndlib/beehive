@@ -2,6 +2,8 @@
 var React = require('react');
 
 var CollectionShowPage = React.createClass({
+  mixins: [PageHeightMixin],
+
   displayName: 'Collection Show Page',
 
   propTypes: {
@@ -47,13 +49,16 @@ var CollectionShowPage = React.createClass({
       );
     }
     return (
-      <Layout>
-        <CollectionPageHeader collection={this.state.collection} />
-        <PageContent>
-          <CollectionShow collection={this.state.collection} />
-          {showcasesList}
-        </PageContent>
-      </Layout>
+      <div>
+        <CollectionDescriptionModal collection={this.state.collection} height={this.state.height} />
+        <Layout>
+          <CollectionPageHeader collection={this.state.collection} />
+          <PageContent>
+            <CollectionShow collection={this.state.collection} />
+            {showcasesList}
+          </PageContent>
+        </Layout>
+      </div>
     );
   }
 });
