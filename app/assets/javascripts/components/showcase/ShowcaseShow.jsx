@@ -126,6 +126,7 @@ var ShowcaseShow = React.createClass({
             </div>
           </div>
         </div>
+
       )
     } else {
       return (<Loading />)

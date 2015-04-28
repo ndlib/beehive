@@ -35,6 +35,10 @@ var CollectionShowPage = React.createClass({
     }.bind(this));
   },
 
+  componentWillMount: function(){
+    document.body.className = "collection";
+  },
+
   render: function() {
     var showcasesList;
     if (this.state.collection.showcases) {
