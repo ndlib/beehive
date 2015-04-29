@@ -274,6 +274,18 @@ body .jumbotron, .container .jumbotron, .container-fluid .jumbotron {
   }
 }
 
+.collection-background {
+  background-color: none;
+  background-size: cover;
+  bottom: 0;
+  filter: blur(20px);
+  left: 0;
+  opacity: 0.3;
+  position: absolute;
+  right: 0;
+  top: 50px;
+}
+
 .jumbotron .collection-text {
   float: left;
   clear: left;
