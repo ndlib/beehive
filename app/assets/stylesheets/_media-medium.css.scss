@@ -6,4 +6,28 @@ $break-medium: 768px;
   .brand-bar {
     font-size: .75em;
   }
+
+  .title-bar {
+    max-height: none;
+  }
+
+  .modal.in {
+    z-index: 6000;
+  }
+
+  .modal-dialog {
+    margin: 0px !important;
+    height: 100% !important;
+  }
+
+  .navbar-brand {
+    height: auto !important;
+  }
+
+  ul.navbar-nav {
+
+    li:first-of-type {
+      display: none;
+    }
+  }
 }
