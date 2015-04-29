@@ -40,7 +40,7 @@ var ShowcasesList = React.createClass({
 
         <div className="showcases-list">
           <div className="">
-            <h2>Showcases</h2>
+            <h2>Featured Content</h2>
             <div className="row">{showcaseNodes}</div>
           </div>
         </div>
