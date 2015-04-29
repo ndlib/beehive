@@ -1,0 +1,9 @@
+$break-medium: 768px;
+
+
+@media screen and (max-width: $break-medium) {
+
+  .brand-bar {
+    font-size: .75em;
+  }
+}

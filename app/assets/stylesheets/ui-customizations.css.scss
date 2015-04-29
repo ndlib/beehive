@@ -86,6 +86,10 @@ body {
       p {
         font-size:18px;
       }
+
+      a:hover {
+        text-decoration: none;
+      }
     }
   }
 
@@ -1067,4 +1071,27 @@ body.collection {
   right: 40px;
 }
 
+
+.col-sm-6 {
+  width: 50%;
+  float: left;
+}
+
+.navbar-nav > li {
+  float: left;
+}
+
+.navbar-left {
+  float: left !important;
+}
+
+.navbar-nav {
+  margin: 0;
+}
+
+
 @import "_material-design-overwrites.scss";
+
+// media-query stylesheet
+@import "_media-medium.css.scss";
+@import "_media-small.css.scss";

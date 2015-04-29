@@ -1,0 +1,12 @@
+$break-small: 480px;
+
+
+
+@media screen and (max-width: $break-small) {
+
+  .brand-bar {
+    font-size: .5em;
+    padding-top: 5px;
+    height: 22px;
+  }
+}
