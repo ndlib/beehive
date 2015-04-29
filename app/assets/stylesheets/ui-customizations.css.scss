@@ -287,9 +287,6 @@ body .jumbotron, .container .jumbotron, .container-fluid .jumbotron {
 }
 
 .jumbotron .collection-image {
-  float: left;
-  width: 35%;
-  display: inline-block;
 
   img {
     border: solid 5px #fff;
@@ -300,13 +297,6 @@ body .jumbotron, .container .jumbotron, .container-fluid .jumbotron {
     border: none;
     box-shadow: none;
   }
-}
-
-.jumbotron .collection-description {
-  display: inline-block;
-  width: 65%;
-  vertical-align: top;
-  padding-left: 2em;
 }
 
 .collection-show {
