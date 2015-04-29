@@ -114,6 +114,7 @@ var ShowcaseShow = React.createClass({
       showcaseHeight = maxShowcaseHeight;
     }
     var showcaseInnerHeight = showcaseHeight - scrollPadding;
+    var titleWidth = Math.floor(titleSectionWidthPercent * 100) + 'vw';
     if (this.props.showcase) {
       return (
         <div>
@@ -121,7 +122,7 @@ var ShowcaseShow = React.createClass({
           <ShowcaseTitleBar percentFade={this.state.titleSectionPercentVisible} height={showcaseTitleHeight} showcase={this.props.showcase} />
           <div id="showcase-outer" style={this.styleOuter(showcaseHeight)} onScroll={this.onScroll}>
             <div id="showcase-inner" style={this.styleInner(showcaseInnerHeight)}>
-              <ShowcaseTitle widthPercent={titleSectionWidthPercent} height={showcaseInnerHeight} showcase={this.props.showcase} />
+              <ShowcaseTitle width={titleWidth} height={showcaseInnerHeight} showcase={this.props.showcase} />
               <SectionsList height={showcaseInnerHeight} sections={this.props.showcase.sections} />
             </div>
           </div>

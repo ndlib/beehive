@@ -6,25 +6,29 @@ var converter = new Showdown.converter()
 var ShowcaseTitle = React.createClass({
   propTypes: {
     showcase: React.PropTypes.object.isRequired,
-    height: React.PropTypes.number.isRequired,
-    widthPercent: React.PropTypes.number,
+    height: React.PropTypes.number,
+    width: React.PropTypes.string,
   },
 
   getDefaultProps: function() {
     return {
-      widthPercent: 0.75,
+      width: '75vw',
     }
   },
 
   outerStyle: function() {
+    var height;
+    if (this.props.height) {
+      height = this.props.height + 'px';
+    }
     return {
       display: 'inline-block',
       verticalAlign: 'top',
       position: 'relative',
       padding: '5px',
-      height: this.props.height + 'px',
+      height: height,
       marginRight: '10px',
-      width: Math.floor(this.props.widthPercent * 100) + 'vw',
+      width: this.props.width,
     };
   },
 
@@ -36,9 +40,12 @@ var ShowcaseTitle = React.createClass({
   },
 
   headerStyle: function() {
-    var marginTop = Math.round(this.props.height * 0.15);
+    var marginTop;
+    if (this.props.height) {
+      var marginTop = Math.round(this.props.height * 0.15) + 'px';
+    }
     return {
-      marginTop: marginTop + 'px',
+      marginTop: marginTop,
     }
   },
 

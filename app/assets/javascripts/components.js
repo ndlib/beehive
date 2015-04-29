@@ -16,6 +16,8 @@ PageHeader = require('./components/layout/PageHeader');
 TitleBar = require('./components/layout/TitleBar');
 PageContent = require('./components/layout/PageContent');
 CollectionPageHeader = require('./components/layout/CollectionPageHeader');
+GridList = require('./components/layout/GridList');
+Card = require('./components/layout/Card');
 
 // Pages
 CollectionsListPage = require('./components/pages/CollectionsListPage');
@@ -43,13 +45,12 @@ CollectionBackground = require('./components/collection/CollectionBackground');
 
 // Showcases
 ShowcasesList = require('./components/showcase/ShowcasesList');
-ShowcasesListItem = require('./components/showcase/ShowcasesListItem');
-ShowcaseLink = require('./components/showcase/ShowcaseLink');
-ShowcaseTitleSection = require('./components/showcase/ShowcaseTitleSection');
+ShowcasesCardList = require('./components/showcase/ShowcasesCardList');
 ShowcaseShow = require('./components/showcase/ShowcaseShow');
 ShowcaseTitle = require('./components/showcase/ShowcaseTitle');
 ShowcaseTitleBar = require('./components/showcase/ShowcaseTitleBar');
 ShowcaseBackground = require('./components/showcase/ShowcaseBackground');
+ShowcaseCard = require('./components/showcase/ShowcaseCard');
 
 // Sections
 SectionsList = require('./components/section/SectionsList');
