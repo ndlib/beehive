@@ -38,5 +38,4 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   config.honeycomb_url = "http://localhost:3017"
-  config.beehive_url = "http://localhost:3018"
 end

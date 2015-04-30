@@ -77,5 +77,4 @@ Rails.application.configure do
   # config.active_record.dump_schema_after_migration = false
 
   config.honeycomb_url = "https://honeycombpprd-vm.library.nd.edu"
-  config.beehive_url = "https://beehivepprd-vm.library.nd.edu"
 end
