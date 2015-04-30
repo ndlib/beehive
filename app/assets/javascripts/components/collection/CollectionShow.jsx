@@ -54,7 +54,7 @@ var CollectionShow = React.createClass({
 
   checkShowMore: function() {
     var outerHeight = $('#main-collection-description').outerHeight(true);
-    var innerHeight = $('#main-collection-description .collection-description').outerHeight(true);
+    var innerHeight = $('#main-collection-description .collection-intro').outerHeight(true);
     if(innerHeight > outerHeight) {
       if(this.state.overflow == "") {
         this.setState({overflow: (<div style={this.overflowStyle()}>MORE</div>)});
@@ -71,14 +71,11 @@ var CollectionShow = React.createClass({
             <div className="collection-text">
               <h1>{this.props.collection.title}</h1>
               <div className="row">
-                <div className="collection-image col-md-4">
+                <div className="collection-image col-md-2">
                   <Thumbnail image={this.props.collection.image} thumbnailType="medium" />
                 </div>
-                <div className="col-md-8">
-                  <a href="#modal-collection-description" data-toggle="modal" data-target="#modal-collection-description" style={this.aStyle()}>
-                    <CollectionDescription collection={this.props.collection} height="400" id="main-collection-description" />
-                    {overflow}
-                  </a>
+                <div className="col-md-10">
+                  <CollectionIntro collection={this.props.collection} height="400" id="main-collection-description" />
                 </div>
               </div>
             </div>
