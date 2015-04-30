@@ -1,6 +1,6 @@
 var React = require('react');
 
-var CollectionDescription = React.createClass({
+var CollectionIntro = React.createClass({
   propTypes: {
     collection: React.PropTypes.object.isRequired,
     height: React.PropTypes.string,
@@ -23,10 +23,10 @@ var CollectionDescription = React.createClass({
   render: function() {
     return (
       <div style={this.style()} id={this.props.id}>
-        <div className="collection-description" dangerouslySetInnerHTML={{__html: this.props.collection.description}} />
+        <div className="collection-intro" dangerouslySetInnerHTML={{__html: this.props.collection.short_description}} />
       </div>
     )
   }
 });
 
-module.exports = CollectionDescription;
+module.exports = CollectionIntro;

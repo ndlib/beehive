@@ -51,11 +51,12 @@ var CollectionShowPage = React.createClass({
     return (
       <div>
         <CollectionBackground collection={this.state.collection} />
-        <CollectionDescriptionModal collection={this.state.collection} height={this.state.height} />
         <Layout>
           <CollectionPageHeader collection={this.state.collection} />
           <PageContent>
             <CollectionShow collection={this.state.collection} />
+            <hr />
+            <CollectionDescriptionModal collection={this.state.collection} height={this.state.height} />
             {showcasesList}
           </PageContent>
         </Layout>
