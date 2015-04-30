@@ -25,7 +25,7 @@ var CollectionShowPage = React.createClass({
         collection: this.props.collection,
       });
     } else {
-      this.loadRemoteCollection()
+      this.loadRemoteCollection();
     }
   },
 
@@ -50,6 +50,7 @@ var CollectionShowPage = React.createClass({
     }
     return (
       <div>
+        <CollectionBackground collection={this.state.collection} />
         <Layout>
           <CollectionPageHeader collection={this.state.collection} />
           <PageContent>

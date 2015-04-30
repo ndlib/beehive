@@ -1,0 +1,52 @@
+$break-medium: 768px;
+
+
+@media screen and (max-width: $break-medium) {
+
+  .brand-bar {
+    font-size: 0.75em;
+  }
+
+  .title-bar {
+    max-height: none;
+  }
+
+  .modal.in {
+    z-index: 6000;
+  }
+
+  .modal-body > div {
+    height: 100% !important;
+    overflow-y: auto !important;
+  }
+
+  .modal-content {
+    height: auto;
+  }
+
+  .modal-dialog {
+    margin: 0 !important;
+    position: relative;
+  }
+
+  .navbar-brand {
+    height: auto;
+  }
+
+  .navbar-nav {
+
+    li:first-of-type {
+      display: none;
+    }
+  }
+
+  .section-description,
+  #modal-collection-description .collection-description {
+    font-size: 22px;
+    margin: 1em;
+  }
+
+  .collection-description {
+    margin: 1em 1em 2em;
+  }
+}

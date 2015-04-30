@@ -39,6 +39,7 @@ CollectionLink = require('./components/collection/CollectionLink');
 CollectionShow = require('./components/collection/CollectionShow');
 CollectionDescription = require('./components/collection/CollectionDescription');
 CollectionIntro = require('./components/collection/CollectionIntro');
+CollectionBackground = require('./components/collection/CollectionBackground');
 
 // Showcases
 ShowcasesList = require('./components/showcase/ShowcasesList');
