@@ -13,9 +13,9 @@ var CollectionIntro = React.createClass({
         maxHeight: this.props.height + 'px',
         overflow: 'hidden',
       };
-      } else {
+    } else {
       return {};
-      }
+    }
   },
 
   componentDidMount: function() {},
@@ -23,7 +23,7 @@ var CollectionIntro = React.createClass({
   render: function() {
     return (
       <div style={this.style()} id={this.props.id}>
-        <p className="collection-intro" dangerouslySetInnerHTML={{__html: this.props.collection.short_description}} />
+        <div className="collection-intro" dangerouslySetInnerHTML={{__html: this.props.collection.short_description}} />
       </div>
     )
   }
