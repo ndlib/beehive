@@ -32,7 +32,7 @@ var MetadataItem = React.createClass({
     return (
       <dl>
         <dt>{this.props.metadata.label}</dt>
-        <dd>{this.value()}</dd>
+        <dd dangerouslySetInnerHTML={{__html: this.value()}} />
       </dl>
     );
   }
