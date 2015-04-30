@@ -7,14 +7,14 @@ class ShowcasesController < ApplicationController
   end
 
   def embed
-    @showcases_url =  Rails.configuration.honeycomb_url + "/v1/showcases/" + params[:id]
+    @showcases_url = Rails.configuration.honeycomb_url + "/v1/showcases/" + params[:id]
     respond_to do |format|
       format.html {render :layout => 'embed'}
     end
   end
 
   def show
-    @showcases_url =  Rails.configuration.honeycomb_url + "/v1/showcases/" + params[:id]
+    @showcases_url = Rails.configuration.honeycomb_url + "/v1/showcases/" + params[:id]
   end
 
  private

@@ -7,14 +7,14 @@ class ItemsController < ApplicationController
   end
 
   def embed
-    @items_url =  Rails.configuration.honeycomb_url + "/v1/items/" + params[:id]
+    @items_url = Rails.configuration.honeycomb_url + "/v1/items/" + params[:id]
     respond_to do |format|
       format.html {render :layout => 'embed'}
     end
   end
 
   def show
-    @items_url =  Rails.configuration.honeycomb_url + "/v1/items/" + params[:id]
+    @items_url = Rails.configuration.honeycomb_url + "/v1/items/" + params[:id]
   end
 
   private
