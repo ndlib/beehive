@@ -16,7 +16,7 @@ class SectionsController < ApplicationController
   private
 
   def sections_api_base
-    Rails.configuration.beehive_url + "/v1/sections/"
+    Rails.configuration.honeycomb_url + "/v1/sections/"
   end
 
   def allow_iframe
