@@ -21,16 +21,16 @@ $break-medium: 768px;
   }
 
   .modal-content {
-    height: auto !important;
+    height: auto;
   }
 
   .modal-dialog {
     margin: 0 !important;
-    position: relative !important;
+    position: relative;
   }
 
   .navbar-brand {
-    height: auto !important;
+    height: auto;
   }
 
   .navbar-nav {
@@ -47,6 +47,6 @@ $break-medium: 768px;
   }
 
   .collection-description {
-    margin: 1em 1em 2em !important;
+    margin: 1em 1em 2em;
   }
 }
