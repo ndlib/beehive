@@ -7,19 +7,19 @@ class ShowcasesController < ApplicationController
   end
 
   def embed
-    @showcases_url =  Rails.configuration.beehive_url + "/v1/showcases/" + params[:id]
+    @showcases_url = Rails.configuration.honeycomb_url + "/v1/showcases/" + params[:id]
     respond_to do |format|
       format.html {render :layout => 'embed'}
     end
   end
 
   def show
-    @showcases_url =  Rails.configuration.beehive_url + "/v1/showcases/" + params[:id]
+    @showcases_url = Rails.configuration.honeycomb_url + "/v1/showcases/" + params[:id]
   end
 
  private
   def set_collections_url
-    @collections_url = Rails.configuration.beehive_url + "/v1/collections/" + params[:collection_id]
+    @collections_url = Rails.configuration.honeycomb_url + "/v1/collections/" + params[:collection_id]
   end
 
   def allow_iframe
