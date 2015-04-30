@@ -19,7 +19,7 @@ var CollectionPageHeader = React.createClass({
           </a>
           <ul className="nav navbar-nav navbar-left">
             <li><p>|</p></li>
-            <li><a href={showcaseBrowseUrl}>Showcases</a></li>
+            <li><a href={showcaseBrowseUrl}>Featured Content</a></li>
             <li><p>|</p></li>
             <li><a href={itemBrowseUrl}>Items</a></li>
           </ul>
