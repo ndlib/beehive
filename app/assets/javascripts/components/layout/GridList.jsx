@@ -9,7 +9,7 @@ var GridList = React.createClass({
     ]).isRequired,
   },
 
-  render: function() {
+  childrenGridNodes: function() {
     var index = 0;
     var childrenNodes = []
     React.Children.forEach(this.props.children, function(node) {
@@ -29,10 +29,15 @@ var GridList = React.createClass({
       index += 1;
       childrenNodes.push(nodes);
     });
-    if (childrenNodes.length > 0) {
+    return childrenNodes;
+  },
+
+  render: function() {
+    var children = this.childrenGridNodes();
+    if (children.length > 0) {
       return (
         <div className="row">
-          {childrenNodes}
+          {children}
         </div>
       );
     }

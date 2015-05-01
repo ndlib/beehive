@@ -6,14 +6,17 @@ var ShowcasesCardList = React.createClass({
     showcases: React.PropTypes.array.isRequired,
   },
 
-  render: function() {
-    var showcaseNodes = this.props.showcases.map(function(showcase, index) {
+  showcaseNodes: function() {
+    return this.props.showcases.map(function(showcase, index) {
       return (<ShowcaseCard showcase={showcase} key={index} />);
     });
-    if (showcaseNodes.length > 0) {
+  },
+
+  render: function() {
+    if (this.props.showcases.length > 0) {
       return (
         <GridList className="showcases-list">
-          {showcaseNodes}
+          {this.showcaseNodes()}
         </GridList>
       );
     }
