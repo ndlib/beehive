@@ -29,7 +29,7 @@ var ShowcaseBackground = React.createClass({
       position: "absolute",
       backgroundImage: backgroundImage,
       backgroundRepeat: "no-repeat",
-      backgroundSize: "100%",
+      backgroundSize: "cover",
       zIndex: "-1",
       // WebkitFilter: blurStr,
       // MozFilter: blurStr,

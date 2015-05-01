@@ -79,15 +79,6 @@ var ShowcaseShow = React.createClass({
       whiteSpace: 'nowrap',
       boxSizing: 'border-box',
       height: height + 'px',
-      top: 0,
-      left: 0,
-
-      padding: '10px',
-      // marginBottom: '2em',
-
-      //backgroundImage: 'url(' + this.props.showcase.image.contentUrl + ')',
-      backgroundRepeat:'no-repeat',
-      backgroundSize:'cover',
     };
   },
 

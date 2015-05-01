@@ -1,7 +1,7 @@
-//app/assets/javascripts/components/SectionsListItem.jsx
+//app/assets/javascripts/components/layout/PageContent.jsx
 var React = require('react');
 
-var PageHeader = React.createClass({
+var PageContent = React.createClass({
   render: function() {
     return (
       <div className="container-fluid content">
@@ -16,4 +16,4 @@ var PageHeader = React.createClass({
 });
 
 // each file will export exactly one component
-module.exports = PageHeader;
+module.exports = PageContent;
