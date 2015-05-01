@@ -706,12 +706,20 @@ body.collection {
   padding: 0;
 }
 
-.showcase {
+.bee-page-content {
   padding: 0;
 
   .row {
     margin-top: 15px;
   }
+}
+
+.bee-card {
+  border-radius: 2px;
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.75);
+  margin-bottom: 1.5em;
+  overflow: hidden;
+  position: relative;
 }
 
 .showcase-title-page {
@@ -731,7 +739,6 @@ body.collection {
     border: solid 1px #fff;
     border-width: 1px 0;
     padding: 2% 0;
-    margin-top:6%;
   }
 
   .showcase-title-description {
@@ -755,6 +762,20 @@ body.collection {
       width: 100%;
       height: auto !important;
       display: block;
+    }
+  }
+}
+
+.showcase-card {
+  .showcase-title-page {
+    h2 {
+      font-size: 24px;
+    }
+
+    .showcase-title-description {
+      font-size: 1.1em;
+      line-height: inherit;
+      margin: 0;
     }
   }
 }
