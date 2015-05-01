@@ -1,0 +1,54 @@
+$card-background: #fff;
+$card-color: #333;
+$card-subtitle-color: #757575;
+$action-color: #d9a91b;
+
+.bee-card {
+  border-radius: 2px;
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.75);
+  margin-bottom: 1.5em;
+  overflow: hidden;
+  position: relative;
+}
+
+.bee-card-content {
+  background-color: $card-background;
+  color: $card-color;
+  position: relative;
+}
+
+.bee-card-content-title {
+  border-bottom-color: rgba(0, 0, 0, 0.12);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  padding: 24px 16px 16px;
+}
+
+.bee-card-content-title-primary {
+  font-size: 24px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.bee-card-content-title-subtitle {
+  color: $card-subtitle-color;
+  font-size: 14px;
+  font-weight: normal;
+  margin: 8px 0 0;
+  min-height: 15px;
+}
+
+.bee-card-content-actions {
+  padding: 8px;
+
+  .btn.btn-default {
+    color: $action-color;
+    font-weight: 400;
+    margin: 0 8px 0 0;
+    padding: 8px;
+  }
+}
+
+.bee-card-content-supporting {
+  padding: 16px 16px 24px;
+}

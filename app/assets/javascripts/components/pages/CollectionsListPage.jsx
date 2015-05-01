@@ -36,7 +36,7 @@ var CollectionsListPage = React.createClass({
   },
 
   componentWillMount: function(){
-    document.body.className = "collections-bg";
+    document.body.className = document.body.className + " bee-light-theme collections-bg";
   },
 
   render: function() {
@@ -44,17 +44,15 @@ var CollectionsListPage = React.createClass({
       <Layout>
       <PageHeader branding={true} />
         <PageContent>
-          <div className="banner">
-            <div className="container">
+          <div className="banner bee-homepage-banner">
+            <div className="banner-inner">
               <h1>Digital Collections</h1>
               <h3>Powered by HoneyComb</h3>
-              <p>Ubi probant non excepteur. Pariatur illustriora iis vidisse, fabulas ut anim,
-                arbitror noster labore hic esse est aute e incurreret. Non ad velit ipsum culpa.
-                Qui iis domesticarum eu varias laboris cohaerescant, an labore id quid ex ne
-                eiusmod concursionibus, ad commodo adipisicing se quamquam quis quae nostrud
-                quis sed ex ab exercitation o arbitror sunt si arbitror eruditionem. Quo minim
-                illum ubi excepteur. Officia quo labore offendit e tempor efflorescere iis
-                quamquam. Eiusmod nisi ingeniis possumus, singulis quorum admodum.</p>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-12">
+              <h2>Featured Collections</h2>
             </div>
           </div>
           <CollectionsList collections={this.state.collections} />

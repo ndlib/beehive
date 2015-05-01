@@ -12,7 +12,6 @@ var SectionDescription = React.createClass({
   style: function() {
     return {
       display: 'inline-block',
-      padding: '5px',
       width: '400px',
       overflow: 'hidden',
       height: this.props.height + 'px',
@@ -67,7 +66,7 @@ var SectionDescription = React.createClass({
     if (rawMarkup || (this.props.section.title && this.props.section.item == null)) {
       return (
         <div className="section-container section-container-text" style={this.style()}>
-          <h2>{this.props.section.title}</h2>
+          <h2 className="section-container-text-title">{this.props.section.title}</h2>
           <DescriptionTeaser description={rawMarkup} />
           {overflow}
         </div>

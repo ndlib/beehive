@@ -83,7 +83,7 @@ var ShowcaseShow = React.createClass({
   },
 
   componentWillMount: function(){
-    document.body.className = "showcase-bg";
+    document.body.className = document.body.className + " showcase-bg";
   },
 
   onScroll: function() {
@@ -111,8 +111,8 @@ var ShowcaseShow = React.createClass({
         <div>
           <ShowcaseBackground percentBlur={1 - this.state.titleSectionPercentVisible} height={this.props.height} showcase={this.props.showcase} />
           <ShowcaseTitleBar percentFade={this.state.titleSectionPercentVisible} height={showcaseTitleHeight} showcase={this.props.showcase} />
-          <div id="showcase-outer" style={this.styleOuter(showcaseHeight)} onScroll={this.onScroll}>
-            <div id="showcase-inner" style={this.styleInner(showcaseInnerHeight)}>
+          <div id="showcase-outer" className="showcase-outer" style={this.styleOuter(showcaseHeight)} onScroll={this.onScroll}>
+            <div id="showcase-inner" className="showcase-inner" style={this.styleInner(showcaseInnerHeight)}>
               <ShowcaseTitle width={titleWidth} height={showcaseInnerHeight} showcase={this.props.showcase} />
               <SectionsList height={showcaseInnerHeight} sections={this.props.showcase.sections} />
             </div>

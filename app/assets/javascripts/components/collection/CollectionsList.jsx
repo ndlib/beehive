@@ -8,34 +8,17 @@ var CollectionsList = React.createClass({
     collections: React.PropTypes.array,
   },
 
-
+  collectionNodes: function() {
+    return this.props.collections.map(function(collection, index) {
+      return (<CollectionCard collection={collection} key={index} />);
+    });
+  },
 
   render: function() {
-    var collectionNodes = this.props.collections.map(function(collection, index) {
-      var nodes = [];
-      if (index > 0) {
-        if (index%3 == 0) {
-          nodes.push ((
-            <div className="clearfix"></div>
-          ));
-        }
-      }
-      nodes.push((
-        <div className="col-sm-4" key={collection['@id']}>
-          <CollectionsListItem collection={collection} />
-        </div>
-      ));
-      return nodes;
-    });
     return (
-      <div className="collections-list">
-        <div className="container">
-          <div className="row">
-          <h2>Featured Collections</h2>
-            {collectionNodes}
-          </div>
-        </div>
-      </div>
+      <GridList className="collections-list">
+          {this.collectionNodes()}
+      </GridList>
     );
   }
 

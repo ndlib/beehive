@@ -19,6 +19,8 @@ CollectionPageHeader = require('./components/layout/CollectionPageHeader');
 GridList = require('./components/layout/GridList');
 Card = require('./components/layout/Card');
 BrandBar = require('./components/layout/BrandBar');
+CardBackground = require('./components/layout/CardBackground');
+CardOverlay = require('./components/layout/CardOverlay');
 
 // Pages
 CollectionsListPage = require('./components/pages/CollectionsListPage');
@@ -38,6 +40,7 @@ ItemEmbed = require('./components/embeds/ItemEmbed');
 // Collections
 CollectionsList = require('./components/collection/CollectionsList');
 CollectionsListItem = require('./components/collection/CollectionsListItem');
+CollectionCard = require('./components/collection/CollectionCard');
 CollectionLink = require('./components/collection/CollectionLink');
 CollectionShow = require('./components/collection/CollectionShow');
 CollectionDescription = require('./components/collection/CollectionDescription');
