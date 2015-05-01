@@ -57,13 +57,7 @@ var CollectionsListPage = React.createClass({
                 quamquam. Eiusmod nisi ingeniis possumus, singulis quorum admodum.</p>
             </div>
           </div>
-          <div className="row">
-          <div className="col-sm-9"><CollectionsList collections={this.state.collections} /></div>
-
-          <div className="col-sm-3">
-          <div className="container"><a className="btn btn-default">Category One</a></div>
-          </div>
-          </div>
+          <CollectionsList collections={this.state.collections} />
         </PageContent>
       </Layout>
     );

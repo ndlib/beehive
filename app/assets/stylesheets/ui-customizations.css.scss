@@ -9,10 +9,9 @@ $darkgrey: #555;
 body {
   background: #333;
   background-image: image_url("black-linen.png");
-  padding-bottom: 49px;
+  padding-bottom: 57px;
 
   &.collections-bg {
-    padding-bottom:0;
 
     .title-bar.large {
       display:none;
@@ -66,9 +65,6 @@ body {
   }
 
   &.collection {
-    padding-bottom:0;
-    min-height: 1000px;
-
     .navbar-brand {
       font-size:24px;
       font-weight: 500;
@@ -221,23 +217,17 @@ h1, h2, h3, h4, h5, h6 {
   background: linear-gradient(to bottom, rgba(51, 51, 51, 0.9) 0%, rgba(51, 51, 51, 0.4) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', endColorstr='#33000000',GradientType=0 );
   border-bottom: solid 1px #999;
-
-  .container {
-    margin: 0;
-    padding: 0 40px;
-  }
+  position: relative;
 
   h2 {
     font-size: 16px;
     text-transform: uppercase;
     font-family: GPCMed;
     font-weight: normal;
-    padding: 8px 0;
+    padding: 0;
     margin: 0;
     letter-spacing: 1.1px;
   }
-  margin-bottom: 5px;
-  position: relative;
 }
 
 .collections {
@@ -431,7 +421,11 @@ div.dataTables_filter {
 #footer {
   background-color: #2b2a2a;
   background-image: linear-gradient(to top, #2b2a2a 0%, #393838 140%);
+  bottom: 0;
+  left: 0;
   padding: 0px;
+  position: fixed;
+  right: 0;
   z-index: 6000;
 
   .pull-right {
@@ -453,10 +447,6 @@ div.dataTables_filter {
     margin-bottom: 8px;
     margin-left: 16px;
   }
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
 
   .btn {
     margin: 0;
@@ -465,20 +455,6 @@ div.dataTables_filter {
     font-size: 18px;
     line-height: 1em;
     background: transparent;
-  }
-}
-
-.collections-bg #footer {
-  position:relative;
-
-}
-
-body.collection {
-  position: relative;
-
-  #footer {
-    position: fixed;
-    bottom:0;
   }
 }
 
