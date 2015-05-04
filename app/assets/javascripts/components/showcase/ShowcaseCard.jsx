@@ -23,43 +23,6 @@ var ShowcaseCard = React.createClass({
     };
   },
 
-  backgroundHolderStyle: function() {
-    return {
-      top: 0,
-      bottom: 0,
-      left: 0,
-      right: 0,
-      position: "absolute",
-    };
-  },
-
-  backgroundStyle: function() {
-    var backgroundImage;
-    if (this.props.showcase.image) {
-      backgroundImage = "url(\"" + this.props.showcase.image.contentUrl + "\")";
-    }
-    return {
-      width: "100%",
-      height: "100%",
-      position: "relative",
-      background: backgroundImage + " 50% 50% / cover no-repeat",
-    };
-  },
-
-  titleStyle: function() {
-    return {
-      top: 0,
-      bottom: 0,
-      left: 0,
-      right: 0,
-      position: "absolute",
-      padding: "2em",
-      backgroundImage: "linear-gradient(to bottom,rgba(0,0,0,0.5) 0,transparent 100%)",
-      backgroundRepeat: "repeat-x",
-      overflow: "hidden",
-    };
-  },
-
   onClick: function(e) {
     e.preventDefault();
     window.location = this.showcaseUrl(this.props.showcase);
@@ -67,14 +30,11 @@ var ShowcaseCard = React.createClass({
 
   render: function() {
     return (
-      <Card>
+      <Card backgroundImage={this.props.showcase.image}>
         <div className="showcase-card" style={this.style()} onClick={this.onClick}>
-          <div className="showcase-card-background-holder" style={this.backgroundHolderStyle()}>
-            <div className="showcase-card-background" style={this.backgroundStyle()}></div>
-          </div>
-          <div className="showcase-card-title" style={this.titleStyle()}>
+          <CardOverlay>
             <ShowcaseTitle showcase={this.props.showcase} width="100%" />
-          </div>
+          </CardOverlay>
         </div>
       </Card>
     );

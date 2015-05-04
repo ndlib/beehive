@@ -42,7 +42,7 @@ var ShowcaseTitleBar = React.createClass({
     if (this.props.showcase) {
       return (
         <div className="showcases-title-bar" id="showcases-title-bar" style={this.style()}>
-          <h2 style={this.titleStyle()} title={this.props.showcase.title}>
+          <h2 className="showcases-title-bar-title overflow-ellipsis" style={this.titleStyle()} title={this.props.showcase.title}>
             {this.props.showcase.title}
           </h2>
         </div>

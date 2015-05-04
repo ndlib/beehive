@@ -6,61 +6,21 @@ $darkgrey: #555;
 
 @import "fonts.css.scss";
 
+html {
+  height: 100%;
+}
+
 body {
   background: #333;
   background-image: image_url("black-linen.png");
+  min-height: 100%;
   padding-bottom: 57px;
+  position: relative;
 
   &.collections-bg {
 
     .title-bar.large {
       display:none;
-    }
-
-    .banner {
-      background-repeat:no-repeat;
-      background-size:cover;
-      background-position:left top;
-      background-image:image_url("home.jpg");
-      min-height: 450px;
-      position:relative;
-      -webkit-box-shadow: 0px 2px 10px 5px rgba(0,0,0,0.65);
-      -moz-box-shadow: 0px 2px 10px 5px rgba(0,0,0,0.65);
-      box-shadow: 0px 2px 10px 5px rgba(0,0,0,0.65);
-
-      .container {
-        width: 100%;
-        margin:0 auto;
-        padding:60px;
-
-      }
-
-      h1 {
-        overflow: hidden;
-        width:400px;
-        height:0;
-        padding-top:166px;
-        background-image:image_url("dc.logo.png");
-        background-size:cover;
-        margin:0;
-      }
-
-      h3 {
-        overflow: hidden;
-        width:200px;
-        height:0;
-        padding-top:57px;
-        background-image:image_url("powered.png");
-        background-size:cover;
-        position:absolute;
-        right:60px;
-        bottom:60px;
-        margin:0;
-      }
-
-      p {
-        display: none;
-      }
     }
   }
 
@@ -87,12 +47,6 @@ body {
         text-decoration: none;
       }
     }
-  }
-
-  &.showcase-bg {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: left 50px;
   }
 
   &:-webkit-full-screen {
@@ -200,36 +154,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .collections-list {
-  padding-top:60px;
 
   .container {
     width:100%;
     padding:0 50px;
-  }
-}
-
-.showcases-title-bar {
-  background: -moz-linear-gradient(top, rgba(51, 51, 51, 0.9) 0%, rgba(51, 51, 51, 0.4) 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(51, 51, 51, 0.4)), color-stop(100%, rgba(51, 51, 51, 0.9)));
-  background: -webkit-linear-gradient(top, rgba(51, 51, 51, 0.4) 0%, rgba(51, 51, 51, 0.9) 100%);
-  background: -o-linear-gradient(top, rgba(51, 51, 51, 0.4) 0%, rgba(51, 51, 51, 0.9) 100%);
-  background: -ms-linear-gradient(top, rgba(51, 51, 51, 0.4) 0%, rgba(51, 51, 51, 0.9) 100%);
-  background: linear-gradient(to bottom, rgba(51, 51, 51, 0.9) 0%, rgba(51, 51, 51, 0.4) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', endColorstr='#33000000',GradientType=0 );
-  border-bottom: solid 1px #999;
-  position: relative;
-
-  h2 {
-    font-size: 16px;
-    font-family: GPCMed;
-    font-weight: normal;
-    letter-spacing: 1.1px;
-    margin: 0;
-    overflow: hidden;
-    padding: 0;
-    text-overflow: ellipsis;
-    text-transform: uppercase;
-    white-space: nowrap;
   }
 }
 
@@ -269,10 +197,6 @@ body .jumbotron, .container .jumbotron, .container-fluid .jumbotron {
 
   .collection-show {
     float: left;
-  }
-
-  * {
-    color: #fff;
   }
 }
 
@@ -415,10 +339,6 @@ div.dataTables_filter {
       margin-left: 5px;
     }
   }
-}
-
-#showcase-outer {
-  position: relative;
 }
 
 #footer {
@@ -663,11 +583,6 @@ div.dataTables_filter {
   background: $blue;
 }
 
-.container-fluid.content {
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0) 100%);
-  background-repeat: repeat-x;
-}
-
 #bottom-fade {
   position:absolute;
   width:100%;
@@ -693,145 +608,10 @@ div.dataTables_filter {
   }
 }
 
-.bee-card {
-  border-radius: 2px;
-  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.75);
-  margin-bottom: 1.5em;
-  overflow: hidden;
-  position: relative;
-}
-
-.showcase-title-page {
-  overflow: hidden;
-
-  div {
-    white-space: normal;
-  }
-
-  h2 {
-    text-align: center;
-    font-size: 50px;
-    text-shadow: 2px 2px 3px #333;
-    text-transform: uppercase;
-    font-family: GPCMed;
-    white-space: normal;
-    border: solid 1px #fff;
-    border-width: 1px 0;
-    padding: 2% 0;
-  }
-
-  .showcase-title-description {
-    text-align: center;
-    font-size: 22px;
-    line-height: 30px;
-    text-shadow: 2px 2px 0px #333;
-    margin: 0 30px;
-  }
-
-  .cover {
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: -1;
-    width: 100%;
-    opacity: .7;
-    overflow: hidden;
-
-    img {
-      width: 100%;
-      height: auto !important;
-      display: block;
-    }
-  }
-}
-
-.showcase-card {
-  .showcase-title-page {
-    h2 {
-      font-size: 24px;
-    }
-
-    .showcase-title-description {
-      font-size: 1.1em;
-      line-height: inherit;
-      margin: 0;
-    }
-  }
-}
-
-.section-container-text {
-  font-size: 14px;
-  line-height: 25px;
-  color: lightgray;
-  overflow-x: hidden !important;
-  padding: 8px 15px !important;
-  background: rgba(51, 51, 51, 0.95);
-  border: solid 3px #fff;
-
-  h2 {
-    font-size: 24px;
-    font-weight: bold;
-  }
-}
-
-.section-container-image img {
-  border: solid 3px #fff;
-}
-
-.section-container-image {
-
-  img.section-transcript {
-    border: none;
-    position: absolute;
-    left: 8px;
-    bottom: 8px;
-    width: 40px;
-    height: 40px;
-    opacity: .8;
-    background: image_url("transcript.png");
-    background-size: cover;
-  }
-}
-
-.section.pullquote .section-container-text {
-  font-size: 34px;
-  line-height: 1.5em;
-  font-family: serif;
-}
-
-.section.title .section-container-text {
-
-  h2 {
-    font-size: 45px;
-    font-weight: normal;
-    text-align: center;
-  }
-
-  hr {}
-
-  h3 {
-    text-align: center;
-  }
-}
-
-.section.medium .section-container-text {
-  font-size: 20px;
-}
-
-.section-description, #modal-collection-description .collection-description {
-  font-size: 32px;
-  margin: 1em 3em;
-}
-
 .modal-content {
   background: #333;
+  color: #fff;
   height: 100%;
-}
-
-.sections-modals, .items-modals {
-  .modal-content .modal-body {
-    padding: 0;
-  }
 }
 
 #banner {
@@ -839,6 +619,48 @@ div.dataTables_filter {
 
   p {
     margin: 0;
+  }
+}
+
+.bee-homepage-banner {
+  background-image: image_url("home.jpg");
+  background-position: left top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-box-shadow: 0px 2px 10px 5px rgba(0,0,0,0.65);
+  -moz-box-shadow: 0px 2px 10px 5px rgba(0,0,0,0.65);
+  box-shadow: 0px 2px 10px 5px rgba(0,0,0,0.65);
+  margin-bottom: 60px;
+  min-height: 450px;
+  position: relative;
+
+  .banner-inner {
+    margin: 0 auto;
+    padding: 60px;
+    width: 100%;
+  }
+
+  h1 {
+    background-image: image_url("dc.logo.png");
+    background-size: cover;
+    height: 0;
+    margin: 0;
+    overflow: hidden;
+    padding-top: 166px;
+    width: 400px;
+  }
+
+  h3 {
+    background-image: image_url("powered.png");
+    background-size: cover;
+    bottom: 60px;
+    height: 0;
+    margin: 0;
+    overflow: hidden;
+    padding-top: 57px;
+    position: absolute;
+    right: 60px;
+    width: 200px;
   }
 }
 
@@ -983,29 +805,11 @@ div.dataTables_filter {
   }
 }
 
-
-
-/* animation */
-#showcase-inner {
-  animation-duration: 1.5s;
-  animation-name: slidein;
+.overflow-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-
-@keyframes slidein {
-
-  0% {
-    margin-left: 100%;
-  }
-
-  55% {
-    margin-left: -2%;
-  }
-
-  100% {
-    margin-left: 0%;
-  }
-}
-
 
 /* openseadragon */
 .os-toolbar {
@@ -1031,56 +835,6 @@ div.dataTables_filter {
   z-index: 1;
 }
 
-/*scroll bars*/
-
-#test {
-  background: black;
-}
-
-.ps-container {
-
-  > .ps-scrollbar-x-rail {
-    display: block !important;
-    transition: none;
-    height: 15px;
-    width: 50%;
-    margin-left: 25%;
-    margin-right: 25%;
-    margin-bottom: 10px;
-
-    .ps-scrollbar-x {
-      height: 15px;
-    }
-  }
-
-  #showcase-inner + .ps-scrollbar-x-rail {
-    animation-duration: 0.5s;
-    animation-name: scrollfadein;
-    opacity: 0.7;
-    background-color: #dedede;
-
-    .ps-scrollbar-x {
-      background-color: #666;
-    }
-  }
-}
-
-@keyframes scrollfadein {
-  0% {
-    opacity: 0.1;
-  }
-
-  100% {
-    opacity: 0.7;
-  }
-}
-
-
-.modal-body .ps-container > .ps-scrollbar-y-rail {
-  right: 40px;
-}
-
-
 .col-sm-6 {
   float: left;
   width: 50%;
@@ -1089,6 +843,10 @@ div.dataTables_filter {
 .navbar-left {
   float: left !important;
 }
+
+@import "cards.css.scss";
+@import "showcase.css.scss";
+@import "theme-light.css.scss";
 
 @import "_material-design-overwrites.scss";
 

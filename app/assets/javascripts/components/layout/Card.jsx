@@ -6,13 +6,24 @@ var Card = React.createClass({
     className: React.PropTypes.string,
   },
 
-  render: function() {
+  className: function() {
     var className = "bee-card";
     if (this.props.className) {
       className += " " + this.props.className;
     }
+    return className;
+  },
+
+  backgroundNode: function() {
+    if (this.props.backgroundImage) {
+      return (<CardBackground image={this.props.backgroundImage} />);
+    }
+  },
+
+  render: function() {
     return (
-      <div className={className}>
+      <div className={this.className()}>
+        {this.backgroundNode()}
         {this.props.children}
       </div>
     );

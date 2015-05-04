@@ -1,0 +1,11 @@
+$background-color: #f9f9f9;
+$text-color: #333;
+
+body.bee-light-theme {
+  background: $background-color;
+  color: $text-color;
+}
+
+.bee-light-theme .collection-background {
+  opacity: 0.5;
+}

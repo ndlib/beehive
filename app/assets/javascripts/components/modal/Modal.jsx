@@ -6,6 +6,7 @@ var Modal = React.createClass({
 
   propTypes: {
     id: React.PropTypes.string.isRequired,
+    className: React.PropTypes.string,
     content: React.PropTypes.object.isRequired,
     height: React.PropTypes.number,
   },
@@ -21,6 +22,14 @@ var Modal = React.createClass({
     }
   },
 
+  className: function() {
+    var className = "modal";
+    if (this.props.className) {
+      className += " " + this.props.className;
+    }
+    return className;
+  },
+
   removeHash: function() {
     window.location.hash = '';
   },
@@ -34,7 +43,7 @@ var Modal = React.createClass({
 
   render: function () {
     return (
-      <div className="modal" id={this.props.id} tabIndex="-1"  onKeyDown={this.onKeyDown}>
+      <div className={this.className()} id={this.props.id} tabIndex="-1"  onKeyDown={this.onKeyDown}>
         <div className="modal-dialog modal-lg" style={this.styles()}>
           <div className="modal-content">
             <div className="modal-header">

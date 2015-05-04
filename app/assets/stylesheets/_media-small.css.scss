@@ -4,6 +4,10 @@ $break-small: 480px;
 
 @media screen and (max-width: $break-small) {
 
+  .navbar {
+    min-height: 22px;
+  }
+
   .brand-bar {
     font-size: 0.5em;
     height: 22px;

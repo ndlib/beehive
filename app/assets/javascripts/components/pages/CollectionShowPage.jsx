@@ -19,12 +19,6 @@ var CollectionShowPage = React.createClass({
     };
   },
 
-  style: function() {
-    return {
-      position: "relative",
-    };
-  },
-
   componentDidMount: function() {
     if ('object' == typeof(this.props.collection)) {
       this.setState({
@@ -44,7 +38,7 @@ var CollectionShowPage = React.createClass({
   },
 
   componentWillMount: function(){
-    document.body.className = "collection";
+    document.body.className = document.body.className + " collection";
   },
 
   render: function() {
@@ -55,7 +49,7 @@ var CollectionShowPage = React.createClass({
       );
     }
     return (
-      <div className="collection-show-page" style={this.style()}>
+      <div className="collection-show-page">
         <CollectionBackground collection={this.state.collection} />
         <Layout>
         <CollectionPageHeader collection={this.state.collection} branding={true} />

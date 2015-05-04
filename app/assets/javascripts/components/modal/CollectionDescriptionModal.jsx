@@ -31,7 +31,7 @@ var CollectionDescriptionModal = React.createClass({
     var content = this.content();
     return (
       <div>
-        <Modal height={this.props.height} id="modal-collection-description" content={content} />
+        <Modal height={this.props.height} id="modal-collection-description" className="modal-collection-description" content={content} />
         <div className="well">
           <h1><a href="#modal-collection-description" data-toggle="modal" data-target="#modal-collection-description"> Introduction</a></h1>
         </div>
