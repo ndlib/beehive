@@ -16,7 +16,8 @@ var CollectionPageHeader = React.createClass({
     <PageHeader branding={this.props.branding}>
         <TitleBar>
           <a className="navbar-brand" href={this.collectionUrl(this.props.collection)}>
-            {this.props.collection.title}
+            <span className="title">{this.props.collection.title_line_1}</span>             <span className="subtitle">{this.props.collection.title_line_2}</span>
+
           </a>
         </TitleBar>
       </PageHeader>
