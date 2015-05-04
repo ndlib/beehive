@@ -221,12 +221,15 @@ h1, h2, h3, h4, h5, h6 {
 
   h2 {
     font-size: 16px;
-    text-transform: uppercase;
     font-family: GPCMed;
     font-weight: normal;
-    padding: 0;
-    margin: 0;
     letter-spacing: 1.1px;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
   }
 }
 
@@ -832,21 +835,11 @@ div.dataTables_filter {
 }
 
 #banner {
-  z-index: 5000;
-  position: fixed;
   width: 100%;
 
   p {
     margin: 0;
   }
-}
-
-#banner + div {
-  padding-top: 100px;
-}
-
-.collections-bg #banner + div {
-  padding-top:50px;
 }
 
 .modal-header {

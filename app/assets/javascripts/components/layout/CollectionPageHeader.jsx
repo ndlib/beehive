@@ -6,13 +6,14 @@ var CollectionPageHeader = React.createClass({
 
   propTypes: {
     collection: React.PropTypes.object.isRequired,
+    branding: React.PropTypes.bool,
   },
 
   render: function() {
     var itemBrowseUrl = "/" + this.props.collection.id + "/" + this.props.collection.slug + "/items";
     var showcaseBrowseUrl = "/" + this.props.collection.id + "/" + this.props.collection.slug + "/showcases";
     return (
-      <PageHeader>
+    <PageHeader branding={this.props.branding}>
         <TitleBar>
           <a className="navbar-brand" href={this.collectionUrl(this.props.collection)}>
             {this.props.collection.title}

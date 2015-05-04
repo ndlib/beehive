@@ -28,8 +28,9 @@ var ShowcaseShowPage = React.createClass({
     this.setState({
       collection: collection,
       showcase: collection.showcases,
-    });
+    }, this.handleResize);
   },
+
   modals: function() {
     if(this.state.showcase) {
       return (<SectionsModalList height={this.state.height} sections={this.state.showcase.sections} />);
