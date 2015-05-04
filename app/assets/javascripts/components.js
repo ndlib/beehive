@@ -18,6 +18,7 @@ PageContent = require('./components/layout/PageContent');
 CollectionPageHeader = require('./components/layout/CollectionPageHeader');
 GridList = require('./components/layout/GridList');
 Card = require('./components/layout/Card');
+BrandBar = require('./components/layout/BrandBar');
 
 // Pages
 CollectionsListPage = require('./components/pages/CollectionsListPage');

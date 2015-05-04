@@ -18,18 +18,7 @@ var PageHeader = React.createClass({
     var branding;
     if(this.props.branding) {
       branding = (
-        <div className="brand-bar">
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-sm-6">
-                <a href="http://www.nd.edu">University <i>of</i> Notre Dame</a>
-              </div>
-              <div className="col-sm-6">
-                <a className="pull-right" href="http://library.nd.edu">Hesburgh Libraries</a>
-              </div>
-            </div>
-          </div>
-        </div>
+        <BrandBar />
       );
     }
 
