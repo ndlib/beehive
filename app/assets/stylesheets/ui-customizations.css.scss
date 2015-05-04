@@ -832,21 +832,11 @@ div.dataTables_filter {
 }
 
 #banner {
-  z-index: 5000;
-  position: fixed;
   width: 100%;
 
   p {
     margin: 0;
   }
-}
-
-#banner + div {
-  padding-top: 100px;
-}
-
-.collections-bg #banner + div {
-  padding-top:50px;
 }
 
 .modal-header {
