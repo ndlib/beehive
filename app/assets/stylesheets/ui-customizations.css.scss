@@ -283,6 +283,14 @@ body .jumbotron, .container .jumbotron, .container-fluid .jumbotron {
   }
 }
 
+.showcase-title-primary {
+
+  .subtitle {
+    display: block;
+    font-size: .6em;
+  }
+}
+
 .flow-columns {
   -webkit-column-count: 4;
   -webkit-column-gap: 10px;
