@@ -42,7 +42,7 @@ var CollectionsListPage = React.createClass({
   render: function() {
     return (
       <Layout>
-        <PageHeader />
+      <PageHeader branding={true} />
         <PageContent>
           <div className="banner">
             <div className="container">

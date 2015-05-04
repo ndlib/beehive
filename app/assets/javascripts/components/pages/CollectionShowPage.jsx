@@ -58,7 +58,7 @@ var CollectionShowPage = React.createClass({
       <div className="collection-show-page" style={this.style()}>
         <CollectionBackground collection={this.state.collection} />
         <Layout>
-          <CollectionPageHeader collection={this.state.collection} />
+        <CollectionPageHeader collection={this.state.collection} branding={true} />
           <PageContent>
             <CollectionShow collection={this.state.collection} />
             <hr />
