@@ -10,14 +10,17 @@ var CollectionPageHeader = React.createClass({
   },
 
   render: function() {
-    var itemBrowseUrl = "/" + this.props.collection.id + "/" + this.props.collection.slug + "/items";
-    var showcaseBrowseUrl = "/" + this.props.collection.id + "/" + this.props.collection.slug + "/showcases";
+    var dropdown = "";
+    if(this.props.collection['@id']) {
+      dropdown = (<ShowcaseDropDown collection={this.props.collection} />);
+    }
     return (
     <PageHeader branding={this.props.branding}>
         <TitleBar>
+          {dropdown}
           <a className="navbar-brand" href={this.collectionUrl(this.props.collection)}>
-            <span className="title">{this.props.collection.title_line_1}</span>             <span className="subtitle">{this.props.collection.title_line_2}</span>
-
+            <span className="title">{this.props.collection.title_line_1}</span>
+            <span className="subtitle">{this.props.collection.title_line_2}</span>
           </a>
         </TitleBar>
       </PageHeader>

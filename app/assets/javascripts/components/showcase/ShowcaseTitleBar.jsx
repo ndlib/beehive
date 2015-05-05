@@ -39,7 +39,6 @@ var ShowcaseTitleBar = React.createClass({
   },
 
   render: function() {
-    console.log(this.props.showcase);
     if (this.props.showcase) {
       return (
         <div className="showcases-title-bar" id="showcases-title-bar" style={this.style()}>
