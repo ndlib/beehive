@@ -34,36 +34,21 @@ var ShowcaseDropDown = React.createClass({
 
   componentDidMount: function() {
     var url = this.props.collection['@id'] + '/showcases';
-    console.log("URL", url);
 
-    $.ajax({
-      url: url,
-      success: function(result) {
-        var showcases = result.showcases;
-        console.log(showcases);
-        if (this.isMounted()) {
-          this.setState({
-            showcases: showcases,
-          });
-        }
-      }.bind(this),
-    });
+    var request = new XMLHttpRequest();
+    request.open('GET', url, true);
 
-
-  },
-
-/*
-  $.get(url, function(result) {
-      var showcases = result.showcases;
-      console.log(showcases);
+    request.onload = function() {
+      var showcases = JSON.parse(request.response).showcases;
       if (this.isMounted()) {
         this.setState({
           showcases: showcases,
         });
       }
-    }.bind(this));
+    }.bind(this);
+
+    request.send();
   },
-*/
 
   render: function() {
     var dropDownOptions = [];
