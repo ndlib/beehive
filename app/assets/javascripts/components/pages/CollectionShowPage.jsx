@@ -60,6 +60,7 @@ var CollectionShowPage = React.createClass({
             {showcasesList}
           </PageContent>
         </Layout>
+        <Info collection={this.state.collection} />
       </div>
     );
   }
