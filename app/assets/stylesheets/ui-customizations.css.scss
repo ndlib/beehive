@@ -3,6 +3,7 @@ $grey: #525252;
 $blue: #2c5882;
 $whitesmoke: #f5f5f5;
 $darkgrey: #555;
+$white: #fff;
 
 @import "fonts.css.scss";
 
@@ -26,9 +27,15 @@ body {
 
   &.collection {
     .navbar-brand {
-      font-size:24px;
-      font-weight: 500;
-      font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+
+      .subtitle {
+        display: block;
+        margin-left: 0;
+
+        &:before {
+          content: none;
+        }
+      }
     }
 
     .jumbotron {
@@ -95,11 +102,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar .navbar-brand {
+  font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 24px;
+  font-weight: 500;
   height: auto;
   line-height: 1.2em;
 
   .subtitle {
-    display: block;
+
+    &:before {
+      content: ": ";
+      display: inline;
+    }
   }
 }
 
@@ -127,7 +141,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .navbar-default a {
   opacity: .75;
-  color: #fff;
+  color: $white;
 }
 
 .navbar-default a:hover {
@@ -136,8 +150,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar-default .title-bar .navbar-brand {
-  color: #fff;
+  color: $white;
   margin-left: 15px;
+
+  &:hover {
+    text-decoration: none !important;
+  }
 }
 
 .navbar-collapse {
@@ -180,7 +198,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar-default .title-bar .navbar-nav > li > a {
-  color: #fff;
+  color: $white;
 }
 
 .navbar .navbar-nav > li > p {
@@ -231,7 +249,7 @@ body .jumbotron, .container .jumbotron, .container-fluid .jumbotron {
 .jumbotron .collection-image {
 
   img {
-    border: solid 5px #fff;
+    border: solid 5px $white;
     box-shadow: 0 0 8px 4px rgba(31, 31, 31, 0.4);
   }
 
@@ -272,7 +290,7 @@ body .jumbotron, .container .jumbotron, .container-fluid .jumbotron {
 .showcases-list {
 
   h2 {
-    color: #fff;
+    color: $white;
   }
 }
 
@@ -430,10 +448,14 @@ div.dataTables_filter {
   }
 }
 
+.btn-group, .btn-group-vertical {
+  margin: 0;
+}
+
 .btn-group.collections {
 
   a {
-    background: #fff !important;
+    background: $white !important;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 0px;
     border: none;
@@ -461,7 +483,7 @@ div.dataTables_filter {
   border: solid $grey;
   border-width: 1px 1px 1px 0;
   border-radius: 0 6px 6px 0;
-  background: #fff;
+  background: $white;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.176);
   float: left;
   z-index: 40;
@@ -488,8 +510,32 @@ div.dataTables_filter {
   }
 }
 
-.dropdown-menu > li > a {
-  white-space: normal;
+.dropdown-menu {
+  background-color: rgba(0,0,0,0.84);
+  min-width: 350px;
+
+  .dropdown-header {
+    padding: 3px 0;
+  }
+
+  hr {
+    border-top-color: $whitesmoke;
+    margin-bottom: 5px;
+    margin-top: 5px;
+  }
+
+  > li {
+    > a {
+      color: $whitesmoke;
+      font-size: 1.5rem;
+      white-space: normal;
+
+      &:hover {
+        color: $white !important;
+        text-decoration: none !important;
+      }
+    }
+  }
 }
 
 .collections .dropdown-menu {
@@ -622,7 +668,7 @@ div.dataTables_filter {
 
 .modal-content {
   background: #333;
-  color: #fff;
+  color: $white;
   height: 100%;
 }
 
@@ -686,12 +732,12 @@ div.dataTables_filter {
     top: 10px;
     right: 10px;
     opacity: .7;
-    border: solid 1px #fff;
+    border: solid 1px $white;
     border-radius: 3px;
     padding: 5px;
 
     i {
-      color: #fff;
+      color: $white;
       font-size: 34px;
       text-shadow: 1px 1px 1px #000;
     }

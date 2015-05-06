@@ -24,8 +24,8 @@ var ShowcaseDropDown = React.createClass({
     return {
       background: "transparent",
       border: "1px #f5f5f5 solid",
-      height: "40px",
-      width: "40px",
+      height: "30px",
+      width: "30px",
       padding: "0",
       marginTop: "10px",
       marginLeft: "10px",
@@ -50,25 +50,39 @@ var ShowcaseDropDown = React.createClass({
     request.send();
   },
 
-  render: function() {
-    var dropDownOptions = [];
+  dropDownOptions: function() {
+    var options = [];
     var collectionUrl = this.collectionUrl(this.props.collection);
 
-    this.state.showcases.forEach(function(showcase){
-    var url = collectionUrl + "/showcases/" + encodeURIComponent(showcase.id) + "/" + encodeURIComponent(showcase.slug);
-    dropDownOptions.push ((
-      <li className="dropdown-header" value={showcase.id}>
-      <a href={url}>
-          {showcase.title}
-        </a>
-      </li>));
-    });
+    options.push((
+      <li className="dropdown-header" value={this.props.collection.id}>
+        <a href={collectionUrl}>Home</a>
+      </li>
+    ));
 
+    options.push((
+      <hr/>
+    ));
+
+    this.state.showcases.forEach(function(showcase){
+      var url = collectionUrl + "/showcases/" + encodeURIComponent(showcase.id) + "/" + encodeURIComponent(showcase.slug);
+      options.push ((
+        <li className="dropdown-header" value={showcase.id}>
+          <a href={url}>
+            {showcase.title}
+          </a>
+        </li>
+      ));
+    });
+    return options
+  },
+
+  render: function() {
     return (
     <div className="btn-group featured-content-dropdown" style={this.style()}>
         <button data-toggle="dropdown" className="btn dropdown-toggle btn-primary" type="button" style={this.buttonStyle()}><span className="caret"></span></button>
         <ul className="dropdown-menu" role="menu">
-        {dropDownOptions}
+        {this.dropDownOptions()}
         </ul>
       </div>
     );

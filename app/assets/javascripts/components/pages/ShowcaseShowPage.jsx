@@ -53,7 +53,7 @@ var ShowcaseShowPage = React.createClass({
       <div>
         {this.modals()}
         <Layout>
-          <CollectionPageHeader collection={this.state.collection} />
+          <CollectionPageHeader collection={this.state.collection} dropdown={true} />
           <PageContent>
             <ShowcaseShow height={this.state.height} showcase={this.state.showcase} />
           </PageContent>

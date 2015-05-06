@@ -7,20 +7,28 @@ var CollectionPageHeader = React.createClass({
   propTypes: {
     collection: React.PropTypes.object.isRequired,
     branding: React.PropTypes.bool,
+    dropdown: React.PropTypes.bool,
   },
 
   render: function() {
     var dropdown = "";
-    if(this.props.collection['@id']) {
+    if(this.props.collection['@id'] && this.props.dropdown) {
       dropdown = (<ShowcaseDropDown collection={this.props.collection} />);
     }
+
+    var title = [];
+    title.push((<span className="title">{this.props.collection.title_line_1}</span>));
+
+    if(this.props.collection.title_line_2) {
+      title.push((<span className="subtitle">{this.props.collection.title_line_2}</span>));
+    }
+
     return (
     <PageHeader branding={this.props.branding}>
         <TitleBar>
           {dropdown}
           <a className="navbar-brand" href={this.collectionUrl(this.props.collection)}>
-            <span className="title">{this.props.collection.title_line_1}</span>
-            <span className="subtitle">{this.props.collection.title_line_2}</span>
+            {title}
           </a>
         </TitleBar>
       </PageHeader>
