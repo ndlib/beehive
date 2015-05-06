@@ -49,17 +49,20 @@ var CollectionShowPage = React.createClass({
       );
     }
     return (
-      <div className="collection-show-page">
-        <CollectionBackground collection={this.state.collection} />
-        <Layout>
-        <CollectionPageHeader collection={this.state.collection} branding={true} />
-          <PageContent>
-            <CollectionShow collection={this.state.collection} />
-            <hr />
-            <CollectionDescriptionModal collection={this.state.collection} height={this.state.height} />
-            {showcasesList}
-          </PageContent>
-        </Layout>
+      <div>
+        <div className="collection-show-page">
+          <CollectionBackground collection={this.state.collection} />
+          <Layout>
+          <CollectionPageHeader collection={this.state.collection} branding={true} />
+            <PageContent>
+              <CollectionShow collection={this.state.collection} />
+              <hr />
+              <CollectionDescriptionModal collection={this.state.collection} height={this.state.height} />
+              {showcasesList}
+            </PageContent>
+          </Layout>
+        </div>
+        <CollectionOverlayFooter collection={this.state.collection} />
       </div>
     );
   }

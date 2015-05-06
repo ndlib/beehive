@@ -52,6 +52,7 @@ var ShowcasesListPage = React.createClass({
         <PageContent>
           {showcasesList}
         </PageContent>
+        <CollectionOverlayFooter collection={this.state.collection} />
       </Layout>
     );
   }

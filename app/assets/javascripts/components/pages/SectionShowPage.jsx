@@ -42,12 +42,15 @@ var SectionShowPage = React.createClass({
 
   render: function() {
     return (
-      <Layout>
-        <CollectionPageHeader collection={this.state.collection} />
-        <PageContent>
-          <SectionShow section={this.state.section} />
-        </PageContent>
-      </Layout>
+      <div>
+        <Layout>
+          <CollectionPageHeader collection={this.state.collection} />
+          <PageContent>
+            <SectionShow section={this.state.section} />
+          </PageContent>
+        </Layout>
+        <CollectionOverlayFooter collection={this.state.collection} />
+      </div>
     );
   }
 });
