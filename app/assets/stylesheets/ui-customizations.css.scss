@@ -27,9 +27,15 @@ body {
 
   &.collection {
     .navbar-brand {
-      font-size:24px;
-      font-weight: 500;
-      font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+
+      .subtitle {
+        display: block;
+        margin-left: 0;
+
+        &:before {
+          content: none;
+        }
+      }
     }
 
     .jumbotron {
@@ -96,11 +102,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar .navbar-brand {
+  font-size:24px;
+  font-weight: 500;
+  font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
   height: auto;
   line-height: 1.2em;
 
   .subtitle {
-    display: block;
+
+    &:before {
+      content: ": ";
+      display: inline;
+    }
   }
 }
 
@@ -433,6 +446,10 @@ div.dataTables_filter {
     font-size: 18px;
     font-weight: bold;
   }
+}
+
+.btn-group, .btn-group-vertical {
+  margin: 0;
 }
 
 .btn-group.collections {
