@@ -58,6 +58,7 @@ var ShowcaseShowPage = React.createClass({
             <ShowcaseShow height={this.state.height} showcase={this.state.showcase} />
           </PageContent>
         </Layout>
+        <CollectionOverlayFooter collection={this.state.collection} />
       </div>
     );
   }

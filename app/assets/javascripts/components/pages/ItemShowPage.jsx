@@ -39,12 +39,15 @@ var ItemShowPage = React.createClass({
 
   render: function() {
     return (
-      <Layout>
-        <CollectionPageHeader collection={this.state.collection} />
-        <PageContent>
-          <ItemShow item={this.state.item} />
-        </PageContent>
-      </Layout>
+      <div>
+        <Layout>
+          <CollectionPageHeader collection={this.state.collection} />
+          <PageContent>
+            <ItemShow item={this.state.item} />
+          </PageContent>
+        </Layout>
+        <CollectionOverlayFooter collection={this.state.collection} />
+      </div>
     );
   }
 });

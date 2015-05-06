@@ -21,6 +21,7 @@ Card = require('./components/layout/Card');
 BrandBar = require('./components/layout/BrandBar');
 CardBackground = require('./components/layout/CardBackground');
 CardOverlay = require('./components/layout/CardOverlay');
+CollectionOverlayFooter = require('./components/layout/CollectionOverlayFooter');
 
 // Pages
 CollectionsListPage = require('./components/pages/CollectionsListPage');
