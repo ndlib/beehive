@@ -102,9 +102,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar .navbar-brand {
+  font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size:24px;
   font-weight: 500;
-  font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
   height: auto;
   line-height: 1.2em;
 
@@ -511,8 +511,8 @@ div.dataTables_filter {
 }
 
 .dropdown-menu {
-  min-width: 350px;
   background-color: rgba(0,0,0,0.84);
+  min-width: 350px;
 
   .dropdown-header {
     padding: 3px 0;
