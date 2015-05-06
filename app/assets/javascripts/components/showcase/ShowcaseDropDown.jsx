@@ -54,14 +54,26 @@ var ShowcaseDropDown = React.createClass({
     var dropDownOptions = [];
     var collectionUrl = this.collectionUrl(this.props.collection);
 
-    this.state.showcases.forEach(function(showcase){
-    var url = collectionUrl + "/showcases/" + encodeURIComponent(showcase.id) + "/" + encodeURIComponent(showcase.slug);
-    dropDownOptions.push ((
-      <li className="dropdown-header" value={showcase.id}>
-      <a href={url}>
-          {showcase.title}
+    dropDownOptions.push((
+      <li className="dropdown-header" value={this.props.collection.id}>
+        <a href={collectionUrl}>
+          {this.props.collection.title}
         </a>
-      </li>));
+      </li>
+    ));
+    dropDownOptions.push((
+      <hr/>
+    ));
+
+    this.state.showcases.forEach(function(showcase){
+      var url = collectionUrl + "/showcases/" + encodeURIComponent(showcase.id) + "/" + encodeURIComponent(showcase.slug);
+      dropDownOptions.push ((
+        <li className="dropdown-header" value={showcase.id}>
+        <a href={url}>
+            {showcase.title}
+          </a>
+        </li>
+      ));
     });
 
     return (
