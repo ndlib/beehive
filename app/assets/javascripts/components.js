@@ -26,6 +26,7 @@ CollectionOverlayFooter = require('./components/layout/CollectionOverlayFooter')
 // Pages
 CollectionsListPage = require('./components/pages/CollectionsListPage');
 CollectionShowPage = require('./components/pages/CollectionShowPage');
+CollectionIntroPage = require('./components/pages/CollectionIntroPage');
 ShowcasesListPage = require('components/pages/ShowcasesListPage');
 ShowcaseShowPage = require('./components/pages/ShowcaseShowPage');
 SectionShowPage= require('./components/pages/SectionShowPage');
@@ -46,6 +47,7 @@ CollectionLink = require('./components/collection/CollectionLink');
 CollectionShow = require('./components/collection/CollectionShow');
 CollectionDescription = require('./components/collection/CollectionDescription');
 CollectionIntro = require('./components/collection/CollectionIntro');
+CollectionIntroLink = require('./components/collection/CollectionIntroLink');
 CollectionBackground = require('./components/collection/CollectionBackground');
 
 // Showcases
@@ -85,7 +87,6 @@ Copyright = require('./components/modal/Copyright');
 Info = require('./components/modal/Info');
 SectionModal = require('./components/modal/SectionModal');
 ItemModal = require('./components/modal/ItemModal');
-CollectionDescriptionModal = require('./components/modal/CollectionDescriptionModal');
 
 // Other
 MetadataList = require('./components/other/MetadataList');

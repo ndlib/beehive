@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: "collections#index"
 
   get "/:id/:slug", to: "collections#show"
+  get "/:id/:slug/intro", to: "collections#intro"
 
   scope "/:collection_id/:collection_slug" do
     scope "/showcases" do
