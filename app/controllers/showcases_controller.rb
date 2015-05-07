@@ -9,7 +9,7 @@ class ShowcasesController < ApplicationController
   def embed
     @showcases_url = Rails.configuration.honeycomb_url + "/v1/showcases/" + params[:id]
     respond_to do |format|
-      format.html {render :layout => 'embed'}
+      format.html {render :layout => "embed"}
     end
   end
 
@@ -23,7 +23,7 @@ class ShowcasesController < ApplicationController
   end
 
   def allow_iframe
-    response.headers.except! 'X-Frame-Options'
+    response.headers.except! "X-Frame-Options"
   end
 
 end

@@ -8,7 +8,7 @@ class CollectionsController < ApplicationController
   def embed
     @collections_url =  collections_api_base + "/" + params[:id] + "/showcases"
     respond_to do |format|
-      format.html {render :layout => 'embed'}
+      format.html {render :layout => "embed"}
     end
   end
 
@@ -23,6 +23,6 @@ class CollectionsController < ApplicationController
   end
 
   def allow_iframe
-    response.headers.except! 'X-Frame-Options'
+    response.headers.except! "X-Frame-Options"
   end
 end
