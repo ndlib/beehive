@@ -27,7 +27,7 @@ var Info = React.createClass({
     );
   },
   render: function () {
-    return <Modal id="info" content={this.content()} />;
+    return <Modal id="info" content={this.content()} modalTitle="About Exhibit" />;
   }
 });
 
