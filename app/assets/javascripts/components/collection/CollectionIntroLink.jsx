@@ -1,7 +1,9 @@
 //app/assets/javascripts/components/modal/CollectionDescriptionModal.jsx
 var React = require('react');
 
-var CollectionDescriptionModal = React.createClass({
+var CollectionIntroLink = React.createClass({
+  mixins: [CollectionUrlMixin],
+
   displayName: 'Item Modal',
   propTypes: {
     collection: React.PropTypes.object.isRequired,
@@ -28,16 +30,13 @@ var CollectionDescriptionModal = React.createClass({
   },
 
   render: function () {
-    var content = this.content();
+    var url = this.collectionUrl(this.props.collection) + "/intro";
     return (
-      <div>
-        <Modal height={this.props.height} id="modal-collection-description" className="modal-collection-description" content={content} />
         <div className="well">
-          <h1><a href="#modal-collection-description" data-toggle="modal" data-target="#modal-collection-description"> Introduction</a></h1>
+          <h1><a href={url}> Introduction</a></h1>
         </div>
-      </div>
     );
   }
 });
 
-module.exports = CollectionDescriptionModal;
+module.exports = CollectionIntroLink;

@@ -546,6 +546,13 @@ div.dataTables_filter {
   height: 100%;
 }
 
+.collection-intro-page {
+
+  .collection-description {
+    font-size: 24px;
+    margin: 20px;
+  }
+}
 
 /* nav panel */
 
@@ -738,7 +745,7 @@ div.dataTables_filter {
 
     i {
       color: $white;
-      font-size: 34px;
+      font-size: 20px;
       text-shadow: 1px 1px 1px #000;
     }
   }
