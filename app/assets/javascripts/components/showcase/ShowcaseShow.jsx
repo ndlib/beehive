@@ -114,7 +114,7 @@ var ShowcaseShow = React.createClass({
           <div id="showcase-outer" className="showcase-outer" style={this.styleOuter(showcaseHeight)} onScroll={this.onScroll}>
             <div id="showcase-inner" className="showcase-inner" style={this.styleInner(showcaseInnerHeight)}>
               <ShowcaseTitle width={titleWidth} height={showcaseInnerHeight} showcase={this.props.showcase} />
-              <SectionsList height={showcaseInnerHeight} sections={this.props.showcase.sections} />
+              <ShowcaseSections height={showcaseInnerHeight} showcase={this.props.showcase} />
             </div>
           </div>
         </div>

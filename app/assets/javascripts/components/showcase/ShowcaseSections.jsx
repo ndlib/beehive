@@ -1,25 +1,25 @@
-//app/assets/javascripts/components/SectionsList.jsx
-var React = require('react');
+var React = require("react");
 
-var SectionsList = React.createClass({
-  displayName: 'Sections List',
+var ShowcaseSections = React.createClass({
+  displayName: "Sections List",
 
   propTypes: {
-    sections: React.PropTypes.array.isRequired,
+    showcase: React.PropTypes.object.isRequired,
     height: React.PropTypes.number.isRequired,
   },
 
   style: function() {
     return {
-      height: this.props.height + 'px',
-      display: 'inline-block',
-      paddingRight: '175px',
+      height: this.props.height + "px",
+      display: "inline-block",
+      paddingRight: "175px",
     }
   },
 
   render: function() {
-    if(this.props.sections) {
-      var sectionNodes = this.props.sections.map(function(section, index) {
+    var sections = this.props.showcase.sections;
+    if(sections) {
+      var sectionNodes = sections.map(function(section, index) {
         var nodes = [];
 
         nodes.push((
@@ -30,6 +30,7 @@ var SectionsList = React.createClass({
       return (
         <div id="sections-content-inner" className="sections-content-inner" style={this.style()}>
           {sectionNodes}
+          <ShowcaseEnding height={this.props.height} showcase={this.props.showcase} />
         </div>
       );
     } else {
@@ -39,4 +40,4 @@ var SectionsList = React.createClass({
 });
 
 // each file will export exactly one component
-module.exports = SectionsList;
+module.exports = ShowcaseSections;

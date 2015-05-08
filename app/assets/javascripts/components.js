@@ -54,15 +54,16 @@ CollectionBackground = require("./components/collection/CollectionBackground");
 ShowcasesList = require("./components/showcase/ShowcasesList");
 ShowcasesCardList = require("./components/showcase/ShowcasesCardList");
 ShowcaseShow = require("./components/showcase/ShowcaseShow");
+ShowcaseSections = require("./components/showcase/ShowcaseSections");
 ShowcaseTitle = require("./components/showcase/ShowcaseTitle");
 ShowcaseTitleBar = require("./components/showcase/ShowcaseTitleBar");
 ShowcaseBackground = require("./components/showcase/ShowcaseBackground");
 ShowcaseCard = require("./components/showcase/ShowcaseCard");
 ShowcaseDropDown = require("./components/showcase/ShowcaseDropDown");
 StartShowcaseButton = require("./components/showcase/StartShowcaseButton");
+ShowcaseEnding = require("./components/showcase/ShowcaseEnding");
 
 // Sections
-SectionsList = require("./components/section/SectionsList");
 SectionsListItem = require("./components/section/SectionsListItem");
 SectionLink = require("./components/section/SectionLink");
 SectionShow = require("./components/section/SectionShow");
