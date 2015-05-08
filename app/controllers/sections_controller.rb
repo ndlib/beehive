@@ -5,7 +5,7 @@ class SectionsController < ApplicationController
   def embed
     @sections_url = sections_api_base + params[:id]
     respond_to do |format|
-      format.html {render :layout => 'embed'}
+      format.html {render :layout => "embed"}
     end
   end
 
@@ -20,7 +20,7 @@ class SectionsController < ApplicationController
   end
 
   def allow_iframe
-    response.headers.except! 'X-Frame-Options'
+    response.headers.except! "X-Frame-Options"
   end
 
 end

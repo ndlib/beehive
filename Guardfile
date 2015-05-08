@@ -1,4 +1,4 @@
-require 'hesburgh_infrastructure'
+require "hesburgh_infrastructure"
 # application_name must match an application in the hesburgh_infrastructure gem
 # New applications must be added to config/applications.yml in hesburgh_infrastructure
 hesburgh_guard = HesburghInfrastructure::Guard.new(:exhibit_admin, self)

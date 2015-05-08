@@ -1,4 +1,4 @@
-require File.expand_path('../boot', __FILE__)
+require File.expand_path("../boot", __FILE__)
 
 # Pick the frameworks you want:
 require "active_model/railtie"
@@ -30,6 +30,6 @@ module Beehive
     config.react.addons       = true
     config.browserify_rails.commandline_options = "--transform reactify --extension=\".jsx\""
 
-    config.assets.precompile = [ Proc.new{ |path| !File.extname(path).in?(['.js', '.css', '.map', '.gzip', ''] ) }, /(?:\/|\\|\A)application\.(css|js)$/ ]
+    config.assets.precompile = [ Proc.new{ |path| !File.extname(path).in?([".js", ".css", ".map", ".gzip", ""] ) }, /(?:\/|\\|\A)application\.(css|js)$/ ]
   end
 end

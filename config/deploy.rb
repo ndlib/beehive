@@ -1,23 +1,23 @@
 # config valid only for current version of Capistrano
-lock '3.3.5'
+lock "3.3.5"
 
-require 'airbrake/capistrano3'
-require 'new_relic/recipes'
+require "airbrake/capistrano3"
+require "new_relic/recipes"
 
-set :application, 'beehive'
-set :repo_url, 'https://github.com/ndlib/beehive.git'
+set :application, "beehive"
+set :repo_url, "https://github.com/ndlib/beehive.git"
 
 set :log_level, :info
 
 # Default branch is :master
-if fetch(:stage).to_s == 'production'
-  ask :branch, 'master'
+if fetch(:stage).to_s == "production"
+  ask :branch, "master"
 else
   ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 end
 
 # Default deploy_to directory is /var/www/my_app
-set :deploy_to, '/home/app/beehive'
+set :deploy_to, "/home/app/beehive"
 
 # Default value for :linked_files is []
 # set :linked_files, %w{config/database.yml}
@@ -27,18 +27,18 @@ set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets public/system vendor/bun
 
 set :default_env, { path: "/opt/ruby/current/bin:$PATH" }
 
-set :npm_flags, '--no-spin'
+set :npm_flags, "--no-spin"
 
 namespace :deploy do
 
   Rake::Task["migrate"].clear_actions
   task :migrate do ; end
 
-  desc 'Restart application'
+  desc "Restart application"
 
   task :restart do
     on roles(:web), in: :sequence, wait: 5 do
-      execute :touch, release_path.join('tmp/restart.txt')
+      execute :touch, release_path.join("tmp/restart.txt")
     end
   end
 
@@ -51,5 +51,5 @@ namespace :deploy do
 
 end
 
-after 'deploy:finished', 'airbrake:deploy'
+after "deploy:finished", "airbrake:deploy"
 after "deploy:updated",     "newrelic:notice_deployment"
