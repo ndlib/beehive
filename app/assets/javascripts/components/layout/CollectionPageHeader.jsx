@@ -17,10 +17,10 @@ var CollectionPageHeader = React.createClass({
     }
 
     var title = [];
-    title.push((<span className="title">{this.props.collection.title_line_1}</span>));
+    title.push((<span className="title">{this.props.collection.name_line_1}</span>));
 
-    if(this.props.collection.title_line_2) {
-      title.push((<span className="subtitle">{this.props.collection.title_line_2}</span>));
+    if(this.props.collection.name_line_2) {
+      title.push((<span className="subtitle">{this.props.collection.name_line_2}</span>));
     }
 
     return (

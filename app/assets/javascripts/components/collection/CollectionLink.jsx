@@ -13,7 +13,7 @@ var CollectionLink = React.createClass({
 
   render: function() {
     var collection = this.props.collection;
-    var title = this.props.title || collection.title;
+    var title = this.props.name || collection.name;
     return (
       <div>
         <a className={this.props.className} href={this.collectionUrl(collection)}>
