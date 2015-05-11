@@ -16,7 +16,7 @@ var ShowcaseSections = React.createClass({
     }
   },
 
-  render: function() {
+  sections: function() {
     var sections = this.props.showcase.sections;
     if(sections) {
       var sectionNodes = sections.map(function(section, index) {
@@ -27,15 +27,27 @@ var ShowcaseSections = React.createClass({
         ));
         return nodes;
       }.bind(this));
-      return (
-        <div id="sections-content-inner" className="sections-content-inner" style={this.style()}>
-          {sectionNodes}
-          <ShowcaseEnding height={this.props.height} showcase={this.props.showcase} />
-        </div>
-      );
+      return sectionNodes;
     } else {
       return (<Loading />);
     }
+  },
+
+  nextShowcase: function() {
+    var nextShowcase;
+    if(this.props.showcase.nextShowcase) {
+      nextShowcase = (<ShowcaseEnding height={this.props.height} showcase={this.props.showcase.nextShowcase} />);
+    }
+    return nextShowcase;
+  },
+
+  render: function() {
+    return (
+      <div id="sections-content-inner" className="sections-content-inner" style={this.style()}>
+        {this.sections()}
+        {this.nextShowcase()}
+      </div>
+    );
   }
 });
 
