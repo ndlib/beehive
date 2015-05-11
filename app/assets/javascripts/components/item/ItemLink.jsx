@@ -42,7 +42,7 @@ var ItemLink = React.createClass({
         </a>
         <div className="item-details">
           <a className={this.props.className} href={this.itemUrl(item)}>
-            <div className="item-title">{item.title}</div>
+            <div className="item-title">{item.name}</div>
           </a>
           {descriptionText}
         </div>
