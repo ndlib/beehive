@@ -63,8 +63,8 @@ var ShowcaseTitle = React.createClass({
       <div className="showcase-title-page" style={this.outerStyle()}>
         <div className="showcase-title-page-inner" style={this.innerStyle()}>
           <h2 className="showcase-title-primary" style={this.headerStyle()}>
-            <span className="title">{this.props.showcase.title_line_1}</span>&nbsp;
-            <span className="subtitle">{this.props.showcase.title_line_2}</span>
+            <span className="title">{this.props.showcase.name_line_1}</span>&nbsp;
+            <span className="subtitle">{this.props.showcase.name_line_2}</span>
           </h2>
           <div className="showcase-title-description" dangerouslySetInnerHTML={{__html: description}}  />
         </div>
