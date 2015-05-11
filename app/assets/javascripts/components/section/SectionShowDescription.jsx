@@ -22,7 +22,7 @@ var SectionShowDescription = React.createClass({
   render: function() {
     return (
       <div style={this.styles()}>
-        <h2>{this.props.section.title}</h2>
+        <h2>{this.props.section.name}</h2>
         <div className="row">
           <div className="col-md-12">
             <div className="section-description">

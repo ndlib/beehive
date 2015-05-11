@@ -12,7 +12,7 @@ var SectionLink = React.createClass({
 
   render: function() {
     var section = this.props.section;
-    var title = this.props.title || section.title;
+    var title = this.props.name || section.name;
     return (
       <div>
         <a className={this.props.className} href={this.sectionUrl(section)}>
