@@ -1,7 +1,7 @@
-var React = require('react');
+var React = require("react");
 
 var CollectionIntroPage = React.createClass({
-  displayName: 'Collection Intro Page',
+  displayName: "Collection Intro Page",
 
   propTypes: {
     collection: React.PropTypes.oneOfType([
@@ -17,7 +17,7 @@ var CollectionIntroPage = React.createClass({
   },
 
   componentDidMount: function() {
-    if ('object' == typeof(this.props.collection)) {
+    if ("object" == typeof(this.props.collection)) {
       this.setState({
         collection: this.props.collection,
       });
@@ -35,12 +35,14 @@ var CollectionIntroPage = React.createClass({
   },
 
   render: function() {
+
     return (
       <div className="collection-intro-page">
         <Layout>
           <CollectionPageHeader collection={this.state.collection} dropdown={true} />
           <PageContent>
             <CollectionDescription collection={this.state.collection} />
+            <StartShowcaseButton collection={this.state.collection} />
           </PageContent>
         </Layout>
       </div>
