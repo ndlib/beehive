@@ -54,8 +54,8 @@ var CollectionCard = React.createClass({
         </div>
         <div className="bee-card-content">
           <div className="bee-card-content-title">
-            <h2 className="bee-card-content-title-primary overflow-ellipsis">{this.props.collection.title_line_1}</h2>
-            <h3 className="bee-card-content-title-subtitle overflow-ellipsis">{this.props.collection.title_line_2}</h3>
+            <h2 className="bee-card-content-title-primary overflow-ellipsis">{this.props.collection.name_line_1}</h2>
+            <h3 className="bee-card-content-title-subtitle overflow-ellipsis">{this.props.collection.name_line_2}</h3>
           </div>
           <div className="bee-card-content-actions">
             <a href={this.collectionUrl(this.props.collection)} className="btn btn-default">Explore</a>

@@ -45,7 +45,7 @@ var SectionEmbed = React.createClass({
     if (this.state.section != null) {
       return (
         <div className="section">
-          <h2>{this.state.section.title}</h2>
+          <h2>{this.state.section.name}</h2>
           <SectionImage section={this.state.section} />
           <p dangerouslySetInnerHTML={{__html: this.state.section.description}} />
         </div>

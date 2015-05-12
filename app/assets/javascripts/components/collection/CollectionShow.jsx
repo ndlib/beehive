@@ -69,7 +69,7 @@ var CollectionShow = React.createClass({
         <div className="jumbotron">
           <div className="container collection-show">
             <div className="collection-text">
-              <h1>{this.props.collection.title}</h1>
+              <h1>{this.props.collection.name}</h1>
               <div className="row">
                 <div className="collection-image col-md-2">
                   <Thumbnail image={this.props.collection.image} thumbnailType="medium" />

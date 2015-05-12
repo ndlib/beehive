@@ -44,7 +44,7 @@ var CollectionEmbed = React.createClass({
   render: function() {
     return (
       <div className="collection">
-        <h2>{this.state.collection.title}</h2>
+        <h2>{this.state.collection.name}</h2>
         <Thumbnail image={this.state.collection.image} thumbnailType="small" />
         <p dangerouslySetInnerHTML={{__html: this.state.collection.description}} />
       </div>

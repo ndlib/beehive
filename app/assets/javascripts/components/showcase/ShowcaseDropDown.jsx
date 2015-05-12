@@ -69,7 +69,7 @@ var ShowcaseDropDown = React.createClass({
       options.push ((
         <li className="dropdown-header" value={showcase.id}>
           <a href={url}>
-            {showcase.title}
+            {showcase.name}
           </a>
         </li>
       ));

@@ -126,7 +126,7 @@ var ItemShow = React.createClass({
           <div className="item-detail" style={this.outerStyles()}>
 
             <div style={this.headerStyles()}>
-              <h2>{this.props.item.title}</h2>
+              <h2>{this.props.item.name}</h2>
             </div>
             <button className="btn btn-default btn-raised pull-right btn-details" onClick={this.toggleDetails} style={this.detailsButtonStyle()}>
               <i className={this.state.showDetails ? "mdi-navigation-unfold-less" : "mdi-navigation-unfold-more"}></i>

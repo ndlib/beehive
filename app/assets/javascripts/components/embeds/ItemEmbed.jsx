@@ -43,7 +43,7 @@ var ItemEmbed = React.createClass({
     if (this.state.item != null) {
       return (
         <div className="item">
-          <h2>{this.state.item.title}</h2>
+          <h2>{this.state.item.name}</h2>
           <Thumbnail image={this.state.item.image} thumbnailType="small" />
           <p dangerouslySetInnerHTML={{__html: this.state.item.description}} />
         </div>
