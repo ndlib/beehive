@@ -13,7 +13,7 @@ var StartShowcaseButton = React.createClass({
         <div>
           <div className="col-md-12">
           <hr />
-            <h2>Start the Exhibit</h2>
+            <h2>Explore Featured Content</h2>
           </div>
           <div className="col-md-4">&nbsp;</div>
           <div className="col-md-4">
