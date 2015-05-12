@@ -8,7 +8,7 @@ var StartShowcaseButton = React.createClass({
   },
 
   startButton: function() {
-    if(this.props.collection.showcases){
+    if(this.props.collection.showcases.length > 0){
       return (
         <div>
           <div className="col-md-12">
