@@ -1,2 +1,6 @@
 ruby:
-  config_file: .rubocop.yml
+  config_file: config/style_guides/.ruby-style.yml
+
+javascript:
+  config_file: config/style_guides/.javascript-style.json
+  ignore_file: config/style_guides/.javascript-ignore
