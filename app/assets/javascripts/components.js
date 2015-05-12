@@ -26,6 +26,7 @@ CollectionOverlayFooter = require('./components/layout/CollectionOverlayFooter')
 // Pages
 CollectionsListPage = require('./components/pages/CollectionsListPage');
 CollectionShowPage = require('./components/pages/CollectionShowPage');
+CollectionIntroPage = require('./components/pages/CollectionIntroPage');
 ShowcasesListPage = require('components/pages/ShowcasesListPage');
 ShowcaseShowPage = require('./components/pages/ShowcaseShowPage');
 SectionShowPage= require('./components/pages/SectionShowPage');
