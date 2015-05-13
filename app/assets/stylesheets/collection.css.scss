@@ -36,24 +36,24 @@ body.collection {
     }
 
     h1 {
-      margin: 0 auto;
-      width: 40vw;
-      text-align: center;
-      margin-top: 15vh;
       border: solid $white;
       border-width: 1px 0;
       font-family: GPCMed;
-      text-shadow: 2px 2px 3px $gray20;
-      padding :8px;
+      margin: 0 auto;
       margin-bottom: 1em;
+      margin-top: 15vh;
+      padding :8px;
+      text-align: center;
+      text-shadow: 2px 2px 3px $gray20;
+      width: 40vw;
     }
 
     p {
-      text-shadow: 2px 2px 0 $gray20;
-      text-align: center;
-      width: 40vw;
-      margin: 0 auto;
       font-size: 22px;
+      margin: 0 auto;
+      text-align: center;
+      text-shadow: 2px 2px 0 $gray20;
+      width: 40vw;
     }
 
     .start {
@@ -62,7 +62,7 @@ body.collection {
       padding: 8px 13px;
       border-radius: 10px;
       border: solid 1px $white;
-      background: rgba(255,255,255,.2);
+      background: rgba(255, 255, 255, 0.2);
       text-shadow: 2px 2px 3px $gray20;
       text-transform: uppercase;
       display: inline-block;
@@ -70,7 +70,7 @@ body.collection {
     }
 
     .start:hover {
-      background: rgba(255,255,255,.4);
+      background: rgba(255, 255, 255, 0.4);
     }
   }
 
