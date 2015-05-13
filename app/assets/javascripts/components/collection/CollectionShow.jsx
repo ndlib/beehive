@@ -70,13 +70,14 @@ var CollectionShow = React.createClass({
           <div className="container collection-show">
             <div className="collection-text">
               <h1>{this.props.collection.name}</h1>
-              <div className="row">
-                <div className="collection-image col-md-2">
-                  <Thumbnail image={this.props.collection.image} thumbnailType="medium" />
-                </div>
-                <div className="col-md-10">
+              <Thumbnail image={this.props.collection.image} thumbnailType="medium" />
                   <CollectionIntro collection={this.props.collection} height="400" id="main-collection-description" />
+                  <a href="#" className="start">Start</a>
+              <div className="row">
+                <div className="collection-image col-md-12">
+
                 </div>
+
               </div>
             </div>
           </div><div className="clear">&nbsp;</div>
