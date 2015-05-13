@@ -7,8 +7,24 @@ var StartShowcaseButton = React.createClass({
     collection: React.PropTypes.object,
   },
 
+  getInitialState: function() {
+    return {
+      collection: {},
+    };
+  },
+
+  componentDidMount: function() {
+    if ("object" == typeof(this.props.collection)) {
+      this.setState({
+        collection: this.props.collection,
+      });
+    } else {
+      this.loadRemoteCollection();
+    }
+  },
+
   startButton: function() {
-    if(this.props.collection.showcases.length > 0){
+    if(this.state.collection.showcases){
       return (
         <div>
           <div className="col-md-12">
@@ -17,7 +33,7 @@ var StartShowcaseButton = React.createClass({
           </div>
           <div className="col-md-4">&nbsp;</div>
           <div className="col-md-4">
-            <ShowcaseCard showcase={this.props.collection.showcases[0]} />
+            <ShowcaseCard showcase={this.state.collection.showcases[0]} />
           </div>
         </div>
       );
