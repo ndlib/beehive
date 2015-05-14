@@ -9,6 +9,7 @@ CollectionUrlMixin = require("./mixins/CollectionUrlMixin");
 HorizontalScrollMixin = require("./mixins/HorizontalScrollMixin");
 PageHeightMixin = require("./mixins/PageHeightMixin");
 PrevNextMixin = require("./mixins/PrevNextMixin");
+LoadRemoteCollectionMixin = require("./mixins/LoadRemoteCollectionMixin");
 
 // Layout
 Layout = require("./components/layout/Layout");
@@ -29,9 +30,7 @@ CollectionShowPage = require("./components/pages/CollectionShowPage");
 CollectionIntroPage = require("./components/pages/CollectionIntroPage");
 ShowcasesListPage = require("./components/pages/ShowcasesListPage");
 ShowcaseShowPage = require("./components/pages/ShowcaseShowPage");
-SectionShowPage= require("./components/pages/SectionShowPage");
 ItemsListPage = require("./components/pages/ItemsListPage");
-ItemShowPage = require("./components/pages/ItemShowPage");
 ErrorPage = require("./components/pages/ErrorPage");
 
 

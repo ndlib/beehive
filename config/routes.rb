@@ -9,12 +9,8 @@ Rails.application.routes.draw do
       get "/", to: "showcases#index"
       get ":id/:slug", to: "showcases#show"
     end
-    scope "/sections" do
-      get ":id/:slug", to: "sections#show"
-    end
     scope "/items" do
       get "/", to: "items#index"
-      get ":id/:slug", to: "items#show"
     end
   end
 

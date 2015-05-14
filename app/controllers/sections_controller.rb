@@ -9,10 +9,6 @@ class SectionsController < ApplicationController
     end
   end
 
-  def show
-    @sections_url = sections_api_base + params[:id]
-  end
-
   private
 
   def sections_api_base

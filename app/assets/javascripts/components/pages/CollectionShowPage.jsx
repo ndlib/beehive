@@ -2,7 +2,7 @@
 var React = require('react');
 
 var CollectionShowPage = React.createClass({
-  mixins: [PageHeightMixin],
+  mixins: [PageHeightMixin, LoadRemoteCollectionMixin],
 
   displayName: 'Collection Show Page',
 
@@ -25,35 +25,14 @@ var CollectionShowPage = React.createClass({
         collection: this.props.collection,
       });
     } else {
-      this.loadRemoteCollection();
+      this.loadRemoteCollection(this.props.collection);
     }
   },
 
-  loadRemoteCollection: function() {
-    var url = this.props.collection;
-
-    var request = new XMLHttpRequest();
-    request.open('GET', url, true);
-
-    request.onreadystatechange = function() {
-      if (request.readyState === 4){
-        if( request.status === 200) {
-          var collection = JSON.parse(request.response);
-          if (this.isMounted()) {
-            this.setState({
-              collection: collection,
-            });
-          }
-        }
-      }
-    }.bind(this);
-
-    request.onerror = function () {
-      window.location = window.location.origin + "/404";
-    }
-
-    request.send();
-
+  setValues: function(collection) {
+    this.setState({
+      collection: collection,
+    });
   },
 
   componentWillMount: function(){
