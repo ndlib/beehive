@@ -32,9 +32,11 @@ var CollectionIntroLink = React.createClass({
   render: function () {
     var url = this.introUrl(this.props.collection);
     return (
-        <div className="well">
-          <h1><a href={url}> Introduction</a></h1>
+      <div className="row">
+        <div className="col-md-12">
+          <h1><a href={url}> Browse Exhibit </a> > </h1>
         </div>
+      </div>
     );
   }
 });
