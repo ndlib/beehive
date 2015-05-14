@@ -31,5 +31,7 @@ module Beehive
     config.browserify_rails.commandline_options = "--transform reactify --extension=\".jsx\""
 
     config.assets.precompile = [ Proc.new{ |path| !File.extname(path).in?([".js", ".css", ".map", ".gzip", ""] ) }, /(?:\/|\\|\A)application\.(css|js)$/ ]
+
+    config.exceptions_app = self.routes
   end
 end

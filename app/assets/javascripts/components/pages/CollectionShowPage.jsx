@@ -30,11 +30,30 @@ var CollectionShowPage = React.createClass({
   },
 
   loadRemoteCollection: function() {
-    $.get(this.props.collection, function(result) {
-      this.setState({
-        collection: result,
-      });
-    }.bind(this));
+    var url = this.props.collection;
+
+    var request = new XMLHttpRequest();
+    request.open('GET', url, true);
+
+    request.onreadystatechange = function() {
+      if (request.readyState === 4){
+        if( request.status === 200) {
+          var collection = JSON.parse(request.response);
+          if (this.isMounted()) {
+            this.setState({
+              collection: collection,
+            });
+          }
+        }
+      }
+    }.bind(this);
+
+    request.onerror = function () {
+      window.location = window.location.origin + "/404";
+    }
+
+    request.send();
+
   },
 
   componentWillMount: function(){

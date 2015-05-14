@@ -32,6 +32,7 @@ ShowcaseShowPage = require("./components/pages/ShowcaseShowPage");
 SectionShowPage= require("./components/pages/SectionShowPage");
 ItemsListPage = require("./components/pages/ItemsListPage");
 ItemShowPage = require("./components/pages/ItemShowPage");
+ErrorPage = require("./components/pages/ErrorPage");
 
 
 // Embed Codes

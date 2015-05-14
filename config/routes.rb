@@ -34,5 +34,6 @@ Rails.application.routes.draw do
 
   resources :styleguide
 
+  get "/404" => "errors#not_found", via: :all
 
 end
