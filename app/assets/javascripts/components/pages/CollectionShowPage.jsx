@@ -54,8 +54,18 @@ var CollectionShowPage = React.createClass({
           <CollectionBackground collection={this.state.collection} />
           <Layout>
           <CollectionPageHeader collection={this.state.collection} branding={true} />
-<PageContent>
+            <PageContent>
               <CollectionShow collection={this.state.collection} />
+              <div className="row">
+                <div className="col-md-12">
+                  <CollectionIntro collection={this.state.collection} height="400" id="main-collection-description" />
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-12">
+                  <h2>Browse Exhibit</h2>
+                </div>
+              </div>
               <CollectionIntroLink collection={this.state.collection} height={this.state.height} />
               {showcasesList}
             </PageContent>

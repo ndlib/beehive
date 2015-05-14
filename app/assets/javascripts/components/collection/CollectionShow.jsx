@@ -2,6 +2,8 @@
 var React = require('react');
 
 var CollectionShow = React.createClass({
+  mixins: [CollectionUrlMixin],
+
   displayName: 'Collection Show',
 
   propTypes: {
@@ -63,6 +65,7 @@ var CollectionShow = React.createClass({
   },
 
   render: function() {
+    var intro_url = this.introUrl(this.props.collection);
     var overflow = this.state.overflow;
     if (this.props.collection) {
       return (
@@ -71,8 +74,7 @@ var CollectionShow = React.createClass({
             <div className="collection-text">
               <h1>{this.props.collection.name}</h1>
               <Thumbnail image={this.props.collection.image} thumbnailType="medium" />
-                  <CollectionIntro collection={this.props.collection} height="400" id="main-collection-description" />
-                  <a href="#" className="start">Start</a>
+                  <a href={intro_url} className="start">Start</a>
               <div className="row">
                 <div className="collection-image col-md-12">
 

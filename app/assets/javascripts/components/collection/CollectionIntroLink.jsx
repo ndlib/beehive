@@ -30,7 +30,7 @@ var CollectionIntroLink = React.createClass({
   },
 
   render: function () {
-    var url = this.collectionUrl(this.props.collection) + "/intro";
+    var url = this.introUrl(this.props.collection);
     return (
         <div className="well">
           <h1><a href={url}> Introduction</a></h1>

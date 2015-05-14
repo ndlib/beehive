@@ -24,7 +24,7 @@ var StartShowcaseButton = React.createClass({
   },
 
   startButton: function() {
-    if(this.state.collection.showcases){
+    if(this.props.collection.showcases){
       return (
         <div>
           <div className="col-md-12">
@@ -33,7 +33,7 @@ var StartShowcaseButton = React.createClass({
           </div>
           <div className="col-md-4">&nbsp;</div>
           <div className="col-md-4">
-            <ShowcaseCard showcase={this.state.collection.showcases[0]} />
+            <ShowcaseCard showcase={this.props.collection.showcases[0]} />
           </div>
         </div>
       );
