@@ -65,7 +65,7 @@ var CollectionShow = React.createClass({
   },
 
   render: function() {
-    var intro_url = this.collectionUrl(this.props.collection) + "/intro";
+    var intro_url = this.introUrl(this.props.collection);
     var overflow = this.state.overflow;
     if (this.props.collection) {
       return (
