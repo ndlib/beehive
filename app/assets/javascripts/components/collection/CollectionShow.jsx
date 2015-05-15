@@ -89,11 +89,7 @@ var CollectionShow = React.createClass({
             <div className="collection-text">
               <h1 style={titleStyle}>{this.props.collection.name}</h1>
               <Thumbnail image={this.props.collection.image} thumbnailType="medium" />
-<<<<<<< HEAD
-                  <a href={intro_url} className="start">Start <i className="mdi-navigation-chevron-right"></i></a>
-=======
-                  <a href={intro_url} className="start" style={buttonStyle}>Start</a>
->>>>>>> Position start button from bottom if no title.
+                  <a href={intro_url} className="start" style={buttonStyle}>Start <i className="mdi-navigation-chevron-right"></i></a>
               <div className="row">
                 <div className="collection-image col-md-12">
                 </div>
