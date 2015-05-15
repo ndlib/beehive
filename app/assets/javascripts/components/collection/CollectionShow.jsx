@@ -76,7 +76,6 @@ var CollectionShow = React.createClass({
           margin: "4em 0 0 -70px",
           position: "absolute",
           bottom: "25%",
-          width: "140px",
           left: "50%",
         };
       }
@@ -89,7 +88,7 @@ var CollectionShow = React.createClass({
             <div className="collection-text">
               <h1 style={titleStyle}>{this.props.collection.name}</h1>
               <Thumbnail image={this.props.collection.image} />
-                  <a href={intro_url} className="start" style={buttonStyle}>Start <i className="mdi-navigation-chevron-right"></i></a>
+                  <a href={intro_url} className="btn btn-lg btn-success start" style={buttonStyle}>Exhibit <i className="mdi-navigation-chevron-right"></i></a>
               <div className="row">
                 <div className="collection-image col-md-12">
                 </div>
