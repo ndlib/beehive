@@ -74,7 +74,7 @@ var CollectionShow = React.createClass({
             <div className="collection-text">
               <h1>{this.props.collection.name}</h1>
               <Thumbnail image={this.props.collection.image} thumbnailType="medium" />
-                  <a href={intro_url} className="start">Start</a>
+                  <a href={intro_url} className="start">Start <i className="mdi-action-launch"></i></a>
               <div className="row">
                 <div className="collection-image col-md-12">
 
