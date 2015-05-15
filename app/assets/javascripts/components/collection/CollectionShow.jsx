@@ -73,7 +73,7 @@ var CollectionShow = React.createClass({
           <div className="container collection-show">
             <div className="collection-text">
               <h1>{this.props.collection.name}</h1>
-              <Thumbnail image={this.props.collection.image} thumbnailType="medium" />
+              <Thumbnail image={this.props.collection.image} />
                   <a href={intro_url} className="start">Start <i className="mdi-navigation-chevron-right"></i></a>
               <div className="row">
                 <div className="collection-image col-md-12">
