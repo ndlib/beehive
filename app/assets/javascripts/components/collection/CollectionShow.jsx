@@ -68,9 +68,20 @@ var CollectionShow = React.createClass({
     var intro_url = this.introUrl(this.props.collection);
     var overflow = this.state.overflow;
     var titleStyle = {};
+    var buttonStyle = {};
     if (this.props.collection) {
       if(this.props.collection.image) {
-        titleStyle = {display: "none",}
+        titleStyle = {display: "none",};
+        buttonStyle =  {
+          margin: "4em 0 0 -50px",
+          position: "absolute",
+          bottom: "25%",
+          width: "100px",
+          left: "50%",
+        };
+      }
+      else {
+        buttonStyle = {margin: "4em auto 0",};
       }
       return (
         <div className="jumbotron">
@@ -78,7 +89,11 @@ var CollectionShow = React.createClass({
             <div className="collection-text">
               <h1 style={titleStyle}>{this.props.collection.name}</h1>
               <Thumbnail image={this.props.collection.image} thumbnailType="medium" />
+<<<<<<< HEAD
                   <a href={intro_url} className="start">Start <i className="mdi-navigation-chevron-right"></i></a>
+=======
+                  <a href={intro_url} className="start" style={buttonStyle}>Start</a>
+>>>>>>> Position start button from bottom if no title.
               <div className="row">
                 <div className="collection-image col-md-12">
                 </div>
