@@ -37,14 +37,17 @@ var CollectionIntroPage = React.createClass({
   render: function() {
 
     return (
-      <div className="collection-intro-page">
-        <Layout>
-          <CollectionPageHeader collection={this.state.collection} dropdown={true} />
-          <PageContent>
-            <CollectionDescription collection={this.state.collection} />
-            <StartShowcaseButton collection={this.state.collection} />
-          </PageContent>
-        </Layout>
+      <div>
+        <div className="collection-intro-page">
+          <Layout>
+            <CollectionPageHeader collection={this.state.collection} dropdown={true} />
+            <PageContent>
+              <CollectionDescription collection={this.state.collection} />
+              <StartShowcaseButton collection={this.state.collection} />
+            </PageContent>
+          </Layout>
+        </div>
+        <CollectionOverlayFooter collection={this.state.collection} />
       </div>
     );
   }
