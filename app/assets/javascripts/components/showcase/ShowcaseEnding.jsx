@@ -13,8 +13,8 @@ var ShowcaseEnding = React.createClass({
       display: "inline-block",
       verticalAlign: "top",
       position: "relative",
-      marginLeft: "10px",
-      marginRight: "10px",
+      marginLeft: "150px",
+      marginRight: "33vw",
       height: this.props.height + "px",
       cursor: "pointer",
       width: "500px",
@@ -29,7 +29,7 @@ var ShowcaseEnding = React.createClass({
 
   render: function() {
     return (
-      <section className="section" style={this.style()} id="section-ending">
+      <section className="section section-continue" style={this.style()} id="section-ending">
         <div className="section-container section-container-text" style={this.containerStyle()}>
           <div className="row row-fluid">
             <h2 className="section-ending-title">Continue to</h2>

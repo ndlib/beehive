@@ -64,14 +64,14 @@ body.collection {
       padding: 8px 13px;
       border-radius: 10px;
       border: solid 1px $white;
-      background: rgba(75, 75, 75, 0.4);
+      background: rgba(75, 75, 75, 0.8);
       text-shadow: 2px 2px 3px $gray20;
       text-transform: uppercase;
       display: inline-block;
     }
 
     .start:hover {
-      background: rgba(200, 200, 200, 0.4);
+      background: rgba(200, 200, 200, 0.8);
       text-shadow: 2px 2px 3px $gray30;
 
     }
