@@ -17,25 +17,24 @@ body.collection {
   }
 
   .jumbotron {
-    padding: 0 0;
     margin: 0;
-    position: relative;
-    height: calc(80vh - 107px);
+    max-height: calc(80vh - 107px);
     overflow: hidden;
+    padding: 0;
+    position: relative;
     text-align: center;
 
     .collection-text {
+      clear: none;
+      float: none;
       text-align: center;
     }
 
     img {
-      position: absolute;
-      top: 0;
-      left: 0;
       border: none;
-      width: 100%;
       height: auto;
-      max-height: none !important;
+      max-height: none;
+      width: 100%;
       z-index: -1;
     }
 
