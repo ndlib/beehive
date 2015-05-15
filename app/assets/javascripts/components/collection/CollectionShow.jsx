@@ -73,10 +73,10 @@ var CollectionShow = React.createClass({
       if(this.props.collection.image) {
         titleStyle = {display: "none",};
         buttonStyle =  {
-          margin: "4em 0 0 -50px",
+          margin: "4em 0 0 -70px",
           position: "absolute",
           bottom: "25%",
-          width: "100px",
+          width: "140px",
           left: "50%",
         };
       }
