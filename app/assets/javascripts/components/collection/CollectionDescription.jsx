@@ -23,8 +23,6 @@ var CollectionDescription = React.createClass({
   render: function() {
     return (
       <div style={this.style()} id={this.props.id}>
-        <h1>Introduction</h1>
-        <hr/>
         <div className="collection-description" dangerouslySetInnerHTML={{__html: this.props.collection.description}} />
       </div>
     )
