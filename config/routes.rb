@@ -40,11 +40,7 @@ Rails.application.routes.draw do
     scope "/items" do
       get ":id/", to: "items#embed"
     end
-
   end
 
   resources :styleguide
-
-
-
 end
