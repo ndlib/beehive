@@ -910,6 +910,10 @@ div.dataTables_filter {
   float: left !important;
 }
 
+.bee-browse-exhibit h2 a {
+  color: $white;
+}
+
 @import "cards.css.scss";
 @import "collection.css.scss";
 @import "showcase.css.scss";

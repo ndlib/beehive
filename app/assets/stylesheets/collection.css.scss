@@ -1,5 +1,6 @@
 $white: #fff;
 $gray20: #333333;
+$gray30: #111111;
 
 body.collection {
 
@@ -63,7 +64,7 @@ body.collection {
       padding: 8px 13px;
       border-radius: 10px;
       border: solid 1px $white;
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(75, 75, 75, 0.4);
       text-shadow: 2px 2px 3px $gray20;
       text-transform: uppercase;
       display: inline-block;
@@ -71,7 +72,9 @@ body.collection {
     }
 
     .start:hover {
-      background: rgba(255, 255, 255, 0.4);
+      background: rgba(200, 200, 200, 0.4);
+      text-shadow: 2px 2px 3px $gray30;
+
     }
   }
 
