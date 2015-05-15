@@ -44,7 +44,6 @@ var CollectionIntroPage = React.createClass({
             <div className="intro-title-bar"><h2 className="intro-title-bar-title">Introduction</h2></div>
             <PageContent>
               <CollectionDescription collection={this.state.collection} />
-              <StartShowcaseButton collection={this.state.collection} />
             </PageContent>
           </Layout>
         </div>
