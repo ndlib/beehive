@@ -67,19 +67,32 @@ var CollectionShow = React.createClass({
   render: function() {
     var intro_url = this.introUrl(this.props.collection);
     var overflow = this.state.overflow;
+    var titleStyle = {};
+    var buttonStyle = {};
     if (this.props.collection) {
+      if(this.props.collection.image) {
+        titleStyle = {display: "none",};
+        buttonStyle =  {
+          margin: "4em 0 0 -70px",
+          position: "absolute",
+          bottom: "25%",
+          width: "140px",
+          left: "50%",
+        };
+      }
+      else {
+        buttonStyle = {margin: "4em auto 0",};
+      }
       return (
         <div className="jumbotron">
           <div className="container collection-show">
             <div className="collection-text">
-              <h1>{this.props.collection.name}</h1>
+              <h1 style={titleStyle}>{this.props.collection.name}</h1>
               <Thumbnail image={this.props.collection.image} />
-                  <a href={intro_url} className="start">Start <i className="mdi-navigation-chevron-right"></i></a>
+                  <a href={intro_url} className="start" style={buttonStyle}>Start <i className="mdi-navigation-chevron-right"></i></a>
               <div className="row">
                 <div className="collection-image col-md-12">
-
                 </div>
-
               </div>
             </div>
           </div><div className="clear">&nbsp;</div>
