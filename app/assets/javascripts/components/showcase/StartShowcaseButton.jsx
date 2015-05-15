@@ -7,20 +7,35 @@ var StartShowcaseButton = React.createClass({
     collection: React.PropTypes.object,
   },
 
+  style: function() {
+    return {
+      float: "right",
+      marginLeft: "1vw",
+      marginRight: "9vw",
+    }
+  },
+
+  h2Style: function() {
+    return {
+      color: "black",
+      fontFamily: "GPCMed",
+      fontSize: "16px",
+      fontWeight: "normal",
+      lineHeight: "16px",
+      margin: "0",
+      padding: "0 0 .5vw",
+      textTransform: "uppercase",
+    }
+  },
+
   startButton: function() {
     if(this.props.collection.showcases){
       if(this.props.collection.showcases.length > 0) {
         return (
-          <div>
-            <div className="col-md-12">
-            <hr />
-              <h2>Explore Featured Content</h2>
-            </div>
-            <div className="col-md-4">&nbsp;</div>
-            <div className="col-md-4">
+            <div className="col-sm-4 well" style={this.style()}>
+              <h2 style={this.h2Style()}>Continue to</h2>
               <ShowcaseCard showcase={this.props.collection.showcases[0]} />
             </div>
-          </div>
         );
       }
     }

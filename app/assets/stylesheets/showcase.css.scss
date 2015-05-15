@@ -23,20 +23,27 @@ $scrollbar-color: #666;
   }
 }
 
-.showcases-title-bar {
+.showcases-title-bar,
+.intro-title-bar {
   background: -moz-linear-gradient(top, $title-gradient-top 0%, $title-gradient-bottom 100%);
   background: -webkit-linear-gradient(top, $title-gradient-bottom 0%, $title-gradient-top 100%);
   background: linear-gradient(to bottom, $title-gradient-top 0%, $title-gradient-bottom 100%);
   border-bottom: solid 1px $title-border;
+  margin-bottom: 5px;
+  padding: 9px 40px;
   position: relative;
+
+
 }
 
-.showcases-title-bar-title {
+.showcases-title-bar-title,
+.intro-title-bar-title {
   color: $title-color;
   font-family: GPCMed;
   font-size: 16px;
   font-weight: normal;
   letter-spacing: 1.1px;
+  line-height: 16px;
   margin: 0;
   padding: 0;
   text-transform: uppercase;
