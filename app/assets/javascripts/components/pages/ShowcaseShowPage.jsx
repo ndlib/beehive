@@ -2,7 +2,7 @@
 var React = require('react');
 
 var ShowcaseShowPage = React.createClass({
-  mixins: [PageHeightMixin],
+  mixins: [PageHeightMixin, LoadRemoteCollectionMixin],
 
   propTypes: {
     collection: React.PropTypes.oneOfType([
@@ -16,12 +16,6 @@ var ShowcaseShowPage = React.createClass({
       collection: {},
       showcase: null,
     };
-  },
-
-  loadRemoteCollection: function() {
-    $.get(this.props.collection, function(result) {
-      this.setValues(result);
-    }.bind(this));
   },
 
   setValues: function(collection) {
@@ -44,7 +38,7 @@ var ShowcaseShowPage = React.createClass({
     if ('object' == typeof(this.props.collection)) {
       this.setValues(this.props.collection);
     } else {
-      this.loadRemoteCollection()
+      this.loadRemoteCollection(this.props.collection)
     }
   },
 

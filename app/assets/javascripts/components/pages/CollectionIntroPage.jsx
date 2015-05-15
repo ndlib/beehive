@@ -1,6 +1,8 @@
 var React = require("react");
 
 var CollectionIntroPage = React.createClass({
+  mixins: [LoadRemoteCollectionMixin],
+
   displayName: "Collection Intro Page",
 
   propTypes: {
@@ -22,16 +24,14 @@ var CollectionIntroPage = React.createClass({
         collection: this.props.collection,
       });
     } else {
-      this.loadRemoteCollection();
+      this.loadRemoteCollection(this.props.collection);
     }
   },
 
-  loadRemoteCollection: function() {
-    $.get(this.props.collection, function(result) {
-      this.setState({
-        collection: result,
-      });
-    }.bind(this));
+  setValues: function(collection) {
+    this.setState({
+      collection: collection,
+    });
   },
 
   render: function() {

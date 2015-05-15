@@ -2,7 +2,7 @@
 var React = require('react');
 
 var ItemsListPage = React.createClass({
-  mixins: [PageHeightMixin],
+  mixins: [PageHeightMixin, LoadRemoteCollectionMixin],
 
   displayName: 'Items List Page',
 
@@ -24,14 +24,8 @@ var ItemsListPage = React.createClass({
     if ('object' == typeof(this.props.collection)) {
       this.setValues(this.props.collection);
     } else {
-      this.loadRemoteCollection()
+      this.loadRemoteCollection(this.props.collection)
     }
-  },
-
-  loadRemoteCollection: function() {
-    $.get(this.props.collection, function(result) {
-      this.setValues(result);
-    }.bind(this));
   },
 
   setValues: function(collection) {

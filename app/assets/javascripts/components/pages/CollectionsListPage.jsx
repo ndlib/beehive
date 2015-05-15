@@ -2,6 +2,7 @@
 var React = require('react');
 
 var CollectionsListPage = React.createClass({
+  mixins: [LoadRemoteCollectionMixin],
   displayName: 'Collections List Page',
 
   propTypes: {
@@ -23,16 +24,14 @@ var CollectionsListPage = React.createClass({
         collections: this.props.collections,
       });
     } else {
-      this.loadRemoteCollection()
+      this.loadRemoteCollection(this.props.collections)
     }
   },
 
-  loadRemoteCollection: function() {
-    $.get(this.props.collections, function(result) {
-      this.setState({
-        collections: result,
-      });
-    }.bind(this));
+  setValues: function(collections) {
+    this.setState({
+      collections: collections,
+    });
   },
 
   componentWillMount: function(){

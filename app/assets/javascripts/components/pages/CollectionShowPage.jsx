@@ -2,7 +2,7 @@
 var React = require('react');
 
 var CollectionShowPage = React.createClass({
-  mixins: [PageHeightMixin],
+  mixins: [PageHeightMixin, LoadRemoteCollectionMixin],
 
   displayName: 'Collection Show Page',
 
@@ -25,16 +25,14 @@ var CollectionShowPage = React.createClass({
         collection: this.props.collection,
       });
     } else {
-      this.loadRemoteCollection();
+      this.loadRemoteCollection(this.props.collection);
     }
   },
 
-  loadRemoteCollection: function() {
-    $.get(this.props.collection, function(result) {
-      this.setState({
-        collection: result,
-      });
-    }.bind(this));
+  setValues: function(collection) {
+    this.setState({
+      collection: collection,
+    });
   },
 
   componentWillMount: function(){

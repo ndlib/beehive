@@ -2,6 +2,8 @@
 var React = require('react');
 
 var ShowcasesListPage = React.createClass({
+  mixins: [LoadRemoteCollectionMixin],
+
   displayName: 'Showcase List Page',
 
   propTypes: {
@@ -22,14 +24,8 @@ var ShowcasesListPage = React.createClass({
     if ('object' == typeof(this.props.collection)) {
       this.setValues(this.props.collection);
     } else {
-      this.loadRemoteCollection()
+      this.loadRemoteCollection(this.props.collection)
     }
-  },
-
-  loadRemoteCollection: function() {
-    $.get(this.props.collection, function(result) {
-      this.setValues(result);
-    }.bind(this));
   },
 
   setValues: function(collection) {
