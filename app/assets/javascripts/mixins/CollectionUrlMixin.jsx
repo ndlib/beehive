@@ -1,7 +1,4 @@
 var CollectionUrlMixin = {
-  introUrl: function(collection) {
-    return this.collectionUrl(collection) + '/intro'
-  },
 
   sectionUrl: function(section) {
     return this.collectionObjectUrl('sections', section);
