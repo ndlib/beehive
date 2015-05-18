@@ -30,7 +30,12 @@ var CollectionIntroLink = React.createClass({
   },
 
   render: function () {
-    var url = this.introUrl(this.props.collection);
+    var url;
+    if(this.props.collection.showcases){
+      if(this.props.collection.showcases.length > 0) {
+        url = this.showcaseUrl(this.props.collection.showcases[0]);
+      }
+    }
     return (
       <div className="row">
         <div className="col-md-12 bee-browse-exhibit" >
