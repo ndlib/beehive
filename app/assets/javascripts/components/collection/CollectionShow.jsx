@@ -65,12 +65,6 @@ var CollectionShow = React.createClass({
   },
 
   render: function() {
-    var url;
-    if(this.props.collection.showcases){
-      if(this.props.collection.showcases.length > 0) {
-        url = this.showcaseUrl(this.props.collection.showcases[0]);
-      }
-    }
     var overflow = this.state.overflow;
     var titleStyle = {};
     var buttonStyle = {};
@@ -87,13 +81,17 @@ var CollectionShow = React.createClass({
       else {
         buttonStyle = {margin: "4em auto 0",};
       }
+      var firstShowcaseLink;
+      if(this.firstShowcaseUrl(this.props.collection.showcase)) {
+        firstShowcaseLink = (<a href={this.firstShowcaseUrl(this.props.collection.showcase)} className="btn btn-lg btn-success start" style={buttonStyle}>Exhibit <i className="mdi-navigation-chevron-right"></i></a>);
+      }
       return (
         <div className="jumbotron">
           <div className="collection-show">
             <div className="collection-text">
               <h1 style={titleStyle}>{this.props.collection.name}</h1>
               <Thumbnail image={this.props.collection.image} />
-                  <a href={url} className="btn btn-lg btn-success start" style={buttonStyle}>Exhibit <i className="mdi-navigation-chevron-right"></i></a>
+              {firstShowcaseLink}
               <div className="row">
                 <div className="collection-image col-md-12">
                 </div>

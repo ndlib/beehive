@@ -30,19 +30,18 @@ var CollectionIntroLink = React.createClass({
   },
 
   render: function () {
-    var url;
-    if(this.props.collection.showcases){
-      if(this.props.collection.showcases.length > 0) {
-        url = this.showcaseUrl(this.props.collection.showcases[0]);
-      }
-    }
-    return (
-      <div className="row">
-        <div className="col-md-12 bee-browse-exhibit" >
-          <h2><a href={url}> Browse Exhibit <i className="mdi-navigation-arrow-forward"></i> </a> </h2>
+    var firstShowcase = this.firstShowcaseUrl(this.props.collection.showcase);
+    if(firstShowcase) {
+      return (
+        <div className="row">
+          <div className="col-md-12 bee-browse-exhibit" >
+            <h2><a href={firstShowcase}> Browse Exhibit <i className="mdi-navigation-arrow-forward"></i> </a> </h2>
+          </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return (<div />);
+    }
   }
 });
 
