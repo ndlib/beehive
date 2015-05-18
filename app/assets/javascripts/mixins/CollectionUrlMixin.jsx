@@ -1,7 +1,4 @@
 var CollectionUrlMixin = {
-  introUrl: function(collection) {
-    return this.collectionUrl(collection) + '/intro'
-  },
 
   sectionUrl: function(section) {
     return this.collectionObjectUrl('sections', section);
@@ -9,6 +6,16 @@ var CollectionUrlMixin = {
 
   showcaseUrl: function(showcase) {
     return this.collectionObjectUrl('showcases', showcase);
+  },
+
+  firstShowcaseUrl: function(showcase) {
+    var url;
+    if(this.props.collection.showcases){
+      if(this.props.collection.showcases.length > 0) {
+        url = this.showcaseUrl(this.props.collection.showcases[0]);
+      }
+    }
+    return url;
   },
 
   itemUrl: function(item) {

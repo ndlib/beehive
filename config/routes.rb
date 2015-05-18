@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
   get "/:id", to: "collections#show"
   get "/:id/:slug", to: "collections#show"
-  get "/:id/:slug/intro", to: "collections#intro"
 
   scope "/:collection_id/:collection_slug" do
     scope "/showcases" do
