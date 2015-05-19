@@ -180,6 +180,21 @@ $scrollbar-color: #666;
   }
 }
 
+.section-continue {
+
+  .section-container {
+    background: white;
+    color: black;
+    overflow: hidden;
+    border: none;
+
+    h2 {
+      font-family: GPCMed;
+    }
+  }
+
+}
+
 // scroll bars
 .ps-container {
 
