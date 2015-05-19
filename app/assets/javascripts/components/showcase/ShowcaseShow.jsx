@@ -3,7 +3,7 @@ var React = require('react');
 
 var maxShowcaseHeight = 840;
 var showcaseTitleHeight = 40;
-var scrollPadding = 40;
+var scrollPadding = 80;
 var titleSectionWidthPercent = 0.75;
 
 var ShowcaseShow = React.createClass({
@@ -68,6 +68,7 @@ var ShowcaseShow = React.createClass({
       left: 0,
       overflowX: 'visible',
       overflowY: 'visible',
+      paddingTop: '20px',
     };
   },
 
