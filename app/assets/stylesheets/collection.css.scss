@@ -58,22 +58,6 @@ body.collection {
       text-shadow: 2px 2px 0 $gray20;
       width: 40vw;
     }
-
-    .start {
-      color: $white;
-      font-size: 24px;
-      padding: 8px 13px;
-      border-radius: 10px;
-      border: solid 1px $white;
-      text-shadow: 2px 2px 3px $gray20;
-      background-color: $startbutton;
-      text-transform: uppercase;
-      display: inline-block;
-    }
-
-    .start:hover {
-      background-color: $startbuttonhover;
-    }
   }
 
   .well {
@@ -83,4 +67,22 @@ body.collection {
   .showcases-list {
     padding-bottom: 4em;
   }
+}
+
+.start,
+.continue {
+  color: $white;
+  font-size: 24px;
+  padding: 8px 13px;
+  border-radius: 10px;
+  border: solid 1px $white;
+  text-shadow: 2px 2px 3px $gray20;
+  background-color: $startbutton !important;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.start:hover,
+.continue:hover {
+  background-color: $startbuttonhover !important;
 }

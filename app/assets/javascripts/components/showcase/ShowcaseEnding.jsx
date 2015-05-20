@@ -2,6 +2,7 @@ var React = require("react");
 
 var ShowcaseEnding = React.createClass({
   displayName: "Showcase Ending",
+  mixins: [CollectionUrlMixin],
 
   propTypes: {
     height: React.PropTypes.number.isRequired,
@@ -21,6 +22,15 @@ var ShowcaseEnding = React.createClass({
     };
   },
 
+  buttonStyle: function() {
+    return {
+      position: "absolute",
+      bottom: "5vw",
+      left: "15vw",
+      textAlign: "center",
+    };
+  },
+
   containerStyle: function() {
     return {
       height: this.props.height + "px",
@@ -32,8 +42,11 @@ var ShowcaseEnding = React.createClass({
       <section className="section section-continue" style={this.style()} id="section-ending">
         <div className="section-container section-container-text" style={this.containerStyle()}>
           <div className="row row-fluid">
-            <h2 className="section-ending-title">Continue to</h2>
+            <h2 className="section-ending-title">Next Showcase</h2>
             <ShowcaseCard showcase={this.props.showcase}/>
+            <div style={this.buttonStyle()}>
+            <a href={this.showcaseUrl(this.props.showcase)} className="btn btn-lg btn-success continue"><span>Continue </span><i className="mdi-navigation-chevron-right"></i></a>
+            </div>
           </div>
         </div>
       </section>
