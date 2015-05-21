@@ -19,15 +19,19 @@ var ShowcaseEnding = React.createClass({
       height: this.props.height + "px",
       cursor: "pointer",
       width: "500px",
+      overflow: "hidden",
     };
   },
 
   buttonStyle: function() {
     return {
       position: "absolute",
-      bottom: "5vw",
-      left: "15vw",
+      top: "27rem",
+      left: "0",
+      right: "0",
       textAlign: "center",
+      margin: "0 auto",
+      zIndex: "1",
     };
   },
 
@@ -43,10 +47,11 @@ var ShowcaseEnding = React.createClass({
         <div className="section-container section-container-text" style={this.containerStyle()}>
           <div className="row row-fluid">
             <h2 className="section-ending-title">Next Showcase</h2>
-            <ShowcaseCard showcase={this.props.showcase}/>
             <div style={this.buttonStyle()}>
-            <a href={this.showcaseUrl(this.props.showcase)} className="btn btn-lg btn-success continue"><span>Continue </span><i className="mdi-navigation-chevron-right"></i></a>
+              <a href={this.showcaseUrl(this.props.showcase)} className="btn btn-lg btn-success continue"><span>Continue </span><i className="mdi-navigation-chevron-right"></i></a>
             </div>
+            <ShowcaseCard showcase={this.props.showcase} />
+
           </div>
         </div>
       </section>
