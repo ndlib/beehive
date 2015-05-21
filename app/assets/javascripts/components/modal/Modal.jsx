@@ -9,6 +9,7 @@ var Modal = React.createClass({
     className: React.PropTypes.string,
     content: React.PropTypes.object.isRequired,
     height: React.PropTypes.number,
+    hasHash: React.PropTypes.bool,
   },
 
   styles: function() {
@@ -31,7 +32,9 @@ var Modal = React.createClass({
   },
 
   removeHash: function() {
-    window.location.hash = '';
+    if(this.props.hasHash) {
+      window.location.hash = '';
+    }
   },
 
   onKeyDown: function(event) {

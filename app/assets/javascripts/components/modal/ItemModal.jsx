@@ -23,7 +23,7 @@ var ItemModal = React.createClass({
   render: function () {
     var itemPage = this.itemPage();
     return (
-      <Modal height={this.props.height} id={this.modalID()} content={itemPage} />
+      <Modal height={this.props.height} id={this.modalID()} content={itemPage} hasHash={true} />
     );
   }
 });
