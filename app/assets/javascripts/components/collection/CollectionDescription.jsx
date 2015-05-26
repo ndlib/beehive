@@ -18,8 +18,6 @@ var CollectionDescription = React.createClass({
     }
   },
 
-  componentDidMount: function() {},
-
   render: function() {
     return (
       <div className="row row-fluid">
