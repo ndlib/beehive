@@ -61,33 +61,57 @@ $white: #fff;
   }
 }
 
-.showcase-title-primary {
+.showcase-name-1,
+.showcase-name-2,
+.showcase-title-container {
+  display: inline-block;
+  margin: 0;
+  width: auto;
+}
+
+.showcase-title-container {
   border: solid 1px $title-color;
   border-width: 1px 0;
-  font-family: GPCMed;
-  font-size: 50px;
-  padding: 2% 0;
-  text-align: center;
+  margin-bottom: 1em;
+  padding: 1em;
+}
+
+.showcase-name-1,
+.showcase-name-2 {
   text-shadow: 2px 2px 3px $title-shadow-color;
   text-transform: uppercase;
+}
+
+.showcase-name-1 {
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
   white-space: normal;
 }
 
+.showcase-name-2 {
+  margin-top: 8px;
+}
+
 .showcase-title-description {
-  font-size: 22px;
+  font-size: 18px;
   line-height: 30px;
-  margin: 0 30px;
-  text-align: center;
-  text-shadow: 2px 2px 0 $title-shadow-color;
+  margin-top: 30px;
+  text-align: left;
+  text-shadow: 1px 1px 2px $title-shadow-color;
 }
 
 .showcase-card {
-  .showcase-title-primary {
+  .showcase-name-1 {
     font-size: 24px;
   }
 
+  .showcase-name-2 {
+    font-size: 20px;
+  }
+
   .showcase-title-description {
-    font-size: 1.1em;
+    font-size: 15px;
     line-height: inherit;
     margin: 0;
   }

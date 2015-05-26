@@ -1,5 +1,5 @@
 //app/assets/javascripts/components/ShowcaseTitle.jsx
-var React = require('react');
+var React = require("react");
 
 var converter = new Showdown.converter()
 
@@ -12,41 +12,57 @@ var ShowcaseTitle = React.createClass({
 
   getDefaultProps: function() {
     return {
-      width: '75vw',
+      width: "85vw",
     }
   },
 
   outerStyle: function() {
     var height;
     if (this.props.height) {
-      height = this.props.height + 'px';
+      height = this.props.height + "px";
     }
     return {
-      display: 'inline-block',
-      verticalAlign: 'top',
-      position: 'relative',
-      padding: '5px',
+      display: "inline-block",
+      verticalAlign: "top",
+      position: "relative",
+      padding: "5px",
       height: height,
-      marginRight: '10px',
       width: this.props.width,
+      textAlign: "center",
     };
   },
 
   innerStyle: function() {
     return {
-      width: '100%',
-      display: 'inline-block',
+      width: "85%",
+      display: "inline-block",
     };
   },
 
   headerStyle: function() {
     var marginTop;
     if (this.props.height) {
-      var marginTop = Math.round(this.props.height * 0.15) + 'px';
+      var marginTop = Math.round(this.props.height * 0.15) + "px";
     }
     return {
       marginTop: marginTop,
     }
+  },
+
+  names: function() {
+    var names = [];
+    names.push(
+      <h2 className="showcase-name-1" key={1}>{this.props.showcase.name_line_1}</h2>
+    );
+    if (this.props.showcase.name_line_2) {
+      names.push(
+        <br key="br" />
+      );
+      names.push(
+        <h3 className="showcase-name-2" key={2}>{this.props.showcase.name_line_2}</h3>
+      );
+    }
+    return names;
   },
 
   editTitle: function() {
@@ -62,10 +78,9 @@ var ShowcaseTitle = React.createClass({
     return (
       <div className="showcase-title-page" style={this.outerStyle()}>
         <div className="showcase-title-page-inner" style={this.innerStyle()}>
-          <h2 className="showcase-title-primary" style={this.headerStyle()}>
-            <span className="title">{this.props.showcase.name_line_1}</span>&nbsp;
-            <span className="subtitle">{this.props.showcase.name_line_2}</span>
-          </h2>
+          <div className="showcase-title-container" style={this.headerStyle()}>
+            {this.names()}
+          </div>
           <div className="showcase-title-description" dangerouslySetInnerHTML={{__html: description}}  />
         </div>
       </div>
