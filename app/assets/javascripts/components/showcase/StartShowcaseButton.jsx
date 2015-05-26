@@ -9,9 +9,6 @@ var StartShowcaseButton = React.createClass({
 
   style: function() {
     return {
-      float: "right",
-      marginLeft: "1vw",
-      marginRight: "9vw",
     }
   },
 
