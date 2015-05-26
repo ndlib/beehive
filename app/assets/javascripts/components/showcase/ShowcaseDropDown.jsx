@@ -53,12 +53,21 @@ var ShowcaseDropDown = React.createClass({
   dropDownOptions: function() {
     var options = [];
     var collectionUrl = this.collectionUrl(this.props.collection);
+    var introUrl = this.introUrl(this.props.collection);
 
     options.push((
-      <li className="dropdown-header" value={this.props.collection.id}>
+      <li key="dropdown-home" className="dropdown-header" value={this.props.collection.id}>
         <a href={collectionUrl}>Home</a>
       </li>
     ));
+
+    if (introUrl) {
+      options.push((
+        <li key="dropdown-intro" className="dropdown-header" value={this.props.collection.id}>
+          <a href={introUrl}>Introduction</a>
+        </li>
+      ));
+    }
 
     options.push((
       <hr/>
@@ -67,7 +76,7 @@ var ShowcaseDropDown = React.createClass({
     this.state.showcases.forEach(function(showcase){
       var url = collectionUrl + "/showcases/" + encodeURIComponent(showcase.id) + "/" + encodeURIComponent(showcase.slug);
       options.push ((
-        <li className="dropdown-header" value={showcase.id}>
+        <li key={showcase.id} className="dropdown-header" value={showcase.id}>
           <a href={url}>
             {showcase.name}
           </a>
