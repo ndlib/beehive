@@ -18,11 +18,9 @@ var Section = React.createClass({
 
   style: function() {
     return {
-      //border: '1px solid lightgrey',
       display: 'inline-block',
       verticalAlign: 'top',
       position: 'relative',
-      marginLeft: '10px',
       marginRight: '10px',
       height: this.props.height + 'px',
       cursor: 'pointer',
