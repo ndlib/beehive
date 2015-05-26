@@ -5,6 +5,11 @@ var CollectionOverlayFooter = React.createClass({
   propTypes: {
     collection: React.PropTypes.object.isRequired,
   },
+
+  closeOther: function(target) {
+    $(target).modal("hide");
+  },
+
   render: function () {
     return (
       <div>
@@ -13,8 +18,8 @@ var CollectionOverlayFooter = React.createClass({
         <footer id="footer" className="container-fluid">
           <div className="row">
             <div className="col-sm-8 pull-left">
-              <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#info"><i className="mdi-action-info-outline"></i></button>
-              <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#copy"><i className="glyphicon glyphicon-copyright-mark"></i></button>
+              <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#info" onClick={this.closeOther.bind(this, "#copy")}><i className="mdi-action-info-outline"></i></button>
+              <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#copy" onClick={this.closeOther.bind(this, "#info")}><i className="glyphicon glyphicon-copyright-mark"></i></button>
             </div>
             <div className="col-sm-4 pull-right">
               <a href="http://library.nd.edu">
