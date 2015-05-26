@@ -3,8 +3,8 @@ $gray20: #333333;
 $gray30: #111111;
 $startbutton: #165724;
 $startbuttonhover: #45764D;
-$startbutton: rgba(0,0,0,.8);
-$startbuttonhover: rgba( 69, 118, 77, .9);
+$startbutton: rgba(0, 0, 0, 0.8);
+$startbuttonhover: rgba(69, 118, 77, 0.9);
 
 body.collection {
 
@@ -64,7 +64,7 @@ body.collection {
 
   .collection-intro {
     p {
-      font-size:24px;
+      font-size: 24px;
     }
 
   }
@@ -80,10 +80,10 @@ body.collection {
 
 .start,
 .continue {
-  background-color: $startbutton !important;
+  background-color: $startbutton;
   border: solid 2px $white;
   border-radius: 10px;
-  box-shadow:2px 2px 3px $gray20;
+  box-shadow: 2px 2px 3px $gray20;
   color: $white;
   display: inline-block;
   font-size: 24px;
@@ -92,13 +92,23 @@ body.collection {
   text-shadow: 2px 2px 3px $gray20;
   text-transform: uppercase;
 
-  [class^="mdi-"], [class*="mdi-"] {
+  [class^="mdi-"],
+  [class*="mdi-"] {
+    display: none;
     font-size: 1em;
-    display:none;
+  }
+
+  &.btn-success:not(.btn-link):not(.btn-flat) {
+    background-color: $startbutton;
   }
 }
 
 .start:hover,
 .continue:hover {
-  background-color: $startbuttonhover !important;
+  background-color: $startbuttonhover;
+  border-color: $white;
+
+  &.btn-success:not(.btn-link):not(.btn-flat) {
+    background-color: $startbuttonhover;
+  }
 }

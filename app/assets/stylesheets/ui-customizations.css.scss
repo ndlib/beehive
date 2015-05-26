@@ -4,6 +4,7 @@ $blue: #2c5882;
 $whitesmoke: #f5f5f5;
 $darkgrey: #555;
 $white: #fff;
+$about-color: #000;
 
 @import "fonts.css.scss";
 
@@ -828,19 +829,19 @@ div.dataTables_filter {
 .about-collection {
   background: rgba(244, 244, 244, 0.6);
   border-radius: 4px;
-  color: $darkgrey;
-  padding:15px;
-  margin-bottom:1em;
-  color:#000;
+  color: $about-color;
+  margin-bottom: 1em;
+  padding: 15px;
+
   h2 {
-    font-size:18px;
+    font-size: 18px;
   }
 
   h3 {
-    font-size:15px;
+    font-size: 15px;
     font-family: serif;
     font-weight: 500;
-    margin-bottom:0;
+    margin-bottom: 0;
   }
 }
 
@@ -872,7 +873,7 @@ div.dataTables_filter {
     }
   }
   a {
-    color:#fff;
+    color: $white;
     text-decoration: underline;
   }
   .modal-content {
