@@ -74,7 +74,7 @@ var CollectionShow = React.createClass({
         buttonStyle =  {
           margin: "4em 0 0 -70px",
           position: "absolute",
-          bottom: "25%",
+          bottom: "30%",
           left: "50%",
         };
       }
@@ -83,7 +83,7 @@ var CollectionShow = React.createClass({
       }
       var firstShowcaseLink;
       if(this.firstShowcaseUrl(this.props.collection.showcase)) {
-        firstShowcaseLink = (<a href={this.firstShowcaseUrl(this.props.collection.showcase)} className="btn btn-lg btn-success start" style={buttonStyle}>Exhibit <i className="mdi-navigation-chevron-right"></i></a>);
+        firstShowcaseLink = (<a href={this.firstShowcaseUrl(this.props.collection.showcase)} className="btn btn-lg btn-success start" style={buttonStyle}>View Exhibit <i className="mdi-av-play-arrow"></i></a>);
       }
       return (
         <div className="jumbotron">
@@ -97,6 +97,7 @@ var CollectionShow = React.createClass({
                 </div>
               </div>
             </div>
+
           </div><div className="clear">&nbsp;</div>
         </div>
       );
