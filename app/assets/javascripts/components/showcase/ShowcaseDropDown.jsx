@@ -61,6 +61,10 @@ var ShowcaseDropDown = React.createClass({
       </li>
     ));
 
+    options.push((
+      <hr/>
+    ));
+
     if (introUrl) {
       options.push((
         <li key="dropdown-intro" className="dropdown-header" value={this.props.collection.id}>
@@ -69,9 +73,6 @@ var ShowcaseDropDown = React.createClass({
       ));
     }
 
-    options.push((
-      <hr/>
-    ));
 
     this.state.showcases.forEach(function(showcase){
       var url = collectionUrl + "/showcases/" + encodeURIComponent(showcase.id) + "/" + encodeURIComponent(showcase.slug);
