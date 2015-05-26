@@ -62,7 +62,7 @@ var ShowcaseDropDown = React.createClass({
     ));
 
     options.push((
-      <hr/>
+      <hr key="dropdown-spacer" />
     ));
 
     if (introUrl) {
