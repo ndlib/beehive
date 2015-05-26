@@ -9,7 +9,8 @@ var ToggleTheme = React.createClass({
     };
   },
 
-  toggleStyle: function () {
+  toggleStyle: function (event) {
+    event.preventDefault();
     var new_theme = ''
     if (this.state.theme == '') {
       new_theme = 'bee-light-theme';
