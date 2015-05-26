@@ -18,8 +18,6 @@ var CollectionIntro = React.createClass({
     }
   },
 
-  componentDidMount: function() {},
-
   render: function() {
     return (
       <div style={this.style()} id={this.props.id}>
