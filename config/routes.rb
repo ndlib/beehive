@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   get "/404" => "errors#not_found", via: :all
 
   get "/:id", to: "collections#show"
+  get "/:id/intro", to: "collections#intro"
   get "/:id/:slug", to: "collections#show"
   get "/:id/:slug/intro", to: "collections#intro"
-
 
   scope "/:collection_id/:collection_slug" do
     scope "/showcases" do
