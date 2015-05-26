@@ -7,6 +7,9 @@ $section-border-color: #fff;
 $section-color: #d3d3d3;
 $scrollbar-rail-color: #dedede;
 $scrollbar-color: #666;
+$black: #000;
+$white: #fff;
+
 
 .showcase-outer {
   position: relative;
@@ -178,6 +181,18 @@ $scrollbar-color: #666;
   100% {
     margin-left: 0%;
   }
+}
+
+.section-continue {
+
+  .section-container {
+    overflow: hidden;
+
+    h2 {
+      font-family: GPCMed;
+    }
+  }
+
 }
 
 // scroll bars
