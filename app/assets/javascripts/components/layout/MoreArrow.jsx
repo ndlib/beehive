@@ -10,7 +10,6 @@ var MoreArrow = React.createClass({
   },
 
   onClick: function() {
-    console.log("clicked");
     window.scroll(0,document.body.offsetHeight);
   },
 
