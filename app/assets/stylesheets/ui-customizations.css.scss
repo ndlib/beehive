@@ -838,8 +838,8 @@ div.dataTables_filter {
   }
 
   h3 {
-    font-size: 15px;
     font-family: serif;
+    font-size: 15px;
     font-weight: 500;
     margin-bottom: 0;
   }
@@ -868,14 +868,16 @@ div.dataTables_filter {
     height: auto !important;
 
     button.close {
+      padding: 0;
       top: 12px;
-      padding:0;
     }
   }
+
   a {
     color: $white;
     text-decoration: underline;
   }
+
   .modal-content {
     padding:12px;
   }
