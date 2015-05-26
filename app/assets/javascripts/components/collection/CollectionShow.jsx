@@ -83,7 +83,7 @@ var CollectionShow = React.createClass({
       }
       var firstShowcaseLink;
       if(this.firstShowcaseUrl(this.props.collection.showcase)) {
-        firstShowcaseLink = (<a href={this.firstShowcaseUrl(this.props.collection.showcase)} className="btn btn-lg btn-success start" style={buttonStyle}>View Exhibit <i className="mdi-av-play-arrow"></i></a>);
+        firstShowcaseLink = (<a href={this.firstShowcaseUrl(this.props.collection.showcase)} className="btn btn-lg btn-success start" style={buttonStyle}>View Exhibit</a>);
       }
       return (
         <div className="jumbotron">

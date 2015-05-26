@@ -92,12 +92,6 @@ body.collection {
   text-shadow: 2px 2px 3px $gray20;
   text-transform: uppercase;
 
-  [class^="mdi-"],
-  [class*="mdi-"] {
-    display: none;
-    font-size: 1em;
-  }
-
   &.btn-success:not(.btn-link):not(.btn-flat) {
     background-color: $startbutton;
   }
