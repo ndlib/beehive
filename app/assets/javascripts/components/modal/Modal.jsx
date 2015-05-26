@@ -6,6 +6,7 @@ var Modal = React.createClass({
 
   propTypes: {
     id: React.PropTypes.string.isRequired,
+    modalTitle: React.PropTypes.string,
     className: React.PropTypes.string,
     content: React.PropTypes.object.isRequired,
     height: React.PropTypes.number,
@@ -50,6 +51,7 @@ var Modal = React.createClass({
         <div className="modal-dialog modal-lg" style={this.styles()}>
           <div className="modal-content">
             <div className="modal-header">
+               <h4 class="modal-title">{this.props.modalTitle}</h4>
               <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={this.removeHash}><i className="mdi-content-clear"></i></button>
             </div>
             <div className="modal-body">{this.props.content}</div>
