@@ -1,4 +1,11 @@
 var CollectionUrlMixin = {
+  introUrl: function(collection) {
+    var url;
+    if (collection.description) {
+      url = this.collectionUrl(collection) + '/intro'
+    }
+    return url;
+  },
 
   sectionUrl: function(section) {
     return this.collectionObjectUrl('sections', section);
