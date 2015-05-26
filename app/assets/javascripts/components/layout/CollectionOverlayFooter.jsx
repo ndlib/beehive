@@ -26,7 +26,7 @@ var CollectionOverlayFooter = React.createClass({
                 <img src="/images/ndmark300.w.png" className="hesburgh-logo" alt="University of Notre Dame Hesburgh Libraries" />
               </a>
               <a href="/">
-                <img src="/images/dc.logo.s.png" className="dec-logo" alt="Digital Exhibits and Collections" />
+                <img src="/images/dec.logo.svg" className="dec-logo" alt="Digital Exhibits and Collections" />
               </a>
             </div>
           </div>
