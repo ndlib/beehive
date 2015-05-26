@@ -101,3 +101,4 @@ OpenseadragonViewer  = require("./components/other/OpenseadragonViewer");
 Loading= require("./components/other/Loading");
 PreviousModal = require("./components/other/PreviousModal");
 NextModal = require("./components/other/NextModal");
+ToggleTheme = require("./components/other/ToggleTheme");
