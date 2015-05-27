@@ -35,7 +35,10 @@ var CollectionIntroPage = React.createClass({
   },
 
   render: function() {
-
+    var nextShowcase = ""
+    if (this.state.collection.showcases) {
+      nextShowcase = (<MoreArrow showcase={this.state.collection.showcases[0]} />);
+    }
     return (
       <div>
         <div className="collection-intro-page">
@@ -48,7 +51,7 @@ var CollectionIntroPage = React.createClass({
           </Layout>
         </div>
 
-        <MoreArrow />
+        {nextShowcase}
         <CollectionOverlayFooter collection={this.state.collection} />
       </div>
     );

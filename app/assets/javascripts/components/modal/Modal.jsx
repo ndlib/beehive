@@ -52,7 +52,7 @@ var Modal = React.createClass({
           <div className="modal-content">
             <div className="modal-header">
               <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={this.removeHash}><i className="mdi-content-clear"></i></button>
-                <h4 class="modal-title">{this.props.title}</h4>
+                <h4 className="modal-title">{this.props.title}</h4>
             </div>
             <div className="modal-body">{this.props.content}</div>
           </div>
