@@ -19,6 +19,7 @@ body.collection {
   }
 
   .jumbotron {
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.75);
     margin: 0;
     max-height: calc(80vh - 107px);
     overflow: hidden;
@@ -63,10 +64,20 @@ body.collection {
   }
 
   .collection-intro {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 6px;
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.75);
+    margin: 2em;
+    padding: 1em;
+
     p {
       font-size: 24px;
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
     }
 
+    p:last-child {
+      margin-bottom: 0;
+    }
   }
 
   .well {

@@ -1,3 +1,5 @@
+$navbar-button-background: #2b2a2a;
+
 .brand-bar {
   background-color: #002b5b;
   background-image: none;
@@ -43,4 +45,12 @@ footer {
 
 .hesburgh-logo {
   width: 200px;
+}
+
+.navbar-header {
+  .btn-group {
+    background-color: $navbar-button-background;
+    border-radius: 0;
+    padding: 10px;
+  }
 }
