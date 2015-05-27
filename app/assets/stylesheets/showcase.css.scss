@@ -174,14 +174,20 @@ $white: #fff;
 
 .section-description,
 .modal-collection-description .collection-description {
-  font-size: 32px;
-  margin: 1em 3em;
+  font-size: 1em;
+  margin: 1em auto;
+  max-width: 60rem;
 }
 
 .sections-modals,
 .items-modals {
   .modal-body {
     padding: 0;
+
+    h2 {
+      margin-left: 1em;
+      margin-top: 1em;
+    }
   }
 }
 
