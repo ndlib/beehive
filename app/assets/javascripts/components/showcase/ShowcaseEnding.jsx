@@ -12,11 +12,11 @@ var ShowcaseEnding = React.createClass({
   style: function() {
     return {
       display: "inline-block",
-      verticalAlign: "top",
+      verticalAlign: "middle",
       position: "relative",
       marginLeft: "150px",
       marginRight: "33vw",
-      height: this.props.height + "px",
+      height: "auto",
       cursor: "pointer",
       width: "500px",
       overflow: "hidden",
@@ -37,7 +37,7 @@ var ShowcaseEnding = React.createClass({
 
   containerStyle: function() {
     return {
-      height: this.props.height + "px",
+      height: "auto",
     };
   },
 
