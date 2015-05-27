@@ -1,4 +1,8 @@
-var React = require("react")
+var React = require("react");
+var Scroll = require('react-scroll');
+
+var Link = Scroll.Link;
+var Element = Scroll.Element;
 
 var MoreArrow = React.createClass({
   style: function() {
@@ -7,16 +11,16 @@ var MoreArrow = React.createClass({
       bottom: "80px",
       right: "20px",
       cursor: "pointer",
+      color: "#f5f5f5",
     }
   },
 
-  onClick: function() {
-    window.scroll(0,document.body.offsetHeight);
-  },
 
   render: function() {
     return (
-      <div style={this.style()} onClick={this.onClick}>MORE ↓</div>
+      <Link to="startShowcases" spy={true} smooth={true} offset={50} duration={500} >
+        <div style={this.style()}>MORE ↓</div>
+      </Link>
     );
   }
 });

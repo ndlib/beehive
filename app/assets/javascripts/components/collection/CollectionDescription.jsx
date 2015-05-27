@@ -1,4 +1,8 @@
 var React = require('react');
+var Scroll = require('react-scroll');
+
+var Link = Scroll.Link;
+var Element = Scroll.Element;
 
 var CollectionDescription = React.createClass({
   propTypes: {
@@ -26,7 +30,9 @@ var CollectionDescription = React.createClass({
 
             <div className="collection-description" dangerouslySetInnerHTML={{__html: this.props.collection.description}} />
             <div className="col-sm-4"/>
-            <StartShowcaseButton collection={this.props.collection} />
+            <Element name="startShowcases" className="element">
+              <StartShowcaseButton collection={this.props.collection} />
+            </Element>
           </div>
 
         </div>
