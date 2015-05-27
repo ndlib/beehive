@@ -12,7 +12,7 @@ var SectionDescription = React.createClass({
   style: function() {
     return {
       display: 'inline-block',
-      width: '400px',
+      maxWidth: '31em',
       overflow: 'hidden',
       height: this.props.height + 'px',
       whiteSpace: 'normal',
@@ -23,14 +23,13 @@ var SectionDescription = React.createClass({
   overflowStyle: function() {
     return {
       position: 'absolute',
-      bottom: '3px',
+      bottom: '0',
+      left: '0',
       zIndex: '2',
       height: '60px',
       lineHeight: '60px',
-      width: '392px',
-
+      width: '100%',
       textAlign: 'center',
-      marginLeft: '-14px',
       background: 'black',
       background: "-moz-linear-gradient(top, rgba(0,0,0,0.4) 0%, rgba(0,0,0,1) 55%, rgba(0,0,0,1) 100%)",
       background: "-webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.4)), color-stop(55%,rgba(0,0,0,1)), color-stop(100%,rgba(0,0,0,1)))",
