@@ -672,6 +672,10 @@ div.dataTables_filter {
   background: #333;
   color: $white;
   height: 100%;
+
+  .details {
+    color: $darkgrey
+  }
 }
 
 #banner {
