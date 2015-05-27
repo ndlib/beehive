@@ -59,7 +59,6 @@ var CollectionShowPage = React.createClass({
 
                 </div>
               </div>
-              <CollectionIntroLink collection={this.state.collection} height={this.state.height} />
               {showcasesList}
             </PageContent>
           </Layout>
