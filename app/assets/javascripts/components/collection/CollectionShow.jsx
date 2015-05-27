@@ -109,10 +109,6 @@ var CollectionShow = React.createClass({
               <h1 style={titleStyle}>{this.props.collection.name}</h1>
               <Thumbnail image={this.props.collection.image} />
               {this.firstExhibitLink()}
-              <div className="row">
-                <div className="collection-image col-md-12">
-                </div>
-              </div>
             </div>
           </div>
         </div>
