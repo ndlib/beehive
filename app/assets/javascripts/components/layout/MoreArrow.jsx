@@ -5,9 +5,10 @@ var Link = Scroll.Link;
 var Element = Scroll.Element;
 
 var MoreArrow = React.createClass({
+  mixins: [CollectionUrlMixin],
 
   propTypes: {
-    image: React.PropTypes.object,
+    showcase: React.PropTypes.object,
   },
 
   getInitialState: function () {
@@ -80,13 +81,19 @@ var MoreArrow = React.createClass({
     }
 
     return (
-      <Link to="startShowcases" spy={true} smooth={true} offset={50} duration={500} >
+
         <div className="well" style={divStyle} onMouseOver={this.mouseOver} onMouseOut={this.mouseOut} >
+        <Link to="startShowcases" spy={true} smooth={true} offset={50} duration={500} >
           <h3 style={this.headerStyle()}>Next Showcase</h3>
-          <Thumbnail image={this.props.image} thumbnailType="small" style={this.imageStyle()} />
+        </Link>
+        <a href={this.showcaseUrl(this.props.showcase)}>
+          <Thumbnail image={this.props.showcase.image} thumbnailType="small" style={this.imageStyle()} />
+        </a>
+        <Link to="startShowcases" spy={true} smooth={true} offset={50} duration={500} >
           <div style={this.chevronStyle()}><i className="mdi-navigation-expand-more" /></div>
-        </div>
-      </Link>
+        </Link>
+      </div>
+
     );
   }
 });
