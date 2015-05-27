@@ -132,7 +132,7 @@ $white: #fff;
   font-size: 14px;
   line-height: 25px;
   overflow-x: hidden;
-  padding: 8px 15px;
+  padding: 24px 15px;
 
   h2 {
     font-size: 24px;
@@ -162,6 +162,10 @@ $white: #fff;
   font-family: serif;
   font-size: 34px;
   line-height: 1.5em;
+}
+
+.section-container-text-title {
+  margin-bottom: 16px;
 }
 
 .section-title {
