@@ -47,6 +47,8 @@ var CollectionIntroPage = React.createClass({
             </PageContent>
           </Layout>
         </div>
+
+        <MoreArrow />
         <CollectionOverlayFooter collection={this.state.collection} />
       </div>
     );

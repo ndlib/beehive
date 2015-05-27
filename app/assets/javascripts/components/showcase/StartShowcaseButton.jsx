@@ -9,16 +9,12 @@ var StartShowcaseButton = React.createClass({
 
   style: function() {
     return {
-      float: "right",
-      marginLeft: "1vw",
-      marginRight: "9vw",
     }
   },
 
   h2Style: function() {
     return {
       color: "black",
-      fontFamily: "GPCMed",
       fontSize: "16px",
       fontWeight: "normal",
       lineHeight: "16px",
