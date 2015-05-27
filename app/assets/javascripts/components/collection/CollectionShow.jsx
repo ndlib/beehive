@@ -75,39 +75,43 @@ var CollectionShow = React.createClass({
   },
 
   firstExhibitLink: function() {
-    var buttonStyle = {};
+    var containerStyle = {};
     if (this.viewExhibitUrl()) {
       if(this.props.collection.image) {
-        buttonStyle =  {
-          margin: "4em 0 0 -70px",
-          position: "absolute",
+        containerStyle = {
           bottom: "30%",
-          left: "50%",
-        };
-      } else {
-        buttonStyle = {margin: "4em auto 0",};
+          position: "absolute",
+          textAlign: "center",
+          width: "100%",
+        }
       }
       return (
-        <a href={this.viewExhibitUrl()} className="btn btn-lg btn-success start" style={buttonStyle}>View Exhibit</a>
+        <div className="exhibit-start-container" style={containerStyle}>
+          <a href={this.viewExhibitUrl()} className="btn btn-lg btn-success start">View Exhibit</a>
+        </div>
       );
     }
   },
 
   render: function() {
     var titleStyle = {};
+    var image;
 
     if (this.props.collection) {
       if(this.props.collection.image) {
         titleStyle = {
           display: "none",
         };
+        image = (
+          <Thumbnail image={this.props.collection.image} />
+        );
       }
       return (
         <div className="jumbotron">
           <div className="collection-show">
             <div className="collection-text">
               <h1 style={titleStyle}>{this.props.collection.name}</h1>
-              <Thumbnail image={this.props.collection.image} />
+              {image}
               {this.firstExhibitLink()}
             </div>
           </div>
