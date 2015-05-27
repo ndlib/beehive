@@ -19,13 +19,13 @@ body.collection {
   }
 
   .jumbotron {
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.75);
     margin: 0;
     max-height: calc(80vh - 107px);
     overflow: hidden;
     padding: 0;
     position: relative;
     text-align: center;
-    box-shadow:0 1px 6px 0 rgba(0, 0, 0, 0.75);
 
     .collection-text {
       clear: none;
@@ -76,7 +76,7 @@ body.collection {
     }
 
     p:last-child {
-      margin-bottom:0;
+      margin-bottom: 0;
     }
   }
 

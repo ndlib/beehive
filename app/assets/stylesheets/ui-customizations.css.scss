@@ -5,6 +5,7 @@ $whitesmoke: #f5f5f5;
 $darkgrey: #555;
 $white: #fff;
 $about-color: #000;
+$navbar-dropdown-background: #2b2a2a;
 
 @import "fonts.css.scss";
 
@@ -505,11 +506,11 @@ div.dataTables_filter {
 }
 
 .dropdown-menu {
-  background-color: rgba(0,0,0,0.84);
-  background-color:#2b2a2a;
+  background-color: $navbar-dropdown-background;
+  border-radius: 0 0 4px 4px;
+  margin-top: 0;
   min-width: 350px;
-  margin-top:0;
-  border-radius:0 0 4px 4px ;
+
   .dropdown-header {
     padding: 3px 0;
   }
@@ -784,20 +785,22 @@ div.dataTables_filter {
 }
 
 .btn-details {
+  font-size: 16px;
+  line-height: 1em;
+  margin: 0;
   position: absolute;
   right: 2.5em;
   top: 4.1em;
-  margin: 0;
   z-index: 200;
-  font-size:16px;
-  line-height: 1em;
+
   i, span {
     font-size: 1em;
-    vertical-align: top;
     line-height: 1em;
+    vertical-align: top;
   }
+
   i {
-    margin-right:4px;
+    margin-right: 4px;
   }
 
   i[class^="mdi-"] {

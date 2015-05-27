@@ -23,7 +23,6 @@ var ShowcaseDropDown = React.createClass({
   buttonStyle: function() {
     return {
       background: "transparent",
-      border: "1px #f5f5f5 solid",
       height: "30px",
       width: "30px",
       padding: "0",
