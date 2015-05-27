@@ -25,6 +25,7 @@ body.collection {
     padding: 0;
     position: relative;
     text-align: center;
+    box-shadow:0 1px 6px 0 rgba(0, 0, 0, 0.75);
 
     .collection-text {
       clear: none;
@@ -63,8 +64,19 @@ body.collection {
   }
 
   .collection-intro {
+    margin:2em;
+    padding:1em;
+    background:rgba(0, 0, 0, 0.4);
+    box-shadow:0 1px 6px 0 rgba(0, 0, 0, 0.75);
+    border-radius:6px;
+
     p {
       font-size: 24px;
+      color:#fff;
+      text-shadow: 1px 1px 1px rgba(0,0,0,1);
+    }
+    p:last-child {
+      margin-bottom:0;
     }
 
   }

@@ -90,7 +90,7 @@ var ShowcaseDropDown = React.createClass({
   render: function() {
     return (
     <div className="btn-group featured-content-dropdown" style={this.style()}>
-        <button data-toggle="dropdown" className="btn dropdown-toggle btn-primary" type="button" style={this.buttonStyle()}><span className="caret"></span></button>
+        <button data-toggle="dropdown" className="btn dropdown-toggle btn-primary" type="button" style={this.buttonStyle()}><span className="mdi-image-photo-library"></span></button>
         <ul className="dropdown-menu" role="menu">
         {this.dropDownOptions()}
         </ul>
