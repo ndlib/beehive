@@ -45,14 +45,11 @@ var ShowcaseEnding = React.createClass({
     return (
       <section className="section section-continue" style={this.style()} id="section-ending">
         <div className="section-container section-container-text" style={this.containerStyle()}>
-          <div className="row row-fluid">
-            <h2 className="section-ending-title">Next Showcase</h2>
+            <h2 className="section-container-text-title section-ending-title">Next Showcase</h2>
             <div style={this.buttonStyle()}>
               <a href={this.showcaseUrl(this.props.showcase)} className="btn btn-lg btn-success continue"><span>Continue </span><i className="mdi-navigation-chevron-right"></i></a>
             </div>
             <ShowcaseCard showcase={this.props.showcase} />
-
-          </div>
         </div>
       </section>
     );

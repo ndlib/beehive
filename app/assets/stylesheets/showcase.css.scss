@@ -93,10 +93,15 @@ $white: #fff;
   margin-top: 8px;
 }
 
+.showcase-title-description-container {
+  display: inline-block;
+  margin: 30px auto 0;
+}
+
 .showcase-title-description {
   font-size: 18px;
   line-height: 30px;
-  margin-top: 30px;
+  max-width: 30em;
   text-align: left;
   text-shadow: 1px 1px 2px $title-shadow-color;
 }
@@ -110,10 +115,14 @@ $white: #fff;
     font-size: 20px;
   }
 
+  .showcase-title-description-container {
+    display: inline-block;
+    margin: 0;
+  }
+
   .showcase-title-description {
     font-size: 15px;
     line-height: inherit;
-    margin: 0;
   }
 }
 
@@ -123,7 +132,7 @@ $white: #fff;
   font-size: 14px;
   line-height: 25px;
   overflow-x: hidden;
-  padding: 8px 15px;
+  padding: 24px 15px;
 
   h2 {
     font-size: 24px;
@@ -153,6 +162,10 @@ $white: #fff;
   font-family: serif;
   font-size: 34px;
   line-height: 1.5em;
+}
+
+.section-container-text-title {
+  margin-bottom: 16px;
 }
 
 .section-title {
@@ -188,6 +201,21 @@ $white: #fff;
       margin-left: 1em;
       margin-top: 1em;
     }
+  }
+}
+
+.section-caption {
+  background-color: rgba(0, 0, 0, 0.75);
+  bottom: 1em;
+  color: $white;
+  margin-left: 20%;
+  padding: 0.5em;
+  position: absolute;
+  right: 1em;
+  white-space: normal;
+
+  p:last-child {
+    margin-bottom: 0;
   }
 }
 

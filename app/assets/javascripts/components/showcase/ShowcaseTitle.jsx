@@ -81,7 +81,9 @@ var ShowcaseTitle = React.createClass({
           <div className="showcase-title-container" style={this.headerStyle()}>
             {this.names()}
           </div>
-          <div className="showcase-title-description" dangerouslySetInnerHTML={{__html: description}}  />
+          <div className="showcase-title-description-container">
+            <div className="showcase-title-description" dangerouslySetInnerHTML={{__html: description}}  />
+          </div>
         </div>
       </div>
     );

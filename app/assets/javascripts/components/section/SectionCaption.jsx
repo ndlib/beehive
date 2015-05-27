@@ -8,29 +8,14 @@ var SectionCaption = React.createClass({
     caption: React.PropTypes.string,
   },
 
-  style: function() {
-    if (this.props.caption) {
-      return {
-        backgroundColor: 'rgba(0,0,0,.5)',
-        color: '#fff',
-        position: 'absolute',
-        bottom: '1em',
-        right: '3px',
-        marginLeft: '20%',
-        padding: '0.5em',
-        whiteSpace: 'normal',
-      };
-    } else {
-      return {
-        display: 'none',
-      };
-    }
-  },
-
   render: function () {
-    return (
-        <div className="section-caption" style={this.style()} dangerouslySetInnerHTML={{__html: this.props.caption}}/>
-    );
+    if (this.props.caption) {
+      return (
+        <div className="section-caption" dangerouslySetInnerHTML={{__html: this.props.caption}}/>
+      );
+    } else {
+      return null;
+    }
   }
 
 });

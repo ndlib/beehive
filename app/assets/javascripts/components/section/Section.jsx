@@ -21,7 +21,7 @@ var Section = React.createClass({
       display: 'inline-block',
       verticalAlign: 'top',
       position: 'relative',
-      marginRight: '10px',
+      marginRight: '20px',
       height: this.props.height + 'px',
       cursor: 'pointer',
     };

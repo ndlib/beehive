@@ -6,6 +6,7 @@ $darkgrey: #555;
 $white: #fff;
 $about-color: #000;
 $navbar-dropdown-background: #2b2a2a;
+$footer-height: 49px;
 
 @import "fonts.css.scss";
 
@@ -17,7 +18,7 @@ body {
   background: #333;
   background-image: image_url("black-linen.png");
   min-height: 100%;
-  padding-bottom: 57px;
+  padding-bottom: $footer-height;
   position: relative;
 
   &.collections-bg {
@@ -366,6 +367,7 @@ div.dataTables_filter {
   background-color: #2b2a2a;
   background-image: linear-gradient(to top, #2b2a2a 0%, #393838 140%);
   bottom: 0;
+  height: $footer-height;
   left: 0;
   padding: 0px;
   position: fixed;
