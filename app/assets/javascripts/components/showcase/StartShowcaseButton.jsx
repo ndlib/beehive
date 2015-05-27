@@ -29,7 +29,7 @@ var StartShowcaseButton = React.createClass({
       if(this.props.collection.showcases.length > 0) {
         return (
             <div className="col-sm-4 well" style={this.style()}>
-              <h2 style={this.h2Style()}>Continue to</h2>
+              <h2 style={this.h2Style()}>Next Showcase</h2>
               <ShowcaseCard showcase={this.props.collection.showcases[0]} />
             </div>
         );
