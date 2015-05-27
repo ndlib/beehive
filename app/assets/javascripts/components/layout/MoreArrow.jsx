@@ -6,6 +6,7 @@ var MoreArrow = React.createClass({
       position: "fixed",
       bottom: "80px",
       right: "20px",
+      cursor: "pointer",
     }
   },
 
@@ -15,7 +16,7 @@ var MoreArrow = React.createClass({
 
   render: function() {
     return (
-      <div style={this.style()} onClick={this.onClick}>MORE CONTENT ↓</div>
+      <div style={this.style()} onClick={this.onClick}>MORE ↓</div>
     );
   }
 });

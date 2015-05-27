@@ -15,7 +15,6 @@ var StartShowcaseButton = React.createClass({
   h2Style: function() {
     return {
       color: "black",
-      fontFamily: "GPCMed",
       fontSize: "16px",
       fontWeight: "normal",
       lineHeight: "16px",
