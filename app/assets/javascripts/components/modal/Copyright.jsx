@@ -4,7 +4,11 @@ var React = require('react');
 var Copyright = React.createClass({
 
   content: function() {
-    return (<p><a href="http://www.nd.edu/copyright/">Copyright</a> 2014 <a href="http://www.nd.edu">University of Notre Dame</a></p>);
+    return (<p><a href="http://www.nd.edu/copyright/">Copyright</a> {this.year()} <a href="http://www.nd.edu">University of Notre Dame</a></p>);
+  },
+
+  year: function () {
+    return (new Date().getFullYear());
   },
 
   render: function () {
