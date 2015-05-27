@@ -205,9 +205,9 @@ $white: #fff;
 }
 
 .section-caption {
-  background-color: rgba(0,0,0,.75);
+  background-color: rgba(0, 0, 0, 0.75);
   bottom: 1em;
-  color: #fff;
+  color: $white;
   margin-left: 20%;
   padding: 0.5em;
   position: absolute;
