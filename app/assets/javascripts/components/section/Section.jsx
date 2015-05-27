@@ -24,6 +24,7 @@ var Section = React.createClass({
       marginRight: '20px',
       height: this.props.height + 'px',
       cursor: 'pointer',
+      lineHeight: '20px',
     };
   },
 
