@@ -93,10 +93,14 @@ $white: #fff;
   margin-top: 8px;
 }
 
+.showcase-title-description-container {
+  display: inline-block;
+  margin: 30px auto 0;
+}
+
 .showcase-title-description {
   font-size: 18px;
   line-height: 30px;
-  margin-top: 30px;
   max-width: 30em;
   text-align: left;
   text-shadow: 1px 1px 2px $title-shadow-color;
@@ -111,10 +115,14 @@ $white: #fff;
     font-size: 20px;
   }
 
+  .showcase-title-description-container {
+    display: inline-block;
+    margin: 0;
+  }
+
   .showcase-title-description {
     font-size: 15px;
     line-height: inherit;
-    margin: 0;
   }
 }
 
