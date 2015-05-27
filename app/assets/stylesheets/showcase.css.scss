@@ -204,6 +204,21 @@ $white: #fff;
   }
 }
 
+.section-caption {
+  background-color: rgba(0,0,0,.75);
+  bottom: 1em;
+  color: #fff;
+  margin-left: 20%;
+  padding: 0.5em;
+  position: absolute;
+  right: 1em;
+  white-space: normal;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
 // animation
 .showcase-inner {
   animation-duration: 1.5s;
