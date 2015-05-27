@@ -107,7 +107,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 24px;
   font-weight: 500;
   height: auto;
-  line-height: 1.2em;
+  line-height: 1em;
 
   .subtitle {
 
@@ -152,8 +152,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .navbar-default .title-bar .navbar-brand {
   color: $white;
-  margin-left: 15px;
-
+  margin-left: 0;
+  padding:15px 15px 10px;
   &:hover {
     text-decoration: none !important;
   }
@@ -506,8 +506,10 @@ div.dataTables_filter {
 
 .dropdown-menu {
   background-color: rgba(0,0,0,0.84);
+  background-color:#2b2a2a;
   min-width: 350px;
-
+  margin-top:0;
+  border-radius:0 0 4px 4px ;
   .dropdown-header {
     padding: 3px 0;
   }
@@ -783,10 +785,20 @@ div.dataTables_filter {
 
 .btn-details {
   position: absolute;
-  right: 2.8em;
-  top: 4.5em;
+  right: 2.5em;
+  top: 4.1em;
   margin: 0;
   z-index: 200;
+  font-size:16px;
+  line-height: 1em;
+  i, span {
+    font-size: 1em;
+    vertical-align: top;
+    line-height: 1em;
+  }
+  i {
+    margin-right:4px;
+  }
 
   i[class^="mdi-"] {
     font-size: 1em;

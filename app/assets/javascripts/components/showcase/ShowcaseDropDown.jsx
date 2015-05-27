@@ -27,8 +27,7 @@ var ShowcaseDropDown = React.createClass({
       height: "30px",
       width: "30px",
       padding: "0",
-      marginTop: "10px",
-      marginLeft: "10px",
+
     };
   },
 

@@ -44,3 +44,14 @@ footer {
 .hesburgh-logo {
   width: 200px;
 }
+
+.navbar-header {
+  .btn-group {
+    background-color:#2b2a2a;
+    padding:10px;
+    border-radius:0;
+    button {
+      border:none !important;
+    }
+  }
+}
