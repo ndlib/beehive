@@ -22,10 +22,10 @@ var SectionShowDescription = React.createClass({
   render: function() {
     return (
       <div style={this.styles()}>
-        <h2>{this.props.section.name}</h2>
         <div className="row">
           <div className="col-md-12">
             <div className="section-description">
+              <h2 className="section-container-text-title">{this.props.section.name}</h2>
               <div dangerouslySetInnerHTML={{__html: this.props.section.description}} />
             </div>
           </div>
