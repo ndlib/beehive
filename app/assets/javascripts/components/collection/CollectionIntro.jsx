@@ -21,7 +21,7 @@ var CollectionIntro = React.createClass({
   render: function() {
     return (
       <div style={this.style()} id={this.props.id}>
-        <div className="collection-intro" dangerouslySetInnerHTML={{__html: this.props.collection.short_description}} />
+        <div className="collection-short-intro" dangerouslySetInnerHTML={{__html: this.props.collection.short_description}} />
       </div>
     )
   }

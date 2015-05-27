@@ -53,31 +53,6 @@ body.collection {
       text-shadow: 2px 2px 3px $gray20;
       width: 40vw;
     }
-
-    p {
-      font-size: 22px;
-      margin: 0 auto;
-      text-align: center;
-      text-shadow: 2px 2px 0 $gray20;
-      width: 40vw;
-    }
-  }
-
-  .collection-intro {
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 6px;
-    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.75);
-    margin: 2em;
-    padding: 1em;
-
-    p {
-      font-size: 24px;
-      text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
-    }
-
-    p:last-child {
-      margin-bottom: 0;
-    }
   }
 
   .well {
@@ -87,6 +62,13 @@ body.collection {
   .showcases-list {
     padding-bottom: 4em;
   }
+}
+
+.collection-short-intro {
+  font-size: 14px;
+  margin: 1em auto;
+  max-width: 40em;
+  padding: 0 1em;
 }
 
 .start,
