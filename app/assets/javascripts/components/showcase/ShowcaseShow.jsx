@@ -5,6 +5,8 @@ var maxShowcaseHeight = 840;
 var showcaseTitleHeight = 40;
 var scrollPadding = 80;
 var titleSectionWidthPercent = 0.8;
+var minBackgroundBlur = 0.3;
+var maxBackgroundBlur = 0.8;
 
 var ShowcaseShow = React.createClass({
   displayName: 'Showcase Show',
@@ -107,10 +109,16 @@ var ShowcaseShow = React.createClass({
     }
     var showcaseInnerHeight = showcaseHeight - scrollPadding;
     var titleWidth = Math.floor(titleSectionWidthPercent * 100) + 'vw';
+    var backgroundBlur = 1 - this.state.titleSectionPercentVisible;
+    if (backgroundBlur < minBackgroundBlur) {
+      backgroundBlur = minBackgroundBlur;
+    } else if (backgroundBlur > maxBackgroundBlur) {
+      backgroundBlur = maxBackgroundBlur;
+    }
     if (this.props.showcase) {
       return (
         <div>
-          <ShowcaseBackground percentBlur={1 - this.state.titleSectionPercentVisible} height={this.props.height} showcase={this.props.showcase} />
+          <ShowcaseBackground percentBlur={backgroundBlur} height={this.props.height} showcase={this.props.showcase} />
           <ShowcaseTitleBar percentFade={this.state.titleSectionPercentVisible} height={showcaseTitleHeight} showcase={this.props.showcase} />
           <div id="showcase-outer" className="showcase-outer" style={this.styleOuter(showcaseHeight)} onScroll={this.onScroll}>
             <div id="showcase-inner" className="showcase-inner" style={this.styleInner(showcaseInnerHeight)}>
