@@ -7,7 +7,7 @@ $startbutton: rgba(0, 0, 0, 0.8);
 $startbuttonhover: rgba(69, 118, 77, 0.9);
 
 body.collection {
-
+  background:#fff;
   .title-bar.large {
     display: none;
   }
@@ -64,11 +64,26 @@ body.collection {
   }
 }
 
+#main-collection-description {
+  position:relative;
+  top:-135px;
+  padding:6px 0;
+
+}
+
 .collection-short-intro {
-  font-size: 14px;
-  margin: 1em auto;
+  font-size: 16px;
+  text-shadow:1px 1px 1px rgba(0,0,0,1);
+  margin: 0 auto;
   max-width: 40em;
-  padding: 0 1em;
+  padding:15px;
+  background:rgba(0,0,0,0.75);
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.75);
+  border-radius:4px;
+  p:last-child {
+    margin-bottom:0;
+    letter-spacing: .05em;
+  }
 }
 
 .start,
