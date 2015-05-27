@@ -787,6 +787,10 @@ div.dataTables_filter {
   top: 4.5em;
   margin: 0;
   z-index: 200;
+
+  i[class^="mdi-"] {
+    font-size: 1em;
+  }
 }
 
 .details {
