@@ -10,6 +10,7 @@ var Modal = React.createClass({
     content: React.PropTypes.object.isRequired,
     height: React.PropTypes.number,
     hasHash: React.PropTypes.bool,
+    title: React.PropTypes.string,
   },
 
   styles: function() {
@@ -51,6 +52,7 @@ var Modal = React.createClass({
           <div className="modal-content">
             <div className="modal-header">
               <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={this.removeHash}><i className="mdi-content-clear"></i></button>
+                <h4 class="modal-title">{this.props.title}</h4>
             </div>
             <div className="modal-body">{this.props.content}</div>
           </div>

@@ -9,7 +9,6 @@ var Info = React.createClass({
     if (this.props.collection.about) {
       return (
         <div className="about-collection">
-          <h2>About Collection</h2>
           <div dangerouslySetInnerHTML={{__html: this.props.collection.about}} />
         </div>
       )
@@ -21,13 +20,13 @@ var Info = React.createClass({
     return (
       <div>
         {this.customInfoText()}
-        <p>Exhibits is a service of the <a href="http://library.nd.edu">Hesburgh Libraries of Notre Dame</a>.</p>
-        <p>For Technical Support call <a href="tel:5746316258">(574) 631-6258</a>  or email <a href="mailto:rfox2@nd.edu?subject=Support%20Request">rfox2@nd.edu</a>.</p>
+        <p>Digital Exhibits and Collections is a service of the <a href="http://library.nd.edu" target="_blank">Hesburgh Libraries of Notre Dame</a>.</p>
+        <p> Go <a href="http://library.nd.edu/eresources/forms/problem/index.cgi?commentType=general&_ga=1.10232437.1587359587.1371157071#tab_cp" target="_blank">here</a> for questions and comments.</p>
       </div>
     );
   },
   render: function () {
-    return <Modal id="info" content={this.content()} />;
+    return <Modal id="info" content={this.content()} title="About Collection" />;
   }
 });
 
