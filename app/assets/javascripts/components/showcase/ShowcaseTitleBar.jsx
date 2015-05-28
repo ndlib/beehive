@@ -37,12 +37,14 @@ var ShowcaseTitleBar = React.createClass({
       lineHeight: titleHeight + "px",
     };
   },
+
   name: function () {
     if (this.props.showcase.name_line_2) {
       return this.props.showcase.name_line_1 + this.nameSpacer() + this.props.showcase.name_line_2;
     }
     return this.props.showcase.name_line_1;
   },
+
   nameSpacer: function () {
     if (this.props.showcase.name_line_2) {
       return ": ";
