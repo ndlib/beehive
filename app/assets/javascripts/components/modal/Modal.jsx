@@ -17,7 +17,16 @@ var Modal = React.createClass({
     if (this.props.height) {
       return {
         height: this.props.height,
-        marginTop: $('#banner').outerHeight(),
+        marginTop: "0",
+      };
+    } else {
+      return {};
+    }
+  },
+  outerStyle: function() {
+    if (this.props.height) {
+      return {
+        top: $('#banner').outerHeight(),
       };
     } else {
       return {};
@@ -47,7 +56,7 @@ var Modal = React.createClass({
 
   render: function () {
     return (
-      <div className={this.className()} id={this.props.id} tabIndex="-1"  onKeyDown={this.onKeyDown}>
+      <div className={this.className()} id={this.props.id} tabIndex="-1" data-backdrop="static"  onKeyDown={this.onKeyDown} style={this.outerStyle()}>
         <div className="modal-dialog modal-lg" style={this.styles()}>
           <div className="modal-content">
             <div className="modal-header">
