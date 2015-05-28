@@ -14,7 +14,7 @@ var CollectionOverlayFooter = React.createClass({
     return (
       <div>
         <Info collection={this.props.collection} />
-        <Copyright />
+        <Copyright collection={this.props.collection} />
         <footer id="footer" className="container-fluid">
           <div className="row">
             <div className="col-sm-8 pull-left">
