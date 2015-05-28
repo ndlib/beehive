@@ -7,7 +7,6 @@ $startbutton: rgba(0, 0, 0, 0.8);
 $startbuttonhover: rgba(69, 118, 77, 0.9);
 
 body.collection {
-
   .title-bar.large {
     display: none;
   }
@@ -65,10 +64,14 @@ body.collection {
 }
 
 .collection-short-intro {
-  font-size: 14px;
-  margin: 1em auto;
+  font-size: 16px;
+  margin: 0 auto;
   max-width: 40em;
-  padding: 0 1em;
+  padding: 15px;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .start,
