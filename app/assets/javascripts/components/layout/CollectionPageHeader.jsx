@@ -27,7 +27,7 @@ var CollectionPageHeader = React.createClass({
     <PageHeader branding={this.props.branding}>
         <TitleBar>
           {dropdown}
-          <a className="navbar-brand" href={this.collectionUrl(this.props.collection)}>
+          <a className="navbar-brand overflow-ellipsis" href={this.collectionUrl(this.props.collection)}>
             {title}
           </a>
         </TitleBar>
