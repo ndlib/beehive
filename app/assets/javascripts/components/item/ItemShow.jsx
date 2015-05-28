@@ -1,8 +1,8 @@
 //app/assets/javascripts/components/ItemShow.jsx
-var React = require('react');
+var React = require("react");
 
 var ItemShow = React.createClass({
-  displayName: 'Item Show',
+  displayName: "Item Show",
 
   propTypes: {
     item: React.PropTypes.object,
@@ -13,34 +13,34 @@ var ItemShow = React.createClass({
   },
 
   componentDidMount: function() {
-    var id = '#modal-' + this.props.item.id;
+    var id = "#modal-" + this.props.item.id;
 
     // bind keypress to modal when it is shown
-    $(id).on('show.bs.modal', {props: this.props}, function (event) {
-      $(document).bind('keyup', {props: event.data.props},
+    $(id).on("show.bs.modal", {props: this.props}, function (event) {
+      $(document).bind("keyup", {props: event.data.props},
         function(event) {
           // if left or up arrow
           if(event.keyCode == 37 || event.keyCode == 38) {
             if(event.data.props.previousItem) {
-              $('#modal-' + event.data.props.item.id).modal('hide');
-              $('#modal-' + event.data.props.previousItem).modal('show');
-              window.location.hash = 'modal-' +  event.data.props.previousItem;
+              $("#modal-" + event.data.props.item.id).modal("hide");
+              $("#modal-" + event.data.props.previousItem).modal("show");
+              window.location.hash = "modal-" +  event.data.props.previousItem;
             }
           }
           // if right or down arrow
           else if(event.keyCode == 39 || event.keyCode == 40) {
             if(event.data.props.nextItem) {
-              $('#modal-' + event.data.props.item.id).modal('hide');
-              $('#modal-' + event.data.props.nextItem).modal('show');
-               window.location.hash = 'modal-' +  event.data.props.nextItem;
+              $("#modal-" + event.data.props.item.id).modal("hide");
+              $("#modal-" + event.data.props.nextItem).modal("show");
+               window.location.hash = "modal-" +  event.data.props.nextItem;
             }
           }
         }
       );
     });
     // remove keybindings when modal hidden
-    $(id).on('hide.bs.modal', function () {
-      $(document).unbind('keyup');
+    $(id).on("hide.bs.modal", function () {
+      $(document).unbind("keyup");
     });
   },
 
@@ -60,7 +60,7 @@ var ItemShow = React.createClass({
     if (this.props.height) {
       return {
         height: this.props.height,
-        position: 'relative',
+        position: "relative",
       }
     } else {
       return {}
@@ -70,11 +70,12 @@ var ItemShow = React.createClass({
   headerStyles: function() {
     if (this.props.height) {
       return {
-        position: 'absolute',
-        top: '10px',
-        left: '40px',
-        width: 'auto',
+        position: "absolute",
+        top: "10px",
+        left: "40px",
+        width: "auto",
         zIndex: 200,
+        right: "50px",
       }
     } else {
       return {}
@@ -85,9 +86,9 @@ var ItemShow = React.createClass({
     if (this.props.height) {
       return {
         height: this.props.height,
-        position: 'absolute',
+        position: "absolute",
         top: 0,
-        width: '100%',
+        width: "100%",
       }
     } else {
       return {}
@@ -96,14 +97,14 @@ var ItemShow = React.createClass({
 
   detailsButtonStyle: function() {
     return {
-      backgroundColor: this.state.showDetails ? '#ccc' : '#fff',
+      backgroundColor: this.state.showDetails ? "#ccc" : "#fff",
     };
   },
 
   detailsStyle: function() {
     return {
-      maxHeight: this.state.showDetails ? '70%' : '0',
-      width: this.state.showDetails ? '30%' : '0',
+      maxHeight: this.state.showDetails ? "70%" : "0",
+      width: this.state.showDetails ? "30%" : "0",
     };
   },
 
@@ -126,7 +127,7 @@ var ItemShow = React.createClass({
           <div className="item-detail" style={this.outerStyles()}>
 
             <div style={this.headerStyles()}>
-              <h2>{this.props.item.name}</h2>
+              <h2 className="overflow-ellipsis">{this.props.item.name}</h2>
             </div>
             <button className="btn btn-default btn-raised pull-right btn-details" onClick={this.toggleDetails} style={this.detailsButtonStyle()}>
               <i className={this.state.showDetails ? "mdi-action-visibility-off" : "mdi-action-visibility"}></i>
