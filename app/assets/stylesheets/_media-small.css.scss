@@ -13,32 +13,42 @@ $break-small: 480px;
     height: 22px;
     padding-top: 5px;
   }
+
   img.touch {
     height: 30px !important;
+
   }
+
   .scroll {
     display: none;
   }
+
   .showcase-title-page {
     width: 98vw !important;
+
     .showcase-title-container {
       margin-top:5px !important;
       margin-bottom: 0;
     }
+
     h2 {
       font-size: 28px;
     }
+
     .showcase-title-description-container {
       margin-top: 10px;
+
       .showcase-title-description {
         font-size: 14px;
         line-height: 1.4em;
       }
     }
   }
+
   .section-container-text {
     max-width: 98vw !important;
   }
+
   .section-caption {
     font-size: 11px !important;
   }
