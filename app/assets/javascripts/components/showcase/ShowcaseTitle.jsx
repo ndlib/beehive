@@ -78,6 +78,10 @@ var ShowcaseTitle = React.createClass({
           <div className="showcase-title-description-container">
             <div className="showcase-title-description" dangerouslySetInnerHTML={{__html: description}}  />
           </div>
+          <div className="showcase-controlls">
+            <img src="/images/touch.svg" className="touch" alt="Swipe Left or Right" />
+            <img src="/images/scroll.svg" className="scroll" alt="Scroll the Mouse Wheel" />
+          </div>
         </div>
       </div>
     );
