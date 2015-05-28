@@ -61,6 +61,12 @@ $white: #fff;
   }
 }
 
+.showcase-title-page-inner {
+  display: inline-block;
+  max-width: 85%;
+  // text-align: left;
+}
+
 .showcase-name-1,
 .showcase-name-2,
 .showcase-title-container {
@@ -74,6 +80,7 @@ $white: #fff;
   border-width: 1px 0;
   margin-bottom: 1em;
   padding: 1em;
+  text-align: center;
 }
 
 .showcase-name-1,
@@ -84,7 +91,6 @@ $white: #fff;
 
 .showcase-name-1 {
   font-size: 50px;
-  text-align: center;
   white-space: normal;
 }
 
@@ -94,7 +100,8 @@ $white: #fff;
 
 .showcase-title-description-container {
   display: inline-block;
-  margin: 30px auto 0;
+  margin-top: 30px;
+  padding: 0 1em;
 }
 
 .showcase-title-description {
@@ -106,6 +113,10 @@ $white: #fff;
 }
 
 .showcase-card {
+  .showcase-title-page-inner {
+    max-width: 100%;
+  }
+
   .showcase-name-1 {
     font-size: 24px;
   }

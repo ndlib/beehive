@@ -32,13 +32,6 @@ var ShowcaseTitle = React.createClass({
     };
   },
 
-  innerStyle: function() {
-    return {
-      width: "85%",
-      display: "inline-block",
-    };
-  },
-
   headerStyle: function() {
     var marginTop;
     if (this.props.height) {
@@ -77,7 +70,7 @@ var ShowcaseTitle = React.createClass({
 
     return (
       <div className="showcase-title-page" style={this.outerStyle()}>
-        <div className="showcase-title-page-inner" style={this.innerStyle()}>
+        <div className="showcase-title-page-inner">
           <div className="showcase-title-container" style={this.headerStyle()}>
             {this.names()}
           </div>
