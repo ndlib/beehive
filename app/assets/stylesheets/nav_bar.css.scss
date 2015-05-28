@@ -1,4 +1,8 @@
 $navbar-button-background: #2b2a2a;
+$dropdown-button-size: 30px;
+$dropdown-button-padding: 10px;
+$dropdown-button-margin-left: 15px;
+$title-offset: $dropdown-button-size + ($dropdown-button-padding * 2) + $dropdown-button-margin-left;
 
 .brand-bar {
   background-color: #002b5b;
@@ -32,6 +36,7 @@ $navbar-button-background: #2b2a2a;
 
 .navbar-default .title-bar .navbar-brand {
   color: #302205;
+  max-width: calc(100% - #{$title-offset});
 }
 
 .navbar-default .title-bar .navbar-nav > li > a {
@@ -51,6 +56,19 @@ footer {
   .btn-group {
     background-color: $navbar-button-background;
     border-radius: 0;
-    padding: 10px;
+    float: left;
+    margin-left: $dropdown-button-margin-left;
+    padding: $dropdown-button-padding;
+  }
+}
+
+.featured-content-dropdown-button {
+  background: transparent;
+  height: $dropdown-button-size;
+  padding: 0;
+  width: $dropdown-button-size;
+
+  &.btn-primary:not(.btn-link):not(.btn-flat) {
+    background: transparent;
   }
 }
