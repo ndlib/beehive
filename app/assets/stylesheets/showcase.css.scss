@@ -196,6 +196,10 @@ $white: #fff;
 .items-modals {
   .modal-body {
     padding: 0;
+    a, a:link, a:visited {
+      color: $white;
+      text-decoration: underline;
+    }
   }
 }
 
@@ -211,6 +215,13 @@ $white: #fff;
 
   p:last-child {
     margin-bottom: 0;
+  }
+}
+
+.item-description {
+  a, a:link, a:visited {
+    color: $white;
+    text-decoration: underline;
   }
 }
 
@@ -242,6 +253,25 @@ $white: #fff;
 
   }
 
+}
+
+.showcase-controlls {
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  background: rgba(51, 51, 51, 0.65);
+  padding: 10px;
+  border-radius: 6px;
+  img {
+    height: 60px;
+    padding: 0 3px;
+    vertical-align: middle;
+    opacity: 0.6;
+  }
+  img.touch {
+    height: 50px;
+    margin-right:5px;
+  }
 }
 
 // scroll bars
