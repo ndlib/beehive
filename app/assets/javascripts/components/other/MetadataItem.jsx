@@ -16,7 +16,7 @@ var MetadataItem = React.createClass({
       var replacedNodes = matches.map(function(string, index) {
         if (linkPattern.test(string)) {
           return (
-            <a href={string} key={index} target='_blank' rel='nofollow'>{string}</a>
+            <a href={string} key={index} target="_blank" rel="nofollow">{string}</a>
           );
         } else {
           return string;
