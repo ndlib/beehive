@@ -16,7 +16,7 @@ var MetadataItem = React.createClass({
       var replacedNodes = matches.map(function(string, index) {
         if (linkPattern.test(string)) {
           return (
-            <a href={string} key={index} target="_blank" rel="nofollow">{string}</a>
+            <a href={string} key={index} target='_blank' rel='nofollow'>{string}</a>
           );
         } else {
           return string;
@@ -29,10 +29,17 @@ var MetadataItem = React.createClass({
   },
 
   render: function() {
+    var dd = "";
+    if(typeof(this.value()) == "object") {
+      dd = (<dd>{this.value()}</dd>);
+    }
+    else if(typeof(this.value()) == "string") {
+      dd = (<dd dangerouslySetInnerHTML={{__html: this.value()}} />);
+    }
     return (
       <dl>
         <dt>{this.props.metadata.label}</dt>
-        <dd dangerouslySetInnerHTML={{__html: this.value()}} />
+        {dd}
       </dl>
     );
   }
