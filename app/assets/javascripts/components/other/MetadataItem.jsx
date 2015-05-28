@@ -11,13 +11,13 @@ var MetadataItem = React.createClass({
   },
 
   value: function() {
-    var linkStyle = function() {return {wordBreak: "break-word",}};
+    var linkStyle = {wordBreak: "break-word",};
     if (linkPattern.test(this.props.metadata.value)) {
       var matches = this.props.metadata.value.split(linkPattern);
       var replacedNodes = matches.map(function(string, index) {
         if (linkPattern.test(string)) {
           return (
-            <a href={string} key={index} target="_blank" rel="nofollow" style={linkStyle()}>{string}</a>
+            <a href={string} key={index} target="_blank" rel="nofollow" style={linkStyle}>{string}</a>
           );
         } else {
           return string;
