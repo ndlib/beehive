@@ -25,9 +25,8 @@ var ShowcaseEnding = React.createClass({
 
   buttonStyle: function() {
     return {
-      display: "none",
       position: "absolute",
-      top: "27rem",
+      bottom: "1em",
       left: "0",
       right: "0",
       textAlign: "center",
@@ -42,6 +41,20 @@ var ShowcaseEnding = React.createClass({
     };
   },
 
+  originalHeader: function() {
+    return (
+      <h2 className="section-container-text-title section-ending-title">Next Showcase</h2>
+    );
+  },
+
+  originalButton: function() {
+    return (
+      <div style={this.buttonStyle()}>
+        <a href={this.showcaseUrl(this.props.showcase)} className="btn btn-lg btn-success continue"><span>Continue </span><i className="mdi-navigation-chevron-right"></i></a>
+      </div>
+    );
+  },
+
   topTitle: function() {
     return (
       <div className="bee-card-content">
@@ -52,18 +65,21 @@ var ShowcaseEnding = React.createClass({
     );
   },
 
+  actions: function() {
+    return (
+      <div className="bee-card-content-actions clearfix">
+        <a href={this.showcaseUrl(this.props.showcase)} className="btn btn-success pull-right"><span>Continue </span><i className="mdi-navigation-chevron-right"></i></a>
+      </div>
+    );
+  },
+
   render: function() {
     return (
       <section className="section section-continue" style={this.style()} id="section-ending">
-        <div className="section-container" style={this.containerStyle()}>
-          <div style={this.buttonStyle()}>
-            <a href={this.showcaseUrl(this.props.showcase)} className="btn btn-lg btn-success continue"><span>Continue </span><i className="mdi-navigation-chevron-right"></i></a>
-          </div>
-          <ShowcaseCard showcase={this.props.showcase} topChildren={this.topTitle()}>
-            {this.topTitle()}
-            <div className="bee-card-content-actions clearfix">
-              <a href={this.showcaseUrl(this.props.showcase)} className="btn btn-success pull-right"><span>Continue </span><i className="mdi-navigation-chevron-right"></i></a>
-            </div>
+        <div className="section-container section-container-text" style={this.containerStyle()}>
+          {this.originalHeader()}
+          <ShowcaseCard showcase={this.props.showcase}>
+            {this.originalButton()}
           </ShowcaseCard>
         </div>
       </section>

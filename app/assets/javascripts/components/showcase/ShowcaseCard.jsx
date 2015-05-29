@@ -41,6 +41,7 @@ var ShowcaseCard = React.createClass({
   render: function() {
     return (
       <Card backgroundImage={this.props.showcase.image}>
+        {this.props.topChildren}
         <div className="showcase-card sixteen-nine" style={this.style()} onClick={this.onClick}>
           <CardOverlay>
             <ShowcaseTitle showcase={this.props.showcase} />
