@@ -21,9 +21,6 @@ var ShowcaseCard = React.createClass({
   },
 
   render: function() {
-    if (this.props.showcase.description) {
-      description = this.props.showcase.description.toString();
-    }
     return (
       <Card backgroundImage={this.props.showcase.image}>
         <div className="showcase-card sixteen-nine" style={this.style()} onClick={this.onClick}>
@@ -37,7 +34,7 @@ var ShowcaseCard = React.createClass({
             <h3 className="bee-card-content-title-subtitle overflow-ellipsis">{this.props.showcase.name_line_2}</h3>
           </div>
           <div className="bee-card-content-supporting">
-            <div dangerouslySetInnerHTML={{__html: description}} />
+            <p>{this.props.showcase.description}</p>
           </div>
         </div>
       </Card>

@@ -48,11 +48,6 @@ var ShowcaseBackground = React.createClass({
   },
 
   render: function() {
-    var description;
-    if (this.props.showcase.description) {
-      description = this.props.showcase.description.toString();
-    }
-
     return (
       <div id="blur" className="showcase-background" style={this.style()}>
         <div className="showcase-background-cover" style={this.coverStyle()}>

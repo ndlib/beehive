@@ -5,12 +5,14 @@ $action-color: #d9a91b;
 
 @mixin aspect-ratio($width, $height) {
   position: relative;
+
   &:before {
     display: block;
     content: "";
     width: 100%;
     padding-top: ($height / $width) * 100%;
   }
+
   > .aspect-ratio-content {
     position: absolute;
     top: 0;
@@ -72,4 +74,9 @@ $action-color: #d9a91b;
 
 .bee-card-content-supporting {
   padding: 16px 16px 24px;
+  white-space: normal;
+
+  :last-child {
+    margin-bottom: 0;
+  }
 }
