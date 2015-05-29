@@ -7,13 +7,6 @@ var ShowcaseTitle = React.createClass({
   propTypes: {
     showcase: React.PropTypes.object.isRequired,
     height: React.PropTypes.number,
-    width: React.PropTypes.string,
-  },
-
-  getDefaultProps: function() {
-    return {
-      width: "85vw",
-    }
   },
 
   outerStyle: function() {
@@ -27,7 +20,6 @@ var ShowcaseTitle = React.createClass({
       position: "relative",
       padding: "5px",
       height: height,
-      width: this.props.width,
       textAlign: "center",
     };
   },
