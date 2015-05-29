@@ -85,6 +85,10 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
 }
 
+p {
+  margin-bottom: 20px;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -673,6 +677,7 @@ div.dataTables_filter {
 
 .modal-content {
   background: #333;
+  background-image: image_url("black-linen.png");
   color: $white;
   height: 100%;
 
