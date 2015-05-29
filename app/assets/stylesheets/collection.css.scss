@@ -18,7 +18,7 @@ body.collection {
   }
 
   .jumbotron {
-    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.75);
+
     margin: 0;
     max-height: calc(80vh - 107px);
     overflow: hidden;
@@ -64,13 +64,16 @@ body.collection {
 }
 
 .collection-short-intro {
-  font-size: 16px;
+  font-size: 20px;
   margin: 0 auto;
-  max-width: 40em;
-  padding: 15px;
+  padding: 15px 15em 15px 15em;
+  background: rgba(244, 244, 244, 0.7);
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.75);
+  margin-bottom: 2em;
 
   p:last-child {
     margin-bottom: 0;
+    color: $gray20;
   }
 }
 
