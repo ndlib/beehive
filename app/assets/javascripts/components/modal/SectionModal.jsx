@@ -23,7 +23,7 @@ var SectionModal = React.createClass({
   render: function () {
     var sectionPage = this.sectionPage();
     return (
-      <Modal height={this.props.height} id={this.modalID()} content={sectionPage} hasHash={true} />
+      <Modal className="section-modal" height={this.props.height} id={this.modalID()} content={sectionPage} hasHash={true} />
     );
   }
 });

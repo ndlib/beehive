@@ -677,12 +677,18 @@ div.dataTables_filter {
 
 .modal-content {
   background: #333;
-  background-image: image_url("black-linen.png");
   color: $white;
   height: 100%;
 
   .details {
     color: $darkgrey;
+  }
+}
+
+.item-modal,
+.section-modal {
+  .modal-content {
+    background-image: image_url("black-linen.png");
   }
 }
 
