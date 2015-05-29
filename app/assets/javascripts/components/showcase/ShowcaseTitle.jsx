@@ -7,13 +7,6 @@ var ShowcaseTitle = React.createClass({
   propTypes: {
     showcase: React.PropTypes.object.isRequired,
     height: React.PropTypes.number,
-    width: React.PropTypes.string,
-  },
-
-  getDefaultProps: function() {
-    return {
-      width: "85vw",
-    }
   },
 
   outerStyle: function() {
@@ -27,7 +20,6 @@ var ShowcaseTitle = React.createClass({
       position: "relative",
       padding: "5px",
       height: height,
-      width: this.props.width,
       textAlign: "center",
     };
   },
@@ -76,7 +68,7 @@ var ShowcaseTitle = React.createClass({
           </div>
           <br />
           <div className="showcase-title-description-container">
-            <div className="showcase-title-description" dangerouslySetInnerHTML={{__html: description}}  />
+            <div className="showcase-title-description">{description}</div>
           </div>
           <div className="showcase-controlls">
             <img src="/images/touch.svg" className="touch" alt="Swipe Left or Right" />

@@ -18,7 +18,7 @@ var CardOverlay = React.createClass({
 
   render: function() {
     return (
-      <div className="bee-card-overlay" style={this.style()}>
+      <div className="bee-card-overlay aspect-ratio-content" style={this.style()}>
         {this.props.children}
       </div>
     );

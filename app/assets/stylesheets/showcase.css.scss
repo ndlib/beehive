@@ -55,6 +55,7 @@ $white: #fff;
 .showcase-title-page {
   color: $title-color;
   overflow: hidden;
+  width: 85vw;
 
   div {
     white-space: normal;
@@ -113,6 +114,10 @@ $white: #fff;
 }
 
 .showcase-card {
+  .showcase-title-page {
+    width: 100%;
+  }
+
   .showcase-title-page-inner {
     max-width: 100%;
   }
@@ -133,6 +138,7 @@ $white: #fff;
   .showcase-title-description {
     font-size: 15px;
     line-height: inherit;
+    display: none;
   }
 }
 

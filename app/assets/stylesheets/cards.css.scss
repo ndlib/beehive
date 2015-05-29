@@ -3,6 +3,29 @@ $card-color: #333;
 $card-subtitle-color: #757575;
 $action-color: #d9a91b;
 
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+
+  &:before {
+    content: "";
+    display: block;
+    padding-top: ($height / $width) * 100%;
+    width: 100%;
+  }
+
+  > .aspect-ratio-content {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+.sixteen-nine {
+  @include aspect-ratio(16, 9);
+}
+
 .bee-card {
   border-radius: 2px;
   box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.75);
@@ -51,4 +74,9 @@ $action-color: #d9a91b;
 
 .bee-card-content-supporting {
   padding: 16px 16px 24px;
+  white-space: normal;
+
+  :last-child {
+    margin-bottom: 0;
+  }
 }
