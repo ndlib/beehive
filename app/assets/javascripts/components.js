@@ -10,6 +10,7 @@ HorizontalScrollMixin = require("./mixins/HorizontalScrollMixin");
 PageHeightMixin = require("./mixins/PageHeightMixin");
 PrevNextMixin = require("./mixins/PrevNextMixin");
 LoadRemoteCollectionMixin = require("./mixins/LoadRemoteCollectionMixin");
+TitleConcatMixin = require("./mixins/TitleConcatMixin");
 
 // Layout
 Layout = require("./components/layout/Layout");
