@@ -7,6 +7,7 @@ var ShowcaseCard = React.createClass({
   propTypes: {
     showcase: React.PropTypes.object.isRequired,
     showDescription: React.PropTypes.bool,
+    topChildren: React.PropTypes.any,
   },
 
   getDefaultProps: function () {
@@ -51,6 +52,7 @@ var ShowcaseCard = React.createClass({
             <h3 className="bee-card-content-title-subtitle overflow-ellipsis">{this.props.showcase.name_line_2}</h3>
           </div>
           {this.description()}
+          {this.props.children}
         </div>
       </Card>
     );

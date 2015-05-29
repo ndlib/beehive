@@ -25,6 +25,7 @@ var ShowcaseEnding = React.createClass({
 
   buttonStyle: function() {
     return {
+      display: "none",
       position: "absolute",
       top: "27rem",
       left: "0",
@@ -41,15 +42,29 @@ var ShowcaseEnding = React.createClass({
     };
   },
 
+  topTitle: function() {
+    return (
+      <div className="bee-card-content">
+        <div className="bee-card-content-title">
+          <h2 className="bee-card-content-title-primary">Next Showcase</h2>
+        </div>
+      </div>
+    );
+  },
+
   render: function() {
     return (
       <section className="section section-continue" style={this.style()} id="section-ending">
-        <div className="section-container section-container-text" style={this.containerStyle()}>
-            <h2 className="section-container-text-title section-ending-title">Next Showcase</h2>
-            <div style={this.buttonStyle()}>
-              <a href={this.showcaseUrl(this.props.showcase)} className="btn btn-lg btn-success continue"><span>Continue </span><i className="mdi-navigation-chevron-right"></i></a>
+        <div className="section-container" style={this.containerStyle()}>
+          <div style={this.buttonStyle()}>
+            <a href={this.showcaseUrl(this.props.showcase)} className="btn btn-lg btn-success continue"><span>Continue </span><i className="mdi-navigation-chevron-right"></i></a>
+          </div>
+          <ShowcaseCard showcase={this.props.showcase} topChildren={this.topTitle()}>
+            {this.topTitle()}
+            <div className="bee-card-content-actions clearfix">
+              <a href={this.showcaseUrl(this.props.showcase)} className="btn btn-success pull-right"><span>Continue </span><i className="mdi-navigation-chevron-right"></i></a>
             </div>
-            <ShowcaseCard showcase={this.props.showcase} />
+          </ShowcaseCard>
         </div>
       </section>
     );

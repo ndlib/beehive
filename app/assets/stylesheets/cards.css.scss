@@ -64,11 +64,20 @@ $action-color: #d9a91b;
 .bee-card-content-actions {
   padding: 8px;
 
-  .btn.btn-default {
-    color: $action-color;
-    font-weight: 400;
+  .btn {
+    font-size: 16px;
+    line-height: 24px;
     margin: 0 8px 0 0;
     padding: 8px;
+  }
+
+  .btn.btn-default {
+    color: $action-color;
+  }
+
+  [class^="mdi-"],
+  [class*="mdi-"] {
+    font-size: 16px;
   }
 }
 
