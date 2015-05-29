@@ -79,7 +79,7 @@ var CollectionShow = React.createClass({
     if (this.viewExhibitUrl()) {
       if(this.props.collection.image) {
         containerStyle = {
-          bottom: "30%",
+          bottom: "25%",
           position: "absolute",
           textAlign: "center",
           width: "100%",

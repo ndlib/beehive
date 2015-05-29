@@ -211,6 +211,11 @@ $white: #fff;
       color: $white;
       text-decoration: underline;
     }
+    .item-details {
+      a, a:link, a:visited {
+        color: $black;
+      }
+    }
   }
 }
 
