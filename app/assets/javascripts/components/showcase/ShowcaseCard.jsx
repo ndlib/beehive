@@ -6,6 +6,13 @@ var ShowcaseCard = React.createClass({
 
   propTypes: {
     showcase: React.PropTypes.object.isRequired,
+    showDescription: React.PropTypes.bool,
+  },
+
+  getDefaultProps: function () {
+    return {
+      showDescription: false,
+    };
   },
 
   style: function() {
@@ -18,6 +25,16 @@ var ShowcaseCard = React.createClass({
   onClick: function(e) {
     e.preventDefault();
     window.location = this.showcaseUrl(this.props.showcase);
+  },
+
+  description: function() {
+    if (this.props.showDescription) {
+      return (
+        <div className="bee-card-content-supporting">
+          <p>{this.props.showcase.description}</p>
+        </div>
+      );
+    }
   },
 
   render: function() {
@@ -33,9 +50,7 @@ var ShowcaseCard = React.createClass({
             <h2 className="bee-card-content-title-primary overflow-ellipsis">{this.props.showcase.name_line_1}</h2>
             <h3 className="bee-card-content-title-subtitle overflow-ellipsis">{this.props.showcase.name_line_2}</h3>
           </div>
-          <div className="bee-card-content-supporting">
-            <p>{this.props.showcase.description}</p>
-          </div>
+          {this.description()}
         </div>
       </Card>
     );
