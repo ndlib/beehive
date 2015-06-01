@@ -40,12 +40,6 @@ var CollectionShowPage = React.createClass({
   },
 
   render: function() {
-    var showcasesList;
-    if (this.state.collection.showcases) {
-      showcasesList = (
-        <ShowcasesList showcases={this.state.collection.showcases} />
-      );
-    }
     return (
       <div>
         <div className="collection-show-page">
@@ -54,7 +48,7 @@ var CollectionShowPage = React.createClass({
             <PageContent>
               <CollectionShow collection={this.state.collection} />
               <CollectionIntro collection={this.state.collection} id="main-collection-description" />
-              {showcasesList}
+              <CollectionShowShowcases collection={this.state.collection} />
             </PageContent>
           </Layout>
         </div>

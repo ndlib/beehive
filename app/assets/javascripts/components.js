@@ -48,13 +48,14 @@ CollectionsListItem = require("./components/collection/CollectionsListItem");
 CollectionCard = require("./components/collection/CollectionCard");
 CollectionLink = require("./components/collection/CollectionLink");
 CollectionShow = require("./components/collection/CollectionShow");
+CollectionIntroCard = require("./components/collection/CollectionIntroCard");
+CollectionShowShowcases = require("./components/collection/CollectionShowShowcases");
 CollectionDescription = require("./components/collection/CollectionDescription");
 CollectionIntro = require("./components/collection/CollectionIntro");
 CollectionIntroLink = require("./components/collection/CollectionIntroLink");
 CollectionBackground = require("./components/collection/CollectionBackground");
 
 // Showcases
-ShowcasesList = require("./components/showcase/ShowcasesList");
 ShowcasesCardList = require("./components/showcase/ShowcasesCardList");
 ShowcaseShow = require("./components/showcase/ShowcaseShow");
 ShowcaseSections = require("./components/showcase/ShowcaseSections");

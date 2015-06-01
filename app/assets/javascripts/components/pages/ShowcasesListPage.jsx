@@ -39,7 +39,7 @@ var ShowcasesListPage = React.createClass({
     var showcasesList;
     if (this.state.showcases) {
       showcasesList = (
-        <ShowcasesList showcases={this.state.showcases} />
+        <ShowcasesCardList showcases={this.state.showcases} />
       );
     }
     return (
