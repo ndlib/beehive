@@ -6,6 +6,8 @@ var marginBottom = 5;
 var borderBottom = 1;
 
 var ShowcaseTitleBar = React.createClass({
+  mixins: [TitleConcatMixin],
+
   displayName: 'Showcase Title Bar',
 
   propTypes: {
@@ -39,17 +41,7 @@ var ShowcaseTitleBar = React.createClass({
   },
 
   name: function () {
-    if (this.props.showcase.name_line_2) {
-      return this.props.showcase.name_line_1 + this.nameSpacer() + this.props.showcase.name_line_2;
-    }
-    return this.props.showcase.name_line_1;
-  },
-
-  nameSpacer: function () {
-    if (this.props.showcase.name_line_2) {
-      return ": ";
-    }
-    return "";
+    return this.titleConcat(this.props.showcase.name_line_1, this.props.showcase.name_line_2);
   },
 
   render: function() {
@@ -57,8 +49,7 @@ var ShowcaseTitleBar = React.createClass({
       return (
         <div className="showcases-title-bar" id="showcases-title-bar" style={this.style()}>
           <h2 className="showcases-title-bar-title overflow-ellipsis" style={this.titleStyle()} title={this.name()}>
-          <span className="title">{this.props.showcase.name_line_1}{this.nameSpacer()}</span>&nbsp;
-          <span className="subtitle">{this.props.showcase.name_line_2}</span>
+            <span className="title">{this.name()}</span>
           </h2>
         </div>
       );
