@@ -1,6 +1,12 @@
 //app/assets/javascripts/components/layout/GridList.jsx
 var React = require('react');
 
+var gridSize = 12;
+var grids = {
+  lg: 3,
+  sm: 2,
+};
+
 var GridList = React.createClass({
   propTypes: {
     children: React.PropTypes.oneOfType([
@@ -12,17 +18,26 @@ var GridList = React.createClass({
   childrenGridNodes: function() {
     var index = 0;
     var childrenNodes = []
+    var nodeClass = "";
+    for (var prefix in grids) {
+      var columns = grids[prefix];
+      nodeClass += " col-" + prefix + "-" + (gridSize / columns);
+    }
     React.Children.forEach(this.props.children, function(node) {
       var nodes = [];
       if (index > 0) {
-        if (index%3 == 0) {
-          nodes.push ((
-            <div className="clearfix" key={index + "clearfix"}></div>
-          ));
+        for (var prefix in grids) {
+          var columns = grids[prefix];
+          var clearClass = "clearfix visible-" + prefix + "-block";
+          if (index%columns == 0) {
+            nodes.push ((
+              <div className={clearClass} key={index + prefix + "clearfix"} />
+            ));
+          }
         }
       }
       nodes.push((
-        <div className="col-sm-4" key={index}>
+        <div className={nodeClass} key={index}>
           {node}
         </div>
       ));
