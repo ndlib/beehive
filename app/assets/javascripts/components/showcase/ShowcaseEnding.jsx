@@ -41,34 +41,10 @@ var ShowcaseEnding = React.createClass({
     };
   },
 
-  originalHeader: function() {
-    return (
-      <h2 className="section-container-text-title section-ending-title">Next Showcase</h2>
-    );
-  },
-
-  originalButton: function() {
+  continueButton: function() {
     return (
       <div style={this.buttonStyle()}>
         <a href={this.showcaseUrl(this.props.showcase)} className="btn btn-lg btn-success continue"><span>Continue </span><i className="mdi-navigation-chevron-right"></i></a>
-      </div>
-    );
-  },
-
-  topTitle: function() {
-    return (
-      <div className="bee-card-content">
-        <div className="bee-card-content-title">
-          <h2 className="bee-card-content-title-primary">Next Showcase</h2>
-        </div>
-      </div>
-    );
-  },
-
-  actions: function() {
-    return (
-      <div className="bee-card-content-actions clearfix">
-        <a href={this.showcaseUrl(this.props.showcase)} className="btn btn-success pull-right"><span>Continue </span><i className="mdi-navigation-chevron-right"></i></a>
       </div>
     );
   },
@@ -77,9 +53,9 @@ var ShowcaseEnding = React.createClass({
     return (
       <section className="section section-continue" style={this.style()} id="section-ending">
         <div className="section-container section-container-text" style={this.containerStyle()}>
-          {this.originalHeader()}
+          <h2 className="section-container-text-title section-ending-title">Next Showcase</h2>
           <ShowcaseCard showcase={this.props.showcase}>
-            {this.originalButton()}
+            {this.continueButton()}
           </ShowcaseCard>
         </div>
       </section>
