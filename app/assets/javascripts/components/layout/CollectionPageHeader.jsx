@@ -2,7 +2,7 @@
 var React = require('react');
 
 var CollectionPageHeader = React.createClass({
-  mixins: [CollectionUrlMixin],
+  mixins: [CollectionUrlMixin, TitleConcatMixin],
 
   propTypes: {
     collection: React.PropTypes.object.isRequired,
@@ -16,12 +16,9 @@ var CollectionPageHeader = React.createClass({
       dropdown = (<ShowcaseDropDown collection={this.props.collection} />);
     }
 
-    var title = [];
-    title.push((<span className="title" key={1}>{this.props.collection.name_line_1}</span>));
+    var fullName = this.titleConcat(this.props.collection.name_line_1, this.props.collection.name_line_2)
+    var title = <span className="title" key={1}>{fullName}</span>;
 
-    if(this.props.collection.name_line_2) {
-      title.push((<span className="subtitle" key={2}>{this.props.collection.name_line_2}</span>));
-    }
 
     return (
     <PageHeader branding={this.props.branding}>

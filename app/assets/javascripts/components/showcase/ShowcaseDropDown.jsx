@@ -1,7 +1,7 @@
 var React = require('react');
 
 var ShowcaseDropDown = React.createClass({
-  mixins: [CollectionUrlMixin],
+  mixins: [CollectionUrlMixin, TitleConcatMixin],
 
   propTypes: {
     collection: React.PropTypes.object.isRequired,
@@ -71,17 +71,17 @@ var ShowcaseDropDown = React.createClass({
       ));
     }
 
-
     this.state.showcases.forEach(function(showcase){
       var url = collectionUrl + "/showcases/" + encodeURIComponent(showcase.id) + "/" + encodeURIComponent(showcase.slug);
+      var showcaseName = this.titleConcat(showcase.name_line_1, showcase.name_line_2);
       options.push ((
         <li key={showcase.id} className="dropdown-header" value={showcase.id}>
           <a href={url}>
-            {showcase.name}
+            {showcaseName}
           </a>
         </li>
       ));
-    });
+    }.bind(this));
     return options
   },
 
