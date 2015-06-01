@@ -10,6 +10,7 @@ var GridList = React.createClass({
       React.PropTypes.object,
     ]).isRequired,
     grids: React.PropTypes.object,
+    className: React.PropTypes.string,
   },
 
   getDefaultProps: function () {
@@ -63,9 +64,13 @@ var GridList = React.createClass({
 
   render: function() {
     var children = this.childrenGridNodes();
+    var className = "row"
+    if (this.props.className) {
+      className += " " + this.props.className;
+    }
     if (children.length > 0) {
       return (
-        <div className="row">
+        <div className={className}>
           {children}
         </div>
       );

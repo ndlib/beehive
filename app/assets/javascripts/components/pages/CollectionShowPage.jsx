@@ -43,7 +43,7 @@ var CollectionShowPage = React.createClass({
     var showcasesList;
     if (this.state.collection.showcases) {
       showcasesList = (
-        <ShowcasesList showcases={this.state.collection.showcases} />
+        <ShowcasesCardList showcases={this.state.collection.showcases} />
       );
     }
     return (

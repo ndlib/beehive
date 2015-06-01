@@ -54,7 +54,6 @@ CollectionIntroLink = require("./components/collection/CollectionIntroLink");
 CollectionBackground = require("./components/collection/CollectionBackground");
 
 // Showcases
-ShowcasesList = require("./components/showcase/ShowcasesList");
 ShowcasesCardList = require("./components/showcase/ShowcasesCardList");
 ShowcaseShow = require("./components/showcase/ShowcaseShow");
 ShowcaseSections = require("./components/showcase/ShowcaseSections");
