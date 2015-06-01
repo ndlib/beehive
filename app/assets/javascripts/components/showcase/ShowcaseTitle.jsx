@@ -71,8 +71,8 @@ var ShowcaseTitle = React.createClass({
             <div className="showcase-title-description">{description}</div>
           </div>
           <div className="showcase-controlls">
-            <img src="/images/touch.svg" className="touch" alt="Swipe Left or Right" />
-            <img src="/images/scroll.svg" className="scroll" alt="Scroll the Mouse Wheel" />
+            <img src="/images/touch.svg" className="touch" alt="Swipe Left or Right" title="Swipe Left or Right" />
+            <img src="/images/scroll.svg" className="scroll" alt="Scroll with the Mouse Wheel" title="Scroll with the Mouse Wheel" />
           </div>
         </div>
       </div>
