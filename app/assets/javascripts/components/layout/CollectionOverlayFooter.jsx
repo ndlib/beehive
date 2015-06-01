@@ -20,8 +20,6 @@ var CollectionOverlayFooter = React.createClass({
             <div className="col-sm-8 pull-left">
               <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#info" onClick={this.closeOther.bind(this, "#copy")}><i className="mdi-action-info-outline"></i></button>
               <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#copy" onClick={this.closeOther.bind(this, "#info")}><i className="glyphicon glyphicon-copyright-mark"></i></button>
-
-              <ToggleTheme />
             </div>
             <div className="col-sm-4 pull-right">
               <a href="http://library.nd.edu">
