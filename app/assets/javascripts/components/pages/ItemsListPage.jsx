@@ -40,7 +40,7 @@ var ItemsListPage = React.createClass({
     <div>
       <ItemsModalList height={this.state.height} items={this.state.items} />
       <Layout>
-          <CollectionPageHeader collection={this.state.collection} />
+          <CollectionPageHeader collection={this.state.collection} dropdown={true} />
           <PageContent>
             <ItemsList height={this.state.height} items={this.state.items} />
           </PageContent>

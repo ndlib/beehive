@@ -311,36 +311,8 @@ body .jumbotron, .container .jumbotron, .container-fluid .jumbotron {
   }
 }
 
-.flow-columns {
-  -webkit-column-count: 4;
-  -webkit-column-gap: 10px;
-  -webkit-column-fill: auto;
-  -moz-column-count: 4;
-  -moz-column-gap: 10px;
-  -moz-column-fill: auto;
-  column-count: 4;
-  column-gap: 15px;
-  column-fill: auto;
-}
+.item-card {
 
-.item-block {
-  display: inline-block;
-  background: #FEFEFE;
-  border: 2px solid #FAFAFA;
-  border-radius: 2px;
-  box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
-  margin: 0 2px 15px;
-  -webkit-column-break-inside: avoid;
-  -moz-column-break-inside: avoid;
-  column-break-inside: avoid;
-  padding: 5px;
-  background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
-  opacity: 1;
-  -webkit-transition: all .2s ease;
-  -moz-transition: all .2s ease;
-  -o-transition: all .2s ease;
-  transition: all .2s ease;
-  width: 100%;
 
   span {
     display: inline-block;
@@ -802,6 +774,29 @@ div.dataTables_filter {
   position: absolute;
   right: 2.5em;
   top: 4.1em;
+  z-index: 200;
+
+  i,
+  span {
+    font-size: 1em;
+    line-height: 1em;
+    vertical-align: top;
+  }
+
+  i {
+    margin-right: 4px;
+  }
+
+  i[class^="mdi-"] {
+    font-size: 1em;
+  }
+}
+
+
+.btn-view {
+  font-size: 16px;
+  line-height: 1em;
+  margin: 0;
   z-index: 200;
 
   i,

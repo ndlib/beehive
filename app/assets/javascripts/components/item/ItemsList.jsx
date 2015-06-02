@@ -18,6 +18,31 @@ var ItemsList = React.createClass({
     this.checkHash();
   },
 
+
+  getInitialState: function() {
+    return {
+      view: "grid",
+      btnStyle: "btn btn-default btn-view",
+    };
+  },
+
+  toggleView: function() {
+    if (this.state.view == "grid") {
+      this.setState({view: "list"});
+    }
+    else if(this.state.view == "list") {
+      this.setState({view: "grid"});
+    }
+  },
+
+  onHover: function() {
+    this.setState({btnStyle: "btn btn-default btn-raised btn-view"});
+  },
+
+  offHover: function() {
+    this.setState({btnStyle: "btn btn-default btn-view"});
+  },
+
   checkHash: function() {
     $(".modal").modal("hide");
     if(window.location.hash) {
@@ -27,24 +52,33 @@ var ItemsList = React.createClass({
 
   outerStyle: function() {
     return {
-      width: '100%',
+      width: "100%",
+      backgroundColor: "#f5f5f5",
     };
   },
 
+  listClass: function() {
+    return this.state.view;
+  },
 
   render: function() {
     var itemNodes = this.props.items.map(function(item, index) {
       var nodes = [];
       nodes.push((
-        <div key={item['@id']} className="item-block">
-          <ItemsListItem item={item} />
-        </div>
+          <ItemListItem item={item} />
       ));
       return nodes;
     });
     return (
       <div className="items-list" style={this.outerStyle()}>
-        <div className="container flow-columns">
+        <div >
+          <button className={this.state.btnStyle + " pull-right"} onClick={this.toggleView} onMouseOver={this.onHover} onMouseOut={this.offHover}>
+            <i className={this.state.view == "grid" ? "mdi-action-view-list" : "mdi-action-view-module"}></i>
+            {this.state.view == "grid" ? "list" : "grid"}
+          </button>
+          <div className="clearfix visible-lg-block" />
+        </div>
+        <div className={this.listClass()}>
           {itemNodes}
         </div>
       </div>
