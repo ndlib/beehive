@@ -11,7 +11,7 @@ set :log_level, :info
 
 # Default branch is :master
 if fetch(:stage).to_s == "production"
-  ask :branch, "master"
+  set :branch, "v1.0"
 else
   ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 end
