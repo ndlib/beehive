@@ -1,6 +1,13 @@
-//app/assets/javascripts/components/ItemsList.jsx
 var React = require('react');
 
+var gridSettings = {
+      view: "grid",
+      columnClass: "col-lg-3 col-md-4 col-sm-6",
+    };
+var listSettings = {
+      view: "list",
+      columnClass: "col-lg-12",
+    };
 var ItemsList = React.createClass({
   displayName: 'Items List',
 
@@ -20,18 +27,31 @@ var ItemsList = React.createClass({
 
 
   getInitialState: function() {
-    return {
-      view: "grid",
+    var state = {
       btnStyle: "btn btn-default btn-view",
+      view: gridSettings.view,
+      columnClass: gridSettings.columnClass,
     };
+    var storedState = JSON.parse(localStorage.getItem("GridList"));
+    if(storedState) {
+      state.view = storedState.view;
+      state.columnClass = storedState.columnClass;
+    }
+
+    return state;
   },
 
   toggleView: function() {
+
     if (this.state.view == "grid") {
-      this.setState({view: "list"});
+      this.setState({view: listSettings.view});
+      this.setState({columnClass: listSettings.columnClass});
+      localStorage.setItem("GridList", JSON.stringify(listSettings));
     }
     else if(this.state.view == "list") {
-      this.setState({view: "grid"});
+      this.setState({view: gridSettings.view});
+      this.setState({columnClass: gridSettings.columnClass});
+      localStorage.setItem("GridList", JSON.stringify(gridSettings));
     }
   },
 
@@ -50,6 +70,14 @@ var ItemsList = React.createClass({
     }
   },
 
+  controlsStyle: function() {
+    return {
+      marginBottom: "20px",
+      paddingLeft: "15px",
+      paddingRight: "15px",
+    };
+  },
+
   outerStyle: function() {
     return {
       width: "100%",
@@ -62,25 +90,27 @@ var ItemsList = React.createClass({
   },
 
   render: function() {
+    var columnClass = this.state.columnClass;
     var itemNodes = this.props.items.map(function(item, index) {
       var nodes = [];
       nodes.push((
-          <ItemListItem item={item} />
+          <ItemListItem item={item} className={columnClass}/>
       ));
       return nodes;
     });
     return (
       <div className="items-list" style={this.outerStyle()}>
-        <div >
+        <div className="controls" style={this.controlsStyle()}>
           <button className={this.state.btnStyle + " pull-right"} onClick={this.toggleView} onMouseOver={this.onHover} onMouseOut={this.offHover}>
             <i className={this.state.view == "grid" ? "mdi-action-view-list" : "mdi-action-view-module"}></i>
             {this.state.view == "grid" ? "list" : "grid"}
           </button>
-          <div className="clearfix visible-lg-block" />
+          <div className="clearfix" />
         </div>
         <div className={this.listClass()}>
           {itemNodes}
         </div>
+         <div className="clearfix" />
       </div>
     );
 
