@@ -40,7 +40,10 @@ var ItemsListPage = React.createClass({
     <div>
       <ItemsModalList height={this.state.height} items={this.state.items} />
       <Layout>
-          <CollectionPageHeader collection={this.state.collection} />
+          <CollectionPageHeader collection={this.state.collection} dropdown={true} />
+          <div className="bee-page-title-bar" style={{marginBottom: "0",}}>
+            <h2 className="bee-page-title-bar-title">Browse Collection</h2>
+          </div>
           <PageContent>
             <ItemsList height={this.state.height} items={this.state.items} />
           </PageContent>

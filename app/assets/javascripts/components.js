@@ -80,9 +80,10 @@ SectionsModalList = require("./components/section/SectionsModalList");
 
 // Items
 ItemsList = require("./components/item/ItemsList");
-ItemsListItem = require("./components/item/ItemsListItem");
 ItemShow = require("./components/item/ItemShow");
-ItemLink = require("./components/item/ItemLink");
+ItemListItem = require("./components/item/ItemListItem");
+ItemImage = require("./components/item/ItemImage");
+ItemText = require("./components/item/ItemText");
 AdditionalResources = require("./components/item/AdditionalResources");
 AdditionalResourcesItem = require("./components/item/AdditionalResourcesItem");
 ItemsModalList = require("./components/item/ItemsModalList");

@@ -1,5 +1,14 @@
-//app/assets/javascripts/components/ItemsList.jsx
 var React = require('react');
+
+var gridSettings = {
+      view: "grid",
+      columnClass: "col-lg-3 col-md-4 col-sm-6",
+    };
+
+var listSettings = {
+      view: "list",
+      columnClass: "col-lg-12",
+    };
 
 var ItemsList = React.createClass({
   displayName: 'Items List',
@@ -18,6 +27,33 @@ var ItemsList = React.createClass({
     this.checkHash();
   },
 
+
+  getInitialState: function() {
+    var state = {
+      view: gridSettings.view,
+      columnClass: gridSettings.columnClass,
+    };
+    var storedState = JSON.parse(localStorage.getItem("GridList"));
+    if(storedState) {
+      state.view = storedState.view;
+      state.columnClass = storedState.columnClass;
+    }
+
+    return state;
+  },
+
+  toggleView: function() {
+
+    if (this.state.view == "grid") {
+      this.setState({view: listSettings.view, columnClass: listSettings.columnClass});
+      localStorage.setItem("GridList", JSON.stringify(listSettings));
+    }
+    else if(this.state.view == "list") {
+      this.setState({view: gridSettings.view, columnClass: gridSettings.columnClass});
+      localStorage.setItem("GridList", JSON.stringify(gridSettings));
+    }
+  },
+
   checkHash: function() {
     $(".modal").modal("hide");
     if(window.location.hash) {
@@ -25,28 +61,47 @@ var ItemsList = React.createClass({
     }
   },
 
-  outerStyle: function() {
+  controlsStyle: function() {
     return {
-      width: '100%',
+      marginBottom: "20px",
+      paddingLeft: "15px",
+      paddingRight: "15px",
     };
   },
 
+  outerStyle: function() {
+    return {
+      width: "100%",
+      backgroundColor: "#f5f5f5",
+    };
+  },
+
+  listClass: function() {
+    return this.state.view;
+  },
 
   render: function() {
+    var columnClass = this.state.columnClass;
     var itemNodes = this.props.items.map(function(item, index) {
       var nodes = [];
       nodes.push((
-        <div key={item['@id']} className="item-block">
-          <ItemsListItem item={item} />
-        </div>
+          <ItemListItem item={item} className={columnClass}/>
       ));
       return nodes;
     });
     return (
       <div className="items-list" style={this.outerStyle()}>
-        <div className="container flow-columns">
+        <div className="controls" style={this.controlsStyle()}>
+          <button className={"btn btn-default btn-view pull-right"} onClick={this.toggleView} >
+            <i className={this.state.view == "grid" ? "mdi-action-view-list" : "mdi-action-view-module"}></i>
+            {this.state.view == "grid" ? "list" : "grid"}
+          </button>
+          <div className="clearfix" />
+        </div>
+        <div className={this.listClass()}>
           {itemNodes}
         </div>
+         <div className="clearfix" />
       </div>
     );
 
