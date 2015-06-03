@@ -769,6 +769,20 @@ div.dataTables_filter {
   padding-top: 20px;
   width: 100%;
 
+  .bee-item {
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.75);
+    overflow: hidden;
+
+    .bee-item-text {
+      background-color: $whitesmoke;
+      overflow: hidden;
+
+      h2 {
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
   a {
     color: $darkgrey;
 
@@ -780,20 +794,14 @@ div.dataTables_filter {
   .grid {
 
     .bee-item {
-      box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.75);
       margin-bottom: 32px;
-      overflow: hidden;
-
 
       .bee-item-text {
-        background-color: $whitesmoke;
         height: 72px;
-        overflow: hidden;
 
         h2 {
           font-size: 16px;
           padding: 0.5em;
-          text-overflow: ellipsis;
         }
 
         .bee-item-description {
@@ -806,10 +814,8 @@ div.dataTables_filter {
   .list {
 
     .bee-item {
-      box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.75);
       height: 20vw;
       margin-bottom: 1em;
-      overflow: hidden;
 
       .bee-item-image-wrapper {
         display: inline-block;
@@ -818,15 +824,9 @@ div.dataTables_filter {
       }
 
       .bee-item-text {
-        background-color: $whitesmoke;
         display: inline-block;
-        overflow: hidden;
         padding: 0.5em;
         vertical-align: top;
-
-        h2 {
-          text-overflow: ellipsis;
-        }
       }
 
     }
