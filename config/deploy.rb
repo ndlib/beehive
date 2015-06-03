@@ -13,7 +13,11 @@ set :log_level, :info
 if fetch(:stage).to_s == "production"
   set :branch, "v1.0"
 else
-  ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
+  if ENV["SCM_BRANCH"] && !(ENV["SCM_BRANCH"] == "")
+    set :branch, ENV["SCM_BRANCH"]
+  else
+    ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
+  end
 end
 
 # Default deploy_to directory is /var/www/my_app
