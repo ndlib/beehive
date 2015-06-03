@@ -12,11 +12,57 @@ $break-small: 480px;
     font-size: 0.5em;
     height: 22px;
     padding-top: 5px;
+    padding-bottom: 0;
+
+    a {
+      float: left;
+    }
   }
 
   img.touch {
     height: 30px !important;
 
+  }
+
+  .banner {
+    min-height: auto;
+
+    .banner-inner {
+      padding:10px 10px 60px;
+
+      h1 {
+        width: 50%;
+        padding-top:50px;
+      }
+
+      h3 {
+        bottom: 10px;
+        right: 10px;
+        width: 124px;
+        padding-top: 35px;
+      }
+    }
+  }
+
+  .navbar .navbar-brand {
+    font-size: 17px;
+  }
+
+  .featured-content-dropdown-button {
+    height: 24px;
+    width: 24px;
+  }
+
+  body.collection .container-fluid.content {
+    top: 22px;
+  }
+
+  .exhibit-start-container {
+    bottom: 5% !important;
+  }
+
+  #copy .modal-dialog, #info .modal-dialog {
+    width: 100% !important;
   }
 
   .scroll {
