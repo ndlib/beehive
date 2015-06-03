@@ -4,10 +4,12 @@ var gridSettings = {
       view: "grid",
       columnClass: "col-lg-3 col-md-4 col-sm-6",
     };
+
 var listSettings = {
       view: "list",
       columnClass: "col-lg-12",
     };
+
 var ItemsList = React.createClass({
   displayName: 'Items List',
 
@@ -28,7 +30,6 @@ var ItemsList = React.createClass({
 
   getInitialState: function() {
     var state = {
-      btnStyle: "btn btn-default btn-view",
       view: gridSettings.view,
       columnClass: gridSettings.columnClass,
     };
@@ -51,14 +52,6 @@ var ItemsList = React.createClass({
       this.setState({view: gridSettings.view, columnClass: gridSettings.columnClass});
       localStorage.setItem("GridList", JSON.stringify(gridSettings));
     }
-  },
-
-  onHover: function() {
-    this.setState({btnStyle: "btn btn-default btn-raised btn-view"});
-  },
-
-  offHover: function() {
-    this.setState({btnStyle: "btn btn-default btn-view"});
   },
 
   checkHash: function() {
@@ -99,7 +92,7 @@ var ItemsList = React.createClass({
     return (
       <div className="items-list" style={this.outerStyle()}>
         <div className="controls" style={this.controlsStyle()}>
-          <button className={this.state.btnStyle + " pull-right"} onClick={this.toggleView} onMouseOver={this.onHover} onMouseOut={this.offHover}>
+          <button className={"btn btn-default btn-view pull-right"} onClick={this.toggleView} >
             <i className={this.state.view == "grid" ? "mdi-action-view-list" : "mdi-action-view-module"}></i>
             {this.state.view == "grid" ? "list" : "grid"}
           </button>
