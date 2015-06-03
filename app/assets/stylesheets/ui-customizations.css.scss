@@ -782,6 +782,7 @@ div.dataTables_filter {
     .bee-item {
       box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.75);
       margin-bottom: 32px;
+      overflow: hidden;
 
 
       .bee-item-text {
@@ -808,6 +809,7 @@ div.dataTables_filter {
       box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.75);
       height: 20vw;
       margin-bottom: 1em;
+      overflow: hidden;
 
       .bee-item-image-wrapper {
         display: inline-block;
