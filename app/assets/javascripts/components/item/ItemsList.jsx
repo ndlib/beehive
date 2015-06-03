@@ -44,13 +44,11 @@ var ItemsList = React.createClass({
   toggleView: function() {
 
     if (this.state.view == "grid") {
-      this.setState({view: listSettings.view});
-      this.setState({columnClass: listSettings.columnClass});
+      this.setState({view: listSettings.view, columnClass: listSettings.columnClass});
       localStorage.setItem("GridList", JSON.stringify(listSettings));
     }
     else if(this.state.view == "list") {
-      this.setState({view: gridSettings.view});
-      this.setState({columnClass: gridSettings.columnClass});
+      this.setState({view: gridSettings.view, columnClass: gridSettings.columnClass});
       localStorage.setItem("GridList", JSON.stringify(gridSettings));
     }
   },
