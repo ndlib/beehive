@@ -15,7 +15,7 @@ var ItemListItem = React.createClass({
     return "#modal-" + this.props.item.id;
   },
 
-  viewClass: function() {
+  columnClass: function() {
     if(this.props.view == 'grid') {
       return "col-lg-3 col-md-4 col-sm-6";
     }
@@ -26,7 +26,7 @@ var ItemListItem = React.createClass({
 
   render: function() {
     return (
-      <div className={this.viewClass()}>
+      <div className={this.columnClass()}>
         <div key={this.props.item["@id"]} className="bee-item">
           <a href={this.targetID()} data-toggle="modal" data-target={this.targetID()} onClick={this.onClick}>
             <ItemImage image={this.props.item.image} />

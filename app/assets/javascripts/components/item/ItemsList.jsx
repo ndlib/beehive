@@ -24,7 +24,7 @@ var ItemsList = React.createClass({
     var state = {
       view: "grid",
     };
-    var storedState = JSON.parse(localStorage.getItem("ItemViewLayout"));
+    var storedState = JSON.parse(localStorage.getItem("ListViewLayout"));
     if(storedState) {
       state.view = storedState.view;
     }
@@ -36,11 +36,11 @@ var ItemsList = React.createClass({
 
     if (this.state.view == "grid") {
       this.setState({view: "list"});
-      localStorage.setItem("ItemViewLayout", JSON.stringify(listView));
+      localStorage.setItem("ListViewLayout", JSON.stringify(listView));
     }
     else if(this.state.view == "list") {
       this.setState({view: "grid"});
-      localStorage.setItem("ItemViewLayout", JSON.stringify(gridView));
+      localStorage.setItem("ListViewLayout", JSON.stringify(gridView));
     }
   },
 
