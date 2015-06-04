@@ -4,7 +4,7 @@ var ItemListItem = React.createClass({
 
   propTypes: {
     item: React.PropTypes.object.isRequired,
-    view: React.PropTypes.string.isRequired,
+    view: React.PropTypes.string,
   },
 
   onClick: function() {
@@ -16,11 +16,11 @@ var ItemListItem = React.createClass({
   },
 
   columnClass: function() {
-    if(this.props.view == 'grid') {
-      return "col-lg-3 col-md-4 col-sm-6";
+    if(this.props.view == 'list') {
+      return "col-lg-12";
     }
     else {
-      return "col-lg-12";
+      return "col-lg-3 col-md-4 col-sm-6";
     }
   },
 
