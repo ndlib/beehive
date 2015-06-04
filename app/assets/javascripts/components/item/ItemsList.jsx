@@ -1,14 +1,7 @@
 var React = require('react');
 
-var gridSettings = {
-      view: "grid",
-      columnClass: "col-lg-3 col-md-4 col-sm-6",
-    };
-
-var listSettings = {
-      view: "list",
-      columnClass: "col-lg-12",
-    };
+var gridView = {view: "grid"};
+var listView = {view: "list"};
 
 var ItemsList = React.createClass({
   displayName: 'Items List',
@@ -27,16 +20,13 @@ var ItemsList = React.createClass({
     this.checkHash();
   },
 
-
   getInitialState: function() {
     var state = {
-      view: gridSettings.view,
-      columnClass: gridSettings.columnClass,
+      view: "grid",
     };
-    var storedState = JSON.parse(localStorage.getItem("GridList"));
+    var storedState = JSON.parse(localStorage.getItem("ItemViewLayout"));
     if(storedState) {
       state.view = storedState.view;
-      state.columnClass = storedState.columnClass;
     }
 
     return state;
@@ -45,12 +35,12 @@ var ItemsList = React.createClass({
   toggleView: function() {
 
     if (this.state.view == "grid") {
-      this.setState({view: listSettings.view, columnClass: listSettings.columnClass});
-      localStorage.setItem("GridList", JSON.stringify(listSettings));
+      this.setState({view: "list"});
+      localStorage.setItem("ItemViewLayout", JSON.stringify(listView));
     }
     else if(this.state.view == "list") {
-      this.setState({view: gridSettings.view, columnClass: gridSettings.columnClass});
-      localStorage.setItem("GridList", JSON.stringify(gridSettings));
+      this.setState({view: "grid"});
+      localStorage.setItem("ItemViewLayout", JSON.stringify(gridView));
     }
   },
 
@@ -81,11 +71,11 @@ var ItemsList = React.createClass({
   },
 
   render: function() {
-    var columnClass = this.state.columnClass;
+    var view = this.state.view;
     var itemNodes = this.props.items.map(function(item, index) {
       var nodes = [];
       nodes.push((
-          <ItemListItem item={item} className={columnClass}/>
+          <ItemListItem item={item} view={view}/>
       ));
       return nodes;
     });
