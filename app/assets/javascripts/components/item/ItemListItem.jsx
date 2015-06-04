@@ -4,7 +4,7 @@ var ItemListItem = React.createClass({
 
   propTypes: {
     item: React.PropTypes.object.isRequired,
-    className: React.PropTypes.string.isRequired,
+    view: React.PropTypes.string,
   },
 
   onClick: function() {
@@ -15,9 +15,18 @@ var ItemListItem = React.createClass({
     return "#modal-" + this.props.item.id;
   },
 
+  columnClass: function() {
+    if(this.props.view == 'list') {
+      return "col-lg-12";
+    }
+    else {
+      return "col-lg-3 col-md-4 col-sm-6";
+    }
+  },
+
   render: function() {
     return (
-      <div className={this.props.className}>
+      <div className={this.columnClass()}>
         <div key={this.props.item["@id"]} className="bee-item">
           <a href={this.targetID()} data-toggle="modal" data-target={this.targetID()} onClick={this.onClick}>
             <ItemImage image={this.props.item.image} />
