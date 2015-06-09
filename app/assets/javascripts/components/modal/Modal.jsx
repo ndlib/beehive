@@ -26,7 +26,7 @@ var Modal = React.createClass({
   outerStyle: function() {
     if (this.props.height) {
       return {
-        top: $('#banner').outerHeight(),
+        top: $('#banner-wrapper').outerHeight(),
       };
     } else {
       return {};

@@ -43,8 +43,9 @@ var CollectionIntroPage = React.createClass({
       <div>
         <div className="collection-intro-page">
           <Layout>
-            <CollectionPageHeader collection={this.state.collection} dropdown={true} />
-            <div className="bee-page-title-bar"><h2 className="bee-page-title-bar-title">Introduction</h2></div>
+            <CollectionPageHeader collection={this.state.collection} dropdown={true} >
+              <div className="bee-page-title-bar"><h2 className="bee-page-title-bar-title">Introduction</h2></div>
+            </CollectionPageHeader>
             <PageContent>
               <CollectionDescription collection={this.state.collection} />
             </PageContent>

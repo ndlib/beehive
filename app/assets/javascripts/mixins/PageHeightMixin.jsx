@@ -8,7 +8,7 @@ var PageHeightMixin = {
   },
 
   getHeight: function() {
-    var top = ($('#banner').outerHeight() || 0);
+    var top = ($('#banner-wrapper').outerHeight() || 0);
     var footerHeight = ($('#footer').outerHeight() || 0);
     var height = $(window).height() - top - footerHeight;
     if (height < minHeight) {
