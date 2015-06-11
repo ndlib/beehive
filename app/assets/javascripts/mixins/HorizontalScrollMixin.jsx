@@ -15,19 +15,19 @@ HorizontalScrollMixin = {
       var maxLeft = $("#showcase-inner").prop("scrollWidth") - $("#showcase-outer").width();
       if($("#showcase-inner").position().left > -maxLeft) {
         newPosition = $("#showcase-inner").position().left - scrollSpeed;
-        $("#showcase-inner").css({"left" : newPosition + "px"})
+        $("#showcase-inner").css({"left" : newPosition + "px"});
       }
       else {
-        $("#showcase-inner").css({"left" : -maxLeft + "px"})
+        $("#showcase-inner").css({"left" : -maxLeft + "px"});
       }
     }
     else if (deltaScroll < -scrollTolerance) {
       if ($("#showcase-inner").position().left < 0) {
         newPosition = $("#showcase-inner").position().left + scrollSpeed;
-        $("#showcase-inner").css({"left" : newPosition + "px"})
+        $("#showcase-inner").css({"left" : newPosition + "px"});
       }
       else {
-        $("#showcase-inner").css({"left" : "0px"})
+        $("#showcase-inner").css({"left" : "0px"});
       }
     }
   },

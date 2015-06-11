@@ -7,3 +7,4 @@ exclude_paths:
 - "app/assets/javascripts/openseadragon.js"
 - "app/assets/javascripts/perfect-scrollbar.jquery.js"
 - "app/assets/javascripts/perfect-scrollbar.js"
+- "app/assets/javascripts/components.js"
