@@ -5,6 +5,10 @@ $break-medium: 768px;
 
   .brand-bar {
     font-size: 0.75em;
+
+    a {
+      float: left;
+    }
   }
 
   .title-bar {
@@ -30,6 +34,14 @@ $break-medium: 768px;
     position: relative;
   }
 
+  .well {
+    display: none;
+  }
+
+  .collection-intro-page .well {
+    display: block;
+  }
+
   .navbar-brand {
     height: auto;
   }
@@ -39,6 +51,10 @@ $break-medium: 768px;
     li:first-of-type {
       display: none;
     }
+  }
+
+  #copy .modal-dialog, #info .modal-dialog {
+    width: 100% !important;
   }
 
   .bee-homepage-banner {

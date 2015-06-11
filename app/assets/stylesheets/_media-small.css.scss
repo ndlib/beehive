@@ -71,6 +71,11 @@ $break-small: 480px;
 
   .showcase-title-page {
     width: 98vw;
+    height: 100%;
+
+    * {
+      height: auto;
+    }
 
     .showcase-title-container {
       margin-top:5px !important;
@@ -79,6 +84,9 @@ $break-small: 480px;
 
     h2 {
       font-size: 28px;
+      max-height: 4em;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .showcase-title-description-container {
@@ -93,9 +101,48 @@ $break-small: 480px;
 
   .section-container-text {
     max-width: 98vw !important;
+
+    h2 {
+      font-size: 18px;
+    }
   }
 
   .section-caption {
     font-size: 11px !important;
+  }
+  #footer {
+    .hesburgh-logo {
+      width: 70px;
+    }
+
+    .dec-logo {
+      width: 70px;
+    }
+  }
+
+  .item-detail {
+    h2 {
+      font-size: 18px;
+    }
+  }
+
+  .navigator {
+    display: none !important;
+  }
+
+  .os-toolbar {
+    left: 20px !important;
+    bottom: 10px !important;
+    top: auto !important;
+  }
+
+  .half-circle-button {
+    height: 60px;
+    width: 60px;
+    line-height: 60px;
+
+    i {
+      font-size: 20px;
+    }
   }
 }
