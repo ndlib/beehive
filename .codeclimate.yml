@@ -1,8 +1,6 @@
-# Save as .codeclimate.yml (note leading .) in project root directory
 languages:
   Ruby: true
   JavaScript: true
-  PHP: true
 exclude_paths:
 - "app/assets/javascripts/redactor.js"
 - "app/assets/javascripts/openseadragon-viewerinputhook.js"
