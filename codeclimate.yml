@@ -1,0 +1,11 @@
+# Save as .codeclimate.yml (note leading .) in project root directory
+languages:
+  Ruby: true
+  JavaScript: true
+  PHP: true
+exclude_paths:
+- "app/assets/javascripts/redactor.js"
+- "app/assets/javascripts/openseadragon-viewerinputhook.js"
+- "app/assets/javascripts/openseadragon.js"
+- "app/assets/javascripts/perfect-scrollbar.jquery.js"
+- "app/assets/javascripts/perfect-scrollbar.js"
