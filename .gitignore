@@ -11,6 +11,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+npm-debug.log
 
 /vendor/bundle/
 /public/assets/
