@@ -5,21 +5,22 @@ var watch = require("gulp-watch");
 var jestConfig = {
     rootDir: "./app/assets/javascripts/components",
     scriptPreprocessor: "<rootDir>/__tests__/preprocessor.js",
-      moduleFileExtensions: [
-        "js",
-        "jsx",
-      ],
-      unmockedModulePathPatterns: [
-        "react",
-        "jquery",
-      ],
-      testFileExtensions: [
-        "js",
-        "jsx",
-      ],
-      testPathIgnorePatterns: [
-        "preprocessor.js"
-      ],
+    collectCoverage: true,
+    moduleFileExtensions: [
+      "js",
+      "jsx",
+    ],
+    unmockedModulePathPatterns: [
+      "react",
+      "jquery",
+    ],
+    testFileExtensions: [
+      "js",
+      "jsx",
+    ],
+    testPathIgnorePatterns: [
+      "preprocessor.js"
+    ],
   };
 
 gulp.task("test", function(done) {

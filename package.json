@@ -22,6 +22,7 @@
   "jest": {
     "rootDir": "./app/assets/javascripts/components",
     "scriptPreprocessor": "<rootDir>/__tests__/preprocessor.js",
+    "collectCoverage": true,
     "moduleFileExtensions": [
       "js",
       "jsx"
