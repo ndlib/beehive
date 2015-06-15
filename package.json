@@ -18,7 +18,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "node ./node_modules/jest-cli/bin/jest.js"
+    "test": "istanbul cover ./node_modules/jest-cli/bin/jest.js --report lcovonly -- --coverage ./app/assets/javascripts/components/__tests__/ && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "jest": {
     "rootDir": "./app/assets/javascripts/components",
