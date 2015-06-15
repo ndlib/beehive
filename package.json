@@ -4,6 +4,7 @@
   "devDependencies": {
     "browserify": "~>6.3",
     "browserify-incremental": "^1.4.0",
+    "coveralls": "^2.11.2",
     "gulp": "^3.8.11",
     "gulp-watch": "^4.2.4",
     "jest-cli": "^0.4.0",
@@ -22,6 +23,7 @@
   "jest": {
     "rootDir": "./app/assets/javascripts/components",
     "scriptPreprocessor": "<rootDir>/__tests__/preprocessor.js",
+    "collectCoverage": true,
     "moduleFileExtensions": [
       "js",
       "jsx"
@@ -37,5 +39,8 @@
     "testPathIgnorePatterns": [
       "preprocessor.js"
     ]
+  },
+  "dependencies": {
+    "coveralls": "^2.11.2"
   }
 }
