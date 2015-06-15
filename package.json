@@ -7,6 +7,7 @@
     "coveralls": "^2.11.2",
     "gulp": "^3.9.0",
     "gulp-watch": "^4.2.4",
+    "istanbul": "^0.3.15",
     "jest-cli": "^0.4.12",
     "jquery": "^2.1.4",
     "react": "^0.12.2",
@@ -18,7 +19,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "node ./node_modules/jest-cli/bin/jest.js"
+    "test": "istanbul cover ./node_modules/jest-cli/bin/jest.js --report lcovonly -- --coverage ./app/assets/javascripts/components/__tests__/ && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "jest": {
     "rootDir": "./app/assets/javascripts/components",
