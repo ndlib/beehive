@@ -2,15 +2,16 @@
   "name": "beehive",
   "repository": "git@github.com:ndlib/beehive.git",
   "devDependencies": {
-    "browserify": "~>6.3",
-    "browserify-incremental": "^1.4.0",
-    "gulp": "^3.8.11",
+    "browserify": "^6.3.4",
+    "browserify-incremental": "^1.5.0",
+    "coveralls": "^2.11.2",
+    "gulp": "^3.9.0",
     "gulp-watch": "^4.2.4",
-    "jest-cli": "^0.4.0",
-    "jquery": "^2.1.1",
-    "react": "^0.12.0",
+    "jest-cli": "^0.4.12",
+    "jquery": "^2.1.4",
+    "react": "^0.12.2",
     "react-scroll": "^0.18.0",
-    "react-tools": "^0.12.1",
+    "react-tools": "^0.12.2",
     "reactify": "^0.17.1"
   },
   "engines": {
