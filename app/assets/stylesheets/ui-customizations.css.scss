@@ -1010,6 +1010,20 @@ div.dataTables_filter {
   color: $white;
 }
 
+.collection-intro-page,
+.collection-show-page,
+.items-list-page {
+  #banner-wrapper {
+    height: 86px;
+    position: relative;
+    z-index: 1;
+
+    #banner {
+      position: fixed;
+    }
+  }
+}
+
 @import "cards.css.scss";
 @import "collection.css.scss";
 @import "showcase.css.scss";

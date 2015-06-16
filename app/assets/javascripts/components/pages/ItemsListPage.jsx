@@ -37,19 +37,21 @@ var ItemsListPage = React.createClass({
 
   render: function() {
     return (
-    <div>
-      <ItemsModalList height={this.state.height} items={this.state.items} />
+    <div className="items-list-page">
+      <CollectionPageHeader collection={this.state.collection} dropdown={true} >
+        <div className="bee-page-title-bar" style={{marginBottom: "0",}}>
+          <h2 className="bee-page-title-bar-title">Browse Collection</h2>
+        </div>
+      </CollectionPageHeader>
+      <div className="clearfix" />
       <Layout>
-          <CollectionPageHeader collection={this.state.collection} dropdown={true} />
-          <div className="bee-page-title-bar" style={{marginBottom: "0",}}>
-            <h2 className="bee-page-title-bar-title">Browse Collection</h2>
-          </div>
-          <PageContent>
-            <ItemsList height={this.state.height} items={this.state.items} />
-          </PageContent>
-        </Layout>
-        <CollectionOverlayFooter collection={this.state.collection} />
-      </div>
+        <ItemsModalList height={this.state.height} items={this.state.items} />
+        <PageContent>
+          <ItemsList height={this.state.height} items={this.state.items} />
+        </PageContent>
+      </Layout>
+      <CollectionOverlayFooter collection={this.state.collection} />
+    </div>
     );
   }
 

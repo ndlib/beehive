@@ -8,6 +8,12 @@ var PageHeader = React.createClass({
     branding: React.PropTypes.bool,
   },
 
+  style: function() {
+    return {
+      width: "100%",
+    };
+  },
+
   render: function() {
     var titleBar = this.props.children;
     if (!titleBar) {
@@ -21,14 +27,16 @@ var PageHeader = React.createClass({
         <BrandBar />
       );
     }
-
     return (
-      <header id="banner" role="banner" className="home">
-        <nav className="navbar navbar-default navbar-static-top" role="navigation">
-          {branding}
-          {titleBar}
-        </nav>
-      </header>
+      <div id="banner-wrapper">
+        <header id="banner" role="banner" className="home" style={this.style()} >
+          <nav className="navbar navbar-default navbar-static-top" role="navigation" >
+            {branding}
+            {titleBar}
+
+          </nav>
+        </header>
+      </div>
     );
   }
 });

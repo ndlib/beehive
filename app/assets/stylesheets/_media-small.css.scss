@@ -110,6 +110,7 @@ $break-small: 480px;
   .section-caption {
     font-size: 11px !important;
   }
+
   #footer {
     .hesburgh-logo {
       width: 70px;
@@ -143,6 +144,13 @@ $break-small: 480px;
 
     i {
       font-size: 20px;
+    }
+  }
+
+  .items-list-page {
+
+    #banner-wrapper {
+      height: 80px;
     }
   }
 }
