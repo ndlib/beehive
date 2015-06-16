@@ -1,5 +1,6 @@
 /* perfect-scrollbar v0.6.2 */
 .ps-container {
+  -ms-touch-action: none;
   overflow: hidden !important; }
   .ps-container.ps-active-x > .ps-scrollbar-x-rail, .ps-container.ps-active-y > .ps-scrollbar-y-rail {
     display: block; }
