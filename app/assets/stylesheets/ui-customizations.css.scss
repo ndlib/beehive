@@ -11,6 +11,7 @@ $footer-height: 49px;
 @import "fonts.css.scss";
 
 html {
+  -ms-touch-action: none;
   height: 100%;
   letter-spacing: 0.05em;
 }
