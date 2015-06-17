@@ -6,3 +6,4 @@
 [![Code Climate](https://codeclimate.com/github/ndlib/beehive/badges/gpa.svg)](https://codeclimate.com/github/ndlib/beehive)
 
 Beehive provides an attractive frontend display for the collections and exhibits created and managed by [Honeycomb](https://github.com/ndlib/honeycomb).
+It is created and managed by WSE at Hesburgh Libraries.
