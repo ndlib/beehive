@@ -9,13 +9,13 @@ describe('Loading', function() {
   var loading = TestUtils.renderIntoDocument(<Loading/>);
 
   it('returns a div with the className loading', function() {
-    expect(loading.getDOMNode().nodeName).toBe('DIV');
-    expect(loading.getDOMNode().className).toBe('loading');
+    expect(React.findDOMNode(loading).nodeName).toBe('DIV');
+    expect(React.findDOMNode(loading).className).toBe('loading');
   });
 
   it('has an img tag with src=images/ajax-loader.gif', function() {
-    expect(loading.getDOMNode().firstChild.nodeName).toBe('IMG');
-    expect(loading.getDOMNode().innerHTML).toContain('src="/images/ajax-loader.gif"');
+    expect(React.findDOMNode(loading).firstChild.nodeName).toBe('IMG');
+    expect(React.findDOMNode(loading).innerHTML).toContain('src="/images/ajax-loader.gif"');
   });
 
 });
