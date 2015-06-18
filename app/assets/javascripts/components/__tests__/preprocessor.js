@@ -1,6 +1,6 @@
 //app/assets/javascripts/components/__tests__/preprocessor.js
 var ReactTools = require('react-tools');
-var jsxPattern = /[.]jsx$/
+var jsxPattern = /[.]jsx$/;
 
 module.exports = {
   process: function(src, path) {
