@@ -27,11 +27,9 @@ set :deploy_to, "/home/app/beehive"
 # set :linked_files, %w{config/database.yml}
 set :linked_files, %w{config/secrets.yml}
 
-set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets public/system vendor/bundle}
+set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets public/system vendor/bundle node_modules}
 
 set :default_env, { path: "/opt/ruby/current/bin:$PATH" }
-
-set :npm_flags, "--no-spin"
 
 namespace :deploy do
 
@@ -56,4 +54,5 @@ namespace :deploy do
 end
 
 after "deploy:finished", "airbrake:deploy"
-after "deploy:updated",     "newrelic:notice_deployment"
+after "deploy:updated", "newrelic:notice_deployment"
+before "npm:install", "npm:prune"

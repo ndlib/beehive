@@ -1,21 +1,24 @@
 {
   "name": "beehive",
+  "description": "Dependencies for the Beehive application",
   "repository": "git@github.com:ndlib/beehive.git",
-  "devDependencies": {
+  "dependencies": {
     "browserify": "^6.3.4",
     "browserify-incremental": "^1.5.0",
+    "react": "^0.13.3",
+    "react-scroll": "^0.18.0",
+    "reactify": "^0.17.1"
+  },
+  "devDependencies": {
     "coveralls": "^2.11.2",
     "gulp": "^3.9.0",
     "gulp-watch": "^4.2.4",
     "jest-cli": "^0.4.12",
     "jquery": "^2.1.4",
-    "react": "^0.13.3",
-    "react-scroll": "^0.18.0",
-    "react-tools": "^0.12.2",
-    "reactify": "^0.17.1"
+    "react-tools": "^0.12.2"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=0.10.0 <0.12"
   },
   "scripts": {
     "test": "node ./node_modules/jest-cli/bin/jest.js"
@@ -39,8 +42,5 @@
     "testPathIgnorePatterns": [
       "preprocessor.js"
     ]
-  },
-  "dependencies": {
-    "coveralls": "^2.11.2"
   }
 }
