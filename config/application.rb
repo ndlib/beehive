@@ -28,7 +28,7 @@ module Beehive
     # config/application.rb
     config.react.variant      = :production
     config.react.addons       = true
-    config.browserify_rails.commandline_options = "--transform reactify --extension=\".jsx\""
+    config.browserify_rails.commandline_options = "--transform  [ reactify --es6 ] --extension=\".jsx\""
 
     config.assets.precompile = [ Proc.new{ |path| !File.extname(path).in?([".js", ".css", ".map", ".gzip", ""] ) }, /(?:\/|\\|\A)application\.(css|js)$/ ]
 
