@@ -18,5 +18,4 @@ npm-debug.log
 /vendor/bundle/
 /public/assets/
 /coverage/
-/node-modules/
-
+/node_modules/
