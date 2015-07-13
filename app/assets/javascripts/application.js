@@ -23,3 +23,4 @@
 //= require plugins
 
 $ = jQuery = require('jquery');
+window.devicePixelRatio = 1;
