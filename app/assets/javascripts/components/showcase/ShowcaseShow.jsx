@@ -141,6 +141,7 @@ var ShowcaseShow = React.createClass({
     if (this.props.showcase) {
       return (
         <div>
+          <AttentionHelp start={Date.now()} />
           <ShowcaseBackground percentBlur={backgroundBlur} height={this.props.height} showcase={this.props.showcase} />
           <ShowcaseTitleBar percentFade={this.state.titleSectionPercentVisible} height={showcaseTitleHeight} showcase={this.props.showcase} />
           <div id="showcase-outer" className="showcase-outer" style={this.styleOuter(showcaseHeight)} onScroll={this.onScroll}>
