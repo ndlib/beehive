@@ -34,16 +34,15 @@ var ShowcaseShow = React.createClass({
 
   initializeScrollbar: function() {
     this.scrollbarInitialized = true;
-    if(!this.ie()) {
-      $('#showcase-outer').perfectScrollbar({useBothWheelAxes: true, suppressScrollY: true });
+    $('#showcase-outer').perfectScrollbar({useBothWheelAxes: true, suppressScrollY: true });
+    if(this.ie()) {
+      $(".ps-scrollbar-x-rail").hide();
     }
   },
 
   updateScrollbar: function() {
-    if(!this.ie()) {
-      if (this.scrollbarInitialized) {
-        $('#showcase-outer').perfectScrollbar('update');
-      }
+    if (this.scrollbarInitialized) {
+      $('#showcase-outer').perfectScrollbar('update');
     }
   },
 
