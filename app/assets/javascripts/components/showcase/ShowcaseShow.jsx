@@ -34,12 +34,16 @@ var ShowcaseShow = React.createClass({
 
   initializeScrollbar: function() {
     this.scrollbarInitialized = true;
-    $('#showcase-outer').perfectScrollbar({useBothWheelAxes: true, suppressScrollY: true });
+    if(!this.ie()) {
+      $('#showcase-outer').perfectScrollbar({useBothWheelAxes: true, suppressScrollY: true });
+    }
   },
 
   updateScrollbar: function() {
-    if (this.scrollbarInitialized) {
-      $('#showcase-outer').perfectScrollbar('update');
+    if(!this.ie()) {
+      if (this.scrollbarInitialized) {
+        $('#showcase-outer').perfectScrollbar('update');
+      }
     }
   },
 
@@ -100,6 +104,24 @@ var ShowcaseShow = React.createClass({
       scrollOffsetLeft: scrollLeft,
       titleSectionPercentVisible: percentVisible,
     });
+  },
+
+  ie: function() {
+    // return true if Internet Exploder else false
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf('MSIE ');
+    if (msie > 0) {
+        return true;
+    }
+    var trident = ua.indexOf('Trident/');
+    if (trident > 0) {
+        return true;
+    }
+    var edge = ua.indexOf('Edge/');
+    if (edge > 0) {
+       return true;
+    }
+    return false;
   },
 
   render: function() {
