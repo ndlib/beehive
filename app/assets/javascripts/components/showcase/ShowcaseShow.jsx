@@ -19,6 +19,8 @@ var ShowcaseShow = React.createClass({
     return {
       scrollOffsetLeft: 0,
       titleSectionPercentVisible: 1,
+      startTime: Date.now(),
+      hasScrolled: false,
     }
   },
 
@@ -96,6 +98,9 @@ var ShowcaseShow = React.createClass({
   },
 
   onScroll: function() {
+    if(!this.state.hasScrolled) {
+      this.setState({hasScrolled: true});
+    }
     var scrollLeft = $("#showcase-outer").get(0).scrollLeft;
     var titleWidth = $(this.getDOMNode()).width() * titleSectionWidthPercent;
     var percentVisible = 1 - scrollLeft/titleWidth;
@@ -141,7 +146,7 @@ var ShowcaseShow = React.createClass({
     if (this.props.showcase) {
       return (
         <div>
-          <AttentionHelp start={Date.now()} />
+          <AttentionHelp start={this.state.startTime} hasScrolled={this.state.hasScrolled} />
           <ShowcaseBackground percentBlur={backgroundBlur} height={this.props.height} showcase={this.props.showcase} />
           <ShowcaseTitleBar percentFade={this.state.titleSectionPercentVisible} height={showcaseTitleHeight} showcase={this.props.showcase} />
           <div id="showcase-outer" className="showcase-outer" style={this.styleOuter(showcaseHeight)} onScroll={this.onScroll}>

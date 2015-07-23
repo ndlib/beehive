@@ -4,9 +4,11 @@ let mui = require("material-ui");
 let Snackbar = mui.Snackbar;
 let AttentionHelp = React.createClass({
   mixins: [MuiThemeMixin],
-  propTypes: function() {
-    start: React.PropTypes.number.isRequired
+  propTypes: {
+    start: React.PropTypes.number.isRequired,
+    hasScrolled: React.PropTypes.bool
   },
+
   getInitialState: function(){
     return { elapsed: 0 };
   },
@@ -31,8 +33,9 @@ let AttentionHelp = React.createClass({
 
   render: function() {
     var elapsed = Math.round(this.state.elapsed / 1000);
-    var snackbar = (<div/>);
-    if(elapsed >= 5 && elapsed <= 15) {
+    // we'll load it before we want to play it so there isn't a delay
+    var snackbar = (<source src="/assets/attention.mp3" type="audio/mpeg"/>);
+    if(!this.props.hasScrolled &&elapsed >= 5 && elapsed <= 15) {
       snackbar = (
         <div id="attentionHelp">
           <Snackbar
