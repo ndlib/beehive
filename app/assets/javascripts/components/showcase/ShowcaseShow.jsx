@@ -43,6 +43,9 @@ var ShowcaseShow = React.createClass({
   updateScrollbar: function() {
     if (this.scrollbarInitialized) {
       $('#showcase-outer').perfectScrollbar('update');
+      if(this.ie()) {
+        $(".ps-scrollbar-x-rail").hide();
+      }
     }
   },
 
