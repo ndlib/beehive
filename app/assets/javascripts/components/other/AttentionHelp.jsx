@@ -2,19 +2,25 @@
 var React = require("react");
 var mui = require("material-ui");
 var Snackbar = mui.Snackbar;
+
 var AttentionHelp = React.createClass({
   mixins: [MuiThemeMixin],
+
   propTypes: {
     start: React.PropTypes.number.isRequired,
     hasScrolled: React.PropTypes.bool
   },
 
   getInitialState: function(){
-    return { elapsed: 0 };
+    var state = {
+      elapsed: 0,
+    };
+    return state;
   },
 
   componentDidMount: function() {
     this.timer = setInterval(this.tick, 1000);
+
   },
 
   componentWillUnmount: function() {
@@ -27,7 +33,7 @@ var AttentionHelp = React.createClass({
 
   style: function() {
     return {
-      bottom: "49px",
+      bottom: "54px",
     };
   },
 
@@ -35,7 +41,21 @@ var AttentionHelp = React.createClass({
     var elapsed = Math.round(this.state.elapsed / 1000);
     // we'll load it before we want to play it so there isn't a delay
     var snackbar = (<source src="/attention.mp3" type="audio/mpeg"/>);
-    if(!this.props.hasScrolled &&elapsed >= 5 && elapsed <= 15) {
+    var audioPlay = ""
+    var storage = JSON.parse(localStorage.getItem("AudioPlayed"));
+
+    if(!this.props.hasScrolled && elapsed >= 5 && elapsed <= 15) {
+      if(storage) {
+        if(storage.audioPlayed) {
+          audioPlay = (
+            <audio autoPlay>
+              <source src="/attention.mp3" type="audio/mpeg"/>
+            </audio>
+          );
+          localStorage.setItem("AudioPlayed", JSON.stringify({audioPlayed: true}));
+        }
+      }
+      
       snackbar = (
         <div id="attentionHelp">
           <Snackbar
@@ -45,9 +65,7 @@ var AttentionHelp = React.createClass({
             ref="attentionHelp"
             style={this.style()}
           />
-          <audio autoPlay>
-            <source src="/attention.mp3" type="audio/mpeg"/>
-          </audio>
+          {audioPlay}
         </div>
       );
     }
