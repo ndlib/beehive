@@ -1,8 +1,8 @@
 "use strict"
-let React = require("react");
-let mui = require("material-ui");
-let Snackbar = mui.Snackbar;
-let AttentionHelp = React.createClass({
+var React = require("react");
+var mui = require("material-ui");
+var Snackbar = mui.Snackbar;
+var AttentionHelp = React.createClass({
   mixins: [MuiThemeMixin],
   propTypes: {
     start: React.PropTypes.number.isRequired,
@@ -34,7 +34,7 @@ let AttentionHelp = React.createClass({
   render: function() {
     var elapsed = Math.round(this.state.elapsed / 1000);
     // we'll load it before we want to play it so there isn't a delay
-    var snackbar = (<source src="/assets/attention.mp3" type="audio/mpeg"/>);
+    var snackbar = (<source src="/attention.mp3" type="audio/mpeg"/>);
     if(!this.props.hasScrolled &&elapsed >= 5 && elapsed <= 15) {
       snackbar = (
         <div id="attentionHelp">
@@ -46,7 +46,7 @@ let AttentionHelp = React.createClass({
             style={this.style()}
           />
           <audio autoPlay>
-            <source src="/assets/attention.mp3" type="audio/mpeg"/>
+            <source src="/attention.mp3" type="audio/mpeg"/>
           </audio>
         </div>
       );
