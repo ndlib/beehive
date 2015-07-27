@@ -355,12 +355,13 @@ $transparent-white: rgba(244, 244, 244, 0.8);
   right: 5px;
   top: 50%;
   width: 30px;
-
 }
 
-.scroll-left:hover .scroll-arrow,
-.scroll-right:hover .scroll-arrow {
-  color: $white;
+.scroll-left:hover,
+.scroll-right:hover {
+  .scroll-arrow {
+    color: $white;
+  }
 }
 
 @keyframes scrollfadein {
