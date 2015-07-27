@@ -33,16 +33,16 @@ var Scroller = React.createClass({
     if($(this.props.target).get(0)) {
       if($(this.props.target).get(0).scrollLeft > 0) {
         left = (
-          <div id="scrollLeft" onClick={this.onClick.bind(this, -1)} style={this.style()}>
-            <i className="scrollArrow mdi-navigation-chevron-left" style={this.iconStyle()}/>
+          <div className="scroll-left" onClick={this.onClick.bind(this, -1)} style={this.style()}>
+            <i className="scroll-arrow mdi-navigation-chevron-left" style={this.iconStyle()}/>
           </div>
         );
       }
 
       if($(this.props.target).get(0).scrollLeft < this.maxScroll()) {
         right = (
-        <div id="scrollRight" onClick={this.onClick.bind(this, 1)} style={this.style()}>
-            <i className="scrollArrow mdi-navigation-chevron-right" style={this.iconStyle()}/>
+        <div className="scroll-right" onClick={this.onClick.bind(this, 1)} style={this.style()}>
+            <i className="scroll-arrow mdi-navigation-chevron-right" style={this.iconStyle()}/>
           </div>
         );
       }

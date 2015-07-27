@@ -325,7 +325,7 @@ $white: #fff;
   }
 }
 
-#scrollLeft {
+.scroll-left {
   height: 100%;
   left: 0;
   position: fixed;
@@ -335,7 +335,7 @@ $white: #fff;
   z-index: 100;
 }
 
-#scrollRight {
+.scroll-right {
   height: 100%;
   position: fixed;
   right: 0;
@@ -345,7 +345,7 @@ $white: #fff;
   z-index: 100;
 }
 
-.scrollArrow {
+.scroll-arrow {
   top: 50%;
   display: block;
   margin: 0;
