@@ -5,7 +5,7 @@ var Scroller = React.createClass({
     target: React.PropTypes.string.isRequired,
   },
 
-  onClick: function(direction, event) {
+  onMouseDown: function(direction, event) {
     $(this.props.target).get(0).scrollLeft += 50 * direction;
   },
 
@@ -33,7 +33,7 @@ var Scroller = React.createClass({
     if($(this.props.target).get(0)) {
       if($(this.props.target).get(0).scrollLeft > 0) {
         left = (
-          <div className="scroll-left" onClick={this.onClick.bind(this, -1)} style={this.style()}>
+          <div className="scroll-left" onMouseDown={this.onMouseDown.bind(this, -1)} style={this.style()}>
             <i className="scroll-arrow mdi-navigation-chevron-left" style={this.iconStyle()}/>
           </div>
         );
@@ -41,7 +41,7 @@ var Scroller = React.createClass({
 
       if($(this.props.target).get(0).scrollLeft < this.maxScroll()) {
         right = (
-        <div className="scroll-right" onClick={this.onClick.bind(this, 1)} style={this.style()}>
+        <div className="scroll-right" onMouseDown={this.onMouseDown.bind(this, 1)} style={this.style()}>
             <i className="scroll-arrow mdi-navigation-chevron-right" style={this.iconStyle()}/>
           </div>
         );
