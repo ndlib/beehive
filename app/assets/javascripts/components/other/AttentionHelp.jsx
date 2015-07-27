@@ -57,7 +57,7 @@ var AttentionHelp = React.createClass({
       snackbar = (
         <div id="attentionHelp">
           <Snackbar
-            message="Hey! You can scroll left to right."
+            message="Scroll left to right to view the showcase."
             autoHideDuration={5000}
             openOnMount={true}
             ref="attentionHelp"
