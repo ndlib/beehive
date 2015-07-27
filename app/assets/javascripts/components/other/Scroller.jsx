@@ -40,7 +40,7 @@ var Scroller = React.createClass({
         );
       }
 
-      if($(this.props.target).get(0).scrollLeft < this.maxScroll()) {
+      if($(this.props.target).get(0).scrollLeft < this.maxScroll() - 10) {
         right = (
         <div className="scroll-right" onMouseDown={this.onMouseDown.bind(this, 1)} style={this.style()}>
             <i className="scroll-arrow mdi-navigation-chevron-right" style={this.iconStyle()}/>
