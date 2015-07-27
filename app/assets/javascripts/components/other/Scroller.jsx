@@ -7,7 +7,7 @@ var Scroller = React.createClass({
 
   onMouseDown: function(direction, event) {
     var scrollDelta = Math.ceil($(this.props.target).get(0).clientWidth * (3/4));
-    $(this.props.target).get(0).scrollLeft += scrollDelta * direction;
+    $(this.props.target).animate({scrollLeft: ($(this.props.target).get(0).scrollLeft + scrollDelta * direction)}, 500);
   },
 
   style: function() {
