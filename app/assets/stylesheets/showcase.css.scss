@@ -10,6 +10,7 @@ $scrollbar-rail-color: #dedede;
 $scrollbar-color: #666;
 $black: #000;
 $white: #fff;
+$transparentWhite: rgba(244, 244, 244, 0.8);
 
 
 .showcase-outer {
@@ -353,6 +354,11 @@ $white: #fff;
   position: absolute;
   right: 5px;
   width: 30px;
+  color: $transparentWhite;
+}
+.scroll-left:hover .scroll-arrow,
+.scroll-right:hover .scroll-arrow {
+  color: $white;
 }
 
 @keyframes scrollfadein {
