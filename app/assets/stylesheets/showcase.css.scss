@@ -10,7 +10,7 @@ $scrollbar-rail-color: #dedede;
 $scrollbar-color: #666;
 $black: #000;
 $white: #fff;
-$transparentWhite: rgba(244, 244, 244, 0.8);
+$transparent-white: rgba(244, 244, 244, 0.8);
 
 
 .showcase-outer {
@@ -354,7 +354,7 @@ $transparentWhite: rgba(244, 244, 244, 0.8);
   position: absolute;
   right: 5px;
   width: 30px;
-  color: $transparentWhite;
+  color: $transparent-white;
 }
 .scroll-left:hover .scroll-arrow,
 .scroll-right:hover .scroll-arrow {
