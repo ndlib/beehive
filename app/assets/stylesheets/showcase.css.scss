@@ -347,14 +347,15 @@ $transparent-white: rgba(244, 244, 244, 0.8);
 }
 
 .scroll-arrow {
-  top: 50%;
+  color: $transparent-white;
   display: block;
   margin: 0;
   padding: 0;
   position: absolute;
   right: 5px;
+  top: 50%;
   width: 30px;
-  color: $transparent-white;
+
 }
 .scroll-left:hover .scroll-arrow,
 .scroll-right:hover .scroll-arrow {
