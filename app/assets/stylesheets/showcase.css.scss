@@ -325,6 +325,36 @@ $white: #fff;
   }
 }
 
+#scrollLeft {
+  height: 100%;
+  left: 0;
+  position: fixed;
+  text-align: center;
+  top: 0%;
+  width: 30px;
+  z-index: 100;
+}
+
+#scrollRight {
+  height: 100%;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  top: 0%;
+  width: 30px;
+  z-index: 100;
+}
+
+.scrollArrow {
+  top: 50%;
+  display: block;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  right: 5px;
+  width: 30px;
+}
+
 @keyframes scrollfadein {
   0% {
     opacity: 0.1;

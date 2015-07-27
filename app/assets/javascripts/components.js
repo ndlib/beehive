@@ -12,6 +12,7 @@ PrevNextMixin = require("./mixins/PrevNextMixin");
 LoadRemoteCollectionMixin = require("./mixins/LoadRemoteCollectionMixin");
 TitleConcatMixin = require("./mixins/TitleConcatMixin");
 MuiThemeMixin = require("./mixins/MuiThemeMixin");
+IEMixin = require("./mixins/IEMixin");
 
 // Layout
 Layout = require("./components/layout/Layout");
@@ -108,3 +109,4 @@ Loading = require("./components/other/Loading");
 PreviousModal = require("./components/other/PreviousModal");
 NextModal = require("./components/other/NextModal");
 ToggleTheme = require("./components/other/ToggleTheme");
+Scroller = require("./components/other/Scroller");
