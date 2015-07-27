@@ -1024,6 +1024,16 @@ div.dataTables_filter {
   }
 }
 
+.errorframe {
+  margin: 0 auto;
+  width: 50vw;
+  background: image_url("frame.png") no-repeat;
+  background-size: contain;
+  padding:20vh 10vw;
+  max-width: 790px;
+  max-height: 520px;
+}
+
 @import "cards.css.scss";
 @import "collection.css.scss";
 @import "showcase.css.scss";

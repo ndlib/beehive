@@ -14,9 +14,11 @@ var ErrorPage = React.createClass({
               <div className="col-lg-12 bee-page-content">
                 <div className="row">
                   <div className="col-sm-12">
+                    <div className="errorframe">
                     <h1>Oops!</h1>
                     <p>There doesn't appear to be anything here at the moment.</p>
                     <p><a href={url}>Try the Digital Exhibits and Collections homepage.</a></p>
+                    </div>
                   </div>
                 </div>
               </div>
