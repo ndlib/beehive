@@ -22,15 +22,35 @@ var Scroller = React.createClass({
     };
   },
 
+  maxScroll: function() {
+    return $(this.props.target).get(0).scrollWidth - $(this.props.target).get(0).clientWidth;
+  },
+
   render: function() {
+    var left = "";
+    var right = "";
+
+    if($(this.props.target).get(0)) {
+      if($(this.props.target).get(0).scrollLeft > 0) {
+        left = (
+          <div id="scrollLeft" onClick={this.onClick.bind(this, -1)} style={this.style()}>
+            <i className="scrollArrow mdi-navigation-chevron-left" style={this.iconStyle()}/>
+          </div>
+        );
+      }
+
+      if($(this.props.target).get(0).scrollLeft < this.maxScroll()) {
+        right = (
+        <div id="scrollRight" onClick={this.onClick.bind(this, 1)} style={this.style()}>
+            <i className="scrollArrow mdi-navigation-chevron-right" style={this.iconStyle()}/>
+          </div>
+        );
+      }
+    }
     return(
       <div>
-        <div id="scrollLeft" onClick={this.onClick.bind(this, -1)} style={this.style()}>
-          <i className="scrollArrow mdi-navigation-chevron-left" style={this.iconStyle()}/>
-        </div>
-        <div id="scrollRight" onClick={this.onClick.bind(this, 1)} style={this.style()}>
-          <i className="scrollArrow mdi-navigation-chevron-right" style={this.iconStyle()}/>
-        </div>
+        {left}
+        {right}
       </div>
     );
   }
