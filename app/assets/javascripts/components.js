@@ -11,6 +11,8 @@ PageHeightMixin = require("./mixins/PageHeightMixin");
 PrevNextMixin = require("./mixins/PrevNextMixin");
 LoadRemoteCollectionMixin = require("./mixins/LoadRemoteCollectionMixin");
 TitleConcatMixin = require("./mixins/TitleConcatMixin");
+MuiThemeMixin = require("./mixins/MuiThemeMixin");
+IEMixin = require("./mixins/IEMixin");
 
 // Layout
 Layout = require("./components/layout/Layout");
@@ -96,13 +98,15 @@ SectionModal = require("./components/modal/SectionModal");
 ItemModal = require("./components/modal/ItemModal");
 
 // Other
+AttentionHelp = require("./components/other/AttentionHelp");
 MetadataList = require("./components/other/MetadataList");
 MetadataItem = require("./components/other/MetadataItem");
 Details = require("./components/other/Details");
 DescriptionTeaser = require("./components/other/DescriptionTeaser");
 Thumbnail = require("./components/other/Thumbnail");
 OpenseadragonViewer  = require("./components/other/OpenseadragonViewer");
-Loading= require("./components/other/Loading");
+Loading = require("./components/other/Loading");
 PreviousModal = require("./components/other/PreviousModal");
 NextModal = require("./components/other/NextModal");
 ToggleTheme = require("./components/other/ToggleTheme");
+Scroller = require("./components/other/Scroller");

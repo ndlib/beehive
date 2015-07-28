@@ -1,5 +1,5 @@
 //app/assets/javascripts/components/ShowcaseShow.jsx
-var React = require('react');
+var React = require("react");
 
 var maxShowcaseHeight = 840;
 var showcaseTitleHeight = 40;
@@ -9,7 +9,8 @@ var minBackgroundBlur = 0.3;
 var maxBackgroundBlur = 0.8;
 
 var ShowcaseShow = React.createClass({
-  displayName: 'Showcase Show',
+  mixins: [IEMixin],
+  displayName: "Showcase Show",
   propTypes: {
     showcase: React.PropTypes.object,
     height: React.PropTypes.number.isRequired,
@@ -19,6 +20,8 @@ var ShowcaseShow = React.createClass({
     return {
       scrollOffsetLeft: 0,
       titleSectionPercentVisible: 1,
+      startTime: Date.now(),
+      hasScrolled: false,
     }
   },
 
@@ -34,54 +37,60 @@ var ShowcaseShow = React.createClass({
 
   initializeScrollbar: function() {
     this.scrollbarInitialized = true;
-    $('#showcase-outer').perfectScrollbar({useBothWheelAxes: true, suppressScrollY: true });
+    $("#showcase-outer").perfectScrollbar({useBothWheelAxes: true, suppressScrollY: true });
+    if(this.ie()) {
+      $(".ps-scrollbar-x-rail").hide();
+    }
   },
 
   updateScrollbar: function() {
     if (this.scrollbarInitialized) {
-      $('#showcase-outer').perfectScrollbar('update');
+      $("#showcase-outer").perfectScrollbar("update");
+      if(this.ie()) {
+        $(".ps-scrollbar-x-rail").hide();
+      }
     }
   },
 
   componentDidMount: function() {
     window.addEventListener("hashchange", this.checkHash, false);
-    // window.addEventListener('resize', this.handleResize, false);
+    // window.addEventListener("resize", this.handleResize, false);
     this.checkHash();
   },
 
   componentWillUnmount: function() {
-    window.removeEventListener('hashchange', this.checkHash);
-    // .rwindowemoveEventListener('resize', this.handleResize);
+    window.removeEventListener("hashchange", this.checkHash);
+    // .rwindowemoveEventListener("resize", this.handleResize);
     document.body.style.backgroundImage = null;
   },
 
   checkHash: function() {
     $(".modal").modal("hide");
     if(window.location.hash) {
-      $(window.location.hash).modal('show');
+      $(window.location.hash).modal("show");
     }
   },
 
   styleInner: function(height) {
     return {
-      position: 'absolute',
-      height: height + 'px',
+      position: "absolute",
+      height: height + "px",
       top: 0,
       left: 0,
-      overflowX: 'visible',
-      overflowY: 'visible',
-      paddingTop: '20px',
+      overflowX: "visible",
+      overflowY: "visible",
+      paddingTop: "20px",
     };
   },
 
   styleOuter: function(height) {
     return {
-      position: 'relative',
-      overflowY: 'hidden',
-      overflowX: 'hidden',
-      whiteSpace: 'nowrap',
-      boxSizing: 'border-box',
-      height: height + 'px',
+      position: "relative",
+      overflowY: "hidden",
+      overflowX: "hidden",
+      whiteSpace: "nowrap",
+      boxSizing: "border-box",
+      height: height + "px",
     };
   },
 
@@ -90,6 +99,9 @@ var ShowcaseShow = React.createClass({
   },
 
   onScroll: function() {
+    if(!this.state.hasScrolled) {
+      this.setState({hasScrolled: true});
+    }
     var scrollLeft = $("#showcase-outer").get(0).scrollLeft;
     var titleWidth = $(this.getDOMNode()).width() * titleSectionWidthPercent;
     var percentVisible = 1 - scrollLeft/titleWidth;
@@ -117,12 +129,15 @@ var ShowcaseShow = React.createClass({
     if (this.props.showcase) {
       return (
         <div>
+          <AttentionHelp start={this.state.startTime} hasScrolled={this.state.hasScrolled} />
           <ShowcaseBackground percentBlur={backgroundBlur} height={this.props.height} showcase={this.props.showcase} />
           <ShowcaseTitleBar percentFade={this.state.titleSectionPercentVisible} height={showcaseTitleHeight} showcase={this.props.showcase} />
           <div id="showcase-outer" className="showcase-outer" style={this.styleOuter(showcaseHeight)} onScroll={this.onScroll}>
-            <div id="showcase-inner" className="showcase-inner" style={this.styleInner(showcaseInnerHeight)}>
+            <Scroller target="#showcase-outer" />
+            <div id="showcase-inner" className="showcase-inner" style={this.styleInner(showcaseInnerHeight)} >
               <ShowcaseTitle height={showcaseInnerHeight} showcase={this.props.showcase} />
               <ShowcaseSections height={showcaseInnerHeight} showcase={this.props.showcase} />
+
             </div>
           </div>
         </div>
