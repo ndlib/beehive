@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/ndlib/hesburgh_infrastructure.git
-  revision: 2b9af6f2d5f2a588703d03cd1dd91c09e883f183
+  revision: 0b1301f74047aed18e9b3b553fabc607b9694529
   specs:
     hesburgh_infrastructure (0.2.5)
       rails
