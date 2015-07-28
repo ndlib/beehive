@@ -22,3 +22,7 @@ end
 hesburgh_guard.rails do
   # Watch any custom paths
 end
+
+hesburgh_guard.npm do
+
+end

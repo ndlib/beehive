@@ -56,6 +56,7 @@ group :development, :test do
   gem "guard", "~> 2.7.3"
   gem "guard-bundler"
   gem "guard-coffeescript"
+  gem "guard-npm"
   gem "guard-rails"
   gem "guard-rspec"
   gem "guard-spring"
