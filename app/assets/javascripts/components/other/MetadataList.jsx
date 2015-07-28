@@ -7,11 +7,11 @@ var MetadataList = React.createClass({
     metadata: React.PropTypes.array.isRequired,
   },
   render: function() {
-    var metadataNodes = this.props.metadata.map(function(metadata, index) {
+    var metadataNodes = Object.keys(this.props.metadata).map(function(key) {
       return (
-        <MetadataItem key={metadata.label} metadata={metadata} />
+        <MetadataItem key={key} metadata={this.props.metadata[key]} />
       )
-    });
+    }.bind(this));
     return (
       <div className="metadata-list">
         {metadataNodes}
