@@ -647,6 +647,13 @@ div.dataTables_filter {
   }
 }
 
+.sections-modals {
+
+  .modal-body .row {
+    padding-right: 17px;
+  }
+}
+
 .modal-content {
   background: #333;
   color: $white;
@@ -722,7 +729,7 @@ div.dataTables_filter {
     z-index: 200;
     position: absolute;
     top: 10px;
-    right: 10px;
+    right: 27px;
     opacity: .7;
     border: solid 1px $white;
     border-radius: 3px;
