@@ -1,30 +1,12 @@
 "use strict"
-var React = require('react');
+var React = require("react");
 
-
-var ItemsList = React.createClass({
+var SearchDisplayList = React.createClass({
   mixins: [GridListMixin],
-  displayName: 'Items List',
 
   propTypes: {
-    items: React.PropTypes.array,
-    height: React.PropTypes.number.isRequired,
-  },
+    items: React.PropTypes.array
 
-  componentDidUpdate: function() {
-    this.checkHash();
-  },
-
-  componentDidMount: function() {
-    window.addEventListener("hashchange", this.checkHash, false);
-    this.checkHash();
-  },
-
-  checkHash: function() {
-    $(".modal").modal("hide");
-    if(window.location.hash) {
-      $(window.location.hash).modal('show');
-    }
   },
 
   outerStyle: function() {
@@ -48,14 +30,13 @@ var ItemsList = React.createClass({
 
         {this.renderButtons()}
         <div className={this.listClass()}>
+          Search Results go here
           {itemNodes}
         </div>
          <div className="clearfix" />
       </div>
     );
-
   }
 });
 
-// each file will export exactly one component
-module.exports = ItemsList;
+module.exports = SearchDisplayList;

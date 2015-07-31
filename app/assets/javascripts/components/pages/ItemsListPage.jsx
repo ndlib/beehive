@@ -1,4 +1,4 @@
-//app/assets/javascripts/components/ItemsListPage.jsx
+"use strict"
 var React = require('react');
 
 var ItemsListPage = React.createClass({

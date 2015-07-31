@@ -6,6 +6,10 @@ class ItemsController < ApplicationController
     @items_url = @collections_url + "/items"
   end
 
+  def search
+    @hit_url = @collections_url + "/search"
+  end
+
   def embed
     @items_url = Rails.configuration.honeycomb_url + "/v1/items/" + params[:id]
     respond_to do |format|
