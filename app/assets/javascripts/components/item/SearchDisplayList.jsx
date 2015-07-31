@@ -30,7 +30,6 @@ var SearchDisplayList = React.createClass({
 
         {this.renderButtons()}
         <div className={this.listClass()}>
-          Search Results go here
           {itemNodes}
         </div>
          <div className="clearfix" />
