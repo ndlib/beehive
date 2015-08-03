@@ -6,7 +6,6 @@ var MetadataDate = React.createClass({
 
   propTypes: {
     metadata_field: React.PropTypes.object.isRequired,
-    label: React.PropTypes.string.isRequired,
   },
 
   render: function () {
