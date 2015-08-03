@@ -13,7 +13,7 @@ var MetadataItem = React.createClass({
   fieldTypeMap: function() {
     return ({
       MetadataString: this.stringValue,
-      MetadataDate: this.simpleValue,
+      MetadataDate: this.dateValue,
       MetadataHTML: this.htmlValue,
       MetadataText: this.simpleValue,
     });
@@ -46,6 +46,9 @@ var MetadataItem = React.createClass({
     return (<div dangerouslySetInnerHTML={{__html: metadata_field.value}} />);
   },
 
+  dateValue: function (metadata_date) {
+    return (<time itemprop={this.props.metadata.name} datetime={metadata_date.iso8601}>{metadata_date.value}</time>);
+  },
 
   value: function(metadata_field) {
     var formatFunction = this.fieldTypeMap()[metadata_field["@type"]];
