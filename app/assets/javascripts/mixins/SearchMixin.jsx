@@ -1,7 +1,6 @@
 'use strict'
 var searchMixin = {
   loadSearchResults: function(url) {
-    console.log(url);
     var url = url;
     $.ajax({
       context: this,
