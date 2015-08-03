@@ -10,10 +10,19 @@ var MetadataItem = React.createClass({
     metadata: React.PropTypes.object.isRequired,
   },
 
-  value: function() {
-    var linkStyle = {wordBreak: "break-word",};
-    if (linkPattern.test(this.props.metadata.value)) {
-      var matches = this.props.metadata.value.split(linkPattern);
+  fieldTypeMap: function() {
+    return ({
+      MetadataString: this.stringValue,
+      MetadataDate: this.simpleValue,
+      MetadataHTML: this.htmlValue,
+      MetadataText: this.simpleValue,
+    });
+  },
+
+  stringValue: function (metadata_field) {
+    if (linkPattern.test(metadata_field.value)) {
+      var linkStyle = {wordBreak: "break-word",};
+      var matches = metadata_field.value.split(linkPattern);
       var replacedNodes = matches.map(function(string, index) {
         if (linkPattern.test(string)) {
           return (
@@ -25,22 +34,34 @@ var MetadataItem = React.createClass({
       });
       return replacedNodes;
     } else {
-      return this.props.metadata.value;
+      return (<div>{metadata_field.value}</div>);
     }
   },
 
+  simpleValue: function (metadata_field) {
+    return (<div>{metadata_field.value}</div>);
+  },
+
+  htmlValue: function (metadata_field) {
+    return (<div dangerouslySetInnerHTML={{__html: metadata_field.value}} />);
+  },
+
+
+  value: function(metadata_field) {
+    return this.fieldTypeMap()[metadata_field["@type"]](metadata_field);
+  },
+
+  map_arrays_to_values: function () {
+    return this.props.metadata.values.map(function (metadata_field) {
+      return this.value(metadata_field);
+    }, this);
+  },
+
   render: function() {
-    var dd = "";
-    if(typeof(this.value()) == "object") {
-      dd = (<dd>{this.value()}</dd>);
-    }
-    else if(typeof(this.value()) == "string") {
-      dd = (<dd dangerouslySetInnerHTML={{__html: this.value()}} />);
-    }
     return (
       <dl>
         <dt>{this.props.metadata.label}</dt>
-        {dd}
+        <dd>{this.map_arrays_to_values()}</dd>
       </dl>
     );
   }
