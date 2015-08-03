@@ -20,34 +20,19 @@ var MetadataItem = React.createClass({
   },
 
   stringValue: function (metadata_field) {
-    if (linkPattern.test(metadata_field.value)) {
-      var linkStyle = {wordBreak: "break-word",};
-      var matches = metadata_field.value.split(linkPattern);
-      var replacedNodes = matches.map(function(string, index) {
-        if (linkPattern.test(string)) {
-          return (
-            <a href={string} key={index} target="_blank" rel="nofollow" style={linkStyle}>{string}</a>
-          );
-        } else {
-          return string;
-        }
-      });
-      return replacedNodes;
-    } else {
-      return (<div>{metadata_field.value}</div>);
-    }
+    return (<MetadataString label={this.props.metadata.label} metadata_field={metadata_field} />);
   },
 
   simpleValue: function (metadata_field) {
-    return (<div>{metadata_field.value}</div>);
+    return (<MetadataText label={this.props.metadata.label} metadata_field={metadata_field} />);
   },
 
   htmlValue: function (metadata_field) {
-    return (<div dangerouslySetInnerHTML={{__html: metadata_field.value}} />);
+    return (<MetadataHTML label={this.props.metadata.label} metadata_field={metadata_field} />);
   },
 
-  dateValue: function (metadata_date) {
-    return (<time itemprop={this.props.metadata.name} datetime={metadata_date.iso8601}>{metadata_date.value}</time>);
+  dateValue: function (metadata_field) {
+    return (<MetadataDate label={this.props.metadata.label} metadata_field={metadata_field} />);
   },
 
   value: function(metadata_field) {
