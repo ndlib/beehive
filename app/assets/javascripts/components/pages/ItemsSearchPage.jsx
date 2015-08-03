@@ -36,7 +36,7 @@ var ItemsSearchPage = React.createClass({
 
   setValues: function(collection) {
     this.setState({
-      collection: collection,
+      collection: collection
     });
   },
 
