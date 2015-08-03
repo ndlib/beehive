@@ -20,14 +20,14 @@ var MetadataItem = React.createClass({
     metadata: React.PropTypes.object.isRequired,
   },
 
-  value: function(metadata_field) {
+  value: function(metadata_field, index) {
     var MetadataComponent = fieldTypeMap[metadata_field["@type"]];
-    return (<MetadataComponent label={this.props.metadata.label} metadata_field={metadata_field} />);
+    return (<MetadataComponent key={index} label={this.props.metadata.label} metadata_field={metadata_field} />);
   },
 
   map_arrays_to_values: function () {
-    return this.props.metadata.values.map(function (metadata_field) {
-      return this.value(metadata_field);
+    return this.props.metadata.values.map(function (metadata_field, index) {
+      return this.value(metadata_field, index);
     }, this);
   },
 

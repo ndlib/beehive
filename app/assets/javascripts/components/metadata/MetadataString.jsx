@@ -21,7 +21,7 @@ var MetadataString = React.createClass({
             <a href={string} key={index} target="_blank" rel="nofollow" style={linkStyle}>{string}</a>
           );
         } else {
-          return (<div>{string}</div>);
+          return (<div key={index}>{string}</div>);
         }
       });
       return (<div>{replacedNodes}</div>);
