@@ -48,7 +48,8 @@ var MetadataItem = React.createClass({
 
 
   value: function(metadata_field) {
-    return this.fieldTypeMap()[metadata_field["@type"]](metadata_field);
+    var formatFunction = this.fieldTypeMap()[metadata_field["@type"]];
+    return formatFunction(metadata_field);
   },
 
   map_arrays_to_values: function () {
