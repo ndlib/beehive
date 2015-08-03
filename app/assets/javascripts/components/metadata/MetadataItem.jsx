@@ -40,6 +40,5 @@ var MetadataItem = React.createClass({
     );
   }
 });
-
 // each file will export exactly one component
 module.exports = MetadataItem;

@@ -10,7 +10,7 @@ var MetadataDate = React.createClass({
   },
 
   render: function () {
-    return (<time itemProp={this.props.label} dateTime={this.props.metadata_field.iso8601}>{this.props.metadata_field.value}</time>);
+    return (<time dateTime={this.props.metadata_field.iso8601}>{this.props.metadata_field.value}</time>);
   }
 });
 // each file will export exactly one component
