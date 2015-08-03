@@ -22,7 +22,7 @@ var MetadataItem = React.createClass({
 
   value: function(metadata_field, index) {
     var MetadataComponent = fieldTypeMap[metadata_field["@type"]];
-    return (<MetadataComponent key={index} label={this.props.metadata.label} metadata_field={metadata_field} />);
+    return (<MetadataComponent key={index} metadata_field={metadata_field} />);
   },
 
   map_arrays_to_values: function () {
