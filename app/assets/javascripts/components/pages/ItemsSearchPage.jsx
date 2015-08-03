@@ -14,7 +14,8 @@ var ItemsSearchPage = React.createClass({
     hits: React.PropTypes.oneOfType([
       React.PropTypes.string,
       React.PropTypes.array,
-    ])
+    ]),
+    query_parameters: React.PropTypes.string
   },
 
   getInitialState: function() {
@@ -30,7 +31,7 @@ var ItemsSearchPage = React.createClass({
     } else {
       this.loadRemoteCollection(this.props.collection);
     }
-    this.loadSearchResults(this.props.hits);
+    this.loadSearchResults(this.props.hits + "?q=" + this.props.query_parameters);
   },
 
   setValues: function(collection) {
