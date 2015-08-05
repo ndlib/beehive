@@ -99,9 +99,12 @@ var CollectionShow = React.createClass({
 
     if (this.props.collection) {
       if(this.props.collection.image) {
-        titleStyle = {
-          display: "none",
-        };
+        if (!this.props.collection.show_page_title) {
+          titleStyle = {
+            display: "none",
+          };
+        }
+        
         image = (
           <Thumbnail image={this.props.collection.image} />
         );
