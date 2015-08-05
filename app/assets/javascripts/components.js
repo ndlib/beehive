@@ -13,6 +13,9 @@ LoadRemoteCollectionMixin = require("./mixins/LoadRemoteCollectionMixin");
 TitleConcatMixin = require("./mixins/TitleConcatMixin");
 MuiThemeMixin = require("./mixins/MuiThemeMixin");
 IEMixin = require("./mixins/IEMixin");
+GridListMixin = require("./mixins/GridListMixin");
+SearchMixin = require("./mixins/SearchMixin");
+
 
 // Layout
 Layout = require("./components/layout/Layout");
@@ -35,6 +38,7 @@ CollectionIntroPage = require("./components/pages/CollectionIntroPage");
 ShowcasesListPage = require("./components/pages/ShowcasesListPage");
 ShowcaseShowPage = require("./components/pages/ShowcaseShowPage");
 ItemsListPage = require("./components/pages/ItemsListPage");
+ItemsSearchPage = require("./components/pages/ItemsSearchPage");
 ErrorPage = require("./components/pages/ErrorPage");
 
 
@@ -89,6 +93,7 @@ ItemText = require("./components/item/ItemText");
 AdditionalResources = require("./components/item/AdditionalResources");
 AdditionalResourcesItem = require("./components/item/AdditionalResourcesItem");
 ItemsModalList = require("./components/item/ItemsModalList");
+SearchDisplayList = require("./components/item/SearchDisplayList");
 
 // Modal
 Modal = require("./components/modal/Modal");

@@ -27,7 +27,7 @@ var ItemImage = React.createClass({
   backgroundStyle: function() {
     if (this.props.image) {
       var backgroundImage;
-      backgroundImage = "url(\"" + this.props.image["thumbnail/medium"].contentUrl + "\")";
+      backgroundImage = "url(\"" + this.props.image["thumbnail/small"].contentUrl + "\")";
       return {
         width: "100%",
         height: "100%",

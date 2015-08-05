@@ -17,6 +17,9 @@ Rails.application.routes.draw do
     scope "/items" do
       get "/", to: "items#index"
     end
+    scope "/search" do
+      get "/", to: "items#search"
+    end
   end
 
   scope "/:collection_id" do

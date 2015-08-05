@@ -34,12 +34,11 @@ var SectionImage = React.createClass({
       if (this.props.section.item.metadata["transcription"]) {
         transcriptIcon = (<img src="/images/blank.png" className="section-transcript" title="Click to view transcript" alt="Click to view transcription" />);
       }
-
       return (
         <div className="section-container section-container-image" style={this.style()}>
             <Thumbnail image={this.props.section.item.image} thumbnailType="medium" style={this.imageStyle()} title={this.props.section.name} alt={this.props.section.caption} />
             <SectionCaption caption={this.props.section.caption} />
-            {transcriptIcon}
+
         </div>
       );
     } else {
