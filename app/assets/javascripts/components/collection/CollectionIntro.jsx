@@ -12,7 +12,7 @@ var CollectionIntro = React.createClass({
       <div className="collection-short-intro-container" id={this.props.id}>
         <div className="collection-short-intro" dangerouslySetInnerHTML={{__html: this.props.collection.short_description}} />
       </div>
-    )
+    );
   }
 });
 
