@@ -13,7 +13,6 @@ var Details = React.createClass({
       <div className="well item-details">
         <div className="additional-details" dangerouslySetInnerHTML={{__html: this.props.additionalDetails}} />
         <MetadataList metadata={this.props.item.metadata} />
-
       </div>
     );
   }

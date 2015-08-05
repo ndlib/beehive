@@ -97,10 +97,16 @@ Info = require("./components/modal/Info");
 SectionModal = require("./components/modal/SectionModal");
 ItemModal = require("./components/modal/ItemModal");
 
+// Metadata
+MetadataList = require("./components/metadata/MetadataList");
+MetadataItem = require("./components/metadata/MetadataItem");
+MetadataString = require("./components/metadata/MetadataString");
+MetadataHTML = require("./components/metadata/MetadataHTML");
+MetadataDate = require("./components/metadata/MetadataDate");
+MetadataText = require("./components/metadata/MetadataText");
+
 // Other
 AttentionHelp = require("./components/other/AttentionHelp");
-MetadataList = require("./components/other/MetadataList");
-MetadataItem = require("./components/other/MetadataItem");
 Details = require("./components/other/Details");
 DescriptionTeaser = require("./components/other/DescriptionTeaser");
 Thumbnail = require("./components/other/Thumbnail");
