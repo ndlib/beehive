@@ -2,7 +2,7 @@
 var React = require('react');
 
 var CollectionShowPage = React.createClass({
-  mixins: [PageHeightMixin, LoadRemoteCollectionMixin],
+  mixins: [PageHeightMixin, LoadRemoteMixin],
 
   displayName: 'Collection Show Page',
 

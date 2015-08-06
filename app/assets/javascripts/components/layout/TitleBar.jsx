@@ -1,4 +1,4 @@
-//app/assets/javascripts/components/SectionsListItem.jsx
+'use strict'
 var React = require('react');
 
 var TitleBar = React.createClass({

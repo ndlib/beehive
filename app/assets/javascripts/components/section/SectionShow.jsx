@@ -1,4 +1,4 @@
-//app/assets/javascripts/components/SectionShow.jsx
+'use strict'
 var React = require('react');
 
 var SectionShow = React.createClass({

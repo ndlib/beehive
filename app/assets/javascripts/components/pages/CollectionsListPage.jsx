@@ -2,7 +2,7 @@
 var React = require('react');
 
 var CollectionsListPage = React.createClass({
-  mixins: [LoadRemoteCollectionMixin],
+  mixins: [LoadRemoteMixin],
   displayName: 'Collections List Page',
 
   propTypes: {

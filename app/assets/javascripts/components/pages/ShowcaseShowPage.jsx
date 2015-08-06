@@ -2,7 +2,7 @@
 var React = require('react');
 
 var ShowcaseShowPage = React.createClass({
-  mixins: [PageHeightMixin, LoadRemoteCollectionMixin],
+  mixins: [PageHeightMixin, LoadRemoteMixin],
 
   propTypes: {
     collection: React.PropTypes.oneOfType([
