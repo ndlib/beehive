@@ -2,7 +2,6 @@
 var React = require('react');
 var ItemActions = require('../../actions/ItemActions');
 var ItemActionTypes = require('../../constants/ItemActionTypes');
-var ItemStore = require('../../stores/ItemStore');
 
 var ItemListItem = React.createClass({
   mixins: [LoadRemoteMixin],

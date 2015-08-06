@@ -15,7 +15,6 @@ var SearchDisplayList = React.createClass({
   },
   componentWillMount: function() {
     EventEmitter.on("ItemDialogWindow", this.showDisplayItemWindow);
-    //EventEmitter.on("ItemStoreChanged", this.setCurrentItem);
   },
 
   getInitialState: function () {
