@@ -2,7 +2,7 @@
 var React = require('react');
 
 var ShowcasesListPage = React.createClass({
-  mixins: [LoadRemoteCollectionMixin],
+  mixins: [LoadRemoteMixin],
 
   displayName: 'Showcase List Page',
 

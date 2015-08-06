@@ -3,18 +3,20 @@
 //= require react_ujs
 
 React = require("react");
+EventEmitter = require("./EventEmitter");
 
 // Mixins
 CollectionUrlMixin = require("./mixins/CollectionUrlMixin");
 HorizontalScrollMixin = require("./mixins/HorizontalScrollMixin");
 PageHeightMixin = require("./mixins/PageHeightMixin");
 PrevNextMixin = require("./mixins/PrevNextMixin");
-LoadRemoteCollectionMixin = require("./mixins/LoadRemoteCollectionMixin");
+LoadRemoteMixin = require("./mixins/LoadRemoteMixin");
 TitleConcatMixin = require("./mixins/TitleConcatMixin");
 MuiThemeMixin = require("./mixins/MuiThemeMixin");
 IEMixin = require("./mixins/IEMixin");
 GridListMixin = require("./mixins/GridListMixin");
 SearchMixin = require("./mixins/SearchMixin");
+DialogMixin = require("./mixins/DialogMixin");
 
 
 // Layout
@@ -74,8 +76,6 @@ StartShowcaseButton = require("./components/showcase/StartShowcaseButton");
 ShowcaseEnding = require("./components/showcase/ShowcaseEnding");
 
 // Sections
-SectionsListItem = require("./components/section/SectionsListItem");
-SectionLink = require("./components/section/SectionLink");
 SectionShow = require("./components/section/SectionShow");
 SectionShowDescription = require("./components/section/SectionShowDescription");
 Section = require("./components/section/Section");
@@ -121,3 +121,8 @@ PreviousModal = require("./components/other/PreviousModal");
 NextModal = require("./components/other/NextModal");
 ToggleTheme = require("./components/other/ToggleTheme");
 Scroller = require("./components/other/Scroller");
+
+AppDispatcher = require("./dispatcher/AppDispatcher");
+ItemActionTypes = require("./constants/ItemActionTypes");
+ItemActions = require("./actions/ItemActions");
+ItemStore = require("./stores/ItemStore");

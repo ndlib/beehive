@@ -5,8 +5,12 @@
   "dependencies": {
     "browserify": "^6.3.4",
     "browserify-incremental": "^1.5.0",
+    "eventemitter": "^0.3.3",
+    "flux": "^2.0.3",
     "jquery": "^2.1.4",
+    "keymirror": "^0.1.1",
     "material-ui": "^0.10.1",
+    "object-assign": "^3.0.0",
     "react": "^0.13.3",
     "react-scroll": "^0.18.0",
     "react-tap-event-plugin": "^0.1.7",
@@ -14,9 +18,11 @@
   },
   "devDependencies": {
     "coveralls": "^2.11.2",
+    "flux": "^2.0.3",
     "gulp": "^3.9.0",
     "gulp-watch": "^4.2.4",
     "jest-cli": "^0.4.12",
+    "keymirror": "^0.1.1",
     "react-tools": "^0.12.2"
   },
   "engines": {

@@ -30,6 +30,7 @@ var searchMixin = {
 
   mapHitToItem: function(hit) {
     var item = {};
+    item['@id'] = hit['@id'];
     item.name = hit.name;
     item.description = hit.description;
     item.image = {
