@@ -125,4 +125,3 @@ Scroller = require("./components/other/Scroller");
 AppDispatcher = require("./dispatcher/AppDispatcher");
 ItemActionTypes = require("./constants/ItemActionTypes");
 ItemActions = require("./actions/ItemActions");
-ItemStore = require("./stores/ItemStore");
