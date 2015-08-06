@@ -246,6 +246,12 @@ body .jumbotron, .container .jumbotron, .container-fluid .jumbotron {
   width: 100%;
   text-align: left;
 
+  .header-position {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+  }
+
   h1 {
     text-transform: uppercase;
     padding-bottom: 1em;
