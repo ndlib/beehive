@@ -11,12 +11,9 @@ var ItemListItem = React.createClass({
   },
 
   onClick: function() {
-    // check if item is in store else load it
-    //EVENT EMITTER SAVE ITEM TO STORE
     var item = this.loadRemoteItem(this.props.item['@id']);
     ItemActions.setCurrentItem(item);
     ItemActions.showItemDialogWindow(item);
-    //window.location.hash = 'modal-' + this.props.item.id;
   },
 
   targetID: function() {
@@ -36,7 +33,7 @@ var ItemListItem = React.createClass({
     return (
       <div className={this.columnClass()}>
         <div key={this.props.item['@id']} className='bee-item'>
-          <a href={this.targetID()} data-toggle='modal' data-target={this.targetID()} onClick={this.onClick}>
+          <a onClick={this.onClick}>
             <ItemImage image={this.props.item.image} />
             <ItemText item={this.props.item} />
           </a>

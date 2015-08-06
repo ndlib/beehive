@@ -13,16 +13,6 @@ var SearchDisplayList = React.createClass({
     items: React.PropTypes.array
 
   },
-  componentWillMount: function() {
-    EventEmitter.on("ItemDialogWindow", this.showDisplayItemWindow);
-  },
-
-  getInitialState: function () {
-    return {
-      displayWindowActive: false,
-      currentItem: null,
-    };
-  },
 
   outerStyle: function() {
     return {
@@ -31,46 +21,6 @@ var SearchDisplayList = React.createClass({
     };
   },
 
-  showDisplayItemWindow: function(item) {
-    console.log("DISPLAY WINDOW");
-    this.setState({
-      displayWindowActive: true,
-      currentItem: item
-    });
-    this.refs.itemDialogWindow.show();
-  },
-
-  dismissMessage: function() {
-    this.hideDisplayItemWindow();
-  },
-
-  hideDisplayItemWindow: function() {
-    this.setState({
-      displayWindowActive: false,
-    });
-    this.refs.itemDialogWindow.dismiss();
-  },
-
-  dialogWindowStyle: function() {
-    return {
-      color: 'black',
-    };
-  },
-
-  displayItemWindow: function() {
-    return (
-      <Dialog
-        ref='itemDialogWindow'
-        modal={false}
-        openImmediately={false}
-        style={this.dialogWindowStyle()}
-        actions={this.okDismiss()}
-      >
-        <ItemShow item={this.state.currentItem} height={this.state.height} />
-      </Dialog>
-    );
-
-  },
 
   render: function() {
     var view = this.state.view;
