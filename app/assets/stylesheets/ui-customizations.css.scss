@@ -1041,6 +1041,12 @@ div.dataTables_filter {
   max-height: 520px;
 }
 
+.dialog-window > div > div:nth-child(2) {
+  position: absolute !important;
+  top: 0 !important;
+  z-index: 1000000;
+}
+
 @import "cards.css.scss";
 @import "collection.css.scss";
 @import "showcase.css.scss";

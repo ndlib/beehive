@@ -62,6 +62,7 @@ var DialogMixin = {
         openImmediately={false}
         style={this.dialogWindowStyle()}
         actions={this.okDismiss()}
+        contentClassName='dialog-window'
         contentStyle={{
           width: '100%',
           maxWidth: '100%'
