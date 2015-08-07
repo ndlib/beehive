@@ -1,7 +1,7 @@
 var React = require("react");
 
 var CollectionIntroPage = React.createClass({
-  mixins: [LoadRemoteCollectionMixin],
+  mixins: [LoadRemoteMixin],
 
   displayName: "Collection Intro Page",
 

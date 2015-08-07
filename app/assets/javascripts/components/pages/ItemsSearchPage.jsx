@@ -2,7 +2,7 @@
 var React = require('react');
 
 var ItemsSearchPage = React.createClass({
-  mixins: [PageHeightMixin, LoadRemoteCollectionMixin, SearchMixin],
+  mixins: [PageHeightMixin, LoadRemoteMixin, SearchMixin],
 
   displayName: 'Items Search Page',
 

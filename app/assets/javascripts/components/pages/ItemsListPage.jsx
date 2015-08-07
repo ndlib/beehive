@@ -2,7 +2,7 @@
 var React = require('react');
 
 var ItemsListPage = React.createClass({
-  mixins: [PageHeightMixin, LoadRemoteCollectionMixin],
+  mixins: [PageHeightMixin, LoadRemoteMixin],
 
   displayName: 'Items List Page',
 

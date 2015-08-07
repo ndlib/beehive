@@ -1,8 +1,12 @@
-"use strict"
-var React = require("react");
+'use strict'
+var React = require('react');
+var mui = require('material-ui');
+var Dialog = mui.Dialog;
+var RaisedButton = mui.RaisedButton;
+var FontIcon = mui.FontIcon;
 
 var SearchDisplayList = React.createClass({
-  mixins: [GridListMixin],
+  mixins: [GridListMixin, PageHeightMixin, MuiThemeMixin, DialogMixin],
 
   propTypes: {
     items: React.PropTypes.array
@@ -11,10 +15,11 @@ var SearchDisplayList = React.createClass({
 
   outerStyle: function() {
     return {
-      width: "100%",
-      backgroundColor: "#f5f5f5",
+      width: '100%',
+      backgroundColor: '#f5f5f5',
     };
   },
+
 
   render: function() {
     var view = this.state.view;
@@ -26,13 +31,13 @@ var SearchDisplayList = React.createClass({
       return nodes;
     });
     return (
-      <div className="items-list" style={this.outerStyle()}>
-
+      <div className='items-list' style={this.outerStyle()}>
+        {this.displayItemWindow()}
         {this.renderButtons()}
         <div className={this.listClass()}>
           {itemNodes}
         </div>
-         <div className="clearfix" />
+         <div className='clearfix' />
       </div>
     );
   }

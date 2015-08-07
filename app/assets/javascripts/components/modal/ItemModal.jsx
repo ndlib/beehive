@@ -1,4 +1,4 @@
-//app/assets/javascripts/components/modal/ItemModal.jsx
+'use strict'
 var React = require('react');
 
 var ItemModal = React.createClass({

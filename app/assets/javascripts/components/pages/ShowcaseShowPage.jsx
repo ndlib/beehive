@@ -2,7 +2,7 @@
 var React = require('react');
 
 var ShowcaseShowPage = React.createClass({
-  mixins: [PageHeightMixin, LoadRemoteCollectionMixin],
+  mixins: [PageHeightMixin, LoadRemoteMixin],
 
   propTypes: {
     collection: React.PropTypes.oneOfType([
@@ -27,9 +27,9 @@ var ShowcaseShowPage = React.createClass({
 
   modals: function() {
     if(this.state.showcase) {
-      //return (
-        // <SectionsModalList height={this.state.height} sections={this.state.showcase.sections} />
-      //);
+      return (
+        <SectionsModalList height={this.state.height} sections={this.state.showcase.sections} />
+      );
       return (<span />);
     }
     else {
