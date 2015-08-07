@@ -18,11 +18,9 @@
   },
   "devDependencies": {
     "coveralls": "^2.11.2",
-    "flux": "^2.0.3",
     "gulp": "^3.9.0",
     "gulp-watch": "^4.2.4",
     "jest-cli": "^0.4.12",
-    "keymirror": "^0.1.1",
     "react-tools": "^0.12.2"
   },
   "engines": {
