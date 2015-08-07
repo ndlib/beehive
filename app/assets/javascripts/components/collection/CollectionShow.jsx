@@ -104,7 +104,7 @@ var CollectionShow = React.createClass({
             display: "none",
           };
         }
-        
+
         image = (
           <Thumbnail image={this.props.collection.image} />
         );
@@ -113,7 +113,9 @@ var CollectionShow = React.createClass({
         <div className="jumbotron">
           <div className="collection-show">
             <div className="collection-text">
+              <div className="header-position">
               <h1 style={titleStyle}>{this.props.collection.name}</h1>
+              </div>
               {image}
               {this.firstExhibitLink()}
             </div>
