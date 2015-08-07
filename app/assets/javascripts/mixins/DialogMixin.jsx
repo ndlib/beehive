@@ -27,7 +27,6 @@ var DialogMixin = {
   },
 
   showDisplayItemWindow: function(item) {
-    console.log("DISPLAY WINDOW");
     this.setState({
       displayWindowActive: true,
       currentItem: item
