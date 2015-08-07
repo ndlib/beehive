@@ -83,6 +83,8 @@ SectionCaption = require("./components/section/SectionCaption");
 SectionDescription = require("./components/section/SectionDescription");
 SectionImage = require("./components/section/SectionImage");
 SectionsModalList = require("./components/section/SectionsModalList");
+SectionLink = require("./components/section/SectionLink");
+SectionsListItem = require("./components/section/SectionsListItem");
 
 // Items
 ItemsList = require("./components/item/ItemsList");
