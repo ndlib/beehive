@@ -4,10 +4,9 @@ var mui = require('material-ui');
 var Dialog = mui.Dialog;
 var RaisedButton = mui.RaisedButton;
 var FontIcon = mui.FontIcon;
-var EventEmitter = require('../../EventEmitter');
 
 var SearchDisplayList = React.createClass({
-  mixins: [GridListMixin, MuiThemeMixin, DialogMixin, PageHeightMixin],
+  mixins: [GridListMixin, PageHeightMixin, MuiThemeMixin, DialogMixin],
 
   propTypes: {
     items: React.PropTypes.array
