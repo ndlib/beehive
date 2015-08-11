@@ -70,11 +70,19 @@ var GridListMixin = {
           <SearchBox collection={collection} searchTerm={searchTerm}/>
           <SearchSort />
         </div>
-        <button className={listClass} onClick={this.setList} >
+        <button
+          className={listClass}
+          onClick={this.setList}
+          style={{zIndex: '0'}}
+        >
           <i className="mdi-action-view-list"></i>
           List
         </button>
-        <button className={gridClass} onClick={this.setGrid} >
+        <button
+          className={gridClass}
+          onClick={this.setGrid}
+          style={{zIndex: '0'}}
+        >
           <i className= "mdi-action-view-module"></i>
           Grid
         </button>
