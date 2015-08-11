@@ -47,6 +47,11 @@ var CollectionShowPage = React.createClass({
             <CollectionPageHeader collection={this.state.collection} branding={true} />
             <PageContent>
               <CollectionShow collection={this.state.collection} />
+              <div style={{backgroundColor: 'white', width:'100%', textAlign: 'center',}}>
+                <div>
+                <SearchBox collection={this.state.collection} />
+                </div>
+              </div>
               <CollectionIntro collection={this.state.collection} id="main-collection-description" />
               <CollectionShowShowcases collection={this.state.collection} />
             </PageContent>

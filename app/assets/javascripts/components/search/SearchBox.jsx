@@ -4,6 +4,7 @@ var mui = require('material-ui');
 var TextField = mui.TextField;
 
 var SearchBox = React.createClass({
+  mixins: [MuiThemeMixin],
   propTypes: {
     collection: React.PropTypes.object,
     searchTerm: React.PropTypes.string,
@@ -37,7 +38,7 @@ var SearchBox = React.createClass({
 
   render: function() {
     return(
-      <div className='pull-left'>
+      <div>
         <TextField
           hintText="search"
           ref='searchBox'

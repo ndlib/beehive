@@ -66,8 +66,10 @@ var GridListMixin = {
     return (
 
       <div className="controls" style={this.controlsStyle()}>
-        <SearchBox collection={collection} searchTerm={searchTerm}/>
-        <SearchSort />
+        <div className="pull-left">
+          <SearchBox collection={collection} searchTerm={searchTerm}/>
+          <SearchSort />
+        </div>
         <button className={listClass} onClick={this.setList} >
           <i className="mdi-action-view-list"></i>
           List
