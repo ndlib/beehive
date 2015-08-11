@@ -95,7 +95,11 @@ ItemText = require("./components/item/ItemText");
 AdditionalResources = require("./components/item/AdditionalResources");
 AdditionalResourcesItem = require("./components/item/AdditionalResourcesItem");
 ItemsModalList = require("./components/item/ItemsModalList");
-SearchDisplayList = require("./components/item/SearchDisplayList");
+
+// Search
+SearchDisplayList = require("./components/search/SearchDisplayList");
+SearchBox = require("./components/search/SearchBox")
+SearchSort = require("./components/search/SearchSort")
 
 // Modal
 Modal = require("./components/modal/Modal");

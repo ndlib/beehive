@@ -47,7 +47,7 @@ var GridListMixin = {
     return this.state.view;
   },
 
-  renderButtons: function() {
+  renderButtons: function(searchTerm) {
     var cx = React.addons.classSet;
     var gridClass = cx({
       'btn': true,
@@ -66,6 +66,8 @@ var GridListMixin = {
     return (
 
       <div className="controls" style={this.controlsStyle()}>
+        <SearchBox searchTerm={searchTerm}/>
+        <SearchSort />
         <button className={listClass} onClick={this.setList} >
           <i className="mdi-action-view-list"></i>
           List
