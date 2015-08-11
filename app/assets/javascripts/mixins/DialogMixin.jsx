@@ -1,22 +1,53 @@
 var mui = require("material-ui");
 var Dialog = mui.Dialog;
 var FlatButton = mui.FlatButton;
+var FontIcon = mui.FontIcon;
 var injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
 
 var DialogMixin = {
   okDismiss: function() {
+    var fontIcon = (
+      <FontIcon
+        className={'mdi-content-clear'}
+        iconStyle={{
+          color: 'white',
+        }}
+        style={{
+          color: 'white',
+          padding: '0',
+          fontSize: '20px',
+        }}
+      />
+    );
     return [
       <FlatButton
-        label="OK"
+        label={fontIcon}
         primary={true}
-        onTouchTap={this.dismissMessage}
+        onTouchTap={this.hideWindow}
+        style={{
+          backgroundColor: 'transparent',
+          border: '1px solid white',
+          borderRadius: '3px',
+          height: '34px',
+          padding: '0',
+          minHeight: '34px',
+          minWidth: '32px',
+          opacity: '0.7',
+          width: '32px',
+        }}
+        labelStyle={{
+          color: 'white',
+          height: '20px',
+          padding: '0',
+          width: '20px',
+        }}
       />
     ];
   },
 
   componentWillMount: function() {
-    EventEmitter.on("ItemDialogWindow", this.showDisplayItemWindow);
+    EventEmitter.on("ItemDialogWindow", this.showWindow);
   },
 
   getInitialState: function () {
@@ -26,7 +57,7 @@ var DialogMixin = {
     };
   },
 
-  showDisplayItemWindow: function(item) {
+  showWindow: function(item) {
     this.setState({
       displayWindowActive: true,
       currentItem: item
@@ -34,11 +65,7 @@ var DialogMixin = {
     this.refs.itemDialogWindow.show();
   },
 
-  dismissMessage: function() {
-    this.hideDisplayItemWindow();
-  },
-
-  hideDisplayItemWindow: function() {
+  hideWindow: function() {
     this.setState({
       displayWindowActive: false,
     });
@@ -48,7 +75,7 @@ var DialogMixin = {
   dialogWindowStyle: function() {
     return {
       backgroundColor: 'black',
-      top: '86px',
+      top: '51px',
       zIndex: '1000'
     };
   },
@@ -64,11 +91,12 @@ var DialogMixin = {
         contentClassName='dialog-window'
         contentStyle={{
           width: '100%',
-          maxWidth: '100%'
+          maxWidth: '100%',
         }}
         bodyStyle={{
           color: 'white',
-          backgroundColor: 'black',
+          backgroundColor: '#333',
+          backgroundImage: 'url(/images/black-linen.png)',
           width: '100%',
           maxWidth: '100%'
         }}
