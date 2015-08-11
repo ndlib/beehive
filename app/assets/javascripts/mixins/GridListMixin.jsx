@@ -48,21 +48,21 @@ var GridListMixin = {
   },
 
   renderButtons: function(searchTerm) {
-    var cx = React.addons.classSet;
-    var gridClass = cx({
-      'btn': true,
-      'btn-default': (this.state.view != 'grid'),
-      'btn-primary': (this.state.view === 'grid'),
-      'btn-view': true,
-      'pull-right': true,
-    });
-    var listClass = cx({
-      'btn': true,
-      'btn-default': (this.state.view != 'list'),
-      'btn-primary': (this.state.view === 'list'),
-      'btn-view': true,
-      'pull-right': true,
-    });
+    var classNames = require('classnames');
+    var gridClass = classNames(
+      'btn',
+      {'btn-default': (this.state.view != 'grid')},
+      {'btn-primary': (this.state.view === 'grid')},
+      'btn-view',
+      'pull-right'
+    );
+    var listClass = classNames(
+      'btn',
+      {'btn-default': (this.state.view != 'list')},
+      {'btn-primary': (this.state.view === 'list')},
+      'btn-view',
+      'pull-right'
+    );
     return (
 
       <div className="controls" style={this.controlsStyle()}>
