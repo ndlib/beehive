@@ -47,7 +47,7 @@ var GridListMixin = {
     return this.state.view;
   },
 
-  renderButtons: function(searchTerm) {
+  renderButtons: function(collection, searchTerm) {
     var classNames = require('classnames');
     var gridClass = classNames(
       'btn',
@@ -66,7 +66,7 @@ var GridListMixin = {
     return (
 
       <div className="controls" style={this.controlsStyle()}>
-        <SearchBox searchTerm={searchTerm}/>
+        <SearchBox collection={collection} searchTerm={searchTerm}/>
         <SearchSort />
         <button className={listClass} onClick={this.setList} >
           <i className="mdi-action-view-list"></i>

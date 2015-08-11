@@ -5,7 +5,8 @@ var TextField = mui.TextField;
 
 var SearchBox = React.createClass({
   propTypes: {
-      searchTerm: React.PropTypes.string,
+    collection: React.PropTypes.object,
+    searchTerm: React.PropTypes.string,
   },
 
   getDefaultProps: function() {
@@ -30,7 +31,7 @@ var SearchBox = React.createClass({
   },
 
   searchUrl: function() {
-    var url = window.location.origin + window.location.pathname + "?q=" + this.state.searchTerm
+    var url = window.location.origin + "/" +this.props.collection.id + "/" + this.props.collection.slug + "/search?q=" + this.state.searchTerm
     return url;
   },
 

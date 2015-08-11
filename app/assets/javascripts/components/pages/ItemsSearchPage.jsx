@@ -55,7 +55,7 @@ var ItemsSearchPage = React.createClass({
         <Layout>
 
           <PageContent>
-            <SearchDisplayList items={this.state.items} searchTerm={this.props.searchTerm} />
+            <SearchDisplayList collection={this.state.collection} items={this.state.items} searchTerm={this.props.searchTerm} />
           </PageContent>
         </Layout>
         <CollectionOverlayFooter collection={this.state.collection} />

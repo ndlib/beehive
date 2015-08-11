@@ -6,6 +6,7 @@ var SearchDisplayList = React.createClass({
   mixins: [GridListMixin, PageHeightMixin, MuiThemeMixin, DialogMixin],
 
   propTypes: {
+    collection: React.PropTypes.object,
     items: React.PropTypes.array,
     searchTerm: React.PropTypes.string,
   },
@@ -36,7 +37,7 @@ var SearchDisplayList = React.createClass({
     return (
       <div className='items-list' style={this.outerStyle()}>
         {this.displayItemWindow()}
-        {this.renderButtons(this.props.searchTerm)}
+        {this.renderButtons(this.props.collection, this.props.searchTerm)}
         <div className={this.listClass()}>
           {itemNodes}
         </div>
