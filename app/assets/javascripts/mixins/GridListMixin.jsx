@@ -48,13 +48,29 @@ var GridListMixin = {
   },
 
   renderButtons: function() {
+    var cx = React.addons.classSet;
+    var gridClass = cx({
+      'btn': true,
+      'btn-default': (this.state.view != 'grid'),
+      'btn-primary': (this.state.view === 'grid'),
+      'btn-view': true,
+      'pull-right': true,
+    });
+    var listClass = cx({
+      'btn': true,
+      'btn-default': (this.state.view != 'list'),
+      'btn-primary': (this.state.view === 'list'),
+      'btn-view': true,
+      'pull-right': true,
+    });
     return (
+
       <div className="controls" style={this.controlsStyle()}>
-        <button className={"btn btn-default btn-view pull-right"} onClick={this.setList} >
+        <button className={listClass} onClick={this.setList} >
           <i className="mdi-action-view-list"></i>
           List
         </button>
-        <button className={"btn btn-default btn-view pull-right"} onClick={this.setGrid} >
+        <button className={gridClass} onClick={this.setGrid} >
           <i className= "mdi-action-view-module"></i>
           Grid
         </button>
