@@ -26,7 +26,12 @@ var SearchBox = React.createClass({
   },
 
   onClick: function(e) {
-    console.log('click: ', this.state.searchTerm);
+    window.location.assign(this.searchUrl());
+  },
+
+  searchUrl: function() {
+    var url = window.location.origin + window.location.pathname + "?q=" + this.state.searchTerm
+    return url;
   },
 
   render: function() {
