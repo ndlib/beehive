@@ -44,6 +44,7 @@ var SearchBox = React.createClass({
           ref='searchBox'
           onChange={this.onChange}
           defaultValue={this.props.searchTerm}
+          onEnterKeyDown={this.onClick}
         />
         <button
           onClick={this.onClick}
