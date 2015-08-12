@@ -114,7 +114,9 @@ var CollectionShow = React.createClass({
           <div className="collection-show">
             <div className="collection-text">
               <div className="header-position">
-              <h1 style={titleStyle}>{this.props.collection.name}</h1>
+                <div style={titleStyle} className="home-page-header">
+                  <h1>{this.props.collection.name_line_1}<small>{this.props.collection.name_line_2}</small></h1>
+                </div>
               </div>
               {image}
               {this.firstExhibitLink()}
