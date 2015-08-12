@@ -287,9 +287,10 @@ body .jumbotron, .container .jumbotron, .container-fluid .jumbotron {
   h1 {
     margin: 0;
     font-size: 42px;
+
     small {
+      color: $white;      
       display: block;
-      color: $white;
     }
   }
 
