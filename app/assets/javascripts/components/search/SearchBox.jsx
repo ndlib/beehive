@@ -6,7 +6,7 @@ var TextField = mui.TextField;
 var SearchBox = React.createClass({
   mixins: [MuiThemeMixin],
   propTypes: {
-    collection: React.PropTypes.object,
+    collection: React.PropTypes.object.isRequired,
     searchTerm: React.PropTypes.string,
   },
 
