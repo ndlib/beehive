@@ -45,6 +45,7 @@ var ShowcaseSections = React.createClass({
   render: function() {
     return (
       <div id="sections-content-inner" className="sections-content-inner" style={this.style()}>
+        <BlendSection height={this.props.height} /> 
         {this.sections()}
         {this.nextShowcase()}
       </div>
