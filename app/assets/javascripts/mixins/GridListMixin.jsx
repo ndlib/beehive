@@ -68,7 +68,6 @@ var GridListMixin = {
       <div className="controls" style={this.controlsStyle()}>
         <div className="pull-left">
           <SearchBox collection={collection} searchTerm={searchTerm}/>
-          <SearchSort collection={collection} />
         </div>
         <button
           className={listClass}
