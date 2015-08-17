@@ -38,7 +38,7 @@ var SearchBox = React.createClass({
 
   render: function() {
     return(
-      <div>
+      <div style={{display:'inline-block'}}>
         <TextField
           hintText="search"
           ref='searchBox'
