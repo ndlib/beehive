@@ -2,15 +2,20 @@
 var React = require('react');
 var mui = require('material-ui');
 var Dialog = mui.Dialog;
-var RaisedButton = mui.RaisedButton;
-var FontIcon = mui.FontIcon;
-
 var SearchDisplayList = React.createClass({
   mixins: [GridListMixin, PageHeightMixin, MuiThemeMixin, DialogMixin],
 
   propTypes: {
-    items: React.PropTypes.array
+    collection: React.PropTypes.object,
+    items: React.PropTypes.array,
+    searchTerm: React.PropTypes.string,
+  },
 
+  getDefaultProps: function() {
+    return {
+      items: [],
+      searchTerm: "",
+    };
   },
 
   outerStyle: function() {
@@ -19,7 +24,6 @@ var SearchDisplayList = React.createClass({
       backgroundColor: '#f5f5f5',
     };
   },
-
 
   render: function() {
     var view = this.state.view;
@@ -33,7 +37,7 @@ var SearchDisplayList = React.createClass({
     return (
       <div className='items-list' style={this.outerStyle()}>
         {this.displayItemWindow()}
-        {this.renderButtons()}
+        {this.renderButtons(this.props.collection, this.props.searchTerm)}
         <div className={this.listClass()}>
           {itemNodes}
         </div>

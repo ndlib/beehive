@@ -47,14 +47,41 @@ var GridListMixin = {
     return this.state.view;
   },
 
-  renderButtons: function() {
+  renderButtons: function(collection, searchTerm) {
+    var classNames = require('classnames');
+    var gridClass = classNames(
+      'btn',
+      {'btn-default': (this.state.view != 'grid')},
+      {'btn-primary': (this.state.view === 'grid')},
+      'btn-view',
+      'pull-right'
+    );
+    var listClass = classNames(
+      'btn',
+      {'btn-default': (this.state.view != 'list')},
+      {'btn-primary': (this.state.view === 'list')},
+      'btn-view',
+      'pull-right'
+    );
     return (
+
       <div className="controls" style={this.controlsStyle()}>
-        <button className={"btn btn-default btn-view pull-right"} onClick={this.setList} >
+        <div className="pull-left">
+          <SearchBox collection={collection} searchTerm={searchTerm}/>
+        </div>
+        <button
+          className={listClass}
+          onClick={this.setList}
+          style={{zIndex: '0'}}
+        >
           <i className="mdi-action-view-list"></i>
           List
         </button>
-        <button className={"btn btn-default btn-view pull-right"} onClick={this.setGrid} >
+        <button
+          className={gridClass}
+          onClick={this.setGrid}
+          style={{zIndex: '0'}}
+        >
           <i className= "mdi-action-view-module"></i>
           Grid
         </button>

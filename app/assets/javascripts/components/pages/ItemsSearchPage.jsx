@@ -15,7 +15,7 @@ var ItemsSearchPage = React.createClass({
       React.PropTypes.string,
       React.PropTypes.array,
     ]),
-    query_parameters: React.PropTypes.string
+    searchTerm: React.PropTypes.string
   },
 
   getInitialState: function() {
@@ -31,7 +31,10 @@ var ItemsSearchPage = React.createClass({
     } else {
       this.loadRemoteCollection(this.props.collection);
     }
-    this.loadSearchResults(this.props.hits + "?q=" + this.props.query_parameters);
+    this.loadSearchResults(
+      this.props.hits
+      + "?q=" + encodeURIComponent(his.props.searchTerm)
+    );
   },
 
   setValues: function(collection) {
@@ -52,7 +55,7 @@ var ItemsSearchPage = React.createClass({
         <Layout>
 
           <PageContent>
-            <SearchDisplayList items={this.state.items} />
+            <SearchDisplayList collection={this.state.collection} items={this.state.items} searchTerm={this.props.searchTerm} />
           </PageContent>
         </Layout>
         <CollectionOverlayFooter collection={this.state.collection} />
