@@ -32,7 +32,7 @@ var SearchBox = React.createClass({
   },
 
   searchUrl: function() {
-    var url = window.location.origin + "/" +this.props.collection.id + "/" + this.props.collection.slug + "/search?q=" + this.state.searchTerm
+    var url = window.location.origin + "/" + this.props.collection.id + "/" + this.props.collection.slug + "/search?q=" + encodeURIComponent(this.state.searchTerm);
     return url;
   },
 

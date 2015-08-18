@@ -29,7 +29,7 @@ var SearchSort = React.createClass({
   searchUrl: function(sort) {
     var searchTerm = "/search" + window.location.search.split('&', 1);
     var sortTerm = "&sort=[]" +sort.payload + " " + sort.direction;
-    var url = window.location.origin + "/" +this.props.collection.id + "/" + this.props.collection.slug + searchTerm + sortTerm;
+    var url = window.location.origin + "/" +this.props.collection.id + "/" + this.props.collection.slug + encodeURIComponent(searchTerm) + encodeURIComponent(sortTerm);
     return url;
   },
 
