@@ -125,7 +125,23 @@ $break-small: 480px;
     h2 {
       font-size: 18px;
     }
+
+    button {
+      padding: 8px 15px;
+      top: 3.1em;
+
+      span {
+        display: none;
+      }
+
+    }
   }
+
+  .details {
+    top: 6em;
+  }
+
+
 
   .navigator {
     display: none !important;
