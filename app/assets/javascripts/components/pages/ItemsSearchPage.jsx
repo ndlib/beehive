@@ -33,7 +33,7 @@ var ItemsSearchPage = React.createClass({
     }
     this.loadSearchResults(
       this.props.hits
-      + "?q=" + this.props.searchTerm
+      + "?q=" + encodeURIComponent(his.props.searchTerm)
     );
   },
 
