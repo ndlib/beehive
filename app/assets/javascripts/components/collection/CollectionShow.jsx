@@ -99,7 +99,7 @@ var CollectionShow = React.createClass({
 
     if (this.props.collection) {
       if(this.props.collection.image) {
-        if (!this.props.collection.show_page_title) {
+        if (!this.props.collection.display_page_title) {
           titleStyle = {
             display: "none",
           };

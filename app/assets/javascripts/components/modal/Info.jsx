@@ -21,7 +21,7 @@ var Info = React.createClass({
       <div>
         {this.customInfoText()}
         <p>Digital Exhibits and Collections is a service of the <a href="http://library.nd.edu" target="_blank">Hesburgh Libraries of Notre Dame</a>.</p>
-        <p> Go <a href="http://library.nd.edu/eresources/forms/problem/index.cgi?commentType=general&_ga=1.10232437.1587359587.1371157071#tab_cp" target="_blank">here</a> for questions and comments.</p>
+        <p><a href="http://library.nd.edu/eresources/forms/problem/index.cgi?commentType=general&_ga=1.10232437.1587359587.1371157071#tab_cp" target="_blank">Questions and Comments</a></p>
       </div>
     );
   },
