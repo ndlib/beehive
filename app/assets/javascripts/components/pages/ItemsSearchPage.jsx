@@ -32,8 +32,7 @@ var ItemsSearchPage = React.createClass({
       this.loadRemoteCollection(this.props.collection);
     }
     this.loadSearchResults(
-      this.props.hits
-      + "?q=" + encodeURIComponent(his.props.searchTerm)
+      this.props.hits + "?q=" + encodeURIComponent(this.props.searchTerm)
     );
   },
 
