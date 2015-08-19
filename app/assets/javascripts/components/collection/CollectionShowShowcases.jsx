@@ -7,9 +7,11 @@ var CollectionShowShowcases = React.createClass({
   },
 
   intro: function() {
-    return (
-      <CollectionIntroCard collection={this.props.collection} />
-    );
+    if (this.props.collection.description) {
+      return (
+        <CollectionIntroCard collection={this.props.collection} />
+      );
+    }
   },
 
   render: function() {
