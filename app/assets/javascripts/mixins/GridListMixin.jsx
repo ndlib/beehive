@@ -66,25 +66,30 @@ var GridListMixin = {
     return (
 
       <div className="controls" style={this.controlsStyle()}>
-        <div className="pull-left">
-          <SearchBox collection={collection} searchTerm={searchTerm}/>
+        <div className="col-lg-3" />
+        <div className="col-lg-9" >
+          <div className="pull-left">
+            <SearchBox collection={collection} searchTerm={searchTerm}/>
+            <SearchSort collection={collection} />
+          </div>
+          <button
+            className={listClass}
+            onClick={this.setList}
+            style={{zIndex: '0'}}
+          >
+            <i className="mdi-action-view-list"></i>
+            List
+          </button>
+          <button
+            className={gridClass}
+            onClick={this.setGrid}
+            style={{zIndex: '0'}}
+          >
+            <i className= "mdi-action-view-module"></i>
+            Grid
+          </button>
+          <div className="clearfix" />
         </div>
-        <button
-          className={listClass}
-          onClick={this.setList}
-          style={{zIndex: '0'}}
-        >
-          <i className="mdi-action-view-list"></i>
-          List
-        </button>
-        <button
-          className={gridClass}
-          onClick={this.setGrid}
-          style={{zIndex: '0'}}
-        >
-          <i className= "mdi-action-view-module"></i>
-          Grid
-        </button>
         <div className="clearfix" />
       </div>
     );

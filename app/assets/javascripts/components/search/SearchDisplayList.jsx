@@ -8,12 +8,14 @@ var SearchDisplayList = React.createClass({
   propTypes: {
     collection: React.PropTypes.object,
     items: React.PropTypes.array,
+    facets: React.PropTypes.array,
     searchTerm: React.PropTypes.string,
   },
 
   getDefaultProps: function() {
     return {
       items: [],
+      facets: [],
       searchTerm: "",
     };
   },
@@ -37,9 +39,17 @@ var SearchDisplayList = React.createClass({
     return (
       <div className='items-list' style={this.outerStyle()}>
         {this.displayItemWindow()}
-        {this.renderButtons(this.props.collection, this.props.searchTerm)}
-        <div className={this.listClass()}>
-          {itemNodes}
+        <div className="row">
+          {this.renderButtons(this.props.collection, this.props.searchTerm)}
+          <div className="row-fluid col-lg-3">
+            <SearchFacets collection={this.props.collection} facets={this.props.facets} />
+          </div>
+          <div className="row-fluid col-lg-9">
+
+            <div className={this.listClass()}>
+                {itemNodes}
+            </div>
+          </div>
         </div>
          <div className='clearfix' />
       </div>

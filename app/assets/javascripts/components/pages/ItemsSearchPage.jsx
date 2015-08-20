@@ -2,7 +2,7 @@
 var React = require('react');
 
 var ItemsSearchPage = React.createClass({
-  mixins: [PageHeightMixin, LoadRemoteMixin, SearchMixin],
+  mixins: [SearchUrlMixin, PageHeightMixin, LoadRemoteMixin, SearchMixin],
 
   displayName: 'Items Search Page',
 
@@ -26,6 +26,7 @@ var ItemsSearchPage = React.createClass({
   },
 
   componentDidMount: function() {
+    this.initSearchStore();
     if ('object' == typeof(this.props.collection)) {
       this.setValues(this.props.collection);
     } else {
@@ -54,7 +55,11 @@ var ItemsSearchPage = React.createClass({
         <Layout>
 
           <PageContent>
-            <SearchDisplayList collection={this.state.collection} items={this.state.items} searchTerm={this.props.searchTerm} />
+            <SearchDisplayList
+              collection={this.state.collection}
+              items={this.state.items}
+              facets={this.state.facets}
+              searchTerm={this.props.searchTerm} />
           </PageContent>
         </Layout>
         <CollectionOverlayFooter collection={this.state.collection} />
