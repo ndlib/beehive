@@ -4,7 +4,7 @@ var mui = require('material-ui');
 var TextField = mui.TextField;
 
 var SearchBox = React.createClass({
-  mixins: [MuiThemeMixin],
+  mixins: [SearchUrlMixin, MuiThemeMixin],
   propTypes: {
     collection: React.PropTypes.object.isRequired,
     searchTerm: React.PropTypes.string,
@@ -24,16 +24,22 @@ var SearchBox = React.createClass({
   },
 
   onChange: function(e) {
-    this.setState({searchTerm: this.refs.searchBox.getValue()});
+    this.setTerm(this.refs.searchBox.getValue());
   },
 
   onClick: function(e) {
-    window.location.assign(this.searchUrl());
+    window.location.assign(this.searchUrl(this.props.collection));
   },
 
-  searchUrl: function() {
-    var url = window.location.origin + "/" + this.props.collection.id + "/" + this.props.collection.slug + "/search?q=" + encodeURIComponent(this.state.searchTerm);
-    return url;
+  componentDidMount: function() {
+    this.initSearchStore();
+    this.setTerm(this.refs.searchBox.getValue());
+  },
+
+  setTerm: function(term) {
+    var cleanTerm = '?q=' + encodeURIComponent(term);
+    window.searchStore.searchTerm = cleanTerm;
+    this.setState({searchTerm: cleanTerm});
   },
 
   render: function() {

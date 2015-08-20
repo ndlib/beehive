@@ -9,11 +9,17 @@ var searchMixin = {
       dataType: "json",
       success: function(result) {
         this.setItems(result.hits);
+        this.setFacets(result.facets);
+        this.setSort(result.sorts)
       },
       error: function(request, status, thrownError) {
           window.location = window.location.origin + '/404';
       }
     });
+  },
+
+  setFacets: function(facets) {
+    this.setState({facets: facets});
   },
 
   setItems: function(hits) {
@@ -26,6 +32,10 @@ var searchMixin = {
     this.setState({
       items: items,
     });
+  },
+
+  setSort: function(sorts) {
+    console.log(sorts);
   },
 
   mapHitToItem: function(hit) {
