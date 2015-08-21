@@ -1,3 +1,4 @@
+
 {
   "name": "beehive",
   "description": "Dependencies for the Beehive application",
@@ -10,7 +11,7 @@
     "flux": "^2.0.3",
     "jquery": "^2.1.4",
     "keymirror": "^0.1.1",
-    "material-ui": "^0.10.1",
+    "material-ui": "0.10.2",
     "object-assign": "^3.0.0",
     "react": "^0.13.3",
     "react-scroll": "^0.18.0",

@@ -8,51 +8,59 @@ var SearchSort = React.createClass({
 
   propTypes: {
     collection: React.PropTypes.object.isRequired,
-    sortOptions: React.PropTypes.array
-  },
-
-  getDefaultProps: function() {
-    return {
-      sortOptions: [
-        {text: 'Item Name', value: 'dsc'},
-        {text: 'Creator', value: 'asc'}
-      ]
-    };
+    sortOptions: React.PropTypes.array,
+    selectedIndex: React.PropTypes.number,
   },
 
   getInitialState: function() {
     var state = {
-      hintText: 'Sort Results',
+      selectValue: 0,
     }
     return state;
   },
 
+  getDefaultProps: function() {
+    return {
+      sortOptions: [],
+      selectedIndex: -1,
+    };
+  },
+
   onChange: function(prop, e) {
-    var change = {};
-    change[prop] = e.target.value;
-    this.setSort(change.selectValue.value);
+    this.setSort(e.target.value);
     window.location.assign(this.searchUrl(this.props.collection));
   },
 
   setSort: function(sortOption) {
     window.searchStore.sortOption = sortOption;
-    this.setState({hintText: ''});
   },
 
-  componentDidMount: function() {
+  componentWillMount: function() {
     this.initSearchStore();
-    this.setSort('');
+    var regex = /\S+&sort=/;
+    var sortOption = '';
+    if(window.location.search.match(regex)) {
+      sortOption = window.location.search.replace(regex, '');
+    }
+    this.setSort(sortOption);
+  },
+
+  shouldComponentUpdate: function(nextProps, nextState) {
+    return(nextProps.selectedIndex !== this.props.selectedIndex);
   },
 
   render: function() {
+    console.log(this.props.selectedIndex);
     return(
       <SelectField
         value={null}
         ref='searchSort'
-        hintText={this.state.hintText}
-        onChange={this.onChange.bind(null, 'selectValue')}
+        onChange={this.onChange.bind(this, 'selectValue')}
         menuItems={this.props.sortOptions}
         style={{float:'right', marginLeft: '2em'}}
+        selectedIndex={this.props.selectedIndex}
+        displayMember='name'
+        valueMember='value'
       />
     );
   }

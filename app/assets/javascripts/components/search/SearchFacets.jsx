@@ -57,7 +57,7 @@ var SearchFacets = React.createClass({
     };
   },
 
-  componentDidMount: function() {
+  componentWillMount: function() {
     this.initSearchStore();
     window.searchStore.facetOption = {
       name: "",

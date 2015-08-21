@@ -37,7 +37,7 @@ var SearchBox = React.createClass({
   },
 
   setTerm: function(term) {
-    var cleanTerm = '?q=' + encodeURIComponent(term);
+    var cleanTerm = encodeURIComponent(term);
     window.searchStore.searchTerm = cleanTerm;
     this.setState({searchTerm: cleanTerm});
   },

@@ -22,10 +22,12 @@ var ItemsSearchPage = React.createClass({
     return {
       collection: {},
       items: [],
+      sortOptions: [],
+      selectedIndex: 0,
     };
   },
 
-  componentDidMount: function() {
+  componentWillMount: function() {
     this.initSearchStore();
     if ('object' == typeof(this.props.collection)) {
       this.setValues(this.props.collection);
@@ -59,7 +61,9 @@ var ItemsSearchPage = React.createClass({
               collection={this.state.collection}
               items={this.state.items}
               facets={this.state.facets}
-              searchTerm={this.props.searchTerm} />
+              sortOptions={this.state.sortOptions}
+              searchTerm={this.props.searchTerm}
+              selectedIndex={this.state.selectedIndex} />
           </PageContent>
         </Layout>
         <CollectionOverlayFooter collection={this.state.collection} />

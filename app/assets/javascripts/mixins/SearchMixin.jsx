@@ -10,7 +10,7 @@ var searchMixin = {
       success: function(result) {
         this.setItems(result.hits);
         this.setFacets(result.facets);
-        this.setSort(result.sorts)
+        this.setSorts(result.sorts)
       },
       error: function(request, status, thrownError) {
           window.location = window.location.origin + '/404';
@@ -34,8 +34,17 @@ var searchMixin = {
     });
   },
 
-  setSort: function(sorts) {
-    console.log(sorts);
+  setSorts: function(sorts) {
+    var regex = /\S+&sort=/;
+    var sortOption = '';
+    if(window.location.search.match(regex)) {
+      sortOption = window.location.search.replace(regex, '');
+    };
+
+    this.setState({
+      sortOptions: sorts,
+      selectedIndex: sorts.map(function(s) {return s.value; }).indexOf(sortOption),
+    });
   },
 
   mapHitToItem: function(hit) {
