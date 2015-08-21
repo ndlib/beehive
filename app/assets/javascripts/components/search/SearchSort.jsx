@@ -52,7 +52,6 @@ var SearchSort = React.createClass({
   render: function() {
     return(
       <SelectField
-        value={null}
         ref='searchSort'
         onChange={this.onChange.bind(this, 'selectValue')}
         menuItems={this.props.sortOptions}
