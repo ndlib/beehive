@@ -17,6 +17,7 @@ var ItemsSearchPage = React.createClass({
     ]),
     searchTerm: React.PropTypes.string,
     sortTerm: React.PropTypes.string,
+    facet: React.PropTypes.object,
   },
 
   getInitialState: function() {
@@ -36,6 +37,11 @@ var ItemsSearchPage = React.createClass({
       this.loadRemoteCollection(this.props.collection);
     }
     var url = this.props.hits + "?q=" + encodeURIComponent(this.props.searchTerm);
+    if(this.props.facet) {
+      var key = Object.keys(this.props.facet)[0];
+      var value = encodeURIComponent(this.props.facet[key]);
+      url += "&facets[" + key + "]=" + value;
+    }
     if(this.props.sortTerm) {
       url += "&sort=" + this.props.sortTerm;
     }
@@ -66,7 +72,8 @@ var ItemsSearchPage = React.createClass({
               facets={this.state.facets}
               sortOptions={this.state.sortOptions}
               searchTerm={this.props.searchTerm}
-              selectedIndex={this.state.selectedIndex} />
+              selectedIndex={this.state.selectedIndex}
+              selectedFacet={this.props.facet}/>
           </PageContent>
         </Layout>
         <CollectionOverlayFooter collection={this.state.collection} />

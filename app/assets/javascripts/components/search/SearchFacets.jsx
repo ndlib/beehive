@@ -9,6 +9,7 @@ var SearchFacets = React.createClass({
   propTypes: {
     collection: React.PropTypes.object.isRequired,
     facets: React.PropTypes.array,
+    selectedFacet: React.PropTypes.object,
   },
 
   facetList: function() {
@@ -28,6 +29,7 @@ var SearchFacets = React.createClass({
   },
 
   valueOnClick: function(parentFacet, e) {
+    window.searchStore.facetOption = {}
     window.searchStore.facetOption.name = parentFacet;
     window.searchStore.facetOption.value = e.currentTarget.getAttribute("value");
     window.location.assign(this.searchUrl(this.props.collection));
@@ -78,10 +80,14 @@ var SearchFacets = React.createClass({
 
   componentWillMount: function() {
     this.initSearchStore();
-    window.searchStore.facetOption = {
-      name: "",
-      value: ""
-    };
+    if(this.props.selectedFacet){
+      var key = Object.keys(this.props.selectedFacet)[0];
+      var value = encodeURIComponent(this.props.selectedFacet[key]);
+      window.searchStore.facetOption = {
+        name: key,
+        value: value,
+      };
+    }
   },
 
   render: function() {

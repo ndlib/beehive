@@ -11,7 +11,8 @@ var SearchDisplayList = React.createClass({
     facets: React.PropTypes.array,
     searchTerm: React.PropTypes.string,
     sortOptions: React.PropTypes.array,
-    selectedIndex: React.PropTypes.number
+    selectedIndex: React.PropTypes.number,
+    selectedFacet: React.PropTypes.object,
   },
 
   getDefaultProps: function() {
@@ -44,7 +45,11 @@ var SearchDisplayList = React.createClass({
         <div className="row">
           {this.renderButtons(this.props.collection, this.props.searchTerm, this.props.sortOptions, this.props.selectedIndex)}
           <div className="row-fluid col-lg-3">
-            <SearchFacets collection={this.props.collection} facets={this.props.facets} />
+            <SearchFacets
+              collection={this.props.collection}
+              facets={this.props.facets}
+              selectedFacet={this.props.selectedFacet}
+            />
           </div>
           <div className="row-fluid col-lg-9">
 
