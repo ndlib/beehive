@@ -27,7 +27,10 @@ var SearchFacets = React.createClass({
     var facets = this.props.facets.map(function(e, index) {
       var nodes = [];
       nodes.push((
-        <ListItem primaryText={e.name} >
+        <ListItem
+          primaryText={e.name}
+          open={true}
+        >
           {self.values(e)}
         </ListItem>
       ));
