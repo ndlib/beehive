@@ -9,9 +9,11 @@ var SearchUrlMixin = {
     var url = window.location.origin
       + "/" + collection.id
       + "/" + collection.slug
-      + "/search" + window.searchStore.searchTerm;
+      + "/search?q=" + window.searchStore.searchTerm;
     if(window.searchStore.facetOption) {
-      url += "&facet[" + window.searchStore.facetOption.name + "]=" + window.searchStore.facetOption.value;
+      if(window.searchStore.facetOption.name) {
+        url += "&facet[" + window.searchStore.facetOption.name + "]=" + window.searchStore.facetOption.value;
+      }
     }
     if(window.searchStore.sortOption) {
       url += "&sort=" + window.searchStore.sortOption;
