@@ -15,7 +15,8 @@ var ItemsSearchPage = React.createClass({
       React.PropTypes.string,
       React.PropTypes.array,
     ]),
-    searchTerm: React.PropTypes.string
+    searchTerm: React.PropTypes.string,
+    sortTerm: React.PropTypes.string,
   },
 
   getInitialState: function() {
@@ -34,9 +35,11 @@ var ItemsSearchPage = React.createClass({
     } else {
       this.loadRemoteCollection(this.props.collection);
     }
-    this.loadSearchResults(
-      this.props.hits + "?q=" + encodeURIComponent(this.props.searchTerm)
-    );
+    var url = this.props.hits + "?q=" + encodeURIComponent(this.props.searchTerm);
+    if(this.props.sortTerm) {
+      url += "&sort=" + this.props.sortTerm;
+    }
+    this.loadSearchResults(url);
   },
 
   setValues: function(collection) {
