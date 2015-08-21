@@ -50,7 +50,6 @@ var SearchSort = React.createClass({
   },
 
   render: function() {
-    console.log(this.props.selectedIndex);
     return(
       <SelectField
         value={null}
