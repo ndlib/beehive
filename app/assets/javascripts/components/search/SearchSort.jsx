@@ -40,7 +40,7 @@ var SearchSort = React.createClass({
     var regex = /\S+&sort=/;
     var sortOption = '';
     if(window.location.search.match(regex)) {
-      sortOption = window.location.search.replace(regex, '');
+      sortOption = window.location.search.replace(regex, '').split('&')[0];
     }
     this.setSort(sortOption);
   },

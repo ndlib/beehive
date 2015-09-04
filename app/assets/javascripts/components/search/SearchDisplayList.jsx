@@ -13,6 +13,8 @@ var SearchDisplayList = React.createClass({
     sortOptions: React.PropTypes.array,
     selectedIndex: React.PropTypes.number,
     selectedFacet: React.PropTypes.object,
+    found: React.PropTypes.number,
+    start: React.PropTypes.number,
   },
 
   getDefaultProps: function() {
@@ -20,6 +22,8 @@ var SearchDisplayList = React.createClass({
       items: [],
       facets: [],
       searchTerm: "",
+      found: 0,
+      start: 0,
     };
   },
 
@@ -52,13 +56,22 @@ var SearchDisplayList = React.createClass({
             />
           </div>
           <div className="row-fluid col-lg-9">
-
+            <SearchPagination
+              collection={this.props.collection}
+              found={this.props.found}
+              start={this.props.start}
+            />
             <div className={this.listClass()}>
                 {itemNodes}
             </div>
+              <SearchPagination
+                collection={this.props.collection}
+                found={this.props.found}
+                start={this.props.start}
+              />
           </div>
         </div>
-         <div className='clearfix' />
+        <div className='clearfix' />
       </div>
     );
   }

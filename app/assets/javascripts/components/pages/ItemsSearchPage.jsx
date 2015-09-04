@@ -18,6 +18,13 @@ var ItemsSearchPage = React.createClass({
     searchTerm: React.PropTypes.string,
     sortTerm: React.PropTypes.string,
     facet: React.PropTypes.object,
+    start: React.PropTypes.number
+  },
+
+  getDefaultProps: function() {
+    return{
+      start: 0,
+    };
   },
 
   getInitialState: function() {
@@ -26,6 +33,8 @@ var ItemsSearchPage = React.createClass({
       items: [],
       sortOptions: [],
       selectedIndex: 0,
+      found: 0,
+      start: 0,
     };
   },
 
@@ -44,6 +53,9 @@ var ItemsSearchPage = React.createClass({
     }
     if(this.props.sortTerm) {
       url += "&sort=" + this.props.sortTerm;
+    }
+    if(this.props.start != 0) {
+      url += "&start=" + this.props.start;
     }
     this.loadSearchResults(url);
   },
@@ -73,7 +85,10 @@ var ItemsSearchPage = React.createClass({
               sortOptions={this.state.sortOptions}
               searchTerm={this.props.searchTerm}
               selectedIndex={this.state.selectedIndex}
-              selectedFacet={this.props.facet}/>
+              selectedFacet={this.props.facet}
+              found={this.state.found}
+              start={this.state.start}
+            />
           </PageContent>
         </Layout>
         <CollectionOverlayFooter collection={this.state.collection} />

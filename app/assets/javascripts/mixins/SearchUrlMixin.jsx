@@ -18,7 +18,7 @@ var SearchUrlMixin = {
     if(window.searchStore.sortOption) {
       url += "&sort=" + window.searchStore.sortOption;
     }
-    + "&sort=" + window.searchStore.sortOption
+    + "&sort=" + window.searchStore.sortOption;
     return url;
   },
 }
