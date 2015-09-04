@@ -24,6 +24,8 @@ var searchMixin = {
 
   setItems: function(hits) {
     var items = [];
+    var found = hits.found;
+    var start = hits.start;
     for (var h in hits.hit) {
       var hit = hits.hit[h];
       var item = this.mapHitToItem(hit);
@@ -31,6 +33,8 @@ var searchMixin = {
     }
     this.setState({
       items: items,
+      found: found,
+      start: start,
     });
   },
 
