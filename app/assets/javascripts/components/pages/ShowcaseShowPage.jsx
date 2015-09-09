@@ -30,7 +30,6 @@ var ShowcaseShowPage = React.createClass({
       return (
         <SectionsModalList height={this.state.height} sections={this.state.showcase.sections} />
       );
-      return (<span />);
     }
     else {
       return (<span />);
