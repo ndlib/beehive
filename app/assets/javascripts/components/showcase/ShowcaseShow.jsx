@@ -107,11 +107,15 @@ var ShowcaseShow = React.createClass({
     var percentVisible = 1 - scrollLeft/titleWidth;
     if (percentVisible < 0) {
       percentVisible = 0;
+    } else {
+      percentVisible = Math.round(percentVisible * 100) / 100;
     }
-    this.setState({
-      scrollOffsetLeft: scrollLeft,
-      titleSectionPercentVisible: percentVisible,
-    });
+    if (scrollLeft != this.state.scrollOffsetLeft || percentVisible != this.state.titleSectionPercentVisible) {
+      this.setState({
+        scrollOffsetLeft: scrollLeft,
+        titleSectionPercentVisible: percentVisible,
+      });
+    }
   },
 
   render: function() {
