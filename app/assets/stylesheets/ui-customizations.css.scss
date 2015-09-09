@@ -289,7 +289,7 @@ body .jumbotron, .container .jumbotron, .container-fluid .jumbotron {
     font-size: 42px;
 
     small {
-      color: $white;      
+      color: $white;
       display: block;
     }
   }
@@ -939,17 +939,6 @@ div.dataTables_filter {
   color: $about-color;
   margin-bottom: 1em;
   padding: 15px;
-
-  h2 {
-    font-size: 18px;
-  }
-
-  h3 {
-    font-family: serif;
-    font-size: 15px;
-    font-weight: 500;
-    margin-bottom: 0;
-  }
 }
 
 .modal-lg {
