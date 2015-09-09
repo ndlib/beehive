@@ -98,13 +98,13 @@ var CollectionShow = React.createClass({
     var image;
 
     if (this.props.collection) {
+      if (!this.props.collection.display_page_title) {
+        titleStyle = {
+          display: "none",
+        };
+      }
       if(this.props.collection.image) {
-        if (!this.props.collection.display_page_title) {
-          titleStyle = {
-            display: "none",
-          };
-        }
-
+        titleStyle["position"] = "absolute";
         image = (
           <Thumbnail image={this.props.collection.image} />
         );
@@ -113,8 +113,8 @@ var CollectionShow = React.createClass({
         <div className="jumbotron">
           <div className="collection-show">
             <div className="collection-text">
-              <div className="header-position">
-                <div style={titleStyle} className="home-page-header">
+              <div style={titleStyle} className="header-position">
+                <div className="home-page-header">
                   <h1>{this.props.collection.name_line_1}<small>{this.props.collection.name_line_2}</small></h1>
                 </div>
               </div>

@@ -247,7 +247,6 @@ body .jumbotron, .container .jumbotron, .container-fluid .jumbotron {
   text-align: left;
 
   .header-position {
-    position: absolute;
     width: 100%;
     text-align: center;
   }
@@ -289,7 +288,7 @@ body .jumbotron, .container .jumbotron, .container-fluid .jumbotron {
     font-size: 42px;
 
     small {
-      color: $white;      
+      color: $white;
       display: block;
     }
   }
