@@ -53,8 +53,18 @@ $break-small: 480px;
     width: 24px;
   }
 
-  body.collection .container-fluid.content {
-    top: 22px;
+  body.collection {
+    .jumbotron {
+      h1 {
+        margin-bottom: 5vh;
+        margin-top: 5vh;
+        width: 95vw;
+      }
+    }
+
+    .container-fluid.content {
+      top: 22px;
+    }
   }
 
   .exhibit-start-container {

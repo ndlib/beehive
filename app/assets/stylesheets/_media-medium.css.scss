@@ -3,6 +3,14 @@ $break-medium: 768px;
 
 @media screen and (max-width: $break-medium) {
 
+  body.collection {
+    .jumbotron {
+      h1 {
+        width: 80vw;
+      }
+    }
+  }
+
   .brand-bar {
     font-size: 0.75em;
 
