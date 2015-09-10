@@ -18,7 +18,6 @@ var ShowcaseShow = React.createClass({
 
   getInitialState: function() {
     return {
-      scrollOffsetLeft: 0,
       titleSectionPercentVisible: 1,
       startTime: Date.now(),
       hasScrolled: false,
@@ -71,18 +70,6 @@ var ShowcaseShow = React.createClass({
     }
   },
 
-  styleInner: function(height) {
-    return {
-      position: "absolute",
-      height: height + "px",
-      top: 0,
-      left: 0,
-      overflowX: "visible",
-      overflowY: "visible",
-      paddingTop: "20px",
-    };
-  },
-
   styleOuter: function(height) {
     return {
       position: "relative",
@@ -110,9 +97,8 @@ var ShowcaseShow = React.createClass({
     } else {
       percentVisible = Math.round(percentVisible * 100) / 100;
     }
-    if (scrollLeft != this.state.scrollOffsetLeft || percentVisible != this.state.titleSectionPercentVisible) {
+    if (percentVisible != this.state.titleSectionPercentVisible) {
       this.setState({
-        scrollOffsetLeft: scrollLeft,
         titleSectionPercentVisible: percentVisible,
       });
     }
@@ -138,17 +124,12 @@ var ShowcaseShow = React.createClass({
           <ShowcaseTitleBar percentFade={this.state.titleSectionPercentVisible} height={showcaseTitleHeight} showcase={this.props.showcase} />
           <div id="showcase-outer" className="showcase-outer" style={this.styleOuter(showcaseHeight)} onScroll={this.onScroll}>
             <Scroller target="#showcase-outer" />
-            <div id="showcase-inner" className="showcase-inner" style={this.styleInner(showcaseInnerHeight)} >
-              <ShowcaseTitle height={showcaseInnerHeight} showcase={this.props.showcase} />
-              <ShowcaseSections height={showcaseInnerHeight} showcase={this.props.showcase} />
-
-            </div>
+            <ShowcaseInnerContent height={showcaseInnerHeight} showcase={this.props.showcase} />
           </div>
         </div>
-
-      )
+      );
     } else {
-      return (<Loading />)
+      return (<Loading />);
     }
   }
 });
