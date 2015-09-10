@@ -21,11 +21,13 @@ var ShowcaseShow = React.createClass({
       titleSectionPercentVisible: 1,
       startTime: Date.now(),
       hasScrolled: false,
+      outerElement: null,
+      element: null,
     }
   },
 
   componentDidUpdate: function(prevProps, prevState) {
-    if (this.props.showcase && !this.scrollbarInitialized) {
+    if (!this.scrollbarInitialized) {
       this.initializeScrollbar();
     }
     this.checkHash();
@@ -36,22 +38,26 @@ var ShowcaseShow = React.createClass({
 
   initializeScrollbar: function() {
     this.scrollbarInitialized = true;
-    $("#showcase-outer").perfectScrollbar({useBothWheelAxes: true, suppressScrollY: true });
+    this.state.outerElement.perfectScrollbar({useBothWheelAxes: true, suppressScrollY: true });
     if(this.ie()) {
-      $(".ps-scrollbar-x-rail").hide();
+      this.state.outerElement.find(".ps-scrollbar-x-rail").hide();
     }
   },
 
   updateScrollbar: function() {
     if (this.scrollbarInitialized) {
-      $("#showcase-outer").perfectScrollbar("update");
+      this.state.outerElement.perfectScrollbar("update");
       if(this.ie()) {
-        $(".ps-scrollbar-x-rail").hide();
+        this.state.outerElement.find(".ps-scrollbar-x-rail").hide();
       }
     }
   },
 
   componentDidMount: function() {
+    this.setState({
+      outerElement: $(React.findDOMNode(this.refs.showcaseOuter)),
+      element: $(React.findDOMNode(this)),
+    });
     window.addEventListener("hashchange", this.checkHash, false);
     // window.addEventListener("resize", this.handleResize, false);
     this.checkHash();
@@ -89,8 +95,8 @@ var ShowcaseShow = React.createClass({
     if(!this.state.hasScrolled) {
       this.setState({hasScrolled: true});
     }
-    var scrollLeft = $("#showcase-outer").get(0).scrollLeft;
-    var titleWidth = $(this.getDOMNode()).width() * titleSectionWidthPercent;
+    var scrollLeft = this.state.outerElement.get(0).scrollLeft;
+    var titleWidth = this.state.element.width() * titleSectionWidthPercent;
     var percentVisible = 1 - scrollLeft/titleWidth;
     if (percentVisible < 0) {
       percentVisible = 0;
@@ -116,21 +122,17 @@ var ShowcaseShow = React.createClass({
     } else if (backgroundBlur > maxBackgroundBlur) {
       backgroundBlur = maxBackgroundBlur;
     }
-    if (this.props.showcase) {
-      return (
-        <div>
-          <AttentionHelp start={this.state.startTime} hasScrolled={this.state.hasScrolled} />
-          <ShowcaseBackground percentBlur={backgroundBlur} height={this.props.height} showcase={this.props.showcase} />
-          <ShowcaseTitleBar percentFade={this.state.titleSectionPercentVisible} height={showcaseTitleHeight} showcase={this.props.showcase} />
-          <div id="showcase-outer" className="showcase-outer" style={this.styleOuter(showcaseHeight)} onScroll={this.onScroll}>
-            <Scroller target="#showcase-outer" />
-            <ShowcaseInnerContent height={showcaseInnerHeight} showcase={this.props.showcase} />
-          </div>
+    return (
+      <div>
+        <AttentionHelp start={this.state.startTime} hasScrolled={this.state.hasScrolled} />
+        <ShowcaseBackground percentBlur={backgroundBlur} height={this.props.height} showcase={this.props.showcase} />
+        <ShowcaseTitleBar percentFade={this.state.titleSectionPercentVisible} height={showcaseTitleHeight} showcase={this.props.showcase} />
+        <div id="showcase-outer" ref="showcaseOuter" className="showcase-outer" style={this.styleOuter(showcaseHeight)} onScroll={this.onScroll}>
+          <Scroller target="#showcase-outer" />
+          <ShowcaseInnerContent height={showcaseInnerHeight} showcase={this.props.showcase} />
         </div>
-      );
-    } else {
-      return (<Loading />);
-    }
+      </div>
+    );
   }
 });
 
