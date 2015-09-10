@@ -35,8 +35,8 @@ var CollectionIntroPage = React.createClass({
   },
 
   render: function() {
-    var nextShowcase = ""
-    if (this.state.collection.showcases) {
+    var nextShowcase;
+    if (this.state.collection.showcases && this.state.collection.showcases.length > 0) {
       nextShowcase = (<MoreArrow showcase={this.state.collection.showcases[0]} />);
     }
     return (

@@ -24,7 +24,7 @@ var ShowcasesCardList = React.createClass({
   },
 
   render: function() {
-    if (this.props.showcases.length > 0) {
+    if (this.props.showcases.length > 0 || this.props.intro) {
       return (
         <GridList className="showcases-list">
           {this.allNodes()}
