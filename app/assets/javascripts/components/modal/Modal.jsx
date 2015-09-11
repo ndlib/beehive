@@ -13,6 +13,27 @@ var Modal = React.createClass({
     title: React.PropTypes.string,
   },
 
+  getInitialState: function() {
+    return {
+      rendered: false,
+      element: null,
+    }
+  },
+
+  componentDidMount: function() {
+    var element = $(React.findDOMNode(this));
+    this.setState({
+      element: element,
+    });
+    element.on('show.bs.modal', this.setRendered);
+  },
+
+  setRendered: function() {
+    this.setState({
+      rendered: true,
+    });
+  },
+
   styles: function() {
     if (this.props.height) {
       return {
@@ -54,6 +75,12 @@ var Modal = React.createClass({
     }
   },
 
+  content: function() {
+    if (this.state.rendered) {
+      return this.props.content;
+    }
+  },
+
   render: function () {
     return (
       <div className={this.className()} id={this.props.id} tabIndex="-1" data-backdrop="static"  onKeyDown={this.onKeyDown} style={this.outerStyle()}>
@@ -63,7 +90,7 @@ var Modal = React.createClass({
               <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={this.removeHash}><i className="mdi-content-clear"></i></button>
                 <h4 className="modal-title">{this.props.title}</h4>
             </div>
-            <div className="modal-body">{this.props.content}</div>
+            <div className="modal-body">{this.content()}</div>
           </div>
         </div>
       </div>

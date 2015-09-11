@@ -45,13 +45,21 @@ var ShowcaseShowPage = React.createClass({
   },
 
   render: function() {
+    var showcaseShow;
+    if (this.state.showcase) {
+      showcaseShow = (
+        <ShowcaseShow height={this.state.height} showcase={this.state.showcase} />
+      );
+    } else {
+      showcaseShow = (<Loading />);
+    }
     return (
       <div>
         {this.modals()}
         <Layout>
           <CollectionPageHeader collection={this.state.collection} dropdown={true} />
           <PageContent>
-            <ShowcaseShow height={this.state.height} showcase={this.state.showcase} />
+            {showcaseShow}
           </PageContent>
         </Layout>
         <CollectionOverlayFooter collection={this.state.collection} />
