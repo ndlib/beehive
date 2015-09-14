@@ -50,17 +50,22 @@ var SearchSort = React.createClass({
   },
 
   render: function() {
-    return(
-      <SelectField
-        ref='searchSort'
-        onChange={this.onChange.bind(this, 'selectValue')}
-        menuItems={this.props.sortOptions}
-        style={{float:'right', marginLeft: '2em'}}
-        selectedIndex={this.props.selectedIndex}
-        displayMember='name'
-        valueMember='value'
-      />
-    );
+    if(this.props.sortOptions.length > 0) {
+      return(
+        <SelectField
+          ref='searchSort'
+          onChange={this.onChange.bind(this, 'selectValue')}
+          menuItems={this.props.sortOptions}
+          style={{float:'right', marginLeft: '2em'}}
+          selectedIndex={this.props.selectedIndex}
+          displayMember='name'
+          valueMember='value'
+        />
+      );
+    }
+    else {
+      return null;
+    }
   }
 });
 module.exports = SearchSort
