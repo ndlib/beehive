@@ -20,7 +20,6 @@ var AttentionHelp = React.createClass({
 
   componentDidMount: function() {
     this.timer = setInterval(this.tick, 1000);
-
   },
 
   componentWillUnmount: function() {
@@ -41,11 +40,11 @@ var AttentionHelp = React.createClass({
     var elapsed = Math.round(this.state.elapsed / 1000);
     // we'll load it before we want to play it so there isn't a delay
     var snackbar = (<source src="/attention.mp3" type="audio/mpeg"/>);
-    var audioPlay = ""
-    var storage = JSON.parse(sessionStorage.getItem("AudioPlayed"));
 
     if(!this.props.hasScrolled && elapsed >= 5 && elapsed <= 15) {
-    if(!storage) {
+      var audioPlay;
+      var storage = JSON.parse(sessionStorage.getItem("AudioPlayed"));
+      if(!storage) {
         audioPlay = (
           <audio autoPlay>
             <source src="/attention.mp3" type="audio/mpeg"/>

@@ -66,6 +66,7 @@ CollectionBackground = require("./components/collection/CollectionBackground");
 // Showcases
 ShowcasesCardList = require("./components/showcase/ShowcasesCardList");
 ShowcaseShow = require("./components/showcase/ShowcaseShow");
+ShowcaseInnerContent = require("./components/showcase/ShowcaseInnerContent");
 ShowcaseSections = require("./components/showcase/ShowcaseSections");
 ShowcaseTitle = require("./components/showcase/ShowcaseTitle");
 ShowcaseTitleBar = require("./components/showcase/ShowcaseTitleBar");
