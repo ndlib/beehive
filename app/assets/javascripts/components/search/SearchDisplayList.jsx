@@ -34,7 +34,24 @@ var SearchDisplayList = React.createClass({
     };
   },
 
-  render: function() {
+  facets: function()  {
+    if (this.props.facets.length > 0) {
+      return  (
+        <div className="row-fluid col-lg-3">
+          <SearchFacets
+            collection={this.props.collection}
+            facets={this.props.facets}
+            selectedFacet={this.props.selectedFacet}
+          />
+        </div>
+      );
+    }
+    else {
+      return null;
+    }
+  },
+
+  renderInner: function() {
     var view = this.state.view;
     var itemNodes = this.props.items.map(function(item, index) {
       var nodes = [];
@@ -43,33 +60,37 @@ var SearchDisplayList = React.createClass({
       ));
       return nodes;
     });
+
     return (
-      <div className='items-list' style={this.outerStyle()}>
-        {this.displayItemWindow()}
-        <div className="row">
-          {this.renderButtons(this.props.collection, this.props.searchTerm, this.props.sortOptions, this.props.selectedIndex)}
-          <div className="row-fluid col-lg-3">
-            <SearchFacets
-              collection={this.props.collection}
-              facets={this.props.facets}
-              selectedFacet={this.props.selectedFacet}
-            />
+      <div>
+        {this.facets()}
+        <div className={this.props.facets.length > 0 ? "row-fluid col-lg-9" : "row-fluid col-lg-12" }>
+          <SearchPagination
+            collection={this.props.collection}
+            found={this.props.found}
+            start={this.props.start}
+          />
+          <div className={this.listClass()}>
+              {itemNodes}
           </div>
-          <div className="row-fluid col-lg-9">
             <SearchPagination
               collection={this.props.collection}
               found={this.props.found}
               start={this.props.start}
             />
-            <div className={this.listClass()}>
-                {itemNodes}
-            </div>
-              <SearchPagination
-                collection={this.props.collection}
-                found={this.props.found}
-                start={this.props.start}
-              />
-          </div>
+        </div>
+      </div>
+    );
+  },
+
+  render: function() {
+
+    return (
+      <div className='items-list' style={this.outerStyle()}>
+        {this.displayItemWindow()}
+        <div className="row">
+          {this.renderButtons(this.props.collection, this.props.searchTerm, this.props.sortOptions, this.props.selectedIndex)}
+          {this.renderInner()}
         </div>
         <div className='clearfix' />
       </div>
