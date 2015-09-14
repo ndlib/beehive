@@ -24,8 +24,7 @@ var SearchFacets = React.createClass({
   },
 
   facetOnClick: function(e) {
-    console.log("FACET CLICK");
-    console.log(e.currentTarget.getAttribute("value"));
+    e.currentTarget.getAttribute("value");
   },
 
   valueOnClick: function(parentFacet, e) {
