@@ -4,42 +4,22 @@ var ItemActions = require('../../actions/ItemActions');
 var ItemActionTypes = require('../../constants/ItemActionTypes');
 
 var ItemListItem = React.createClass({
-  mixins: [LoadRemoteMixin],
   propTypes: {
     item: React.PropTypes.object.isRequired,
     view: React.PropTypes.string,
   },
 
-  onClick: function() {
-    var item = this.loadRemoteItem(this.props.item['@id']);
-    ItemActions.setCurrentItem(item);
-    ItemActions.showItemDialogWindow(item);
-  },
-
-  targetID: function() {
-    return '#modal-' + this.props.item.id;
-  },
-
-  columnClass: function() {
-    if(this.props.view === 'list') {
-      return 'col-lg-12';
+  render: function() {
+    if(this.props.view === 'list'){
+      return (
+        <ListItem item={this.props.item} />
+      );
     }
     else {
-      return 'col-lg-3 col-md-4 col-sm-6';
+      return (
+        <GridItem item={this.props.item} />
+      );
     }
-  },
-
-  render: function() {
-    return (
-      <div className={this.columnClass()}>
-        <div key={this.props.item['@id']} className='bee-item'>
-          <a onClick={this.onClick}>
-            <ItemImage image={this.props.item.image} />
-            <ItemText item={this.props.item} />
-          </a>
-        </div>
-      </div>
-    );
   }
 });
 
