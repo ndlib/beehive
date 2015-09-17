@@ -10,10 +10,17 @@ var ListItem = React.createClass({
 
   render: function() {
     var item = this.props.item;
+    var avatar;
+    if(item.image) {
+      avatar = (<mui.Avatar src={item.image['thumbnail/small'].contentUrl} />);
+    }
+    else {
+      avatar = (<mui.Avatar>{item.name.charAt(0).toUpperCase()}</mui.Avatar>);
+    }
     return (
       <div>
         <mui.ListItem
-          leftAvatar={<mui.Avatar src={item.image['thumbnail/small'].contentUrl} />}
+          leftAvatar={avatar}
           primaryText={item.name}
           secondaryText={item.description}
           secondaryTextLines={2}
