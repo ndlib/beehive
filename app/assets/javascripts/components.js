@@ -17,7 +17,7 @@ IEMixin = require("./mixins/IEMixin");
 GridListMixin = require("./mixins/GridListMixin");
 SearchMixin = require("./mixins/SearchMixin");
 DialogMixin = require("./mixins/DialogMixin");
-
+SearchUrlMixin = require("./mixins/SearchUrlMixin");
 
 // Layout
 Layout = require("./components/layout/Layout");
@@ -99,8 +99,10 @@ ItemsModalList = require("./components/item/ItemsModalList");
 
 // Search
 SearchDisplayList = require("./components/search/SearchDisplayList");
-SearchBox = require("./components/search/SearchBox")
-SearchSort = require("./components/search/SearchSort")
+SearchBox = require("./components/search/SearchBox");
+SearchSort = require("./components/search/SearchSort");
+SearchFacets = require("./components/search/SearchFacets");
+SearchPagination = require("./components/search/SearchPagination");
 
 // Modal
 Modal = require("./components/modal/Modal");

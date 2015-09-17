@@ -9,6 +9,8 @@ var searchMixin = {
       dataType: "json",
       success: function(result) {
         this.setItems(result.hits);
+        this.setFacets(result.facets);
+        this.setSorts(result.sorts)
       },
       error: function(request, status, thrownError) {
           window.location = window.location.origin + '/404';
@@ -16,8 +18,14 @@ var searchMixin = {
     });
   },
 
+  setFacets: function(facets) {
+    this.setState({facets: facets});
+  },
+
   setItems: function(hits) {
     var items = [];
+    var found = hits.found;
+    var start = hits.start;
     for (var h in hits.hit) {
       var hit = hits.hit[h];
       var item = this.mapHitToItem(hit);
@@ -25,6 +33,21 @@ var searchMixin = {
     }
     this.setState({
       items: items,
+      found: found,
+      start: start,
+    });
+  },
+
+  setSorts: function(sorts) {
+    var regex = /\S+&sort=/;
+    var sortOption = '';
+    if(window.location.search.match(regex)) {
+      sortOption = window.location.search.replace(regex, '');
+    };
+
+    this.setState({
+      sortOptions: sorts,
+      selectedIndex: sorts.map(function(s) {return s.value; }).indexOf(sortOption),
     });
   },
 

@@ -4,53 +4,68 @@ var mui = require('material-ui');
 var SelectField = mui.SelectField;
 var MenuItem = mui.MenuItem;
 var SearchSort = React.createClass({
+  mixins: [SearchUrlMixin],
 
   propTypes: {
     collection: React.PropTypes.object.isRequired,
-    sortOptions: React.PropTypes.array
-  },
-
-  getDefaultProps: function() {
-    return {
-      sortOptions: [
-        {text: 'Item Name', payload: 'name', direction: 'dsc'},
-        {text: 'Creator', payload: 'creator', direction: 'asc'}
-      ]
-    };
+    sortOptions: React.PropTypes.array,
+    selectedIndex: React.PropTypes.number,
   },
 
   getInitialState: function() {
     var state = {
-      hintText: 'Sort Results',
+      selectValue: 0,
     }
     return state;
   },
 
-  searchUrl: function(sort) {
-    var searchTerm = "/search" + window.location.search.split('&', 1);
-    var sortTerm = "&sort=[]" +sort.payload + " " + sort.direction;
-    var url = window.location.origin + "/" +this.props.collection.id + "/" + this.props.collection.slug + encodeURIComponent(searchTerm) + encodeURIComponent(sortTerm);
-    return url;
+  getDefaultProps: function() {
+    return {
+      sortOptions: [],
+      selectedIndex: -1,
+    };
   },
 
   onChange: function(prop, e) {
-    var change = {};
-    change[prop] = e.target.value;
-    window.location.assign(this.searchUrl(change.selectValue));
-    this.setState({hintText: ''});
+    this.setSort(e.target.value);
+    window.location.assign(this.searchUrl(this.props.collection));
+  },
+
+  setSort: function(sortOption) {
+    window.searchStore.sortOption = sortOption;
+  },
+
+  componentWillMount: function() {
+    this.initSearchStore();
+    var regex = /\S+&sort=/;
+    var sortOption = '';
+    if(window.location.search.match(regex)) {
+      sortOption = window.location.search.replace(regex, '').split('&')[0];
+    }
+    this.setSort(sortOption);
+  },
+
+  shouldComponentUpdate: function(nextProps, nextState) {
+    return(nextProps.selectedIndex !== this.props.selectedIndex);
   },
 
   render: function() {
-    return(
-      <SelectField
-        value={null}
-        ref='sortType'
-        hintText={this.state.hintText}
-        onChange={this.onChange.bind(null, 'selectValue')}
-        menuItems={this.props.sortOptions}
-        style={{float:'right', marginLeft: '2em'}}
-      />
-    );
+    if(this.props.sortOptions.length > 0) {
+      return(
+        <SelectField
+          ref='searchSort'
+          onChange={this.onChange.bind(this, 'selectValue')}
+          menuItems={this.props.sortOptions}
+          style={{float:'right', marginLeft: '2em'}}
+          selectedIndex={this.props.selectedIndex}
+          displayMember='name'
+          valueMember='value'
+        />
+      );
+    }
+    else {
+      return null;
+    }
   }
 });
 module.exports = SearchSort
