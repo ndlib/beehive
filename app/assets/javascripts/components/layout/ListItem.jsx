@@ -21,8 +21,21 @@ var ListItem = React.createClass({
     else {
       avatar = (<mui.Avatar>{item.name.charAt(0).toUpperCase()}</mui.Avatar>);
     }
-    var name = (<span style={{marginLeft: '48px'}}>{item.name}</span>);
-    var description = (<span style={{maxWidth: '680px', marginLeft: '48px'}}>{item.description}</span>);
+
+    var name = (
+      <span style={{marginLeft: '48px'}}>
+        {item.name}
+      </span>
+    );
+
+    var description = (
+      <span style={{
+          maxWidth: '40em',
+          marginLeft: '48px'}}
+      >
+        {item.description}
+      </span>
+    );
 
     return (
       <div>
