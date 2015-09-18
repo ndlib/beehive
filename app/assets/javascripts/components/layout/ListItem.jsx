@@ -12,17 +12,24 @@ var ListItem = React.createClass({
     var item = this.props.item;
     var avatar;
     if(item.image) {
-      avatar = (<mui.Avatar src={item.image['thumbnail/small'].contentUrl} />);
+      avatar = (
+        <div style={{top: '4px', left: '16px', width: '80px', height: '80px'}}>
+          <ItemImage image={item.image} />
+        </div>
+      );
     }
     else {
       avatar = (<mui.Avatar>{item.name.charAt(0).toUpperCase()}</mui.Avatar>);
     }
+    var name = (<span style={{marginLeft: '48px'}}>{item.name}</span>);
+    var description = (<span style={{maxWidth: '680px', marginLeft: '48px'}}>{item.description}</span>);
+
     return (
       <div>
         <mui.ListItem
           leftAvatar={avatar}
-          primaryText={item.name}
-          secondaryText={item.description}
+          primaryText={name}
+          secondaryText={description}
           secondaryTextLines={2}
           onClick={this.itemOnClick}
         />
