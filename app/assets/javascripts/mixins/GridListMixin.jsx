@@ -64,13 +64,12 @@ var GridListMixin = {
       'pull-right'
     );
     var searchSort;
-    if(this.props.sortOptions.length > 1) {
-      searchSort = (<SearchSort collection={collection} sortOptions={sortOptions} selectedIndex={selectedIndex}/>);
-    }
+      if(this.props.sortOptions && this.props.sortOptions.length > 1) {
+        searchSort = (<SearchSort collection={collection} sortOptions={sortOptions} selectedIndex={selectedIndex}/>);
+      }
     return (
       <div className="controls" style={this.controlsStyle()}>
-        <div className="col-lg-3" />
-        <div className="col-lg-9" >
+        <div className="col-lg-12" >
           <div className="pull-left">
             <SearchBox collection={collection} searchTerm={searchTerm}/>
             {searchSort}

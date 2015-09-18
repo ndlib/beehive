@@ -26,6 +26,8 @@ TitleBar = require("./components/layout/TitleBar");
 PageContent = require("./components/layout/PageContent");
 CollectionPageHeader = require("./components/layout/CollectionPageHeader");
 GridList = require("./components/layout/GridList");
+GridItem = require("./components/layout/GridItem");
+ListItem = require("./components/layout/ListItem");
 Card = require("./components/layout/Card");
 BrandBar = require("./components/layout/BrandBar");
 CardBackground = require("./components/layout/CardBackground");
@@ -42,7 +44,6 @@ ShowcaseShowPage = require("./components/pages/ShowcaseShowPage");
 ItemsListPage = require("./components/pages/ItemsListPage");
 ItemsSearchPage = require("./components/pages/ItemsSearchPage");
 ErrorPage = require("./components/pages/ErrorPage");
-
 
 // Embed Codes
 CollectionEmbed = require("./components/embeds/CollectionEmbed");

@@ -21,7 +21,6 @@ var LoadRemoteMixin = {
       url: url,
       dataType: 'json',
       success: function(result) {
-        console.log(result);
         ItemActions.setCurrentItem(result.items);
         ItemActions.showItemDialogWindow(result.items);
       },
@@ -31,6 +30,12 @@ var LoadRemoteMixin = {
 
   loadRemoteSection: function(section) {
     console.log('Clicked a section', section);
+  },
+
+  itemOnClick: function() {
+    var item = this.loadRemoteItem(this.props.item['@id']);
+    ItemActions.setCurrentItem(item);
+    ItemActions.showItemDialogWindow(item);
   },
 }
 
