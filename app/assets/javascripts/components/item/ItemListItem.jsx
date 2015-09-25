@@ -1,7 +1,5 @@
 'use strict'
 var React = require('react');
-var ItemActions = require('../../actions/ItemActions');
-var ItemActionTypes = require('../../constants/ItemActionTypes');
 
 var ItemListItem = React.createClass({
   propTypes: {

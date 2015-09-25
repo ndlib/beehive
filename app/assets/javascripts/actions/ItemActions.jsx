@@ -19,5 +19,5 @@ class ItemActions {
   }
 
 }
-var ItemActions = new ItemActions()
+var ItemActions = new ItemActions();
 module.exports = ItemActions;

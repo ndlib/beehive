@@ -34,8 +34,7 @@ var LoadRemoteMixin = {
 
   itemOnClick: function() {
     var item = this.loadRemoteItem(this.props.item['@id']);
-    ItemActions.setCurrentItem(item);
-    ItemActions.showItemDialogWindow(item);
+    window.location.hash = this.props.item['@id'].split("/").pop();
   },
 }
 

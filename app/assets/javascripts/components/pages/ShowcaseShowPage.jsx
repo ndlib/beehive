@@ -15,6 +15,7 @@ var ShowcaseShowPage = React.createClass({
     return {
       collection: {},
       showcase: null,
+      currentSection: null,
     };
   },
 
@@ -25,15 +26,9 @@ var ShowcaseShowPage = React.createClass({
     }, this.handleResize);
   },
 
-  modals: function() {
-    if(this.state.showcase) {
-      return (
-        <SectionsModalList height={this.state.height} sections={this.state.showcase.sections} />
-      );
-    }
-    else {
-      return (<span />);
-    }
+  componentWillMount: function() {
+    //FIX THIS LINE
+    EventEmitter.on("ItemDialogWindow", this.setCurrentSection);
   },
 
   componentDidMount: function() {
@@ -42,6 +37,10 @@ var ShowcaseShowPage = React.createClass({
     } else {
       this.loadRemoteCollection(this.props.collection)
     }
+  },
+
+  setCurrentSection: function() {
+    this.setState({currentSection: section});
   },
 
   render: function() {
@@ -55,7 +54,16 @@ var ShowcaseShowPage = React.createClass({
     }
     return (
       <div>
-        {this.modals()}
+        <DialogWindow>
+          <SectionShow
+            height={this.state.height}
+            section={this.state.currentSection}
+/*
+            previousSection={this.props.previousSection}
+            nextSection={this.props.nextSection}
+*/
+          />
+        </DialogWindow>
         <Layout>
           <CollectionPageHeader collection={this.state.collection} dropdown={true} />
           <PageContent>

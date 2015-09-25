@@ -7,11 +7,9 @@ var ItemShow = React.createClass({
   propTypes: {
     item: React.PropTypes.object,
     additionalDetails: React.PropTypes.string,
-    previousItem: React.PropTypes.string,
-    nextItem: React.PropTypes.string,
     height: React.PropTypes.number,
   },
-
+/*
   componentDidMount: function() {
     var id = "#modal-" + this.props.item.id;
 
@@ -43,6 +41,7 @@ var ItemShow = React.createClass({
       $(document).unbind("keyup");
     });
   },
+  */
 
   getInitialState: function() {
     return {
@@ -109,21 +108,13 @@ var ItemShow = React.createClass({
   },
 
   render: function() {
-    var prev, next, offsetTop;
+    var prevLink, nextLink, offsetTop;
     if (this.props.height) {
       offsetTop = this.props.height / 2;
     }
     if (this.props.item) {
-      if (this.props.previousItem) {
-        prev = (<PreviousModal offsetTop={offsetTop} id={this.props.previousItem} />);
-      }
-      if (this.props.nextItem) {
-        next = (<NextModal offsetTop={offsetTop} id={this.props.nextItem} />);
-      }
       return (
-        <div>
-          {prev}
-          {next}
+
           <div className="item-detail" style={this.outerStyles()}>
 
             <div style={this.headerStyles()}>
@@ -140,7 +131,6 @@ var ItemShow = React.createClass({
               <OpenseadragonViewer image={this.props.item.image} containerID={this.props.item.id} height={this.props.height} toolbarTop={60} toolbarLeft={40} showFullPageControl={false} />
             </div>
           </div>
-        </div>
       );
     } else {
       return <Loading />;

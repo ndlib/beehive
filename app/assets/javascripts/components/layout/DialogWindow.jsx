@@ -5,7 +5,39 @@ var FontIcon = mui.FontIcon;
 var injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
 
-var DialogMixin = {
+var DialogWindow = React.createClass({
+  mixins: [MuiThemeMixin, LoadRemoteMixin],
+
+  propTypes: {
+    previousUrl: React.PropTypes.string,
+    nextUrl: React.PropTypes.string,
+  },
+
+  componentWillMount: function() {
+    EventEmitter.on("ItemDialogWindow", this.showWindow);
+  },
+
+  getInitialState: function () {
+    return {
+      displayWindowActive: false,
+    };
+  },
+
+  showWindow: function(item) {
+    this.setState({
+      displayWindowActive: true,
+    });
+    this.refs.itemDialogWindow.show();
+  },
+
+  hideWindow: function() {
+    this.setState({
+      displayWindowActive: false,
+    });
+    this.refs.itemDialogWindow.dismiss();
+    window.location.hash = "";
+  },
+
   okDismiss: function() {
     var fontIcon = (
       <FontIcon
@@ -46,47 +78,19 @@ var DialogMixin = {
     ];
   },
 
-  componentWillMount: function() {
-    EventEmitter.on("ItemDialogWindow", this.showWindow);
-  },
-
-  getInitialState: function () {
-    return {
-      displayWindowActive: false,
-      currentItem: null,
-    };
-  },
-
-  showWindow: function(item) {
-    this.setState({
-      displayWindowActive: true,
-      currentItem: item
-    });
-    this.refs.itemDialogWindow.show();
-  },
-
-  hideWindow: function() {
-    this.setState({
-      displayWindowActive: false,
-    });
-    this.refs.itemDialogWindow.dismiss();
-  },
-
-  dialogWindowStyle: function() {
-    return {
-      backgroundColor: 'black',
-      top: '51px',
-      zIndex: '1000'
-    };
-  },
-
-  displayItemWindow: function() {
+  render: function() {
+    var prev, next;
+    if(this.props.previousUrl) {
+      prev = (<PreviousModal url={this.props.previousUrl} />);
+    }
+    if(this.props.nextUrl) {
+      next = (<NextModal url={this.props.nextUrl} />);
+    }
     return (
       <Dialog
         ref='itemDialogWindow'
         modal={false}
         openImmediately={false}
-        style={this.dialogWindowStyle()}
         actions={this.okDismiss()}
         contentClassName='dialog-window'
         contentStyle={{
@@ -101,10 +105,14 @@ var DialogMixin = {
           maxWidth: '100%'
         }}
       >
-        <ItemShow item={this.state.currentItem} height={this.state.height} />
+        <div>
+          {prev}
+          {next}
+          {this.props.children}
+        </div>
       </Dialog>
     );
   },
 
-}
-module.exports = DialogMixin;
+})
+module.exports = DialogWindow;

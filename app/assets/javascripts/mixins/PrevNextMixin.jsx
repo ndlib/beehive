@@ -1,7 +1,13 @@
  var PrevNextMixin = {
   propTypes: {
-    id: React.PropTypes.string.isRequired,
+    url: React.PropTypes.string.isRequired,
     offsetTop: React.PropTypes.number,
+  },
+
+  getDefaultProps: function() {
+    return {
+      offsetTop: window.innerHeight/2,
+    };
   },
 
   buttonStyles: function() {
@@ -15,12 +21,14 @@
   },
 
   modalID: function() {
-    return "#modal-" + this.props.id;
+    return this.props.id;
   },
 
   clickAction: function(event) {
-    window.location.hash = "modal-" + this.props.id;
     event.preventDefault();
+    var id = this.props.url.split("/").pop();
+    window.location.hash = id;
+    this.loadRemoteItem(this.props.url);
   },
 }
 

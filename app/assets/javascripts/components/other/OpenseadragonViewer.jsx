@@ -42,6 +42,18 @@ var OpenseadragonViewer = React.createClass({
     } else {
       this.fullPageOff();
     }
+
+    if(nextProps.image != this.props.image) {
+      this.setState({image: nextProps.image});
+      this.state.viewer.close();
+
+      var sourceImage = this.dziSource(nextProps.image);
+      if (/^http:\/\/localhost/.test(nextProps.image.contentUrl)) {
+        sourceImage = this.legacySource(nextProps.image);
+      }
+      this.state.viewer.open(sourceImage);
+    }
+
     return true;
   },
 
@@ -138,15 +150,23 @@ var OpenseadragonViewer = React.createClass({
   dziOptions: function(image) {
     var options;
     options = this.baseOptions();
-    options.tileSources = image['thumbnail/dzi']['contentUrl'];
+    options.tileSources = this.dziSource;
     return options;
   },
 
+  dziSource: function(image) {
+    return image['thumbnail/dzi']['contentUrl'];
+  },
+
   legacyOptions: function(image) {
-    //console.log(image);
     var options;
     options = this.baseOptions();
-    options.tileSources = {
+    options.tileSources = this.legacySource(image);
+    return options;
+  },
+
+  legacySource: function(image) {
+     return {
       id: image.id,
       type: 'legacy-image-pyramid',
       levels: [
@@ -157,7 +177,6 @@ var OpenseadragonViewer = React.createClass({
         }
       ]
     };
-    return options;
   },
 
   style: function() {
