@@ -39,7 +39,7 @@ var ShowcaseShowPage = React.createClass({
     }
   },
 
-  setCurrentSection: function() {
+  setCurrentSection: function(section) {
     this.setState({currentSection: section});
   },
 
@@ -47,7 +47,7 @@ var ShowcaseShowPage = React.createClass({
     var showcaseShow;
     if (this.state.showcase) {
       showcaseShow = (
-        <ShowcaseShow height={this.state.height} showcase={this.state.showcase} />
+        <ShowcaseShow height={this.state.height} collection={this.state.collection} showcase={this.state.showcase} />
       );
     } else {
       showcaseShow = (<Loading />);

@@ -15,6 +15,7 @@ var DialogWindow = React.createClass({
 
   componentWillMount: function() {
     EventEmitter.on("ItemDialogWindow", this.showWindow);
+    EventEmitter.on("SectionDialogWindow", this.showWindow);
   },
 
   getInitialState: function () {

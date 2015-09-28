@@ -11,6 +11,7 @@ class ItemActions {
   }
 
   showItemDialogWindow(item) {
+    console.log('item', item);
     EventEmitter.emit("ItemDialogWindow", item);
   }
 

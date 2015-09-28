@@ -2,7 +2,7 @@
 var React = require('react');
 
 var Section = React.createClass({
-  mixins: [CollectionUrlMixin],
+  mixins: [CollectionUrlMixin, LoadRemoteMixin],
   displayName: 'Section',
 
   propTypes: {
@@ -41,14 +41,17 @@ var Section = React.createClass({
   },
 
   onClick: function(event) {
+    this.sectionOnClick();
+/*
     event.preventDefault();
-    window.location.hash = "modal-" + this.props.section.id;
+    window.location.hash = this.props.section.id;
+*/
   },
 
   sectionName: function() {
     return "section-" + this.props.section.id;
   },
-
+  componentWillMount: function() {console.log('s', this.props.section);},
   render: function() {
 
     return (

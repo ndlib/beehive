@@ -4,16 +4,20 @@ var React = require('react');
 var SectionShow = React.createClass({
   displayName: 'Section Show',
   propTypes: {
-    section: React.PropTypes.object,
+    section: React.PropTypes.object.isRequired,
     previousSection: React.PropTypes.string,
     nextSection: React.PropTypes.string,
     height: React.PropTypes.number,
   },
-
+  componentWillMount: function() {
+    console.log('ss', this.props.section);
+  },
   componentDidMount: function() {
+/*
     var modal = $('#modal-' + this.props.section.id);
     modal.on('show.bs.modal', this.modalShow);
     modal.on('hide.bs.modal', this.modalHide);
+*/
   },
 
   modalShow: function(event) {
