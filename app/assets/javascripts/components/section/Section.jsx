@@ -51,7 +51,7 @@ var Section = React.createClass({
   sectionName: function() {
     return "section-" + this.props.section.id;
   },
-  componentWillMount: function() {console.log('s', this.props.section);},
+
   render: function() {
 
     return (

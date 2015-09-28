@@ -9,17 +9,7 @@ var SectionShow = React.createClass({
     nextSection: React.PropTypes.string,
     height: React.PropTypes.number,
   },
-  componentWillMount: function() {
-    console.log('ss', this.props.section);
-  },
-  componentDidMount: function() {
 /*
-    var modal = $('#modal-' + this.props.section.id);
-    modal.on('show.bs.modal', this.modalShow);
-    modal.on('hide.bs.modal', this.modalHide);
-*/
-  },
-
   modalShow: function(event) {
     $(document).bind('keyup', this.modalKeyup);
   },
@@ -47,7 +37,7 @@ var SectionShow = React.createClass({
     this.modalVisible = false;
     $(document).off('keyup', this.modalKeyup);
   },
-
+*/
   render: function() {
     var prev, next, offsetTop;
     if (this.props.height) {
@@ -80,7 +70,7 @@ var SectionShow = React.createClass({
         );
       }
     } else {
-      return <Loading />;
+      return null;
     }
 
   }

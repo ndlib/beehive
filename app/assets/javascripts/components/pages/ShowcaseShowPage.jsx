@@ -27,7 +27,6 @@ var ShowcaseShowPage = React.createClass({
   },
 
   componentWillMount: function() {
-    //FIX THIS LINE
     EventEmitter.on("ItemDialogWindow", this.setCurrentSection);
   },
 
@@ -54,16 +53,7 @@ var ShowcaseShowPage = React.createClass({
     }
     return (
       <div>
-        <DialogWindow>
-          <SectionShow
-            height={this.state.height}
-            section={this.state.currentSection}
-/*
-            previousSection={this.props.previousSection}
-            nextSection={this.props.nextSection}
-*/
-          />
-        </DialogWindow>
+
         <Layout>
           <CollectionPageHeader collection={this.state.collection} dropdown={true} />
           <PageContent>

@@ -14,6 +14,7 @@
     if (this.props.offsetTop) {
       return {
         top: this.props.offsetTop + 'px',
+        zIndex: 1,
       };
     } else {
       return {};

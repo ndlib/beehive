@@ -36,19 +36,17 @@ var LoadRemoteMixin = {
       dataType: 'json',
       success: function(result) {
         SectionActions.setCurrentSection(result.showcases.sections);
-        SectionActions.showSectionDialogWindow(result.showcases.sections);
-        console.log(result.showcases.sections);
+        SectionActions.showSectionDialogWindow(result.showcases.sections)
       },
       error: function(request, status, thrownError) {}
     });
-    console.log('Clicked a section', url);
   },
 
   itemOnClick: function() {
     this.loadRemoteItem(this.props.item['@id']);
     window.location.hash = this.props.item['@id'].split("/").pop();
   },
-  
+
   sectionOnClick: function() {
     this.loadRemoteSection(this.props.section['@id']);
     window.location.hash = this.props.section['@id'].split("/").pop();

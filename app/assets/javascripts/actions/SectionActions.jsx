@@ -11,7 +11,6 @@ class SectionActions {
   }
 
   showSectionDialogWindow(section) {
-    console.log('action', section);
     EventEmitter.emit("SectionDialogWindow", section);
   }
 

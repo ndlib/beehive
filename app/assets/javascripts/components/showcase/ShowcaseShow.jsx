@@ -72,7 +72,6 @@ var ShowcaseShow = React.createClass({
   },
 
   setCurrentSection: function(section) {
-    console.log('state', section);
     this.setState({currentSection: section});
   },
   
@@ -162,7 +161,6 @@ var ShowcaseShow = React.createClass({
         next = this.nextUrl(index);
       }
     }
-    console.log('current', this.state.currentSection);
     return (
       <div>
         <AttentionHelp start={this.state.startTime} hasScrolled={this.state.hasScrolled} />
