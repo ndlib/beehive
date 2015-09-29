@@ -25,7 +25,8 @@ var Scroller = React.createClass({
   style: function() {
     return {
       cursor: "pointer",
-      fontSize: "3em"
+      fontSize: "3em",
+      zIndex: 1,
     };
   },
 

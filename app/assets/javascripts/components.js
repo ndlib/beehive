@@ -16,7 +16,7 @@ MuiThemeMixin = require("./mixins/MuiThemeMixin");
 IEMixin = require("./mixins/IEMixin");
 GridListMixin = require("./mixins/GridListMixin");
 SearchMixin = require("./mixins/SearchMixin");
-DialogMixin = require("./mixins/DialogMixin");
+
 SearchUrlMixin = require("./mixins/SearchUrlMixin");
 
 // Layout
@@ -34,6 +34,7 @@ CardBackground = require("./components/layout/CardBackground");
 CardOverlay = require("./components/layout/CardOverlay");
 CollectionOverlayFooter = require("./components/layout/CollectionOverlayFooter");
 MoreArrow = require("./components/layout/MoreArrow");
+DialogWindow = require("./components/layout/DialogWindow");
 
 // Pages
 CollectionsListPage = require("./components/pages/CollectionsListPage");
@@ -135,3 +136,5 @@ Scroller = require("./components/other/Scroller");
 AppDispatcher = require("./dispatcher/AppDispatcher");
 ItemActionTypes = require("./constants/ItemActionTypes");
 ItemActions = require("./actions/ItemActions");
+SectionActions = require("./actions/SectionActions");
+SectionActionTypes = require("./constants/SectionActionTypes");

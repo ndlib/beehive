@@ -2,10 +2,9 @@
 var React = require('react');
 
 var NextModal = React.createClass({
-  mixins: [CollectionUrlMixin, PrevNextMixin],
+  mixins: [CollectionUrlMixin, LoadRemoteMixin, PrevNextMixin],
 
   displayName: 'Next Modal Link',
-
 
   render: function() {
     var id = this.props.id;

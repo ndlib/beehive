@@ -9,9 +9,10 @@ var minBackgroundBlur = 0.3;
 var maxBackgroundBlur = 0.8;
 
 var ShowcaseShow = React.createClass({
-  mixins: [IEMixin],
+  mixins: [CollectionUrlMixin, IEMixin, PageHeightMixin, LoadRemoteMixin],
   displayName: "Showcase Show",
   propTypes: {
+    collection: React.PropTypes.object,
     showcase: React.PropTypes.object,
     height: React.PropTypes.number.isRequired,
   },
@@ -23,6 +24,7 @@ var ShowcaseShow = React.createClass({
       hasScrolled: false,
       outerElement: null,
       element: null,
+      currentSection: null,
     }
   },
 
@@ -30,7 +32,6 @@ var ShowcaseShow = React.createClass({
     if (!this.scrollbarInitialized) {
       this.initializeScrollbar();
     }
-    this.checkHash();
     if (this.props.height != prevProps.height) {
       this.updateScrollbar();
     }
@@ -52,15 +53,12 @@ var ShowcaseShow = React.createClass({
       }
     }
   },
-
+  
   componentDidMount: function() {
     this.setState({
       outerElement: $(React.findDOMNode(this.refs.showcaseOuter)),
       element: $(React.findDOMNode(this)),
     });
-    window.addEventListener("hashchange", this.checkHash, false);
-    // window.addEventListener("resize", this.handleResize, false);
-    this.checkHash();
   },
 
   componentWillUnmount: function() {
@@ -69,12 +67,10 @@ var ShowcaseShow = React.createClass({
     document.body.style.backgroundImage = null;
   },
 
-  checkHash: function() {
-    $(".modal").modal("hide");
-    if(window.location.hash) {
-      $(window.location.hash).modal("show");
-    }
+  setCurrentSection: function(section) {
+    this.setState({currentSection: section});
   },
+
 
   styleOuter: function(height) {
     return {
@@ -89,6 +85,11 @@ var ShowcaseShow = React.createClass({
 
   componentWillMount: function(){
     document.body.className = document.body.className + " showcase-bg";
+    EventEmitter.on("SectionDialogWindow", this.setCurrentSection);
+    if(window.location.hash) {
+      var url = this.remoteUrlBase() + "sections/" + window.location.hash.replace("#", "");
+      this.loadRemoteSection(url);
+    }
   },
 
   onScroll: function() {
@@ -122,6 +123,16 @@ var ShowcaseShow = React.createClass({
     } else if (backgroundBlur > maxBackgroundBlur) {
       backgroundBlur = maxBackgroundBlur;
     }
+
+    var prev, next;
+    if(this.state.currentSection){
+      if(this.state.currentSection.previousSection) {
+        prev = this.state.currentSection.previousSection['@id'];
+      }
+      if(this.state.currentSection.nextSection) {
+        next = this.state.currentSection.nextSection['@id'];
+      }
+    }
     return (
       <div>
         <AttentionHelp start={this.state.startTime} hasScrolled={this.state.hasScrolled} />
@@ -129,6 +140,15 @@ var ShowcaseShow = React.createClass({
         <ShowcaseTitleBar percentFade={this.state.titleSectionPercentVisible} height={showcaseTitleHeight} showcase={this.props.showcase} />
         <div id="showcase-outer" ref="showcaseOuter" className="showcase-outer" style={this.styleOuter(showcaseHeight)} onScroll={this.onScroll}>
           <Scroller target="#showcase-outer" />
+          <DialogWindow
+            previousUrl={prev}
+            nextUrl={next}
+          >
+            <SectionShow
+              section={this.state.currentSection}
+              height={this.state.height}
+            />
+          </DialogWindow>
           <ShowcaseInnerContent height={showcaseInnerHeight} showcase={this.props.showcase} />
         </div>
       </div>

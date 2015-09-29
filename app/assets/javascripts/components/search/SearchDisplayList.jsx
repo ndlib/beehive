@@ -1,9 +1,8 @@
 'use strict'
 var React = require('react');
 var mui = require('material-ui');
-var Dialog = mui.Dialog;
 var SearchDisplayList = React.createClass({
-  mixins: [GridListMixin, PageHeightMixin, MuiThemeMixin, DialogMixin],
+  mixins: [CollectionUrlMixin, GridListMixin, PageHeightMixin, MuiThemeMixin, LoadRemoteMixin],
 
   propTypes: {
     collection: React.PropTypes.object,
@@ -17,6 +16,12 @@ var SearchDisplayList = React.createClass({
     start: React.PropTypes.number,
   },
 
+  getInitialState: function () {
+    return {
+      currentItem: null,
+    };
+  },
+
   getDefaultProps: function() {
     return {
       items: [],
@@ -25,6 +30,20 @@ var SearchDisplayList = React.createClass({
       found: 0,
       start: 0,
     };
+  },
+
+  componentWillMount: function() {
+    EventEmitter.on("ItemDialogWindow", this.setCurrentItem);
+    if(window.location.hash) {
+      this.loadRemoteItem(this.collectionUrl(this.props.collection) +  window.location.hash.replace("#", ""));
+    }
+  },
+
+  setCurrentItem: function(item) {
+    this.setState({
+      currentItem: item,
+    });
+
   },
 
   outerStyle: function() {
@@ -51,7 +70,23 @@ var SearchDisplayList = React.createClass({
     }
   },
 
-  renderInner: function() {
+  nextUrl: function(index) {
+    var id;
+    if (index <  window.searchStore.items.length - 1) {
+      id = window.searchStore.items[index + 1];
+    }
+    return id;
+  },
+
+  prevUrl: function(index) {
+    var id;
+    if (index > 0) {
+      id = window.searchStore.items[index - 1];
+    }
+    return id;
+  },
+
+  searchResults: function() {
     var view = this.state.view;
     var itemNodes = this.props.items.map(function(item, index) {
       var nodes = [];
@@ -84,13 +119,28 @@ var SearchDisplayList = React.createClass({
   },
 
   render: function() {
-
+    var prev, next;
+    if(this.state.currentItem){
+      if(window.searchStore && window.searchStore.items) {
+        var index = window.searchStore.items.indexOf(this.state.currentItem['@id']);
+        prev = this.prevUrl(index);
+        next = this.nextUrl(index);
+      }
+    }
     return (
       <div className='items-list' style={this.outerStyle()}>
-        {this.displayItemWindow()}
+        <DialogWindow
+          previousUrl={prev}
+          nextUrl={next}
+        >
+          <ItemShow
+            item={this.state.currentItem}
+            height={this.state.height}
+          />
+        </DialogWindow>
         <div className="row">
           {this.renderButtons(this.props.collection, this.props.searchTerm, this.props.sortOptions, this.props.selectedIndex)}
-          {this.renderInner()}
+          {this.searchResults()}
         </div>
         <div className='clearfix' />
       </div>

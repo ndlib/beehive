@@ -23,6 +23,9 @@ var searchMixin = {
   },
 
   setItems: function(hits) {
+    this.initSearchStore();
+     window.searchStore.items = [];
+
     var items = [];
     var found = hits.found;
     var start = hits.start;
@@ -30,6 +33,7 @@ var searchMixin = {
       var hit = hits.hit[h];
       var item = this.mapHitToItem(hit);
       items.push(item);
+      window.searchStore.items.push(item['@id']);
     }
     this.setState({
       items: items,

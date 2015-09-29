@@ -28,14 +28,28 @@ var LoadRemoteMixin = {
     });
   },
 
-  loadRemoteSection: function(section) {
-    console.log('Clicked a section', section);
+  loadRemoteSection: function(url) {
+    $.ajax({
+      context: this,
+      type: 'GET',
+      url: url,
+      dataType: 'json',
+      success: function(result) {
+        SectionActions.setCurrentSection(result.showcases.sections);
+        SectionActions.showSectionDialogWindow(result.showcases.sections)
+      },
+      error: function(request, status, thrownError) {}
+    });
   },
 
   itemOnClick: function() {
-    var item = this.loadRemoteItem(this.props.item['@id']);
-    ItemActions.setCurrentItem(item);
-    ItemActions.showItemDialogWindow(item);
+    this.loadRemoteItem(this.props.item['@id']);
+    window.location.hash = this.props.item['@id'].split("/").pop();
+  },
+
+  sectionOnClick: function() {
+    this.loadRemoteSection(this.props.section['@id']);
+    window.location.hash = this.props.section['@id'].split("/").pop();
   },
 }
 
