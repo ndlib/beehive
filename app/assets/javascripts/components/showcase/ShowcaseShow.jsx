@@ -32,7 +32,6 @@ var ShowcaseShow = React.createClass({
     if (!this.scrollbarInitialized) {
       this.initializeScrollbar();
     }
-    this.checkHash();
     if (this.props.height != prevProps.height) {
       this.updateScrollbar();
     }
@@ -60,9 +59,6 @@ var ShowcaseShow = React.createClass({
       outerElement: $(React.findDOMNode(this.refs.showcaseOuter)),
       element: $(React.findDOMNode(this)),
     });
-    window.addEventListener("hashchange", this.checkHash, false);
-    // window.addEventListener("resize", this.handleResize, false);
-    this.checkHash();
   },
 
   componentWillUnmount: function() {
@@ -74,13 +70,7 @@ var ShowcaseShow = React.createClass({
   setCurrentSection: function(section) {
     this.setState({currentSection: section});
   },
-  
-  checkHash: function() {
-    $(".modal").modal("hide");
-    if(window.location.hash) {
-      $(window.location.hash).modal("show");
-    }
-  },
+
 
   styleOuter: function(height) {
     return {
@@ -94,17 +84,14 @@ var ShowcaseShow = React.createClass({
   },
 
   componentWillMount: function(){
-    this.initSectionStore();
     document.body.className = document.body.className + " showcase-bg";
     EventEmitter.on("SectionDialogWindow", this.setCurrentSection);
     if(window.location.hash) {
-      this.loadRemoteSection(this.collectionUrl(this.props.collection) +  window.location.hash.replace("#", ""));
+      var url = this.remoteUrlBase() + "sections/" + window.location.hash.replace("#", "");
+      this.loadRemoteSection(url);
     }
   },
 
-  initSectionStore: function() {
-    window.sectionStore = {sections: this.props.showcase.sections};
-  },
   onScroll: function() {
     if(!this.state.hasScrolled) {
       this.setState({hasScrolled: true});
@@ -124,22 +111,6 @@ var ShowcaseShow = React.createClass({
     }
   },
 
-  nextUrl: function(index) {
-    var id;
-    if (index <  window.sectionStore.items.length - 1) {
-      id = window.sectionStore.items[index + 1];
-    }
-    return id;
-  },
-
-  prevUrl: function(index) {
-    var id;
-    if (index > 0) {
-      id = window.sectionStore.items[index - 1];
-    }
-    return id;
-  },
-  
   render: function() {
     var showcaseHeight = this.props.height - showcaseTitleHeight;
     if (showcaseHeight > maxShowcaseHeight) {
@@ -152,13 +123,14 @@ var ShowcaseShow = React.createClass({
     } else if (backgroundBlur > maxBackgroundBlur) {
       backgroundBlur = maxBackgroundBlur;
     }
-    
+
     var prev, next;
     if(this.state.currentSection){
-      if(window.showcaseStore && window.showcaseStore.sections) {
-        var index = window.showcaseStore.sections.indexOf(this.state.currentSection['@id']);
-        prev = this.prevUrl(index);
-        next = this.nextUrl(index);
+      if(this.state.currentSection.previousSection) {
+        prev = this.state.currentSection.previousSection['@id'];
+      }
+      if(this.state.currentSection.nextSection) {
+        next = this.state.currentSection.nextSection['@id'];
       }
     }
     return (

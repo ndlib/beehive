@@ -29,7 +29,15 @@
     event.preventDefault();
     var id = this.props.url.split("/").pop();
     window.location.hash = id;
-    this.loadRemoteItem(this.props.url);
+    if(this.props.url.indexOf('item') > -1) {
+      this.loadRemoteItem(this.props.url);
+    }
+    else if(this.props.url.indexOf('section') > -1) {
+      this.loadRemoteSection(this.props.url);
+    }
+    else {
+      console.log('an invalid url was provided', this.props.url);
+    }
   },
 }
 

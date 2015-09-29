@@ -38,6 +38,22 @@ var CollectionUrlMixin = {
   collectionUrl: function(collection) {
     return '/' + encodeURIComponent(collection.id) + '/' + encodeURIComponent(collection.slug);
   },
+  
+  remoteUrlBase: function() {
+    var environmentUrl = window.location.origin;
+    var returnUrl;
+    if (environmentUrl.indexOf('pprd') > -1) {
+      returnUrl = 'http://beehivepprd-vm.library.nd.edu/v1/'
+    }
+    else if(environmentUrl.indexOf('localhost') > -1) {
+      returnUrl = 'http://localhost:3017/v1/';
+    }
+    else {
+      returnUrl = 'http://beehive.library.nd.edu/v1/'
+    }
+    return returnUrl;
+  }
+
 }
 
 module.exports = CollectionUrlMixin;
