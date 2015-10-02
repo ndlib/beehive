@@ -62,9 +62,9 @@ var SearchPagination = React.createClass({
     var startHuman = this.props.start + 1;
     var endHuman = Math.min(this.props.start + this.props.count, this.props.found);
     return (
-      <div>
+      <div style={{margin: '2em 0'}}>
         <div className='clearfix' />
-        <div style={{color:'black', fontSize: '20px', float: 'right', textAlign: 'right'}}>
+        <div style={{color:'rgba(0, 0, 0, 0.870588);', float: 'right', textAlign: 'right'}}>
           <div>Showing {startHuman} - {endHuman} of {this.props.found}</div>
           {this.pageLinks()}
         </div>

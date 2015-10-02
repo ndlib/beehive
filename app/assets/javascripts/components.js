@@ -105,6 +105,7 @@ SearchBox = require("./components/search/SearchBox");
 SearchSort = require("./components/search/SearchSort");
 SearchFacets = require("./components/search/SearchFacets");
 SearchPagination = require("./components/search/SearchPagination");
+SearchSidebar = require("./components/search/SearchSidebar");
 
 // Modal
 Modal = require("./components/modal/Modal");

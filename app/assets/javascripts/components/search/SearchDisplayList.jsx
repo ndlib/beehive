@@ -19,6 +19,7 @@ var SearchDisplayList = React.createClass({
   getInitialState: function () {
     return {
       currentItem: null,
+      sidebar: false,
     };
   },
 
@@ -32,6 +33,12 @@ var SearchDisplayList = React.createClass({
     };
   },
 
+  componentDidMount: function() {
+    if(this.props.sortOptions || this.props.facets) {
+      this.setState({sidebar: true});
+    }
+  },
+  
   componentWillMount: function() {
     EventEmitter.on("ItemDialogWindow", this.setCurrentItem);
     if(window.location.hash) {
@@ -43,7 +50,6 @@ var SearchDisplayList = React.createClass({
     this.setState({
       currentItem: item,
     });
-
   },
 
   outerStyle: function() {
@@ -51,23 +57,6 @@ var SearchDisplayList = React.createClass({
       width: '100%',
       backgroundColor: '#f5f5f5',
     };
-  },
-
-  facets: function()  {
-    if (this.props.facets.length > 0) {
-      return  (
-        <div className="row-fluid col-lg-3">
-          <SearchFacets
-            collection={this.props.collection}
-            facets={this.props.facets}
-            selectedFacet={this.props.selectedFacet}
-          />
-        </div>
-      );
-    }
-    else {
-      return null;
-    }
   },
 
   nextUrl: function(index) {
@@ -95,27 +84,50 @@ var SearchDisplayList = React.createClass({
       ));
       return nodes;
     });
+    if(itemNodes.length === 0) {
+      itemNodes.push((<div style={{color:'rgba(0, 0, 0, 0.870588)', fontStyle:'italic', textAlign:'center'}}>No matching results could be found.</div>));
+    }
 
-    return (
+    var mainContent = (
       <div>
-        {this.facets()}
-        <div className={this.props.facets.length > 0 ? "row-fluid col-lg-9" : "row-fluid col-lg-12" }>
-          <SearchPagination
-            collection={this.props.collection}
-            found={this.props.found}
-            start={this.props.start}
-          />
-          <div className={this.listClass()}>
-              {itemNodes}
-          </div>
-            <SearchPagination
-              collection={this.props.collection}
-              found={this.props.found}
-              start={this.props.start}
-            />
+        {this.renderButtons(this.props.collection, this.props.searchTerm)}
+        <SearchPagination
+          collection={this.props.collection}
+          found={this.props.found}
+          start={this.props.start}
+        />
+        <div className={this.listClass()}>
+            {itemNodes}
         </div>
+        <SearchPagination
+          collection={this.props.collection}
+          found={this.props.found}
+          start={this.props.start}
+        />
       </div>
     );
+    if(this.state.sidebar) {
+      return (
+        <SearchSidebar
+          show={this.state.sidebar}
+          facets={this.props.facets}
+          sortOptions={this.props.sortOptions}
+          selectedIndex={this.props.selectedIndex}
+          selectedFacet={this.props.selectedFacet}
+        >
+          {mainContent}
+        </SearchSidebar>
+      );
+    }
+    else {
+      return (
+        <div style={{minHeight: this.getHeight()}}>
+          <div className='row-fluid col-sm-12'>
+            {mainContent}
+          </div>
+        </div>
+      );
+    }
   },
 
   render: function() {
@@ -139,7 +151,6 @@ var SearchDisplayList = React.createClass({
           />
         </DialogWindow>
         <div className="row">
-          {this.renderButtons(this.props.collection, this.props.searchTerm, this.props.sortOptions, this.props.selectedIndex)}
           {this.searchResults()}
         </div>
         <div className='clearfix' />

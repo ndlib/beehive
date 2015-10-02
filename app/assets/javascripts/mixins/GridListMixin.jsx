@@ -47,32 +47,27 @@ var GridListMixin = {
     return this.state.view;
   },
 
-  renderButtons: function(collection, searchTerm, sortOptions, selectedIndex) {
+  renderButtons: function(collection, searchTerm) {
     var classNames = require('classnames');
     var gridClass = classNames(
       'btn',
       {'btn-default': (this.state.view != 'grid')},
-      {'btn-primary': (this.state.view === 'grid')},
+      {'btn-secondary': (this.state.view === 'grid')},
       'btn-view',
       'pull-right'
     );
     var listClass = classNames(
       'btn',
       {'btn-default': (this.state.view != 'list')},
-      {'btn-primary': (this.state.view === 'list')},
+      {'btn-secondary': (this.state.view === 'list')},
       'btn-view',
       'pull-right'
     );
-    var searchSort;
-      if(this.props.sortOptions && this.props.sortOptions.length > 1) {
-        searchSort = (<SearchSort collection={collection} sortOptions={sortOptions} selectedIndex={selectedIndex}/>);
-      }
     return (
       <div className="controls" style={this.controlsStyle()}>
         <div className="col-lg-12" >
           <div className="pull-left">
             <SearchBox collection={collection} searchTerm={searchTerm}/>
-            {searchSort}
           </div>
           <button
             className={listClass}
