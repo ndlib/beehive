@@ -109,6 +109,7 @@ var SearchDisplayList = React.createClass({
     if(this.state.sidebar) {
       return (
         <SearchSidebar
+          collection={this.props.collection}
           show={this.state.sidebar}
           facets={this.props.facets}
           sortOptions={this.props.sortOptions}

@@ -5,6 +5,7 @@ var mui = require('material-ui');
 var SearchSidebar = React.createClass({
   mixins: [PageHeightMixin, MuiThemeMixin],
   propTypes: {
+    collection: React.PropTypes.array,
     facets: React.PropTypes.array,
     selectedIndex: React.PropTypes.number,
     selectedFacet: React.PropTypes.object,
@@ -54,7 +55,7 @@ var SearchSidebar = React.createClass({
           <div className="row" />
           <hr/>
           <SearchFacets
-            collection={this.state.collection}
+            collection={this.props.collection}
             facets={this.props.facets}
             selectedFacet={this.props.selectedFacet}
           />
