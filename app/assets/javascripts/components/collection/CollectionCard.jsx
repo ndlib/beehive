@@ -40,7 +40,7 @@ var CollectionCard = React.createClass({
 
   onClick: function(e) {
     e.preventDefault();
-    window.location = this.collectionUrl(this.props.collection);
+    window.open(this.collectionUrl(this.props.collection), '_blank');
   },
 
   render: function() {
@@ -58,7 +58,7 @@ var CollectionCard = React.createClass({
             <h3 className="bee-card-content-title-subtitle overflow-ellipsis">{this.props.collection.name_line_2}</h3>
           </div>
           <div className="bee-card-content-actions">
-            <a href={this.collectionUrl(this.props.collection)} className="btn btn-default">Explore</a>
+            <a href={this.collectionUrl(this.props.collection)} target="_blank" className="btn btn-default">Explore</a>
           </div>
           <div className="bee-card-content-supporting" style={this.supportingStyle()}>
             <div dangerouslySetInnerHTML={{__html: this.props.collection.short_description}} />
