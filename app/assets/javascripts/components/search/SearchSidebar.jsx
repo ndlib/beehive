@@ -22,7 +22,8 @@ var SearchSidebar = React.createClass({
     this.setState({show: !this.state.show});
   },
 
-  render: function() {
+
+  searchSort: function() {
     var searchSort;
     if(this.props.sortOptions && this.props.sortOptions.length > 1) {
         searchSort = (<SearchSort
@@ -31,6 +32,10 @@ var SearchSidebar = React.createClass({
           selectedIndex={this.props.selectedIndex}
         />);
     }
+    return searchSort;
+  },
+
+  render: function() {
     return (
       <div style={{minHeight: this.getHeight()}}>
         <div
@@ -51,7 +56,7 @@ var SearchSidebar = React.createClass({
             }}
           >Choose from the options below to sort and filter the displayed items.</div>
           <hr/>
-          {searchSort}
+          {this.searchSort()}
           <div className="row" />
           <hr/>
           <SearchFacets
