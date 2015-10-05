@@ -22,6 +22,7 @@ var Section = React.createClass({
       verticalAlign: 'top',
       position: 'relative',
       marginRight: '20px',
+      marginLeft: (this.props.section.has_spacer ? '15em;' : '0px'),
       height: this.props.height + 'px',
       cursor: 'pointer',
       lineHeight: '20px',
