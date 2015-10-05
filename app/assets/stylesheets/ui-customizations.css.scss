@@ -6,7 +6,9 @@ $darkgrey: #555;
 $white: #fff;
 $about-color: #000;
 $navbar-dropdown-background: #2b2a2a;
-$footer-height: 49px;
+$footer-height: 0;
+$secondary-background: rgba(0, 0, 0, .541176);
+$secondary-background-hover: rgba(0, 0, 0, .441176);
 
 @import "fonts.css.scss";
 
@@ -628,8 +630,19 @@ div.dataTables_filter {
   border-left-width: 1px;
 }
 
-.btn-primary:not(.btn-link):not(.btn-flat), .togglebutton label input[type="checkbox"]:first-child:checked + .toggle::after {
+.btn-primary:not(.btn-link):not(.btn-flat),
+.togglebutton label input[type="checkbox"]:first-child:checked + .toggle::after {
   background: $blue;
+}
+
+.btn-secondary:not(.btn-link):not(.btn-flat),
+.togglebutton label input[type="checkbox"]:first-child:checked + .toggle::after {
+  background: $secondary-background;
+  color: $white;
+
+  &:hover {
+    background: $secondary-background-hover;
+  }
 }
 
 #bottom-fade {
@@ -1044,6 +1057,12 @@ div.dataTables_filter {
   position: absolute !important;
   top: 0 !important;
   z-index: 1000000;
+}
+
+#search-sort {
+  hr {
+    display: none;
+  }
 }
 
 @import "cards.css.scss";

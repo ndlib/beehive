@@ -16,7 +16,7 @@ var SearchFacets = React.createClass({
     return (
       <List
         ref='searchFacet'
-        subheader="Filter Search"
+        subheader="Filter Results"
         style={{backgroundColor: 'transparent'}}>
         {this.facets()}
       </List>
@@ -39,14 +39,11 @@ var SearchFacets = React.createClass({
     var facets = this.props.facets.map(function(e, index) {
       var nodes = [];
       nodes.push((
-        <ListItem
-          primaryText={e.name}
-          open={true}
-          onClick={self.facetOnClick}
-          value={encodeURIComponent(e.field)}
+        <List
+          subheader={e.name}
         >
           {self.values(e)}
-        </ListItem>
+        </List>
       ));
       return nodes;
     });
@@ -61,10 +58,12 @@ var SearchFacets = React.createClass({
       var values = facet.values.map(function(e, index) {
         var nodes = [];
         var value = encodeURIComponent(e.name);
+        var primaryText = (
+          <span>{e.name} <span style={{color: 'rgba(0, 0, 0, 0.541176)', fontStyle:'italic', fontSize: '.8em',}}>({e.count})</span></span>
+        );
         nodes.push((
           <ListItem
-            primaryText={e.name}
-            secondaryText={e.count}
+            primaryText={primaryText}
             value={value}
             onClick={self.valueOnClick.bind(this, parentFacet)}
           />

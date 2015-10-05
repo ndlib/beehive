@@ -58,7 +58,6 @@ var SearchBox = React.createClass({
           style={{zIndex: '0'}}
         >
           <i className= "mdi-action-search"></i>
-          Search
         </button>
       </div>
     );

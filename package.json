@@ -1,4 +1,3 @@
-
 {
   "name": "beehive",
   "description": "Dependencies for the Beehive application",
@@ -6,16 +5,16 @@
   "dependencies": {
     "browserify": "^6.3.4",
     "browserify-incremental": "^1.5.0",
-    "classnames": "^2.1.3",
+    "classnames": "^2.1.5",
     "eventemitter": "^0.3.3",
     "flux": "^2.0.3",
     "jquery": "^2.1.4",
     "keymirror": "^0.1.1",
-    "material-ui": "0.10.2",
+    "material-ui": "0.10.4",
     "object-assign": "^3.0.0",
     "react": "^0.13.3",
     "react-scroll": "^0.18.0",
-    "react-tap-event-plugin": "^0.1.7",
+    "react-tap-event-plugin": "^0.1.8",
     "reactify": "^0.17.1"
   },
   "devDependencies": {
