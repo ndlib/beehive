@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root to: "collections#index"
 
-
   scope "/theme" do
     get "/test", to: "collections#theme"
   end
