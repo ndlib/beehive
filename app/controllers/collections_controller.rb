@@ -21,7 +21,6 @@ class CollectionsController < ApplicationController
   end
 
   def theme
-
   end
 
   private
