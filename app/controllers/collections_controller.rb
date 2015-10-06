@@ -20,6 +20,10 @@ class CollectionsController < ApplicationController
     @collections_url = collections_api_base + "/" + params[:id] + "/showcases"
   end
 
+  def theme
+
+  end
+
   private
 
   def collections_api_base
