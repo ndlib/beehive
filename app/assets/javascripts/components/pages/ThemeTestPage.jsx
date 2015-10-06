@@ -1,10 +1,12 @@
 'use strict'
 var React = require('react');
 var mui = require('material-ui');
+
+// There are apparently two version of Menu floating around in
+// material-ui, so we need to specify this is the version we want.
 const Menu = require('material-ui/lib/menus/menu');
 const MenuDivider = require('material-ui/lib/menus/menu-divider');
 const MenuItem = require('material-ui/lib/menus/menu-item');
-let Colors = require('material-ui/lib/styles/colors');
 
 var ThemeTestPage = React.createClass({
   mixins: [MuiThemeMixin],
