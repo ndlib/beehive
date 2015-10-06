@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   root to: "collections#index"
 
+
+  scope "/theme" do
+    get "/test", to: "collections#theme"
+  end
+
   get "/404" => "errors#not_found", via: :all
 
   get "/:id", to: "collections#show"

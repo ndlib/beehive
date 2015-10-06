@@ -45,6 +45,7 @@ ShowcaseShowPage = require("./components/pages/ShowcaseShowPage");
 ItemsListPage = require("./components/pages/ItemsListPage");
 ItemsSearchPage = require("./components/pages/ItemsSearchPage");
 ErrorPage = require("./components/pages/ErrorPage");
+ThemeTestPage = require("./components/pages/ThemeTestPage");
 
 // Embed Codes
 CollectionEmbed = require("./components/embeds/CollectionEmbed");
