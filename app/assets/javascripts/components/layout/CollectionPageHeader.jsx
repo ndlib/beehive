@@ -1,5 +1,6 @@
 'use strict'
 var React = require('react');
+var mui = require('material-ui');
 
 var CollectionPageHeader = React.createClass({
   mixins: [CollectionUrlMixin, TitleConcatMixin],
@@ -16,19 +17,24 @@ var CollectionPageHeader = React.createClass({
       dropdown = (<ShowcaseDropDown collection={this.props.collection} />);
     }
 
-    var fullName = this.titleConcat(this.props.collection.name_line_1, this.props.collection.name_line_2)
-    var title = <span className="title" key={1}>{fullName}</span>;
-
-    var content = this.props.children;
+    var title = (
+      <a className="navbar-brand overflow-ellipsis" href={this.collectionUrl(this.props.collection)}>
+        {this.props.collection.name_line_1}
+      </a>
+    );
     return (
-    <PageHeader branding={this.props.branding}>
+    <PageHeader>
+      <BrandBar />
+      <mui.AppBar
+        title={title}
+        iconClassNameRight="mdi-navigation-expand-more" />
+
       <TitleBar>
         {dropdown}
         <a className="navbar-brand overflow-ellipsis" href={this.collectionUrl(this.props.collection)}>
           {title}
         </a>
       </TitleBar>
-      {content}
     </PageHeader>
     );
   }

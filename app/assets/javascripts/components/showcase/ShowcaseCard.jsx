@@ -14,6 +14,10 @@ var ShowcaseCard = React.createClass({
     window.location = this.showcaseUrl(this.props.showcase);
   },
 
+  image: function() {
+    return this.props.showcase.image["thumbnail/medium"].contentUrl;
+  },
+
   description: function() {
     if (this.props.showcase.description) {
       return (
@@ -26,9 +30,9 @@ var ShowcaseCard = React.createClass({
 
   render: function() {
     return (
-      <mui.Card>
+      <mui.Card onClick={this.onClick}>
         <mui.CardMedia overlay={<mui.CardTitle title={this.props.showcase.name_line_1} subtitle={this.props.showcase.name_line_2} />}>
-          <img src={this.props.showcase.image.contentUrl} />
+          <img src={this.image()} />
         </mui.CardMedia>
         {this.description()}
       </mui.Card>
