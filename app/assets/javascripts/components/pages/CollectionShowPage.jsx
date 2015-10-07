@@ -41,7 +41,7 @@ var CollectionShowPage = React.createClass({
 
   render: function() {
     /*
-    the search box that was hidden temporarily 
+    the search box that was hidden temporarily
     <div style={{backgroundColor: 'white', width:'100%', textAlign: 'center',}}>
       <div>
       <SearchBox collection={this.state.collection} />
@@ -52,15 +52,14 @@ var CollectionShowPage = React.createClass({
       <div>
         <div className="collection-show-page">
           <Layout>
-            <CollectionPageHeader collection={this.state.collection} branding={true} />
+            <CollectionPageHeader collection={this.state.collection} />
+            <CollectionShow collection={this.state.collection} />
             <PageContent>
-              <CollectionShow collection={this.state.collection} />
-              <CollectionIntro collection={this.state.collection} id="main-collection-description" />
+              <CollectionIntro collection={this.state.collection} />
               <CollectionShowShowcases collection={this.state.collection} />
             </PageContent>
           </Layout>
         </div>
-        <CollectionOverlayFooter collection={this.state.collection} />
       </div>
     );
   }

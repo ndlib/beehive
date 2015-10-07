@@ -19,6 +19,10 @@ var CollectionShow = React.createClass({
     }
   },
 
+  image: function () {
+    return this.props.collection.image["thumbnail/medium"].contentUrl;
+  },
+
   viewExhibitUrl: function() {
     var url = this.introUrl(this.props.collection)
 
@@ -55,9 +59,9 @@ var CollectionShow = React.createClass({
     if (this.props.collection.image) {
       return (
         <mui.CardMedia overlay={<mui.CardTitle title={this.props.collection.name_line_1} subtitle={this.props.collection.name_line_2} />}>
-          <img src={this.props.collection.image.contentUrl} />
+          <img src={this.image()} />
         </mui.CardMedia>
-      );      
+      );
     } else {
       return (
         <mui.CardTitle title={this.props.collection.name_line_1} subtitle={this.props.collection.name_line_2} />
