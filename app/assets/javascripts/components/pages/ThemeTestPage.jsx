@@ -17,6 +17,14 @@ var ThemeTestPage = React.createClass({
     };
   },
 
+  appbar: function() {
+    return (
+      <mui.AppBar
+        title="Title"
+        iconClassNameRight="mdi-navigation-expand-more" />
+    );
+  },
+
   avatars: function() {
     return (
       <div style={this.d()}>
@@ -222,6 +230,43 @@ var ThemeTestPage = React.createClass({
         </div>
       </div>
     );
+  },
+
+  leftNav: function() {
+    let menuItems = [
+      { route: 'get-started', text: 'Get Started' },
+      { route: 'customization', text: 'Customization' },
+      { route: 'components', text: 'Components' },
+      { type: mui.MenuItem.Types.SUBHEADER, text: 'Resources' },
+      {
+         type: mui.MenuItem.Types.LINK,
+         payload: 'https://github.com/callemall/material-ui',
+         text: 'GitHub'
+      },
+      {
+         text: 'Disabled',
+         disabled: true
+      },
+      {
+         type: mui.MenuItem.Types.LINK,
+         payload: 'https://www.google.com',
+         text: 'Disabled Link',
+         disabled: true
+      },
+    ];
+
+
+    return (
+      <div style={this.d()}>
+        <h4>Left Nav</h4>
+        <mui.FlatButton label="Toggle" primary={true} onClick={this.leftNavOnClick}/>
+        <mui.LeftNav ref="leftNav" menuItems={menuItems} openRight={true}/>
+      </div>
+    );
+  },
+
+  leftNavOnClick: function() {
+    this.refs.leftNav.toggle();
   },
 
   lists: function() {
@@ -476,6 +521,7 @@ var ThemeTestPage = React.createClass({
           minHeight: "100%",
           width: "100%",
         }}>
+          {this.appbar()}
           {this.avatars()}
           {this.buttons()}
           {this.cards()}
@@ -483,6 +529,7 @@ var ThemeTestPage = React.createClass({
           {this.dropdownMenu()}
           {this.icons()}
           {this.iconButtons()}
+          {this.leftNav()}
           {this.lists()}
           {this.menus()}
           {this.progress()}
