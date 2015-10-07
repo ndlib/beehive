@@ -21,19 +21,11 @@ var PageHeader = React.createClass({
         <TitleBar />
       );
     }
-    var branding;
-    if(this.props.branding) {
-      branding = (
-        <BrandBar />
-      );
-    }
     return (
       <div id="banner-wrapper">
         <header id="banner" role="banner" className="home" style={this.style()} >
           <nav className="navbar navbar-default navbar-static-top" role="navigation" >
-            {branding}
             {titleBar}
-
           </nav>
         </header>
       </div>

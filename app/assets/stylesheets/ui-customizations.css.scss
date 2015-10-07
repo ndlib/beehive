@@ -1,6 +1,7 @@
 $gold: #d9a300;
 $grey: #525252;
 $blue: #2c5882;
+$black: #000;
 $whitesmoke: #f5f5f5;
 $darkgrey: #555;
 $white: #fff;
@@ -18,11 +19,10 @@ html {
 }
 
 body {
-  background: #333;
-  background-image: image_url("black-linen.png");
   min-height: 100%;
   padding-bottom: $footer-height;
   position: relative;
+  color: $black;
 
   &.collections-bg {
 
