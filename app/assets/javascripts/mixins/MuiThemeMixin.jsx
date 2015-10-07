@@ -15,5 +15,19 @@ var MuiThemeMixin = {
       muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
     };
   },
+
+  // Reusable themes
+  primaryIconTheme: function() {
+    return {
+
+    };
+  },
+
+  secondaryIconTheme: function() {
+    return {
+
+    };
+  },
+
 };
 module.exports = MuiThemeMixin;
