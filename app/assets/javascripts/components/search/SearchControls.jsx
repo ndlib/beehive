@@ -64,6 +64,7 @@ var SearchControls = React.createClass({
           </div>
           <div className="pull-right">
             <mui.RaisedButton
+              //label="List"
               secondary={this.state.view == 'list'}
               onClick={this.setList}
               style={{zIndex: '0'}}
@@ -72,9 +73,9 @@ var SearchControls = React.createClass({
                 className="material-icons"
                 style={this.state.view == 'list' ? this.lightIconStyle() : this.darkIconStyle()}
               >view_list</mui.FontIcon>
-              List
             </mui.RaisedButton>
             <mui.RaisedButton
+              //label="Grid"
               secondary={this.state.view == 'grid'}
               onClick={this.setGrid}
               style={{zIndex: '0'}}
@@ -83,7 +84,6 @@ var SearchControls = React.createClass({
                 className="material-icons"
                 style={this.state.view == 'grid' ? this.lightIconStyle() : this.darkIconStyle()}
               >view_module</mui.FontIcon>
-              Grid
             </mui.RaisedButton>
           </div>
           <div className="clearfix" />
