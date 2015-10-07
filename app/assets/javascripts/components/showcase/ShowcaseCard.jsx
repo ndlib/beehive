@@ -1,26 +1,12 @@
 //app/assets/javascripts/components/ShowcaseCard.jsx
 var React = require("react");
+var mui = require('material-ui');
 
 var ShowcaseCard = React.createClass({
-  mixins: [CollectionUrlMixin],
+  mixins: [CollectionUrlMixin, MuiThemeMixin],
 
   propTypes: {
     showcase: React.PropTypes.object.isRequired,
-    showDescription: React.PropTypes.bool,
-    topChildren: React.PropTypes.any,
-  },
-
-  getDefaultProps: function () {
-    return {
-      showDescription: false,
-    };
-  },
-
-  style: function() {
-    return {
-      position: "relative",
-      cursor: "pointer",
-    };
   },
 
   onClick: function(e) {
@@ -29,33 +15,23 @@ var ShowcaseCard = React.createClass({
   },
 
   description: function() {
-    if (this.props.showDescription) {
+    if (this.props.showcase.description) {
       return (
-        <div className="bee-card-content-supporting">
-          <p>{this.props.showcase.description}</p>
-        </div>
+        <mui.CardText>
+          {this.props.showcase.description}
+        </mui.CardText>
       );
     }
   },
 
   render: function() {
     return (
-      <Card backgroundImage={this.props.showcase.image}>
-        {this.props.topChildren}
-        <div className="showcase-card sixteen-nine" style={this.style()} onClick={this.onClick}>
-          <CardOverlay>
-            <ShowcaseTitle showcase={this.props.showcase} />
-          </CardOverlay>
-        </div>
-        <div className="bee-card-content">
-          <div className="bee-card-content-title" style={{display: "none"}}>
-            <h2 className="bee-card-content-title-primary overflow-ellipsis">{this.props.showcase.name_line_1}</h2>
-            <h3 className="bee-card-content-title-subtitle overflow-ellipsis">{this.props.showcase.name_line_2}</h3>
-          </div>
-          {this.description()}
-          {this.props.children}
-        </div>
-      </Card>
+      <mui.Card>
+        <mui.CardMedia overlay={<mui.CardTitle title={this.props.showcase.name_line_1} subtitle={this.props.showcase.name_line_2} />}>
+          <img src={this.props.showcase.image.contentUrl} />
+        </mui.CardMedia>
+        {this.description()}
+      </mui.Card>
     );
   }
 });
