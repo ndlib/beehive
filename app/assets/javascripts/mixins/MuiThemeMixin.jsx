@@ -16,16 +16,21 @@ var MuiThemeMixin = {
     };
   },
 
-  // Reusable themes
-  primaryIconTheme: function() {
+  // Reusable styles
+  lightIconStyle: function() {
     return {
-
+      color: 'white',
+      fontSize: '18px',
+      verticalAlign: 'text-bottom',
+      width: '26px',
     };
   },
 
-  secondaryIconTheme: function() {
+  darkIconStyle: function() {
     return {
-
+      fontSize: '18px',
+      verticalAlign: 'text-bottom',
+      width: '26px',
     };
   },
 
