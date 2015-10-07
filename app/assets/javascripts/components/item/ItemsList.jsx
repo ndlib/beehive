@@ -3,7 +3,6 @@ var React = require('react');
 
 
 var ItemsList = React.createClass({
-  mixins: [GridListMixin],
   displayName: 'Items List',
 
   propTypes: {
@@ -46,7 +45,7 @@ var ItemsList = React.createClass({
     return (
       <div className="items-list" style={this.outerStyle()}>
 
-        {this.renderButtons()}
+        <SearchControls />
         <div className={this.listClass()}>
           {itemNodes}
         </div>
