@@ -62,11 +62,8 @@ var SearchSort = React.createClass({
           autoWidth={false}
           onChange={this.onChange.bind(this, 'selectValue')}
           menuItems={this.props.sortOptions}
-          labelStyle={{color: 'white', padding: '0 1em',}}
-          style={{backgroundColor: 'rgba(0, 0, 0, 0.541176)', width: '100%', paddingRight: '1em',}}
           selectedIndex={this.props.selectedIndex > -1 ? this.props.selectedIndex : 0}
           displayMember='name'
-          underlineStyle={{margin: '0'}}
           valueMember='value'
         />
         </div>
