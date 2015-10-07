@@ -1,8 +1,9 @@
 //app/assets/javascripts/components/CollectionShow.jsx
 var React = require('react');
+var mui = require('material-ui');
 
 var CollectionShow = React.createClass({
-  mixins: [CollectionUrlMixin],
+  mixins: [CollectionUrlMixin, MuiThemeMixin],
 
   displayName: 'Collection Show',
 
@@ -10,57 +11,11 @@ var CollectionShow = React.createClass({
     collection: React.PropTypes.object.isRequired,
   },
 
-  overflowStyle: function() {
-    return {
-      position: 'absolute',
-      bottom: '0px',
-      right: '0px',
-      zIndex: '2',
-      height: '60px',
-      lineHeight: '60px',
-      width: '100%',
-
-      textAlign: 'center',
-      marginLeft: '-14px',
-      background: 'black',
-      background: "-moz-linear-gradient(top, rgba(0,0,0,0.4) 0%, rgba(0,0,0,1) 55%, rgba(0,0,0,1) 100%)",
-      background: "-webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.4)), color-stop(55%,rgba(0,0,0,1)), color-stop(100%,rgba(0,0,0,1)))",
-      background: "-webkit-linear-gradient(top, rgba(0,0,0,0.4) 0%,rgba(0,0,0,1) 55%,rgba(0,0,0,1) 100%)",
-      background: "-o-linear-gradient(top, rgba(0,0,0,0.4) 0%,rgba(0,0,0,1) 55%,rgba(0,0,0,1) 100%)",
-      background: "-ms-linear-gradient(top, rgba(0,0,0,0.4) 0%,rgba(0,0,0,1) 55%,rgba(0,0,0,1) 100%)",
-      background: "linear-gradient(to bottom, rgba(0,0,0,0.4) 0%,rgba(0,0,0,1) 55%,rgba(0,0,0,1) 100%)",
-
-    };
-  },
-
-  aStyle: function() {
-    return {
-      position: "relative",
-      display: "block",
-    };
-  },
-
-  getInitialState: function() {
-    return {
-      overflow: "",
-    };
-  },
-
-  componentDidMount: function() {
-
-  },
-
-  componentDidUpdate: function() {
-      this.checkShowMore();
-  },
-
-  checkShowMore: function() {
-    var outerHeight = $('#main-collection-description').outerHeight(true);
-    var innerHeight = $('#main-collection-description .collection-intro').outerHeight(true);
-    if(innerHeight > outerHeight) {
-      if(this.state.overflow == "") {
-        this.setState({overflow: (<div style={this.overflowStyle()}>MORE</div>)});
-      }
+  collectionLoaded: function () {
+    if (this.props.collection.name) {
+      return true;
+    } else {
+      return false;
     }
   },
 
@@ -86,43 +41,39 @@ var CollectionShow = React.createClass({
         }
       }
       return (
-        <div className="exhibit-start-container" style={containerStyle}>
-          <a href={this.viewExhibitUrl()} className="btn btn-lg btn-success start">View Exhibit</a>
-        </div>
+        <mui.FloatingActionButton
+          primary={true} linkButton={true}
+          href={this.viewExhibitUrl()}>
+            <mui.FontIcon className="material-icons">arrow_forward</mui.FontIcon>
+        </mui.FloatingActionButton>
+
+      );
+    }
+  },
+
+  cardMediaSection: function() {
+    if (this.props.collection.image) {
+      return (
+        <mui.CardMedia overlay={<mui.CardTitle title={this.props.collection.name_line_1} subtitle={this.props.collection.name_line_2} />}>
+          <img src={this.props.collection.image.contentUrl} />
+        </mui.CardMedia>
+      );      
+    } else {
+      return (
+        <mui.CardTitle title={this.props.collection.name_line_1} subtitle={this.props.collection.name_line_2} />
       );
     }
   },
 
   render: function() {
-    var titleStyle = {};
-    var image;
-
-    if (this.props.collection) {
-      if (!this.props.collection.display_page_title) {
-        titleStyle = {
-          display: "none",
-        };
-      }
-      if(this.props.collection.image) {
-        titleStyle["position"] = "absolute";
-        image = (
-          <Thumbnail image={this.props.collection.image} />
-        );
-      }
+    if (this.collectionLoaded()) {
       return (
-        <div className="jumbotron">
-          <div className="collection-show">
-            <div className="collection-text">
-              <div style={titleStyle} className="header-position">
-                <div className="home-page-header">
-                  <h1>{this.props.collection.name_line_1}<small>{this.props.collection.name_line_2}</small></h1>
-                </div>
-              </div>
-              {image}
-              {this.firstExhibitLink()}
-            </div>
-          </div>
-        </div>
+        <mui.Card>
+          {this.cardMediaSection()}
+          <mui.CardActions>
+            {this.firstExhibitLink()}
+          </mui.CardActions>
+        </mui.Card>
       );
     } else {
       return <Loading />;
