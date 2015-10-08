@@ -35,7 +35,7 @@ var ThemeTestPage = React.createClass({
         <div style={this.d()}>
           <mui.Avatar
           icon={
-            <mui.FontIcon className="mdi-communication-voicemail" />
+            <mui.FontIcon className="material-icons" >voicemail</mui.FontIcon>
           } />
         </div>
         <div style={this.d()}>
@@ -82,7 +82,7 @@ var ThemeTestPage = React.createClass({
           </div>
           <div style={this.d()}>
             <mui.RaisedButton linkButton={true} href="https://github.com/callemall/material-ui" secondary={true} label="GitHub">
-              <mui.FontIcon className="mdi-action-favorite" style={this.lightIconStyle()} />
+              <mui.FontIcon className="material-icons" style={this.lightIconStyle()} >favorite</mui.FontIcon>
             </mui.RaisedButton>
           </div>
           <div style={this.d()}>
@@ -92,22 +92,34 @@ var ThemeTestPage = React.createClass({
         <div className="col-sm-4">
           <h5>Floating Action Buttons</h5>
           <div style={this.d()}>
-            <mui.FloatingActionButton iconClassName="mdi-action-grade" />
+            <mui.FloatingActionButton>
+              <mui.FontIcon className="material-icons">grade</mui.FontIcon>
+            </mui.FloatingActionButton>
           </div>
           <div style={this.d()}>
-            <mui.FloatingActionButton iconClassName="mdi-action-grade" mini={true} />
+            <mui.FloatingActionButton mini={true} >
+              <mui.FontIcon className="material-icons">grade</mui.FontIcon>
+            </mui.FloatingActionButton>
           </div>
           <div style={this.d()}>
-            <mui.FloatingActionButton iconClassName="mdi-action-grade" secondary={true} />
+            <mui.FloatingActionButton secondary={true} >
+              <mui.FontIcon className="material-icons">grade</mui.FontIcon>
+            </mui.FloatingActionButton>
           </div>
           <div style={this.d()}>
-            <mui.FloatingActionButton iconClassName="mdi-action-grade" secondary={true} mini={true} />
+            <mui.FloatingActionButton secondary={true} mini={true} >
+              <mui.FontIcon className="material-icons">grade</mui.FontIcon>
+            </mui.FloatingActionButton>
           </div>
           <div style={this.d()}>
-            <mui.FloatingActionButton iconClassName="mdi-action-grade" disabled={true} />
+            <mui.FloatingActionButton disabled={true} >
+              <mui.FontIcon className="material-icons">grade</mui.FontIcon>
+            </mui.FloatingActionButton>
           </div>
           <div style={this.d()}>
-            <mui.FloatingActionButton iconClassName="mdi-action-grade" disabled={true} mini={true} />
+            <mui.FloatingActionButton disabled={true} mini={true} >
+              <mui.FontIcon className="material-icons">grade</mui.FontIcon>
+            </mui.FloatingActionButton>
           </div>
         </div>
       </div>
@@ -212,7 +224,7 @@ var ThemeTestPage = React.createClass({
       <div style={this.d()}>
         <h4>Icons</h4>
         <div style={this.d()}>
-          <mui.FontIcon className="mdi-action-home" />
+          <mui.FontIcon className="material-icons">home</mui.FontIcon>
         </div>
       </div>
     );
@@ -223,10 +235,14 @@ var ThemeTestPage = React.createClass({
       <div style={this.d()}>
         <h4>Icon Buttons</h4>
         <div style={this.d()}>
-          <mui.IconButton iconClassName="mdi-action-grade" tooltip="grade"/>
+          <mui.IconButton tooltip="grade">
+            <mui.FontIcon className="material-icons">grade</mui.FontIcon>
+          </mui.IconButton>
         </div>
         <div style={this.d()}>
-          <mui.IconButton iconClassName="mdi-action-grade" tooltip="grade" disabled={true} />
+          <mui.IconButton tooltip="grade" disabled={true}>
+            <mui.FontIcon className="material-icons">grade</mui.FontIcon>
+          </mui.IconButton>
         </div>
       </div>
     );
