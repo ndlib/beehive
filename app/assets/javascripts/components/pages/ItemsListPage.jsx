@@ -50,7 +50,7 @@ var ItemsListPage = React.createClass({
           <ItemsList height={this.state.height} items={this.state.items} />
         </PageContent>
       </Layout>
-      <CollectionOverlayFooter collection={this.state.collection} />
+      <CollectionPageFooter collection={this.state.collection} />
     </div>
     );
   }

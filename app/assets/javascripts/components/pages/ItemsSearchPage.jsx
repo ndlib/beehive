@@ -91,7 +91,7 @@ var ItemsSearchPage = React.createClass({
             />
           </PageContent>
         </Layout>
-        <CollectionOverlayFooter collection={this.state.collection} />
+        <CollectionPageFooter collection={this.state.collection} />
       </div>
     );
   }
