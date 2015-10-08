@@ -71,11 +71,6 @@ GEM
       execjs (~> 2.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-material-design (0.2.0)
-      bootstrap-sass (~> 3.0)
-    bootstrap-sass (3.3.4.1)
-      autoprefixer-rails (>= 5.0.0.1)
-      sass (>= 3.2.19)
     browserify-rails (0.7.2)
       sprockets (~> 2.0)
     builder (3.2.2)
@@ -349,8 +344,6 @@ PLATFORMS
 DEPENDENCIES
   airbrake
   autoprefixer-rails
-  bootstrap-material-design
-  bootstrap-sass (~> 3.3.1)
   browserify-rails (~> 0.5)
   capistrano (~> 3.1)
   capistrano-npm
