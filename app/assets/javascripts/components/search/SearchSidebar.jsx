@@ -79,13 +79,12 @@ var SearchSidebar = React.createClass({
             zInded: '100000',
           }}>
             <mui.FloatingActionButton
-              backgroundColor="rgba(0, 0, 0, 0.541176);"
-              style={{}}
-              iconClassName={this.state.show ? 'mdi-navigation-chevron-left' : 'mdi-navigation-chevron-right'}
               mini={true}
               secondary={true}
               onClick={this.toggleSidebar}
-            />
+            >
+              <mui.FontIcon className="material-icons">{this.state.show ? 'chevron_left' : 'chevron_right'}</mui.FontIcon>
+            </mui.FloatingActionButton>
           </div>
         </div>
         <div className={this.state.show ? "row-fluid col-sm-10" : "row-fluid col-sm-11" }>
