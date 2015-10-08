@@ -22,7 +22,7 @@ var MuiThemeMixin = {
       color: 'white',
       fontSize: '18px',
       verticalAlign: 'text-bottom',
-      width: '26px',
+      minWidth: '26px',
     };
   },
 
@@ -30,7 +30,7 @@ var MuiThemeMixin = {
     return {
       fontSize: '18px',
       verticalAlign: 'text-bottom',
-      width: '26px',
+      minWidth: '26px',
     };
   },
 

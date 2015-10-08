@@ -1,7 +1,6 @@
 'use strict'
 var React = require('react');
 var mui = require('material-ui');
-var TextField = mui.TextField;
 
 var SearchBox = React.createClass({
   mixins: [SearchUrlMixin, MuiThemeMixin],
@@ -45,20 +44,20 @@ var SearchBox = React.createClass({
   render: function() {
     return(
       <div style={{display:'inline-block'}}>
-        <TextField
+        <mui.TextField
           hintText="search"
           ref='searchBox'
           onChange={this.onChange}
           defaultValue={this.props.searchTerm}
           onEnterKeyDown={this.onClick}
         />
-        <button
+        <mui.RaisedButton
           onClick={this.onClick}
-          className={'btn btn-primary btn-view'}
           style={{zIndex: '0'}}
+          primary={true}
         >
-          <i className= "mdi-action-search"></i>
-        </button>
+          <mui.FontIcon className="material-icons" style={this.lightIconStyle()}>search</mui.FontIcon>
+        </mui.RaisedButton>
       </div>
     );
   }

@@ -2,7 +2,7 @@
 var React = require('react');
 var mui = require('material-ui');
 var SearchDisplayList = React.createClass({
-  mixins: [CollectionUrlMixin, GridListMixin, PageHeightMixin, MuiThemeMixin, LoadRemoteMixin],
+  mixins: [CollectionUrlMixin, PageHeightMixin, MuiThemeMixin, LoadRemoteMixin],
 
   propTypes: {
     collection: React.PropTypes.object,
@@ -90,13 +90,13 @@ var SearchDisplayList = React.createClass({
 
     var mainContent = (
       <div>
-        {this.renderButtons(this.props.collection, this.props.searchTerm)}
+        <SearchControls collection={this.props.collection} searchTerm={this.props.searchTerm}/>
         <SearchPagination
           collection={this.props.collection}
           found={this.props.found}
           start={this.props.start}
         />
-        <div className={this.listClass()}>
+        <div>
             {itemNodes}
         </div>
         <SearchPagination

@@ -10,17 +10,7 @@ var TitleBar = React.createClass({
       );
     }
 
-    return (
-      <div className="title-bar large">
-        <div className="container-fluid">
-          <div className="row">
-            <div className="navbar-header">
-              {content}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+    return null;
   }
 });
 

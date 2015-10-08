@@ -14,7 +14,6 @@ LoadRemoteMixin = require("./mixins/LoadRemoteMixin");
 TitleConcatMixin = require("./mixins/TitleConcatMixin");
 MuiThemeMixin = require("./mixins/MuiThemeMixin");
 IEMixin = require("./mixins/IEMixin");
-GridListMixin = require("./mixins/GridListMixin");
 SearchMixin = require("./mixins/SearchMixin");
 
 SearchUrlMixin = require("./mixins/SearchUrlMixin");
@@ -107,6 +106,7 @@ SearchSort = require("./components/search/SearchSort");
 SearchFacets = require("./components/search/SearchFacets");
 SearchPagination = require("./components/search/SearchPagination");
 SearchSidebar = require("./components/search/SearchSidebar");
+SearchControls = require("./components/search/SearchControls");
 
 // Modal
 Modal = require("./components/modal/Modal");

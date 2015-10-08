@@ -62,7 +62,7 @@ var ThemeTestPage = React.createClass({
           </div>
           <div style={this.d()}>
             <mui.FlatButton linkButton={true} href="https://github.com/callemall/material-ui" secondary={true} label="GitHub">
-              <mui.FontIcon className="mdi-action-favorite" style={this.darkIconStyle()} />
+              <mui.FontIcon className="material-icons" style={this.darkIconStyle()} >favorite</mui.FontIcon>
             </mui.FlatButton>
           </div>
           <div style={this.d()}>
