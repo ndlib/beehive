@@ -53,7 +53,7 @@ var CollectionIntroPage = React.createClass({
         </div>
 
         {nextShowcase}
-        <CollectionOverlayFooter collection={this.state.collection} />
+        <CollectionPageFooter collection={this.state.collection} />
       </div>
     );
   }

@@ -24,7 +24,7 @@ var PageHeader = React.createClass({
     return (
       <div id="banner-wrapper">
         <header id="banner" role="banner" className="home" style={this.style()} >
-          <nav className="navbar navbar-default navbar-static-top" role="navigation" >
+          <nav className="" role="navigation" >
             {titleBar}
           </nav>
         </header>

@@ -34,16 +34,7 @@ var CollectionShow = React.createClass({
   },
 
   firstExhibitLink: function() {
-    var containerStyle = {};
     if (this.viewExhibitUrl()) {
-      if(this.props.collection.image) {
-        containerStyle = {
-          bottom: "25%",
-          position: "absolute",
-          textAlign: "center",
-          width: "100%",
-        }
-      }
       return (
         <mui.FloatingActionButton
           primary={true} linkButton={true}
@@ -72,12 +63,14 @@ var CollectionShow = React.createClass({
   render: function() {
     if (this.collectionLoaded()) {
       return (
-        <mui.Card>
-          {this.cardMediaSection()}
-          <mui.CardActions>
-            {this.firstExhibitLink()}
-          </mui.CardActions>
-        </mui.Card>
+        <mui.Paper circle={false} rounded={false} zDepth={0} >
+          <mui.Card>
+            {this.cardMediaSection()}
+            <mui.CardActions>
+              {this.firstExhibitLink()}
+            </mui.CardActions>
+          </mui.Card>
+        </mui.Paper>
       );
     } else {
       return <Loading />;
