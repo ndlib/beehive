@@ -77,7 +77,7 @@ var ItemsSearchPage = React.createClass({
         <div className="clearfix" />
         <Layout>
 
-          <PageContent>
+          <PageContent fluidLayout={true}>
             <SearchDisplayList
               collection={this.state.collection}
               items={this.state.items}
