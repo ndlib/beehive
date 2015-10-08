@@ -62,7 +62,7 @@ var ThemeTestPage = React.createClass({
           </div>
           <div style={this.d()}>
             <mui.FlatButton linkButton={true} href="https://github.com/callemall/material-ui" secondary={true} label="GitHub">
-              <mui.FontIcon className="material-icons" style={this.darkIvaryle()} >favorite</mui.FontIcon>
+              <mui.FontIcon className="material-icons" style={this.darkIconStyle()} >favorite</mui.FontIcon>
             </mui.FlatButton>
           </div>
           <div style={this.d()}>
@@ -82,7 +82,7 @@ var ThemeTestPage = React.createClass({
           </div>
           <div style={this.d()}>
             <mui.RaisedButton linkButton={true} href="https://github.com/callemall/material-ui" secondary={true} label="GitHub">
-              <mui.FontIcon className="mdi-action-favorite" style={this.lightIvaryle()} />
+              <mui.FontIcon className="mdi-action-favorite" style={this.lightIconStyle()} />
             </mui.RaisedButton>
           </div>
           <div style={this.d()}>
