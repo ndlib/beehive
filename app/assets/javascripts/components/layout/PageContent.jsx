@@ -19,16 +19,20 @@ var PageContent = React.createClass({
     }
   },
 
+  style: function() {
+    if (this.props.fluidLayout) {
+      return ({});
+    } else {
+      return ({
+        width: '786px',
+      });
+    }
+  },
+
   render: function() {
     return (
-      <mui.Paper circle={false} rounded={false} zDepth={0} >
-        <div className={this.classes()}>
-          <div className="row">
-            <div className="col-lg-12">
-              {this.props.children}
-            </div>
-          </div>
-        </div>
+      <mui.Paper circle={false} rounded={false} zDepth={0} style={this.style()} >
+        {this.props.children}
       </mui.Paper>
     );
   }
