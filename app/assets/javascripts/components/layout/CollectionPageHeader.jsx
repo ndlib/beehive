@@ -21,7 +21,7 @@ var CollectionPageHeader = React.createClass({
 
   style: function () {
     return ({
-      height: '148px',
+      height: (this.props.branding ? '100px' : '50px'),
       width: '100%',
     });
   },
@@ -43,18 +43,19 @@ var CollectionPageHeader = React.createClass({
         {this.brandBar()}
         <div style={{width: '100%'}}>
           {title}
-          <mui.Tabs>
-            <mui.Tab label="Item One" >
-              (Tab content...)
-            </mui.Tab>
-            <mui.Tab label="Item Two" >
-              (Tab content...)
-            </mui.Tab>
-            <mui.Tab
-              label="Item Three"
-              route="home"
-              onActive={this._handleTabActive} />
-          </mui.Tabs>
+          <div style={{ position: 'absolute', right: '60px' }}>
+            <mui.Tabs style={ {width: '300px' }}>
+              <mui.Tab label="Item One" >
+              </mui.Tab>
+              <mui.Tab label="Item Two" >
+
+              </mui.Tab>
+              <mui.Tab
+                label="Item Three"
+                route="home"
+                onActive={this._handleTabActive} />
+            </mui.Tabs>
+          </div>
         </div>
       </mui.Paper>
     );
