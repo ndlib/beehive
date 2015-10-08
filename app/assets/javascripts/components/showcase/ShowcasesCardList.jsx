@@ -1,5 +1,6 @@
 //app/assets/javascripts/components/ShowcasesCardList.jsx
 var React = require('react');
+var mui = require('material-ui');
 
 var ShowcasesCardList = React.createClass({
   propTypes: {
@@ -30,9 +31,9 @@ var ShowcasesCardList = React.createClass({
     }
     if (this.props.showcases.length > 0 || this.props.intro) {
       return (
-        <GridList className="showcases-list" grids={grids}>
+        <mui.GridList>
           {this.allNodes()}
-        </GridList>
+        </mui.GridList>
       );
     }
     else {

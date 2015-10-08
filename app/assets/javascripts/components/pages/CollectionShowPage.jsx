@@ -52,12 +52,13 @@ var CollectionShowPage = React.createClass({
       <div>
         <div className="collection-show-page">
           <Layout>
-            <CollectionPageHeader collection={this.state.collection} />
+            <CollectionPageHeader collection={this.state.collection} branding={true}/>
             <CollectionShow collection={this.state.collection} />
             <PageContent>
               <CollectionIntro collection={this.state.collection} />
               <CollectionShowShowcases collection={this.state.collection} />
             </PageContent>
+            <CollectionPageFooter collection={this.state.collection} />
           </Layout>
         </div>
       </div>

@@ -24,6 +24,7 @@ PageHeader = require("./components/layout/PageHeader");
 TitleBar = require("./components/layout/TitleBar");
 PageContent = require("./components/layout/PageContent");
 CollectionPageHeader = require("./components/layout/CollectionPageHeader");
+CollectionPageFooter = require("./components/layout/CollectionPageFooter");
 GridList = require("./components/layout/GridList");
 GridItem = require("./components/layout/GridItem");
 ListItem = require("./components/layout/ListItem");
@@ -31,7 +32,6 @@ Card = require("./components/layout/Card");
 BrandBar = require("./components/layout/BrandBar");
 CardBackground = require("./components/layout/CardBackground");
 CardOverlay = require("./components/layout/CardOverlay");
-CollectionOverlayFooter = require("./components/layout/CollectionOverlayFooter");
 MoreArrow = require("./components/layout/MoreArrow");
 DialogWindow = require("./components/layout/DialogWindow");
 

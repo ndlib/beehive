@@ -56,11 +56,11 @@ var ShowcaseShowPage = React.createClass({
 
         <Layout>
           <CollectionPageHeader collection={this.state.collection} dropdown={true} />
-          <PageContent>
+          <PageContent fluidLayout={true}>
             {showcaseShow}
           </PageContent>
         </Layout>
-        <CollectionOverlayFooter collection={this.state.collection} />
+        <CollectionPageFooter collection={this.state.collection} />
       </div>
     );
   }
