@@ -4,9 +4,9 @@ var mui = require('material-ui');
 
 // There are apparently two version of Menu floating around in
 // material-ui, so we need to specify this is the version we want.
-const Menu = require('material-ui/lib/menus/menu');
-const MenuDivider = require('material-ui/lib/menus/menu-divider');
-const MenuItem = require('material-ui/lib/menus/menu-item');
+var Menu = require('material-ui/lib/menus/menu');
+var MenuDivider = require('material-ui/lib/menus/menu-divider');
+var MenuItem = require('material-ui/lib/menus/menu-item');
 
 var ThemeTestPage = React.createClass({
   mixins: [MuiThemeMixin],
@@ -62,7 +62,7 @@ var ThemeTestPage = React.createClass({
           </div>
           <div style={this.d()}>
             <mui.FlatButton linkButton={true} href="https://github.com/callemall/material-ui" secondary={true} label="GitHub">
-              <mui.FontIcon className="material-icons" style={this.darkIconStyle()} >favorite</mui.FontIcon>
+              <mui.FontIcon className="material-icons" style={this.darkIvaryle()} >favorite</mui.FontIcon>
             </mui.FlatButton>
           </div>
           <div style={this.d()}>
@@ -82,7 +82,7 @@ var ThemeTestPage = React.createClass({
           </div>
           <div style={this.d()}>
             <mui.RaisedButton linkButton={true} href="https://github.com/callemall/material-ui" secondary={true} label="GitHub">
-              <mui.FontIcon className="mdi-action-favorite" style={this.lightIconStyle()} />
+              <mui.FontIcon className="mdi-action-favorite" style={this.lightIvaryle()} />
             </mui.RaisedButton>
           </div>
           <div style={this.d()}>
@@ -159,7 +159,7 @@ var ThemeTestPage = React.createClass({
   },
 
   dialog: function() {
-    let standardActions = [
+    var standardActions = [
       { text: 'Cancel' },
       { text: 'Submit', ref: 'submit' }
     ];
@@ -189,7 +189,7 @@ var ThemeTestPage = React.createClass({
   },
 
   dropdownMenu: function() {
-    let menuItems = [
+    var menuItems = [
       { payload: '1', text: 'Never' },
       { payload: '2', text: 'Every Night' },
       { payload: '3', text: 'Weeknights' },
@@ -233,7 +233,7 @@ var ThemeTestPage = React.createClass({
   },
 
   leftNav: function() {
-    let menuItems = [
+    var menuItems = [
       { route: 'get-started', text: 'Get Started' },
       { route: 'customization', text: 'Customization' },
       { route: 'components', text: 'Components' },
@@ -427,7 +427,7 @@ var ThemeTestPage = React.createClass({
 
   textFields: function() {
 
-    let arbitraryArrayMenuItems = [
+    var arbitraryArrayMenuItems = [
       { payload: '1', text: 'Never' },
       { payload: '2', text: 'Every Night' },
       { payload: '3', text: 'Weeknights' },
