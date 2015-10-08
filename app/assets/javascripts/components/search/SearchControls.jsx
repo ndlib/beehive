@@ -1,6 +1,7 @@
 'use strict'
 var React = require('react');
 var mui = require('material-ui');
+var EventEmitter = require("../../EventEmitter");
 
 var gridView = {view: "grid"};
 var listView = {view: "list"};
@@ -46,11 +47,13 @@ var SearchControls = React.createClass({
   setGrid: function() {
     this.setState({view: "grid"});
     localStorage.setItem("ListViewLayout", JSON.stringify(gridView));
+    EventEmitter.emit('SetGridList', 'grid');
   },
 
   setList: function() {
     this.setState({view: "list"});
     localStorage.setItem("ListViewLayout", JSON.stringify(listView));
+    EventEmitter.emit('SetGridList', 'list');
   },
 
 

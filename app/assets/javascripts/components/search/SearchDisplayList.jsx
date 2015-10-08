@@ -1,6 +1,7 @@
 'use strict'
 var React = require('react');
 var mui = require('material-ui');
+var EventEmitter = require("../../EventEmitter");
 var SearchDisplayList = React.createClass({
   mixins: [CollectionUrlMixin, PageHeightMixin, MuiThemeMixin, LoadRemoteMixin],
 
@@ -17,9 +18,15 @@ var SearchDisplayList = React.createClass({
   },
 
   getInitialState: function () {
+    var storedState = JSON.parse(localStorage.getItem("ListViewLayout"));
+    var view = 'grid';
+    if(storedState) {
+      view = storedState.view;
+    }
     return {
       currentItem: null,
       sidebar: false,
+      view: view,
     };
   },
 
@@ -41,9 +48,14 @@ var SearchDisplayList = React.createClass({
   
   componentWillMount: function() {
     EventEmitter.on("ItemDialogWindow", this.setCurrentItem);
+    EventEmitter.on("SetGridList", this.setGridListState);
     if(window.location.hash) {
       this.loadRemoteItem(this.collectionUrl(this.props.collection) +  window.location.hash.replace("#", ""));
     }
+  },
+
+  setGridListState: function(view) {
+    this.setState({view: view});
   },
 
   setCurrentItem: function(item) {
