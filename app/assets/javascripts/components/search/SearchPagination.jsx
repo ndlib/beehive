@@ -15,7 +15,7 @@ var SearchPagination = React.createClass({
     return {
       found: 0,
       start: 0,
-      count: 10,
+      count: 12,
     };
   },
 

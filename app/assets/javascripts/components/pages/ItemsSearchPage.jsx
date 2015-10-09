@@ -18,13 +18,7 @@ var ItemsSearchPage = React.createClass({
     searchTerm: React.PropTypes.string,
     sortTerm: React.PropTypes.string,
     facet: React.PropTypes.object,
-    start: React.PropTypes.number
-  },
-
-  getDefaultProps: function() {
-    return{
-      start: 0,
-    };
+    start: React.PropTypes.number,
   },
 
   getInitialState: function() {
@@ -54,9 +48,13 @@ var ItemsSearchPage = React.createClass({
     if(this.props.sortTerm) {
       url += "&sort=" + this.props.sortTerm;
     }
-    if(this.props.start != 0) {
-      url += "&start=" + this.props.start;
+
+    var regex = /\S+&start=/;
+    var requestedStart = 0;
+    if(window.location.search.match(regex)) {
+      requestedStart = window.location.search.replace(regex, '').split('&')[0];
     }
+    url += "&start=" + requestedStart;
     this.loadSearchResults(url);
   },
 
