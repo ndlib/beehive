@@ -1,5 +1,5 @@
 'use strict'
-var searchMixin = {
+var SearchMixin = {
   loadSearchResults: function(url) {
     var url = url;
     $.ajax({
@@ -70,4 +70,4 @@ var searchMixin = {
 
 }
 
-module.exports = searchMixin;
+module.exports = SearchMixin;
