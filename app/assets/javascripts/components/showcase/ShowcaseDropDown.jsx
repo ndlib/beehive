@@ -84,7 +84,6 @@ var ShowcaseDropDown = React.createClass({
     }.bind(this));
     return options
   },
-
   render: function() {
     return (
     <div className="btn-group featured-content-dropdown">
