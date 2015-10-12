@@ -74,7 +74,6 @@ ShowcaseTitle = require("./components/showcase/ShowcaseTitle");
 ShowcaseTitleBar = require("./components/showcase/ShowcaseTitleBar");
 ShowcaseBackground = require("./components/showcase/ShowcaseBackground");
 ShowcaseCard = require("./components/showcase/ShowcaseCard");
-ShowcaseDropDown = require("./components/showcase/ShowcaseDropDown");
 StartShowcaseButton = require("./components/showcase/StartShowcaseButton");
 ShowcaseEnding = require("./components/showcase/ShowcaseEnding");
 
