@@ -17,7 +17,7 @@ var CollectionsList = React.createClass({
   render: function() {
     return (
       <GridList className="collections-list">
-          {this.collectionNodes()}
+        {this.collectionNodes()}
       </GridList>
     );
   }

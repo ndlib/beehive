@@ -1,5 +1,6 @@
 //app/assets/javascripts/components/Section.jsx
 var React = require('react');
+var mui = require('material-ui');
 
 var Section = React.createClass({
   mixins: [CollectionUrlMixin, LoadRemoteMixin],
@@ -53,13 +54,40 @@ var Section = React.createClass({
     return "section-" + this.props.section.id;
   },
 
-  render: function() {
+  imageCard: function() {
+    if (this.props.section.item) {
+      return (
+        <div>
+          <mui.CardMedia>
+            <img src={this.props.section.item.image['thumbnail/medium'].contentUrl} />
+          </mui.CardMedia>
+          <mui.CardText>
+            <div dangerouslySetInnerHTML={{__html: this.props.section.caption}} />
+          </mui.CardText>
+        </div>
+      );
+    }
+  },
 
+  textCard: function () {
+    if (this.props.section.description) {
+      return (
+        <div>
+          <mui.CardTitle title={this.props.section.name}/>
+          <mui.CardText>
+            <div dangerouslySetInnerHTML={{__html: this.props.section.description}} />
+          </mui.CardText>
+        </div>
+      );
+    }
+  },
+
+  render: function() {
     return (
-      <section className="section" style={this.style()} id={this.sectionName()} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} onClick={this.onClick}>
-        <SectionDescription height={this.props.height} section={this.props.section} />
-        <SectionImage height={this.props.height} section={this.props.section}/>
-      </section>
+      <mui.Card style={this.style()} onClick={this.onClick} >
+        { this.imageCard() }
+        { this.textCard() }
+      </mui.Card>
     );
   }
 });
