@@ -1,6 +1,7 @@
 'use strict'
 var React = require('react');
 var mui = require('material-ui');
+var CollectionLeftNav = require('./CollectionLeftNav');
 
 var CollectionPageHeader = React.createClass({
   mixins: [CollectionUrlMixin, TitleConcatMixin, MuiThemeMixin],
@@ -8,7 +9,6 @@ var CollectionPageHeader = React.createClass({
   propTypes: {
     collection: React.PropTypes.object.isRequired,
     branding: React.PropTypes.bool,
-    dropdown: React.PropTypes.bool,
   },
 
   brandBar: function () {
@@ -27,36 +27,37 @@ var CollectionPageHeader = React.createClass({
   },
 
   render: function() {
-    var dropdown = "";
-    if(this.props.collection['@id'] && this.props.dropdown) {
-      dropdown = (<ShowcaseDropDown collection={this.props.collection} />);
-    }
-
     var title = (
-      <a className="navbar-brand overflow-ellipsis" href={this.collectionUrl(this.props.collection)}>
-        {this.props.collection.name_line_1}
-      </a>
+      this.props.collection.name_line_1
     );
 
+    var rightNav = (
+      <div>
+        <div style={ {float:'right' } }>
+          <SearchBox collection={this.props.collection} />
+        </div>
+
+        <mui.Tabs style={ {float:'right' } }>
+          <mui.Tab label="Item One" >
+          </mui.Tab>
+          <mui.Tab label="Item Two" >
+
+          </mui.Tab>
+          <mui.Tab
+            label="Item Three"
+            route="home"
+            onActive={this._handleTabActive} />
+        </mui.Tabs>
+      </div>
+    );
     return (
       <mui.Paper circle={false} rounded={false} zDepth={0} style={this.style()}>
         {this.brandBar()}
-        <div style={{width: '100%'}}>
-          {title}
-          <div style={{ position: 'absolute', right: '60px' }}>
-            <mui.Tabs style={ {width: '300px' }}>
-              <mui.Tab label="Item One" >
-              </mui.Tab>
-              <mui.Tab label="Item Two" >
-
-              </mui.Tab>
-              <mui.Tab
-                label="Item Three"
-                route="home"
-                onActive={this._handleTabActive} />
-            </mui.Tabs>
-          </div>
-        </div>
+        <mui.AppBar
+          title={title}
+          iconElementLeft={<CollectionLeftNav collection={this.props.collection} />}
+          iconElementRight={rightNav}
+        />
       </mui.Paper>
     );
   }
