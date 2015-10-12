@@ -41,7 +41,7 @@ var ShowcaseTitleBar = React.createClass({
   },
 
   name: function () {
-    return this.titleConcat(this.props.showcase.name_line_1, this.props.showcase.name_line_2);
+    return this.props.showcase.name_line_1;
   },
 
   render: function() {
