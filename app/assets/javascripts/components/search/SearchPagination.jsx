@@ -15,7 +15,7 @@ var SearchPagination = React.createClass({
     return {
       found: 0,
       start: 0,
-      count: 10,
+      count: 12,
     };
   },
 
@@ -37,22 +37,26 @@ var SearchPagination = React.createClass({
     var nodes = [];
     // if not first page
     if(this.props.start != 0) {
-      var backLink = this.searchUrl(this.props.collection) + '&start=' + (this.props.start - this.props.count);
-      nodes.push((<a href={backLink}> <i className='mdi-navigation-arrow-back' style={{fontSize: '20px'}}/> </a>));
+      var backLink = this.searchUrl(this.props.collection) + '&start=0';
+      nodes.push((<a href={backLink}> <i className="material-icons" style={{fontSize: '1em',}}>arrow_back</i> </a>));
     }
+    var last = Math.floor(this.props.found/this.props.count);
+    var cappedFirst = Math.max(1, Math.floor(this.props.start/this.props.count) - 2);
+    var cappedLast = Math.min(Math.floor(this.props.start/this.props.count) + 4, last + 1);
     if(this.props.found > this.props.count){
-      var last = this.props.found/this.props.count;
+
       if(this.props.found%this.props.count != 0){
         last += 1;
       }
-      for (var i = 1; i <= last; i++) {
+      for (var i = cappedFirst; i <= cappedLast; i++) {
         nodes.push(this.pageLink(i));
       }
     }
+
     // if not last page
     if(this.props.start + this.props.count < this.props.found) {
-      var forwardLink = this.searchUrl(this.props.collection) + '&start=' + (this.props.start + this.props.count);
-      nodes.push((<a href={forwardLink}> <i className='mdi-navigation-arrow-forward' style={{fontSize: '20px'}}/> </a>));
+      var forwardLink = this.searchUrl(this.props.collection) + '&start=' + this.props.count*(last - 1);
+      nodes.push((<a href={forwardLink}> <i className="material-icons" style={{fontSize: '1em',}}>arrow_forward</i> </a>));
     }
     return nodes;
   },

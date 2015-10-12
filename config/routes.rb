@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       get ":id/:slug", to: "showcases#show"
     end
     scope "/items" do
-      get "/", to: "items#index"
+      get "/", to: "items#search"
     end
     scope "/search" do
       get "/", to: "items#search"
@@ -33,7 +33,7 @@ Rails.application.routes.draw do
       get ":id/:slug", to: "showcases#show"
     end
     scope "/items" do
-      get "/", to: "items#index"
+      get "/", to: "items#search"
     end
   end
 

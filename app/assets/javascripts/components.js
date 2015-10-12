@@ -85,7 +85,6 @@ Section = require("./components/section/Section");
 SectionCaption = require("./components/section/SectionCaption");
 SectionDescription = require("./components/section/SectionDescription");
 SectionImage = require("./components/section/SectionImage");
-SectionsModalList = require("./components/section/SectionsModalList");
 SectionLink = require("./components/section/SectionLink");
 SectionsListItem = require("./components/section/SectionsListItem");
 
@@ -97,7 +96,6 @@ ItemImage = require("./components/item/ItemImage");
 ItemText = require("./components/item/ItemText");
 AdditionalResources = require("./components/item/AdditionalResources");
 AdditionalResourcesItem = require("./components/item/AdditionalResourcesItem");
-ItemsModalList = require("./components/item/ItemsModalList");
 
 // Search
 SearchDisplayList = require("./components/search/SearchDisplayList");
@@ -112,8 +110,6 @@ SearchControls = require("./components/search/SearchControls");
 Modal = require("./components/modal/Modal");
 Copyright = require("./components/modal/Copyright");
 Info = require("./components/modal/Info");
-SectionModal = require("./components/modal/SectionModal");
-ItemModal = require("./components/modal/ItemModal");
 
 // Metadata
 MetadataList = require("./components/metadata/MetadataList");

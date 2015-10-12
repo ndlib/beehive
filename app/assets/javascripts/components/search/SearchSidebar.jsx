@@ -41,20 +41,13 @@ var SearchSidebar = React.createClass({
         <div
             className={this.state.show ? "row-fluid col-sm-2" : "row-fluid col-sm-1"}
             style={{
-            boxShadow: '0 3px 10px rgba(0, 0, 0, 0.16), 0 3px 10px rgba(0, 0, 0, 0.23)',
             position: 'absolute',
             top: '0',
             bottom: '0',
             display: this.state.show ? 'block' : 'none',
           }}
         >
-          <div
-            style={{
-              color: 'rgba(0, 0, 0, 0.870588)',
-              marginTop: '2rem',
-              marginBottom: '1rem',
-            }}
-          >Choose from the options below to sort and filter the displayed items.</div>
+          <div>Choose from the options below to sort and filter the displayed items.</div>
           <hr/>
           {this.searchSort()}
           <div className="row" />
@@ -76,16 +69,15 @@ var SearchSidebar = React.createClass({
           <div style={{
             position:'absolute',
             right: '-20px',
-            zInded: '100000',
+            zInded: '100',
           }}>
             <mui.FloatingActionButton
-              backgroundColor="rgba(0, 0, 0, 0.541176);"
-              style={{}}
-              iconClassName={this.state.show ? 'mdi-navigation-chevron-left' : 'mdi-navigation-chevron-right'}
               mini={true}
               secondary={true}
               onClick={this.toggleSidebar}
-            />
+            >
+              <mui.FontIcon className="material-icons">{this.state.show ? 'chevron_left' : 'chevron_right'}</mui.FontIcon>
+            </mui.FloatingActionButton>
           </div>
         </div>
         <div className={this.state.show ? "row-fluid col-sm-10" : "row-fluid col-sm-11" }>
