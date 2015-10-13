@@ -1,7 +1,7 @@
 'use strict'
 var React = require('react');
 var mui = require('material-ui');
-var EventEmitter = require("../../EventEmitter");
+var EventEmitter = require("../../../EventEmitter");
 
 var gridView = {view: "grid"};
 var listView = {view: "list"};

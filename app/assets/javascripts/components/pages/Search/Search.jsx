@@ -4,8 +4,6 @@ var React = require('react');
 var Search = React.createClass({
   mixins: [SearchUrlMixin, PageHeightMixin, LoadRemoteMixin, SearchMixin],
 
-  displayName: 'Items Search Page',
-
   propTypes: {
     collection: React.PropTypes.oneOfType([
       React.PropTypes.string,
