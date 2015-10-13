@@ -17,7 +17,6 @@
 //= require showdown
 //= require components
 //= require perfect-scrollbar.jquery
-//= require plugins
 
 $ = jQuery = require('jquery');
 window.devicePixelRatio = 1;
