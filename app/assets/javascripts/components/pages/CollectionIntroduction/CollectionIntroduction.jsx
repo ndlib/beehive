@@ -1,6 +1,6 @@
 var React = require("react");
 
-var CollectionIntroPage = React.createClass({
+var CollectionIntroduction = React.createClass({
   mixins: [LoadRemoteMixin],
 
   displayName: "Collection Intro Page",
@@ -59,4 +59,4 @@ var CollectionIntroPage = React.createClass({
   }
 });
 
-module.exports = CollectionIntroPage;
+module.exports = CollectionIntroduction;

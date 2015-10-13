@@ -1,7 +1,7 @@
 //app/assets/javascripts/components/CollectionsList.jsx
 var React = require('react');
 
-var CollectionsListPage = React.createClass({
+var SiteIndex = React.createClass({
   mixins: [LoadRemoteMixin],
   displayName: 'Collections List Page',
 
@@ -63,4 +63,4 @@ var CollectionsListPage = React.createClass({
 });
 
 // each file will export exactly one component
-module.exports = CollectionsListPage;
+module.exports = SiteIndex;

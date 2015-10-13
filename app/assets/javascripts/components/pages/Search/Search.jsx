@@ -1,7 +1,7 @@
 'use strict'
 var React = require('react');
 
-var ItemsSearchPage = React.createClass({
+var Search = React.createClass({
   mixins: [SearchUrlMixin, PageHeightMixin, LoadRemoteMixin, SearchMixin],
 
   displayName: 'Items Search Page',
@@ -95,4 +95,4 @@ var ItemsSearchPage = React.createClass({
   }
 });
 
-module.exports = ItemsSearchPage;
+module.exports = Search;
