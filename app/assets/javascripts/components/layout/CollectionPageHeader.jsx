@@ -23,6 +23,7 @@ var CollectionPageHeader = React.createClass({
     return ({
       height: (this.props.branding ? '100px' : '50px'),
       width: '100%',
+      background: 'rgba(0,0,0,0.65)',
     });
   },
 
