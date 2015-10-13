@@ -1,10 +1,7 @@
-//app/assets/javascripts/components/CollectionShow.jsx
 var React = require('react');
 
 var Collection = React.createClass({
   mixins: [PageHeightMixin, LoadRemoteMixin],
-
-  displayName: 'Collection Show Page',
 
   propTypes: {
     collection: React.PropTypes.oneOfType([

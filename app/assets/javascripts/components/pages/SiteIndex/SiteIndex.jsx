@@ -1,4 +1,3 @@
-//app/assets/javascripts/components/CollectionsList.jsx
 var React = require('react');
 
 var SiteIndex = React.createClass({

@@ -18,12 +18,32 @@ SearchMixin = require("./mixins/SearchMixin");
 SearchUrlMixin = require("./mixins/SearchUrlMixin");
 
 // Pages
-Collection = require("./components/pages/Collection/Collection");
-CollectionIntroduction = require("./components/pages/CollectionIntroduction/CollectionIntroduction");
-Showcase = require("./components/pages/Showcase/Showcase");
-Search = require("./components/pages/Search/Search");
+//// SiteIndex
 SiteIndex = require("./components/pages/SiteIndex/SiteIndex");
+CollectionsList = require("./components/pages/SiteIndex/CollectionsList");
+CollectionCard = require("./components/pages/SiteIndex/CollectionCard");
+GridList = require("./components/pages/SiteIndex/GridList");
+
+//// Collection
+Collection = require("./components/pages/Collection/Collection");
+CollectionIntro = require("./components/pages/Collection/CollectionIntro");
+CollectionShow = require("./components/pages/Collection/CollectionShow");
+CollectionShowShowcases = require("./components/pages/Collection/CollectionShowShowcases");
+
+//// Collection Introduction
+CollectionIntroduction = require("./components/pages/CollectionIntroduction/CollectionIntroduction");
+CollectionDescription = require("./components/pages/CollectionIntroduction/CollectionDescription");
+
+//// Showcase
+Showcase = require("./components/pages/Showcase/Showcase");
+
+//// Search
+Search = require("./components/pages/Search/Search");
+
+//// ErrorPage
 ErrorPage = require("./components/pages/Error/ErrorPage");
+
+//// ThemeTestPage
 ThemeTestPage = require("./components/pages/ThemeTestPage");
 
 // Layout
@@ -33,7 +53,7 @@ TitleBar = require("./components/layout/TitleBar");
 PageContent = require("./components/layout/PageContent");
 CollectionPageHeader = require("./components/layout/CollectionPageHeader");
 CollectionPageFooter = require("./components/layout/CollectionPageFooter");
-GridList = require("./components/layout/GridList");
+
 GridItem = require("./components/layout/GridItem");
 ListItem = require("./components/layout/ListItem");
 Card = require("./components/layout/Card");
@@ -44,8 +64,6 @@ MoreArrow = require("./components/layout/MoreArrow");
 DialogWindow = require("./components/layout/DialogWindow");
 
 
-
-
 // Embed Codes
 CollectionEmbed = require("./components/embeds/CollectionEmbed");
 ShowcaseEmbed = require("./components/embeds/ShowcaseEmbed");
@@ -53,17 +71,8 @@ SectionEmbed = require("./components/embeds/SectionEmbed");
 ItemEmbed = require("./components/embeds/ItemEmbed");
 
 // Collections
-CollectionsList = require("./components/collection/CollectionsList");
-CollectionsListItem = require("./components/collection/CollectionsListItem");
-CollectionCard = require("./components/collection/CollectionCard");
-CollectionLink = require("./components/collection/CollectionLink");
-CollectionShow = require("./components/collection/CollectionShow");
 CollectionIntroCard = require("./components/collection/CollectionIntroCard");
-CollectionShowShowcases = require("./components/collection/CollectionShowShowcases");
-CollectionDescription = require("./components/collection/CollectionDescription");
-CollectionIntro = require("./components/collection/CollectionIntro");
-CollectionIntroLink = require("./components/collection/CollectionIntroLink");
-CollectionBackground = require("./components/collection/CollectionBackground");
+
 
 // Showcases
 ShowcasesCardList = require("./components/showcase/ShowcasesCardList");
