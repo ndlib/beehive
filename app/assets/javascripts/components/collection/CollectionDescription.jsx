@@ -27,7 +27,6 @@ var CollectionDescription = React.createClass({
       <div className="row row-fluid">
         <div className="col-md-12">
           <div style={this.style()} id={this.props.id}>
-
             <div className="collection-description" dangerouslySetInnerHTML={{__html: this.props.collection.description}} />
             <div className="col-sm-4"/>
             <Element name="startShowcases" className="element">

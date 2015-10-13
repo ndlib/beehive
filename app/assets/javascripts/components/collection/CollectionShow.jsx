@@ -45,11 +45,13 @@ var CollectionShow = React.createClass({
     if (this.viewExhibitUrl()) {
       return (
         <mui.FloatingActionButton 
-          primary={true} linkButton={true}
-          href={this.viewExhibitUrl()} style={this.style()} > 
+          primary={true}
+          linkButton={true}
+          href={this.viewExhibitUrl()}
+          style={this.style()}
+        > 
             <mui.FontIcon className="material-icons">arrow_forward</mui.FontIcon>
         </mui.FloatingActionButton>
-
       );
     }
   },
