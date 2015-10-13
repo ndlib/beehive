@@ -29,6 +29,7 @@ Collection = require("./components/pages/Collection/Collection");
 CollectionIntro = require("./components/pages/Collection/CollectionIntro");
 CollectionShow = require("./components/pages/Collection/CollectionShow");
 CollectionShowShowcases = require("./components/pages/Collection/CollectionShowShowcases");
+CollectionIntroCard = require("./components/pages/Collection/CollectionIntroCard");
 
 //// Collection Introduction
 CollectionIntroduction = require("./components/pages/CollectionIntroduction/CollectionIntroduction");
@@ -79,7 +80,7 @@ SectionEmbed = require("./components/embeds/SectionEmbed");
 ItemEmbed = require("./components/embeds/ItemEmbed");
 
 // Collections
-CollectionIntroCard = require("./components/collection/CollectionIntroCard");
+
 
 
 // Showcases
