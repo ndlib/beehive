@@ -39,6 +39,13 @@ Showcase = require("./components/pages/Showcase/Showcase");
 
 //// Search
 Search = require("./components/pages/Search/Search");
+SearchSort = require("./components/pages/Search/SearchSort");
+SearchFacets = require("./components/pages/Search/SearchFacets");
+SearchPagination = require("./components/pages/Search/SearchPagination");
+SearchSidebar = require("./components/pages/Search/SearchSidebar");
+SearchDisplayList = require("./components/pages/Search/SearchDisplayList");
+SearchControls = require("./components/pages/Search/SearchControls");
+
 
 //// ErrorPage
 ErrorPage = require("./components/pages/Error/ErrorPage");
@@ -62,6 +69,7 @@ CardBackground = require("./components/layout/CardBackground");
 CardOverlay = require("./components/layout/CardOverlay");
 MoreArrow = require("./components/layout/MoreArrow");
 DialogWindow = require("./components/layout/DialogWindow");
+SearchBox = require("./components/layout/SearchBox");
 
 
 // Embed Codes
@@ -104,20 +112,6 @@ ItemImage = require("./components/item/ItemImage");
 ItemText = require("./components/item/ItemText");
 AdditionalResources = require("./components/item/AdditionalResources");
 AdditionalResourcesItem = require("./components/item/AdditionalResourcesItem");
-
-// Search
-SearchDisplayList = require("./components/search/SearchDisplayList");
-SearchBox = require("./components/search/SearchBox");
-SearchSort = require("./components/search/SearchSort");
-SearchFacets = require("./components/search/SearchFacets");
-SearchPagination = require("./components/search/SearchPagination");
-SearchSidebar = require("./components/search/SearchSidebar");
-SearchControls = require("./components/search/SearchControls");
-
-// Modal
-Modal = require("./components/modal/Modal");
-Copyright = require("./components/modal/Copyright");
-Info = require("./components/modal/Info");
 
 // Metadata
 MetadataList = require("./components/metadata/MetadataList");

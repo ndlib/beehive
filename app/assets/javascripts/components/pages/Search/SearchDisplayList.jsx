@@ -1,7 +1,7 @@
 'use strict'
 var React = require('react');
 var mui = require('material-ui');
-var EventEmitter = require("../../EventEmitter");
+var EventEmitter = require("../../../EventEmitter");
 var SearchDisplayList = React.createClass({
   mixins: [CollectionUrlMixin, PageHeightMixin, MuiThemeMixin, LoadRemoteMixin],
 
@@ -45,7 +45,7 @@ var SearchDisplayList = React.createClass({
       this.setState({sidebar: true});
     }
   },
-  
+
   componentWillMount: function() {
     EventEmitter.on("ItemDialogWindow", this.setCurrentItem);
     EventEmitter.on("SetGridList", this.setGridListState);
