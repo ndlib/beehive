@@ -5,6 +5,18 @@
 React = require("react");
 EventEmitter = require("./EventEmitter");
 
+// Mixins
+CollectionUrlMixin = require("./mixins/CollectionUrlMixin");
+HorizontalScrollMixin = require("./mixins/HorizontalScrollMixin");
+PageHeightMixin = require("./mixins/PageHeightMixin");
+PrevNextMixin = require("./mixins/PrevNextMixin");
+LoadRemoteMixin = require("./mixins/LoadRemoteMixin");
+TitleConcatMixin = require("./mixins/TitleConcatMixin");
+MuiThemeMixin = require("./mixins/MuiThemeMixin");
+IEMixin = require("./mixins/IEMixin");
+SearchMixin = require("./mixins/SearchMixin");
+SearchUrlMixin = require("./mixins/SearchUrlMixin");
+
 // Pages
 Collection = require("./components/pages/Collection/Collection");
 CollectionIntroduction = require("./components/pages/CollectionIntroduction/CollectionIntroduction");
@@ -31,17 +43,7 @@ CardOverlay = require("./components/layout/CardOverlay");
 MoreArrow = require("./components/layout/MoreArrow");
 DialogWindow = require("./components/layout/DialogWindow");
 
-// Mixins
-CollectionUrlMixin = require("./mixins/CollectionUrlMixin");
-HorizontalScrollMixin = require("./mixins/HorizontalScrollMixin");
-PageHeightMixin = require("./mixins/PageHeightMixin");
-PrevNextMixin = require("./mixins/PrevNextMixin");
-LoadRemoteMixin = require("./mixins/LoadRemoteMixin");
-TitleConcatMixin = require("./mixins/TitleConcatMixin");
-MuiThemeMixin = require("./mixins/MuiThemeMixin");
-IEMixin = require("./mixins/IEMixin");
-SearchMixin = require("./mixins/SearchMixin");
-SearchUrlMixin = require("./mixins/SearchUrlMixin");
+
 
 
 // Embed Codes
