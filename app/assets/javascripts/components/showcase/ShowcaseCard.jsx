@@ -7,6 +7,13 @@ var ShowcaseCard = React.createClass({
 
   propTypes: {
     showcase: React.PropTypes.object.isRequired,
+    addNextButton: React.PropTypes.bool,
+  },
+
+  getDefaultProps: function() {
+    return {
+      addNextButton: false,
+    }
   },
 
   onClick: function(e) {
@@ -28,6 +35,21 @@ var ShowcaseCard = React.createClass({
     }
   },
 
+  nextButton: function() {
+    if (this.props.addNextButton) {
+      return (
+        <mui.CardActions style={ {height: '100px'} }>
+          <mui.FloatingActionButton
+            primary={true}
+            linkButton={true}
+            href={this.props.showcase['@id']}>
+              <mui.FontIcon className="material-icons">arrow_forward</mui.FontIcon>
+          </mui.FloatingActionButton>
+        </mui.CardActions>
+      );
+    }
+  },
+
   render: function() {
     return (
       <mui.Card onClick={this.onClick} style={{height: '500px'}} >
@@ -35,6 +57,7 @@ var ShowcaseCard = React.createClass({
           <img src={this.image()}  style={{ height: '400px', overflow: 'hidden'}} />
         </mui.CardMedia>
         {this.description()}
+        {this.nextButton()}
       </mui.Card>
     );
   }
