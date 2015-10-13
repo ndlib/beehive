@@ -46,6 +46,7 @@ group :development, :test do
   gem "rubocop", require: false
 
   gem "pry"
+  gem "pry-coolline"
   gem "rspec-rails"
   gem "rspec-collection_matchers"
   gem "capybara"
