@@ -41,9 +41,6 @@ var SearchSidebar = React.createClass({
         <div
             className={this.state.show ? "row-fluid col-sm-2" : "row-fluid col-sm-1"}
             style={{
-            position: 'absolute',
-            top: '0',
-            bottom: '0',
             display: this.state.show ? 'block' : 'none',
           }}
         >
@@ -68,7 +65,6 @@ var SearchSidebar = React.createClass({
         >
           <div style={{
             position:'absolute',
-            right: '-20px',
             zInded: '100',
           }}>
             <mui.FloatingActionButton
