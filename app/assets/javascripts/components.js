@@ -5,18 +5,14 @@
 React = require("react");
 EventEmitter = require("./EventEmitter");
 
-// Mixins
-CollectionUrlMixin = require("./mixins/CollectionUrlMixin");
-HorizontalScrollMixin = require("./mixins/HorizontalScrollMixin");
-PageHeightMixin = require("./mixins/PageHeightMixin");
-PrevNextMixin = require("./mixins/PrevNextMixin");
-LoadRemoteMixin = require("./mixins/LoadRemoteMixin");
-TitleConcatMixin = require("./mixins/TitleConcatMixin");
-MuiThemeMixin = require("./mixins/MuiThemeMixin");
-IEMixin = require("./mixins/IEMixin");
-SearchMixin = require("./mixins/SearchMixin");
-
-SearchUrlMixin = require("./mixins/SearchUrlMixin");
+// Pages
+Collection = require("./components/pages/Collection/Collection");
+CollectionIntroduction = require("./components/pages/CollectionIntroduction/CollectionIntroduction");
+Showcase = require("./components/pages/Showcase/Showcase");
+Search = require("./components/pages/Search/Search");
+SiteIndex = require("./components/pages/SiteIndex/SiteIndex");
+ErrorPage = require("./components/pages/Error/ErrorPage");
+ThemeTestPage = require("./components/pages/ThemeTestPage");
 
 // Layout
 Layout = require("./components/layout/Layout");
@@ -35,14 +31,18 @@ CardOverlay = require("./components/layout/CardOverlay");
 MoreArrow = require("./components/layout/MoreArrow");
 DialogWindow = require("./components/layout/DialogWindow");
 
-// Pages
-Collection = require("./components/pages/Collection/Collection");
-CollectionIntroduction = require("./components/pages/CollectionIntroduction/CollectionIntroduction");
-Showcase = require("./components/pages/Showcase/Showcase");
-Search = require("./components/pages/Search/Search");
-SiteIndex = require("./components/pages/SiteIndex/SiteIndex");
-ErrorPage = require("./components/pages/Error/ErrorPage");
-ThemeTestPage = require("./components/pages/ThemeTestPage");
+// Mixins
+CollectionUrlMixin = require("./mixins/CollectionUrlMixin");
+HorizontalScrollMixin = require("./mixins/HorizontalScrollMixin");
+PageHeightMixin = require("./mixins/PageHeightMixin");
+PrevNextMixin = require("./mixins/PrevNextMixin");
+LoadRemoteMixin = require("./mixins/LoadRemoteMixin");
+TitleConcatMixin = require("./mixins/TitleConcatMixin");
+MuiThemeMixin = require("./mixins/MuiThemeMixin");
+IEMixin = require("./mixins/IEMixin");
+SearchMixin = require("./mixins/SearchMixin");
+SearchUrlMixin = require("./mixins/SearchUrlMixin");
+
 
 // Embed Codes
 CollectionEmbed = require("./components/embeds/CollectionEmbed");
