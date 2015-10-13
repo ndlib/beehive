@@ -36,14 +36,12 @@ MoreArrow = require("./components/layout/MoreArrow");
 DialogWindow = require("./components/layout/DialogWindow");
 
 // Pages
-CollectionsListPage = require("./components/pages/CollectionsListPage");
-CollectionShowPage = require("./components/pages/CollectionShowPage");
-CollectionIntroPage = require("./components/pages/CollectionIntroPage");
-ShowcasesListPage = require("./components/pages/ShowcasesListPage");
-ShowcaseShowPage = require("./components/pages/ShowcaseShowPage");
-ItemsListPage = require("./components/pages/ItemsListPage");
-ItemsSearchPage = require("./components/pages/ItemsSearchPage");
-ErrorPage = require("./components/pages/ErrorPage");
+Collection = require("./components/pages/Collection/Collection");
+CollectionIntroduction = require("./components/pages/CollectionIntroduction/CollectionIntroduction");
+Showcase = require("./components/pages/Showcase/Showcase");
+Search = require("./components/pages/Search/Search");
+SiteIndex = require("./components/pages/SiteIndex/SiteIndex");
+ErrorPage = require("./components/pages/Error/ErrorPage");
 ThemeTestPage = require("./components/pages/ThemeTestPage");
 
 // Embed Codes

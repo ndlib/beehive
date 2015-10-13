@@ -1,7 +1,7 @@
-//app/assets/javascripts/components/ShowcaseShowPage.jsx
+//app/assets/javascripts/components/Showcase.jsx
 var React = require('react');
 
-var ShowcaseShowPage = React.createClass({
+var Showcase = React.createClass({
   mixins: [PageHeightMixin, LoadRemoteMixin],
 
   propTypes: {
@@ -66,4 +66,4 @@ var ShowcaseShowPage = React.createClass({
 });
 
 // each file will export exactly one component
-module.exports = ShowcaseShowPage;
+module.exports = Showcase;

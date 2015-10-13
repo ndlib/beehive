@@ -14,7 +14,6 @@ Rails.application.routes.draw do
 
   scope "/:collection_id/:collection_slug" do
     scope "/showcases" do
-      get "/", to: "showcases#index"
       get ":id/", to: "showcases#show"
       get ":id/:slug", to: "showcases#show"
     end

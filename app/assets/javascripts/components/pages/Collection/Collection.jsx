@@ -1,7 +1,7 @@
 //app/assets/javascripts/components/CollectionShow.jsx
 var React = require('react');
 
-var CollectionShowPage = React.createClass({
+var Collection = React.createClass({
   mixins: [PageHeightMixin, LoadRemoteMixin],
 
   displayName: 'Collection Show Page',
@@ -67,4 +67,4 @@ var CollectionShowPage = React.createClass({
 });
 
 // each file will export exactly one component
-module.exports = CollectionShowPage;
+module.exports = Collection;
