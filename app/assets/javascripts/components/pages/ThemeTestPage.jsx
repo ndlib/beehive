@@ -527,33 +527,34 @@ var ThemeTestPage = React.createClass({
     );
   },
 
-
   render: function() {
     return (
-      <div className="row row-fluid ">
-        <div className="col-sm-12" style={{
-          backgroundColor:"#f5f5f5",
-          color: "rgba(0, 0, 0, 0.870588)",
-          minHeight: "100%",
-          width: "100%",
-        }}>
-          {this.appbar()}
-          {this.avatars()}
-          {this.buttons()}
-          {this.cards()}
-          {this.dialog()}
-          {this.dropdownMenu()}
-          {this.icons()}
-          {this.iconButtons()}
-          {this.leftNav()}
-          {this.lists()}
-          {this.menus()}
-          {this.progress()}
-          {this.refreshIndicator()}
-          {this.table()}
-          {this.textFields()}
+      <mui.AppCanvas>
+        <div className="row row-fluid ">
+          <div className="col-sm-12" style={{
+            backgroundColor:"#f5f5f5",
+            color: "rgba(0, 0, 0, 0.870588)",
+            minHeight: "100%",
+            width: "100%",
+          }}>
+            {this.appbar()}
+            {this.avatars()}
+            {this.buttons()}
+            {this.cards()}
+            {this.dialog()}
+            {this.dropdownMenu()}
+            {this.icons()}
+            {this.iconButtons()}
+            {this.leftNav()}
+            {this.lists()}
+            {this.menus()}
+            {this.progress()}
+            {this.refreshIndicator()}
+            {this.table()}
+            {this.textFields()}
+          </div>
         </div>
-      </div>
+      </mui.AppCanvas>
     );
   }
 });

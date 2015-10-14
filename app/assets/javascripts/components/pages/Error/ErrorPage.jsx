@@ -1,12 +1,12 @@
+'use strict'
 var React = require('react');
+var mui = require('material-ui');
 
 var ErrorPage = React.createClass({
-  displayName: 'Error Page',
-
   render: function() {
     var url = window.location.origin;
     return (
-    <div>
+    <mui.AppCanvas>
       <Layout>
         <PageHeader branding={true} />
         <PageContent>
@@ -25,7 +25,7 @@ var ErrorPage = React.createClass({
           </div>
         </PageContent>
       </Layout>
-    </div>
+    </mui.AppCanvas>
     );
   }
 
