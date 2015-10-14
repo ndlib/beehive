@@ -2,7 +2,7 @@
 var React = require('react');
 var mui = require('material-ui');
 
-var Section = React.createClass({
+var SectionCard = React.createClass({
   mixins: [CollectionUrlMixin, LoadRemoteMixin],
   displayName: 'Section',
 
@@ -92,4 +92,4 @@ var Section = React.createClass({
 });
 
 // each file will export exactly one component
-module.exports = Section;
+module.exports = SectionCard;

@@ -82,22 +82,19 @@ ShowcasesCardList = require("./components/showcase/ShowcasesCardList");
 ShowcaseShow = require("./components/showcase/ShowcaseShow");
 ShowcaseInnerContent = require("./components/showcase/ShowcaseInnerContent");
 ShowcaseSections = require("./components/showcase/ShowcaseSections");
-ShowcaseTitle = require("./components/showcase/ShowcaseTitle");
 ShowcaseTitleBar = require("./components/showcase/ShowcaseTitleBar");
 ShowcaseBackground = require("./components/showcase/ShowcaseBackground");
-ShowcaseCard = require("./components/showcase/ShowcaseCard");
 StartShowcaseButton = require("./components/showcase/StartShowcaseButton");
-ShowcaseEnding = require("./components/showcase/ShowcaseEnding");
+// cards
+ShowcaseCard = require("./components/showcase/cards/ShowcaseCard");
+ShowcaseEndingCard = require("./components/showcase/cards/ShowcaseEndingCard");
+ShowcaseTitleCard = require("./components/showcase/cards/ShowcaseTitleCard");
 
 // Sections
 SectionShow = require("./components/section/SectionShow");
 SectionShowDescription = require("./components/section/SectionShowDescription");
-Section = require("./components/section/Section");
-SectionCaption = require("./components/section/SectionCaption");
-SectionDescription = require("./components/section/SectionDescription");
-SectionImage = require("./components/section/SectionImage");
-SectionLink = require("./components/section/SectionLink");
-SectionsListItem = require("./components/section/SectionsListItem");
+// cards
+SectionCard = require("./components/section/cards/SectionCard");
 
 // Items
 ItemsList = require("./components/item/ItemsList");

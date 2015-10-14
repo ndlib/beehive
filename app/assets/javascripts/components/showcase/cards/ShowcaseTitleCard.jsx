@@ -1,29 +1,31 @@
 //app/assets/javascripts/components/ShowcaseTitle.jsx
 var React = require("react");
+var mui = require('material-ui');
 
 var converter = new Showdown.converter()
 
-var ShowcaseTitle = React.createClass({
+var ShowcaseTitleCard = React.createClass({
   propTypes: {
     showcase: React.PropTypes.object.isRequired,
     height: React.PropTypes.number,
   },
 
   outerStyle: function() {
-    var height;
-    if (this.props.height) {
-      height = this.props.height + "px";
-    }
-    return {
+    var style = {
       display: "inline-block",
       verticalAlign: "top",
       position: "relative",
       padding: "5px",
-      height: height,
       textAlign: "center",
       overflow: 'hidden',
       width: '85vw',
     };
+
+    if (this.props.height) {
+      style['height'] = this.props.height + "px";
+    }
+
+    return style;
   },
 
   headerStyle: function() {
@@ -63,6 +65,14 @@ var ShowcaseTitle = React.createClass({
     }
 
     return (
+      <mui.Card style={this.outerStyle()}>
+        <mui.CardTitle title={this.props.showcase.name_line_1} subtitle={this.props.showcase.name_line_2}  style={this.headerStyle()} />
+        <mui.CardText>
+          {description}
+        </mui.CardText>
+      </mui.Card>
+    )
+    return (
       <div className="showcase-title-page" style={this.outerStyle()}>
         <div className="showcase-title-page-inner">
           <div className="showcase-title-container" style={this.headerStyle()}>
@@ -83,4 +93,4 @@ var ShowcaseTitle = React.createClass({
 });
 
 // each file will export exactly one component
-module.exports = ShowcaseTitle;
+module.exports = ShowcaseTitleCard;
