@@ -1,13 +1,14 @@
 'use strict'
 var React = require('react');
+var mui = require('material-ui');
 
 var Layout = React.createClass({
   render: function() {
 
     return (
-      <div>
+      <mui.AppCanvas>
         {this.props.children}
-      </div>
+      </mui.AppCanvas>
     );
   }
 });
