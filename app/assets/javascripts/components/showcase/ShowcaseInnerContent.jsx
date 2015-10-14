@@ -16,6 +16,7 @@ var ShowcaseInnerContent = React.createClass({
       overflowX: "visible",
       overflowY: "visible",
       paddingTop: "20px",
+      marginLeft: '60vw',
     };
   },
 
@@ -25,7 +26,7 @@ var ShowcaseInnerContent = React.createClass({
 
   render: function() {
     return (
-      <div id="showcase-inner" className="showcase-inner" style={this.style()} >
+      <div className="showcase-inner animation-slidein" style={this.style()} >
         <ShowcaseTitle height={this.props.height} showcase={this.props.showcase} />
         <ShowcaseSections height={this.props.height} showcase={this.props.showcase} />
       </div>

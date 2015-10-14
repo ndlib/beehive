@@ -21,7 +21,8 @@ var ShowcaseTitle = React.createClass({
       padding: "5px",
       height: height,
       textAlign: "center",
-      width: '100%',
+      overflow: 'hidden',
+      width: '85vw',
     };
   },
 
@@ -31,10 +32,7 @@ var ShowcaseTitle = React.createClass({
       var marginTop = Math.round(this.props.height * 0.15) + "px";
     }
     return {
-      marginTop: 'marginTop',
-      marginBottom: '1em',
-      padding: '1em',
-      textAlign: 'center',
+      marginTop: marginTop,
     }
   },
 

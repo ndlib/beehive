@@ -6,7 +6,7 @@ var marginBottom = 5;
 var borderBottom = 1;
 
 var ShowcaseTitleBar = React.createClass({
-  mixins: [TitleConcatMixin],
+  mixins: [TitleConcatMixin, MuiThemeMixin],
 
   displayName: 'Showcase Title Bar',
 
@@ -25,11 +25,28 @@ var ShowcaseTitleBar = React.createClass({
 
   style: function() {
     var verticalPadding = (this.props.height - (titleHeight + marginBottom + borderBottom)) / 2;
+    console.log(this);
     return {
       opacity: 1 - this.props.percentFade,
       borderBottomWidth: borderBottom + "px",
       padding: verticalPadding + "px 40px",
       marginBottom: marginBottom + "px",
+      color: '#fff',
+      fontFamily: 'GPCMed',
+      fontSize: '16px',
+      fontWeight: 'normal',
+      letterSpacing: '1.1px',
+      lineHeight: '16px',
+      margin: 0,
+      padding: 0,
+      textTransform: 'uppercase',
+      background: '-moz-linear-gradient(top, $title-gradient-top 0%, $title-gradient-bottom 100%)',
+      background: '-webkit-linear-gradient(top, $title-gradient-bottom 0%, $title-gradient-top 100%)',
+      background: 'linear-gradient(to bottom, $title-gradient-top 0%, $title-gradient-bottom 100%)',
+      borderBottom: 'solid 1px $title-border',
+      marginBottom: '5px',
+      padding: '9px 40px',
+      position: 'relative',
     };
   },
 
