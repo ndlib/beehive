@@ -15,7 +15,7 @@ var CollectionLeftNav = React.createClass({
     };
   },
 
-  componentDidUpdate: function() {
+  componentDidMount: function() {
     if(!this.props.collection['@id'] || this.state.showcases.length > 0) {
       return [];
     }

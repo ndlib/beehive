@@ -1,4 +1,3 @@
-//app/assets/javascripts/components.js
 //= require_self
 //= require react_ujs
 
@@ -72,16 +71,11 @@ MoreArrow = require("./components/layout/MoreArrow");
 DialogWindow = require("./components/layout/DialogWindow");
 SearchBox = require("./components/layout/SearchBox");
 
-
 // Embed Codes
 CollectionEmbed = require("./components/embeds/CollectionEmbed");
 ShowcaseEmbed = require("./components/embeds/ShowcaseEmbed");
 SectionEmbed = require("./components/embeds/SectionEmbed");
 ItemEmbed = require("./components/embeds/ItemEmbed");
-
-// Collections
-
-
 
 // Showcases
 ShowcasesCardList = require("./components/showcase/ShowcasesCardList");

@@ -1,8 +1,9 @@
+'use strict'
 var React = require('react');
+var mui = require('material-ui');
 
 var SiteIndex = React.createClass({
   mixins: [LoadRemoteMixin],
-  displayName: 'Collections List Page',
 
   propTypes: {
     collections: React.PropTypes.oneOfType([
@@ -39,23 +40,25 @@ var SiteIndex = React.createClass({
 
   render: function() {
     return (
-      <Layout>
-      <PageHeader branding={true} />
-        <PageContent>
-          <div className="banner bee-homepage-banner">
-            <div className="banner-inner">
-              <h1>Digital Collections</h1>
-              <h3>Powered by HoneyComb</h3>
+      <mui.AppCanvas>
+        <Layout>
+          <PageHeader branding={true} />
+          <PageContent>
+            <div className="banner bee-homepage-banner">
+              <div className="banner-inner">
+                <h1>Digital Collections</h1>
+                <h3>Powered by HoneyComb</h3>
+              </div>
             </div>
-          </div>
-          <div className="row">
-            <div className="col-md-12">
-              <h2>Featured Collections</h2>
+            <div className="row">
+              <div className="col-md-12">
+                <h2>Featured Collections</h2>
+              </div>
             </div>
-          </div>
-          <CollectionsList collections={this.state.collections} />
-        </PageContent>
-      </Layout>
+            <CollectionsList collections={this.state.collections} />
+          </PageContent>
+        </Layout>
+      </mui.AppCanvas>
     );
   }
 
