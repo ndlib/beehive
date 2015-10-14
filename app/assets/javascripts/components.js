@@ -45,7 +45,10 @@ SearchPagination = require("./components/pages/Search/SearchPagination");
 SearchSidebar = require("./components/pages/Search/SearchSidebar");
 SearchDisplayList = require("./components/pages/Search/SearchDisplayList");
 SearchControls = require("./components/pages/Search/SearchControls");
-
+ItemListItem = require("./components/pages/search/ItemListItem");
+ItemImage = require("./components/pages/search/ItemImage");
+GridItem = require("./components/pages/search/GridItem");
+ListItem = require("./components/pages/search/ListItem");
 
 //// ErrorPage
 ErrorPage = require("./components/pages/Error/ErrorPage");
@@ -61,14 +64,13 @@ PageContent = require("./components/layout/PageContent");
 CollectionPageHeader = require("./components/layout/CollectionPageHeader");
 CollectionPageFooter = require("./components/layout/CollectionPageFooter");
 
-GridItem = require("./components/layout/GridItem");
-ListItem = require("./components/layout/ListItem");
+
 Card = require("./components/layout/Card");
 BrandBar = require("./components/layout/BrandBar");
 CardBackground = require("./components/layout/CardBackground");
 CardOverlay = require("./components/layout/CardOverlay");
 MoreArrow = require("./components/layout/MoreArrow");
-DialogWindow = require("./components/layout/DialogWindow");
+
 SearchBox = require("./components/layout/SearchBox");
 
 // Embed Codes
@@ -96,35 +98,29 @@ SectionShowDescription = require("./components/section/SectionShowDescription");
 // cards
 SectionCard = require("./components/section/cards/SectionCard");
 
-// Items
-ItemsList = require("./components/item/ItemsList");
-ItemShow = require("./components/item/ItemShow");
-ItemListItem = require("./components/item/ItemListItem");
-ItemImage = require("./components/item/ItemImage");
-ItemText = require("./components/item/ItemText");
-AdditionalResources = require("./components/item/AdditionalResources");
-AdditionalResourcesItem = require("./components/item/AdditionalResourcesItem");
-
-// Metadata
-MetadataList = require("./components/metadata/MetadataList");
-MetadataItem = require("./components/metadata/MetadataItem");
-MetadataString = require("./components/metadata/MetadataString");
-MetadataHTML = require("./components/metadata/MetadataHTML");
-MetadataDate = require("./components/metadata/MetadataDate");
-MetadataText = require("./components/metadata/MetadataText");
+// dislplay -- for items and sections
+DialogWindow = require("./components/pages/display/DialogWindow");
+Details = require("./components/pages/display/Details");
+MetadataList = require("./components/pages/display/MetadataList");
+MetadataItem = require("./components/pages/display/MetadataItem");
+MetadataString = require("./components/pages/display/MetadataString");
+MetadataHTML = require("./components/pages/display/MetadataHTML");
+MetadataDate = require("./components/pages/display/MetadataDate");
+MetadataText = require("./components/pages/display/MetadataText");
+ItemShow = require("./components/pages/display/ItemShow");
+PreviousModal = require("./components/pages/display/PreviousModal");
+NextModal = require("./components/pages/display/NextModal");
+OpenseadragonViewer  = require("./components/pages/display/OpenseadragonViewer");
 
 // Other
 AttentionHelp = require("./components/other/AttentionHelp");
-Details = require("./components/other/Details");
 DescriptionTeaser = require("./components/other/DescriptionTeaser");
 Thumbnail = require("./components/other/Thumbnail");
-OpenseadragonViewer  = require("./components/other/OpenseadragonViewer");
 Loading = require("./components/other/Loading");
-PreviousModal = require("./components/other/PreviousModal");
-NextModal = require("./components/other/NextModal");
 ToggleTheme = require("./components/other/ToggleTheme");
 Scroller = require("./components/other/Scroller");
 
+// Flux
 AppDispatcher = require("./dispatcher/AppDispatcher");
 ItemActionTypes = require("./constants/ItemActionTypes");
 ItemActions = require("./actions/ItemActions");
