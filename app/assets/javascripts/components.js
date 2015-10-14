@@ -98,12 +98,9 @@ ShowcaseTitleCard = require("./components/showcase/cards/ShowcaseTitleCard");
 // Sections
 SectionShow = require("./components/section/SectionShow");
 SectionShowDescription = require("./components/section/SectionShowDescription");
-Section = require("./components/section/Section");
-SectionCaption = require("./components/section/SectionCaption");
 SectionDescription = require("./components/section/SectionDescription");
-SectionImage = require("./components/section/SectionImage");
-SectionLink = require("./components/section/SectionLink");
-SectionsListItem = require("./components/section/SectionsListItem");
+// cards
+SectionCard = require("./components/section/cards/SectionCard");
 
 // Items
 ItemsList = require("./components/item/ItemsList");

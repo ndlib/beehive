@@ -24,7 +24,7 @@ var ShowcaseSections = React.createClass({
         var nodes = [];
 
         nodes.push((
-          <Section section={section} height={this.props.height} />
+          <SectionCard section={section} height={this.props.height} />
         ));
         return nodes;
       }.bind(this));
