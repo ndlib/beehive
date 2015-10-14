@@ -1,5 +1,6 @@
 //app/assets/javascripts/components/ShowcaseTitle.jsx
 var React = require("react");
+var mui = require('material-ui');
 
 var converter = new Showdown.converter()
 
@@ -63,6 +64,14 @@ var ShowcaseTitle = React.createClass({
       description = this.props.showcase.description.toString();
     }
 
+    return (
+      <mui.Card style={this.outerStyle()}>
+        <mui.CardTitle title={this.props.showcase.name_line_1} subtitle={this.props.showcase.name_line_2}  style={this.headerStyle()} />
+        <mui.CardText>
+          {description}
+        </mui.CardText>
+      </mui.Card>
+    )
     return (
       <div className="showcase-title-page" style={this.outerStyle()}>
         <div className="showcase-title-page-inner">
