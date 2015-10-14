@@ -56,6 +56,14 @@ var CollectionUrlMixin = {
       returnUrl = 'http://beehive.library.nd.edu/v1/'
     }
     return returnUrl;
+  },
+
+  remoteItem: function(item) {
+    return this.remoteUrlBase() + '/items/' + item;
+  },
+
+  remoteSection: function(section) {
+    return this.remoteUrlBase() + '/sections/' + section;
   }
 
 }
