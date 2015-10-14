@@ -57,7 +57,6 @@ ErrorPage = require("./components/pages/Error/ErrorPage");
 ThemeTestPage = require("./components/pages/ThemeTestPage");
 
 // Layout
-Layout = require("./components/layout/Layout");
 PageHeader = require("./components/layout/PageHeader");
 TitleBar = require("./components/layout/TitleBar");
 PageContent = require("./components/layout/PageContent");
