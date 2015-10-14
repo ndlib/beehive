@@ -12,31 +12,18 @@ var CollectionDescription = React.createClass({
   },
 
   style: function() {
-    if(this.props.height) {
-      return {
-        maxHeight: this.props.height + 'px',
-        overflow: 'hidden',
-      };
-    } else {
-      return {};
-    }
+    return {};
   },
 
   render: function() {
     return (
-      <div className="row row-fluid">
-        <div className="col-md-12">
-          <div style={this.style()} id={this.props.id}>
-            <div className="collection-description" dangerouslySetInnerHTML={{__html: this.props.collection.description}} />
-            <div className="col-sm-4"/>
-            <Element name="startShowcases" className="element">
-              <StartShowcaseButton collection={this.props.collection} />
-            </Element>
-          </div>
-
-        </div>
+      <div style={this.style()} id={this.props.id}>
+        <div className="collection-description" dangerouslySetInnerHTML={{__html: this.props.collection.description}} />
+        <Element name="startShowcases" className="element">
+          <StartShowcaseButton collection={this.props.collection} />
+        </Element>
       </div>
-    )
+    );
   }
 });
 
