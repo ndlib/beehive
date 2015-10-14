@@ -1,5 +1,6 @@
 'use strict'
 var React = require('react');
+var mui = require('material-ui');
 
 var Showcase = React.createClass({
   mixins: [PageHeightMixin, LoadRemoteMixin],
@@ -52,15 +53,13 @@ var Showcase = React.createClass({
       showcaseShow = (<Loading />);
     }
     return (
-      <div>
-        <Layout>
-          <CollectionPageHeader collection={this.state.collection} dropdown={true} />
-          <PageContent fluidLayout={true}>
-            {showcaseShow}
-          </PageContent>
-        </Layout>
+      <mui.AppCanvas>
+        <CollectionPageHeader collection={this.state.collection} dropdown={true} />
+        <PageContent fluidLayout={true}>
+          {showcaseShow}
+        </PageContent>
         <CollectionPageFooter collection={this.state.collection} />
-      </div>
+      </mui.AppCanvas>
     );
   }
 });
