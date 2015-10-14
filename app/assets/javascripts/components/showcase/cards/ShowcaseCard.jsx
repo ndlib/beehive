@@ -22,6 +22,13 @@ var ShowcaseCard = React.createClass({
     window.location = this.showcaseUrl(this.props.showcase);
   },
 
+  style: function() {
+    return {
+      position: "relative",
+      cursor: "pointer",
+    };
+  },
+
   image: function() {
     return this.props.showcase.image["thumbnail/medium"].contentUrl;
   },
@@ -59,7 +66,7 @@ var ShowcaseCard = React.createClass({
 
   render: function() {
     return (
-      <mui.Card onClick={this.onClick} style={{height: '500px'}} >
+      <mui.Card onClick={this.onClick} style={this.style()} >
         {this.headerTitle()}
         <mui.CardMedia style={{height: '400px'}} overlay={<mui.CardTitle title={this.props.showcase.name_line_1} subtitle={this.props.showcase.name_line_2} />}>
           <img src={this.image()}  style={{ height: '400px', overflow: 'hidden'}} />
