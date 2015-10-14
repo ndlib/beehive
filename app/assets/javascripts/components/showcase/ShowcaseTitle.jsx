@@ -10,20 +10,21 @@ var ShowcaseTitle = React.createClass({
   },
 
   outerStyle: function() {
-    var height;
-    if (this.props.height) {
-      height = this.props.height + "px";
-    }
-    return {
+    var style = {
       display: "inline-block",
       verticalAlign: "top",
       position: "relative",
       padding: "5px",
-      height: height,
       textAlign: "center",
       overflow: 'hidden',
       width: '85vw',
     };
+
+    if (this.props.height) {
+      style['height'] = this.props.height + "px";
+    }
+
+    return style;
   },
 
   headerStyle: function() {

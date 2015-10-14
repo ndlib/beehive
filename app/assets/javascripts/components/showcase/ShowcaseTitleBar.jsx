@@ -1,12 +1,9 @@
 //app/assets/javascripts/components/ShowcaseTitleBar.jsx
 var React = require('react');
-
-var titleHeight = 16;
-var marginBottom = 5;
-var borderBottom = 1;
+var mui = require('material-ui');
 
 var ShowcaseTitleBar = React.createClass({
-  mixins: [TitleConcatMixin, MuiThemeMixin],
+  mixins: [MuiThemeMixin],
 
   displayName: 'Showcase Title Bar',
 
@@ -24,36 +21,8 @@ var ShowcaseTitleBar = React.createClass({
   },
 
   style: function() {
-    var verticalPadding = (this.props.height - (titleHeight + marginBottom + borderBottom)) / 2;
-    console.log(this);
     return {
       opacity: 1 - this.props.percentFade,
-      borderBottomWidth: borderBottom + "px",
-      padding: verticalPadding + "px 40px",
-      marginBottom: marginBottom + "px",
-      color: '#fff',
-      fontFamily: 'GPCMed',
-      fontSize: '16px',
-      fontWeight: 'normal',
-      letterSpacing: '1.1px',
-      lineHeight: '16px',
-      margin: 0,
-      padding: 0,
-      textTransform: 'uppercase',
-      background: '-moz-linear-gradient(top, $title-gradient-top 0%, $title-gradient-bottom 100%)',
-      background: '-webkit-linear-gradient(top, $title-gradient-bottom 0%, $title-gradient-top 100%)',
-      background: 'linear-gradient(to bottom, $title-gradient-top 0%, $title-gradient-bottom 100%)',
-      borderBottom: 'solid 1px $title-border',
-      marginBottom: '5px',
-      padding: '9px 40px',
-      position: 'relative',
-    };
-  },
-
-  titleStyle: function() {
-    return {
-      fontSize: titleHeight + "px",
-      lineHeight: titleHeight + "px",
     };
   },
 
@@ -64,11 +33,9 @@ var ShowcaseTitleBar = React.createClass({
   render: function() {
     if (this.props.showcase) {
       return (
-        <div className="showcases-title-bar" id="showcases-title-bar" style={this.style()}>
-          <h2 className="showcases-title-bar-title overflow-ellipsis" style={this.titleStyle()} title={this.name()}>
-            <span className="title">{this.name()}</span>
-          </h2>
-        </div>
+        <mui.Toolbar style={this.style()}>
+          <mui.ToolbarTitle text={this.name()} description="Description!!" />
+        </mui.Toolbar>
       );
     } else {
       return (<div />)

@@ -8,7 +8,7 @@ var ShowcaseInnerContent = React.createClass({
   },
 
   style: function() {
-    return {
+    var style = {
       position: "absolute",
       height: this.props.height + "px",
       top: 0,
@@ -16,9 +16,15 @@ var ShowcaseInnerContent = React.createClass({
       overflowX: "visible",
       overflowY: "visible",
       paddingTop: "20px",
-      marginLeft: '60vw',
     };
+    return style;
   },
+
+
+  componentDidMount: function () {
+    this.setState({animationRun: true });
+  },
+
 
   shouldComponentUpdate: function(nextProps, nextState) {
     return JSON.stringify(this.props) !== JSON.stringify(nextProps);
@@ -26,7 +32,7 @@ var ShowcaseInnerContent = React.createClass({
 
   render: function() {
     return (
-      <div className="showcase-inner animation-slidein" style={this.style()} >
+      <div className="showcase-inner" style={this.style()} >
         <ShowcaseTitle height={this.props.height} showcase={this.props.showcase} />
         <ShowcaseSections height={this.props.height} showcase={this.props.showcase} />
       </div>
