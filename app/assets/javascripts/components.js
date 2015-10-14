@@ -1,4 +1,3 @@
-//app/assets/javascripts/components.js
 //= require_self
 //= require react_ujs
 
@@ -29,6 +28,7 @@ Collection = require("./components/pages/Collection/Collection");
 CollectionIntro = require("./components/pages/Collection/CollectionIntro");
 CollectionShow = require("./components/pages/Collection/CollectionShow");
 CollectionShowShowcases = require("./components/pages/Collection/CollectionShowShowcases");
+CollectionIntroCard = require("./components/pages/Collection/CollectionIntroCard");
 
 //// Collection Introduction
 CollectionIntroduction = require("./components/pages/CollectionIntroduction/CollectionIntroduction");
@@ -71,16 +71,11 @@ MoreArrow = require("./components/layout/MoreArrow");
 DialogWindow = require("./components/layout/DialogWindow");
 SearchBox = require("./components/layout/SearchBox");
 
-
 // Embed Codes
 CollectionEmbed = require("./components/embeds/CollectionEmbed");
 ShowcaseEmbed = require("./components/embeds/ShowcaseEmbed");
 SectionEmbed = require("./components/embeds/SectionEmbed");
 ItemEmbed = require("./components/embeds/ItemEmbed");
-
-// Collections
-CollectionIntroCard = require("./components/collection/CollectionIntroCard");
-
 
 // Showcases
 ShowcasesCardList = require("./components/showcase/ShowcasesCardList");

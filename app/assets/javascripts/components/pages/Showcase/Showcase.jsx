@@ -1,4 +1,4 @@
-//app/assets/javascripts/components/Showcase.jsx
+'use strict'
 var React = require('react');
 
 var Showcase = React.createClass({

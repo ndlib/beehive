@@ -1,4 +1,6 @@
+'use strict'
 var React = require('react');
+var mui = require('material-ui');
 
 var Collection = React.createClass({
   mixins: [PageHeightMixin, LoadRemoteMixin],
@@ -37,16 +39,8 @@ var Collection = React.createClass({
   },
 
   render: function() {
-    /*
-    the search box that was hidden temporarily
-    <div style={{backgroundColor: 'white', width:'100%', textAlign: 'center',}}>
-      <div>
-      <SearchBox collection={this.state.collection} />
-      </div>
-    </div>
-    */
     return (
-      <div>
+      <mui.AppCanvas>
         <div className="collection-show-page">
           <Layout>
             <CollectionPageHeader collection={this.state.collection} branding={true}/>
@@ -58,7 +52,7 @@ var Collection = React.createClass({
             <CollectionPageFooter collection={this.state.collection} />
           </Layout>
         </div>
-      </div>
+      </mui.AppCanvas>
     );
   }
 });

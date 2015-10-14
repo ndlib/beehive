@@ -1,9 +1,9 @@
+'use strict'
 var React = require("react");
+var mui = require('material-ui');
 
 var CollectionIntroduction = React.createClass({
   mixins: [LoadRemoteMixin],
-
-  displayName: "Collection Intro Page",
 
   propTypes: {
     collection: React.PropTypes.oneOfType([
@@ -40,7 +40,7 @@ var CollectionIntroduction = React.createClass({
       nextShowcase = (<MoreArrow showcase={this.state.collection.showcases[0]} />);
     }
     return (
-      <div>
+      <mui.AppCanvas>
         <div className="collection-intro-page">
           <Layout>
             <CollectionPageHeader collection={this.state.collection} dropdown={true} >
@@ -54,7 +54,7 @@ var CollectionIntroduction = React.createClass({
 
         {nextShowcase}
         <CollectionPageFooter collection={this.state.collection} />
-      </div>
+      </mui.AppCanvas>
     );
   }
 });

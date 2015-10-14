@@ -1,5 +1,6 @@
 'use strict'
 var React = require('react');
+var mui = require('material-ui');
 
 var Search = React.createClass({
   mixins: [SearchUrlMixin, PageHeightMixin, LoadRemoteMixin, SearchMixin],
@@ -64,7 +65,7 @@ var Search = React.createClass({
 
   render: function() {
     return (
-      <div className="items-list-page">
+      <mui.AppCanvas>
         <CollectionPageHeader collection={this.state.collection} dropdown={true} >
           <div className="bee-page-title-bar" style={{marginBottom: "0",}}>
             <h2 className="bee-page-title-bar-title">Browse Collection</h2>
@@ -88,7 +89,7 @@ var Search = React.createClass({
           </PageContent>
         </Layout>
         <CollectionPageFooter collection={this.state.collection} />
-      </div>
+      </mui.AppCanvas>
     );
   }
 });
