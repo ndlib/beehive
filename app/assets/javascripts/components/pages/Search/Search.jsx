@@ -72,22 +72,19 @@ var Search = React.createClass({
           </div>
         </CollectionPageHeader>
         <div className="clearfix" />
-        <Layout>
-
-          <PageContent fluidLayout={true}>
-            <SearchDisplayList
-              collection={this.state.collection}
-              items={this.state.items}
-              facets={this.state.facets}
-              sortOptions={this.state.sortOptions}
-              searchTerm={this.props.searchTerm}
-              selectedIndex={this.state.selectedIndex}
-              selectedFacet={this.props.facet}
-              found={this.state.found}
-              start={this.state.start}
-            />
-          </PageContent>
-        </Layout>
+        <PageContent fluidLayout={true}>
+          <SearchDisplayList
+            collection={this.state.collection}
+            items={this.state.items}
+            facets={this.state.facets}
+            sortOptions={this.state.sortOptions}
+            searchTerm={this.props.searchTerm}
+            selectedIndex={this.state.selectedIndex}
+            selectedFacet={this.props.facet}
+            found={this.state.found}
+            start={this.state.start}
+          />
+        </PageContent>
         <CollectionPageFooter collection={this.state.collection} />
       </mui.AppCanvas>
     );
