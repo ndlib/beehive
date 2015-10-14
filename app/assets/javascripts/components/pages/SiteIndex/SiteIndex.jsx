@@ -41,23 +41,21 @@ var SiteIndex = React.createClass({
   render: function() {
     return (
       <mui.AppCanvas>
-        <Layout>
-          <PageHeader branding={true} />
-          <PageContent>
-            <div className="banner bee-homepage-banner">
-              <div className="banner-inner">
-                <h1>Digital Collections</h1>
-                <h3>Powered by HoneyComb</h3>
-              </div>
+        <PageHeader branding={true} />
+        <PageContent>
+          <div className="banner bee-homepage-banner">
+            <div className="banner-inner">
+              <h1>Digital Collections</h1>
+              <h3>Powered by HoneyComb</h3>
             </div>
-            <div className="row">
-              <div className="col-md-12">
-                <h2>Featured Collections</h2>
-              </div>
+          </div>
+          <div className="row">
+            <div className="col-md-12">
+              <h2>Featured Collections</h2>
             </div>
-            <CollectionsList collections={this.state.collections} />
-          </PageContent>
-        </Layout>
+          </div>
+          <CollectionsList collections={this.state.collections} />
+        </PageContent>
       </mui.AppCanvas>
     );
   }
