@@ -1,7 +1,7 @@
 var React = require("react");
 var mui = require('material-ui');
 
-var ShowcaseEnding = React.createClass({
+var ShowcaseEndingCard = React.createClass({
   displayName: "Showcase Ending",
   mixins: [CollectionUrlMixin],
 
@@ -34,4 +34,4 @@ var ShowcaseEnding = React.createClass({
 
 });
 
-module.exports = ShowcaseEnding;
+module.exports = ShowcaseEndingCard;

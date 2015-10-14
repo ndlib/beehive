@@ -4,7 +4,7 @@ var mui = require('material-ui');
 
 var converter = new Showdown.converter()
 
-var ShowcaseTitle = React.createClass({
+var ShowcaseTitleCard = React.createClass({
   propTypes: {
     showcase: React.PropTypes.object.isRequired,
     height: React.PropTypes.number,
@@ -93,4 +93,4 @@ var ShowcaseTitle = React.createClass({
 });
 
 // each file will export exactly one component
-module.exports = ShowcaseTitle;
+module.exports = ShowcaseTitleCard;
