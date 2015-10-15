@@ -1,10 +1,8 @@
+'use strict'
 var React = require("react");
-var Scroll = require('react-scroll');
+var mui = require('material-ui');
 
-var Link = Scroll.Link;
-var Element = Scroll.Element;
-
-var MoreArrow = React.createClass({
+var PreviewLink = React.createClass({
   mixins: [CollectionUrlMixin],
 
   propTypes: {
@@ -25,75 +23,29 @@ var MoreArrow = React.createClass({
     this.setState({hover: false});
   },
 
-  wellStyle: function() {
+  style: function() {
     return {
       position: "fixed",
       bottom: "60px",
       right: "40px",
       cursor: "pointer",
       color: "#f5f5f5",
-      opacity: "0.3",
+      opacity: this.state.hover ? "1.0" : "0.3",
       maxWidth: "200px",
-    }
-  },
-  wellHoverStyle: function() {
-      return {
-      position: "fixed",
-      bottom: "60px",
-      right: "40px",
-      cursor: "pointer",
-      color: "#f5f5f5",
-      opacity: "1.0",
-      maxWidth: "200px",
-    }
-  },
-
-  headerStyle: function() {
-    return {
-      color: "#555",
-      fontSize: "18px",
-    }
-  },
-
-  imageStyle: function() {
-    return {
-      overflow: "hidden",
-      width: "100%",
-      height: "110px",
-      borderRadius: "1px",
-      boxShadow: "0 1px 6px 0 rgba(0, 0, 0, 0.75)",
-      objectFit: "cover",
-    }
-  },
-
-  chevronStyle: function() {
-    return {
-      color: "#555",
-      textAlign: "center",
-      width: "100%",
     }
   },
 
   render: function() {
-    var divStyle = this.wellStyle();
-    if (this.state.hover) {
-      divStyle = this.wellHoverStyle();
-    }
-
     return (
-
-        <div style={divStyle} onMouseOver={this.mouseOver} onMouseOut={this.mouseOut} >
-        <a href={this.showcaseUrl(this.props.showcase)}>
-          <h3 style={this.headerStyle()}>Next Showcase</h3>
-          <Thumbnail image={this.props.showcase.image} thumbnailType="small" style={this.imageStyle()} />
-        </a>
-        <Link to="startShowcases" spy={true} smooth={true} offset={50} duration={500} >
-          <div style={this.chevronStyle()}><i className="mdi-navigation-expand-more" /></div>
-        </Link>
-      </div>
-
+      <a href={this.showcaseUrl(this.props.showcase)} style={this.style()} onMouseOver={this.mouseOver} onMouseOut={this.mouseOut} >
+        <mui.Card>
+          <mui.CardMedia overlay={<mui.CardTitle title="Start Showcases"/>}>
+            <Image image={this.props.showcase.image} size="small" />
+          </mui.CardMedia>
+        </mui.Card>
+      </a>
     );
   }
 });
 
-module.exports = MoreArrow;
+module.exports = PreviewLink;

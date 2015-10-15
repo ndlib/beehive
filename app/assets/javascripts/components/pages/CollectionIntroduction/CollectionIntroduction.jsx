@@ -37,7 +37,7 @@ var CollectionIntroduction = React.createClass({
   render: function() {
     var nextShowcase;
     if (this.state.collection.showcases && this.state.collection.showcases.length > 0) {
-      nextShowcase = (<MoreArrow showcase={this.state.collection.showcases[0]} />);
+      nextShowcase = (<PreviewLink showcase={this.state.collection.showcases[0]} />);
     }
     return (
       <mui.AppCanvas>

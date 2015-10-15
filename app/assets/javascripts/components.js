@@ -63,12 +63,8 @@ PageContent = require("./components/layout/PageContent");
 CollectionPageHeader = require("./components/layout/CollectionPageHeader");
 CollectionPageFooter = require("./components/layout/CollectionPageFooter");
 
-
-Card = require("./components/layout/Card");
 BrandBar = require("./components/layout/BrandBar");
-CardBackground = require("./components/layout/CardBackground");
-CardOverlay = require("./components/layout/CardOverlay");
-MoreArrow = require("./components/layout/MoreArrow");
+PreviewLink = require("./components/layout/PreviewLink");
 
 SearchBox = require("./components/layout/SearchBox");
 
@@ -114,7 +110,7 @@ OpenseadragonViewer  = require("./components/pages/display/OpenseadragonViewer")
 // Other
 AttentionHelp = require("./components/other/AttentionHelp");
 DescriptionTeaser = require("./components/other/DescriptionTeaser");
-Thumbnail = require("./components/other/Thumbnail");
+Image = require("./components/other/Image");
 Loading = require("./components/other/Loading");
 ToggleTheme = require("./components/other/ToggleTheme");
 Scroller = require("./components/other/Scroller");
