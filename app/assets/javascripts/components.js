@@ -93,7 +93,6 @@ ShowcaseTitleCard = require("./components/showcase/cards/ShowcaseTitleCard");
 // Sections
 SectionShow = require("./components/section/SectionShow");
 SectionShowDescription = require("./components/section/SectionShowDescription");
-SectionDescription = require("./components/section/SectionDescription");
 // cards
 SectionCard = require("./components/section/cards/SectionCard");
 
