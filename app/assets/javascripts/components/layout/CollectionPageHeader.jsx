@@ -23,7 +23,7 @@ var CollectionPageHeader = React.createClass({
     return ({
       height: (this.props.branding ? '115px' : '65px'),
       width: '100%',
-      background: 'rgba(0,0,0,0.65)',
+
     });
   },
 
@@ -38,7 +38,7 @@ var CollectionPageHeader = React.createClass({
           <SearchBox collection={this.props.collection} />
         </div>
 
-        <mui.Tabs style={ {float:'right' } }>
+        <mui.Tabs style={ {float:'right'}  }>
           <mui.Tab label="Item One" >
           </mui.Tab>
           <mui.Tab label="Item Two" >

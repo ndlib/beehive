@@ -59,7 +59,7 @@ var CollectionShow = React.createClass({
   cardMediaSection: function() {
     if (this.props.collection.image) {
       return (
-        <mui.CardMedia overlay={<mui.CardTitle title={this.props.collection.name_line_1} subtitle={this.props.collection.name_line_2} />}>
+        <mui.CardMedia overlay={<mui.CardTitle title={this.props.collection.name_line_1} subtitle={this.props.collection.name_line_2} style={this.pageWidth()}/>}>
           <img src={this.image()} />
         </mui.CardMedia>
       );
@@ -76,10 +76,13 @@ var CollectionShow = React.createClass({
         <mui.Paper circle={false} rounded={false} zDepth={0} >
           <mui.Card>
             {this.cardMediaSection()}
-            <mui.CardActions>
+            <mui.CardActions style={this.pageWidth()} className="startButton">
               {this.firstExhibitLink()}
             </mui.CardActions>
           </mui.Card>
+          <mui.CardActions style={this.pageWidth()} className="startButton">
+              {this.firstExhibitLink()}
+            </mui.CardActions>
         </mui.Paper>
       );
     } else {

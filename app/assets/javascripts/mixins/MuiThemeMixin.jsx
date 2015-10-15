@@ -34,5 +34,18 @@ var MuiThemeMixin = {
     };
   },
 
+  cardHeadersCommon: function() {
+    return {
+      fontFamily: 'GPCMed',
+    };
+  },
+
+  pageWidth: function() {
+    return {
+      maxWidth: '930px',
+      margin: '0 auto',
+    };
+  },
+
 };
 module.exports = MuiThemeMixin;

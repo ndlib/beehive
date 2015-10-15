@@ -1,0 +1,18 @@
+.collection-introduction {
+  p {
+    font-size: 20px;
+  }
+}
+
+.startButton {
+  padding: 0 !important;
+  position: relative !important;
+  > div {
+    position: absolute;
+    right: 0;
+    top: -28px;
+  }
+  a {
+    
+  }
+}
