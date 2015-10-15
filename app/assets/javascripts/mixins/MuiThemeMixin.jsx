@@ -42,7 +42,7 @@ var MuiThemeMixin = {
 
   pageWidth: function() {
     return {
-      maxWidth: '930px',
+      maxWidth: '960px',
       margin: '0 auto',
     };
   },

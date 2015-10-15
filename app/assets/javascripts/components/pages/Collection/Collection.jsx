@@ -38,13 +38,19 @@ var Collection = React.createClass({
     document.body.className = document.body.className + " collection";
   },
 
+  style: function() {
+      return ({
+        marginTop:'-64px',
+      });
+  },
+
   render: function() {
     return (
       <mui.AppCanvas>
         <div className="collection-show-page">
           <Layout>
-            <CollectionPageHeader collection={this.state.collection} branding={true}/>
-            <CollectionShow collection={this.state.collection} />
+            <CollectionPageHeader collection={this.state.collection} branding={true} />
+            <CollectionShow collection={this.state.collection} style={this.style()}/>
             <PageContent>
               <CollectionIntro collection={this.state.collection} />
               <CollectionShowShowcases collection={this.state.collection} />
