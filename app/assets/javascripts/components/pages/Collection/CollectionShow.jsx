@@ -33,10 +33,12 @@ var CollectionShow = React.createClass({
     return url;
   },
 
-  style: function() {
+  cover: function() {
 
       return ({
-        position: 'absolute',
+        backgroundPosition:'center',
+        backgroundSize:'cover',
+        height:'450px'
       });
 
   },
@@ -60,7 +62,8 @@ var CollectionShow = React.createClass({
     if (this.props.collection.image) {
       return (
         <mui.CardMedia overlay={<mui.CardTitle title={this.props.collection.name_line_1} subtitle={this.props.collection.name_line_2} style={this.pageWidth()}/>}>
-          <img src={this.image()} />
+          <img src={this.image()} className="hide"/>
+          <div className="cover" style={this.cover()}></div>
         </mui.CardMedia>
       );
     } else {

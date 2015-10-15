@@ -38,16 +38,26 @@ var Collection = React.createClass({
     document.body.className = document.body.className + " collection";
   },
 
+  style: function() {
+      return ({
+        marginTop:'-64px',
+      });
+  },
+
   render: function() {
     return (
       <mui.AppCanvas>
-        <CollectionPageHeader collection={this.state.collection} branding={true}/>
-        <CollectionShow collection={this.state.collection} />
-        <PageContent>
-          <CollectionIntro collection={this.state.collection} />
-          <CollectionShowShowcases collection={this.state.collection} />
-        </PageContent>
-        <CollectionPageFooter collection={this.state.collection} />
+        <div className="collection-show-page">
+          <Layout>
+            <CollectionPageHeader collection={this.state.collection} branding={true} />
+            <CollectionShow collection={this.state.collection} style={this.style()}/>
+            <PageContent>
+              <CollectionIntro collection={this.state.collection} />
+              <CollectionShowShowcases collection={this.state.collection} />
+            </PageContent>
+            <CollectionPageFooter collection={this.state.collection} />
+          </Layout>
+        </div>
       </mui.AppCanvas>
     );
   }
