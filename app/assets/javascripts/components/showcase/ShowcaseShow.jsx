@@ -53,7 +53,7 @@ var ShowcaseShow = React.createClass({
       }
     }
   },
-  
+
   componentDidMount: function() {
     this.setState({
       outerElement: $(React.findDOMNode(this.refs.showcaseOuter)),
