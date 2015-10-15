@@ -19,7 +19,7 @@ var Image = React.createClass({
     }
   },
 
-  thumbnailSrc: function() {
+  imgSrc: function() {
     if (this.props.image) {
       if (this.props.size) {
         return this.props.image['thumbnail/' + this.props.size].contentUrl;
@@ -31,7 +31,7 @@ var Image = React.createClass({
     }
   },
 
-  thumbnailCaption: function() {
+  altText: function() {
       var alt_html = this.props.alt;
       // text() chokes on plaintext, so to ensure we have html wrap it in a div
       var str = $("<div>" + alt_html + "</div>").text();
@@ -42,7 +42,7 @@ var Image = React.createClass({
   render: function() {
     var classString = "hc-thumbnail-image " + this.props.size;
     return (
-        <img style={this.style()} src={this.thumbnailSrc()} className={classString} title={this.props.title} alt={this.thumbnailCaption()} />
+        <img style={this.style()} src={this.imgSrc()} className={classString} title={this.props.title} alt={this.altText()} />
     );
   }
 });
