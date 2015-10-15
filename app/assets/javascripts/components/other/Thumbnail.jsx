@@ -3,7 +3,6 @@ var React = require('react');
 $ = jQuery = require('jquery');
 
 var Thumbnail = React.createClass({
-  displayName: 'Thumbnail',
   propTypes: {
     image: React.PropTypes.object,
     thumbnailType: React.PropTypes.string,
