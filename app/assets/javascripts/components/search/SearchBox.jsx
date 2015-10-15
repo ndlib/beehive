@@ -41,6 +41,7 @@ var SearchBox = React.createClass({
     this.setState({searchTerm: cleanTerm});
   },
 
+
   render: function() {
     return(
       <div style={{display:'inline-block'}}>

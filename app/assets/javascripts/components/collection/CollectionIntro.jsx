@@ -5,9 +5,15 @@ var CollectionIntro = React.createClass({
     collection: React.PropTypes.object.isRequired,
   },
 
+  style: function () {
+    return ({
+      margin:'60px 0',
+    });
+  },
+
   render: function() {
     return (
-      <div className="collection-introduction" dangerouslySetInnerHTML={{__html: this.props.collection.short_description}} />
+      <div className="collection-introduction" style={this.style()} dangerouslySetInnerHTML={{__html: this.props.collection.short_description}} />
     );
   }
 });
