@@ -23,8 +23,11 @@ var CollectionPageHeader = React.createClass({
     return ({
       height: (this.props.branding ? '115px' : '65px'),
       width: '100%',
-
     });
+  },
+
+  _handleSearchTab: function () {
+    window.location.href = this.browseUrl(this.props.collection);
   },
 
   render: function() {
@@ -38,16 +41,14 @@ var CollectionPageHeader = React.createClass({
           <SearchBox collection={this.props.collection} />
         </div>
 
-        <mui.Tabs style={ {float:'right'}  }>
-          <mui.Tab label="Item One" >
+        <mui.Tabs style={ {float:'right'} }>
+          <mui.Tab label="Browse Collection" route="browse" onActive={this._handleSearchTab} >
           </mui.Tab>
-          <mui.Tab label="Item Two" >
-
+          <mui.Tab label="About" payload="/about" onActive={this._handleSearchTab} >
           </mui.Tab>
           <mui.Tab
             label="Item Three"
-            route="home"
-            onActive={this._handleTabActive} />
+            route="search" />
         </mui.Tabs>
       </div>
     );

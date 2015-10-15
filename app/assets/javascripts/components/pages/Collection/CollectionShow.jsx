@@ -38,7 +38,8 @@ var CollectionShow = React.createClass({
       return ({
         backgroundPosition:'center',
         backgroundSize:'cover',
-        height:'450px'
+        height:'450px',
+        backgroundImage: 'url(' + this.image() + ')',
       });
 
   },
@@ -46,7 +47,7 @@ var CollectionShow = React.createClass({
   firstExhibitLink: function() {
     if (this.viewExhibitUrl()) {
       return (
-        <mui.FloatingActionButton 
+        <mui.FloatingActionButton
           primary={true}
           linkButton={true}
           href={this.viewExhibitUrl()}
