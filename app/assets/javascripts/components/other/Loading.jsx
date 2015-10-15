@@ -1,10 +1,11 @@
 //app/assets/javascripts/components/Loading.jsx
 var React = require('react');
+var mui = require('material-ui');
 
 var Loading = React.createClass({
 
   render: function() {
-    return (<div className="loading"><img src="/images/ajax-loader.gif" /></div>)
+    return (<mui.CircularProgress mode="indeterminate" size={.5} />)
   }
 
 });
