@@ -7,6 +7,10 @@ var CollectionUrlMixin = {
     return url;
   },
 
+  browseUrl: function(collection) {
+    return this.collectionUrl(collection) + '/search?q=';
+  },
+
   sectionUrl: function(section) {
     return this.collectionObjectUrl('sections', section);
   },
@@ -38,7 +42,7 @@ var CollectionUrlMixin = {
   collectionUrl: function(collection) {
     return '/' + encodeURIComponent(collection.id) + '/' + encodeURIComponent(collection.slug);
   },
-  
+
   remoteUrlBase: function() {
     var environmentUrl = window.location.origin;
     var returnUrl;
