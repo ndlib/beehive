@@ -41,20 +41,22 @@ var SiteIndex = React.createClass({
   render: function() {
     return (
       <mui.AppCanvas>
-        <PageHeader branding={true} />
-        <PageContent>
-          <div className="banner bee-homepage-banner">
-            <div className="banner-inner">
-              <h1>Digital Collections</h1>
-              <h3>Powered by HoneyComb</h3>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-12">
-              <h2>Featured Collections</h2>
-            </div>
-          </div>
-          <CollectionsList collections={this.state.collections} />
+        <BrandBar/>
+        <PageContent fluidLayout={true}>
+          <mui.Card>
+            <mui.CardMedia
+              overlay={<mui.CardTitle
+                title="Digital Collections"
+                subtitle="Powered by HoneyComb"
+              />}
+              >
+              <img src="/assets/home.jpg"/>
+            </mui.CardMedia>
+          </mui.Card>
+          <PageContent fluidLayout={false}>
+            <h2>Featured Collections</h2>
+            <CollectionsList collections={this.state.collections} />
+          </PageContent>
         </PageContent>
       </mui.AppCanvas>
     );

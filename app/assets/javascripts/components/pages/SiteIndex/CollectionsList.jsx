@@ -1,5 +1,6 @@
 //app/assets/javascripts/components/CollectionsList.jsx
 var React = require('react');
+var mui = require('material-ui')
 
 var CollectionsList = React.createClass({
   displayName: 'Collections List',
@@ -10,15 +11,15 @@ var CollectionsList = React.createClass({
 
   collectionNodes: function() {
     return this.props.collections.map(function(collection, index) {
-      return (<CollectionCard collection={collection} key={index} />);
+      return (<CollectionCard collection={collection}/>);
     });
   },
 
   render: function() {
     return (
-      <GridList className="collections-list">
+      <mui.GridList cols={2}>
         {this.collectionNodes()}
-      </GridList>
+      </mui.GridList>
     );
   }
 

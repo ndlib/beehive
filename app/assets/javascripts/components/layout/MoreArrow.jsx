@@ -82,7 +82,7 @@ var MoreArrow = React.createClass({
 
     return (
 
-        <div className="well" style={divStyle} onMouseOver={this.mouseOver} onMouseOut={this.mouseOut} >
+        <div style={divStyle} onMouseOver={this.mouseOver} onMouseOut={this.mouseOut} >
         <a href={this.showcaseUrl(this.props.showcase)}>
           <h3 style={this.headerStyle()}>Next Showcase</h3>
           <Thumbnail image={this.props.showcase.image} thumbnailType="small" style={this.imageStyle()} />
