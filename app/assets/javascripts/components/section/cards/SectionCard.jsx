@@ -1,9 +1,10 @@
 //app/assets/javascripts/components/Section.jsx
 var React = require('react');
 var mui = require('material-ui');
+var ThemeColors = require('material-ui/lib/styles/colors');
 
 var SectionCard = React.createClass({
-  mixins: [CollectionUrlMixin, LoadRemoteMixin],
+  mixins: [CollectionUrlMixin, LoadRemoteMixin, CurrentThemeMixin],
   displayName: 'Section',
 
   propTypes: {
@@ -27,6 +28,7 @@ var SectionCard = React.createClass({
       height: this.props.height + 'px',
       cursor: 'pointer',
       lineHeight: '20px',
+      backgroundColor: this.getCurrentPallette().showcaseTextCardColor,
     };
   },
 

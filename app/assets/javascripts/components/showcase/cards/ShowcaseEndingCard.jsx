@@ -3,7 +3,7 @@ var mui = require('material-ui');
 
 var ShowcaseEndingCard = React.createClass({
   displayName: "Showcase Ending",
-  mixins: [CollectionUrlMixin],
+  mixins: [CollectionUrlMixin, CurrentThemeMixin],
 
   propTypes: {
     height: React.PropTypes.number.isRequired,
@@ -21,6 +21,7 @@ var ShowcaseEndingCard = React.createClass({
       cursor: "pointer",
       width: "500px",
       overflow: "hidden",
+      backgroundColor: this.getCurrentPallette().showcaseTextCardColor,
     };
   },
 
