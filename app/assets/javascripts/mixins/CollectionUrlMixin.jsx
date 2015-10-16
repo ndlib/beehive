@@ -36,9 +36,13 @@ var CollectionUrlMixin = {
   },
 
   collectionUrl: function(collection) {
-    return '/' + encodeURIComponent(collection.id) + '/' + encodeURIComponent(collection.slug);
+    if(collection.external_url) {
+        return collection.external_url;
+    } else {
+      return '/' + encodeURIComponent(collection.id) + '/' + encodeURIComponent(collection.slug);
+    }
   },
-  
+
   remoteUrlBase: function() {
     var environmentUrl = window.location.origin;
     var returnUrl;
