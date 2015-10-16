@@ -7,7 +7,7 @@ var gridView = {view: "grid"};
 var listView = {view: "list"};
 
 var SearchControls = React.createClass({
-  mixins: [MuiThemeMixin],
+  mixins: [CurrentThemeMixin],
 
   propTypes: {
     collection: React.PropTypes.object,
