@@ -3,7 +3,7 @@ var React = require('react');
 var mui = require('material-ui');
 
 var Showcase = React.createClass({
-  mixins: [PageHeightMixin, LoadRemoteMixin],
+  mixins: [PageHeightMixin, LoadRemoteMixin, MuiThemeMixin],
 
   propTypes: {
     collection: React.PropTypes.oneOfType([
@@ -29,6 +29,13 @@ var Showcase = React.createClass({
 
   componentWillMount: function() {
     EventEmitter.on("ItemDialogWindow", this.setCurrentSection);
+
+      var newMuiTheme = this.state.muiTheme;
+      newMuiTheme.paper.backgroundColor = 'inherit';
+
+      this.setState({
+        muiTheme: newMuiTheme,
+      });
   },
 
   componentDidMount: function() {
@@ -52,15 +59,15 @@ var Showcase = React.createClass({
     } else {
       showcaseShow = (<Loading />);
     }
+    // this is a div instead of mui.AppCanvas because of a bug in 12.3 which is fixed in master.  
     return (
-      <mui.AppCanvas>
+      <div style={ {backgroundColor: 'inherit' }}>
         <CollectionPageHeader collection={this.state.collection} dropdown={true} />
         <PageContent fluidLayout={true}>
           {showcaseShow}
         </PageContent>
-        <CollectionPageFooter collection={this.state.collection} />
-      </mui.AppCanvas>
-    );
+      <CollectionPageFooter collection={this.state.collection} />
+    </div>);
   }
 });
 

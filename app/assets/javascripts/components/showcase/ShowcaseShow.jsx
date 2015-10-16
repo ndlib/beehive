@@ -9,7 +9,7 @@ var minBackgroundBlur = 0.3;
 var maxBackgroundBlur = 0.8;
 
 var ShowcaseShow = React.createClass({
-  mixins: [CollectionUrlMixin, IEMixin, PageHeightMixin, LoadRemoteMixin],
+  mixins: [CollectionUrlMixin, IEMixin, PageHeightMixin, LoadRemoteMixin ],
   displayName: "Showcase Show",
   propTypes: {
     collection: React.PropTypes.object,

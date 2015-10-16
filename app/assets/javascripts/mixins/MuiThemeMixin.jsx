@@ -12,6 +12,12 @@ var MuiThemeMixin = {
 
   getChildContext() {
     return {
+      muiTheme: this.state.muiTheme,
+    };
+  },
+
+  getInitialState: function() {
+    return {
       muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
     };
   },

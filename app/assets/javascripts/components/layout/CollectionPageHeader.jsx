@@ -4,7 +4,7 @@ var mui = require('material-ui');
 var CollectionLeftNav = require('./CollectionLeftNav');
 
 var CollectionPageHeader = React.createClass({
-  mixins: [CollectionUrlMixin, TitleConcatMixin, MuiThemeMixin],
+  mixins: [CollectionUrlMixin, TitleConcatMixin],
 
   propTypes: {
     collection: React.PropTypes.object.isRequired,
