@@ -10,6 +10,10 @@ var CurrentThemeMixin = {
     return this.context.muiTheme;
   },
 
+  getCurrentPallette() {
+    return this.getCurrentTheme().rawTheme.palette;
+  },
+
   // Reusable styles
   lightIconStyle() {
     return {
