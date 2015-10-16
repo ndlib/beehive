@@ -3,6 +3,7 @@ var React = require('react');
 var mui = require('material-ui');
 
 var CollectionPageFooter = React.createClass({
+
   propTypes: {
     collection: React.PropTypes.object.isRequired,
   },
