@@ -19,6 +19,7 @@ var ShowcaseTitleCard = React.createClass({
       textAlign: "center",
       overflow: 'hidden',
       width: '85vw',
+      boxShadow: "none",
     };
 
     if (this.props.height) {
