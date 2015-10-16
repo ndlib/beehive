@@ -3,7 +3,7 @@ var React = require("react");
 var mui = require('material-ui');
 
 var CollectionIntroduction = React.createClass({
-  mixins: [LoadRemoteMixin],
+  mixins: [LoadRemoteMixin, MuiThemeMixin],
 
   propTypes: {
     collection: React.PropTypes.oneOfType([

@@ -1,6 +1,8 @@
 var React = require('react');
 
 var CollectionIntro = React.createClass({
+  mixins: [MuiThemeMixin],
+  
   propTypes: {
     collection: React.PropTypes.object.isRequired,
   },

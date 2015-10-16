@@ -3,7 +3,7 @@ var React = require('react');
 var mui = require('material-ui');
 
 var Search = React.createClass({
-  mixins: [SearchUrlMixin, PageHeightMixin, LoadRemoteMixin, SearchMixin],
+  mixins: [SearchUrlMixin, PageHeightMixin, LoadRemoteMixin, SearchMixin, MuiThemeMixin],
 
   propTypes: {
     collection: React.PropTypes.oneOfType([

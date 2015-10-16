@@ -3,7 +3,7 @@ var React = require('react');
 var mui = require('material-ui');
 
 var CollectionShow = React.createClass({
-  mixins: [CollectionUrlMixin, MuiThemeMixin],
+  mixins: [CollectionUrlMixin],
 
   displayName: 'Collection Show',
 

@@ -3,7 +3,7 @@ var React = require('react');
 var mui = require('material-ui');
 
 var SiteIndex = React.createClass({
-  mixins: [LoadRemoteMixin],
+  mixins: [LoadRemoteMixin, MuiThemeMixin],
 
   propTypes: {
     collections: React.PropTypes.oneOfType([
