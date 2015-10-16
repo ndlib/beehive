@@ -114,6 +114,9 @@ MetadataHTML = require("./components/metadata/MetadataHTML");
 MetadataDate = require("./components/metadata/MetadataDate");
 MetadataText = require("./components/metadata/MetadataText");
 
+//Essays
+EssayContent = require('./components/essays/EssayContent');
+
 // Other
 AttentionHelp = require("./components/other/AttentionHelp");
 Details = require("./components/other/Details");

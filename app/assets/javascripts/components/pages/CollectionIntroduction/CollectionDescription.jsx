@@ -6,7 +6,7 @@ var Element = Scroll.Element;
 
 var CollectionDescription = React.createClass({
   mixins: [MuiThemeMixin],
-  
+
   propTypes: {
     collection: React.PropTypes.object.isRequired,
     height: React.PropTypes.string,
@@ -17,10 +17,18 @@ var CollectionDescription = React.createClass({
     return {};
   },
 
+  introContent: function () {
+    if (this.props.collection.description) {
+      return (<EssayContent content={this.props.collection.description} />);
+    } else {
+      return "";
+    }
+  },
+
   render: function() {
     return (
       <div style={this.style()} id={this.props.id}>
-        <div className="collection-description" dangerouslySetInnerHTML={{__html: this.props.collection.description}} />
+        {this.introContent()}
         <Element name="startShowcases" className="element">
           <StartShowcaseButton collection={this.props.collection} />
         </Element>
