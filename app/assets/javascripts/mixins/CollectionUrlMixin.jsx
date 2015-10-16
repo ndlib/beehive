@@ -7,6 +7,10 @@ var CollectionUrlMixin = {
     return url;
   },
 
+  browseUrl: function(collection) {
+    return this.collectionUrl(collection) + '/search?q=';
+  },
+
   sectionUrl: function(section) {
     return this.collectionObjectUrl('sections', section);
   },

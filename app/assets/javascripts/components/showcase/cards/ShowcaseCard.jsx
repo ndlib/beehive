@@ -3,7 +3,7 @@ var React = require("react");
 var mui = require('material-ui');
 
 var ShowcaseCard = React.createClass({
-  mixins: [CollectionUrlMixin, MuiThemeMixin],
+  mixins: [CollectionUrlMixin],
 
   propTypes: {
     showcase: React.PropTypes.object.isRequired,
@@ -68,7 +68,7 @@ var ShowcaseCard = React.createClass({
     return (
       <mui.Card onClick={this.onClick} style={this.style()} >
         {this.headerTitle()}
-        <mui.CardMedia style={{height: '400px'}} overlay={<mui.CardTitle title={this.props.showcase.name_line_1} subtitle={this.props.showcase.name_line_2} />}>
+        <mui.CardMedia className="temp" style={{height: '400px'}} overlay={<mui.CardTitle title={this.props.showcase.name_line_1} subtitle={this.props.showcase.name_line_2} />}>
           <img src={this.image()}  style={{ height: '400px', overflow: 'hidden'}} />
         </mui.CardMedia>
         {this.description()}

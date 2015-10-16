@@ -12,25 +12,13 @@ var MuiThemeMixin = {
 
   getChildContext() {
     return {
+      muiTheme: this.state.muiTheme,
+    };
+  },
+
+  getInitialState: function() {
+    return {
       muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
-    };
-  },
-
-  // Reusable styles
-  lightIconStyle: function() {
-    return {
-      color: 'white',
-      fontSize: '18px',
-      verticalAlign: 'text-bottom',
-      minWidth: '26px',
-    };
-  },
-
-  darkIconStyle: function() {
-    return {
-      fontSize: '18px',
-      verticalAlign: 'text-bottom',
-      minWidth: '26px',
     };
   },
 

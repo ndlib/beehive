@@ -1,4 +1,5 @@
 var React = require("react");
+var mui = require('material-ui');
 
 var ShowcaseSections = React.createClass({
   displayName: "Sections List",
@@ -14,6 +15,7 @@ var ShowcaseSections = React.createClass({
       display: "inline-block",
       paddingRight: "175px",
       lineHeight: this.props.height + "px",
+      backgroundColor: 'none',
     }
   },
 
@@ -44,10 +46,10 @@ var ShowcaseSections = React.createClass({
 
   render: function() {
     return (
-      <div id="sections-content-inner" className="sections-content-inner" style={this.style()}>
+      <mui.Paper id="sections-content-inner" className="sections-content-inner" style={this.style()}>
         {this.sections()}
         {this.nextShowcase()}
-      </div>
+      </mui.Paper>
     );
   }
 });

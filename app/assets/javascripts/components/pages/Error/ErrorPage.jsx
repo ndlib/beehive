@@ -3,6 +3,8 @@ var React = require('react');
 var mui = require('material-ui');
 
 var ErrorPage = React.createClass({
+  mixins: [MuiThemeMixin],
+
   render: function() {
     var url = window.location.origin;
     return (

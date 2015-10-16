@@ -3,7 +3,7 @@ var injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
 
 var DialogWindow = React.createClass({
-  mixins: [MuiThemeMixin, LoadRemoteMixin],
+  mixins: [ LoadRemoteMixin ],
 
   propTypes: {
     previousUrl: React.PropTypes.string,

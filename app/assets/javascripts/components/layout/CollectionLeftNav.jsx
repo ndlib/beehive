@@ -3,7 +3,7 @@ var React = require('react');
 var mui = require('material-ui');
 
 var CollectionLeftNav = React.createClass({
-  mixins: [ CollectionUrlMixin, MuiThemeMixin ],
+  mixins: [ CollectionUrlMixin, CurrentThemeMixin ],
 
   propTypes: {
     collection: React.PropTypes.object.isRequired,
@@ -82,6 +82,9 @@ var CollectionLeftNav = React.createClass({
       paddingBottom: '5px',
       marginBottom: 0,
       height: '35px',
+      minWidth: 'auto',
+      backgroundColor: 'transparent',
+      color: 'white',
     });
   },
 
@@ -98,7 +101,7 @@ var CollectionLeftNav = React.createClass({
     return (
       <div>
         <mui.FlatButton onClick={this.clickEvent} style={this.buttonStyle()}>
-          <mui.FontIcon className="material-icons">menu</mui.FontIcon>
+          <mui.FontIcon className="material-icons" style={this.lightIconStyle()}>menu</mui.FontIcon>
         </mui.FlatButton>
 
         <mui.LeftNav

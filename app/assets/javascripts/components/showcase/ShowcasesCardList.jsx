@@ -1,6 +1,7 @@
 //app/assets/javascripts/components/ShowcasesCardList.jsx
 var React = require('react');
 var mui = require('material-ui');
+var theme = require('../../themes/beehive');
 
 var ShowcasesCardList = React.createClass({
   propTypes: {
@@ -31,7 +32,7 @@ var ShowcasesCardList = React.createClass({
     }
     if (this.props.showcases.length > 0 || this.props.intro) {
       return (
-        <mui.GridList>
+        <mui.GridList padding={theme.spacing.desktopGutter}>
           {this.allNodes()}
         </mui.GridList>
       );

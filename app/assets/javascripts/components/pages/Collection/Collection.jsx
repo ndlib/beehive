@@ -3,7 +3,7 @@ var React = require('react');
 var mui = require('material-ui');
 
 var Collection = React.createClass({
-  mixins: [PageHeightMixin, LoadRemoteMixin],
+  mixins: [PageHeightMixin, LoadRemoteMixin, MuiThemeMixin],
 
   propTypes: {
     collection: React.PropTypes.oneOfType([
@@ -36,6 +36,12 @@ var Collection = React.createClass({
 
   componentWillMount: function(){
     document.body.className = document.body.className + " collection";
+  },
+
+  style: function() {
+      return ({
+        marginTop:'-64px',
+      });
   },
 
   render: function() {

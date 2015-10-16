@@ -3,7 +3,7 @@ var React = require('react');
 var mui = require('material-ui');
 
 var GridItem = React.createClass({
-  mixins: [MuiThemeMixin, LoadRemoteMixin],
+  mixins: [ LoadRemoteMixin],
   propTypes: {
     item: React.PropTypes.object.isRequired,
   },

@@ -3,7 +3,7 @@ var React = require('react');
 var mui = require('material-ui');
 
 var CollectionShow = React.createClass({
-  mixins: [CollectionUrlMixin, MuiThemeMixin],
+  mixins: [CollectionUrlMixin, CurrentThemeMixin],
 
   displayName: 'Collection Show',
 
@@ -33,10 +33,13 @@ var CollectionShow = React.createClass({
     return url;
   },
 
-  style: function() {
+  cover: function() {
 
       return ({
-        position: 'absolute',
+        backgroundPosition:'center',
+        backgroundSize:'cover',
+        height:'450px',
+        backgroundImage: 'url(' + this.image() + ')',
       });
 
   },
@@ -47,8 +50,7 @@ var CollectionShow = React.createClass({
         <mui.FloatingActionButton
           primary={true}
           linkButton={true}
-          href={this.viewExhibitUrl()}
-          style={this.style()}>
+          href={this.viewExhibitUrl()}>
             <mui.FontIcon className="material-icons">arrow_forward</mui.FontIcon>
         </mui.FloatingActionButton>
       );
@@ -58,8 +60,9 @@ var CollectionShow = React.createClass({
   cardMediaSection: function() {
     if (this.props.collection.image) {
       return (
-        <mui.CardMedia overlay={<mui.CardTitle title={this.props.collection.name_line_1} subtitle={this.props.collection.name_line_2} />}>
-          <img src={this.image()} />
+        <mui.CardMedia overlay={<mui.CardTitle title={this.props.collection.name_line_1} subtitle={this.props.collection.name_line_2} style={this.pageWidth()}/>}>
+          <img src={this.image()} className="hide"/>
+          <div className="cover" style={this.cover()}></div>
         </mui.CardMedia>
       );
     } else {
@@ -75,10 +78,13 @@ var CollectionShow = React.createClass({
         <mui.Paper circle={false} rounded={false} zDepth={0} >
           <mui.Card>
             {this.cardMediaSection()}
-            <mui.CardActions>
+            <mui.CardActions style={this.pageWidth()} className="startButton">
               {this.firstExhibitLink()}
             </mui.CardActions>
           </mui.Card>
+          <mui.CardActions style={this.pageWidth()} className="startButton">
+              {this.firstExhibitLink()}
+            </mui.CardActions>
         </mui.Paper>
       );
     } else {
