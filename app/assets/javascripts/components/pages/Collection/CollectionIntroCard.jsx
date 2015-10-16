@@ -13,6 +13,7 @@ var CollectionIntroCard = React.createClass({
     return {
       position: "relative",
       cursor: "pointer",
+      height: "500px",
     };
   },
 
