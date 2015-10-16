@@ -64,13 +64,26 @@ var ShowcaseCard = React.createClass({
     }
   },
 
+  cardTitle: function() {
+    return (<mui.CardTitle title={this.props.showcase.name_line_1} subtitle={this.props.showcase.name_line_2} />);
+  },
+
+  cardMedia: function () {
+    if (this.props.showcase.image) {
+      return (
+        <mui.CardMedia className="temp" style={{height: '400px'}} overlay={this.cardTitle()}>
+          <img src={this.image()}  style={{ height: '400px', overflow: 'hidden'}} />
+        </mui.CardMedia>);
+    } else {
+      return (this.cardTitle());
+    }
+  },
+
   render: function() {
     return (
       <mui.Card onClick={this.onClick} style={this.style()} >
         {this.headerTitle()}
-        <mui.CardMedia className="temp" style={{height: '400px'}} overlay={<mui.CardTitle title={this.props.showcase.name_line_1} subtitle={this.props.showcase.name_line_2} />}>
-          <img src={this.image()}  style={{ height: '400px', overflow: 'hidden'}} />
-        </mui.CardMedia>
+        {this.cardMedia()}
         {this.description()}
         {this.nextButton()}
       </mui.Card>
