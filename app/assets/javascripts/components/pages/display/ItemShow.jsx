@@ -88,7 +88,7 @@ var ItemShow = React.createClass({
               <h2 className="overflow-ellipsis">{this.props.item.name}</h2>
             </div>
             <button className="btn btn-default btn-raised pull-right btn-details" onClick={this.toggleDetails} style={this.detailsButtonStyle()}>
-              <i className={this.state.showDetails ? "mdi-action-visibility-off" : "mdi-action-visibility"}></i>
+              <i className='material-icons'>{this.state.showDetails ? "visibility_off" : "visibility"}</i>
               Details
             </button>
             <div className="details" style={this.detailsStyle()}>

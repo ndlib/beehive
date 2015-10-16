@@ -50,7 +50,9 @@ var SearchDisplayList = React.createClass({
     EventEmitter.on("ItemDialogWindow", this.setCurrentItem);
     EventEmitter.on("SetGridList", this.setGridListState);
     if(window.location.hash) {
-      this.loadRemoteItem(this.collectionUrl(this.props.collection) +  window.location.hash.replace("#", ""));
+      var url = this.remoteItem(window.location.hash.replace("#", ""));
+      this.loadRemoteItem(url);
+      console.log(url);
     }
   },
 

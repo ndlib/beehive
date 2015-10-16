@@ -209,17 +209,17 @@ var OpenseadragonViewer = React.createClass({
     var rightID = 'right-' + this.props.containerID;
     if (this.props.showFullPageControl) {
       fullPageControl = (
-        <a id={fullID} href="#full-page"><i className="mdi-navigation-fullscreen"></i></a>
+        <a id={fullID} href="#full-page"><i className="material-icons">fullscreen</i></a>
       );
     }
     return (
       <div className="hc-openseadragon-viewer" id={this.props.containerID} style={this.style()}>
         <div id={toolbarID} className="os-toolbar" style={this.toolbarStyle()}>
-          <a id={zoomInID} href="#zoom-in"><i className="mdi-content-add"></i></a>
-          <a id={zoomOutID} href="#zoom-out"><i className="mdi-content-remove"></i></a>
-          <a id={leftID} href="#rotate-left"><i className="mdi-image-rotate-left"></i></a>
-          <a id={rightID} href="#rotate-right"><i className="mdi-image-rotate-right"></i></a>
-          <a id={homeID} href="#home"><i className="mdi-navigation-refresh"></i></a>
+          <a id={zoomInID} href="#zoom-in"><i className="material-icons">zoom_in</i></a>
+          <a id={zoomOutID} href="#zoom-out"><i className="material-icons">zoom_out</i></a>
+          <a id={leftID} href="#rotate-left"><i className="material-icons">rotate_left</i></a>
+          <a id={rightID} href="#rotate-right"><i className="material-icons">rotate_right</i></a>
+          <a id={homeID} href="#home"><i className="material-icons">refresh</i></a>
           {fullPageControl}
         </div>
         <div ></div>

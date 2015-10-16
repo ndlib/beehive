@@ -10,7 +10,7 @@ var PreviousModal = React.createClass({
     var id = this.props.id;
     return (
     <a href="#" onClick={this.clickAction} className="prev-button half-circle-button" style={this.buttonStyles()}>
-      <i className="mdi-navigation-chevron-left"></i>
+      <i className="material-icons">chevron_left</i>
     </a>
     );
   }

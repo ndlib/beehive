@@ -9,24 +9,22 @@ var ErrorPage = React.createClass({
     var url = window.location.origin;
     return (
     <mui.AppCanvas>
-      <Layout>
-        <PageHeader branding={true} />
-        <PageContent>
-          <div className="row row-fluid">
-              <div className="col-lg-12 bee-page-content">
-                <div className="row">
-                  <div className="col-sm-12">
-                    <div className="errorframe">
-                    <h1>Oops!</h1>
-                    <p>There doesn't appear to be anything here at the moment.</p>
-                    <p><a href={url}>Try the Digital Exhibits and Collections homepage.</a></p>
-                    </div>
+      <PageHeader branding={true} />
+      <PageContent>
+        <div className="row row-fluid">
+            <div className="col-lg-12 bee-page-content">
+              <div className="row">
+                <div className="col-sm-12">
+                  <div className="errorframe">
+                  <h1>Oops!</h1>
+                  <p>There doesn't appear to be anything here at the moment.</p>
+                  <p><a href={url}>Try the Digital Exhibits and Collections homepage.</a></p>
                   </div>
                 </div>
               </div>
-          </div>
-        </PageContent>
-      </Layout>
+            </div>
+        </div>
+      </PageContent>
     </mui.AppCanvas>
     );
   }

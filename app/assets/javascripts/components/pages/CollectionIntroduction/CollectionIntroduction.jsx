@@ -37,20 +37,16 @@ var CollectionIntroduction = React.createClass({
   render: function() {
     var nextShowcase;
     if (this.state.collection.showcases && this.state.collection.showcases.length > 0) {
-      nextShowcase = (<MoreArrow showcase={this.state.collection.showcases[0]} />);
+      nextShowcase = (<PreviewLink showcase={this.state.collection.showcases[0]} />);
     }
     return (
       <mui.AppCanvas>
-        <div className="collection-intro-page">
-          <Layout>
-            <CollectionPageHeader collection={this.state.collection} dropdown={true} >
-              <div className="bee-page-title-bar"><h2 className="bee-page-title-bar-title">Introduction</h2></div>
-            </CollectionPageHeader>
-            <PageContent>
-              <CollectionDescription collection={this.state.collection} />
-            </PageContent>
-          </Layout>
-        </div>
+        <CollectionPageHeader collection={this.state.collection} dropdown={true} >
+          <div className="bee-page-title-bar"><h2 className="bee-page-title-bar-title">Introduction</h2></div>
+        </CollectionPageHeader>
+        <PageContent>
+          <CollectionDescription collection={this.state.collection} />
+        </PageContent>
 
         {nextShowcase}
         <CollectionPageFooter collection={this.state.collection} />

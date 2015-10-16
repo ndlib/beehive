@@ -40,7 +40,11 @@ var CollectionUrlMixin = {
   },
 
   collectionUrl: function(collection) {
-    return '/' + encodeURIComponent(collection.id) + '/' + encodeURIComponent(collection.slug);
+    if(collection.external_url) {
+        return collection.external_url;
+    } else {
+      return '/' + encodeURIComponent(collection.id) + '/' + encodeURIComponent(collection.slug);
+    }
   },
 
   remoteUrlBase: function() {
@@ -56,6 +60,14 @@ var CollectionUrlMixin = {
       returnUrl = 'http://beehive.library.nd.edu/v1/'
     }
     return returnUrl;
+  },
+
+  remoteItem: function(item) {
+    return this.remoteUrlBase() + '/items/' + item;
+  },
+
+  remoteSection: function(section) {
+    return this.remoteUrlBase() + '/sections/' + section;
   }
 
 }

@@ -21,7 +21,7 @@ var ThemeTestPage = React.createClass({
     return (
       <mui.AppBar
         title="Title"
-        iconClassNameRight="mdi-navigation-expand-more" />
+        iconClassNameRight="expand_more" />
     );
   },
 
