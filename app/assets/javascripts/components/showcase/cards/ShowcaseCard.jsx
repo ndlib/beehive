@@ -3,7 +3,7 @@ var React = require("react");
 var mui = require('material-ui');
 
 var ShowcaseCard = React.createClass({
-  mixins: [CollectionUrlMixin, MuiThemeMixin],
+  mixins: [CollectionUrlMixin],
 
   propTypes: {
     showcase: React.PropTypes.object.isRequired,

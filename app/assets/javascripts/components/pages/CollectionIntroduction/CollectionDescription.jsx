@@ -5,6 +5,8 @@ var Link = Scroll.Link;
 var Element = Scroll.Element;
 
 var CollectionDescription = React.createClass({
+  mixins: [MuiThemeMixin],
+  
   propTypes: {
     collection: React.PropTypes.object.isRequired,
     height: React.PropTypes.string,

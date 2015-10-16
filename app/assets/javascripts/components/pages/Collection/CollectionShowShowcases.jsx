@@ -3,6 +3,8 @@ var React = require('react');
 var mui = require('material-ui');
 
 var CollectionShowShowcases = React.createClass({
+  mixins: [],
+
   propTypes: {
     collection: React.PropTypes.object.isRequired,
   },

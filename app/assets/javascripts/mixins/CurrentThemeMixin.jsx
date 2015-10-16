@@ -1,0 +1,45 @@
+"use strict"
+var mui = require("material-ui");
+
+var CurrentThemeMixin = {
+  contextTypes: {
+    muiTheme: React.PropTypes.object,
+  },
+
+  getCurrentTheme() {
+    return this.context.muiTheme;
+  },
+
+  // Reusable styles
+  lightIconStyle() {
+    return {
+      color: 'white',
+      fontSize: '18px',
+      verticalAlign: 'text-bottom',
+      minWidth: '26px',
+    };
+  },
+
+  darkIconStyle() {
+    return {
+      fontSize: '18px',
+      verticalAlign: 'text-bottom',
+      minWidth: '26px',
+    };
+  },
+
+  cardHeadersCommon() {
+    return {
+      fontFamily: 'GPCMed',
+    };
+  },
+
+  pageWidth() {
+    return {
+      maxWidth: '960px',
+      margin: '0 auto',
+    };
+  },
+
+};
+module.exports = CurrentThemeMixin;

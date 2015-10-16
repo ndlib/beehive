@@ -3,7 +3,7 @@ var React = require('react');
 var mui = require('material-ui');
 
 var SearchBox = React.createClass({
-  mixins: [SearchUrlMixin, MuiThemeMixin],
+  mixins: [SearchUrlMixin, CurrentThemeMixin],
   propTypes: {
     collection: React.PropTypes.object.isRequired,
     searchTerm: React.PropTypes.string,

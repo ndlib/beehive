@@ -3,7 +3,7 @@ var React = require('react');
 var mui = require('material-ui');
 
 var CollectionLeftNav = React.createClass({
-  mixins: [ CollectionUrlMixin, MuiThemeMixin ],
+  mixins: [ CollectionUrlMixin, CurrentThemeMixin ],
 
   propTypes: {
     collection: React.PropTypes.object.isRequired,
