@@ -1,7 +1,4 @@
 var mui = require("material-ui");
-var Dialog = mui.Dialog;
-var FlatButton = mui.FlatButton;
-var FontIcon = mui.FontIcon;
 var injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
 
@@ -41,8 +38,8 @@ var DialogWindow = React.createClass({
 
   okDismiss: function() {
     var fontIcon = (
-      <FontIcon
-        className={'mdi-content-clear'}
+      <mui.FontIcon
+        className='material-icons'
         iconStyle={{
           color: 'white',
         }}
@@ -51,10 +48,10 @@ var DialogWindow = React.createClass({
           padding: '0',
           fontSize: '20px',
         }}
-      />
+      >content_clear</mui.FontIcon>
     );
     return [
-      <FlatButton
+      <mui.FlatButton
         label={fontIcon}
         primary={true}
         onTouchTap={this.hideWindow}
@@ -88,7 +85,7 @@ var DialogWindow = React.createClass({
       next = (<NextModal url={this.props.nextUrl} />);
     }
     return (
-      <Dialog
+      <mui.Dialog
         ref='itemDialogWindow'
         modal={false}
         openImmediately={false}
@@ -111,7 +108,7 @@ var DialogWindow = React.createClass({
           {next}
           {this.props.children}
         </div>
-      </Dialog>
+      </mui.Dialog>
     );
   },
 
