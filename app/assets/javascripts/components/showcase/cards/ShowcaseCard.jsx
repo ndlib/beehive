@@ -38,12 +38,12 @@ var ShowcaseCard = React.createClass({
         right: '0',
         bottom: '0', 
         margin: 'auto',
-        minWidth: '50%',
+       
+        minWidth:'50%',
         minHeight: '50%',
-        overflowX: 'hidden',
-        height: 'auto',
-        maxWidth: 'auto',
-        width: '100%',
+        maxWidth: 'initial',
+        maxHeight:'initial',
+
     };
   },
 
@@ -90,11 +90,11 @@ var ShowcaseCard = React.createClass({
     if (this.props.showcase.image) {
       return (
         <mui.CardMedia 
-          mediaStyle={{position: 'relative', height:'100%', width:'100%', overflow: 'hidden' }} 
+          mediaStyle={{position: 'absolute', height:'200%', width:'200%', overflow: 'hidden' }} 
           className="temp" 
-          style={{height: '400px'}} 
+          style={{height: '400px', overflow:'hidden'}} 
           overlay={this.cardTitle()}>
-          <img src={this.image()}  style={{ height: '400px', overflow: 'hidden'}} />
+          <img src={this.image()}  style={this.imageSize()} />
         </mui.CardMedia>);
     } else {
       return (this.cardTitle());
