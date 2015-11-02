@@ -1,5 +1,7 @@
 //app/assets/javascripts/components/ShowcaseShow.jsx
 var React = require("react");
+var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+var ReactDOM = require('react-dom');
 
 var maxShowcaseHeight = 840;
 var showcaseTitleHeight = 40;
@@ -87,7 +89,7 @@ var ShowcaseShow = React.createClass({
   transparent: function() {
     return {
       backgroundColor:'transparent',
-      
+
     };
   },
 
@@ -146,18 +148,27 @@ var ShowcaseShow = React.createClass({
         <AttentionHelp start={this.state.startTime} hasScrolled={this.state.hasScrolled} />
         <ShowcaseBackground percentBlur={backgroundBlur} height={this.props.height} showcase={this.props.showcase} />
         <ShowcaseTitleBar percentFade={this.state.titleSectionPercentVisible} height={showcaseTitleHeight} showcase={this.props.showcase} />
-        <div id="showcase-outer" ref="showcaseOuter" className="showcase-outer" style={this.styleOuter(showcaseHeight)} onScroll={this.onScroll}>
-          <Scroller target="#showcase-outer" />
-          <DialogWindow
-            previousUrl={prev}
-            nextUrl={next}
-          >
-            <SectionShow
-              section={this.state.currentSection}
-              height={this.state.height}
-            />
-          </DialogWindow>
-          <ShowcaseInnerContent height={showcaseInnerHeight} showcase={this.props.showcase} />
+        <div className="bla">
+        <ReactCSSTransitionGroup
+          transitionName="showcase-slide-in"
+          transitionAppear={true}
+          transitionAppearTimeout={2600}
+          transitionEnterTimeout={0}
+          transitionLeaveTimeout={0}>
+          <div id="showcase-outer" ref="showcaseOuter" className="showcase-outer" style={this.styleOuter(showcaseHeight)} onScroll={this.onScroll}>
+            <Scroller target="#showcase-outer" />
+            <DialogWindow
+              previousUrl={prev}
+              nextUrl={next}
+            >
+              <SectionShow
+                section={this.state.currentSection}
+                height={this.state.height}
+              />
+            </DialogWindow>
+            <ShowcaseInnerContent height={showcaseInnerHeight} showcase={this.props.showcase} />
+          </div>
+        </ReactCSSTransitionGroup>
         </div>
       </div>
     );
