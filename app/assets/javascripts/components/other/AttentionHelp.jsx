@@ -13,13 +13,13 @@ var AttentionHelp = React.createClass({
 
   getInitialState: function(){
     var state = {
-      elapsed: 0,
+      elapsed: false,
     };
     return state;
   },
 
   componentDidMount: function() {
-    this.timer = setInterval(this.tick, 1000);
+    this.timer = setInterval(this.tick, 9000);
   },
 
   componentWillUnmount: function() {
@@ -27,32 +27,17 @@ var AttentionHelp = React.createClass({
   },
 
   tick: function() {
-    this.setState({elapsed: new Date() - this.props.start});
+    this.setState({elapsed: true});
   },
 
   style: function() {
     return {
-      bottom: "54px",
     };
   },
 
   render: function() {
-    var elapsed = Math.round(this.state.elapsed / 1000);
-    // we'll load it before we want to play it so there isn't a delay
-    var snackbar = (<source src="/attention.mp3" type="audio/mpeg"/>);
-
-    if(!this.props.hasScrolled && elapsed >= 5 && elapsed <= 15) {
-      var audioPlay;
-      var storage = JSON.parse(sessionStorage.getItem("AudioPlayed"));
-      if(!storage) {
-        audioPlay = (
-          <audio autoPlay>
-            <source src="/attention.mp3" type="audio/mpeg"/>
-          </audio>
-        );
-        sessionStorage.setItem("AudioPlayed", JSON.stringify({audioPlayed: true}));
-      }
-
+    var snackbar = (<div/>);
+    if(!this.props.hasScrolled && this.state.elapsed) {
       snackbar = (
         <div id="attentionHelp">
           <Snackbar
@@ -62,7 +47,6 @@ var AttentionHelp = React.createClass({
             ref="attentionHelp"
             style={this.style()}
           />
-          {audioPlay}
         </div>
       );
     }
