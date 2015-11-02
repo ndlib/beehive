@@ -1,6 +1,6 @@
 .essay-content {
   margin: 60px 0px;
-  
+
   p {
     font-size: 20px;
   }
@@ -28,8 +28,8 @@
 }
 
 .temp>div:first-child {
-  top: -50%; 
-  left: -50%; 
+  top: -50%;
+  left: -50%;
 }
 
 .item {
@@ -42,4 +42,35 @@
       width: 100%;
     }
   }
+}
+
+.animation-slidein {
+  animation-duration: 2.5s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+
+  0% {
+    margin-left: 40vw;
+  }
+
+  55% {
+    margin-left: -2%;
+  }
+
+  100% {
+    margin-left: 0;
+  }
+}
+
+
+.showcase-slide-in-appear {
+  margin-left: 40vw;
+}
+
+.showcase-slide-in-appear.showcase-slide-in-appear-active {
+  animation-delay: 0.5s;
+  animation-duration: 2.0s;
+  animation-name: slidein;
 }
