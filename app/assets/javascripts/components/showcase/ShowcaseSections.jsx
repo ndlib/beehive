@@ -14,8 +14,8 @@ var ShowcaseSections = React.createClass({
       height: this.props.height + "px",
       display: "inline-block",
       paddingRight: "175px",
-      lineHeight: this.props.height + "px",
       boxShadow: "none",
+      //lineHeight: this.props.height + "px",
     }
   },
 

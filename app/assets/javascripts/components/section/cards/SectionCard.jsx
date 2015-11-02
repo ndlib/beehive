@@ -27,15 +27,22 @@ var SectionCard = React.createClass({
       marginLeft: (this.props.section.has_spacer ? '15em;' : '0px'),
       height: this.props.height + 'px',
       cursor: 'pointer',
-      lineHeight: '20px',
-      backgroundColor: this.getCurrentPallette().showcaseTextCardColor,
+      lineHeight: '0px',
+      backgroundColor: "rgba(0,0,0,0.3)",
+      border: 'solid 3px #fff',
     };
   },
 
-  mediaStyle: function () {
+  imageStyle: function() {
     return {
-      border: 'solid 3px white',
-    }
+
+    };
+  },
+
+  textStyle: function() {
+    return {
+
+    };
   },
 
   onMouseEnter: function() {
@@ -65,8 +72,8 @@ var SectionCard = React.createClass({
   imageCard: function() {
     if (this.props.section.item) {
       return (
-        <div>
-          <mui.CardMedia style={this.mediaStyle()}>
+        <div style={this.imageStyle()}>
+          <mui.CardMedia>
             <img src={this.props.section.item.image['thumbnail/medium'].contentUrl} />
           </mui.CardMedia>
           <mui.CardText>
@@ -80,7 +87,7 @@ var SectionCard = React.createClass({
   textCard: function () {
     if (this.props.section.description) {
       return (
-        <div>
+        <div style={this.textStyle()}>
           <mui.CardTitle title={this.props.section.name}/>
           <mui.CardText>
             <div dangerouslySetInnerHTML={{__html: this.props.section.description}} />
@@ -92,7 +99,7 @@ var SectionCard = React.createClass({
 
   render: function() {
     return (
-      <mui.Card style={this.style()} onClick={this.onClick} >
+      <mui.Card className="item" style={this.style()} onClick={this.onClick}>
         { this.imageCard() }
         { this.textCard() }
       </mui.Card>

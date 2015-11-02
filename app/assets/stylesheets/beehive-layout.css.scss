@@ -27,29 +27,19 @@
   background-image:url(http://localhost:3019/images/honeycomb/000/001/000/001/medium/mad.max.showdown.jpg);
 }
 
-.temp {
-  overflow: hidden;
-    > div:first-child {
-      position: relative;
-      //top:-50%;
-      //left: -50%;
-      width: 100%;
+.temp>div:first-child {
+  top: -50%; 
+  left: -50%; 
+}
+
+.item {
+  div {
+
+    img {
+      max-width: auto !important;
+      min-width: auto !important;
       height: 100%;
-      overflow: hidden;
-      img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        margin: auto;
-        min-width: 50%;
-        min-height: 50%;
-        overflow-x: hidden;
-        height: auto !important;
-        max-width: auto !important;
-
-      }
+      width: 100%;
     }
-
+  }
 }
