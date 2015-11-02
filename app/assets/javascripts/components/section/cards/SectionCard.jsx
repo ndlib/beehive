@@ -32,6 +32,12 @@ var SectionCard = React.createClass({
     };
   },
 
+  mediaStyle: function () {
+    return {
+      border: 'solid 3px white',
+    }
+  },
+
   onMouseEnter: function() {
     return this.setState({
       hover: true
@@ -60,7 +66,7 @@ var SectionCard = React.createClass({
     if (this.props.section.item) {
       return (
         <div>
-          <mui.CardMedia>
+          <mui.CardMedia style={this.mediaStyle()}>
             <img src={this.props.section.item.image['thumbnail/medium'].contentUrl} />
           </mui.CardMedia>
           <mui.CardText>
