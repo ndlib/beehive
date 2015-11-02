@@ -16,7 +16,7 @@ gem "thin"
 gem "sdoc", "~> 0.4.0",          group: :doc
 
 # React stuff
-gem "react-rails"
+gem "react-rails", "~>1.4.1"
 gem "browserify-rails", "~>0.5"
 
 gem "showdown-rails"
