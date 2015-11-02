@@ -1,0 +1,45 @@
+.essay-content {
+  margin: 60px 0px;
+  
+  p {
+    font-size: 20px;
+  }
+}
+
+.startButton {
+  padding: 0 !important;
+  position: relative !important;
+  > div {
+    position: absolute;
+    right: 0;
+    top: -28px;
+  }
+  a {
+
+  }
+}
+
+.hide {
+  display: none;
+}
+
+.cover {
+  background-image:url(http://localhost:3019/images/honeycomb/000/001/000/001/medium/mad.max.showdown.jpg);
+}
+
+.temp>div:first-child {
+  top: -50%; 
+  left: -50%; 
+}
+
+.item {
+  div {
+
+    img {
+      max-width: auto !important;
+      min-width: auto !important;
+      height: 100%;
+      width: 100%;
+    }
+  }
+}

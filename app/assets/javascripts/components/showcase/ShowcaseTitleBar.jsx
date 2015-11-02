@@ -1,12 +1,9 @@
 //app/assets/javascripts/components/ShowcaseTitleBar.jsx
 var React = require('react');
-
-var titleHeight = 16;
-var marginBottom = 5;
-var borderBottom = 1;
+var mui = require('material-ui');
 
 var ShowcaseTitleBar = React.createClass({
-  mixins: [TitleConcatMixin],
+  mixins: [MuiThemeMixin],
 
   displayName: 'Showcase Title Bar',
 
@@ -24,34 +21,21 @@ var ShowcaseTitleBar = React.createClass({
   },
 
   style: function() {
-    var verticalPadding = (this.props.height - (titleHeight + marginBottom + borderBottom)) / 2;
     return {
       opacity: 1 - this.props.percentFade,
-      borderBottomWidth: borderBottom + "px",
-      padding: verticalPadding + "px 40px",
-      marginBottom: marginBottom + "px",
-    };
-  },
-
-  titleStyle: function() {
-    return {
-      fontSize: titleHeight + "px",
-      lineHeight: titleHeight + "px",
     };
   },
 
   name: function () {
-    return this.titleConcat(this.props.showcase.name_line_1, this.props.showcase.name_line_2);
+    return this.props.showcase.name_line_1;
   },
 
   render: function() {
     if (this.props.showcase) {
       return (
-        <div className="showcases-title-bar" id="showcases-title-bar" style={this.style()}>
-          <h2 className="showcases-title-bar-title overflow-ellipsis" style={this.titleStyle()} title={this.name()}>
-            <span className="title">{this.name()}</span>
-          </h2>
-        </div>
+        <mui.Toolbar style={this.style()}>
+          <mui.ToolbarTitle text={this.name()} description="Description!!" />
+        </mui.Toolbar>
       );
     } else {
       return (<div />)

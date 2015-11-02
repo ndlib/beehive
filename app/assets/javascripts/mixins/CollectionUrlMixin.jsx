@@ -7,6 +7,10 @@ var CollectionUrlMixin = {
     return url;
   },
 
+  browseUrl: function(collection) {
+    return this.collectionUrl(collection) + '/search?q=';
+  },
+
   sectionUrl: function(section) {
     return this.collectionObjectUrl('sections', section);
   },
@@ -56,6 +60,14 @@ var CollectionUrlMixin = {
       returnUrl = 'http://beehive.library.nd.edu/v1/'
     }
     return returnUrl;
+  },
+
+  remoteItem: function(item) {
+    return this.remoteUrlBase() + '/items/' + item;
+  },
+
+  remoteSection: function(section) {
+    return this.remoteUrlBase() + '/sections/' + section;
   }
 
 }

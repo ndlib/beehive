@@ -4,7 +4,7 @@ var mui = require("material-ui");
 var Snackbar = mui.Snackbar;
 
 var AttentionHelp = React.createClass({
-  mixins: [MuiThemeMixin],
+  mixins: [],
 
   propTypes: {
     start: React.PropTypes.number.isRequired,

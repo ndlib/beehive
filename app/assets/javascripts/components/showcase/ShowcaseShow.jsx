@@ -9,7 +9,7 @@ var minBackgroundBlur = 0.3;
 var maxBackgroundBlur = 0.8;
 
 var ShowcaseShow = React.createClass({
-  mixins: [CollectionUrlMixin, IEMixin, PageHeightMixin, LoadRemoteMixin],
+  mixins: [CollectionUrlMixin, IEMixin, PageHeightMixin, LoadRemoteMixin ],
   displayName: "Showcase Show",
   propTypes: {
     collection: React.PropTypes.object,
@@ -53,7 +53,7 @@ var ShowcaseShow = React.createClass({
       }
     }
   },
-  
+
   componentDidMount: function() {
     this.setState({
       outerElement: $(React.findDOMNode(this.refs.showcaseOuter)),
@@ -80,6 +80,14 @@ var ShowcaseShow = React.createClass({
       whiteSpace: "nowrap",
       boxSizing: "border-box",
       height: height + "px",
+
+    };
+  },
+
+  transparent: function() {
+    return {
+      backgroundColor:'transparent',
+      
     };
   },
 

@@ -1,5 +1,7 @@
 'use strict'
 var React = require('react');
+var mui = require('material-ui');
+var CollectionLeftNav = require('./CollectionLeftNav');
 
 var CollectionPageHeader = React.createClass({
   mixins: [CollectionUrlMixin, TitleConcatMixin],
@@ -7,29 +9,58 @@ var CollectionPageHeader = React.createClass({
   propTypes: {
     collection: React.PropTypes.object.isRequired,
     branding: React.PropTypes.bool,
-    dropdown: React.PropTypes.bool,
+  },
+
+  brandBar: function () {
+    if (this.props.branding) {
+      return (<BrandBar />);
+    } else {
+      return (<span />)
+    }
+  },
+
+  style: function () {
+    return ({
+      height: (this.props.branding ? '115px' : '65px'),
+      width: '100%',
+    });
+  },
+
+  _handleSearchTab: function () {
+    window.location.href = this.browseUrl(this.props.collection);
   },
 
   render: function() {
-    var dropdown = "";
-    if(this.props.collection['@id'] && this.props.dropdown) {
-      dropdown = (<ShowcaseDropDown collection={this.props.collection} />);
-    }
+    var title = (
+      this.props.collection.name_line_1
+    );
 
-    var fullName = this.titleConcat(this.props.collection.name_line_1, this.props.collection.name_line_2)
-    var title = <span className="title" key={1}>{fullName}</span>;
+    var rightNav = (
+      <div>
+        <div style={ {float:'right' } }>
+          <SearchBox collection={this.props.collection} />
+        </div>
 
-    var content = this.props.children;
+        <mui.Tabs style={ {float:'right'} }>
+          <mui.Tab label="Browse Collection" route="browse" onActive={this._handleSearchTab} >
+          </mui.Tab>
+          <mui.Tab label="About" payload="/about" onActive={this._handleSearchTab} >
+          </mui.Tab>
+          <mui.Tab
+            label="Item Three"
+            route="search" />
+        </mui.Tabs>
+      </div>
+    );
     return (
-    <PageHeader branding={this.props.branding}>
-      <TitleBar>
-        {dropdown}
-        <a className="navbar-brand overflow-ellipsis" href={this.collectionUrl(this.props.collection)}>
-          {title}
-        </a>
-      </TitleBar>
-      {content}
-    </PageHeader>
+      <mui.Paper circle={false} rounded={false} zDepth={0} style={this.style()}>
+        {this.brandBar()}
+        <mui.AppBar
+          title={title}
+          iconElementLeft={<CollectionLeftNav collection={this.props.collection} />}
+          iconElementRight={rightNav}
+        />
+      </mui.Paper>
     );
   }
 });

@@ -16,7 +16,7 @@ gem "thin"
 gem "sdoc", "~> 0.4.0",          group: :doc
 
 # React stuff
-gem "react-rails"
+gem "react-rails", "~>1.4.1"
 gem "browserify-rails", "~>0.5"
 
 gem "showdown-rails"
@@ -29,8 +29,6 @@ gem "newrelic_rpm"
 # CSS
 # Use SCSS for stylesheets
 gem "sass-rails", "~> 4.0.3"
-gem "bootstrap-sass", "~> 3.3.1"
-gem "bootstrap-material-design"
 gem "autoprefixer-rails"
 
 # Hesburgh Library Custom
@@ -46,6 +44,7 @@ group :development, :test do
   gem "rubocop", require: false
 
   gem "pry"
+  gem "pry-coolline"
   gem "rspec-rails"
   gem "rspec-collection_matchers"
   gem "capybara"

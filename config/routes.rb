@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root to: "collections#index"
 
+  scope "/theme" do
+    get "/test", to: "collections#theme"
+  end
+
   get "/404" => "errors#not_found", via: :all
 
   get "/:id", to: "collections#show"
@@ -10,12 +14,11 @@ Rails.application.routes.draw do
 
   scope "/:collection_id/:collection_slug" do
     scope "/showcases" do
-      get "/", to: "showcases#index"
       get ":id/", to: "showcases#show"
       get ":id/:slug", to: "showcases#show"
     end
     scope "/items" do
-      get "/", to: "items#index"
+      get "/", to: "items#search"
     end
     scope "/search" do
       get "/", to: "items#search"
@@ -29,7 +32,7 @@ Rails.application.routes.draw do
       get ":id/:slug", to: "showcases#show"
     end
     scope "/items" do
-      get "/", to: "items#index"
+      get "/", to: "items#search"
     end
   end
 
