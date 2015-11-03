@@ -5,11 +5,6 @@ injectTapEventPlugin();
 var DialogWindow = React.createClass({
   mixins: [ LoadRemoteMixin ],
 
-  propTypes: {
-    previousUrl: React.PropTypes.string,
-    nextUrl: React.PropTypes.string,
-  },
-
   componentWillMount: function() {
     EventEmitter.on("ItemDialogWindow", this.showWindow);
     EventEmitter.on("SectionDialogWindow", this.showWindow);
@@ -67,7 +62,6 @@ var DialogWindow = React.createClass({
           width: '32px',
         }}
         labelStyle={{
-          color: 'white',
           height: '20px',
           padding: '0',
           width: '20px',
@@ -77,13 +71,6 @@ var DialogWindow = React.createClass({
   },
 
   render: function() {
-    var prev, next;
-    if(this.props.previousUrl) {
-      prev = (<PreviousModal url={this.props.previousUrl} />);
-    }
-    if(this.props.nextUrl) {
-      next = (<NextModal url={this.props.nextUrl} />);
-    }
     return (
       <mui.Dialog
         ref='itemDialogWindow'
@@ -96,16 +83,11 @@ var DialogWindow = React.createClass({
           maxWidth: '100%',
         }}
         bodyStyle={{
-          color: 'white',
-          backgroundColor: '#333',
-          backgroundImage: 'url(/images/black-linen.png)',
           width: '100%',
           maxWidth: '100%'
         }}
       >
         <div>
-          {prev}
-          {next}
           {this.props.children}
         </div>
       </mui.Dialog>

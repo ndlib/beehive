@@ -1,5 +1,6 @@
 //app/assets/javascripts/components/ItemShow.jsx
 var React = require("react");
+var mui = require('material-ui');
 
 var ItemShow = React.createClass({
   displayName: "Item Show",
@@ -71,6 +72,7 @@ var ItemShow = React.createClass({
     return {
       maxHeight: this.state.showDetails ? "70%" : "0",
       width: this.state.showDetails ? "30%" : "0",
+      float: 'right',
     };
   },
 
@@ -81,30 +83,29 @@ var ItemShow = React.createClass({
     }
     if (this.props.item) {
       return (
-
-          <div className="item-detail" style={this.outerStyles()}>
-
-            <div style={this.headerStyles()}>
-              <h2 className="overflow-ellipsis">{this.props.item.name}</h2>
-            </div>
-            <button className="btn btn-default btn-raised pull-right btn-details" onClick={this.toggleDetails} style={this.detailsButtonStyle()}>
+        <div className="item-detail" style={this.outerStyles()}>
+          <div className="details" style={this.detailsStyle()}>
+            <button style={ {zIndex: "4000000"} } className="btn btn-default btn-raised pull-right btn-details" onClick={this.toggleDetails} style={this.detailsButtonStyle()}>
               <i className='material-icons'>{this.state.showDetails ? "visibility_off" : "visibility"}</i>
               Details
             </button>
-            <div className="details" style={this.detailsStyle()}>
-              <Details item={this.props.item} additionalDetails={this.props.additionalDetails} />
-            </div>
-            <div className="item-detail-zoom" style={this.zoomStyles()}>
-              <OpenseadragonViewer image={this.props.item.image} containerID={this.props.item.id} height={this.props.height} toolbarTop={60} toolbarLeft={40} showFullPageControl={false} />
-            </div>
+            <Details item={this.props.item} additionalDetails={this.props.additionalDetails} />
           </div>
+          <div className="item-detail-zoom" style={this.zoomStyles()}>
+            <OpenseadragonViewer
+              image={this.props.item.image}
+              containerID={this.props.item.id}
+              height={this.props.height}
+              toolbarTop={60}
+              toolbarLeft={40}
+              showFullPageControl={false} />
+          </div>
+        </div>
       );
     } else {
       return <Loading />;
     }
-
   }
-
 });
 
 // each file will export exactly one component

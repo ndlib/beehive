@@ -31,7 +31,7 @@ var Scroller = React.createClass({
       top:  this.top() + "px",
       cursor: "pointer",
       fontSize: "3em",
-      zIndex: 100,
+      zIndex: 10,
     };
   },
 
