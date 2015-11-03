@@ -114,7 +114,7 @@ EssayContent = require('./components/essays/EssayContent');
 // Other
 AttentionHelp = require("./components/other/AttentionHelp");
 DescriptionTeaser = require("./components/other/DescriptionTeaser");
-Image = require("./components/other/Image");
+HoneycombImage = require("./components/other/HoneycombImage");
 Loading = require("./components/other/Loading");
 ToggleTheme = require("./components/other/ToggleTheme");
 Scroller = require("./components/other/Scroller");

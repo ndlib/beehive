@@ -40,7 +40,7 @@ var PreviewLink = React.createClass({
       <a href={this.showcaseUrl(this.props.showcase)} style={this.style()} onMouseOver={this.mouseOver} onMouseOut={this.mouseOut} >
         <mui.Card>
           <mui.CardMedia overlay={<mui.CardTitle title="Start Showcases"/>}>
-            <Image image={this.props.showcase.image} size="small" />
+            <HoneycombImage image={this.props.showcase.image} size="small" />
           </mui.CardMedia>
         </mui.Card>
       </a>

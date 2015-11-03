@@ -1,5 +1,6 @@
 //app/assets/javascripts/components/OpenseadragonViewer.jsx
 var React = require('react');
+var ReactDOM = require('react-dom');
 
 var navigatorSize = 100;
 
@@ -114,7 +115,7 @@ var OpenseadragonViewer = React.createClass({
     OpenSeadragon.setString("Tooltips.Home","Reset image");
     return {
       id: this.props.containerID,
-      element: this.getDOMNode(),
+      element: ReactDOM.findDOMNode(),
       prefixUrl: "/openseadragon/",
       autoHideControls: false,
       showNavigator: this.props.showNavigator,
@@ -166,7 +167,7 @@ var OpenseadragonViewer = React.createClass({
   },
 
   legacySource: function(image) {
-     return {
+    return {
       id: image.id,
       type: 'legacy-image-pyramid',
       levels: [

@@ -2,7 +2,7 @@
 var React = require('react');
 $ = jQuery = require('jquery');
 
-var Image = React.createClass({
+var HoneycombImage = React.createClass({
   propTypes: {
     image: React.PropTypes.object,
     size: React.PropTypes.string,
@@ -48,4 +48,4 @@ var Image = React.createClass({
 });
 
 // each file will export exactly one component
-module.exports = Image;
+module.exports = HoneycombImage;

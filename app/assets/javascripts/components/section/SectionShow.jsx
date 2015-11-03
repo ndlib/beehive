@@ -1,5 +1,6 @@
 'use strict'
 var React = require('react');
+var mui = require('material-ui');
 
 var SectionShow = React.createClass({
   displayName: 'Section Show',
@@ -9,51 +10,28 @@ var SectionShow = React.createClass({
     nextSection: React.PropTypes.string,
     height: React.PropTypes.number,
   },
-/*
-  modalShow: function(event) {
-    $(document).bind('keyup', this.modalKeyup);
-  },
 
-  modalKeyup: function(event) {
-    // bind keypress to modal when it is shown
-    if(event.keyCode == 37 || event.keyCode == 38) {
-      if(this.props.previousSection) {
-        $('#modal-' + this.props.section.id).modal('hide');
-        $('#modal-' + this.props.previousSection).modal('show');
-        window.location.hash = 'modal-' +  this.props.previousSection;
-      }
-    }
-    // if right or down arrow
-    else if(event.keyCode == 39 || event.keyCode == 40) {
-      if(this.props.nextSection) {
-        $('#modal-' + this.props.section.id).modal('hide');
-        $('#modal-' + this.props.nextSection).modal('show');
-         window.location.hash = 'modal-' +  this.props.nextSection;
-      }
-    }
-  },
-
-  modalHide: function(event) {
-    this.modalVisible = false;
-    $(document).off('keyup', this.modalKeyup);
-  },
-*/
   render: function() {
     var prev, next, offsetTop;
     if (this.props.height) {
       offsetTop = this.props.height / 2;
     }
     if (this.props.section) {
-      if (this.props.previousSection) {
-        prev = (<PreviousModal offsetTop={offsetTop} id={this.props.previousSection} />);
+      if(this.props.previousUrl) {
+        prev = (<PreviousModal url={this.props.previousUrl} />);
       }
-      if (this.props.nextSection) {
-        next = (<NextModal offsetTop={offsetTop} id={this.props.nextSection} />);
+      if(this.props.nextUrl) {
+        next = (<NextModal url={this.props.nextUrl} />);
       }
       if (this.props.section.item) {
         // layout for section with item
         return (
           <div>
+            <mui.AppBar
+              title={this.props.section.item.name}
+              iconElementRight={<div>X</div>}
+              iconElementLeft={<div/>}
+            />
             {prev}
             {next}
             <ItemShow height={this.props.height} item={this.props.section.item} additionalDetails={this.props.section.description}/>
@@ -63,6 +41,11 @@ var SectionShow = React.createClass({
         // layout for section without item
         return (
           <div>
+            <mui.AppBar
+              title={this.props.section.title}
+              iconElementRight={<div>X</div>}
+              iconElementLeft={<div/>}
+            />
             {prev}
             {next}
             <SectionShowDescription height={this.props.height} section={this.props.section} />

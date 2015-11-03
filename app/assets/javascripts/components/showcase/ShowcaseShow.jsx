@@ -1,5 +1,6 @@
 //app/assets/javascripts/components/ShowcaseShow.jsx
 var React = require("react");
+var ReactDOM = require("react-dom");
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 var maxShowcaseHeight = 840;
@@ -57,8 +58,8 @@ var ShowcaseShow = React.createClass({
 
   componentDidMount: function() {
     this.setState({
-      outerElement: $(React.findDOMNode(this.refs.showcaseOuter)),
-      element: $(React.findDOMNode(this)),
+      outerElement: $(this.refs.showcaseOuter),
+      element: $(ReactDOM.findDOMNode(this)),
     });
   },
 
@@ -88,7 +89,6 @@ var ShowcaseShow = React.createClass({
   transparent: function() {
     return {
       backgroundColor:'transparent',
-
     };
   },
 
@@ -155,13 +155,12 @@ var ShowcaseShow = React.createClass({
           transitionLeaveTimeout={0}>
           <div id="showcase-outer" ref="showcaseOuter" className="showcase-outer" style={this.styleOuter(showcaseHeight)} onScroll={this.onScroll}>
             <Scroller target="#showcase-outer" height={this.props.height} />
-            <DialogWindow
-              previousUrl={prev}
-              nextUrl={next}
-            >
+            <DialogWindow>
               <SectionShow
                 section={this.state.currentSection}
                 height={this.props.height}
+                previousUrl={prev}
+                nextUrl={next}
               />
             </DialogWindow>
             <ShowcaseInnerContent height={showcaseInnerHeight} showcase={this.props.showcase} />
