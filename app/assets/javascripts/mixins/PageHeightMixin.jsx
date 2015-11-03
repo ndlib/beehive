@@ -1,6 +1,3 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-
 var minHeight = 160;
 
 var PageHeightMixin = {
@@ -11,7 +8,11 @@ var PageHeightMixin = {
   },
 
   getHeight: function() {
-    return window.innerHeight;
+    var height = window.innerHeight;
+    if (height < minHeight) {
+      height = minHeight;
+    }
+    return height;
   },
 
   handleResize: function() {

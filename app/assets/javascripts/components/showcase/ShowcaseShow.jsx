@@ -1,17 +1,16 @@
 //app/assets/javascripts/components/ShowcaseShow.jsx
 var React = require("react");
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
-var ReactDOM = require('react-dom');
 
 var maxShowcaseHeight = 840;
-var showcaseTitleHeight = 40;
+var showcaseTitleHeight = 125;
 var scrollPadding = 80;
 var titleSectionWidthPercent = 0.85;
 var minBackgroundBlur = 0.3;
 var maxBackgroundBlur = 0.8;
 
 var ShowcaseShow = React.createClass({
-  mixins: [CollectionUrlMixin, IEMixin, PageHeightMixin, LoadRemoteMixin ],
+  mixins: [CollectionUrlMixin, IEMixin, LoadRemoteMixin ],
   displayName: "Showcase Show",
   propTypes: {
     collection: React.PropTypes.object,
@@ -162,7 +161,7 @@ var ShowcaseShow = React.createClass({
             >
               <SectionShow
                 section={this.state.currentSection}
-                height={this.state.height}
+                height={this.props.height}
               />
             </DialogWindow>
             <ShowcaseInnerContent height={showcaseInnerHeight} showcase={this.props.showcase} />
