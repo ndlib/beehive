@@ -148,7 +148,6 @@ var ShowcaseShow = React.createClass({
         <AttentionHelp start={this.state.startTime} hasScrolled={this.state.hasScrolled} />
         <ShowcaseBackground percentBlur={backgroundBlur} height={this.props.height} showcase={this.props.showcase} />
         <ShowcaseTitleBar percentFade={this.state.titleSectionPercentVisible} height={showcaseTitleHeight} showcase={this.props.showcase} />
-        <div className="bla">
         <ReactCSSTransitionGroup
           transitionName="showcase-slide-in"
           transitionAppear={true}
@@ -156,7 +155,7 @@ var ShowcaseShow = React.createClass({
           transitionEnterTimeout={0}
           transitionLeaveTimeout={0}>
           <div id="showcase-outer" ref="showcaseOuter" className="showcase-outer" style={this.styleOuter(showcaseHeight)} onScroll={this.onScroll}>
-            <Scroller target="#showcase-outer" />
+            <Scroller target="#showcase-outer" height={this.props.height} />
             <DialogWindow
               previousUrl={prev}
               nextUrl={next}
@@ -169,7 +168,6 @@ var ShowcaseShow = React.createClass({
             <ShowcaseInnerContent height={showcaseInnerHeight} showcase={this.props.showcase} />
           </div>
         </ReactCSSTransitionGroup>
-        </div>
       </div>
     );
   }
