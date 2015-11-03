@@ -22,11 +22,16 @@ var Scroller = React.createClass({
     });
   },
 
+  top: function () {
+    return (this.props.height / 2);
+  },
+
   style: function() {
     return {
+      top:  this.top() + "px",
       cursor: "pointer",
       fontSize: "3em",
-      zIndex: 1,
+      zIndex: 100,
     };
   },
 
