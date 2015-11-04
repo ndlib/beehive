@@ -11,6 +11,10 @@ var SectionShow = React.createClass({
     height: React.PropTypes.number,
   },
 
+  closeDialog: function () {
+    SectionActions.hideSectionDialogWindow();
+  },
+
   render: function() {
     var prev, next, offsetTop;
     if (this.props.height) {
@@ -29,7 +33,7 @@ var SectionShow = React.createClass({
           <div>
             <mui.AppBar
               title={this.props.section.item.name}
-              iconElementRight={<div>X</div>}
+              iconElementRight={<mui.FlatButton onClick={this.closeDialog}><mui.FontIcon className="material-icons">clear</mui.FontIcon></mui.FlatButton>}
               iconElementLeft={<div/>}
             />
             {prev}

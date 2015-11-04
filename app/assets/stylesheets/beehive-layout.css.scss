@@ -156,3 +156,27 @@ $scrollbar-color: #666;
     opacity: 0.7;
   }
 }
+
+.openseadragon-container {
+  z-index: 1;
+}
+
+/* openseadragon */
+.os-toolbar {
+  position: absolute !important;
+  z-index: 100;
+
+  a {
+    color: white;
+    margin-right: 8px;
+
+    &:hover {
+      text-decoration: none;
+      color: white;
+    }
+  }
+
+  i {
+    text-shadow: 1px 1px 1px #000;
+  }
+}

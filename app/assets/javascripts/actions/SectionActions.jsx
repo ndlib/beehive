@@ -15,6 +15,8 @@ class SectionActions {
   }
 
   hideSectionDialogWindow() {
+    this.setCurrentSection(null);
+    window.location.hash = "";
     EventEmitter.emit("SectionDialogWindow", 'hide');
   }
 
