@@ -11,18 +11,6 @@ var ItemShow = React.createClass({
     height: React.PropTypes.number,
   },
 
-  getInitialState: function() {
-    return {
-      showDetails: true,
-    };
-  },
-
-  toggleDetails: function() {
-    this.setState({
-      showDetails: !this.state.showDetails,
-    });
-  },
-
   outerStyles: function() {
     if (this.props.height) {
       return {
@@ -62,20 +50,6 @@ var ItemShow = React.createClass({
     }
   },
 
-  detailsButtonStyle: function() {
-    return {
-      backgroundColor: this.state.showDetails ? "#ccc" : "#fff",
-    };
-  },
-
-  detailsStyle: function() {
-    return {
-      maxHeight: this.state.showDetails ? "70%" : "0",
-      width: this.state.showDetails ? "30%" : "0",
-      float: 'right',
-    };
-  },
-
   render: function() {
     var prevLink, nextLink, offsetTop;
     if (this.props.height) {
@@ -84,13 +58,7 @@ var ItemShow = React.createClass({
     if (this.props.item) {
       return (
         <div className="item-detail" style={this.outerStyles()}>
-          <div className="details" style={this.detailsStyle()}>
-            <button style={ {zIndex: "4000000"} } className="btn btn-default btn-raised pull-right btn-details" onClick={this.toggleDetails} style={this.detailsButtonStyle()}>
-              <i className='material-icons'>{this.state.showDetails ? "visibility_off" : "visibility"}</i>
-              Details
-            </button>
-            <Details item={this.props.item} additionalDetails={this.props.additionalDetails} />
-          </div>
+          <Details item={this.props.item} additionalDetails={this.props.additionalDetails} />
           <div className="item-detail-zoom" style={this.zoomStyles()}>
             <OpenseadragonViewer
               image={this.props.item.image}

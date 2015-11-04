@@ -51,7 +51,6 @@ var CollectionShow = React.createClass({
           primary={true}
           linkButton={true}
           href={this.viewExhibitUrl()}
-          style={this.style()}
         > 
             <mui.FontIcon className="material-icons">arrow_forward</mui.FontIcon>
         </mui.FloatingActionButton>
