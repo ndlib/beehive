@@ -11,7 +11,7 @@ module.exports = {
     primary2Color: 'rgba(0, 0, 0, 0.541176)',
     primary3Color: Colors.lightBlack,
     accent1Color: '#2c5882',
-    accent2Color: '#3b6893',
+    accent2Color: 'rgba(0, 0, 0, 0.541176)',
     accent3Color: Colors.grey500,
     textColor: Colors.darkBlack,
     alternateTextColor: Colors.white,

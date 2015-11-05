@@ -3,6 +3,8 @@ var React = require('react');
 var mui = require('material-ui');
 
 var SectionShow = React.createClass({
+  mixins: [ CurrentThemeMixin ],
+
   displayName: 'Section Show',
   propTypes: {
     section: React.PropTypes.object.isRequired,
@@ -13,6 +15,12 @@ var SectionShow = React.createClass({
 
   closeDialog: function () {
     SectionActions.hideSectionDialogWindow();
+  },
+
+  styles: function () {
+    return {
+      backgroundColor: '#fff',
+    }
   },
 
   render: function() {
@@ -31,12 +39,12 @@ var SectionShow = React.createClass({
         // layout for section with item
         return (
           <div>
-            <mui.Toolbar>
-              <mui.ToolbarGroup key={0} float="left">
-                <mui.ToolbarTitle text={this.props.section.item.name} />
+            <mui.Toolbar style={this.styles()} >
+              <mui.ToolbarGroup key={0} float="left" >
+                <mui.ToolbarTitle text={this.props.section.item.name}/>
               </mui.ToolbarGroup>
               <mui.ToolbarGroup key={1} float="right">
-                <mui.FlatButton onClick={this.closeDialog}><mui.FontIcon className="material-icons">clear</mui.FontIcon></mui.FlatButton>
+                <mui.FlatButton onClick={this.closeDialog}><mui.FontIcon className="material-icons">close</mui.FontIcon></mui.FlatButton>
               </mui.ToolbarGroup>
             </mui.Toolbar>
             {prev}
@@ -48,12 +56,12 @@ var SectionShow = React.createClass({
         // layout for section without item
         return (
           <div>
-            <mui.Toolbar>
+            <mui.Toolbar style={this.styles()} >
               <mui.ToolbarGroup key={0} float="left">
                 <mui.ToolbarTitle text={this.props.section.title} />
               </mui.ToolbarGroup>
               <mui.ToolbarGroup key={1} float="right">
-                <mui.FlatButton onClick={this.closeDialog}><mui.FontIcon className="material-icons">clear</mui.FontIcon></mui.FlatButton>
+                <mui.FlatButton onClick={this.closeDialog}><mui.FontIcon className="material-icons">close</mui.FontIcon></mui.FlatButton>
               </mui.ToolbarGroup>
             </mui.Toolbar>
             {prev}
