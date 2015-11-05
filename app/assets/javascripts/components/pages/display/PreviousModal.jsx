@@ -2,7 +2,7 @@
 var React = require('react');
 
 var PreviousModal = React.createClass({
-  mixins: [CollectionUrlMixin, LoadRemoteMixin, PrevNextMixin],
+  mixins: [CollectionUrlMixin, LoadRemoteMixin, PrevNextMixin, CurrentThemeMixin],
 
   displayName: 'Previous Modal Link',
 

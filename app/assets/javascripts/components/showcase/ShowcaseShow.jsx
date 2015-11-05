@@ -73,6 +73,9 @@ var ShowcaseShow = React.createClass({
     this.setState({currentSection: section});
   },
 
+  removeCurrentSection: function () {
+    this.setState({currentSection: null});
+  },
 
   styleOuter: function(height) {
     return {
@@ -95,6 +98,7 @@ var ShowcaseShow = React.createClass({
   componentWillMount: function(){
     document.body.className = document.body.className + " showcase-bg";
     EventEmitter.on("SectionDialogWindow", this.setCurrentSection);
+    EventEmitter.on("HideSectionDialogWindow", this.removeCurrentSection);
     if(window.location.hash) {
       var url = this.remoteUrlBase() + "sections/" + window.location.hash.replace("#", "");
       this.loadRemoteSection(url);

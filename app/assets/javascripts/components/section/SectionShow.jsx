@@ -31,11 +31,14 @@ var SectionShow = React.createClass({
         // layout for section with item
         return (
           <div>
-            <mui.AppBar
-              title={this.props.section.item.name}
-              iconElementRight={<mui.FlatButton onClick={this.closeDialog}><mui.FontIcon className="material-icons">clear</mui.FontIcon></mui.FlatButton>}
-              iconElementLeft={<div/>}
-            />
+            <mui.Toolbar>
+              <mui.ToolbarGroup key={0} float="left">
+                <mui.ToolbarTitle text={this.props.section.item.name} />
+              </mui.ToolbarGroup>
+              <mui.ToolbarGroup key={1} float="right">
+                <mui.FlatButton onClick={this.closeDialog}><mui.FontIcon className="material-icons">clear</mui.FontIcon></mui.FlatButton>
+              </mui.ToolbarGroup>
+            </mui.Toolbar>
             {prev}
             {next}
             <ItemShow height={this.props.height} item={this.props.section.item} additionalDetails={this.props.section.description}/>
@@ -45,11 +48,14 @@ var SectionShow = React.createClass({
         // layout for section without item
         return (
           <div>
-            <mui.AppBar
-              title={this.props.section.title}
-              iconElementRight={<div>X</div>}
-              iconElementLeft={<div/>}
-            />
+            <mui.Toolbar>
+              <mui.ToolbarGroup key={0} float="left">
+                <mui.ToolbarTitle text={this.props.section.title} />
+              </mui.ToolbarGroup>
+              <mui.ToolbarGroup key={1} float="right">
+                <mui.FlatButton onClick={this.closeDialog}><mui.FontIcon className="material-icons">clear</mui.FontIcon></mui.FlatButton>
+              </mui.ToolbarGroup>
+            </mui.Toolbar>
             {prev}
             {next}
             <SectionShowDescription height={this.props.height} section={this.props.section} />
