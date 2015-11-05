@@ -14,10 +14,13 @@
     if (this.props.offsetTop) {
       return {
         top: this.props.offsetTop + 'px',
-        zIndex: 1,
+        zIndex: 100,
+        backgroundColor: this.getCurrentPallette().accent3Color,
       };
     } else {
-      return {};
+      return {
+        backgroundColor: this.getCurrentPallette().accent3Color,
+      };
     }
   },
 

@@ -45,6 +45,7 @@ var Details = React.createClass({
   detailsStyle: function () {
     return {
       display: this.state.showDetails ? "block" : 'none',
+      padding: "10px",
     }
   },
 

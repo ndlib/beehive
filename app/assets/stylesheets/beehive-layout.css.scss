@@ -180,3 +180,54 @@ $scrollbar-color: #666;
     text-shadow: 1px 1px 1px #000;
   }
 }
+
+
+$circle-size: 70px;
+$circle-offset: $circle-size / 2 * -1;
+$icon-size: 30px;
+$icon-top: ($circle-size - $icon-size) / 2;
+$icon-offset: ($circle-size/2) - $icon-size;
+
+.half-circle-button {
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0;
+  // Setting a negative margin-top so top will be relative to the center of the button
+  margin-top: $circle-offset;
+  width: $circle-size;
+  height: $circle-size;
+  color: black;
+  text-align: center;
+  line-height: $circle-size;
+  position: absolute;
+  top: 300px;
+  z-index: 100;
+
+  &:hover, &:active {
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.6);
+    color: black;
+  }
+
+  i {
+    font-size: $icon-size;
+    position: absolute;
+    top: $icon-top;
+  }
+}
+
+.next-button {
+  right: $circle-offset;
+
+  i {
+    left: $icon-offset;
+  }
+}
+
+.prev-button {
+  left: $circle-offset;
+
+  i {
+    right: $icon-offset;
+  }
+}

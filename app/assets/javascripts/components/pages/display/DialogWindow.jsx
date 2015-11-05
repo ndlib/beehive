@@ -8,6 +8,7 @@ var DialogWindow = React.createClass({
   componentWillMount: function() {
     EventEmitter.on("ItemDialogWindow", this.showWindow);
     EventEmitter.on("SectionDialogWindow", this.showWindow);
+    EventEmitter.on("HideSectionDialogWindow", this.hideWindow);
   },
 
   getInitialState: function () {
