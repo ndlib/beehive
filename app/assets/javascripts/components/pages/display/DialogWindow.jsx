@@ -82,10 +82,14 @@ var DialogWindow = React.createClass({
         contentStyle={{
           width: '100%',
           maxWidth: '100%',
+          padding: 0,
+          top: 0,
         }}
         bodyStyle={{
           width: '100%',
-          maxWidth: '100%'
+          maxWidth: '100%',
+          padding: 0,
+          top: 0,
         }}
       >
         <div>

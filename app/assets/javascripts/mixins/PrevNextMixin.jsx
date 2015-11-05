@@ -16,10 +16,12 @@
         top: this.props.offsetTop + 'px',
         zIndex: 100,
         backgroundColor: this.getCurrentPallette().accent3Color,
+        color: '#fff',
       };
     } else {
       return {
         backgroundColor: this.getCurrentPallette().accent3Color,
+        color: '#fff',
       };
     }
   },
