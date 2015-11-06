@@ -52,7 +52,7 @@ $scrollbar-color: #666;
 @keyframes slidein {
 
   0% {
-    margin-left: 40vw;
+    margin-left: 100%;
   }
 
   55% {
@@ -66,7 +66,7 @@ $scrollbar-color: #666;
 
 
 .showcase-slide-in-appear {
-  margin-left: 40vw;
+  margin-left: 100vw;
 }
 
 .showcase-slide-in-appear.showcase-slide-in-appear-active {
