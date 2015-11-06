@@ -4,7 +4,7 @@ var mui = require('material-ui');
 var CollectionLeftNav = require('./CollectionLeftNav');
 
 var CollectionPageHeader = React.createClass({
-  mixins: [CollectionUrlMixin, TitleConcatMixin],
+  mixins: [CollectionUrlMixin, TitleConcatMixin, CurrentThemeMixin],
 
   propTypes: {
     collection: React.PropTypes.object.isRequired,
@@ -42,14 +42,11 @@ var CollectionPageHeader = React.createClass({
           <SearchBox collection={this.props.collection} />
         </div>
 
-        <mui.Tabs style={ {float:'right'} }>
+        <mui.Tabs style={ {float:'right', backgroundColor: "none" } } tabItemContainerStyle={{backgroundColor: "none" }}>
           <mui.Tab label="Browse Collection" route="browse" onActive={this._handleSearchTab} >
           </mui.Tab>
           <mui.Tab label="About" payload="/about" onActive={this._handleSearchTab} >
           </mui.Tab>
-          <mui.Tab
-            label="Item Three"
-            route="search" />
         </mui.Tabs>
       </div>
     );

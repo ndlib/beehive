@@ -9,7 +9,7 @@ module.exports = {
   palette: {
     primary1Color: 'rgba(0, 0, 0, 0.641176)',
     primary2Color: 'rgba(0, 0, 0, 0.541176)',
-    primary3Color: Colors.lightBlack,
+    primary3Color: Colors.white,
     accent1Color: '#2c5882',
     accent2Color: 'rgba(0, 0, 0, 0.541176)',
     accent3Color: Colors.grey500,

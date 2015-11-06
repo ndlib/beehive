@@ -3,7 +3,7 @@ var React = require('react');
 var mui = require('material-ui');
 
 var Showcase = React.createClass({
-  mixins: [PageHeightMixin, LoadRemoteMixin, MuiThemeMixin],
+  mixins: [PageHeightMixin, LoadRemoteMixin, MuiThemeMixin, CurrentThemeMixin],
 
   propTypes: {
     collection: React.PropTypes.oneOfType([
@@ -61,13 +61,14 @@ var Showcase = React.createClass({
     }
     // this is a div instead of mui.AppCanvas because of a bug in 12.3 which is fixed in master.  
     return (
-      <div style={ {backgroundColor: 'inherit' }}>
+      <mui.AppCanvas>
         <CollectionPageHeader collection={this.state.collection} dropdown={true} />
         <PageContent fluidLayout={true}>
           {showcaseShow}
         </PageContent>
-      <CollectionPageFooter collection={this.state.collection} />
-    </div>);
+        <CollectionPageFooter collection={this.state.collection} />
+      </mui.AppCanvas>
+    );
   }
 });
 
