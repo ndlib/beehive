@@ -3,7 +3,7 @@ var React = require('react');
 var mui = require('material-ui');
 
 var ShowcaseTitleBar = React.createClass({
-  mixins: [MuiThemeMixin],
+  mixins: [ MuiThemeMixin, CurrentThemeMixin ],
 
   displayName: 'Showcase Title Bar',
 
@@ -23,7 +23,14 @@ var ShowcaseTitleBar = React.createClass({
   style: function() {
     return {
       opacity: 1 - this.props.percentFade,
+      backgroundColor: this.getCurrentPallette().primary2Color,
     };
+  },
+
+  titleStyle: function () {
+    return {
+      color: this.getCurrentPallette().alternateTextColor,
+    }
   },
 
   name: function () {
@@ -34,7 +41,7 @@ var ShowcaseTitleBar = React.createClass({
     if (this.props.showcase) {
       return (
         <mui.Toolbar style={this.style()}>
-          <mui.ToolbarTitle text={this.name()} description="Description!!" />
+          <mui.ToolbarTitle text={this.name()} description="Description!!" style={this.titleStyle()} />
         </mui.Toolbar>
       );
     } else {

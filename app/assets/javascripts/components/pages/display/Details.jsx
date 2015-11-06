@@ -3,6 +3,7 @@ var React = require("react");
 var mui = require("material-ui");
 
 var Details = React.createClass({
+  mixins: [ CurrentThemeMixin ],
 
   propTypes: {
     item: React.PropTypes.object,
@@ -22,12 +23,18 @@ var Details = React.createClass({
   },
 
   detailsButtonStyle: function() {
-    return {
-      backgroundColor: this.state.showDetails ? "#ccc" : "#fff",
+    var arr = {
+      backgroundColor: this.getCurrentPallette().accent3Color,
       position: "absolute",
-      left: this.state.showDetails ? "-15px" : "95%",
-      top: "-15px"
+      top: "-20px"
     };
+    if (this.state.showDetails) {
+      arr["left"] = "-20px";
+    } else {
+      arr["right"] = "-20px";
+    }
+
+    return arr;
   },
 
   paperStyle: function() {

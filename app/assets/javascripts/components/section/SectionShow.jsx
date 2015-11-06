@@ -19,7 +19,7 @@ var SectionShow = React.createClass({
 
   styles: function () {
     return {
-      backgroundColor: '#fff',
+      backgroundColor: this.getCurrentPallette.primary3Color,
     }
   },
 

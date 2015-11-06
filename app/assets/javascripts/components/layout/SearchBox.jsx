@@ -54,8 +54,9 @@ var SearchBox = React.createClass({
         />
         <mui.RaisedButton
           onClick={this.onClick}
-          style={{zIndex: '0'}}
-          primary={true}
+          style={{zIndex: '0' }}
+          primary={false}
+          secondary={true}
         >
           <mui.FontIcon className="material-icons" style={this.lightIconStyle()}>search</mui.FontIcon>
         </mui.RaisedButton>
