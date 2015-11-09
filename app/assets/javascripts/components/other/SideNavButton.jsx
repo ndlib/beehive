@@ -48,7 +48,7 @@ var SideNavButton = React.createClass({
       height: "70px",
       textAlign: "center",
       lineHeight: "70px",
-      position: "absolute",
+      position: "fixed",
       zIndex: "100",
     };
 
