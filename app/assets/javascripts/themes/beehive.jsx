@@ -12,7 +12,7 @@ module.exports = {
     primary3Color: Colors.white,
     accent1Color: '#2c5882',
     accent2Color: 'rgba(0, 0, 0, 0.541176)',
-    accent3Color: Colors.grey500,
+    accent3Color: Colors.grey400,
     textColor: Colors.darkBlack,
     alternateTextColor: Colors.white,
     canvasColor: Colors.white,
