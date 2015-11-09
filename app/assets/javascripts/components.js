@@ -95,7 +95,6 @@ SectionShowDescription = require("./components/section/SectionShowDescription");
 SectionCard = require("./components/section/cards/SectionCard");
 
 // dislplay -- for items and sections
-DialogWindow = require("./components/pages/display/DialogWindow");
 Details = require("./components/pages/display/Details");
 MetadataList = require("./components/pages/display/MetadataList");
 MetadataItem = require("./components/pages/display/MetadataItem");
