@@ -42,6 +42,7 @@ var SideNavButton = React.createClass({
     var styles = {
       top: (this.props.offsetTop - 70) + 'px',
       zIndex: 100,
+      opacity: hovered ? "1" : "0.7",
       backgroundColor: hovered ? ColorManipulator.darken(this.getCurrentPallette().accent3Color, .2) : this.getCurrentPallette().accent3Color,
       borderRadius: "50%",
       display: "inline-block",
