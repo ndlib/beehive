@@ -32,7 +32,7 @@ var ShowcasesCardList = React.createClass({
     }
     if (this.props.showcases.length > 0 || this.props.intro) {
       return (
-        <mui.GridList padding={theme.spacing.desktopGutter}>
+        <mui.GridList padding={theme.spacing.desktopGutter} cellHeight="500">
           {this.allNodes()}
         </mui.GridList>
       );

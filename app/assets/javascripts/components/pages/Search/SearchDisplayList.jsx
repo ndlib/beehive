@@ -156,15 +156,12 @@ var SearchDisplayList = React.createClass({
     }
     return (
       <div className='items-list' style={this.outerStyle()}>
-        <DialogWindow
-          previousUrl={prev}
-          nextUrl={next}
-        >
           <ItemShow
             item={this.state.currentItem}
             height={this.state.height}
           />
-        </DialogWindow>
+        {prev}
+        {next}
         <div className="row">
           {this.searchResults()}
         </div>
