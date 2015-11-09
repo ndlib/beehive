@@ -2,9 +2,10 @@
 var React = require('react');
 var mui = require('material-ui');
 var CloseButton = require('../other/CloseButton');
+var SideNavButton = require("../other/SideNavButton");
 
 var SectionShow = React.createClass({
-  mixins: [ CurrentThemeMixin ],
+  mixins: [ CurrentThemeMixin, LoadRemoteMixin ],
 
   displayName: 'Section Show',
   propTypes: {
@@ -69,6 +70,33 @@ var SectionShow = React.createClass({
     }
   },
 
+  clickNextEvent: function(event) {
+    if(this.props.nextUrl) {
+      this.clickSideNavEvent(event, this.props.nextUrl);
+    }
+  },
+
+  clickPrevEvent: function(event) {
+    if(this.props.previousUrl) {
+      this.clickSideNavEvent(event, this.props.previousUrl);
+    }
+  },
+
+  clickSideNavEvent: function(event, url) {
+    event.preventDefault();
+    var id = url.split("/").pop();
+    window.location.hash = id;
+    if(url.indexOf('item') > -1) {
+      this.loadRemoteItem(url);
+    }
+    else if(url.indexOf('section') > -1) {
+      this.loadRemoteSection(url);
+    }
+    else {
+      console.log('an invalid url was provided', this.props.url);
+    }
+  },
+
   render: function() {
     var prev, next, offsetTop;
     if (this.props.height) {
@@ -76,10 +104,10 @@ var SectionShow = React.createClass({
     }
     if (this.props.section) {
       if(this.props.previousUrl) {
-        prev = (<PreviousModal url={this.props.previousUrl} />);
+        prev = (<SideNavButton clickEvent={this.clickPrevEvent} />);
       }
       if(this.props.nextUrl) {
-        next = (<NextModal url={this.props.nextUrl} />);
+        next = (<SideNavButton clickEvent={this.clickNextEvent} rightIcon={true} />);
       }
 
       return (
@@ -92,9 +120,7 @@ var SectionShow = React.createClass({
     } else {
       return null;
     }
-
   }
-
 });
 
 // each file will export exactly one component
