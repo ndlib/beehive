@@ -23,6 +23,12 @@ var SectionShow = React.createClass({
     }
   },
 
+  titleStyle: function () {
+    return {
+      color: this.getCurrentPallette().textColor,
+    }
+  },
+
   render: function() {
     var prev, next, offsetTop;
     if (this.props.height) {
@@ -38,10 +44,10 @@ var SectionShow = React.createClass({
       if (this.props.section.item) {
         // layout for section with item
         return (
-          <div>
+          <mui.Paper>
             <mui.Toolbar style={this.styles()} >
               <mui.ToolbarGroup key={0} float="left" >
-                <mui.ToolbarTitle text={this.props.section.item.name}/>
+                <mui.ToolbarTitle text={this.props.section.item.name} style={this.titleStyle()} />
               </mui.ToolbarGroup>
               <mui.ToolbarGroup key={1} float="right">
                 <mui.FlatButton onClick={this.closeDialog}><mui.FontIcon className="material-icons">close</mui.FontIcon></mui.FlatButton>
@@ -50,15 +56,15 @@ var SectionShow = React.createClass({
             {prev}
             {next}
             <ItemShow height={this.props.height} item={this.props.section.item} additionalDetails={this.props.section.description}/>
-          </div>
+          </mui.Paper>
         );
       } else {
         // layout for section without item
         return (
-          <div>
+          <mui.Paper>
             <mui.Toolbar style={this.styles()} >
               <mui.ToolbarGroup key={0} float="left">
-                <mui.ToolbarTitle text={this.props.section.title} />
+                <mui.ToolbarTitle text={this.props.section.title} style={this.titleStyle()}  />
               </mui.ToolbarGroup>
               <mui.ToolbarGroup key={1} float="right">
                 <mui.FlatButton onClick={this.closeDialog}><mui.FontIcon className="material-icons">close</mui.FontIcon></mui.FlatButton>
@@ -67,7 +73,7 @@ var SectionShow = React.createClass({
             {prev}
             {next}
             <SectionShowDescription height={this.props.height} section={this.props.section} />
-          </div>
+          </mui.Paper>
         );
       }
     } else {

@@ -21,13 +21,7 @@ var SectionShowDescription = React.createClass({
 
   render: function() {
     return (
-      <div style={this.styles()}>
-        <div className="row">
-          <div className="col-md-12">
-            <div dangerouslySetInnerHTML={{__html: this.props.section.description}} />
-          </div>
-        </div>
-      </div>
+      <EssayContent content={this.props.section.description} />
     );
   }
 

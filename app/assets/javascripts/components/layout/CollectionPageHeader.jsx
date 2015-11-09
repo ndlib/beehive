@@ -27,13 +27,32 @@ var CollectionPageHeader = React.createClass({
     });
   },
 
+  titleStyle: function () {
+    var themeVariables = this.getCurrentTheme().appBar;
+
+    return {
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      margin: 0,
+      paddingTop: 0,
+      letterSpacing: 0,
+      fontSize: 24,
+      color: themeVariables.alternateTextColor,
+      lineHeight: themeVariables.height + 'px',
+    };
+  },
+
   _handleSearchTab: function () {
     window.location.href = this.browseUrl(this.props.collection);
   },
 
   render: function() {
     var title = (
-      this.props.collection.name_line_1
+      <a style={{ textDecoration: "none", color: this.getCurrentPallette().alternateTextColor }}
+        href={this.collectionUrl(this.props.collection)}>
+          <h1 style={this.titleStyle()}>{this.props.collection.name_line_1}</h1>
+      </a>
     );
 
     var rightNav = (
