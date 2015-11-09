@@ -1,9 +1,10 @@
 //app/assets/javascripts/components/ShowcaseTitleBar.jsx
 var React = require('react');
 var mui = require('material-ui');
+var CloseButton = require('../other/CloseButton');
 
 var ShowcaseTitleBar = React.createClass({
-  mixins: [ MuiThemeMixin, CurrentThemeMixin ],
+  mixins: [ MuiThemeMixin, CurrentThemeMixin, CollectionUrlMixin],
 
   displayName: 'Showcase Title Bar',
 
@@ -37,11 +38,21 @@ var ShowcaseTitleBar = React.createClass({
     return this.props.showcase.name_line_1;
   },
 
+  clickCloseButton: function() {
+    var url = window.location.pathname.split("/");
+    window.location.href = "/" + url[1] + "/" + url[2];
+  },
+
   render: function() {
     if (this.props.showcase) {
       return (
         <mui.Toolbar style={this.style()}>
-          <mui.ToolbarTitle text={this.name()} description="Description!!" style={this.titleStyle()} />
+          <mui.ToolbarGroup key={0} float="left">
+            <mui.ToolbarTitle text={this.name()} style={this.titleStyle()} />
+          </mui.ToolbarGroup>
+          <mui.ToolbarGroup key={1} float="right">
+            <CloseButton clickEvent={this.clickCloseButton} alternate={true} />
+          </mui.ToolbarGroup>
         </mui.Toolbar>
       );
     } else {

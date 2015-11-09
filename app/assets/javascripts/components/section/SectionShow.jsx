@@ -1,6 +1,7 @@
 'use strict'
 var React = require('react');
 var mui = require('material-ui');
+var CloseButton = require('../other/CloseButton');
 
 var SectionShow = React.createClass({
   mixins: [ CurrentThemeMixin ],
@@ -29,13 +30,42 @@ var SectionShow = React.createClass({
     }
   },
 
-  pageStyles: function () {
+  pageStyles: function() {
     return {
       height: this.props.height + "px",
       width: "100%",
       position: "fixed",
       backgroundColor: this.getCurrentPallette().canvasColor,
       zIndex: "1000",
+    }
+  },
+
+  title: function() {
+    if (this.props.section.item) {
+      return this.props.section.item.name;
+    } else {
+      return this.props.section.title;
+    }
+  },
+
+  toolbar: function() {
+    return (
+      <mui.Toolbar style={this.styles()} >
+        <mui.ToolbarGroup key={0} float="left" >
+          <mui.ToolbarTitle text={this.title()} style={this.titleStyle()} />
+        </mui.ToolbarGroup>
+        <mui.ToolbarGroup key={1} float="right">
+          <CloseButton clickEvent={this.closeDialog} />
+        </mui.ToolbarGroup>
+      </mui.Toolbar>
+    )
+  },
+
+  contentSection: function() {
+    if (this.props.section.item) {
+      return (<ItemShow height={this.props.height} item={this.props.section.item} additionalDetails={this.props.section.description}/>)
+    } else {
+      return (<SectionShowDescription height={this.props.height} section={this.props.section} />)
     }
   },
 
@@ -51,41 +81,14 @@ var SectionShow = React.createClass({
       if(this.props.nextUrl) {
         next = (<NextModal url={this.props.nextUrl} />);
       }
-      if (this.props.section.item) {
-        // layout for section with item
-        return (
-          <mui.Paper style={this.pageStyles()}>
-            <mui.Toolbar style={this.styles()} >
-              <mui.ToolbarGroup key={0} float="left" >
-                <mui.ToolbarTitle text={this.props.section.item.name} style={this.titleStyle()} />
-              </mui.ToolbarGroup>
-              <mui.ToolbarGroup key={1} float="right">
-                <mui.FlatButton onClick={this.closeDialog}><mui.FontIcon className="material-icons">close</mui.FontIcon></mui.FlatButton>
-              </mui.ToolbarGroup>
-            </mui.Toolbar>
-            {prev}
-            {next}
-            <ItemShow height={this.props.height} item={this.props.section.item} additionalDetails={this.props.section.description}/>
-          </mui.Paper>
-        );
-      } else {
-        // layout for section without item
-        return (
-          <mui.Paper style={this.pageStyles()}>
-            <mui.Toolbar style={this.styles()} >
-              <mui.ToolbarGroup key={0} float="left">
-                <mui.ToolbarTitle text={this.props.section.title} style={this.titleStyle()}  />
-              </mui.ToolbarGroup>
-              <mui.ToolbarGroup key={1} float="right">
-                <mui.FlatButton onClick={this.closeDialog}><mui.FontIcon className="material-icons">close</mui.FontIcon></mui.FlatButton>
-              </mui.ToolbarGroup>
-            </mui.Toolbar>
-            {prev}
-            {next}
-            <SectionShowDescription height={this.props.height} section={this.props.section} />
-          </mui.Paper>
-        );
-      }
+
+      return (
+        <mui.Paper style={this.pageStyles()}>
+          {this.toolbar()}
+          {prev}
+          {next}
+          {this.contentSection()}
+        </mui.Paper>);
     } else {
       return null;
     }

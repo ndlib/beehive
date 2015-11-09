@@ -21,7 +21,9 @@ var SectionShowDescription = React.createClass({
 
   render: function() {
     return (
-      <EssayContent content={this.props.section.description} />
+      <PageContent>
+        <EssayContent content={this.props.section.description} />
+      </PageContent>
     );
   }
 
