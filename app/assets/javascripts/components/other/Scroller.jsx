@@ -1,4 +1,5 @@
 var React = require("react");
+var SideNavButton = require("./SideNavButton");
 
 var Scroller = React.createClass({
   propTypes: {
@@ -37,13 +38,13 @@ var Scroller = React.createClass({
     if(this.state.element) {
       if(this.state.element.scrollLeft > 0) {
         left = (
-          <SideNavButton clickEvent={this.onMouseDown.bind(this, -1)} />
+          <SideNavButton onMouseDown={this.onMouseDown.bind(this, -1)} />
         );
       }
 
       if(this.state.element.scrollLeft < this.maxScroll() - 10) {
         right = (
-          <SideNavButton clickEvent={this.onMouseDown.bind(this, 1)} rightIcon={true} />
+          <SideNavButton onMouseDown={this.onMouseDown.bind(this, 1)} rightIcon={true} />
         );
       }
     }
