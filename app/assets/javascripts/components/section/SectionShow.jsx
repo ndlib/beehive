@@ -104,10 +104,10 @@ var SectionShow = React.createClass({
     }
     if (this.props.section) {
       if(this.props.previousUrl) {
-        prev = (<SideNavButton clickEvent={this.clickPrevEvent} />);
+        prev = (<SideNavButton onClick={this.clickPrevEvent} />);
       }
       if(this.props.nextUrl) {
-        next = (<SideNavButton clickEvent={this.clickNextEvent} rightIcon={true} />);
+        next = (<SideNavButton onClick={this.clickNextEvent} rightIcon={true} />);
       }
 
       return (

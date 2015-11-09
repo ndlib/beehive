@@ -6,7 +6,8 @@ var SideNavButton = React.createClass({
   mixins: [CurrentThemeMixin],
 
   propTypes: {
-    clickEvent: React.PropTypes.func.isRequired,
+    onClick: React.PropTypes.func,
+    onMouseDown: React.PropTypes.func,
     offsetTop: React.PropTypes.number,
     rightIcon: React.PropTypes.bool,
     onKeyboardFocus: React.PropTypes.func,
@@ -19,6 +20,8 @@ var SideNavButton = React.createClass({
     return {
       offsetTop: window.innerHeight/2,
       rightIcon: false,
+      onClick: () => {},
+      onMouseDown: () => {},
       onKeyboardFocus: () => {},
       onMouseEnter: () => {},
       onMouseLeave: () => {},
@@ -87,7 +90,8 @@ var SideNavButton = React.createClass({
     var id = this.props.id;
     return (
       <mui.EnhancedButton
-        onClick={this.props.clickEvent}
+        onClick={this.props.onClick}
+        onMouseDown={this.props.onMouseDown}
         style={this.buttonStyles()}
         onKeyboardFocus={this._handleKeyboardFocus}
         onMouseLeave={this._handleMouseLeave}
