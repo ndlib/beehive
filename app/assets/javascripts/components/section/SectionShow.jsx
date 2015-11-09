@@ -7,7 +7,7 @@ var SectionShow = React.createClass({
 
   displayName: 'Section Show',
   propTypes: {
-    section: React.PropTypes.object.isRequired,
+    section: React.PropTypes.object,
     previousSection: React.PropTypes.string,
     nextSection: React.PropTypes.string,
     height: React.PropTypes.number,
@@ -29,6 +29,16 @@ var SectionShow = React.createClass({
     }
   },
 
+  pageStyles: function () {
+    return {
+      height: this.props.height + "px",
+      width: "100%",
+      position: "fixed",
+      backgroundColor: this.getCurrentPallette().canvasColor,
+      zIndex: "1000",
+    }
+  },
+
   render: function() {
     var prev, next, offsetTop;
     if (this.props.height) {
@@ -44,7 +54,7 @@ var SectionShow = React.createClass({
       if (this.props.section.item) {
         // layout for section with item
         return (
-          <mui.Paper>
+          <mui.Paper style={this.pageStyles()}>
             <mui.Toolbar style={this.styles()} >
               <mui.ToolbarGroup key={0} float="left" >
                 <mui.ToolbarTitle text={this.props.section.item.name} style={this.titleStyle()} />
@@ -61,7 +71,7 @@ var SectionShow = React.createClass({
       } else {
         // layout for section without item
         return (
-          <mui.Paper>
+          <mui.Paper style={this.pageStyles()}>
             <mui.Toolbar style={this.styles()} >
               <mui.ToolbarGroup key={0} float="left">
                 <mui.ToolbarTitle text={this.props.section.title} style={this.titleStyle()}  />
