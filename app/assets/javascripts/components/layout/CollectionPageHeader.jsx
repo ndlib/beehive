@@ -43,8 +43,12 @@ var CollectionPageHeader = React.createClass({
     };
   },
 
-  _handleSearchTab: function () {
-    window.location.href = this.browseUrl(this.props.collection);
+  _handleTabs: function (tab) {
+    if (tab.props.value == "browse") {
+      window.location.href = this.browseUrl(this.props.collection);
+    } else {
+
+    }
   },
 
   render: function() {
@@ -61,11 +65,9 @@ var CollectionPageHeader = React.createClass({
           <SearchBox collection={this.props.collection} />
         </div>
 
-        <mui.Tabs style={ {float:'right', backgroundColor: "none" } } tabItemContainerStyle={{backgroundColor: "none" }}>
-          <mui.Tab label="Browse Collection" route="browse" onActive={this._handleSearchTab} >
-          </mui.Tab>
-          <mui.Tab label="About" payload="/about" onActive={this._handleSearchTab} >
-          </mui.Tab>
+        <mui.Tabs style={ {float:'right', backgroundColor: "none" } } value="none" tabItemContainerStyle={{backgroundColor: "none" }}>
+          <mui.Tab label="Browse Collection" value="browse" onActive={this._handleTabs} />
+          <mui.Tab label="About" value="about" onActive={this._handleTabs} />
         </mui.Tabs>
       </div>
     );
