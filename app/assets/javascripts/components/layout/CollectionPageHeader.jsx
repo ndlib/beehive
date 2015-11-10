@@ -44,11 +44,64 @@ var CollectionPageHeader = React.createClass({
   },
 
   _handleTabs: function (tab) {
-    if (tab.props.value == "browse") {
+    if (tab.props.value == "search") {
       window.location.href = this.browseUrl(this.props.collection);
     } else {
 
     }
+  },
+
+  activeTab: function() {
+    var pageCode = window.location.pathname.split("/").slice(-1)[0].split("?")[0];
+
+    if (pageCode == "search") {
+      return "search";
+    } else if (window.location.pathname == this.browseUrl(this.props.collection)) {
+      return "about";
+    }
+    return "none";
+  },
+
+  browseTab: function() {
+    if (this.props.collection.enableBrowse) {
+      return (<mui.Tab label="Browse Collection" value="search" onActive={this._handleTabs} />);
+    } else {
+      return "";
+    }
+  },
+
+  aboutTab: function() {
+    if (this.props.collection.about) {
+      return (<mui.Tab label="About" value="about" onActive={this._handleTabs} />);
+    } else {
+      return "";
+    }
+  },
+
+  availableTabs: function() {
+    var ret = [];
+    if (this.props.collection.enable_browse) {
+      ret.push({label: "Browse Collection", value: "search"});
+    }
+    if (this.props.collection.about) {
+      ret.push({label: "About", value: "about"});
+    }
+    return ret;
+  },
+
+  tabs: function() {
+    var availableTabs = this.availableTabs();
+    if (availableTabs.length > 0) {
+      return  (
+        <mui.Tabs style={ {float:'right', backgroundColor: "none" } } value={this.activeTab()} tabItemContainerStyle={{backgroundColor: "none" }}>
+          {
+            availableTabs.map(function (tab, index) {
+              return(<mui.Tab label={tab.label} value={tab.value} onActive={this._handleTabs} />);
+            }.bind(this))
+          }
+        </mui.Tabs>);
+    }
+    return "";
   },
 
   render: function() {
@@ -65,12 +118,10 @@ var CollectionPageHeader = React.createClass({
           <SearchBox collection={this.props.collection} />
         </div>
 
-        <mui.Tabs style={ {float:'right', backgroundColor: "none" } } value="none" tabItemContainerStyle={{backgroundColor: "none" }}>
-          <mui.Tab label="Browse Collection" value="browse" onActive={this._handleTabs} />
-          <mui.Tab label="About" value="about" onActive={this._handleTabs} />
-        </mui.Tabs>
+        {this.tabs()}
       </div>
     );
+    
     return (
       <mui.Paper circle={false} rounded={false} zDepth={0} style={this.style()}>
         {this.brandBar()}
