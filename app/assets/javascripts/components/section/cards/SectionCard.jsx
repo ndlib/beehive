@@ -19,7 +19,7 @@ var SectionCard = React.createClass({
   },
 
   style: function() {
-    return {
+    var styles = {
       display: 'inline-block',
       verticalAlign: 'top',
       position: 'relative',
@@ -29,8 +29,21 @@ var SectionCard = React.createClass({
       cursor: 'pointer',
       lineHeight: '0px',
       backgroundColor: "rgba(0,0,0,0.3)",
-      border: 'solid 3px #fff',
+      border: this.sectionType() == "image" ? 'solid 3px #fff' : "none",
     };
+    if (this.sectionType() == "text") {
+      styles["maxWidth"] = "33em";
+    }
+    
+    return styles;
+  },
+
+  sectionType: function() {
+    if (this.props.section.item) {
+      return "image";
+    } else {
+      return "text";
+    }
   },
 
   imageStyle: function() {
