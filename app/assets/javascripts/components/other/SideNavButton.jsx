@@ -40,26 +40,26 @@ var SideNavButton = React.createClass({
   buttonStyles: function() {
     var hovered = (this.state.hovered || this.state.isKeyboardFocused);
     var styles = {
-      top: (this.props.offsetTop - 70) + 'px',
+      top: (this.props.offsetTop - 30) + 'px',
       zIndex: 100,
       opacity: hovered ? "1" : "0.7",
       backgroundColor: hovered ? ColorManipulator.darken(this.getCurrentPallette().accent3Color, .2) : this.getCurrentPallette().accent3Color,
       borderRadius: "50%",
       display: "inline-block",
       margin: "0",
-      marginTop: "34px",
-      width: "70px",
-      height: "70px",
+      marginTop: "29px",
+      width: "60px",
+      height: "60px",
       textAlign: "center",
-      lineHeight: "70px",
+      lineHeight: "60px",
       position: "fixed",
       zIndex: "100",
     };
 
     if (this.props.rightIcon) {
-      styles["right"] = "-34px";
+      styles["right"] = "-29px";
     } else {
-      styles["left"] = "-34px";
+      styles["left"] = "-29px";
     }
     return styles;
   },
@@ -69,9 +69,9 @@ var SideNavButton = React.createClass({
 
     var styles = {
       color: hovered ? this.getCurrentPallette().textColor : this.getCurrentPallette().alternateTextColor,
-      fontSize: "30px",
+      fontSize: "25px",
       position: "absolute",
-      top: "20px",
+      top: "17.5px",
     }
     if (this.props.rightIcon) {
       styles["left"] = "5px";
