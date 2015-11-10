@@ -38,6 +38,7 @@ var CollectionLeftNav = React.createClass({
     var options = [];
     var collectionUrl = this.collectionUrl(this.props.collection);
     var introUrl = this.introUrl(this.props.collection);
+    var browseUrl = this.browseUrl(this.props.collection);
 
     options.push((
       {
@@ -46,6 +47,26 @@ var CollectionLeftNav = React.createClass({
         text: 'Home'
       }
     ));
+
+    if (this.props.collection.enable_browse) {
+      options.push((
+        {
+          type: mui.MenuItem.Types.LINK,
+          payload: this.browseUrl(this.props.collection),
+          text: 'Browse Collection'
+        }
+      ));
+    }
+
+    if (this.props.collection.about) {
+      options.push((
+        {
+          type: mui.MenuItem.Types.LINK,
+          payload: "/about",
+          text: "About"
+        }
+      ));
+    }
 
     options.push((
       { type: mui.MenuItem.Types.SUBHEADER, text: 'Showcases' }
