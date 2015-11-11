@@ -43,11 +43,7 @@ var SearchSidebar = React.createClass({
           {this.searchSort()}
           <div className="row" />
           <hr/>
-          <SearchFacets
-            collection={this.props.collection}
-            facets={this.props.facets}
-            selectedFacet={this.props.selectedFacet}
-          />
+
         </div>
         <div
           style={{

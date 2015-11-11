@@ -22,21 +22,6 @@ var ItemShow = React.createClass({
     }
   },
 
-  headerStyles: function() {
-    if (this.props.height) {
-      return {
-        position: "absolute",
-        top: "10px",
-        left: "40px",
-        width: "auto",
-        zIndex: 200,
-        right: "50px",
-      }
-    } else {
-      return {}
-    }
-  },
-
   zoomStyles: function() {
     if (this.props.height) {
       return {

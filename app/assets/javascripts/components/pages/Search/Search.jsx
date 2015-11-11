@@ -1,9 +1,10 @@
 'use strict'
 var React = require('react');
 var mui = require('material-ui');
+var ItemPanel = require("./ItemPanel");
 
 var Search = React.createClass({
-  mixins: [SearchUrlMixin, LoadRemoteMixin, SearchMixin, MuiThemeMixin],
+  mixins: [SearchUrlMixin, LoadRemoteMixin, SearchMixin, MuiThemeMixin ],
 
   propTypes: {
     collection: React.PropTypes.oneOfType([
@@ -67,6 +68,9 @@ var Search = React.createClass({
     return (
       <mui.AppCanvas>
         <CollectionPageHeader collection={this.state.collection} dropdown={true} ></CollectionPageHeader>
+        <PageContent fluidLayout={true}>
+          <ItemPanel />
+        </PageContent>
         <PageContent fluidLayout={false}>
           <SearchDisplayList
             collection={this.state.collection}
