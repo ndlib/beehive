@@ -88,7 +88,6 @@ var SideNavButton = React.createClass({
   },
 
   render: function() {
-    var id = this.props.id;
     return (
       <mui.EnhancedButton
         onClick={this.props.onClick}

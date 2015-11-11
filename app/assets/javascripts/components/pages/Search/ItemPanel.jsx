@@ -70,6 +70,18 @@ var ItemPanel = React.createClass({
     }
   },
 
+  closeButtonClick: function() {
+    ItemActions.hideItemDialogWindow();
+  },
+
+  nextButtonClick: function() {
+    ItemActions.showItemDialogWindow(this.state.currentItem);
+  },
+
+  prevButtonClick: function() {
+    ItemActions.showItemDialogWindow(this.state.currentItem);
+  },
+
   render: function() {
     if (!this.state.currentItem) {
       return (<div />);
@@ -78,7 +90,9 @@ var ItemPanel = React.createClass({
     return (
       <OverlayPage
         title={this.state.currentItem.name}
-        closeButtonClick={ItemActions.hideItemDialogWindow}
+        onCloseButtonClick={this.closeButtonClick}
+        onNextButtonClick={this.nextButtonClick}
+        onPrevButtonClick={this.prevButtonClick}
         >
         <ItemShow item={this.state.currentItem} />
       </OverlayPage>

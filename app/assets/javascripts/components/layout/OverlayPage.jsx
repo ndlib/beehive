@@ -4,7 +4,7 @@ var mui = require('material-ui');
 var CloseButton = require('../other/CloseButton');
 var SideNavButton = require("../other/SideNavButton");
 
-var OverlayPageShow = React.createClass({
+var OverlayPage = React.createClass({
   mixins: [ CurrentThemeMixin, PageHeightMixin ],
   propTypes: {
     title: React.PropTypes.string,
@@ -63,7 +63,7 @@ var OverlayPageShow = React.createClass({
   },
 
   prevButton: function() {
-    if(this.props.prevButtonClick) {
+    if(this.props.onPrevButtonClick) {
       return (<SideNavButton onClick={this.props.onPrevButtonClick} />);
     }
     return "";
@@ -71,15 +71,17 @@ var OverlayPageShow = React.createClass({
 
   render: function() {
     return (
-      <mui.Paper style={this.pageStyles()}>
-        {this.toolbar()}
-        {this.prevButton()}
-        {this.nextButton()}
-        {this.props.children}
-      </mui.Paper>
+      <PageContent fluidLayout={true}>
+        <mui.Paper style={this.pageStyles()}>
+          {this.toolbar()}
+          {this.prevButton()}
+          {this.nextButton()}
+          {this.props.children}
+        </mui.Paper>
+      </PageContent>
     );
   }
 });
 
 // each file will export exactly one component
-module.exports = OverlayPageShow;
+module.exports = OverlayPage;
