@@ -35,6 +35,7 @@ var SearchFacets = React.createClass({
   },
 
   facets: function(){
+    console.log(this);
     self = this;
     var facets = this.props.facets.map(function(e, index) {
       var nodes = [];

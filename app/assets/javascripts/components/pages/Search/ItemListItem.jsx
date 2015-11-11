@@ -1,5 +1,6 @@
 'use strict'
 var React = require('react');
+var mui = require('material-ui');
 
 var ItemListItem = React.createClass({
   propTypes: {
