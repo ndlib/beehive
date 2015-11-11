@@ -57,7 +57,7 @@ var ItemShow = React.createClass({
     }
     if (this.props.item) {
       return (
-        <div className="item-detail" style={this.outerStyles()}>
+        <div style={this.outerStyles()}>
           <Details item={this.props.item} additionalDetails={this.props.additionalDetails} />
           <div className="item-detail-zoom" style={this.zoomStyles()}>
             <OpenseadragonViewer

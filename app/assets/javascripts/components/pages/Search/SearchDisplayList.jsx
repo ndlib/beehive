@@ -52,7 +52,6 @@ var SearchDisplayList = React.createClass({
     if(window.location.hash) {
       var url = this.remoteItem(window.location.hash.replace("#", ""));
       this.loadRemoteItem(url);
-      console.log(url);
     }
   },
 
@@ -69,7 +68,6 @@ var SearchDisplayList = React.createClass({
   outerStyle: function() {
     return {
       width: '100%',
-      backgroundColor: '#f5f5f5',
     };
   },
 
@@ -105,14 +103,11 @@ var SearchDisplayList = React.createClass({
     var mainContent = (
       <div>
         <SearchControls collection={this.props.collection} searchTerm={this.props.searchTerm}/>
-        <SearchPagination
-          collection={this.props.collection}
-          found={this.props.found}
-          start={this.props.start}
-        />
-        <div>
-            {itemNodes}
-        </div>
+        <h2>{this.props.found} Search Results</h2>
+        <mui.GridList style={ {width: "100%" } } >
+          {itemNodes}
+        </mui.GridList>
+
         <SearchPagination
           collection={this.props.collection}
           found={this.props.found}
@@ -122,26 +117,38 @@ var SearchDisplayList = React.createClass({
     );
     if(this.state.sidebar) {
       return (
-        <SearchSidebar
-          collection={this.props.collection}
-          show={this.state.sidebar}
-          facets={this.props.facets}
-          sortOptions={this.props.sortOptions}
-          selectedIndex={this.props.selectedIndex}
-          selectedFacet={this.props.selectedFacet}
-        >
+        <mui.Paper style={{width: "100"}} zDepth={0}>
+          <SearchSidebar
+            collection={this.props.collection}
+            show={this.state.sidebar}
+            facets={this.props.facets}
+            sortOptions={this.props.sortOptions}
+            selectedIndex={this.props.selectedIndex}
+            selectedFacet={this.props.selectedFacet}
+          >
+          </SearchSidebar>
+          
           {mainContent}
-        </SearchSidebar>
+        </mui.Paper>
       );
     }
     else {
       return (
-        <div style={{minHeight: this.getHeight()}}>
-          <div className='row-fluid col-sm-12'>
-            {mainContent}
-          </div>
-        </div>
+        <mui.Paper style={{minHeight: this.getHeight(), width: "100%" }} zDepth={0}>
+          {mainContent}
+        </mui.Paper>
       );
+    }
+  },
+
+  itemPanel: function() {
+    if (this.state.currentItem) {
+      return (<ItemShow
+                item={this.state.currentItem}
+                height={this.state.height}
+              />);
+    } else {
+      return ""
     }
   },
 
@@ -156,16 +163,12 @@ var SearchDisplayList = React.createClass({
     }
     return (
       <div className='items-list' style={this.outerStyle()}>
-          <ItemShow
-            item={this.state.currentItem}
-            height={this.state.height}
-          />
+        {this.itemPanel()}
         {prev}
         {next}
         <div className="row">
           {this.searchResults()}
         </div>
-        <div className='clearfix' />
       </div>
     );
   }

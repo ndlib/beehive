@@ -66,13 +66,8 @@ var Search = React.createClass({
   render: function() {
     return (
       <mui.AppCanvas>
-        <CollectionPageHeader collection={this.state.collection} dropdown={true} >
-          <div className="bee-page-title-bar" style={{marginBottom: "0",}}>
-            <h2 className="bee-page-title-bar-title">Browse Collection</h2>
-          </div>
-        </CollectionPageHeader>
-        <div className="clearfix" />
-        <PageContent fluidLayout={true}>
+        <CollectionPageHeader collection={this.state.collection} dropdown={true} ></CollectionPageHeader>
+        <PageContent fluidLayout={false}>
           <SearchDisplayList
             collection={this.state.collection}
             items={this.state.items}

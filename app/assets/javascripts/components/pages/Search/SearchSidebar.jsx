@@ -12,7 +12,7 @@ var SearchSidebar = React.createClass({
     sortOptions: React.PropTypes.array,
   },
 
-    getInitialState: function () {
+  getInitialState: function () {
     return {
       show: true
     };
@@ -21,7 +21,6 @@ var SearchSidebar = React.createClass({
   toggleSidebar: function() {
     this.setState({show: !this.state.show});
   },
-
 
   searchSort: function() {
     var searchSort;
@@ -37,13 +36,8 @@ var SearchSidebar = React.createClass({
 
   render: function() {
     return (
-      <div style={{minHeight: this.getHeight()}}>
-        <div
-            className={this.state.show ? "row-fluid col-sm-2" : "row-fluid col-sm-1"}
-            style={{
-            display: this.state.show ? 'block' : 'none',
-          }}
-        >
+      <mui.Paper style={{minHeight: this.getHeight(), width: "25%", float: "right"}} >
+        <div style={{ display: this.state.show ? 'block' : 'none', }} >
           <div>Choose from the options below to sort and filter the displayed items.</div>
           <hr/>
           {this.searchSort()}
@@ -56,7 +50,6 @@ var SearchSidebar = React.createClass({
           />
         </div>
         <div
-          className={this.state.show ? "row-fluid col-sm-2" : "row-fluid col-sm-1" }
           style={{
             position: 'relative',
             overflow: 'visible',
@@ -76,10 +69,7 @@ var SearchSidebar = React.createClass({
             </mui.FloatingActionButton>
           </div>
         </div>
-        <div className={this.state.show ? "row-fluid col-sm-10" : "row-fluid col-sm-11" }>
-          {this.props.children}
-        </div>
-      </div>
+      </mui.Paper>
     );
   }
 });

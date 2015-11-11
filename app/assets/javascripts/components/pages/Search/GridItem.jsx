@@ -17,31 +17,27 @@ var GridItem = React.createClass({
     );
 
     return (
-      <div
-        className='col-lg-4 col-md-6 col-sm-12'
-        style={{marginBottom: '2em',}}>
-        <mui.Card
-          onClick={this.itemOnClick}
-          style={{cursor: 'pointer'}}
+      <mui.Card
+        onClick={this.itemOnClick}
+        style={{cursor: 'pointer'}}
+      >
+        <mui.CardMedia
+          overlay={<mui.CardTitle title={name}/>}
         >
-          <mui.CardMedia
-            overlay={<mui.CardTitle title={name}/>}
-          >
-            <ItemImage image={item.image} />
-          </mui.CardMedia>
-          <mui.CardText
-            style={{
-              padding: '0',
-              height: '72px'}}
-          >
-            <mui.ListItem
-              secondaryText={item.description}
-              secondaryTextLines={2}
-              disabled={true}
-            />
-          </mui.CardText>
-        </mui.Card>
-      </div>
+          <ItemImage image={item.image} />
+        </mui.CardMedia>
+        <mui.CardText
+          style={{
+            padding: '0',
+            height: '72px'}}
+        >
+          <mui.ListItem
+            secondaryText={item.description}
+            secondaryTextLines={2}
+            disabled={true}
+          />
+        </mui.CardText>
+      </mui.Card>
     );
   }
 });
