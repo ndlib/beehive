@@ -68,9 +68,9 @@ var Search = React.createClass({
     return (
       <mui.AppCanvas>
         <CollectionPageHeader collection={this.state.collection} dropdown={true} ></CollectionPageHeader>
-        <PageContent fluidLayout={true}>
-          <ItemPanel />
-        </PageContent>
+
+        <ItemPanel />
+
         <PageContent fluidLayout={false}>
           <SearchDisplayList
             collection={this.state.collection}
