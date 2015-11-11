@@ -41,7 +41,7 @@ var CollectionIntroduction = React.createClass({
     }
     return (
       <mui.AppCanvas>
-        <CollectionPageHeader collection={this.state.collection} dropdown={true} >
+        <CollectionPageHeader collection={this.state.collection} >
           <div className="bee-page-title-bar"><h2 className="bee-page-title-bar-title">Introduction</h2></div>
         </CollectionPageHeader>
         <PageContent>

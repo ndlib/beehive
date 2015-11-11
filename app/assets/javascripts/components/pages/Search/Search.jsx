@@ -67,7 +67,7 @@ var Search = React.createClass({
   render: function() {
     return (
       <mui.AppCanvas>
-        <CollectionPageHeader collection={this.state.collection} dropdown={true} ></CollectionPageHeader>
+        <CollectionPageHeader collection={this.state.collection} ></CollectionPageHeader>
 
         <ItemPanel />
 

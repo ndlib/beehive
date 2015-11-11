@@ -62,7 +62,7 @@ var Showcase = React.createClass({
     // this is a div instead of mui.AppCanvas because of a bug in 12.3 which is fixed in master.  
     return (
       <mui.AppCanvas>
-        <CollectionPageHeader collection={this.state.collection} dropdown={true} />
+        <CollectionPageHeader collection={this.state.collection} />
         <PageContent fluidLayout={true}>
           {showcaseShow}
         </PageContent>
