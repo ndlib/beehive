@@ -43,33 +43,6 @@ var ItemPanel = React.createClass({
     });
   },
 
-  clickNextEvent: function(event) {
-    if(this.props.nextUrl) {
-      this.clickSideNavEvent(event, this.props.nextUrl);
-    }
-  },
-
-  clickPrevEvent: function(event) {
-    if(this.props.previousUrl) {
-      this.clickSideNavEvent(event, this.props.previousUrl);
-    }
-  },
-
-  clickSideNavEvent: function(event, url) {
-    event.preventDefault();
-    var id = url.split("/").pop();
-    window.location.hash = id;
-    if(url.indexOf('item') > -1) {
-      this.loadRemoteItem(url);
-    }
-    else if(url.indexOf('section') > -1) {
-      this.loadRemoteSection(url);
-    }
-    else {
-      console.log('an invalid url was provided', this.props.url);
-    }
-  },
-
   closeButtonClick: function() {
     ItemActions.hideItemDialogWindow();
   },
