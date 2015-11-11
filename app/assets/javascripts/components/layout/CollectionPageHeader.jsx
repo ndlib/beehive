@@ -121,7 +121,7 @@ var CollectionPageHeader = React.createClass({
         {this.tabs()}
       </div>
     );
-    
+
     return (
       <mui.Paper circle={false} rounded={false} zDepth={0} style={this.style()}>
         {this.brandBar()}
@@ -129,6 +129,7 @@ var CollectionPageHeader = React.createClass({
           title={title}
           iconElementLeft={<CollectionLeftNav collection={this.props.collection} />}
           iconElementRight={rightNav}
+          style={{position: "fixed",}}
         />
       </mui.Paper>
     );
