@@ -28,14 +28,13 @@ var SearchFacets = React.createClass({
   },
 
   valueOnClick: function(parentFacet, e) {
-    window.searchStore.facetOption = {}
-    window.searchStore.facetOption.name = parentFacet;
-    window.searchStore.facetOption.value = e.currentTarget.getAttribute("value");
-    window.location.assign(this.searchUrl(this.props.collection));
+    //window.searchStore.facetOption = {}
+    //window.searchStore.facetOption.name = parentFacet;
+    //window.searchStore.facetOption.value = e.currentTarget.getAttribute("value");
+    //window.location.assign(this.searchUrl(this.props.collection));
   },
 
   facets: function(){
-    console.log(this);
     self = this;
     var facets = this.props.facets.map(function(e, index) {
       var nodes = [];
@@ -66,7 +65,7 @@ var SearchFacets = React.createClass({
           <ListItem
             primaryText={primaryText}
             value={value}
-            onClick={self.valueOnClick.bind(this, parentFacet)}
+            onClick={self.valueOnClick(this, parentFacet)}
           />
         ));
         return nodes;

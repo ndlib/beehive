@@ -2,8 +2,9 @@
 var React = require('react');
 var mui = require('material-ui');
 var EventEmitter = require("../../../EventEmitter");
+
 var SearchDisplayList = React.createClass({
-  mixins: [CollectionUrlMixin, PageHeightMixin, MuiThemeMixin, LoadRemoteMixin],
+  mixins: [CollectionUrlMixin, MuiThemeMixin ],
 
   propTypes: {
     collection: React.PropTypes.object,
@@ -24,7 +25,6 @@ var SearchDisplayList = React.createClass({
       view = storedState.view;
     }
     return {
-      currentItem: null,
       sidebar: false,
       view: view,
     };
@@ -47,28 +47,11 @@ var SearchDisplayList = React.createClass({
   },
 
   componentWillMount: function() {
-    EventEmitter.on("ItemDialogWindow", this.setCurrentItem);
     EventEmitter.on("SetGridList", this.setGridListState);
-    if(window.location.hash) {
-      var url = this.remoteItem(window.location.hash.replace("#", ""));
-      this.loadRemoteItem(url);
-    }
   },
 
   setGridListState: function(view) {
     this.setState({view: view});
-  },
-
-  setCurrentItem: function(item) {
-    this.setState({
-      currentItem: item,
-    });
-  },
-
-  outerStyle: function() {
-    return {
-      width: '100%',
-    };
   },
 
   nextUrl: function(index) {
@@ -92,7 +75,7 @@ var SearchDisplayList = React.createClass({
     var itemNodes = this.props.items.map(function(item, index) {
       var nodes = [];
       nodes.push((
-          <ItemListItem item={item} view={view}/>
+        <ItemListItem item={item} view={view}/>
       ));
       return nodes;
     });
@@ -100,11 +83,23 @@ var SearchDisplayList = React.createClass({
       itemNodes.push((<div style={{color:'rgba(0, 0, 0, 0.870588)', fontStyle:'italic', textAlign:'center'}}>No matching results could be found.</div>));
     }
 
-    var mainContent = (
-      <div>
+    return (
+      <mui.Paper style={{width: "100%"}} zDepth={0}>
         <SearchControls collection={this.props.collection} searchTerm={this.props.searchTerm}/>
+
         <h2>{this.props.found} Search Results</h2>
-        <mui.GridList style={ {width: "100%" } } >
+
+        <SearchSidebar
+          collection={this.props.collection}
+          show={this.state.sidebar}
+          facets={this.props.facets}
+          sortOptions={this.props.sortOptions}
+          selectedIndex={this.props.selectedIndex}
+          selectedFacet={this.props.selectedFacet}
+        >
+        </SearchSidebar>
+
+        <mui.GridList style={ {width: "74%" } } >
           {itemNodes}
         </mui.GridList>
 
@@ -113,62 +108,14 @@ var SearchDisplayList = React.createClass({
           found={this.props.found}
           start={this.props.start}
         />
-      </div>
+    </mui.Paper>
     );
-    if(this.state.sidebar) {
-      return (
-        <mui.Paper style={{width: "100"}} zDepth={0}>
-          <SearchSidebar
-            collection={this.props.collection}
-            show={this.state.sidebar}
-            facets={this.props.facets}
-            sortOptions={this.props.sortOptions}
-            selectedIndex={this.props.selectedIndex}
-            selectedFacet={this.props.selectedFacet}
-          >
-          </SearchSidebar>
-          
-          {mainContent}
-        </mui.Paper>
-      );
-    }
-    else {
-      return (
-        <mui.Paper style={{minHeight: this.getHeight(), width: "100%" }} zDepth={0}>
-          {mainContent}
-        </mui.Paper>
-      );
-    }
-  },
-
-  itemPanel: function() {
-    if (this.state.currentItem) {
-      return (<ItemShow
-                item={this.state.currentItem}
-                height={this.state.height}
-              />);
-    } else {
-      return ""
-    }
   },
 
   render: function() {
-    var prev, next;
-    if(this.state.currentItem){
-      if(window.searchStore && window.searchStore.items) {
-        var index = window.searchStore.items.indexOf(this.state.currentItem['@id']);
-        prev = this.prevUrl(index);
-        next = this.nextUrl(index);
-      }
-    }
     return (
-      <div className='items-list' style={this.outerStyle()}>
-        {this.itemPanel()}
-        {prev}
-        {next}
-        <div className="row">
-          {this.searchResults()}
-        </div>
+      <div>
+        {this.searchResults()}
       </div>
     );
   }
