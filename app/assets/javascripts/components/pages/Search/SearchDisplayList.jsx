@@ -70,7 +70,7 @@ var SearchDisplayList = React.createClass({
     return id;
   },
 
-  searchResults: function() {
+  itemList: function() {
     var view = this.state.view;
     var itemNodes = this.props.items.map(function(item, index) {
       var nodes = [];
@@ -82,7 +82,22 @@ var SearchDisplayList = React.createClass({
     if(itemNodes.length === 0) {
       itemNodes.push((<div style={{color:'rgba(0, 0, 0, 0.870588)', fontStyle:'italic', textAlign:'center'}}>No matching results could be found.</div>));
     }
+    if (view == 'grid') {
+      return (
+        <mui.GridList style={ {width: "74%" } } >
+          {itemNodes}
+        </mui.GridList>
+      )
+    } else {
+      return (
+        <mui.List style={ {width: "74%" } } >
+          {itemNodes}
+        </mui.List>
+      )
+    }
+  },
 
+  render: function() {
     return (
       <mui.Paper style={{width: "100%"}} zDepth={0}>
         <SearchControls collection={this.props.collection} searchTerm={this.props.searchTerm}/>
@@ -98,11 +113,7 @@ var SearchDisplayList = React.createClass({
           selectedFacet={this.props.selectedFacet}
         >
         </SearchSidebar>
-
-        <mui.GridList style={ {width: "74%" } } >
-          {itemNodes}
-        </mui.GridList>
-
+        {this.itemList()}
         <SearchPagination
           collection={this.props.collection}
           found={this.props.found}
@@ -111,14 +122,6 @@ var SearchDisplayList = React.createClass({
     </mui.Paper>
     );
   },
-
-  render: function() {
-    return (
-      <div>
-        {this.searchResults()}
-      </div>
-    );
-  }
 });
 
 module.exports = SearchDisplayList;
