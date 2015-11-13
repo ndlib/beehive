@@ -28,13 +28,13 @@ var SectionCard = React.createClass({
       height: this.props.height + 'px',
       cursor: 'pointer',
       lineHeight: '0px',
-      backgroundColor: "rgba(0,0,0,0.3)",
+      backgroundColor: "rgba(51,51,51,0.95)",
       border: this.sectionType() == "image" ? 'solid 3px #fff' : "none",
     };
     if (this.sectionType() == "text") {
       styles["maxWidth"] = "33em";
     }
-    
+
     return styles;
   },
 
@@ -52,9 +52,19 @@ var SectionCard = React.createClass({
     };
   },
 
+  titleStyle: function() {
+    return {
+<<<<<<< HEAD
+      
+=======
+      color: "lightgrey",
+    }
+  },
+
   textStyle: function() {
     return {
-      
+      color: "lightgrey",
+>>>>>>> showcase updates.
     };
   },
 
@@ -95,7 +105,7 @@ var SectionCard = React.createClass({
           <mui.CardMedia style={this.mediaStyle()}>
             <img src={this.props.section.item.image['thumbnail/medium'].contentUrl} />
           </mui.CardMedia>
-          <mui.CardText>
+          <mui.CardText style={this.textStyle()}>
             <div dangerouslySetInnerHTML={{__html: this.props.section.caption}} />
           </mui.CardText>
         </div>
@@ -107,8 +117,8 @@ var SectionCard = React.createClass({
     if (this.props.section.description) {
       return (
         <div style={this.textStyle()}>
-          <mui.CardTitle title={this.props.section.name}/>
-          <mui.CardText>
+          <mui.CardTitle title={this.props.section.name} titleStyle={this.titleStyle()} />
+          <mui.CardText style={this.textStyle()}>
             <div dangerouslySetInnerHTML={{__html: this.props.section.description}} />
           </mui.CardText>
         </div>

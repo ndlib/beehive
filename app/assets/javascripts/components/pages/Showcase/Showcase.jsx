@@ -32,6 +32,8 @@ var Showcase = React.createClass({
 
       var newMuiTheme = this.state.muiTheme;
       newMuiTheme.paper.backgroundColor = 'inherit';
+      //console.log(newMuiTheme);
+      //newMuiTheme.appCanvas.backgroundColor = 'inherit';
 
       this.setState({
         muiTheme: newMuiTheme,
@@ -61,13 +63,13 @@ var Showcase = React.createClass({
     }
     // this is a div instead of mui.AppCanvas because of a bug in 12.3 which is fixed in master.  
     return (
-      <mui.AppCanvas>
+      <div style={{ backgroundColor: 'inherit' }}>
         <CollectionPageHeader collection={this.state.collection} />
         <PageContent fluidLayout={true}>
           {showcaseShow}
         </PageContent>
         <CollectionPageFooter collection={this.state.collection} />
-      </mui.AppCanvas>
+      </div>
     );
   }
 });

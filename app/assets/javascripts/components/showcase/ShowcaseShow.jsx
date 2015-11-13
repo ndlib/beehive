@@ -85,7 +85,6 @@ var ShowcaseShow = React.createClass({
       whiteSpace: "nowrap",
       boxSizing: "border-box",
       height: height + "px",
-
     };
   },
 
