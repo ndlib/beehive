@@ -117,8 +117,10 @@ var CollectionPageHeader = React.createClass({
         <div style={ {float:'right' } }>
           <SearchBox collection={this.props.collection} />
         </div>
-
-        {this.tabs()}
+        <mui.Tabs style={ {float:'right', backgroundColor: "none" } } value="none" tabItemContainerStyle={{backgroundColor: "transparent", width:"auto" }}>
+          <mui.Tab label="Browse Collection" value="browse" onActive={this._handleTabs} className="browse" style={{color:"white", width:'auto', padding:'0 20px 0 0', fontSize: '16px'}}/>
+          <mui.Tab label="About" value="about" onActive={this._handleTabs}   style={{color:"white", width:'auto', padding:'0 20px 0 0', fontSize: '16px'}}/>
+        </mui.Tabs>
       </div>
     );
 

@@ -44,13 +44,38 @@ $title-offset: $dropdown-button-size + ($dropdown-button-padding * 2) + $dropdow
 }
 
 footer {
-  padding-top: 5em;
+
   color: #999999;
+  background-color: #2b2a2a;
+    background-image: linear-gradient(to top, #2b2a2a 0%, #393838 140%);
+    bottom: 0;
+    height: 49px;
+    left: 0;
+    //padding: 0;
+    //position: fixed;
+    right: 0;
+    z-index: 6000;
+    margin-top: 3em;
+
+    a {
+      float: right;
+      width: 100px;
+      height: 0;
+      overflow: hidden;
+      padding-top: 33px;
+      display: block;
+      margin: 8px;
+    }
+    .hesburgh-logo {
+      background-image: image_url("ndmark300.w.png");
+      background-size: cover;
+    }
+    .dec-logo {
+      background-image: image_url("dec.logo.svg");
+      background-size: cover;
+    }
 }
 
-.hesburgh-logo {
-  width: 200px;
-}
 
 .navbar-header {
   .btn-group {

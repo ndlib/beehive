@@ -12,10 +12,10 @@ var CollectionPageFooter = React.createClass({
     return (
       <mui.Paper circle={false} rounded={false} zDepth={0} >
         <footer>
-          <a href="http://library.nd.edu">
+          <a href="http://library.nd.edu" className="hesburgh-logo">
             Hesburgh Logo
           </a>
-          <a href="/">
+          <a href="/" className="dec-logo">
             Dec Logo
           </a>
         </footer>

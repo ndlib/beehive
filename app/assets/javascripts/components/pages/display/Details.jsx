@@ -12,7 +12,7 @@ var Details = React.createClass({
 
   getInitialState: function() {
     return {
-      showDetails: true,
+      showDetails: false,
     };
   },
 
@@ -42,7 +42,7 @@ var Details = React.createClass({
       maxHeight: "70%",
       width: "30%",
       position: "absolute",
-      right: "0",
+      right: "30px",
       zIndex: "100",
       opacity: "0.8",
       backgroundColor: "#fff",
