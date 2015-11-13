@@ -46,15 +46,17 @@ var SearchBox = React.createClass({
     return(
       <div style={{display:'inline-block'}}>
         <mui.TextField
-          hintText="search"
+          hintText='search'
           ref='searchBox'
           onChange={this.onChange}
           defaultValue={this.props.searchTerm}
           onEnterKeyDown={this.onClick}
+          hintStyle={{color:'white'}}
+          inputStyle={{color:'white'}}
         />
         <mui.RaisedButton
           onClick={this.onClick}
-          style={{zIndex: '0' }}
+          style={{zIndex: '0', minWidth: 'auto', boxShadow: 'none',  }}
           primary={false}
           secondary={true}
         >
