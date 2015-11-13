@@ -7,11 +7,13 @@ var SearchBox = React.createClass({
   propTypes: {
     collection: React.PropTypes.object.isRequired,
     searchTerm: React.PropTypes.string,
+    primary: React.PropTypes.bool,
   },
 
   getDefaultProps: function() {
     return {
       searchTerm: "",
+      primary: true,
     };
   },
 
@@ -41,6 +43,17 @@ var SearchBox = React.createClass({
     this.setState({searchTerm: cleanTerm});
   },
 
+  hintStyle: function() {
+    return {
+      color: (this.props.primary ? this.getCurrentPallette().alternateTextColor : this.getCurrentPallette().textColor),
+    };
+  },
+
+  inputStyle: function() {
+    return {
+      color: (this.props.primary ? this.getCurrentPallette().alternateTextColor : this.getCurrentPallette().textColor),
+    };
+  },
 
   render: function() {
     return(
@@ -51,8 +64,8 @@ var SearchBox = React.createClass({
           onChange={this.onChange}
           defaultValue={this.props.searchTerm}
           onEnterKeyDown={this.onClick}
-          hintStyle={{color:'white'}}
-          inputStyle={{color:'white'}}
+          hintStyle={this.hintStyle()}
+          inputStyle={this.inputStyle()}
         />
         <mui.RaisedButton
           onClick={this.onClick}

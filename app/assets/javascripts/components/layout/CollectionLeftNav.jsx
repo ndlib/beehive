@@ -3,7 +3,8 @@ var React = require('react');
 var mui = require('material-ui');
 
 var CollectionLeftNav = React.createClass({
-  mixins: [ CollectionUrlMixin, CurrentThemeMixin ],
+  // MuiThemeMixin to fix overwrites to the base style that we don't want on this page.
+  mixins: [ CollectionUrlMixin, CurrentThemeMixin, MuiThemeMixin ],
 
   propTypes: {
     collection: React.PropTypes.object.isRequired,
@@ -111,6 +112,7 @@ var CollectionLeftNav = React.createClass({
 
   navStyle: function () {
     return ({
+      backgroundColor: "#fff",
     });
   },
 
