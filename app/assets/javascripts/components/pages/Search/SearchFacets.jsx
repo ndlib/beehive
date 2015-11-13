@@ -12,68 +12,50 @@ var SearchFacets = React.createClass({
     selectedFacet: React.PropTypes.object,
   },
 
-  facetList: function() {
-    return (
-      <List
-        ref='searchFacet'
-        subheader="Filter Results"
-        style={{backgroundColor: 'transparent'}}>
-        {this.facets()}
-      </List>
-    );
-  },
-
   facetOnClick: function(e) {
     e.currentTarget.getAttribute("value");
   },
 
-  valueOnClick: function(parentFacet, e) {
-    //window.searchStore.facetOption = {}
-    //window.searchStore.facetOption.name = parentFacet;
-    //window.searchStore.facetOption.value = e.currentTarget.getAttribute("value");
-    //window.location.assign(this.searchUrl(this.props.collection));
+  valueOnClick: function(e) {
+    var values = e.currentTarget.getAttribute("value").split("|");
+    window.searchStore.facetOption = {}
+    window.searchStore.facetOption.name = values[0];
+    window.searchStore.facetOption.value = values[1];
+    window.location.assign(this.searchUrl(this.props.collection));
   },
 
   facets: function(){
     self = this;
-    var facets = this.props.facets.map(function(e, index) {
-      var nodes = [];
-      nodes.push((
+    return this.props.facets.map(function(e, index) {
+      return(
         <List
           subheader={e.name}
         >
           {self.values(e)}
         </List>
-      ));
-      return nodes;
+      );
     });
-    return facets;
   },
 
   values: function(facet) {
     self = this;
     var parentFacet = facet.field;
-    var values;
     if (facet.values) {
-      var values = facet.values.map(function(e, index) {
-        var nodes = [];
+      return (facet.values.map(function(e, index) {
         var value = encodeURIComponent(e.name);
         var primaryText = (
           <span>{e.name} <span style={{color: 'rgba(0, 0, 0, 0.541176)', fontStyle:'italic', fontSize: '.8em',}}>({e.count})</span></span>
         );
-        nodes.push((
+        return (
           <ListItem
             primaryText={primaryText}
-            value={value}
-            onClick={self.valueOnClick(this, parentFacet)}
+            value={parentFacet +"|"+ value}
+            onClick={self.valueOnClick}
           />
-        ));
-        return nodes;
-      });
-      return (
-        {values}
-      );
-    };
+        );
+      }));
+    }
+    return (<div></div>);
   },
 
   componentWillMount: function() {
@@ -91,7 +73,7 @@ var SearchFacets = React.createClass({
   render: function() {
     return (
       <div>
-        {this.facetList()}
+        {this.facets()}
       </div>
     );
   }
