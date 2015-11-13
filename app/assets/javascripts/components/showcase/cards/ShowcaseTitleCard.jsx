@@ -36,6 +36,34 @@ var ShowcaseTitleCard = React.createClass({
     }
     return {
       marginTop: marginTop,
+      textShadow: "2px 2px 3px #333333",
+      textTransform: "uppercase",
+      color: "#fff",
+      backgroundColor: "rgba(0,0,0,0.1)",
+    }
+  },
+
+  titleStyle: function() {
+    return {
+      color: "#fff",
+      fontSize: "50px",
+      paddingBottom: "10px",
+    };
+  },
+
+  subtitleStyle: function() {
+    return {
+      color: "#fff",
+      fontSize: "24px",
+    };
+  },
+
+  textStyle: function() {
+    return {
+      color: "#fff",
+      textShadow: "1px 1px 2px #333333",
+      fontSize: "18px",
+      backgroundColor: "rgba(0,0,0,0.1)",            
     }
   },
 
@@ -67,8 +95,15 @@ var ShowcaseTitleCard = React.createClass({
 
     return (
       <mui.Card style={this.outerStyle()}>
-        <mui.CardTitle title={this.props.showcase.name_line_1} subtitle={this.props.showcase.name_line_2}  style={this.headerStyle()} />
-        <mui.CardText>
+        <mui.CardTitle
+          title={this.props.showcase.name_line_1}
+          subtitle={this.props.showcase.name_line_2}
+          style={this.headerStyle()}
+          titleStyle={this.titleStyle() }
+          subtitleStyle={this.subtitleStyle() }
+          />
+
+        <mui.CardText style={this.textStyle()} >
           {description}
         </mui.CardText>
       </mui.Card>
