@@ -22,7 +22,7 @@ var SectionShowDescription = React.createClass({
   render: function() {
     return (
       <PageContent>
-        <EssayContent content={this.props.section.description} />
+        <div style={this.styles()} dangerouslySetInnerHTML={{__html:this.props.section.description}} />
       </PageContent>
     );
   }
