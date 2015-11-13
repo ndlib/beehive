@@ -107,12 +107,12 @@ var CollectionLeftNav = React.createClass({
       minWidth: 'auto',
       backgroundColor: 'transparent',
       color: 'white',
+      zIndex: "1000000"
     });
   },
 
   navStyle: function () {
     return ({
-      backgroundColor: "#fff",
     });
   },
 

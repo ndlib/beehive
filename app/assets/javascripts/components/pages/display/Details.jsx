@@ -12,7 +12,7 @@ var Details = React.createClass({
 
   getInitialState: function() {
     return {
-      showDetails: false,
+      showDetails: true,
     };
   },
 

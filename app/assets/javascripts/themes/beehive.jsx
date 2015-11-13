@@ -15,7 +15,7 @@ module.exports = {
     accent3Color: Colors.grey300,
     textColor: Colors.darkBlack,
     alternateTextColor: Colors.white,
-    canvasColor: Colors.transparent,
+    canvasColor: Colors.white,
     borderColor: Colors.grey300,
     disabledColor: ColorManipulator.fade(Colors.darkBlack, 0.3),
     showcaseTextCardColor: Colors.white,

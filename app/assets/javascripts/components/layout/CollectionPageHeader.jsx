@@ -104,6 +104,18 @@ var CollectionPageHeader = React.createClass({
     return "";
   },
 
+  appBarStyle: function() {
+    var style = {
+      position: "fixed",
+    };
+
+    if (this.props.branding) {
+      style["top"] = "50px";
+    }
+
+    return style
+  },
+
   render: function() {
     var title = (
       <a style={{ textDecoration: "none", color: this.getCurrentPallette().alternateTextColor }}
@@ -131,7 +143,7 @@ var CollectionPageHeader = React.createClass({
           title={title}
           iconElementLeft={<CollectionLeftNav collection={this.props.collection} />}
           iconElementRight={rightNav}
-          style={{position: "fixed",}}
+          style={this.appBarStyle()}
         />
       </mui.Paper>
     );
