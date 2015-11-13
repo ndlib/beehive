@@ -9,8 +9,8 @@ var SearchMixin = {
       dataType: "json",
       success: function(result) {
         this.setItems(result.hits);
+        this.setSorts(result.sorts);
         this.setFacets(result.facets);
-        this.setSorts(result.sorts)
       },
       error: function(request, status, thrownError) {
           window.location = window.location.origin + '/404';

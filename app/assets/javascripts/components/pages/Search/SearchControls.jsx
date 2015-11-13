@@ -28,7 +28,7 @@ var SearchControls = React.createClass({
 
   controlsStyle: function() {
     return {
-      backgroundColor: this.getCurrentPallette().canvasColor,      
+      backgroundColor: this.getCurrentPallette().canvasColor,
     };
   },
 
@@ -57,11 +57,11 @@ var SearchControls = React.createClass({
     return (
       <mui.Toolbar className="controls" style={this.controlsStyle()}>
         <mui.ToolbarGroup key={0} float="left">
-            <SearchBox collection={this.props.collection} searchTerm={this.props.searchTerm}/>
+          <SearchBox collection={this.props.collection} searchTerm={this.props.searchTerm}/>
         </mui.ToolbarGroup>
         <mui.ToolbarGroup key={1} float="right">
           <mui.RaisedButton
-            //label="List"
+            label="List"
             secondary={this.state.view == 'list'}
             onClick={this.setList}
             style={{zIndex: '0'}}
@@ -72,7 +72,7 @@ var SearchControls = React.createClass({
             >view_list</mui.FontIcon>
           </mui.RaisedButton>
           <mui.RaisedButton
-            //label="Grid"
+            label="Grid"
             secondary={this.state.view == 'grid'}
             onClick={this.setGrid}
             style={{zIndex: '0'}}
