@@ -11,6 +11,11 @@ $title-offset: $dropdown-button-size + ($dropdown-button-padding * 2) + $dropdow
   padding: 15px 0;
   margin: 0;
   height: 50px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 5;
 }
 
 .brand-bar a {
