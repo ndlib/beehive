@@ -59,8 +59,18 @@ var CollectionShow = React.createClass({
 
   cardMediaSection: function() {
     if (this.props.collection.image) {
+      var cardTitle = (null);
+      if (this.props.collection.display_page_title) {
+        cardTitle = (<mui.CardTitle
+          title={this.props.collection.name_line_1}
+          titleStyle={{color:'white', fontSize:'34px', lineHeight:'46px'}}
+          subtitle={this.props.collection.name_line_2}
+          subtitleStyle={{color:'rgba(255,255,255,.8)', fontSize:'18px'}}
+          style={this.pageWidth()}/>
+        );
+      }
       return (
-        <mui.CardMedia overlay={<mui.CardTitle title={this.props.collection.name_line_1} titleStyle={{color:'white', fontSize:'34px', lineHeight:'46px'}} subtitle={this.props.collection.name_line_2} subtitleStyle={{color:'rgba(255,255,255,.8)', fontSize:'18px'}} style={this.pageWidth()}/>}>
+        <mui.CardMedia overlay={cardTitle}>
           <img src={this.image()} className="hide"/>
           <div className="cover" style={this.cover()}></div>
         </mui.CardMedia>

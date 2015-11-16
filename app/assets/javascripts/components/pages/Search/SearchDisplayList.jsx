@@ -90,7 +90,7 @@ var SearchDisplayList = React.createClass({
       )
     } else {
       return (
-        <mui.List style={ {width: "74%" } } >
+        <mui.List style={ {width: "74%"} }>
           {itemNodes}
         </mui.List>
       )
