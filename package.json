@@ -3,6 +3,7 @@
   "description": "Dependencies for the Beehive application",
   "repository": "git@github.com:ndlib/beehive.git",
   "dependencies": {
+    "axios": "0.7.0",
     "browserify": "^6.3.4",
     "browserify-incremental": "^1.5.0",
     "classnames": "^2.1.5",
@@ -12,10 +13,11 @@
     "keymirror": "^0.1.1",
     "material-ui": "0.10.4",
     "object-assign": "^3.0.0",
-    "react": "^0.13.3",
-    "react-scroll": "^0.18.0",
-    "react-tap-event-plugin": "^0.1.8",
-    "reactify": "^0.17.1"
+    "react": "0.13.3",
+    "react-dom": "0.14.1",
+    "react-scroll": "0.18.0",
+    "react-tap-event-plugin": "0.1.8",
+    "reactify": "0.17.1"
   },
   "devDependencies": {
     "coveralls": "^2.11.2",
