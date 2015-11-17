@@ -43,12 +43,10 @@ var SearchFacets = React.createClass({
     if (facet.values) {
       return (facet.values.map(function(e, index) {
         var value = encodeURIComponent(e.name);
-        var primaryText = (
-          <span>{e.name} <span style={{color: 'rgba(0, 0, 0, 0.541176)', fontStyle:'italic', fontSize: '.8em',}}>({e.count})</span></span>
-        );
         return (
           <ListItem
-            primaryText={primaryText}
+            primaryText={e.name}
+            secondaryText={"(" + e.count + ")"}
             value={parentFacet +"|"+ value}
             onClick={self.valueOnClick}
           />
