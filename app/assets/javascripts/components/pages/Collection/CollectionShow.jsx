@@ -34,14 +34,12 @@ var CollectionShow = React.createClass({
   },
 
   cover: function() {
-
-      return ({
-        backgroundPosition:'center',
-        backgroundSize:'cover',
-        height:'450px',
-        backgroundImage: 'url(' + this.image() + ')',
-      });
-
+    return ({
+      backgroundPosition:'center',
+      backgroundSize:'cover',
+      height:'450px',
+      backgroundImage: 'url(' + this.image() + ')',
+    });
   },
 
   firstExhibitLink: function() {

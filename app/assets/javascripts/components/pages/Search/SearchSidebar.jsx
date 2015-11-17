@@ -36,7 +36,7 @@ var SearchSidebar = React.createClass({
 
   render: function() {
     return (
-      <mui.Paper style={{display: this.state.show ? 'block' : 'none', minHeight: this.getHeight(), width: "25%", float: "right"}} >
+      <mui.Paper style={{display: this.state.show ? 'block' : 'none', width: "25%", float: "right"}} >
         <h3>Filter Results</h3>
         <hr/>
         {this.searchSort()}

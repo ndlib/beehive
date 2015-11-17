@@ -84,13 +84,13 @@ var SearchDisplayList = React.createClass({
     }
     if (view == 'grid') {
       return (
-        <mui.GridList style={ {width: "74%" } } >
+        <mui.GridList cellHeight={424} >
           {itemNodes}
         </mui.GridList>
       )
     } else {
       return (
-        <mui.List style={ {width: "74%"} }>
+        <mui.List>
           {itemNodes}
         </mui.List>
       )
@@ -99,10 +99,12 @@ var SearchDisplayList = React.createClass({
 
   render: function() {
     return (
-      <mui.Paper style={{width: "100%"}} zDepth={0}>
-        <SearchControls collection={this.props.collection} searchTerm={this.props.searchTerm}/>
+      <div>
+        <mui.Paper style={{width: "100%"}} zDepth={0}>
+          <SearchControls collection={this.props.collection} searchTerm={this.props.searchTerm}/>
 
-        <h2>{this.props.found} Search Results</h2>
+          <h2>{this.props.found} Search Results</h2>
+        </mui.Paper>
 
         <SearchSidebar
           collection={this.props.collection}
@@ -111,15 +113,17 @@ var SearchDisplayList = React.createClass({
           sortOptions={this.props.sortOptions}
           selectedIndex={this.props.selectedIndex}
           selectedFacet={this.props.selectedFacet}
-        >
-        </SearchSidebar>
-        {this.itemList()}
-        <SearchPagination
-          collection={this.props.collection}
-          found={this.props.found}
-          start={this.props.start}
         />
-    </mui.Paper>
+        <mui.Paper style={{width: "74%"}} zDepth={0}>
+          {this.itemList()}
+
+          <SearchPagination
+            collection={this.props.collection}
+            found={this.props.found}
+            start={this.props.start}
+          />
+        </mui.Paper>
+      </div>
     );
   },
 });
