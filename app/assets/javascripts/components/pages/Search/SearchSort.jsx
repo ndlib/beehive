@@ -52,11 +52,7 @@ var SearchSort = React.createClass({
   render: function() {
     if(this.props.sortOptions.length > 0) {
       return(
-      <div id="search-sort">
-        <mui.List
-          subheader="Sort By"
-          style={{backgroundColor: 'transparent'}}
-        />
+      <span>
         <SelectField
           ref='searchSort'
           autoWidth={false}
@@ -66,7 +62,7 @@ var SearchSort = React.createClass({
           displayMember='name'
           valueMember='value'
         />
-        </div>
+      </span>
       );
     }
     else {
