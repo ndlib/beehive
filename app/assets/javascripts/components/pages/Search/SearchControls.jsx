@@ -12,6 +12,8 @@ var SearchControls = React.createClass({
   propTypes: {
     collection: React.PropTypes.object,
     searchTerm: React.PropTypes.string,
+    selectedIndex: React.PropTypes.number,
+    sortOptions: React.PropTypes.array,
   },
 
   getInitialState: function() {
@@ -60,11 +62,16 @@ var SearchControls = React.createClass({
           <SearchBox collection={this.props.collection} searchTerm={this.props.searchTerm} primary={false} />
         </mui.ToolbarGroup>
         <mui.ToolbarGroup key={1} float="right">
+          <SearchSort
+            collection={this.props.collection}
+            sortOptions={this.props.sortOptions}
+            selectedIndex={this.props.selectedIndex}
+          />
           <mui.RaisedButton
             label="List"
             secondary={this.state.view == 'list'}
             onClick={this.setList}
-            style={{zIndex: '0'}}
+            style={{zIndex: '0', margin: 0}}
           >
             <mui.FontIcon
               className="material-icons"
@@ -75,7 +82,7 @@ var SearchControls = React.createClass({
             label="Grid"
             secondary={this.state.view == 'grid'}
             onClick={this.setGrid}
-            style={{zIndex: '0'}}
+            style={{zIndex: '0', margin: 0}}
           >
             <mui.FontIcon
               className="material-icons"
