@@ -27,7 +27,7 @@ var CloseButton = React.createClass({
   render: function() {
     return (
       <mui.EnhancedButton onClick={this.props.clickEvent}>
-        <mui.FontIcon className="material-icons" color={this.color()}>close</mui.FontIcon>
+        <mui.FontIcon className="material-icons" color={this.color()} style={{border:'solid 1px', marginTop:'16px'}}>close</mui.FontIcon>
       </mui.EnhancedButton>
     );
   },

@@ -72,6 +72,14 @@ $scrollbar-color: #666;
       width: 100%;
     }
   }
+  * {
+    white-space: normal;
+    line-height: 24px;
+  }
+}
+
+.ps-container {
+  width: 100%;
 }
 
 @keyframes slidein {
@@ -100,7 +108,9 @@ $scrollbar-color: #666;
   animation-name: slidein;
 }
 
-
+.showcase-bg footer {
+  position: absolute;
+}
 
 .showcase-outer {
   position: relative;
