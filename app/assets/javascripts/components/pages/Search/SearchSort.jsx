@@ -49,11 +49,18 @@ var SearchSort = React.createClass({
     return(nextProps.selectedIndex !== this.props.selectedIndex);
   },
 
+  sortOptions: function() {
+    return this.props.sortOptions.map(function(option) {
+      return(<option value={option.value}>{option.name}</option>);
+    });
+  },
+
   render: function() {
     if(this.props.sortOptions.length > 0) {
       return(
-      <span>
-        <SelectField
+      <div style={{float: "left"}}>
+        Sort By:
+        <select
           ref='searchSort'
           autoWidth={false}
           onChange={this.onChange.bind(this, 'selectValue')}
@@ -61,8 +68,10 @@ var SearchSort = React.createClass({
           selectedIndex={this.props.selectedIndex > -1 ? this.props.selectedIndex : 0}
           displayMember='name'
           valueMember='value'
-        />
-      </span>
+        >
+        {this.sortOptions()}
+        </select>
+      </div>
       );
     }
     else {

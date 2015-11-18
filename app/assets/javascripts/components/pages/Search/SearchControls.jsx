@@ -66,6 +66,11 @@ var SearchControls = React.createClass({
           <SearchBox collection={this.props.collection} searchTerm={this.props.searchTerm} primary={false} active={true} />
         </mui.ToolbarGroup>
         <mui.ToolbarGroup key={1} float="right">
+          <SearchSort
+            collection={this.props.collection}
+            sortOptions={this.props.sortOptions}
+            selectedIndex={this.props.selectedIndex}
+            />
           <mui.RaisedButton
             secondary={this.state.view == 'list'}
             onClick={this.setList}
