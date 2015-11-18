@@ -37,6 +37,9 @@ var ShowcaseShow = React.createClass({
     if (this.props.height != prevProps.height) {
       this.updateScrollbar();
     }
+    if(this.state.hasScrolled != prevState.hasScrolled) {
+      this.updateScrollbar();
+    }
   },
 
   initializeScrollbar: function() {
