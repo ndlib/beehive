@@ -61,6 +61,12 @@ var SectionCard = React.createClass({
   textStyle: function() {
     return {
       color: "lightgrey",
+      position:'absolute',
+      bottom:'0',
+      left:'0',
+      right:'0',
+      padding:'0',
+      background:'rgba(0,0,0,.45)',
     };
   },
 
@@ -84,6 +90,23 @@ var SectionCard = React.createClass({
 */
   },
 
+  captionStyle: function() {
+    return {
+      position:'absolute',
+      bottom:'0',
+      left:'0',
+      right:'0',
+      padding:'0',
+      margin:'-10px'
+    }
+  },
+
+  captionInner: function() {
+    return {
+      padding:'10px'
+    }
+  },
+
   sectionName: function() {
     return "section-" + this.props.section.id;
   },
@@ -96,7 +119,7 @@ var SectionCard = React.createClass({
             <img src={this.props.section.item.image['thumbnail/medium'].contentUrl} />
           </mui.CardMedia>
           <mui.CardText style={this.textStyle()}>
-            <div dangerouslySetInnerHTML={{__html: this.props.section.caption}} />
+            <div dangerouslySetInnerHTML={{__html: this.props.section.caption}} style={this.captionInner()}/>
           </mui.CardText>
         </div>
       );
