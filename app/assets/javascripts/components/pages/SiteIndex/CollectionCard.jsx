@@ -1,6 +1,7 @@
 var React = require('react');
 var mui = require('material-ui');
 var $ = require('jquery');
+var theme = require('../../../themes/beehive');
 
 var CollectionCard = React.createClass({
   mixins: [CollectionUrlMixin],
@@ -19,6 +20,7 @@ var CollectionCard = React.createClass({
       position: "relative",
       cursor: "pointer",
       height: '500px',
+      padding: theme.spacing.desktopGutter,
     };
   },
 
