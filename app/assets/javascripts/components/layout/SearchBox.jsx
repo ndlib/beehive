@@ -52,9 +52,10 @@ var SearchBox = React.createClass({
   },
 
   inputStyle: function() {
-    return {
+    return ({
       color: (this.props.primary ? this.getCurrentPallette().alternateTextColor : this.getCurrentPallette().textColor),
-    };
+      height: '36px',
+    });
   },
 
   handleKeyDown: function(e) {
@@ -73,6 +74,7 @@ var SearchBox = React.createClass({
         defaultValue={this.props.searchTerm}
         onKeyDown={this.handleKeyDown}
         inputStyle={this.inputStyle()}
+        style={{height:'36px', verticalAlign:'top'}}
       />);
     } else {
       return (<div />);
@@ -81,7 +83,7 @@ var SearchBox = React.createClass({
 
   render: function() {
     return(
-      <div style={{display:'inline-block'}}>
+      <div style={{display:'inline-block', margin:'14px 0'}}>
         {this.input()}
         <mui.RaisedButton
           onClick={this.onClick}
