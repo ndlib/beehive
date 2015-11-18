@@ -76,6 +76,7 @@ var Search = React.createClass({
           searchTerm={this.props.searchTerm}
           sortOptions={this.state.sortOptions}
           selectedIndex={this.state.selectedIndex}
+          searchStyle={{height:'50px'}}
         />
 
         <PageContent fluidLayout={false}>
