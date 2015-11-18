@@ -64,6 +64,7 @@ var SiteIndex = React.createClass({
             <CollectionsList collections={this.state.collections} />
           </PageContent>
         </PageContent>
+        <IndexPageFooter />
       </mui.AppCanvas>
     );
   }

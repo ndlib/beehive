@@ -63,6 +63,7 @@ TitleBar = require("./components/layout/TitleBar");
 PageContent = require("./components/layout/PageContent");
 CollectionPageHeader = require("./components/layout/CollectionPageHeader");
 CollectionPageFooter = require("./components/layout/CollectionPageFooter");
+IndexPageFooter = require("./components/layout/IndexPageFooter");
 
 BrandBar = require("./components/layout/BrandBar");
 PreviewLink = require("./components/layout/PreviewLink");

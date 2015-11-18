@@ -102,12 +102,6 @@ var SearchDisplayList = React.createClass({
       <div>
         <mui.Paper style={{width: "100%"}} zDepth={0}>
           <h3>Browse Collection</h3>
-          <SearchControls
-            collection={this.props.collection}
-            searchTerm={this.props.searchTerm}
-            sortOptions={this.props.sortOptions}
-            selectedIndex={this.props.selectedIndex}
-          />
         </mui.Paper>
 
         <SearchSidebar
