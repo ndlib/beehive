@@ -49,20 +49,58 @@ var SearchSort = React.createClass({
     return(nextProps.selectedIndex !== this.props.selectedIndex);
   },
 
+  sortStyle: function() {
+    return ({
+      display:'inline-block',
+      borderRadius: '2px',
+      overflow: 'hidden',
+      width:'120px',
+      verticalAlign: 'middle',
+      marginLeft: '5px',
+      background: 'url(/assets/arrowdown.gif) no-repeat 90% 50% #fff'
+    });
+  },
+
+  sortSelectStyle: function() {
+    return ({
+      background: 'transparent',
+      padding: '7px 8px',
+      border: 'none',
+      boxShadow: 'none',
+      appearance: 'none',
+      backgroundColor: 'transparent',
+      backgroundImage: 'none',
+      width: '130%',
+      color: 'black'
+    });
+  },
+
+  sortOptions: function() {
+    return this.props.sortOptions.map(function(option) {
+      return(<option value={option.value}>{option.name}</option>);
+    });
+  },
+
   render: function() {
     if(this.props.sortOptions.length > 0) {
       return(
-      <span>
-        <SelectField
-          ref='searchSort'
-          autoWidth={false}
-          onChange={this.onChange.bind(this, 'selectValue')}
-          menuItems={this.props.sortOptions}
-          selectedIndex={this.props.selectedIndex > -1 ? this.props.selectedIndex : 0}
-          displayMember='name'
-          valueMember='value'
-        />
-      </span>
+      <div style={{float: "left", padding: '10px', paddingTop: '15px', color: 'white', fontSize: '16px'}}>
+        Sort By:
+        <div style={this.sortStyle()}>
+          <select
+            ref='searchSort'
+            autoWidth={false}
+            onChange={this.onChange.bind(this, 'selectValue')}
+            menuItems={this.props.sortOptions}
+            selectedIndex={this.props.selectedIndex > -1 ? this.props.selectedIndex : 0}
+            displayMember='name'
+            valueMember='value'
+            style={this.sortSelectStyle()}
+          >
+          {this.sortOptions()}
+          </select>
+        </div>
+      </div>
       );
     }
     else {

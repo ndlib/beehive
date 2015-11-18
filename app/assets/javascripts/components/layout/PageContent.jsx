@@ -28,7 +28,7 @@ var PageContent = React.createClass({
         margin: '0 auto',
         background: 'none',
         position: 'relative',
-        top: '50px',
+        //top: '50px',
       });
     }
   },

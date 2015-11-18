@@ -25,7 +25,8 @@ var ShowcaseTitleBar = React.createClass({
     return {
       opacity: 1 - this.props.percentFade,
       backgroundColor: this.getCurrentPallette().primary2Color,
-      //height: '34px'
+      //height: '34px',
+      zIndex: '200',
     };
   },
 

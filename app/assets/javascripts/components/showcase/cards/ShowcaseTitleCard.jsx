@@ -63,7 +63,8 @@ var ShowcaseTitleCard = React.createClass({
       color: "#fff",
       textShadow: "1px 1px 2px #333333",
       fontSize: "18px",
-      backgroundColor: "rgba(0,0,0,0.1)",            
+      backgroundColor: "rgba(0,0,0,0.1)",
+      whiteSpace: 'normal'            
     }
   },
 

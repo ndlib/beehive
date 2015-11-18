@@ -43,7 +43,7 @@ var SiteIndex = React.createClass({
       <mui.AppCanvas>
         <BrandBar/>
         <PageContent fluidLayout={true}>
-          <mui.Card  style={{height:'40vh', position:'relative', top:'50px', left:'0', right:'0'}} className="heightFix"  >
+          <mui.Card  style={{height:'40vh', position:'relative', marginTop:'50px', left:'0', right:'0'}} className="heightFix"  >
             <mui.CardMedia className="collectionscover"
               style={{height:'100%'}}
               overlayContentStyle={{background:'transparent', position:'static'}}

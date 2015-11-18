@@ -46,10 +46,10 @@ SearchPagination = require("./components/pages/Search/SearchPagination");
 SearchSidebar = require("./components/pages/Search/SearchSidebar");
 SearchDisplayList = require("./components/pages/Search/SearchDisplayList");
 SearchControls = require("./components/pages/Search/SearchControls");
-ItemListItem = require("./components/pages/search/ItemListItem");
-ItemImage = require("./components/pages/search/ItemImage");
-GridItem = require("./components/pages/search/GridItem");
-ListItem = require("./components/pages/search/ListItem");
+ItemListItem = require("./components/pages/Search/ItemListItem");
+ItemImage = require("./components/pages/Search/ItemImage");
+GridItem = require("./components/pages/Search/GridItem");
+ListItem = require("./components/pages/Search/ListItem");
 
 //// ErrorPage
 ErrorPage = require("./components/pages/Error/ErrorPage");
