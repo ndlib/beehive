@@ -84,7 +84,7 @@ var SearchSort = React.createClass({
   render: function() {
     if(this.props.sortOptions.length > 0) {
       return(
-      <div style={{float: "left", padding: '10px', color: 'white', fontSize: '16px'}}>
+      <div style={{float: "left", padding: '10px', paddingTop: '15px', color: 'white', fontSize: '16px'}}>
         Sort By:
         <div style={this.sortStyle()}>
           <select
