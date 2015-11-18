@@ -2,12 +2,13 @@
 var React = require('react');
 var mui = require('material-ui');
 var EventEmitter = require("../../../EventEmitter");
+var CloseButton = require('../../other/CloseButton');
 
 var gridView = {view: "grid"};
 var listView = {view: "list"};
 
 var SearchControls = React.createClass({
-  mixins: [CurrentThemeMixin],
+  mixins: [CurrentThemeMixin, CollectionUrlMixin],
 
   propTypes: {
     collection: React.PropTypes.object,
@@ -30,7 +31,8 @@ var SearchControls = React.createClass({
 
   controlsStyle: function() {
     return {
-      backgroundColor: this.getCurrentPallette().canvasColor,
+      position: "fixed",
+      minHeight: "65px",
     };
   },
 
@@ -57,21 +59,16 @@ var SearchControls = React.createClass({
 
   render: function() {
     return (
+      <div style={{height: "65px" }}>
       <mui.Toolbar className="controls" style={this.controlsStyle()}>
         <mui.ToolbarGroup key={0} float="left">
-          <SearchBox collection={this.props.collection} searchTerm={this.props.searchTerm} primary={false} />
+          <SearchBox collection={this.props.collection} searchTerm={this.props.searchTerm} primary={false} active={true} />
         </mui.ToolbarGroup>
         <mui.ToolbarGroup key={1} float="right">
-          <SearchSort
-            collection={this.props.collection}
-            sortOptions={this.props.sortOptions}
-            selectedIndex={this.props.selectedIndex}
-          />
           <mui.RaisedButton
-            label="List"
             secondary={this.state.view == 'list'}
             onClick={this.setList}
-            style={{zIndex: '0', margin: 0}}
+            style={{zIndex: '0', margin: '10px 0', minWidth: "44px",}}
           >
             <mui.FontIcon
               className="material-icons"
@@ -79,10 +76,9 @@ var SearchControls = React.createClass({
             >view_list</mui.FontIcon>
           </mui.RaisedButton>
           <mui.RaisedButton
-            label="Grid"
             secondary={this.state.view == 'grid'}
             onClick={this.setGrid}
-            style={{zIndex: '0', margin: 0}}
+            style={{zIndex: '0', margin: '10px 0', minWidth: "44px",}}
           >
             <mui.FontIcon
               className="material-icons"
@@ -91,6 +87,7 @@ var SearchControls = React.createClass({
           </mui.RaisedButton>
         </mui.ToolbarGroup>
       </mui.Toolbar>
+      </div>
     );
 
   }
