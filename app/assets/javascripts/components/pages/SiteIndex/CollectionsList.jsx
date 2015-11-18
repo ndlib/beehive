@@ -17,7 +17,7 @@ var CollectionsList = React.createClass({
 
   render: function() {
     return (
-      <mui.GridList cols={2}>
+      <mui.GridList cols={2} cellHeight={500}>
         {this.collectionNodes()}
       </mui.GridList>
     );
