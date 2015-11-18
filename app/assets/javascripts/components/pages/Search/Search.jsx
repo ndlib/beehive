@@ -71,6 +71,13 @@ var Search = React.createClass({
 
         <ItemPanel />
 
+        <SearchControls
+          collection={this.state.collection}
+          searchTerm={this.props.searchTerm}
+          sortOptions={this.state.sortOptions}
+          selectedIndex={this.state.selectedIndex}
+        />
+
         <PageContent fluidLayout={false}>
           <SearchDisplayList
             collection={this.state.collection}

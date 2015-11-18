@@ -15,27 +15,34 @@ var SearchBox = React.createClass({
     return {
       searchTerm: "",
       primary: true,
+      active: false,
     };
   },
 
   getInitialState: function() {
     var state = {
       searchTerm: this.props.searchTerm,
+      active: this.props.active,
     };
     return state;
   },
 
   onChange: function(e) {
-    this.setTerm(this.refs.searchBox.getValue());
+    console.log(e);
+    this.setTerm(e.target.value);
   },
 
   onClick: function(e) {
-    window.location.assign(this.searchUrl(this.props.collection));
+    if (this.state.active) {
+      window.location.assign(this.searchUrl(this.props.collection));
+    } else {
+      this.setState({active: true});
+    }
   },
 
   componentDidMount: function() {
     this.initSearchStore();
-    this.setTerm(this.refs.searchBox.getValue());
+    this.setTerm(this.props.searchTerm);
   },
 
   setTerm: function(term) {
@@ -44,30 +51,38 @@ var SearchBox = React.createClass({
     this.setState({searchTerm: cleanTerm});
   },
 
-  hintStyle: function() {
-    return {
-      color: ColorManipulator.lighten(this.props.primary ? this.getCurrentPallette().alternateTextColor : this.getCurrentPallette().textColor, 0.5),
-    };
-  },
-
   inputStyle: function() {
     return {
       color: (this.props.primary ? this.getCurrentPallette().alternateTextColor : this.getCurrentPallette().textColor),
     };
   },
 
+  handleKeyDown: function(e) {
+    var ENTER = 13;
+    if( e.keyCode == ENTER ) {
+        this.onClick(e);
+    }
+  },
+
+  input: function() {
+    if (this.state.active) {
+      return (<input
+        placeholder='search'
+        ref='searchBox'
+        onChange={this.onChange}
+        defaultValue={this.props.searchTerm}
+        onKeyDown={this.handleKeyDown}
+        inputStyle={this.inputStyle()}
+      />);
+    } else {
+      return (<div />);
+    }
+  },
+
   render: function() {
     return(
       <div style={{display:'inline-block'}}>
-        <mui.TextField
-          hintText='search'
-          ref='searchBox'
-          onChange={this.onChange}
-          defaultValue={this.props.searchTerm}
-          onEnterKeyDown={this.onClick}
-          hintStyle={this.hintStyle()}
-          inputStyle={this.inputStyle()}
-        />
+        {this.input()}
         <mui.RaisedButton
           onClick={this.onClick}
           style={{zIndex: '0', minWidth: 'auto', boxShadow: 'none',  }}
