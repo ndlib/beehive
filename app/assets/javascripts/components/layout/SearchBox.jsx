@@ -1,6 +1,7 @@
 'use strict'
 var React = require('react');
 var mui = require('material-ui');
+var ColorManipulator = require('material-ui/lib/utils/color-manipulator');
 
 var SearchBox = React.createClass({
   mixins: [SearchUrlMixin, CurrentThemeMixin],
@@ -45,7 +46,7 @@ var SearchBox = React.createClass({
 
   hintStyle: function() {
     return {
-      color: (this.props.primary ? this.getCurrentPallette().alternateTextColor : this.getCurrentPallette().textColor),
+      color: ColorManipulator.lighten(this.props.primary ? this.getCurrentPallette().alternateTextColor : this.getCurrentPallette().textColor, 0.5),
     };
   },
 

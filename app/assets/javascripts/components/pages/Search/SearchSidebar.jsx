@@ -7,9 +7,7 @@ var SearchSidebar = React.createClass({
   propTypes: {
     collection: React.PropTypes.array,
     facets: React.PropTypes.array,
-    selectedIndex: React.PropTypes.number,
     selectedFacet: React.PropTypes.object,
-    sortOptions: React.PropTypes.array,
   },
 
   getInitialState: function () {
@@ -38,8 +36,6 @@ var SearchSidebar = React.createClass({
     return (
       <mui.Paper style={{display: this.state.show ? 'block' : 'none', width: "25%", float: "right"}} >
         <h3>Filter Results</h3>
-        <hr/>
-        {this.searchSort()}
         <hr/>
         <SearchFacets collection={this.props.collection} facets={this.props.facets} selectedFacet={this.props.selectedFacet} />
       </mui.Paper>

@@ -49,8 +49,9 @@ var SiteIndex = React.createClass({
                 title="Digital Collections"
                 subtitle="Powered by HoneyComb"
               />}
-              >
+            ><div className="hi">
               <img src="/assets/home.jpg"/>
+             </div>
             </mui.CardMedia>
           </mui.Card>
           <PageContent fluidLayout={false}>
