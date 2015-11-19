@@ -27,6 +27,8 @@ var PageContent = React.createClass({
         width: '960px',
         margin: '0 auto',
         background: 'none',
+        position: 'relative',
+        //top: '50px',
       });
     }
   },

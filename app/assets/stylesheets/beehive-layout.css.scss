@@ -37,6 +37,31 @@ $scrollbar-color: #666;
   left: -50%;
 }
 
+.heightFix > div {
+  height: 100%;
+}
+
+.collectionscover > div {
+  width: 100%;
+  height: 100%;
+}
+
+.collectionscover div div {
+  position: static !important;
+}
+
+.coverImage {
+  background: url(/assets/home.jpg);
+  background-size: cover;
+  background-position: top;
+  width: 100%;
+  height: 100%;
+}
+
+.coverImage img {
+  display: none;
+}
+
 .item {
   div {
 
@@ -47,6 +72,14 @@ $scrollbar-color: #666;
       width: 100%;
     }
   }
+  * {
+    white-space: normal;
+    line-height: 24px;
+  }
+}
+
+.ps-container {
+  width: 100%;
 }
 
 @keyframes slidein {
@@ -75,7 +108,9 @@ $scrollbar-color: #666;
   animation-name: slidein;
 }
 
-
+.showcase-bg footer {
+  position: absolute;
+}
 
 .showcase-outer {
   position: relative;

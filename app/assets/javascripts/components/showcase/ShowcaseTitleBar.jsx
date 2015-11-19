@@ -25,10 +25,12 @@ var ShowcaseTitleBar = React.createClass({
     return {
       opacity: 1 - this.props.percentFade,
       backgroundColor: this.getCurrentPallette().primary2Color,
+      //height: '34px',
+      zIndex: '200',
     };
   },
 
-  titleStyle: function () {
+  titleBarStyle: function () {
     return {
       color: this.getCurrentPallette().alternateTextColor,
     }
@@ -48,7 +50,7 @@ var ShowcaseTitleBar = React.createClass({
       return (
         <mui.Toolbar style={this.style()}>
           <mui.ToolbarGroup key={0} float="left">
-            <mui.ToolbarTitle text={this.name()} style={this.titleStyle()} />
+            <mui.ToolbarTitle text={this.name()} style={this.titleBarStyle()} />
           </mui.ToolbarGroup>
           <mui.ToolbarGroup key={1} float="right">
             <CloseButton clickEvent={this.clickCloseButton} alternate={true} />

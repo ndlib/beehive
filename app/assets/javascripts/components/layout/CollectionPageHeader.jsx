@@ -107,6 +107,9 @@ var CollectionPageHeader = React.createClass({
   appBarStyle: function() {
     var style = {
       position: "fixed",
+      //background: "rgba(0, 0, 0, 0.86)",
+      background: "linear-gradient(to bottom, #5b5b5b 0%,#050505 100%)",
+
     };
 
     if (this.props.branding) {
@@ -126,7 +129,7 @@ var CollectionPageHeader = React.createClass({
 
     var rightNav = (
       <div>
-        <div style={ {float:'right' } }>
+        <div style={ {float:'right', marginTop:'-8px' } }>
           <SearchBox collection={this.props.collection} />
         </div>
 
