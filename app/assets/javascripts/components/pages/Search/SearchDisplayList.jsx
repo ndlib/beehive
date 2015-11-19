@@ -2,6 +2,7 @@
 var React = require('react');
 var mui = require('material-ui');
 var EventEmitter = require("../../../EventEmitter");
+var theme = require('../../../themes/beehive');
 
 var SearchDisplayList = React.createClass({
   mixins: [CollectionUrlMixin, MuiThemeMixin ],
@@ -84,7 +85,7 @@ var SearchDisplayList = React.createClass({
     }
     if (view == 'grid') {
       return (
-        <mui.GridList cellHeight={424} >
+        <mui.GridList cellHeight={424} padding={theme.spacing.desktopGutter}>
           {itemNodes}
         </mui.GridList>
       )
