@@ -38,6 +38,9 @@ CollectionDescription = require("./components/pages/CollectionIntroduction/Colle
 //// Showcase
 Showcase = require("./components/pages/Showcase/Showcase");
 
+//// Pages
+PagesShow = require("./components/pages/Pages/PagesShow");
+
 //// Search
 Search = require("./components/pages/Search/Search");
 SearchSort = require("./components/pages/Search/SearchSort");

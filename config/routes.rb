@@ -23,6 +23,10 @@ Rails.application.routes.draw do
     scope "/search" do
       get "/", to: "items#search"
     end
+    scope "/pages" do
+      get ":id", to: "pages#show"
+      get ":id/:slug", to: "pages#show"
+    end
   end
 
   scope "/:collection_id" do
