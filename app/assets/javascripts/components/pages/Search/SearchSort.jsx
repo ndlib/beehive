@@ -81,6 +81,14 @@ var SearchSort = React.createClass({
     });
   },
 
+  selectedValue: function() {
+    if (this.props.selectedIndex > -1 ) {
+      return this.props.sortOptions[this.props.selectedIndex].value;
+    } else {
+      return this.props.sortOptions[0].value
+    }
+  },
+
   render: function() {
     if(this.props.sortOptions.length > 0) {
       return(
@@ -92,9 +100,7 @@ var SearchSort = React.createClass({
             autoWidth={false}
             onChange={this.onChange.bind(this, 'selectValue')}
             menuItems={this.props.sortOptions}
-            selectedIndex={this.props.selectedIndex > -1 ? this.props.selectedIndex : 0}
-            displayMember='name'
-            valueMember='value'
+            defaultValue={this.selectedValue()}
             style={this.sortSelectStyle()}
           >
           {this.sortOptions()}
