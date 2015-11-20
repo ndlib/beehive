@@ -38,9 +38,8 @@ var Page = React.createClass({
     var pageName;
     if(this.state.collection && this.state.collection.pages) {
       pageName = this.state.collection.pages.name;
-      pageContent = (
-        <EssayContent content={this.state.collection.pages.content} />
-      )
+      pageContent = this.state.collection.pages.content;
+
     }
 
     return (

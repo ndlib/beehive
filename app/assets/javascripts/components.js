@@ -113,9 +113,6 @@ PreviousModal = require("./components/pages/display/PreviousModal");
 NextModal = require("./components/pages/display/NextModal");
 OpenseadragonViewer  = require("./components/pages/display/OpenseadragonViewer");
 
-//Essays
-EssayContent = require('./components/essays/EssayContent');
-
 // Other
 AttentionHelp = require("./components/other/AttentionHelp");
 DescriptionTeaser = require("./components/other/DescriptionTeaser");

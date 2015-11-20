@@ -19,7 +19,7 @@ var CollectionDescription = React.createClass({
 
   introContent: function () {
     if (this.props.collection.description) {
-      return (<EssayContent content={this.props.collection.description} />);
+      return (<PagesShow content={this.props.collection.description} />);
     } else {
       return "";
     }

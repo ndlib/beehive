@@ -6,23 +6,25 @@ var PagesShow = React.createClass({
 
   propTypes: {
     title: React.PropTypes.string,
-    content: React.PropTypes.object,
+    content: React.PropTypes.object.isRequired,
   },
 
   render: function() {
-    var pageContent = (<Loading/>);
     var pageName;
-    if(this.state.collection && this.state.collection.pages) {
-      pageName = this.state.collection.pages.name;
+    var pageContent = (<Loading/>);
+    if(this.props.title) {
+      pageName = (<h2>{this.props.title}</h2>);
+    }
+    if(this.props.content) {
       pageContent = (
-        <EssayContent content={this.state.collection.pages.content} />
-      )
+        <div className="essay-content" dangerouslySetInnerHTML={{__html:this.props.content}} />
+      );
     }
 
     return (
       <div>
-        <h2>{this.props.title}</h2>
-        {this.props.content}
+        {pageName}
+        {pageContent}
       </div>
     )
   }

@@ -34,11 +34,10 @@ var AboutPage = React.createClass({
   },
 
   render: function() {
-    console.log(this.state.collection);
     var pageContent = (<Loading/>);
     if(this.state.collection && this.state.collection.about) {
       pageContent = (
-        <EssayContent content={this.state.collection.about} />
+        <PagesShow title="About" content={this.state.collection.about} />
       )
     }
 
@@ -46,7 +45,7 @@ var AboutPage = React.createClass({
       <mui.AppCanvas>
         <CollectionPageHeader collection={this.state.collection} branding={true}/>
           <PageContent>
-            <PagesShow title="About" content={pageContent} />
+            {pageContent}
           </PageContent>
         <CollectionPageFooter collection={this.state.collection} />
       </mui.AppCanvas>
