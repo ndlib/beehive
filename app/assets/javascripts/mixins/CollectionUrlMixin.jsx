@@ -7,6 +7,10 @@ var CollectionUrlMixin = {
     return url;
   },
 
+  aboutUrl: function(collection) {
+    return this.collectionUrl(collection) + '/about';
+  },
+
   browseUrl: function(collection) {
     return this.collectionUrl(collection) + '/search?q=';
   },

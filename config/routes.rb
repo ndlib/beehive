@@ -9,8 +9,10 @@ Rails.application.routes.draw do
 
   get "/:id", to: "collections#show"
   get "/:id/intro", to: "collections#intro"
+  get "/:id/about", to: "collections#about"
   get "/:id/:slug", to: "collections#show"
   get "/:id/:slug/intro", to: "collections#intro"
+  get "/:id/:slug/about", to: "collections#about"
 
   scope "/:collection_id/:collection_slug" do
     scope "/showcases" do
@@ -37,6 +39,13 @@ Rails.application.routes.draw do
     end
     scope "/items" do
       get "/", to: "items#search"
+    end
+    scope "/search" do
+      get "/", to: "items#search"
+    end
+    scope "/pages" do
+      get ":id", to: "pages#show"
+      get ":id/:slug", to: "pages#show"
     end
   end
 

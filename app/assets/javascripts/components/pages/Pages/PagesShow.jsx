@@ -5,32 +5,8 @@ var PagesShow = React.createClass({
   mixins: [LoadRemoteMixin, MuiThemeMixin],
 
   propTypes: {
-    collection: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.object,
-    ]),
-  },
-
-  getInitialState: function() {
-    return {
-      collection: {},
-    };
-  },
-
-  componentDidMount: function() {
-    if ('object' == typeof(this.props.collection)) {
-      this.setState({
-        collection: this.props.collection,
-      });
-    } else {
-      this.loadRemoteCollection(this.props.collection);
-    }
-  },
-
-  setValues: function(collection) {
-    this.setState({
-      collection: collection,
-    });
+    title: React.PropTypes.string,
+    content: React.PropTypes.object,
   },
 
   render: function() {
@@ -44,14 +20,10 @@ var PagesShow = React.createClass({
     }
 
     return (
-      <mui.AppCanvas>
-        <CollectionPageHeader collection={this.state.collection} branding={true}/>
-          <PageContent>
-            <h2>{pageName}</h2>
-            {pageContent}
-          </PageContent>
-        <CollectionPageFooter collection={this.state.collection} />
-      </mui.AppCanvas>
+      <div>
+        <h2>{this.props.title}</h2>
+        {this.props.content}
+      </div>
     )
   }
 });
