@@ -6,7 +6,10 @@ var PagesShow = React.createClass({
 
   propTypes: {
     title: React.PropTypes.string,
-    content: React.PropTypes.object.isRequired,
+    content: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.object,
+    ]).isRequired,
   },
 
   render: function() {
