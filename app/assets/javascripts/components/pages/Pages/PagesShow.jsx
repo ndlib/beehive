@@ -5,53 +5,30 @@ var PagesShow = React.createClass({
   mixins: [LoadRemoteMixin, MuiThemeMixin],
 
   propTypes: {
-    collection: React.PropTypes.oneOfType([
+    title: React.PropTypes.string,
+    content: React.PropTypes.oneOfType([
       React.PropTypes.string,
       React.PropTypes.object,
-    ]),
-  },
-
-  getInitialState: function() {
-    return {
-      collection: {},
-    };
-  },
-
-  componentDidMount: function() {
-    if ('object' == typeof(this.props.collection)) {
-      this.setState({
-        collection: this.props.collection,
-      });
-    } else {
-      this.loadRemoteCollection(this.props.collection);
-    }
-  },
-
-  setValues: function(collection) {
-    this.setState({
-      collection: collection,
-    });
+    ]).isRequired,
   },
 
   render: function() {
-    var pageContent = (<Loading/>);
     var pageName;
-    if(this.state.collection && this.state.collection.pages) {
-      pageName = this.state.collection.pages.name;
+    var pageContent = (<Loading/>);
+    if(this.props.title) {
+      pageName = (<h2>{this.props.title}</h2>);
+    }
+    if(this.props.content) {
       pageContent = (
-        <EssayContent content={this.state.collection.pages.content} />
-      )
+        <div className="essay-content" dangerouslySetInnerHTML={{__html:this.props.content}} />
+      );
     }
 
     return (
-      <mui.AppCanvas>
-        <CollectionPageHeader collection={this.state.collection} branding={true}/>
-          <PageContent>
-            <h2>{pageName}</h2>
-            {pageContent}
-          </PageContent>
-        <CollectionPageFooter collection={this.state.collection} />
-      </mui.AppCanvas>
+      <div>
+        {pageName}
+        {pageContent}
+      </div>
     )
   }
 });

@@ -38,6 +38,7 @@ var CollectionLeftNav = React.createClass({
   dropDownOptions: function() {
     var options = [];
     var collectionUrl = this.collectionUrl(this.props.collection);
+    var aboutUrl = this.aboutUrl(this.props.collection);
     var introUrl = this.introUrl(this.props.collection);
     var browseUrl = this.browseUrl(this.props.collection);
 
@@ -53,7 +54,7 @@ var CollectionLeftNav = React.createClass({
       options.push((
         {
           type: mui.MenuItem.Types.LINK,
-          payload: this.browseUrl(this.props.collection),
+          payload: browseUrl,
           text: 'Browse Collection'
         }
       ));
@@ -63,7 +64,7 @@ var CollectionLeftNav = React.createClass({
       options.push((
         {
           type: mui.MenuItem.Types.LINK,
-          payload: "/about",
+          payload: aboutUrl,
           text: "About"
         }
       ));

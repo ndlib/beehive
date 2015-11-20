@@ -39,6 +39,8 @@ CollectionDescription = require("./components/pages/CollectionIntroduction/Colle
 Showcase = require("./components/pages/Showcase/Showcase");
 
 //// Pages
+AboutPage = require("./components/pages/Pages/AboutPage");
+Page = require("./components/pages/Pages/Page");
 PagesShow = require("./components/pages/Pages/PagesShow");
 
 //// Search
@@ -110,9 +112,6 @@ ItemShow = require("./components/pages/display/ItemShow");
 PreviousModal = require("./components/pages/display/PreviousModal");
 NextModal = require("./components/pages/display/NextModal");
 OpenseadragonViewer  = require("./components/pages/display/OpenseadragonViewer");
-
-//Essays
-EssayContent = require('./components/essays/EssayContent');
 
 // Other
 AttentionHelp = require("./components/other/AttentionHelp");
