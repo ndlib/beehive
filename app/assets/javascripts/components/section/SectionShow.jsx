@@ -1,80 +1,126 @@
 'use strict'
 var React = require('react');
+var mui = require('material-ui');
+var CloseButton = require('../other/CloseButton');
+var SideNavButton = require("../other/SideNavButton");
 
 var SectionShow = React.createClass({
+  mixins: [ CurrentThemeMixin, LoadRemoteMixin ],
+
   displayName: 'Section Show',
   propTypes: {
-    section: React.PropTypes.object.isRequired,
+    section: React.PropTypes.object,
     previousSection: React.PropTypes.string,
     nextSection: React.PropTypes.string,
     height: React.PropTypes.number,
   },
-/*
-  modalShow: function(event) {
-    $(document).bind('keyup', this.modalKeyup);
+
+  closeDialog: function () {
+    SectionActions.hideSectionDialogWindow();
   },
 
-  modalKeyup: function(event) {
-    // bind keypress to modal when it is shown
-    if(event.keyCode == 37 || event.keyCode == 38) {
-      if(this.props.previousSection) {
-        $('#modal-' + this.props.section.id).modal('hide');
-        $('#modal-' + this.props.previousSection).modal('show');
-        window.location.hash = 'modal-' +  this.props.previousSection;
-      }
-    }
-    // if right or down arrow
-    else if(event.keyCode == 39 || event.keyCode == 40) {
-      if(this.props.nextSection) {
-        $('#modal-' + this.props.section.id).modal('hide');
-        $('#modal-' + this.props.nextSection).modal('show');
-         window.location.hash = 'modal-' +  this.props.nextSection;
-      }
+  styles: function () {
+    return {
+      backgroundColor: this.getCurrentPallette.primary3Color,
     }
   },
 
-  modalHide: function(event) {
-    this.modalVisible = false;
-    $(document).off('keyup', this.modalKeyup);
+  titleStyle: function () {
+    return {
+      color: this.getCurrentPallette().textColor,
+    }
   },
-*/
+
+  pageStyles: function() {
+    return {
+      height: this.props.height + "px",
+      width: "100%",
+      position: "fixed",
+      backgroundColor: this.getCurrentPallette().canvasColor,
+      zIndex: "1000",
+    }
+  },
+
+  title: function() {
+    if (this.props.section.item) {
+      return this.props.section.item.name;
+    } else {
+      return this.props.section.title;
+    }
+  },
+
+  toolbar: function() {
+    return (
+      <mui.Toolbar style={this.styles()} >
+        <mui.ToolbarGroup key={0} float="left" >
+          <mui.ToolbarTitle text={this.title()} style={this.titleStyle()} />
+        </mui.ToolbarGroup>
+        <mui.ToolbarGroup key={1} float="right">
+          <CloseButton clickEvent={this.closeDialog} />
+        </mui.ToolbarGroup>
+      </mui.Toolbar>
+    )
+  },
+
+  contentSection: function() {
+    if (this.props.section.item) {
+      return (<ItemShow height={this.props.height} item={this.props.section.item} additionalDetails={this.props.section.description}/>)
+    } else {
+      return (<SectionShowDescription height={this.props.height} section={this.props.section} />)
+    }
+  },
+
+  clickNextEvent: function(event) {
+    if(this.props.nextUrl) {
+      this.clickSideNavEvent(event, this.props.nextUrl);
+    }
+  },
+
+  clickPrevEvent: function(event) {
+    if(this.props.previousUrl) {
+      this.clickSideNavEvent(event, this.props.previousUrl);
+    }
+  },
+
+  clickSideNavEvent: function(event, url) {
+    event.preventDefault();
+    var id = url.split("/").pop();
+    window.location.hash = id;
+    if(url.indexOf('item') > -1) {
+      this.loadRemoteItem(url);
+    }
+    else if(url.indexOf('section') > -1) {
+      this.loadRemoteSection(url);
+    }
+    else {
+      console.log('an invalid url was provided', this.props.url);
+    }
+  },
+
   render: function() {
     var prev, next, offsetTop;
     if (this.props.height) {
       offsetTop = this.props.height / 2;
     }
     if (this.props.section) {
-      if (this.props.previousSection) {
-        prev = (<PreviousModal offsetTop={offsetTop} id={this.props.previousSection} />);
+      if(this.props.previousUrl) {
+        prev = (<SideNavButton onClick={this.clickPrevEvent} />);
       }
-      if (this.props.nextSection) {
-        next = (<NextModal offsetTop={offsetTop} id={this.props.nextSection} />);
+      if(this.props.nextUrl) {
+        next = (<SideNavButton onClick={this.clickNextEvent} rightIcon={true} />);
       }
-      if (this.props.section.item) {
-        // layout for section with item
-        return (
-          <div>
-            {prev}
-            {next}
-            <ItemShow height={this.props.height} item={this.props.section.item} additionalDetails={this.props.section.description}/>
-          </div>
-        );
-      } else {
-        // layout for section without item
-        return (
-          <div>
-            {prev}
-            {next}
-            <SectionShowDescription height={this.props.height} section={this.props.section} />
-          </div>
-        );
-      }
+
+      return (
+        <mui.Paper style={this.pageStyles()}>
+          {this.toolbar()}
+          {prev}
+          {next}
+          {this.contentSection()}
+        </mui.Paper>);
     } else {
       return null;
     }
-
   }
-
 });
 
 // each file will export exactly one component

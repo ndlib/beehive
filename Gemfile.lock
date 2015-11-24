@@ -65,17 +65,12 @@ GEM
     autoprefixer-rails (5.1.9)
       execjs
       json
-    babel-source (5.8.23)
+    babel-source (5.8.33)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-material-design (0.2.0)
-      bootstrap-sass (~> 3.0)
-    bootstrap-sass (3.3.4.1)
-      autoprefixer-rails (>= 5.0.0.1)
-      sass (>= 3.2.19)
     browserify-rails (0.7.2)
       sprockets (~> 2.0)
     builder (3.2.2)
@@ -242,7 +237,7 @@ GEM
       ffi (>= 0.5.0)
     rdoc (4.2.0)
       json (~> 1.4)
-    react-rails (1.2.0)
+    react-rails (1.4.1)
       babel-transpiler (>= 0.7.0)
       coffee-script-source (~> 1.8)
       connection_pool
@@ -354,8 +349,6 @@ PLATFORMS
 DEPENDENCIES
   airbrake
   autoprefixer-rails
-  bootstrap-material-design
-  bootstrap-sass (~> 3.3.1)
   browserify-rails (~> 0.5)
   capistrano (~> 3.1)
   capistrano-npm
@@ -380,7 +373,7 @@ DEPENDENCIES
   pry
   pry-coolline
   rails (~> 4.2)
-  react-rails
+  react-rails (~> 1.4.1)
   rspec-collection_matchers
   rspec-rails
   rubocop

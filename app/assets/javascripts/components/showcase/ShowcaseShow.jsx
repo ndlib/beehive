@@ -1,15 +1,17 @@
 //app/assets/javascripts/components/ShowcaseShow.jsx
 var React = require("react");
+var ReactDOM = require("react-dom");
+var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 var maxShowcaseHeight = 840;
-var showcaseTitleHeight = 40;
+var showcaseTitleHeight = 125;
 var scrollPadding = 80;
 var titleSectionWidthPercent = 0.85;
 var minBackgroundBlur = 0.3;
 var maxBackgroundBlur = 0.8;
 
 var ShowcaseShow = React.createClass({
-  mixins: [CollectionUrlMixin, IEMixin, PageHeightMixin, LoadRemoteMixin],
+  mixins: [CollectionUrlMixin, IEMixin, LoadRemoteMixin ],
   displayName: "Showcase Show",
   propTypes: {
     collection: React.PropTypes.object,
@@ -35,6 +37,9 @@ var ShowcaseShow = React.createClass({
     if (this.props.height != prevProps.height) {
       this.updateScrollbar();
     }
+    if(this.state.hasScrolled != prevState.hasScrolled) {
+      this.updateScrollbar();
+    }
   },
 
   initializeScrollbar: function() {
@@ -53,11 +58,11 @@ var ShowcaseShow = React.createClass({
       }
     }
   },
-  
+
   componentDidMount: function() {
     this.setState({
-      outerElement: $(React.findDOMNode(this.refs.showcaseOuter)),
-      element: $(React.findDOMNode(this)),
+      outerElement: $(this.refs.showcaseOuter),
+      element: $(ReactDOM.findDOMNode(this)),
     });
   },
 
@@ -71,6 +76,9 @@ var ShowcaseShow = React.createClass({
     this.setState({currentSection: section});
   },
 
+  removeCurrentSection: function () {
+    this.setState({currentSection: null});
+  },
 
   styleOuter: function(height) {
     return {
@@ -83,9 +91,16 @@ var ShowcaseShow = React.createClass({
     };
   },
 
+  transparent: function() {
+    return {
+      backgroundColor:'transparent',
+    };
+  },
+
   componentWillMount: function(){
     document.body.className = document.body.className + " showcase-bg";
     EventEmitter.on("SectionDialogWindow", this.setCurrentSection);
+    EventEmitter.on("HideSectionDialogWindow", this.removeCurrentSection);
     if(window.location.hash) {
       var url = this.remoteUrlBase() + "sections/" + window.location.hash.replace("#", "");
       this.loadRemoteSection(url);
@@ -137,20 +152,25 @@ var ShowcaseShow = React.createClass({
       <div>
         <AttentionHelp start={this.state.startTime} hasScrolled={this.state.hasScrolled} />
         <ShowcaseBackground percentBlur={backgroundBlur} height={this.props.height} showcase={this.props.showcase} />
-        <ShowcaseTitleBar percentFade={this.state.titleSectionPercentVisible} height={showcaseTitleHeight} showcase={this.props.showcase} />
-        <div id="showcase-outer" ref="showcaseOuter" className="showcase-outer" style={this.styleOuter(showcaseHeight)} onScroll={this.onScroll}>
-          <Scroller target="#showcase-outer" />
-          <DialogWindow
+        <SectionShow
+            section={this.state.currentSection}
+            height={this.props.height}
             previousUrl={prev}
             nextUrl={next}
-          >
-            <SectionShow
-              section={this.state.currentSection}
-              height={this.state.height}
-            />
-          </DialogWindow>
-          <ShowcaseInnerContent height={showcaseInnerHeight} showcase={this.props.showcase} />
-        </div>
+        />
+        <ShowcaseTitleBar percentFade={this.state.titleSectionPercentVisible} height={showcaseTitleHeight} showcase={this.props.showcase} />
+        <ReactCSSTransitionGroup
+          transitionName="showcase-slide-in"
+          transitionAppear={true}
+          transitionAppearTimeout={2600}
+          transitionEnterTimeout={0}
+          transitionLeaveTimeout={0}>
+          <div id="showcase-outer" ref="showcaseOuter" className="showcase-outer" style={this.styleOuter(showcaseHeight)} onScroll={this.onScroll}>
+            <Scroller target="#showcase-outer" height={this.props.height} />
+
+            <ShowcaseInnerContent height={showcaseInnerHeight} showcase={this.props.showcase} />
+          </div>
+        </ReactCSSTransitionGroup>
       </div>
     );
   }

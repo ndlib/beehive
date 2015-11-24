@@ -15,7 +15,7 @@ class ItemActions {
   }
 
   hideItemDialogWindow() {
-    EventEmitter.emit("ItemDialogWindow", 'hide');
+    EventEmitter.emit("HideItemDialogWindow", 'hide');
   }
 
 }

@@ -1,5 +1,5 @@
 'use strict'
-var searchMixin = {
+var SearchMixin = {
   loadSearchResults: function(url) {
     var url = url;
     $.ajax({
@@ -9,8 +9,8 @@ var searchMixin = {
       dataType: "json",
       success: function(result) {
         this.setItems(result.hits);
+        this.setSorts(result.sorts);
         this.setFacets(result.facets);
-        this.setSorts(result.sorts)
       },
       error: function(request, status, thrownError) {
           window.location = window.location.origin + '/404';
@@ -70,4 +70,4 @@ var searchMixin = {
 
 }
 
-module.exports = searchMixin;
+module.exports = SearchMixin;

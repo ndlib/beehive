@@ -1,8 +1,10 @@
 {
   "name": "beehive",
   "description": "Dependencies for the Beehive application",
+  "license": "CC-BY-NC-ND-4.0",
   "repository": "git@github.com:ndlib/beehive.git",
   "dependencies": {
+    "axios": "0.7.0",
     "browserify": "^6.3.4",
     "browserify-incremental": "^1.5.0",
     "classnames": "^2.1.5",
@@ -10,44 +12,31 @@
     "flux": "^2.0.3",
     "jquery": "^2.1.4",
     "keymirror": "^0.1.1",
-    "material-ui": "0.10.4",
+    "material-ui": "^0.13.2",
     "object-assign": "^3.0.0",
-    "react": "^0.13.3",
+    "react": "^0.14.1",
+    "react-addons-clone-with-props": "^0.14.1",
+    "react-addons-create-fragment": "^0.14.1",
+    "react-addons-css-transition-group": "^0.14.1",
+    "react-addons-linked-state-mixin": "^0.14.1",
+    "react-addons-perf": "^0.14.1",
+    "react-addons-pure-render-mixin": "^0.14.1",
+    "react-addons-shallow-compare": "^0.14.1",
+    "react-addons-test-utils": "^0.14.1",
+    "react-addons-transition-group": "^0.14.1",
+    "react-addons-update": "^0.14.1",
+    "react-dom": "^0.14.1",
     "react-scroll": "^0.18.0",
-    "react-tap-event-plugin": "^0.1.8",
+    "react-tap-event-plugin": "^0.2.0",
     "reactify": "^0.17.1"
   },
   "devDependencies": {
     "coveralls": "^2.11.2",
     "gulp": "^3.9.0",
-    "gulp-watch": "^4.2.4",
-    "jest-cli": "^0.4.12",
-    "react-tools": "^0.12.2"
+    "gulp-watch": "^4.2.4"
   },
   "engines": {
-    "node": ">=0.10.0 <0.12"
+    "node": ">=4.2.0"
   },
-  "scripts": {
-    "test": "node ./node_modules/jest-cli/bin/jest.js"
-  },
-  "jest": {
-    "rootDir": "./app/assets/javascripts/components",
-    "scriptPreprocessor": "<rootDir>/__tests__/preprocessor.js",
-    "collectCoverage": true,
-    "moduleFileExtensions": [
-      "js",
-      "jsx"
-    ],
-    "unmockedModulePathPatterns": [
-      "react",
-      "jquery"
-    ],
-    "testFileExtensions": [
-      "js",
-      "jsx"
-    ],
-    "testPathIgnorePatterns": [
-      "preprocessor.js"
-    ]
-  }
+  "scripts": {}
 }

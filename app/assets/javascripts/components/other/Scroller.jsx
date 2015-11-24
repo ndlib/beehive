@@ -1,4 +1,5 @@
 var React = require("react");
+var SideNavButton = require("./SideNavButton");
 
 var Scroller = React.createClass({
   propTypes: {
@@ -22,18 +23,8 @@ var Scroller = React.createClass({
     });
   },
 
-  style: function() {
-    return {
-      cursor: "pointer",
-      fontSize: "3em",
-      zIndex: 1,
-    };
-  },
-
-  iconStyle: function() {
-    return {
-      fontSize: "1em",
-    };
+  top: function () {
+    return (this.props.height / 2);
   },
 
   maxScroll: function() {
@@ -47,17 +38,13 @@ var Scroller = React.createClass({
     if(this.state.element) {
       if(this.state.element.scrollLeft > 0) {
         left = (
-          <div className="scroll-left" onMouseDown={this.onMouseDown.bind(this, -1)} style={this.style()}>
-            <i className="scroll-arrow mdi-navigation-chevron-left" style={this.iconStyle()}/>
-          </div>
+          <SideNavButton onMouseDown={this.onMouseDown.bind(this, -1)} />
         );
       }
 
       if(this.state.element.scrollLeft < this.maxScroll() - 10) {
         right = (
-          <div className="scroll-right" onMouseDown={this.onMouseDown.bind(this, 1)} style={this.style()}>
-            <i className="scroll-arrow mdi-navigation-chevron-right" style={this.iconStyle()}/>
-          </div>
+          <SideNavButton onMouseDown={this.onMouseDown.bind(this, 1)} rightIcon={true} />
         );
       }
     }
