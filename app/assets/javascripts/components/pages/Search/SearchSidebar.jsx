@@ -5,7 +5,10 @@ var mui = require('material-ui');
 var SearchSidebar = React.createClass({
   mixins: [PageHeightMixin],
   propTypes: {
-    collection: React.PropTypes.array,
+    collection: React.PropTypes.oneOfType([
+      React.PropTypes.object,
+      React.PropTypes.array,
+    ]),
     facets: React.PropTypes.array,
     selectedFacet: React.PropTypes.object,
   },
