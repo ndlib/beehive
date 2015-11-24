@@ -50,8 +50,10 @@ var Collection = React.createClass({
         <CollectionPageHeader collection={this.state.collection} branding={true}/>
         <CollectionShow collection={this.state.collection} />
         <PageContent>
+        <div style={{maxWidth:'960px', margin:'0 auto'}}>
           <CollectionIntro collection={this.state.collection} />
           <CollectionShowShowcases collection={this.state.collection} />
+        </div>
         </PageContent>
         <CollectionPageFooter collection={this.state.collection} />
       </mui.AppCanvas>

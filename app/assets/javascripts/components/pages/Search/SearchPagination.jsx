@@ -19,16 +19,25 @@ var SearchPagination = React.createClass({
     };
   },
 
+  paginationButton: function() {
+    return {
+      border:'solid 1px',
+      padding:'3px 5px',
+      marginRight:'2px',
+      verticalAlign:'top'
+    };
+  },
+
   pageLink: function(i) {
     if(this.props.start === (i-1) * this.props.count){
       return(
-        <span> {i} </span>
+        <span style={this.paginationButton()}>{i}</span>
       );
     }
     else {
       var searchUrl = this.searchUrl(this.props.collection) + '&start=' + (i-1)*this.props.count;
       return(
-        <a href={searchUrl}> {i} </a>
+        <a href={searchUrl} style={this.paginationButton()}>{i}</a>
       );
     }
   },
@@ -56,7 +65,7 @@ var SearchPagination = React.createClass({
     // if not last page
     if(this.props.start + this.props.count < this.props.found) {
       var forwardLink = this.searchUrl(this.props.collection) + '&start=' + this.props.count*(last - 1);
-      nodes.push((<a href={forwardLink}> <i className="material-icons" style={{fontSize: '1em',}}>arrow_forward</i> </a>));
+      nodes.push((<a href={forwardLink}> <i className="material-icons" style={{fontSize: '1em'}}>arrow_forward</i> </a>));
     }
     return nodes;
   },
@@ -66,10 +75,10 @@ var SearchPagination = React.createClass({
     var startHuman = this.props.start + 1;
     var endHuman = Math.min(this.props.start + this.props.count, this.props.found);
     return (
-      <div style={{margin: '2em 0'}}>
+      <div style={{margin: '2em 0 4em', float:'right'}}>
         <div style={{color:'rgba(0, 0, 0, 0.870588)', float: 'right', textAlign: 'right'}}>
-          <div>
-            Showing {startHuman} - {endHuman} of {this.props.found}
+          <div className="pagination">
+            <span style={{marginRight:'15px', display:'inline-block', verticalAlign:'top'}}>Showing {startHuman} - {endHuman} of {this.props.found}</span>
             {this.pageLinks()}
           </div>
         </div>

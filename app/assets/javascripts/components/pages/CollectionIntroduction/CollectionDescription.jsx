@@ -29,8 +29,8 @@ var CollectionDescription = React.createClass({
     return (
       <div style={this.style()} id={this.props.id}>
         {this.introContent()}
-        <Element name="startShowcases" className="element">
-          <StartShowcaseButton collection={this.props.collection} />
+        <Element name="startShowcases" className="element startShowcase">
+          <StartShowcaseButton collection={this.props.collection}  style={{height:'auto'}}/>
         </Element>
       </div>
     );

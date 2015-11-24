@@ -19,8 +19,8 @@ var CollectionCard = React.createClass({
     return {
       position: "relative",
       cursor: "pointer",
-      height: '500px',
-      padding: theme.spacing.desktopGutter,
+      Height: 'auto',
+      //padding: theme.spacing.desktopGutter,
     };
   },
 
@@ -59,6 +59,7 @@ var CollectionCard = React.createClass({
       return (<mui.CardTitle title={this.props.headerTitle} />);
     }
   },
+
 
   cardTitle: function() {
     return (<mui.CardTitle title={this.props.collection.name_line_1} subtitle={this.props.collection.name_line_2} />);

@@ -49,6 +49,8 @@ var SearchFacets = React.createClass({
             secondaryText={"(" + e.count + ")"}
             value={parentFacet +"|"+ value}
             onClick={self.valueOnClick}
+            innerDivStyle={{padding:'10px 16px'}}
+            className="facet"
           />
         );
       }));

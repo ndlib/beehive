@@ -11,7 +11,7 @@ var StartShowcaseButton = React.createClass({
     if(this.props.collection.showcases){
       if(this.props.collection.showcases.length > 0) {
         return (
-          <ShowcaseCard showcase={this.props.collection.showcases[0]}  addNextButton={true} headerTitle="Next Showcase" />
+          <ShowcaseCard showcase={this.props.collection.showcases[0]}  addNextButton={true} headerTitle="Next Showcase"/>
         );
       }
     }

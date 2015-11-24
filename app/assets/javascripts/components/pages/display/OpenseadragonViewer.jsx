@@ -18,7 +18,7 @@ var OpenseadragonViewer = React.createClass({
 
   getDefaultProps: function() {
     return {
-      height: 600,
+      height: 900,
       showNavigator: true,
       showFullPageControl: true,
       toolbarLeft: 10,
@@ -182,7 +182,8 @@ var OpenseadragonViewer = React.createClass({
 
   style: function() {
     return {
-      height: "" + (this.props.height ? this.props.height : 600) + "px",
+      //height: "" + (this.props.height ? this.props.height : 600) + "px",
+      height: '100vh',
       overflow: 'hidden',
     };
   },

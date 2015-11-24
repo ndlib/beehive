@@ -103,16 +103,17 @@ var CollectionLeftNav = React.createClass({
       paddingTop: '5px',
       paddingBottom: '5px',
       marginBottom: 0,
-      height: '35px',
+      height: 'auto',
       minWidth: 'auto',
-      backgroundColor: 'transparent',
+      backgroundColor: 'rgba(255,255,255,.1)',
       color: 'white',
-      zIndex: "1000000"
+      zIndex: "5"
     });
   },
 
   navStyle: function () {
     return ({
+
     });
   },
 
@@ -122,13 +123,14 @@ var CollectionLeftNav = React.createClass({
 
   render: function () {
     return (
-      <div>
+      <div style={{margin:'0'}}>
         <mui.FlatButton onClick={this.clickEvent} style={this.buttonStyle()}>
           <mui.FontIcon className="material-icons" style={this.lightIconStyle()}>menu</mui.FontIcon>
         </mui.FlatButton>
 
         <mui.LeftNav
           ref="leftNav"
+          className="leftNav"
           docked={false}
           menuItems={this.dropDownOptions()}
           style={this.navStyle()} />

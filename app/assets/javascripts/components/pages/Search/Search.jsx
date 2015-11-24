@@ -80,6 +80,7 @@ var Search = React.createClass({
         />
 
         <PageContent fluidLayout={false}>
+          <div style={{maxWidth:'960px',margin:'0 auto'}}>
           <SearchDisplayList
             collection={this.state.collection}
             items={this.state.items}
@@ -91,6 +92,7 @@ var Search = React.createClass({
             found={this.state.found}
             start={this.state.start}
           />
+          </div>
         </PageContent>
         <CollectionPageFooter collection={this.state.collection} />
       </mui.AppCanvas>

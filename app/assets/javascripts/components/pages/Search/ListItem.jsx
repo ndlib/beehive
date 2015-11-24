@@ -46,6 +46,7 @@ var ListItem = React.createClass({
           secondaryTextLines={2}
           onClick={this.itemOnClick}
           innerDivStyle={{paddingLeft:'80px', height:'80px'}}
+          
         />
         <mui.ListDivider />
       </div>

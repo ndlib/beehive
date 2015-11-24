@@ -40,6 +40,9 @@ var ShowcaseTitleCard = React.createClass({
       textTransform: "uppercase",
       color: "#fff",
       backgroundColor: "rgba(0,0,0,0.1)",
+      whiteSpace:'normal',
+      lineHeight:'2em !important',
+
     }
   },
 
