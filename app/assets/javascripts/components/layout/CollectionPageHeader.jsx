@@ -98,7 +98,7 @@ var CollectionPageHeader = React.createClass({
         <mui.Tabs style={ {float:'right', backgroundColor: "none" } } value={this.activeTab()} tabItemContainerStyle={{backgroundColor: "none" }}>
           {
             availableTabs.map(function (tab, index) {
-              return(<mui.Tab label={tab.label} value={tab.value} onActive={this._handleTabs} />);
+              return(<mui.Tab key={tab.value} label={tab.label} value={tab.value} onActive={this._handleTabs} style={{color:"white", width:'auto', padding:'0 20px 0 0', fontSize: '16px'}} />);
             }.bind(this))
           }
         </mui.Tabs>);

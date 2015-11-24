@@ -77,7 +77,7 @@ var SearchSort = React.createClass({
 
   sortOptions: function() {
     return this.props.sortOptions.map(function(option) {
-      return(<option value={option.value}>{option.name}</option>);
+      return(<option key={option.name} value={option.value}>{option.name}</option>);
     });
   },
 
