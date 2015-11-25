@@ -38,7 +38,7 @@ var SearchSidebar = React.createClass({
   render: function() {
     return (
       <mui.Paper style={{display: this.state.show ? 'block' : 'none', width: "25%", float: "right"}} >
-        <h3 style={{paddingLeft:'16px;'}}>Filter Results</h3>
+        <h3 style={{paddingLeft:'16px'}}>Filter Results</h3>
         <hr/>
         <SearchFacets collection={this.props.collection} facets={this.props.facets} selectedFacet={this.props.selectedFacet} />
       </mui.Paper>
