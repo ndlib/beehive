@@ -44,11 +44,9 @@ var CollectionPageHeader = React.createClass({
   },
 
   _handleTabs: function (tab) {
-    if (tab.props.value == "about") {
-      window.location.href = this.aboutUrl(this.props.collection);
-    } else if (tab.props.value == "search") {
+    if (tab.props.value == "search") {
       window.location.href = this.browseUrl(this.props.collection);
-    } else{
+    } else {
 
     }
   },
@@ -95,10 +93,10 @@ var CollectionPageHeader = React.createClass({
     var availableTabs = this.availableTabs();
     if (availableTabs.length > 0) {
       return  (
-        <mui.Tabs style={ {float:'right', backgroundColor: "none" } } value={this.activeTab()} tabItemContainerStyle={{backgroundColor: "none" }}>
+        <mui.Tabs style={ {float:'right', backgroundColor: "none" } } value={this.activeTab()} tabItemContainerStyle={{backgroundColor: "transparent", width:"auto" }}>
           {
             availableTabs.map(function (tab, index) {
-              return(<mui.Tab key={tab.value} label={tab.label} value={tab.value} onActive={this._handleTabs} style={{color:"white", width:'auto', padding:'0 20px 0 0', fontSize: '16px'}} />);
+              return(<mui.Tab label={tab.label} value={tab.value} onActive={this._handleTabs} style={{color:"white", width:'auto', padding:'0 20px 0 0', fontSize: '16px'}} />);
             }.bind(this))
           }
         </mui.Tabs>);
@@ -121,17 +119,6 @@ var CollectionPageHeader = React.createClass({
     return style
   },
 
-  searchBox: function() {
-    if (this.props.collection.enable_search) {
-      return (
-        <div style={ {float:'right', marginTop:'-8px' } }>
-          <SearchBox collection={this.props.collection} />
-        </div>
-      );
-    }
-    return (<span />);
-  },
-
   render: function() {
     var title = (
       <a style={{ textDecoration: "none", color: this.getCurrentPallette().alternateTextColor }}
@@ -145,10 +132,7 @@ var CollectionPageHeader = React.createClass({
         <div style={ {float:'right', marginTop:'-8px' } }>
           <SearchBox collection={this.props.collection} />
         </div>
-        <mui.Tabs style={ {float:'right', backgroundColor: "none" } } value="none" tabItemContainerStyle={{backgroundColor: "transparent", width:"auto" }}>
-          <mui.Tab label="Browse Collection" value="browse" onActive={this._handleTabs} className="browse" style={{color:"white", width:'auto', padding:'0 20px 0 0', fontSize: '16px'}}/>
-          <mui.Tab label="About" value="about" onActive={this._handleTabs}   style={{color:"white", width:'auto', padding:'0 20px 0 0', fontSize: '16px'}}/>
-        </mui.Tabs>
+        {this.tabs()}
       </div>
     );
 

@@ -24,6 +24,12 @@ $scrollbar-color: #666;
   }
 }
 
+.leftNav a {
+  height:auto !important;
+  line-height: 1.5em !important;
+  padding: 10px 24px !important;
+}
+
 .hide {
   display: none;
 }
@@ -75,6 +81,19 @@ $scrollbar-color: #666;
   * {
     white-space: normal;
     line-height: 24px;
+    height: 100%;
+  }
+  .caption {
+    height: auto;
+    * {
+      height: auto;
+    }
+  }
+  .text {
+    height:auto;
+    * {
+      height: auto;
+    }
   }
 }
 
@@ -176,5 +195,22 @@ $scrollbar-color: #666;
 
   i {
     text-shadow: 1px 1px 1px #000;
+  }
+}
+
+.pagination {
+  span {
+    white-space: normal;
+  }
+}
+
+.facet {
+  div div div {
+    display: inline-block !important;
+
+  }
+  div div div:last-child {
+      float: right;
+      margin:0 !important;
   }
 }

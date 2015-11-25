@@ -11,13 +11,13 @@ var CollectionsList = React.createClass({
 
   collectionNodes: function() {
     return this.props.collections.map(function(collection, index) {
-      return (<CollectionCard collection={collection}/>);
+      return (<CollectionCard collection={collection}  />);
     });
   },
 
   render: function() {
     return (
-      <mui.GridList cols={2} cellHeight={500}>
+      <mui.GridList cols={3} cellHeight={500} padding={24}>
         {this.collectionNodes()}
       </mui.GridList>
     );

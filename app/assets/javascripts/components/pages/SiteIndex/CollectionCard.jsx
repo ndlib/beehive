@@ -12,15 +12,15 @@ var CollectionCard = React.createClass({
 
   onClick: function(e) {
     e.preventDefault();
-    window.open(this.collectionUrl(this.props.collection), '_blank');
+    window.location = this.collectionUrl(this.props.collection);
   },
 
   style: function() {
     return {
       position: "relative",
       cursor: "pointer",
-      height: '500px',
-      padding: theme.spacing.desktopGutter,
+      Height: 'auto',
+      //padding: theme.spacing.desktopGutter,
     };
   },
 

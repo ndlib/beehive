@@ -61,7 +61,7 @@ var Showcase = React.createClass({
     } else {
       showcaseShow = (<Loading />);
     }
-    // this is a div instead of mui.AppCanvas because of a bug in 12.3 which is fixed in master.  
+    // this is a div instead of mui.AppCanvas because of a bug in 12.3 which is fixed in master.
     return (
       <div style={{ backgroundColor: 'inherit' }}>
         <CollectionPageHeader collection={this.state.collection} />

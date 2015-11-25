@@ -87,7 +87,7 @@ var SearchDisplayList = React.createClass({
     }
     if (view == 'grid') {
       return (
-        <mui.GridList cellHeight={424} padding={theme.spacing.desktopGutter}>
+        <mui.GridList cellHeight={424}>
           {itemNodes}
         </mui.GridList>
       )
