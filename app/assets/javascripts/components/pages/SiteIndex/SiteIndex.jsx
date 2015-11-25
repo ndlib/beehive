@@ -33,6 +33,7 @@ var SiteIndex = React.createClass({
       remoteCollectionLoaded: true,
       collections: collections,
     });
+    return true;
   },
 
   componentWillMount: function(){
@@ -41,7 +42,7 @@ var SiteIndex = React.createClass({
 
   render: function() {
     if(!this.state.remoteCollectionLoaded)
-      return <div/>;
+      return null;
 
     return (
       <mui.AppCanvas>

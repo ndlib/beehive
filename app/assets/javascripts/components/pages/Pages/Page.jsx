@@ -4,19 +4,6 @@ var mui = require('material-ui');
 var Page = React.createClass({
   mixins: [LoadRemoteMixin, MuiThemeMixin],
 
-  propTypes: {
-    collection: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.object,
-    ]),
-  },
-
-  getInitialState: function() {
-    return {
-      collection: {},
-    };
-  },
-
   componentDidMount: function() {
     if ('object' == typeof(this.props.collection)) {
       this.setState({
@@ -27,16 +14,9 @@ var Page = React.createClass({
     }
   },
 
-  setValues: function(collection) {
-    this.setState({
-      remoteCollectionLoaded: true,
-      collection: collection,
-    });
-  },
-
   render: function() {
     if(!this.state.remoteCollectionLoaded)
-      return <div/>;
+      return null;
 
     var pageContent = (<Loading/>);
     var pageName;

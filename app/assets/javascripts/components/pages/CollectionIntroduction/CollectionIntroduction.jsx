@@ -5,19 +5,6 @@ var mui = require('material-ui');
 var CollectionIntroduction = React.createClass({
   mixins: [LoadRemoteMixin, MuiThemeMixin],
 
-  propTypes: {
-    collection: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.object,
-    ]),
-  },
-
-  getInitialState: function() {
-    return {
-      collection: {},
-    };
-  },
-
   componentDidMount: function() {
     if ("object" == typeof(this.props.collection)) {
       this.setState({
@@ -28,16 +15,9 @@ var CollectionIntroduction = React.createClass({
     }
   },
 
-  setValues: function(collection) {
-    this.setState({
-      remoteCollectionLoaded: true,
-      collection: collection,
-    });
-  },
-
   render: function() {
     if(!this.state.remoteCollectionLoaded)
-      return <div/>;
+      return null;
 
     var nextShowcase;
     if (this.state.collection.showcases && this.state.collection.showcases.length > 0) {

@@ -5,16 +5,8 @@ var mui = require('material-ui');
 var Showcase = React.createClass({
   mixins: [PageHeightMixin, LoadRemoteMixin, MuiThemeMixin, CurrentThemeMixin],
 
-  propTypes: {
-    collection: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.object,
-    ]),
-  },
-
   getInitialState: function() {
     return {
-      collection: {},
       showcase: null,
       currentSection: null,
     };
@@ -26,6 +18,7 @@ var Showcase = React.createClass({
       collection: collection,
       showcase: collection.showcases,
     }, this.handleResize);
+    return true;
   },
 
   componentWillMount: function() {
@@ -55,7 +48,7 @@ var Showcase = React.createClass({
 
   render: function() {
     if(!this.state.remoteCollectionLoaded)
-      return <div/>;
+      return null;
 
     var showcaseShow;
     if (this.state.showcase) {
