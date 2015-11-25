@@ -29,11 +29,15 @@ var AboutPage = React.createClass({
 
   setValues: function(collection) {
     this.setState({
+      remoteCollectionLoaded: true,
       collection: collection,
     });
   },
 
   render: function() {
+    if(!this.state.remoteCollectionLoaded)
+      return <div/>;
+
     var pageContent = (<Loading/>);
     if(this.state.collection && this.state.collection.about) {
       pageContent = (

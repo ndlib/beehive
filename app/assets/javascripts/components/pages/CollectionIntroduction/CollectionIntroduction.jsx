@@ -30,11 +30,15 @@ var CollectionIntroduction = React.createClass({
 
   setValues: function(collection) {
     this.setState({
+      remoteCollectionLoaded: true,
       collection: collection,
     });
   },
 
   render: function() {
+    if(!this.state.remoteCollectionLoaded)
+      return <div/>;
+
     var nextShowcase;
     if (this.state.collection.showcases && this.state.collection.showcases.length > 0) {
       nextShowcase = (<PreviewLink showcase={this.state.collection.showcases[0]} />);

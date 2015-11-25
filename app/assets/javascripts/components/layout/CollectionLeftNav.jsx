@@ -16,8 +16,8 @@ var CollectionLeftNav = React.createClass({
     };
   },
 
-  componentWillReceiveProps: function(nextProps) {
-    var url = nextProps.collection['@id'] + '/showcases';
+  componentDidMount: function() {
+    var url = this.props.collection['@id'] + '/showcases';
     $.ajax({
       context: this,
       type: "GET",

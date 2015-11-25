@@ -30,6 +30,7 @@ var SiteIndex = React.createClass({
 
   setValues: function(collections) {
     this.setState({
+      remoteCollectionLoaded: true,
       collections: collections,
     });
   },
@@ -39,6 +40,9 @@ var SiteIndex = React.createClass({
   },
 
   render: function() {
+    if(!this.state.remoteCollectionLoaded)
+      return <div/>;
+
     return (
       <mui.AppCanvas>
         <BrandBar/>

@@ -1,4 +1,10 @@
 var LoadRemoteMixin = {
+  getInitialState: function() {
+    return {
+      remoteCollectionLoaded: false,
+    };
+  },
+
   loadRemoteCollection: function(url) {
     $.ajax({
       context: this,

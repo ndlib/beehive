@@ -22,6 +22,7 @@ var Showcase = React.createClass({
 
   setValues: function(collection) {
     this.setState({
+      remoteCollectionLoaded: true,
       collection: collection,
       showcase: collection.showcases,
     }, this.handleResize);
@@ -53,6 +54,9 @@ var Showcase = React.createClass({
   },
 
   render: function() {
+    if(!this.state.remoteCollectionLoaded)
+      return <div/>;
+
     var showcaseShow;
     if (this.state.showcase) {
       showcaseShow = (
@@ -61,7 +65,7 @@ var Showcase = React.createClass({
     } else {
       showcaseShow = (<Loading />);
     }
-    // this is a div instead of mui.AppCanvas because of a bug in 12.3 which is fixed in master.  
+    // this is a div instead of mui.AppCanvas because of a bug in 12.3 which is fixed in master.
     return (
       <div style={{ backgroundColor: 'inherit' }}>
         <CollectionPageHeader collection={this.state.collection} />

@@ -30,6 +30,7 @@ var Collection = React.createClass({
 
   setValues: function(collection) {
     this.setState({
+      remoteCollectionLoaded: true,
       collection: collection,
     });
   },
@@ -45,6 +46,9 @@ var Collection = React.createClass({
   },
 
   render: function() {
+    if(!this.state.remoteCollectionLoaded)
+      return <div/>;
+
     return (
       <mui.AppCanvas>
         <div className="collection-show-page">

@@ -60,11 +60,15 @@ var Search = React.createClass({
 
   setValues: function(collection) {
     this.setState({
+      remoteCollectionLoaded: true,
       collection: collection
     });
   },
 
   render: function() {
+    if(!this.state.remoteCollectionLoaded)
+      return <div/>;
+
     return (
       <mui.AppCanvas>
         <CollectionPageHeader collection={this.state.collection} ></CollectionPageHeader>
