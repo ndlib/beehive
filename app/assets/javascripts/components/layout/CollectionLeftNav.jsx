@@ -16,20 +16,15 @@ var CollectionLeftNav = React.createClass({
     };
   },
 
-  componentDidUpdate: function() {
-    if(!this.props.collection['@id'] || this.state.showcases.length > 0) {
-      return [];
-    }
-    var url = this.props.collection['@id'] + '/showcases';
+  componentWillReceiveProps: function(nextProps) {
+    var url = nextProps.collection['@id'] + '/showcases';
     var request = new XMLHttpRequest();
     request.open('GET', url, true);
     request.onload = function() {
       var showcases = JSON.parse(request.response).showcases;
-      if (this.isMounted()) {
-        this.setState({
-          showcases: showcases,
-        });
-      }
+      this.setState({
+        showcases: showcases,
+      });
     }.bind(this);
 
     request.send();
