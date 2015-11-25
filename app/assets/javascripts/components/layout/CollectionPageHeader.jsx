@@ -44,7 +44,9 @@ var CollectionPageHeader = React.createClass({
   },
 
   _handleTabs: function (tab) {
-    if (tab.props.value == "search") {
+    if (tab.props.value == "about") {
+      window.location.href = this.aboutUrl(this.props.collection);
+    } else if (tab.props.value == "search") {
       window.location.href = this.browseUrl(this.props.collection);
     } else {
 
