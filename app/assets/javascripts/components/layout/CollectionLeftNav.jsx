@@ -16,23 +16,26 @@ var CollectionLeftNav = React.createClass({
     };
   },
 
-  componentDidUpdate: function() {
-    if(!this.props.collection['@id'] || this.state.showcases.length > 0) {
-      return [];
-    }
+  componentDidMount: function() {
     var url = this.props.collection['@id'] + '/showcases';
-    var request = new XMLHttpRequest();
-    request.open('GET', url, true);
-    request.onload = function() {
-      var showcases = JSON.parse(request.response).showcases;
-      if (this.isMounted()) {
+    $.ajax({
+      context: this,
+      type: "GET",
+      url: url,
+      dataType: "json",
+      success: function(result) {
+        var showcases = result.showcases;
         this.setState({
           showcases: showcases,
         });
+      },
+      error: function(request, status, thrownError) {
+        // Should we redirect here? It's probably not necessary since it's not
+        // the primary content of the page...
+        //window.location = window.location.origin + '/404';
+        console.log("Error retrieving showcase list " + thrownError);
       }
-    }.bind(this);
-
-    request.send();
+    });
   },
 
   dropDownOptions: function() {
