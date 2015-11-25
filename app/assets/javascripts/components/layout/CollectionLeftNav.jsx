@@ -18,16 +18,24 @@ var CollectionLeftNav = React.createClass({
 
   componentWillReceiveProps: function(nextProps) {
     var url = nextProps.collection['@id'] + '/showcases';
-    var request = new XMLHttpRequest();
-    request.open('GET', url, true);
-    request.onload = function() {
-      var showcases = JSON.parse(request.response).showcases;
-      this.setState({
-        showcases: showcases,
-      });
-    }.bind(this);
-
-    request.send();
+    $.ajax({
+      context: this,
+      type: "GET",
+      url: url,
+      dataType: "json",
+      success: function(result) {
+        var showcases = result.showcases;
+        this.setState({
+          showcases: showcases,
+        });
+      },
+      error: function(request, status, thrownError) {
+        // Should we redirect here? It's probably not necessary since it's not
+        // the primary content of the page...
+        //window.location = window.location.origin + '/404';
+        console.log("Error retrieving showcase list " + thrownError);
+      }
+    });
   },
 
   dropDownOptions: function() {
