@@ -54,8 +54,9 @@ var Search = React.createClass({
   },
 
   render: function() {
-    if(!this.state.remoteCollectionLoaded)
+    if(!this.state.remoteCollectionLoaded) {
       return null;
+    }
 
     return (
       <mui.AppCanvas>

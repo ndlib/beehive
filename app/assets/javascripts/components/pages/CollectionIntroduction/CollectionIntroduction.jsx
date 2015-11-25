@@ -16,8 +16,9 @@ var CollectionIntroduction = React.createClass({
   },
 
   render: function() {
-    if(!this.state.remoteCollectionLoaded)
+    if(!this.state.remoteCollectionLoaded) {
       return null;
+    }
 
     var nextShowcase;
     if (this.state.collection.showcases && this.state.collection.showcases.length > 0) {

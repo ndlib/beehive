@@ -15,8 +15,9 @@ var AboutPage = React.createClass({
   },
 
   render: function() {
-    if(!this.state.remoteCollectionLoaded)
+    if(!this.state.remoteCollectionLoaded) {
       return null;
+    }
 
     var pageContent = (<Loading/>);
     if(this.state.collection && this.state.collection.about) {

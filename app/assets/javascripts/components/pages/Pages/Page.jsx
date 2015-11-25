@@ -15,8 +15,9 @@ var Page = React.createClass({
   },
 
   render: function() {
-    if(!this.state.remoteCollectionLoaded)
+    if(!this.state.remoteCollectionLoaded) {
       return null;
+    }
 
     var pageContent = (<Loading/>);
     var pageName;

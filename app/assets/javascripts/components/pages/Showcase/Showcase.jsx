@@ -47,8 +47,9 @@ var Showcase = React.createClass({
   },
 
   render: function() {
-    if(!this.state.remoteCollectionLoaded)
+    if(!this.state.remoteCollectionLoaded) {
       return null;
+    }
 
     var showcaseShow;
     if (this.state.showcase) {
