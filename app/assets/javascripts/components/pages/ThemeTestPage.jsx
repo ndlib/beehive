@@ -30,7 +30,7 @@ var ThemeTestPage = React.createClass({
       <div style={this.d()}>
         <h4>Avatars</h4>
         <div style={this.d()}>
-          <mui.Avatar src="/assets/home.jpg" />
+          <mui.Avatar src="/images/home.jpg" />
         </div>
         <div style={this.d()}>
           <mui.Avatar
@@ -133,7 +133,7 @@ var ThemeTestPage = React.createClass({
               subtitle="Subtitle"
               avatar={<mui.Avatar>A</mui.Avatar>}/>
             <mui.CardMedia overlay={<mui.CardTitle title="Title" subtitle="Subtitle"/>}>
-              <img src="/assets/home.jpg"/>
+              <img src="/images/home.jpg"/>
             </mui.CardMedia>
             <mui.CardTitle title="Title" subtitle="Subtitle"/>
             <mui.CardActions>

@@ -57,7 +57,7 @@ $scrollbar-color: #666;
 }
 
 .coverImage {
-  background: url(/assets/home.jpg);
+  background: image_url("home.jpg");
   background-size: cover;
   background-position: top;
   width: 100%;
