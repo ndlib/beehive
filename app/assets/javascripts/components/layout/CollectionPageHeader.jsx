@@ -121,6 +121,17 @@ var CollectionPageHeader = React.createClass({
     return style
   },
 
+  searchBox: function() {
+    if (this.props.collection.enable_search) {
+      return (
+        <div style={ {float:'right', marginTop:'-8px' } }>
+          <SearchBox collection={this.props.collection} />
+        </div>
+      );
+    }
+    return (<span />);
+  },
+
   render: function() {
     var title = (
       <a style={{ textDecoration: "none", color: this.getCurrentPallette().alternateTextColor }}
@@ -131,9 +142,7 @@ var CollectionPageHeader = React.createClass({
 
     var rightNav = (
       <div>
-        <div style={ {float:'right', marginTop:'-8px' } }>
-          <SearchBox collection={this.props.collection} />
-        </div>
+        {this.searchBox()}
         {this.tabs()}
       </div>
     );
