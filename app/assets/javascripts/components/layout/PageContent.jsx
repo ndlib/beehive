@@ -24,7 +24,7 @@ var PageContent = React.createClass({
       return ({});
     } else {
       return ({
-        padding: '0 15px',
+        padding: '0 8%',
         background: 'none',
         position: 'relative',
         //top: '50px',

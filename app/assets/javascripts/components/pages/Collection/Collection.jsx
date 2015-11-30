@@ -35,7 +35,7 @@ var Collection = React.createClass({
         <div className="collection-show-page">
             <CollectionPageHeader collection={this.state.collection} branding={true} />
             <CollectionShow collection={this.state.collection} />
-            <PageContent>
+            <PageContent fluidLayout={false}>
               <CollectionIntro collection={this.state.collection} />
               <CollectionShowShowcases collection={this.state.collection} />
             </PageContent>
