@@ -44,7 +44,9 @@ var CollectionPageHeader = React.createClass({
   },
 
   _handleTabs: function (tab) {
-    if (tab.props.value == "search") {
+    if (tab.props.value == "about") {
+      window.location.href = this.aboutUrl(this.props.collection);
+    } else if (tab.props.value == "search") {
       window.location.href = this.browseUrl(this.props.collection);
     } else {
 
@@ -96,7 +98,7 @@ var CollectionPageHeader = React.createClass({
         <mui.Tabs style={ {float:'right', backgroundColor: "none" } } value={this.activeTab()} tabItemContainerStyle={{backgroundColor: "transparent", width:"auto" }}>
           {
             availableTabs.map(function (tab, index) {
-              return(<mui.Tab label={tab.label} value={tab.value} onActive={this._handleTabs} style={{color:"white", width:'auto', padding:'0 20px 0 0', fontSize: '16px'}} />);
+              return(<mui.Tab key={tab.value} label={tab.label} value={tab.value} onActive={this._handleTabs} style={{color:"white", width:'auto', padding:'0 20px 0 0', fontSize: '16px'}} />);
             }.bind(this))
           }
         </mui.Tabs>);

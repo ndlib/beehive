@@ -14,9 +14,14 @@ var CollectionIntro = React.createClass({
   },
 
   render: function() {
-    return (
-      <EssayContent content={this.props.collection.short_description } />    
-    );
+    if(this.props.collection.short_description) {
+      return (
+        <PagesShow content={this.props.collection.short_description } />
+      );
+    }
+    else {
+      return null;
+    }
   }
 });
 

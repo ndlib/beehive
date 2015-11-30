@@ -5,19 +5,6 @@ var mui = require('material-ui');
 var Collection = React.createClass({
   mixins: [LoadRemoteMixin, MuiThemeMixin],
 
-  propTypes: {
-    collection: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.object,
-    ]),
-  },
-
-  getInitialState: function() {
-    return {
-      collection: {},
-    };
-  },
-
   componentDidMount: function() {
     if ('object' == typeof(this.props.collection)) {
       this.setState({
@@ -26,12 +13,6 @@ var Collection = React.createClass({
     } else {
       this.loadRemoteCollection(this.props.collection);
     }
-  },
-
-  setValues: function(collection) {
-    this.setState({
-      collection: collection,
-    });
   },
 
   componentWillMount: function(){
@@ -45,15 +26,21 @@ var Collection = React.createClass({
   },
 
   render: function() {
+    if(!this.state.remoteCollectionLoaded) {
+      return null;
+    }
+
     return (
       <mui.AppCanvas>
-        <CollectionPageHeader collection={this.state.collection} branding={true}/>
-        <CollectionShow collection={this.state.collection} />
-        <PageContent>
-          <CollectionIntro collection={this.state.collection} />
-          <CollectionShowShowcases collection={this.state.collection} />
-        </PageContent>
-        <CollectionPageFooter collection={this.state.collection} />
+        <div className="collection-show-page">
+            <CollectionPageHeader collection={this.state.collection} branding={true} />
+            <CollectionShow collection={this.state.collection} />
+            <PageContent>
+              <CollectionIntro collection={this.state.collection} />
+              <CollectionShowShowcases collection={this.state.collection} />
+            </PageContent>
+            <CollectionPageFooter collection={this.state.collection} />
+        </div>
       </mui.AppCanvas>
     );
   }

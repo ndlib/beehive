@@ -24,8 +24,7 @@ var PageContent = React.createClass({
       return ({});
     } else {
       return ({
-        width: '960px',
-        margin: '0 auto',
+        padding: '0 15px',
         background: 'none',
         position: 'relative',
         //top: '50px',

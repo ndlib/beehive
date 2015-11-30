@@ -16,28 +16,32 @@ var CollectionLeftNav = React.createClass({
     };
   },
 
-  componentDidUpdate: function() {
-    if(!this.props.collection['@id'] || this.state.showcases.length > 0) {
-      return [];
-    }
+  componentDidMount: function() {
     var url = this.props.collection['@id'] + '/showcases';
-    var request = new XMLHttpRequest();
-    request.open('GET', url, true);
-    request.onload = function() {
-      var showcases = JSON.parse(request.response).showcases;
-      if (this.isMounted()) {
+    $.ajax({
+      context: this,
+      type: "GET",
+      url: url,
+      dataType: "json",
+      success: function(result) {
+        var showcases = result.showcases;
         this.setState({
           showcases: showcases,
         });
+      },
+      error: function(request, status, thrownError) {
+        // Should we redirect here? It's probably not necessary since it's not
+        // the primary content of the page...
+        //window.location = window.location.origin + '/404';
+        console.log("Error retrieving showcase list " + thrownError);
       }
-    }.bind(this);
-
-    request.send();
+    });
   },
 
   dropDownOptions: function() {
     var options = [];
     var collectionUrl = this.collectionUrl(this.props.collection);
+    var aboutUrl = this.aboutUrl(this.props.collection);
     var introUrl = this.introUrl(this.props.collection);
     var browseUrl = this.browseUrl(this.props.collection);
 
@@ -53,7 +57,7 @@ var CollectionLeftNav = React.createClass({
       options.push((
         {
           type: mui.MenuItem.Types.LINK,
-          payload: this.browseUrl(this.props.collection),
+          payload: browseUrl,
           text: 'Browse Collection'
         }
       ));
@@ -63,7 +67,7 @@ var CollectionLeftNav = React.createClass({
       options.push((
         {
           type: mui.MenuItem.Types.LINK,
-          payload: "/about",
+          payload: aboutUrl,
           text: "About"
         }
       ));
@@ -103,11 +107,11 @@ var CollectionLeftNav = React.createClass({
       paddingTop: '5px',
       paddingBottom: '5px',
       marginBottom: 0,
-      height: '35px',
+      height: 'auto',
       minWidth: 'auto',
-      backgroundColor: 'transparent',
+      backgroundColor: 'rgba(255,255,255,.1)',
       color: 'white',
-      zIndex: "1000000"
+      zIndex: "5"
     });
   },
 
@@ -122,13 +126,14 @@ var CollectionLeftNav = React.createClass({
 
   render: function () {
     return (
-      <div>
+      <div style={{margin:'0'}}>
         <mui.FlatButton onClick={this.clickEvent} style={this.buttonStyle()}>
           <mui.FontIcon className="material-icons" style={this.lightIconStyle()}>menu</mui.FontIcon>
         </mui.FlatButton>
 
         <mui.LeftNav
           ref="leftNav"
+          className="leftNav"
           docked={false}
           menuItems={this.dropDownOptions()}
           style={this.navStyle()} />

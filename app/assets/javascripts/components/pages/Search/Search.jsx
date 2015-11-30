@@ -7,10 +7,6 @@ var Search = React.createClass({
   mixins: [SearchUrlMixin, LoadRemoteMixin, SearchMixin, MuiThemeMixin ],
 
   propTypes: {
-    collection: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.array,
-    ]),
     hits: React.PropTypes.oneOfType([
       React.PropTypes.string,
       React.PropTypes.array,
@@ -23,7 +19,6 @@ var Search = React.createClass({
 
   getInitialState: function() {
     return {
-      collection: {},
       items: [],
       sortOptions: [],
       selectedIndex: 0,
@@ -58,13 +53,11 @@ var Search = React.createClass({
     this.loadSearchResults(url);
   },
 
-  setValues: function(collection) {
-    this.setState({
-      collection: collection
-    });
-  },
-
   render: function() {
+    if(!this.state.remoteCollectionLoaded) {
+      return null;
+    }
+
     return (
       <mui.AppCanvas>
         <CollectionPageHeader collection={this.state.collection} ></CollectionPageHeader>

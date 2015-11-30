@@ -38,11 +38,11 @@ var ShowcaseCard = React.createClass({
         right: '0',
         bottom: '0', 
         margin: 'auto',
-       
         minWidth:'50%',
         minHeight: '50%',
         maxWidth: 'initial',
         maxHeight:'initial',
+        display: 'none'
 
     };
   },
@@ -54,7 +54,7 @@ var ShowcaseCard = React.createClass({
   description: function() {
     if (this.props.showcase.description) {
       return (
-        <mui.CardText style={{height: '100px'}}>
+        <mui.CardText style={{}}>
           {this.props.showcase.description}
         </mui.CardText>
       );
@@ -64,7 +64,7 @@ var ShowcaseCard = React.createClass({
   nextButton: function() {
     if (this.props.addNextButton) {
       return (
-        <mui.CardActions style={ {height: '100px'} }>
+        <mui.CardActions style={ {position:'absolute', right:'10px', top:'433px'} }>
           <mui.FloatingActionButton
             primary={true}
             linkButton={true}
@@ -78,7 +78,7 @@ var ShowcaseCard = React.createClass({
 
   headerTitle: function () {
     if (this.props.headerTitle) {
-      return (<mui.CardTitle title={this.props.headerTitle} />);
+      return (<mui.CardTitle title={this.props.headerTitle} rootStyle={{height:'600px'}}/>);
     }
   },
 
@@ -90,7 +90,8 @@ var ShowcaseCard = React.createClass({
     if (this.props.showcase.image) {
       return (
         <mui.CardMedia 
-          mediaStyle={{position: 'absolute', height:'200%', width:'200%', overflow: 'hidden' }} 
+          //mediaStyle={{position: 'absolute', height:'200%', width:'200%', overflow: 'hidden'}}
+          mediaStyle={{background:'url(' + this.image() + ')', height:'100%', width:'100%', backgroundSize:'cover', backgroundPosition:'center top'}}
           className="temp" 
           style={{height: '400px', overflow:'hidden'}} 
           overlay={this.cardTitle()}>

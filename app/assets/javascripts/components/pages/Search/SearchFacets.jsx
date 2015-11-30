@@ -29,6 +29,7 @@ var SearchFacets = React.createClass({
     return this.props.facets.map(function(e, index) {
       return(
         <List
+          key={e.name}
           subheader={e.name}
         >
           {self.values(e)}
@@ -45,10 +46,13 @@ var SearchFacets = React.createClass({
         var value = encodeURIComponent(e.name);
         return (
           <ListItem
+            key={e.name}
             primaryText={e.name}
             secondaryText={"(" + e.count + ")"}
             value={parentFacet +"|"+ value}
             onClick={self.valueOnClick}
+            innerDivStyle={{padding:'10px 16px'}}
+            className="facet"
           />
         );
       }));

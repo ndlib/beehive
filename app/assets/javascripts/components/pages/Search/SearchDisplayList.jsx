@@ -74,14 +74,16 @@ var SearchDisplayList = React.createClass({
   itemList: function() {
     var view = this.state.view;
     var itemNodes = this.props.items.map(function(item, index) {
-      var nodes = [];
-      nodes.push((
-        <ItemListItem item={item} view={view}/>
-      ));
-      return nodes;
+      return (
+        <ItemListItem
+          item={item}
+          view={view}
+          key={item.name}
+        />
+      );
     });
     if(itemNodes.length === 0) {
-      itemNodes.push((<div style={{color:'rgba(0, 0, 0, 0.870588)', fontStyle:'italic', textAlign:'center'}}>No matching results could be found.</div>));
+      itemNodes = (<div style={{color:'rgba(0, 0, 0, 0.870588)', fontStyle:'italic', textAlign:'center'}}>No matching results could be found.</div>);
     }
     if (view == 'grid') {
       return (

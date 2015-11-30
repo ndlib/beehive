@@ -48,7 +48,7 @@ var SectionCard = React.createClass({
 
   imageStyle: function() {
     return {
-
+      position:'relative'
     };
   },
 
@@ -60,14 +60,27 @@ var SectionCard = React.createClass({
 
   textStyle: function() {
     return {
-      color: "lightgrey",
+      color:'lightgrey',
+      paddingTop:'0'
+    };
+  },
+
+  captionStyle: function() {
+    return {
       position:'absolute',
       bottom:'0',
       left:'0',
       right:'0',
       padding:'0',
+      color: "lightgrey",
       background:'rgba(0,0,0,.45)',
-    };
+    }
+  },
+
+  captionInner: function() {
+    return {
+      padding:'10px'
+    }
   },
 
   onMouseEnter: function() {
@@ -90,22 +103,6 @@ var SectionCard = React.createClass({
 */
   },
 
-  captionStyle: function() {
-    return {
-      position:'absolute',
-      bottom:'0',
-      left:'0',
-      right:'0',
-      padding:'0',
-      margin:'-10px'
-    }
-  },
-
-  captionInner: function() {
-    return {
-      padding:'10px'
-    }
-  },
 
   sectionName: function() {
     return "section-" + this.props.section.id;
@@ -115,10 +112,10 @@ var SectionCard = React.createClass({
     if (this.props.section.item) {
       return (
         <div style={this.imageStyle()}>
-          <mui.CardMedia>
+          <mui.CardMedia className="img">
             <img src={this.props.section.item.image['thumbnail/medium'].contentUrl} />
           </mui.CardMedia>
-          <mui.CardText style={this.textStyle()}>
+          <mui.CardText style={this.captionStyle()} className="caption">
             <div dangerouslySetInnerHTML={{__html: this.props.section.caption}} style={this.captionInner()}/>
           </mui.CardText>
         </div>
@@ -129,7 +126,7 @@ var SectionCard = React.createClass({
   textCard: function () {
     if (this.props.section.description) {
       return (
-        <div style={this.textStyle()}>
+        <div style={this.textStyle()} className="text">
           <mui.CardTitle title={this.props.section.name} titleStyle={this.titleStyle()} />
           <mui.CardText style={this.textStyle()}>
             <div dangerouslySetInnerHTML={{__html: this.props.section.description}} />

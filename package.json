@@ -4,6 +4,7 @@
   "license": "CC-BY-NC-ND-4.0",
   "repository": "git@github.com:ndlib/beehive.git",
   "dependencies": {
+    "axios": "0.7.0",
     "browserify": "^6.3.4",
     "browserify-incremental": "^1.5.0",
     "classnames": "^2.1.5",
@@ -25,6 +26,7 @@
     "react-addons-transition-group": "^0.14.1",
     "react-addons-update": "^0.14.1",
     "react-dom": "^0.14.1",
+    "react-media-query": "^0.1.0",
     "react-scroll": "^0.18.0",
     "react-tap-event-plugin": "^0.2.0",
     "reactify": "^0.17.1"

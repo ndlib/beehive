@@ -19,8 +19,8 @@ var CollectionCard = React.createClass({
     return {
       position: "relative",
       cursor: "pointer",
-      height: '500px',
-      padding: theme.spacing.desktopGutter,
+      Height: 'auto',
+      //padding: theme.spacing.desktopGutter,
     };
   },
 
