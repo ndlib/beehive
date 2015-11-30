@@ -3,6 +3,7 @@ var React = require('react');
 var mui = require('material-ui');
 var EventEmitter = require("../../../EventEmitter");
 var CloseButton = require('../../other/CloseButton');
+var MediaQuery = require('react-responsive');
 
 var gridView = {view: "grid"};
 var listView = {view: "list"};
@@ -66,11 +67,13 @@ var SearchControls = React.createClass({
           <SearchBox collection={this.props.collection} searchTerm={this.props.searchTerm} primary={false} active={true} />
         </mui.ToolbarGroup>
         <mui.ToolbarGroup key={1} float="right">
-          <SearchSort
-            collection={this.props.collection}
-            sortOptions={this.props.sortOptions}
-            selectedIndex={this.props.selectedIndex}
-            />
+          <MediaQuery minWidth={700}>
+            <SearchSort
+              collection={this.props.collection}
+              sortOptions={this.props.sortOptions}
+              selectedIndex={this.props.selectedIndex}
+              />
+          </MediaQuery>
           <mui.RaisedButton
             secondary={this.state.view == 'list'}
             onClick={this.setList}
