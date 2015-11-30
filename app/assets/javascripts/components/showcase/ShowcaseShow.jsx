@@ -2,6 +2,7 @@
 var React = require("react");
 var ReactDOM = require("react-dom");
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+var MediaQuery = require('react-responsive');
 
 var maxShowcaseHeight = 840;
 var showcaseTitleHeight = 125;
@@ -158,7 +159,9 @@ var ShowcaseShow = React.createClass({
             previousUrl={prev}
             nextUrl={next}
         />
-        <ShowcaseTitleBar percentFade={this.state.titleSectionPercentVisible} height={showcaseTitleHeight} showcase={this.props.showcase} />
+        <MediaQuery minHeight={500} minWidth={520}>
+          <ShowcaseTitleBar percentFade={this.state.titleSectionPercentVisible} height={showcaseTitleHeight} showcase={this.props.showcase} />
+        </MediaQuery>
         <ReactCSSTransitionGroup
           transitionName="showcase-slide-in"
           transitionAppear={true}
@@ -166,7 +169,9 @@ var ShowcaseShow = React.createClass({
           transitionEnterTimeout={0}
           transitionLeaveTimeout={0}>
           <div id="showcase-outer" ref="showcaseOuter" className="showcase-outer" style={this.styleOuter(showcaseHeight)} onScroll={this.onScroll}>
-            <Scroller target="#showcase-outer" height={this.props.height} />
+            <MediaQuery minHeight={500} minWidth={520}>
+              <Scroller target="#showcase-outer" height={this.props.height} />
+            </MediaQuery>
 
             <ShowcaseInnerContent height={showcaseInnerHeight} showcase={this.props.showcase} />
           </div>

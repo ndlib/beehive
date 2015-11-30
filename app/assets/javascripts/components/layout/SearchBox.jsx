@@ -28,13 +28,14 @@ var SearchBox = React.createClass({
   },
 
   onChange: function(e) {
-    console.log(e);
     this.setTerm(e.target.value);
   },
 
   onClick: function(e) {
-    if (this.state.active) {
+    if (this.state.active && window.searchStore.searchTerm) {
       window.location.assign(this.searchUrl(this.props.collection));
+    } else if (this.state.active) {
+      this.setState({active: false});
     } else {
       this.setState({active: true});
     }

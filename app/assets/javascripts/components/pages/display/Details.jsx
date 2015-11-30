@@ -10,9 +10,15 @@ var Details = React.createClass({
     additionalDetails: React.PropTypes.string,
   },
 
+  getDefaultProps: function() {
+    return {
+      showDetails: true
+    }
+  },
+
   getInitialState: function() {
     return {
-      showDetails: true,
+      showDetails: this.props.showDetails,
     };
   },
 
