@@ -2,6 +2,7 @@
 var React = require('react');
 var mui = require('material-ui');
 var CollectionLeftNav = require('./CollectionLeftNav');
+var MediaQuery = require('react-responsive');
 
 var CollectionPageHeader = React.createClass({
   mixins: [CollectionUrlMixin, TitleConcatMixin, CurrentThemeMixin],
@@ -11,21 +12,22 @@ var CollectionPageHeader = React.createClass({
     branding: React.PropTypes.bool,
   },
 
-  brandBar: function () {
-    if (this.props.branding) {
-      return (<BrandBar />);
-    } else {
-      return (<span />)
-    }
-  },
-
-  style: function () {
+  largeScreenStyle: function() {
     return ({
       height: (this.props.branding ? '115px' : '65px'),
       width: '100%',
       zIndex: "1000",
     });
   },
+
+  smallScreenStyle: function() {
+    return ({
+      height: '65px',
+      width: '100%',
+      zIndex: "1000",
+    });
+  },
+
 
   titleStyle: function () {
     var themeVariables = this.getCurrentTheme().appBar;
@@ -107,18 +109,20 @@ var CollectionPageHeader = React.createClass({
   },
 
   appBarStyle: function() {
-    var style = {
-      position: "fixed",
-      //background: "rgba(0, 0, 0, 0.86)",
-      background: "linear-gradient(to bottom, #5b5b5b 0%,#050505 100%)",
-
-    };
+    var style = this.baseScreenStyle();
 
     if (this.props.branding) {
       style["top"] = "50px";
     }
-
     return style
+  },
+
+  baseScreenStyle: function() {
+    return {
+      position: "fixed",
+      //background: "rgba(0, 0, 0, 0.86)",
+      background: "linear-gradient(to bottom, #5b5b5b 0%,#050505 100%)",
+    };
   },
 
   searchBox: function() {
@@ -143,20 +147,36 @@ var CollectionPageHeader = React.createClass({
     var rightNav = (
       <div>
         {this.searchBox()}
-        {this.tabs()}
+        <MediaQuery minWidth={650}>
+          {this.tabs()}
+        </MediaQuery>
       </div>
     );
 
     return (
-      <mui.Paper circle={false} rounded={false} zDepth={0} style={this.style()}>
-        {this.brandBar()}
-        <mui.AppBar
-          title={title}
-          iconElementLeft={<CollectionLeftNav collection={this.props.collection} />}
-          iconElementRight={rightNav}
-          style={this.appBarStyle()}
-        />
-      </mui.Paper>
+      <div>
+        <MediaQuery maxWidth={650}>
+          <mui.Paper circle={false} rounded={false} zDepth={0} style={this.smallScreenStyle()}>
+          <mui.AppBar
+            title={title}
+            iconElementLeft={<CollectionLeftNav collection={this.props.collection} />}
+            iconElementRight={rightNav}
+            style={this.baseScreenStyle()}
+          />
+          </mui.Paper>
+        </MediaQuery>
+        <MediaQuery minWidth={650}>
+          <mui.Paper circle={false} rounded={false} zDepth={0} style={this.largeScreenStyle()}>
+            <BrandBar />
+            <mui.AppBar
+              title={title}
+              iconElementLeft={<CollectionLeftNav collection={this.props.collection} />}
+              iconElementRight={rightNav}
+              style={this.appBarStyle()}
+            />
+          </mui.Paper>
+        </MediaQuery>
+      </div>
     );
   }
 });

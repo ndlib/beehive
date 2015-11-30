@@ -2,10 +2,7 @@
 var React = require('react');
 var mui = require('material-ui');
 var theme = require('../../themes/beehive');
-
 var MediaQuery = require('react-responsive');
-var mediaQuery = require('react-responsive/src/mediaQuery');
-var toQuery = require('react-responsive/src/toQuery');
 
 var ShowcasesCardList = React.createClass({
   propTypes: {
