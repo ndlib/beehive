@@ -69,13 +69,13 @@ var SearchFacets = React.createClass({
         return (
           <ListItem
             key={e.name}
-            primaryText={e.name}
+            primaryText={<span style={{marginLeft:'30px'}}>{e.name}</span>}
             secondaryText={"(" + e.count + ")"}
             value={parentFacet +"|"+ value}
             onClick={self.valueOnClick}
             innerDivStyle={{padding:'10px 16px'}}
             className="facet"
-            rightIcon={value == selectedValue ?  ( <mui.FontIcon className="material-icons" style={{fontSize: '28px', width: '44px' }}>check_circle</mui.FontIcon>) : null}
+            leftIcon={value == selectedValue ?  ( <mui.FontIcon className="material-icons" style={{fontSize: '28px', left: '-6px', top: '-6px', width: '24px' }}>check_circle</mui.FontIcon>) : null}
           />
         );
       }));
