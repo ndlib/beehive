@@ -44,10 +44,12 @@ var SearchControls = React.createClass({
 
   setGrid: function() {
     this.storeView("grid");
+    this.addViewToUrl("grid");
   },
 
   setList: function() {
     this.storeView("list");
+    this.addViewToUrl("list");
   },
 
   checkView: function(view) {
