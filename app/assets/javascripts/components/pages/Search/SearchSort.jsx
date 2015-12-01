@@ -57,7 +57,7 @@ var SearchSort = React.createClass({
       width:'120px',
       verticalAlign: 'middle',
       marginLeft: '5px',
-      background: 'url(/assets/arrowdown.gif) no-repeat 90% 50% #fff'
+      background: 'url(/images/arrowdown.gif) no-repeat 90% 50% #fff'
     });
   },
 
