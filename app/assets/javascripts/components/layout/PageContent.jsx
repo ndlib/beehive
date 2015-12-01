@@ -34,7 +34,7 @@ var PageContent = React.createClass({
 
   render: function() {
     return (
-      <mui.Paper circle={false} rounded={false} zDepth={0} style={this.style()} >
+      <mui.Paper transitionEnabled={false} circle={false} rounded={false} zDepth={0} style={this.style()} >
         {this.props.children}
       </mui.Paper>
     );
