@@ -5,7 +5,7 @@ var List = mui.List;
 var ListItem = mui.ListItem;
 
 var SearchFacets = React.createClass({
-  mixins: [SearchUrlMixin],
+  mixins: [SearchUrlMixin, CurrentThemeMixin],
   propTypes: {
     collection: React.PropTypes.object.isRequired,
     facets: React.PropTypes.array,
@@ -18,7 +18,24 @@ var SearchFacets = React.createClass({
 
   valueOnClick: function(e) {
     var values = e.currentTarget.getAttribute("value").split("|");
-    window.searchStore.facetOption = {}
+    if(window.searchStore.facetOption) {
+      if (window.searchStore.facetOption.name &&
+          window.searchStore.facetOption.value == values[1]) {
+        this.setFacet([null, null]);
+      }
+      else {
+        this.setFacet(values);
+      }
+    }
+    else {
+      this.setFacet(values);
+    }
+  },
+
+  setFacet: function(values) {
+    if(!window.searchStore.facetOption) {
+      window.searchStore.facetOption = {};
+    }
     window.searchStore.facetOption.name = values[0];
     window.searchStore.facetOption.value = values[1];
     window.location.assign(this.searchUrl(this.props.collection));
@@ -27,7 +44,7 @@ var SearchFacets = React.createClass({
   facets: function(){
     self = this;
     return this.props.facets.map(function(e, index) {
-      return(
+      return (
         <List
           key={e.name}
           subheader={e.name}
@@ -43,16 +60,22 @@ var SearchFacets = React.createClass({
     var parentFacet = facet.field;
     if (facet.values) {
       return (facet.values.map(function(e, index) {
+        var selectedKey = encodeURIComponent(parentFacet);
+        var selectedValue;
+        if(self.props.selectedFacet) {
+          selectedValue = encodeURIComponent(self.props.selectedFacet[selectedKey]);
+        }
         var value = encodeURIComponent(e.name);
         return (
           <ListItem
             key={e.name}
-            primaryText={e.name}
+            primaryText={<span style={{marginLeft:'30px'}}>{e.name}</span>}
             secondaryText={"(" + e.count + ")"}
             value={parentFacet +"|"+ value}
             onClick={self.valueOnClick}
             innerDivStyle={{padding:'10px 16px'}}
             className="facet"
+            leftIcon={value == selectedValue ?  ( <mui.FontIcon className="material-icons" style={{fontSize: '28px', left: '-6px', top: '-6px', width: '24px' }}>check_circle</mui.FontIcon>) : null}
           />
         );
       }));

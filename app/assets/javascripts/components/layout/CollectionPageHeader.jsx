@@ -50,8 +50,6 @@ var CollectionPageHeader = React.createClass({
       window.location.href = this.aboutUrl(this.props.collection);
     } else if (tab.props.value == "search") {
       window.location.href = this.browseUrl(this.props.collection);
-    } else {
-
     }
   },
 
