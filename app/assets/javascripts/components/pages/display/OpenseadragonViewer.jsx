@@ -35,7 +35,6 @@ var OpenseadragonViewer = React.createClass({
 
   componentDidMount: function() {
     this.buildViewer(this.props.image);
-    this.state.viewer.open(this.props.image);
   },
 
   shouldComponentUpdate: function(nextProps, nextState) {
