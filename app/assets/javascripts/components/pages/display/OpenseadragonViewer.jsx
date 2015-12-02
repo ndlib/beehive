@@ -34,6 +34,7 @@ var OpenseadragonViewer = React.createClass({
   },
 
   componentDidMount: function() {
+    console.log('props image', this.props.image);
     this.buildViewer(this.props.image);
   },
 
@@ -92,6 +93,8 @@ var OpenseadragonViewer = React.createClass({
       viewer: viewer,
       escapeHandler: escapeHandler,
     });
+    console.log('build image', image);
+    console.log('build viewer', viewer);
 
     var disableKeyboard = function(event) {
       event.eventSource.keyDownHandler = null;
