@@ -94,7 +94,6 @@ var SearchControls = React.createClass({
     var garbage;
     if(searchString.indexOf('&view=') > -1) {
       garbage = searchString.replace(regex, '');
-      console.log(garbage);
       searchString = searchString.replace('&view=' + garbage, '');
     }
     var url = searchString + '&view=' + view;
