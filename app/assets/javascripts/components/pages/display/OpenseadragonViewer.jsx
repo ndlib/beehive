@@ -49,9 +49,7 @@ var OpenseadragonViewer = React.createClass({
         this.state.viewer.close();
         this.openImage(this.state.viewer, nextProps.image);
       });
-
     }
-
     return true;
   },
 
