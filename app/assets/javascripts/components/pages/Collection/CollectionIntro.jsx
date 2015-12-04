@@ -14,7 +14,7 @@ var CollectionIntro = React.createClass({
   },
 
   render: function() {
-    if(this.props.collection.short_description) {
+    if(this.props.collection && this.props.collection.short_description) {
       return (
         <PagesShow content={this.props.collection.short_description } />
       );
