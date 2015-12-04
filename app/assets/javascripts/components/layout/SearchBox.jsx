@@ -88,7 +88,7 @@ var SearchBox = React.createClass({
         {this.input()}
         <mui.RaisedButton
           onClick={this.onClick}
-          style={{zIndex: '0', minWidth: 'auto', boxShadow: 'none',  }}
+          style={{zIndex: '0', minWidth: 'auto', boxShadow: 'none',  lineHeight: '36px'}}
           primary={false}
           secondary={true}
         >
