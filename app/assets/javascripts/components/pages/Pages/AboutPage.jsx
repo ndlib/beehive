@@ -11,12 +11,6 @@ var AboutPage = React.createClass({
     ]),
   },
 
-  getInitialState: function() {
-    return {
-      collection: {},
-    };
-  },
-
   componentDidMount: function() {
     if ('object' == typeof(this.props.collection)) {
       this.setState({
