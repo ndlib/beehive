@@ -66,7 +66,13 @@ var Details = React.createClass({
   render: function () {
     return (
       <mui.Paper className="details" style={this.paperStyle()}>
-        <mui.FloatingActionButton onClick={this.toggleDetails} style={this.detailsButtonStyle()} secondary={true} mini={true}>
+        <mui.FloatingActionButton
+          onClick={this.toggleDetails}
+          style={this.detailsButtonStyle()}
+          secondary={true}
+          mini={true}
+          disableTouchRipple={true}
+        >
           <mui.FontIcon className="material-icons">{this.state.showDetails ? "arrow_forward" : "arrow_back"}</mui.FontIcon>
         </mui.FloatingActionButton>
 

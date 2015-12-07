@@ -119,6 +119,7 @@ var SearchControls = React.createClass({
             secondary={this.state.view == 'list'}
             onClick={this.setList}
             style={{zIndex: '0', margin: '15px 0', minWidth: "44px", lineHeight: "36px"}}
+            disableTouchRipple={true}
           >
             <mui.FontIcon
               className="material-icons"
@@ -129,6 +130,7 @@ var SearchControls = React.createClass({
             secondary={this.state.view == 'grid'}
             onClick={this.setGrid}
             style={{zIndex: '0', margin: '15px 0', minWidth: "44px", lineHeight: "36px"}}
+            disableTouchRipple={true}
           >
             <mui.FontIcon
               className="material-icons"

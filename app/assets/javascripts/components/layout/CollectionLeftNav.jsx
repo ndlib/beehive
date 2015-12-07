@@ -131,7 +131,11 @@ var CollectionLeftNav = React.createClass({
     else {
       return (
         <div style={{margin:'0'}}>
-          <mui.FlatButton onClick={this.clickEvent} style={this.buttonStyle()}>
+          <mui.FlatButton
+            onClick={this.clickEvent}
+            style={this.buttonStyle()}
+            disableTouchRipple={true}
+          >
             <mui.FontIcon className="material-icons" style={this.lightIconStyle()}>menu</mui.FontIcon>
           </mui.FlatButton>
 
