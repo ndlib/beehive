@@ -48,10 +48,12 @@ var ItemPanel = React.createClass({
   },
 
   nextButtonClick: function() {
+    console.log("next");
     ItemActions.showItemDialogWindow(this.state.currentItem);
   },
 
   prevButtonClick: function() {
+    console.log("previous");
     ItemActions.showItemDialogWindow(this.state.currentItem);
   },
 

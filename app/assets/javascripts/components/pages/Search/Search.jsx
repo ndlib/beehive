@@ -2,9 +2,12 @@
 var React = require('react');
 var mui = require('material-ui');
 var ItemPanel = require("./ItemPanel");
+var SearchActions = require('../../../actions/Search');
+var SearchActionTypes = require('../../../constants/SearchActionTypes');
+var SearchStore = require('../../../stores/Search');
 
 var Search = React.createClass({
-  mixins: [SearchUrlMixin, LoadRemoteMixin, SearchMixin, MuiThemeMixin ],
+  mixins: [LoadRemoteMixin, MuiThemeMixin ],
 
   propTypes: {
     hits: React.PropTypes.oneOfType([
@@ -27,30 +30,49 @@ var Search = React.createClass({
     };
   },
 
-  componentWillMount: function() {
-    this.initSearchStore();
-    if ('object' == typeof(this.props.collection)) {
-      this.setValues(this.props.collection);
-    } else {
-      this.loadRemoteCollection(this.props.collection);
-    }
-    var url = this.props.hits + "?q=" + encodeURIComponent(this.props.searchTerm);
-    if(this.props.facet) {
-      var key = Object.keys(this.props.facet)[0];
-      var value = encodeURIComponent(this.props.facet[key]);
-      url += "&facets[" + key + "]=" + value;
-    }
-    if(this.props.sortTerm) {
-      url += "&sort=" + this.props.sortTerm;
-    }
+  searchStoreChanged: function() {
+    this.setState({
+      remoteCollectionLoaded: true,
+      collection: SearchStore.collection,
+      facets: SearchStore.facets,
+      sortOptions: SearchStore.sortOption,
+      selectedIndex: SearchStore.selectedPageIndex,
+      items: SearchStore.items,
+      found: SearchStore.found,
+      start: SearchStore.start,
+    });
+    console.log(window.location.origin + SearchStore.searchUri());
+    window.history.pushState('', '', window.location.origin + SearchStore.searchUri());
+  },
 
+  // Callback from LoadRemoteMixin when remote collection is loaded
+  setValues: function(collection) {
     var regex = /\S+&start=/;
     var requestedStart = 0;
     if(window.location.search.match(regex)) {
       requestedStart = window.location.search.replace(regex, '').split('&')[0];
     }
-    url += "&start=" + requestedStart;
-    this.loadSearchResults(url);
+    SearchActions.loadSearchResults(collection, this.props.hits, this.props.searchTerm, this.facetObject(), this.props.sortTerm, requestedStart);
+    return true;
+  },
+
+  componentWillMount: function() {
+    SearchStore.on("SearchStoreChanged", this.searchStoreChanged);
+
+    if ('object' == typeof(this.props.collection)) {
+      this.setValues(this.props.collection);
+    } else {
+      this.loadRemoteCollection(this.props.collection);
+    }
+  },
+
+  facetObject: function() {
+    var facet;
+    if(this.props.facet) {
+      var facetKey = Object.keys(this.props.facet)[0];
+      facet = { name: facetKey, value: this.props.facet[facetKey] };
+    }
+    return facet;
   },
 
   render: function() {
@@ -80,7 +102,7 @@ var Search = React.createClass({
             sortOptions={this.state.sortOptions}
             searchTerm={this.props.searchTerm}
             selectedIndex={this.state.selectedIndex}
-            selectedFacet={this.props.facet}
+            selectedFacet={this.facetObject()}
             found={this.state.found}
             start={this.state.start}
           />

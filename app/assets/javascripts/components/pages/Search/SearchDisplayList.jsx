@@ -58,8 +58,8 @@ var SearchDisplayList = React.createClass({
 
   nextUrl: function(index) {
     var id;
-    if (index <  window.searchStore.items.length - 1) {
-      id = window.searchStore.items[index + 1];
+    if (index <  SearchStore.items.length - 1) {
+      id = SearchStore.items[index + 1];
     }
     return id;
   },
@@ -67,7 +67,7 @@ var SearchDisplayList = React.createClass({
   prevUrl: function(index) {
     var id;
     if (index > 0) {
-      id = window.searchStore.items[index - 1];
+      id = SearchStore.items[index - 1];
     }
     return id;
   },
@@ -140,7 +140,7 @@ var SearchDisplayList = React.createClass({
             facets={this.props.facets}
             selectedFacet={this.props.selectedFacet}
           />
-                  
+
           <mui.Paper style={{width: "74%"}} zDepth={0}>
             {this.itemList()}
 

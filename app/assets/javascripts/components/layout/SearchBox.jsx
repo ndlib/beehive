@@ -2,9 +2,11 @@
 var React = require('react');
 var mui = require('material-ui');
 var ColorManipulator = require('material-ui/lib/utils/color-manipulator');
+var SearchStore = require('../../stores/Search');
+var SearchActions = require("../../actions/Search");
 
 var SearchBox = React.createClass({
-  mixins: [SearchUrlMixin, CurrentThemeMixin],
+  mixins: [CurrentThemeMixin],
   propTypes: {
     collection: React.PropTypes.object.isRequired,
     searchTerm: React.PropTypes.string,
@@ -32,8 +34,8 @@ var SearchBox = React.createClass({
   },
 
   onClick: function(e) {
-    if (this.state.active && window.searchStore.searchTerm) {
-      window.location.assign(this.searchUrl(this.props.collection));
+    if (this.state.active && this.state.searchTerm) {
+      SearchActions.setSearchTerm(this.state.searchTerm);
     } else if (this.state.active) {
       this.setState({active: false});
     } else {
@@ -42,13 +44,11 @@ var SearchBox = React.createClass({
   },
 
   componentDidMount: function() {
-    this.initSearchStore();
     this.setTerm(this.props.searchTerm);
   },
 
   setTerm: function(term) {
     var cleanTerm = encodeURIComponent(term);
-    window.searchStore.searchTerm = cleanTerm;
     this.setState({searchTerm: cleanTerm});
   },
 

@@ -4,12 +4,13 @@ var mui = require('material-ui');
 var EventEmitter = require("../../../EventEmitter");
 var CloseButton = require('../../other/CloseButton');
 var MediaQuery = require('react-responsive');
+var SearchStore = require('../../../stores/Search');
 
 var gridView = {view: "grid"};
 var listView = {view: "list"};
 
 var SearchControls = React.createClass({
-  mixins: [CurrentThemeMixin, CollectionUrlMixin, SearchUrlMixin],
+  mixins: [CurrentThemeMixin, CollectionUrlMixin],
 
   propTypes: {
     collection: React.PropTypes.object,

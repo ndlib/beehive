@@ -3,9 +3,9 @@ var React = require('react');
 var mui = require('material-ui');
 var SelectField = mui.SelectField;
 var MenuItem = mui.MenuItem;
-var SearchSort = React.createClass({
-  mixins: [SearchUrlMixin],
+var SearchStore = require('../../../stores/Search');
 
+var SearchSort = React.createClass({
   propTypes: {
     collection: React.PropTypes.object.isRequired,
     sortOptions: React.PropTypes.array,
@@ -32,11 +32,10 @@ var SearchSort = React.createClass({
   },
 
   setSort: function(sortOption) {
-    window.searchStore.sortOption = sortOption;
+    SearchStore.sortOption = sortOption;
   },
 
   componentWillMount: function() {
-    this.initSearchStore();
     var regex = /\S+&sort=/;
     var sortOption = '';
     if(window.location.search.match(regex)) {

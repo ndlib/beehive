@@ -14,8 +14,6 @@ TitleConcatMixin = require("./mixins/TitleConcatMixin");
 MuiThemeMixin = require("./mixins/MuiThemeMixin");
 CurrentThemeMixin = require("./mixins/CurrentThemeMixin");
 IEMixin = require("./mixins/IEMixin");
-SearchMixin = require("./mixins/SearchMixin");
-SearchUrlMixin = require("./mixins/SearchUrlMixin");
 
 // Pages
 //// SiteIndex
