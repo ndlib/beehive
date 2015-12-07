@@ -65,7 +65,6 @@ var SiteIndex = React.createClass({
             </mui.CardMedia>
           </mui.Card>
           <PageContent fluidLayout={false}>
-
             <h2>Featured Collections</h2>
             <CollectionsList collections={this.state.collections} />
           </PageContent>
