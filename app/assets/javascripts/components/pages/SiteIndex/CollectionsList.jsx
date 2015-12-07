@@ -30,14 +30,11 @@ var CollectionsList = React.createClass({
         <MediaQuery maxWidth={650}>
           {this.gridList(1)}
         </MediaQuery>
-        <MediaQuery minWidth={650} maxWidth={1224}>
+        <MediaQuery minWidth={650} maxWidth={1724}>
           {this.gridList(2)}
         </MediaQuery>
-        <MediaQuery minWidth={1224} maxWidth={1724}>
-          {this.gridList(3)}
-        </MediaQuery>
         <MediaQuery minWidth={1724}>
-          {this.gridList(4)}
+          {this.gridList(3)}
         </MediaQuery>
       </div>
     );
