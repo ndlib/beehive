@@ -1,6 +1,7 @@
 'use strict'
 var React = require('react');
 var mui = require('material-ui');
+var SiteIndexHeader = require("./SiteIndexHeader");
 
 var SiteIndex = React.createClass({
   mixins: [LoadRemoteMixin, MuiThemeMixin],
@@ -40,6 +41,13 @@ var SiteIndex = React.createClass({
     document.body.className = document.body.className + " bee-light-theme collections-bg";
   },
 
+  cardMedia: function() {
+    return(
+      <div>
+      </div>
+    );
+  },
+
   render: function() {
     if(!this.state.remoteCollectionLoaded) {
       return null;
@@ -49,21 +57,7 @@ var SiteIndex = React.createClass({
       <mui.AppCanvas>
         <BrandBar/>
         <PageContent fluidLayout={true}>
-          <mui.Card  style={{height:'40vh', position:'relative', marginTop:'50px', left:'0', right:'0'}} className="heightFix"  >
-            <mui.CardMedia className="collectionscover"
-              style={{height:'100%'}}
-              overlayContentStyle={{background:'transparent', position:'static'}}
-              overlay={<mui.CardTitle
-                //Some of the styles for the banner display are in the .css file due to nesting complications
-                title="Digital Collections"
-                titleStyle={{height:'0', backgroundImage: 'url(' + '/images/dec.logo.svg' + ')', backgroundSize:'cover', overflow:'hidden', position:'absolute', paddingTop:'132px', width:'400px', left:'60px;', top:'60px;'}}
-                subtitle="Powered by HoneyComb"
-                subtitleStyle={{height:'0', backgroundImage: 'url(' + '/images/powered.png' + ')', backgroundSize:'cover', overflow:'hidden', position:'absolute', paddingTop:'57px', width:'200px', right:'60px', bottom:'60px'}}
-              />}
-              >
-              <div className='coverImage'><img src="/images/home.jpg"/></div>
-            </mui.CardMedia>
-          </mui.Card>
+          <SiteIndexHeader />
           <PageContent fluidLayout={false}>
             <h2>Featured Collections</h2>
             <CollectionsList collections={this.state.collections} />
