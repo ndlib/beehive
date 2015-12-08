@@ -17,6 +17,13 @@ class SearchActions {
     })
   }
 
+  reloadSearchResults(data) {
+    AppDispatcher.dispatch({
+      actionType: SearchActionTypes.SEARCH_RELOAD_RESULTS,
+      data: data
+    })
+  }
+
   setSearchTerm(term) {
     AppDispatcher.dispatch({
       actionType: SearchActionTypes.SEARCH_SET_TERM,

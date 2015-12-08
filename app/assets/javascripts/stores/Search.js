@@ -37,6 +37,16 @@ class SearchStore extends EventEmitter {
   // calls should change a property and call reload if that property requires reloading data
   // from the api
   loadSearchResults(params) {
+    this.setQueryParams(params);
+    this.executeQuery("load");
+  }
+
+  reloadSearchResults(params) {
+    this.setQueryParams(params);
+    this.executeQuery("reload");
+  }
+
+  setQueryParams(params) {
     this.collection = params.collection;
     this.baseApiUrl = params.baseApiUrl;
     this.searchTerm = params.searchTerm;
@@ -44,10 +54,23 @@ class SearchStore extends EventEmitter {
     this.sortOption = params.sortOption;
     this.start = params.start;
     this.view = params.view ? params.view : "grid";
-    this.reload();
   }
 
-  reload() {
+  getQueryParams() {
+    return {
+      collection: this.collection,
+      baseApiUrl: this.baseApiUrl,
+      searchTerm: this.searchTerm,
+      facetOption: this.facetOption,
+      sortOption: this.sortOption,
+      start: this.start,
+      view: this.view,
+    }
+  }
+
+  executeQuery(reason) {
+    reason = typeof reason != "undefined" ? reason : "load";
+    
     var url = this.baseApiUrl + "?q=" + encodeURIComponent(this.searchTerm);
     if(this.facetOption && this.facetOption.name && this.facetOption.value) {
       url += "&facets[" + this.facetOption.name + "]=" + this.facetOption.value;
@@ -66,10 +89,10 @@ class SearchStore extends EventEmitter {
         this.setItems(result.hits);
         this.setSorts(result.sorts);
         this.setFacets(result.facets);
-        this.emit("SearchStoreChanged");
+        this.emit("SearchStoreChanged", reason);
       },
       error: function(request, status, thrownError) {
-        this.emit("SearchStoreLoadFailed");
+        this.emit("SearchStoreQueryFailed");
         //window.location = window.location.origin + '/404';
       }
     });
@@ -77,17 +100,17 @@ class SearchStore extends EventEmitter {
 
   setTerm(term) {
     this.searchTerm = term;
-    this.reload();
+    this.executeQuery();
   }
 
   setSelectedFacet(facet) {
     this.facetOption = facet;
-    this.reload();
+    this.executeQuery();
   }
 
   setSelectedSort(sort) {
     this.sortOption = sort;
-    this.reload();
+    this.executeQuery();
   }
 
   mapHitToItem(hit) {
@@ -155,6 +178,9 @@ class SearchStore extends EventEmitter {
     switch(action.actionType) {
       case SearchActionTypes.SEARCH_LOAD_RESULTS:
         this.loadSearchResults(action);
+        break;
+      case SearchActionTypes.SEARCH_RELOAD_RESULTS:
+        this.reloadSearchResults(action.data);
         break;
       case SearchActionTypes.SEARCH_SET_TERM:
         this.setTerm(action.term);

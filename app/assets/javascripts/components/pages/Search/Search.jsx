@@ -31,7 +31,7 @@ var Search = React.createClass({
     };
   },
 
-  searchStoreChanged: function() {
+  searchStoreChanged: function(reason) {
     this.setState({
       remoteCollectionLoaded: true,
       collection: SearchStore.collection,
@@ -42,8 +42,11 @@ var Search = React.createClass({
       found: SearchStore.found,
       start: SearchStore.start,
     });
-    console.log(window.location.origin + SearchStore.searchUri());
-    window.history.pushState('', '', window.location.origin + SearchStore.searchUri());
+    
+    if(reason == "load") {
+      var path = window.location.origin + SearchStore.searchUri();
+      window.history.pushState({ store: SearchStore.getQueryParams() }, '', path);
+    }
   },
 
   // Callback from LoadRemoteMixin when remote collection is loaded
@@ -52,8 +55,16 @@ var Search = React.createClass({
     return true;
   },
 
+  onWindowPopState: function(event) {
+    console.log(event);
+    if(event.state){
+      SearchActions.reloadSearchResults(event.state.store);
+    }
+  },
+
   componentWillMount: function() {
     SearchStore.on("SearchStoreChanged", this.searchStoreChanged);
+    window.onpopstate = this.onWindowPopState;
 
     if ('object' == typeof(this.props.collection)) {
       this.setValues(this.props.collection);
