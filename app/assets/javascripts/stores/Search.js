@@ -70,7 +70,7 @@ class SearchStore extends EventEmitter {
 
   executeQuery(reason) {
     reason = typeof reason != "undefined" ? reason : "load";
-    
+
     var url = this.baseApiUrl + "?q=" + encodeURIComponent(this.searchTerm);
     if(this.facetOption && this.facetOption.name && this.facetOption.value) {
       url += "&facets[" + this.facetOption.name + "]=" + this.facetOption.value;
@@ -119,7 +119,7 @@ class SearchStore extends EventEmitter {
     item.name = hit.name;
     item.description = hit.description;
     item.image = {
-      "thumbnail/small": {
+      "thumbnail/medium": {
         contentUrl: hit.thumbnailURL
       }
     };
