@@ -61,7 +61,8 @@ var SectionCard = React.createClass({
   textStyle: function() {
     return {
       color:'lightgrey',
-      paddingTop:'0'
+      paddingTop:'0',
+      maxWidth: Math.floor(window.innerWidth *0.9) + 'px',
     };
   },
 
