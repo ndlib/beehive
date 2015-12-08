@@ -1,6 +1,5 @@
 var AppDispatcher = require("../dispatcher/AppDispatcher");
 var SearchActionTypes = require("../constants/SearchActionTypes");
-var EventEmitter = require("../EventEmitter");
 
 class SearchActions {
   // Init
@@ -14,14 +13,14 @@ class SearchActions {
       sortOption: sortOption,
       start: start,
       view: view
-    })
+    });
   }
 
   reloadSearchResults(data) {
     AppDispatcher.dispatch({
       actionType: SearchActionTypes.SEARCH_RELOAD_RESULTS,
       data: data
-    })
+    });
   }
 
   setSearchTerm(term) {
@@ -75,15 +74,6 @@ class SearchActions {
       view: view
     });
   }
-  /*
-  showItemDialogWindow(item) {
-    EventEmitter.emit("ItemDialogWindow", item);
-  }
-
-  hideItemDialogWindow() {
-    EventEmitter.emit("HideItemDialogWindow", 'hide');
-  }
-  */
 }
 var SearchActions = new SearchActions();
 module.exports = SearchActions;
