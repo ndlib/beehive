@@ -42,7 +42,7 @@ var Search = React.createClass({
       found: SearchStore.found,
       start: SearchStore.start,
     });
-    
+
     if(reason == "load") {
       var path = window.location.origin + SearchStore.searchUri();
       window.history.pushState({ store: SearchStore.getQueryParams() }, '', path);
@@ -56,7 +56,6 @@ var Search = React.createClass({
   },
 
   onWindowPopState: function(event) {
-    console.log(event);
     if(event.state){
       SearchActions.reloadSearchResults(event.state.store);
     }
