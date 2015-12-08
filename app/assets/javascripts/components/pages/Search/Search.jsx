@@ -63,6 +63,7 @@ var Search = React.createClass({
 
   componentWillMount: function() {
     SearchStore.on("SearchStoreChanged", this.searchStoreChanged);
+    SearchStore.on("SearchStoreQueryFailed", function(result) { window.location = window.location.origin + '/404' });
     window.onpopstate = this.onWindowPopState;
 
     if ('object' == typeof(this.props.collection)) {

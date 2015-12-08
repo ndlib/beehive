@@ -92,8 +92,7 @@ class SearchStore extends EventEmitter {
         this.emit("SearchStoreChanged", reason);
       },
       error: function(request, status, thrownError) {
-        this.emit("SearchStoreQueryFailed");
-        //window.location = window.location.origin + '/404';
+        this.emit("SearchStoreQueryFailed", { request: request, status: status, error: thrownError });
       }
     });
   }
