@@ -12,6 +12,12 @@ var PagesShow = React.createClass({
     ]).isRequired,
   },
 
+  style: function() {
+    return {
+      maxWidth: "60em",
+    }
+  },
+
   render: function() {
     var pageName;
     var pageContent = (<Loading/>);
@@ -20,7 +26,7 @@ var PagesShow = React.createClass({
     }
     if(this.props.content) {
       pageContent = (
-        <div className="essay-content" dangerouslySetInnerHTML={{__html:this.props.content}} />
+        <div className="essay-content" style={this.style()} dangerouslySetInnerHTML={{__html:this.props.content}} />
       );
     }
 
