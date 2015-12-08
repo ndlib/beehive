@@ -32,13 +32,9 @@ var Details = React.createClass({
     var arr = {
       backgroundColor: this.getCurrentPallette().accent3Color,
       position: "absolute",
-      top: "-20px"
+      top: "-45px",
+      right: "43px",
     };
-    if (this.state.showDetails) {
-      arr["left"] = "-20px";
-    } else {
-      arr["right"] = "-20px";
-    }
 
     return arr;
   },
@@ -66,15 +62,17 @@ var Details = React.createClass({
   render: function () {
     return (
       <mui.Paper className="details" style={this.paperStyle()}>
-        <mui.FloatingActionButton
+        <mui.RaisedButton
           onClick={this.toggleDetails}
           style={this.detailsButtonStyle()}
-          secondary={true}
-          mini={true}
           disableTouchRipple={true}
+          labelPosition="after"
         >
-          <mui.FontIcon className="material-icons">{this.state.showDetails ? "arrow_forward" : "arrow_back"}</mui.FontIcon>
-        </mui.FloatingActionButton>
+          <span style={{fontSize: "20px", letterSpacing: "0", textTransform: "uppercase", fontWeight: "500", padding: "0px 10px" }}>
+            Details
+            <mui.FontIcon className="material-icons">{this.state.showDetails ? "arrow_forward" : "arrow_back"}</mui.FontIcon>
+          </span>
+        </mui.RaisedButton>
 
         <div className="item-details" style={this.detailsStyle()}>
           <div className="additional-details" dangerouslySetInnerHTML={{__html: this.props.additionalDetails}} />

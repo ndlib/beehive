@@ -7,47 +7,20 @@ var ItemImage = React.createClass({
     image: React.PropTypes.object.isRequired,
   },
 
-  imageStyle: function() {
+  style: function() {
     return {
-      paddingTop: "100%",
-      position: "relative"
-    };
-  },
-
-  holderStyle: function() {
-    return {
-      top: 0,
-      bottom: 0,
-      left: 0,
-      right: 0,
+      width: "70px",
+      height: "70px",
+      display: "inline-block",
       position: "absolute",
-    };
-  },
-
-  backgroundStyle: function() {
-    if (this.props.image) {
-      var backgroundImage;
-      backgroundImage = "url(\"" + this.props.image["thumbnail/medium"].contentUrl + "\")";
-      return {
-        width: "100%",
-        height: "100%",
-        position: "absolute",
-        background: backgroundImage + " 50% 50% / cover no-repeat",
-      };
-    } else {
-      return {};
+      top: "8px",
+      left: "16px",
     }
   },
 
   render: function() {
     return (
-      <div className="bee-item-image-wrapper">
-        <div className="bee-item-image" style={this.imageStyle()}>
-          <div className="bee-item-holder" style={this.holderStyle()}>
-            <div className="bee-item-background" style={this.backgroundStyle()} />
-          </div>
-        </div>
-      </div>
+      <img src={this.props.image["thumbnail/medium"].contentUrl} style={this.style()} />
     );
   }
 
