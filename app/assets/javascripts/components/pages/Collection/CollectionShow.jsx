@@ -37,7 +37,8 @@ var CollectionShow = React.createClass({
     return ({
       backgroundPosition:'center',
       backgroundSize:'cover',
-      height:'450px',
+      height:'60vh',
+      maxHeight:'450px',
       backgroundImage: 'url(' + this.image() + ')',
     });
   },
