@@ -114,29 +114,29 @@ var SearchControls = React.createClass({
               sortOptions={this.props.sortOptions}
               selectedIndex={this.props.selectedIndex}
               />
+              <mui.RaisedButton
+                secondary={this.state.view == 'list'}
+                onClick={this.setList}
+                style={{zIndex: '0', margin: '15px 0', minWidth: "44px", lineHeight: "36px"}}
+                disableTouchRipple={true}
+              >
+                <mui.FontIcon
+                  className="material-icons"
+                  style={this.state.view == 'list' ? this.lightIconStyle() : this.darkIconStyle()}
+                >view_list</mui.FontIcon>
+              </mui.RaisedButton>
+              <mui.RaisedButton
+                secondary={this.state.view == 'grid'}
+                onClick={this.setGrid}
+                style={{zIndex: '0', margin: '15px 0', minWidth: "44px", lineHeight: "36px"}}
+                disableTouchRipple={true}
+              >
+                <mui.FontIcon
+                  className="material-icons"
+                  style={this.state.view == 'grid' ? this.lightIconStyle() : this.darkIconStyle()}
+                >view_module</mui.FontIcon>
+              </mui.RaisedButton>            
           </MediaQuery>
-          <mui.RaisedButton
-            secondary={this.state.view == 'list'}
-            onClick={this.setList}
-            style={{zIndex: '0', margin: '15px 0', minWidth: "44px", lineHeight: "36px"}}
-            disableTouchRipple={true}
-          >
-            <mui.FontIcon
-              className="material-icons"
-              style={this.state.view == 'list' ? this.lightIconStyle() : this.darkIconStyle()}
-            >view_list</mui.FontIcon>
-          </mui.RaisedButton>
-          <mui.RaisedButton
-            secondary={this.state.view == 'grid'}
-            onClick={this.setGrid}
-            style={{zIndex: '0', margin: '15px 0', minWidth: "44px", lineHeight: "36px"}}
-            disableTouchRipple={true}
-          >
-            <mui.FontIcon
-              className="material-icons"
-              style={this.state.view == 'grid' ? this.lightIconStyle() : this.darkIconStyle()}
-            >view_module</mui.FontIcon>
-          </mui.RaisedButton>
         </mui.ToolbarGroup>
       </mui.Toolbar>
       </div>
