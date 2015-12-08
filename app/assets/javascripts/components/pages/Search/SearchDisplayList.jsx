@@ -45,6 +45,7 @@ var SearchDisplayList = React.createClass({
   },
 
   componentWillMount: function() {
+    SearchStore.on("SearchStoreChanged", this.storeViewChanged);
     SearchStore.on("SearchStoreViewChanged", this.storeViewChanged);
   },
 

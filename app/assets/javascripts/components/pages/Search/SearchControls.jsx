@@ -46,12 +46,10 @@ var SearchControls = React.createClass({
 
   setGrid: function() {
     this.storeView("grid");
-    this.addViewToUrl("grid");
   },
 
   setList: function() {
     this.storeView("list");
-    this.addViewToUrl("list");
   },
 
   checkView: function(view) {
@@ -62,6 +60,7 @@ var SearchControls = React.createClass({
   },
 
   componentWillMount: function() {
+    SearchStore.on("SearchStoreChanged", this.storeChanged);
     SearchStore.on("SearchStoreViewChanged", this.storeViewChanged);
   },
 
@@ -69,20 +68,14 @@ var SearchControls = React.createClass({
     SearchActions.setView(view);
   },
 
-  storeViewChanged: function() {
+  storeChanged: function() {
     this.setState({ view: SearchStore.view });
   },
 
-  addViewToUrl: function(view) {
-    var searchString = window.location.search;
-    var regex = /\S+&view=/;
-    var garbage;
-    if(searchString.indexOf('&view=') > -1) {
-      garbage = searchString.replace(regex, '');
-      searchString = searchString.replace('&view=' + garbage, '');
-    }
-    var url = searchString + '&view=' + view;
-    window.history.pushState('', '', url);
+  storeViewChanged: function() {
+    this.setState({ view: SearchStore.view });
+    var url = window.location.origin + SearchStore.searchUri();
+    window.history.pushState({ store: SearchStore.getQueryParams() }, '', url);
   },
 
   render: function() {
