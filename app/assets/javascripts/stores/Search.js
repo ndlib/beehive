@@ -16,7 +16,7 @@ class SearchStore extends EventEmitter {
     this.collection = null;
     this.searchTerm = "";
     this.items = [];
-    this.found = null
+    this.found = null;
     this.start = null;
     this.facets = null;
     this.sorts = null;
@@ -65,7 +65,7 @@ class SearchStore extends EventEmitter {
       sortOption: this.sortOption,
       start: this.start,
       view: this.view,
-    }
+    };
   }
 
   executeQuery(reason) {
@@ -114,7 +114,7 @@ class SearchStore extends EventEmitter {
 
   mapHitToItem(hit) {
     var item = {};
-    item['@id'] = hit['@id'];
+    item["@id"] = hit["@id"];
     item.name = hit.name;
     item.description = hit.description;
     item.image = {
@@ -130,9 +130,11 @@ class SearchStore extends EventEmitter {
     this.found = hits.found;
     this.start = hits.start;
     for (var h in hits.hit) {
-      var hit = hits.hit[h];
-      var item = this.mapHitToItem(hit);
-      this.items.push(item);
+      if (hits.hit.hasOwnProperty(h)){
+        var hit = hits.hit[h];
+        var item = this.mapHitToItem(hit);
+        this.items.push(item);
+      }
     }
   }
 
@@ -154,9 +156,9 @@ class SearchStore extends EventEmitter {
   // This was primarily created to allow pagination to generate links using the same search, but
   // with other start values.
   searchUri(overrides) {
-    var uri = "/" + this.collection.id
-      + "/" + this.collection.slug
-      + "/search?q=" + this.searchTerm;
+    var uri = "/" + this.collection.id +
+      "/" + this.collection.slug +
+      "/search?q=" + this.searchTerm;
     if(this.facetOption && this.facetOption.name && this.facetOption.value){
       uri += "&facet[" + this.facetOption.name + "]=" + this.facetOption.value;
     }
@@ -208,14 +210,6 @@ class SearchStore extends EventEmitter {
       default:
         break;
     }
-  }
-
-  addChangeListener(changeEvent, callback) {
-    this.on(changeEvent, callback);
-  }
-
-  removeChangeListener(changeEvent, callback) {
-    this.removeListener(changeEvent, callback);
   }
 }
 
