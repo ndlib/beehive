@@ -1,3 +1,11 @@
+// This store retains data on search results retreived from the Honeycomb API.
+// In addition, it also stores some user selections that don't affect the search
+// results, such as the currently clicked item. This is purely so that multiple
+// components can query the store to get this information instead of talking directly
+// to each other. Any time a property changes that will trigger the search results to change,
+// the store will emit a single SearchStoreChanged event, regardless of why it changed.
+// If a property changes that does not change the results, it will emit an individual
+// event specific to that change, such as SearchStoreSelectedItemChanged.
 var AppDispatcher = require("../dispatcher/AppDispatcher");
 var EventEmitter = require("events").EventEmitter;
 var SearchActionTypes = require("../constants/SearchActionTypes");
@@ -11,18 +19,23 @@ class SearchStore extends EventEmitter {
     this.found = null
     this.start = null;
     this.facets = null;
+    this.sorts = null;
 
-    this.facetOption = { name: null, value: null };
+    // User selections that affect the data
+    this.facetOption = null;
     this.sortOption = null;
     this.selectedPageIndex = null;
-    this.selectedItem = null;
 
+    // User selections that only affect the view (don't require a reload)
+    this.selectedItem = null;
+    this.view = null;
 
     AppDispatcher.register(this.receiveAction.bind(this));
   }
 
   // This ideally should only need to be called once as part of initialization. Subsequent
-  // calls should change a property and call reload.
+  // calls should change a property and call reload if that property requires reloading data
+  // from the api
   loadSearchResults(params) {
     this.collection = params.collection;
     this.baseApiUrl = params.baseApiUrl;
@@ -30,16 +43,17 @@ class SearchStore extends EventEmitter {
     this.facetOption = params.facetOption;
     this.sortOption = params.sortOption;
     this.start = params.start;
+    this.view = params.view ? params.view : "grid";
     this.reload();
   }
 
   reload() {
     var url = this.baseApiUrl + "?q=" + encodeURIComponent(this.searchTerm);
-    if(this.facetOption) {
+    if(this.facetOption && this.facetOption.name && this.facetOption.value) {
       url += "&facets[" + this.facetOption.name + "]=" + this.facetOption.value;
     }
-    if(this.sortTerm) {
-      url += "&sort=" + this.sortTerm;
+    if(this.sortOption) {
+      url += "&sort=" + this.sortOption;
     }
     url += "&start=" + this.start;
 
@@ -76,31 +90,6 @@ class SearchStore extends EventEmitter {
     this.reload();
   }
 
-  setFacets(facets) {
-    this.facets = facets;
-  }
-
-  setItems(hits) {
-    this.items = [];
-    this.found = hits.found;
-    this.start = hits.start;
-    for (var h in hits.hit) {
-      var hit = hits.hit[h];
-      var item = this.mapHitToItem(hit);
-      this.items.push(item);
-    }
-  }
-
-  setSorts(sorts) {
-    var regex = /\S+&sort=/;
-    var sortOption = '';
-    if(window.location.search.match(regex)) {
-      sortOption = window.location.search.replace(regex, '');
-    };
-    this.sortOptions = sorts;
-    this.selectedPageIndex = sorts.map(function(s) {return s.value; }).indexOf(this.sortOption);
-  }
-
   mapHitToItem(hit) {
     var item = {};
     item['@id'] = hit['@id'];
@@ -114,18 +103,50 @@ class SearchStore extends EventEmitter {
     return item;
   }
 
-  searchUri() {
+  setItems(hits) {
+    this.items = [];
+    this.found = hits.found;
+    this.start = hits.start;
+    for (var h in hits.hit) {
+      var hit = hits.hit[h];
+      var item = this.mapHitToItem(hit);
+      this.items.push(item);
+    }
+  }
+
+  setFacets(facets) {
+    this.facets = facets;
+  }
+
+  setSorts(sorts) {
+    this.sorts = sorts;
+    this.selectedPageIndex = sorts.map(function(s) {return s.value; }).indexOf(this.sortOption);
+  }
+
+  setView(view) {
+    this.view = view;
+    this.emit("SearchStoreViewChanged");
+  }
+
+  // Overrides can be provided to override the value in the store when creating the uri params.
+  // This was primarily created to allow pagination to generate links using the same search, but
+  // with other start values.
+  searchUri(overrides) {
     var uri = "/" + this.collection.id
       + "/" + this.collection.slug
       + "/search?q=" + this.searchTerm;
-    if(this.facetOption){
-      if(this.facetOption.name) {
-        uri += "&facet[" + this.facetOption.name + "]=" + this.facetOption.value;
-      }
+    if(this.facetOption && this.facetOption.name && this.facetOption.value){
+      uri += "&facet[" + this.facetOption.name + "]=" + this.facetOption.value;
     }
     if(this.sortOption) {
       uri += "&sort=" + this.sortOption;
     }
+    if(overrides && overrides.start != "undefined") {
+      uri += "&start=" + overrides.start;
+    } else if(this.start) {
+      uri += "&start=" + this.start;
+    }
+    uri += "&view=" + this.view;
     return uri;
   }
 
@@ -140,6 +161,12 @@ class SearchStore extends EventEmitter {
         break;
       case SearchActionTypes.SEARCH_SET_SELECTED_FACET:
         this.setSelectedFacet(action.facet);
+        break;
+      case SearchActionTypes.SEARCH_SET_SORT:
+        this.setSelectedSort(action.sort);
+        break;
+      case SearchActionTypes.SEARCH_SET_VIEW:
+        this.setView(action.view);
         break;
       case SearchActionTypes.SEARCH_SHOW_ITEM:
         this.selectedItem = action.item;

@@ -18,6 +18,7 @@ var Search = React.createClass({
     sortTerm: React.PropTypes.string,
     facet: React.PropTypes.object,
     start: React.PropTypes.number,
+    view: React.PropTypes.string,
   },
 
   getInitialState: function() {
@@ -35,7 +36,7 @@ var Search = React.createClass({
       remoteCollectionLoaded: true,
       collection: SearchStore.collection,
       facets: SearchStore.facets,
-      sortOptions: SearchStore.sortOption,
+      sortOptions: SearchStore.sorts,
       selectedIndex: SearchStore.selectedPageIndex,
       items: SearchStore.items,
       found: SearchStore.found,
@@ -47,12 +48,7 @@ var Search = React.createClass({
 
   // Callback from LoadRemoteMixin when remote collection is loaded
   setValues: function(collection) {
-    var regex = /\S+&start=/;
-    var requestedStart = 0;
-    if(window.location.search.match(regex)) {
-      requestedStart = window.location.search.replace(regex, '').split('&')[0];
-    }
-    SearchActions.loadSearchResults(collection, this.props.hits, this.props.searchTerm, this.facetObject(), this.props.sortTerm, requestedStart);
+    SearchActions.loadSearchResults(collection, this.props.hits, this.props.searchTerm, this.facetObject(), this.props.sortTerm, this.props.start, this.props.view);
     return true;
   },
 

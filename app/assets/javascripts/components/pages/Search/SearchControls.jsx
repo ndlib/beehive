@@ -5,6 +5,7 @@ var EventEmitter = require("../../../EventEmitter");
 var CloseButton = require('../../other/CloseButton');
 var MediaQuery = require('react-responsive');
 var SearchStore = require('../../../stores/Search');
+var SearchActions = require("../../../actions/Search");
 
 var gridView = {view: "grid"};
 var listView = {view: "list"};
@@ -21,7 +22,7 @@ var SearchControls = React.createClass({
 
   getInitialState: function() {
     var state = {
-      view: null,
+      view: SearchStore.view,
     }
     return state;
   },
@@ -61,32 +62,15 @@ var SearchControls = React.createClass({
   },
 
   componentWillMount: function() {
-    var regex = /\S+&view=/;
-    var view;
-    var urlView = window.location.search.replace(regex, '');
-    var storedState = JSON.parse(localStorage.getItem("ListViewLayout"));
-
-    // check url for a valid view
-    if(this.checkView(urlView)) {
-      view = urlView;
-    }
-    // next check localStorage
-    else if(storedState && this.checkView(storedState.view)) {
-      view = storedState.view;
-      this.addViewToUrl(view);
-    }
-    // if we still don't have a view give it a default
-    else {
-      view = 'grid';
-      this.addViewToUrl(view);
-    }
-    this.storeView(view);
+    SearchStore.on("SearchStoreViewChanged", this.storeViewChanged);
   },
 
   storeView: function(view) {
-    this.setState({view: view});
-    localStorage.setItem("ListViewLayout", JSON.stringify({view: view}));
-    EventEmitter.emit('SetGridList', view);
+    SearchActions.setView(view);
+  },
+
+  storeViewChanged: function() {
+    this.setState({ view: SearchStore.view });
   },
 
   addViewToUrl: function(view) {

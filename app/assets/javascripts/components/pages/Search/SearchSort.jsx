@@ -4,6 +4,7 @@ var mui = require('material-ui');
 var SelectField = mui.SelectField;
 var MenuItem = mui.MenuItem;
 var SearchStore = require('../../../stores/Search');
+var SearchActions = require('../../../actions/Search');
 
 var SearchSort = React.createClass({
   propTypes: {
@@ -27,8 +28,7 @@ var SearchSort = React.createClass({
   },
 
   onChange: function(prop, e) {
-    this.setSort(e.target.value);
-    window.location.assign(this.searchUrl(this.props.collection));
+    SearchActions.setSort(e.target.value);
   },
 
   setSort: function(sortOption) {

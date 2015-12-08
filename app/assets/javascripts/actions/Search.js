@@ -4,7 +4,7 @@ var EventEmitter = require("../EventEmitter");
 
 class SearchActions {
   // Init
-  loadSearchResults(collection, baseApiUrl, searchTerm, facetOption, sortOption, start) {
+  loadSearchResults(collection, baseApiUrl, searchTerm, facetOption, sortOption, start, view) {
     AppDispatcher.dispatch({
       actionType: SearchActionTypes.SEARCH_LOAD_RESULTS,
       collection: collection,
@@ -12,7 +12,8 @@ class SearchActions {
       searchTerm: searchTerm,
       facetOption: facetOption,
       sortOption: sortOption,
-      start: start
+      start: start,
+      view: view
     })
   }
 
@@ -61,6 +62,12 @@ class SearchActions {
     });
   }
 
+  setView(view) {
+    AppDispatcher.dispatch({
+      actionType: SearchActionTypes.SEARCH_SET_VIEW,
+      view: view
+    });
+  }
   /*
   showItemDialogWindow(item) {
     EventEmitter.emit("ItemDialogWindow", item);
