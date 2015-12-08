@@ -125,20 +125,29 @@ var CollectionLeftNav = React.createClass({
   },
 
   render: function () {
-    return (
-      <div style={{margin:'0'}}>
-        <mui.FlatButton onClick={this.clickEvent} style={this.buttonStyle()}>
-          <mui.FontIcon className="material-icons" style={this.lightIconStyle()}>menu</mui.FontIcon>
-        </mui.FlatButton>
+    if(!this.props.collection) {
+      return;
+    }
+    else {
+      return (
+        <div style={{margin:'0'}}>
+          <mui.FlatButton
+            onClick={this.clickEvent}
+            style={this.buttonStyle()}
+            disableTouchRipple={true}
+          >
+            <mui.FontIcon className="material-icons" style={this.lightIconStyle()}>menu</mui.FontIcon>
+          </mui.FlatButton>
 
-        <mui.LeftNav
-          ref="leftNav"
-          className="leftNav"
-          docked={false}
-          menuItems={this.dropDownOptions()}
-          style={this.navStyle()} />
-      </div>
-    );
+          <mui.LeftNav
+            ref="leftNav"
+            className="leftNav"
+            docked={false}
+            menuItems={this.dropDownOptions()}
+            style={this.navStyle()} />
+        </div>
+      );
+    }
   }
 });
 

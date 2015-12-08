@@ -74,6 +74,7 @@ var SectionCard = React.createClass({
       padding:'0',
       color: "lightgrey",
       background:'rgba(0,0,0,.45)',
+      width: '100%',
     }
   },
 
@@ -108,16 +109,23 @@ var SectionCard = React.createClass({
     return "section-" + this.props.section.id;
   },
 
+  captionCard: function() {
+    if (this.props.section.caption) {
+      return (<mui.CardText style={this.captionStyle()} className="caption">
+        <div dangerouslySetInnerHTML={{__html: this.props.section.caption}} style={this.captionInner()}/>
+      </mui.CardText>);
+    }
+    return (<div/>);
+  },
+
   imageCard: function() {
     if (this.props.section.item) {
       return (
         <div style={this.imageStyle()}>
           <mui.CardMedia className="img">
-            <img src={this.props.section.item.image['thumbnail/medium'].contentUrl} />
+            <img style={{width: 'auto' }} src={this.props.section.item.image['thumbnail/medium'].contentUrl} />
           </mui.CardMedia>
-          <mui.CardText style={this.captionStyle()} className="caption">
-            <div dangerouslySetInnerHTML={{__html: this.props.section.caption}} style={this.captionInner()}/>
-          </mui.CardText>
+          {this.captionCard()}
         </div>
       );
     }

@@ -61,7 +61,7 @@ var SearchMixin = {
     item.name = hit.name;
     item.description = hit.description;
     item.image = {
-      "thumbnail/small": {
+      "thumbnail/medium": {
         contentUrl: hit.thumbnailURL
       }
     };

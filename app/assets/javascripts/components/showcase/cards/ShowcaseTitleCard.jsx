@@ -1,6 +1,7 @@
 //app/assets/javascripts/components/ShowcaseTitle.jsx
 var React = require("react");
 var mui = require('material-ui');
+var MediaQuery = require("react-responsive");
 
 var converter = new Showdown.converter()
 
@@ -66,7 +67,7 @@ var ShowcaseTitleCard = React.createClass({
       textShadow: "1px 1px 2px #333333",
       fontSize: "18px",
       backgroundColor: "rgba(0,0,0,0.1)",
-      whiteSpace: 'normal'            
+      whiteSpace: 'normal'
     }
   },
 
@@ -105,10 +106,11 @@ var ShowcaseTitleCard = React.createClass({
           titleStyle={this.titleStyle() }
           subtitleStyle={this.subtitleStyle() }
           />
-
-        <mui.CardText style={this.textStyle()} >
-          {description}
-        </mui.CardText>
+        <MediaQuery minWidth={650}>
+          <mui.CardText style={this.textStyle()} >
+            {description}
+          </mui.CardText>
+        </MediaQuery>
       </mui.Card>
     )
     return (

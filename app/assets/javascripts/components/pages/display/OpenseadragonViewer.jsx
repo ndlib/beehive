@@ -45,17 +45,20 @@ var OpenseadragonViewer = React.createClass({
     }
 
     if(nextProps.image != this.props.image) {
-      this.setState({image: nextProps.image});
-      this.state.viewer.close();
-
-      var sourceImage = this.dziSource(nextProps.image);
-      if (/^http:\/\/localhost/.test(nextProps.image.contentUrl)) {
-        sourceImage = this.legacySource(nextProps.image);
-      }
-      this.state.viewer.open(sourceImage);
+      this.setState({image: nextProps.image}, function() {
+        this.state.viewer.close();
+        this.openImage(this.state.viewer, nextProps.image);
+      });
     }
-
     return true;
+  },
+
+  openImage: function(viewer, image) {
+    var sourceImage = this.dziSource(image);
+    if (/^http:\/\/localhost/.test(image.contentUrl)) {
+      sourceImage = this.legacySource(image);
+    }
+    viewer.open(sourceImage);
   },
 
   fullPageOn: function() {
@@ -91,7 +94,7 @@ var OpenseadragonViewer = React.createClass({
       image: image,
       viewer: viewer,
       escapeHandler: escapeHandler,
-    });
+    }, this.openImage(viewer, image));
 
     var disableKeyboard = function(event) {
       event.eventSource.keyDownHandler = null;
@@ -101,6 +104,7 @@ var OpenseadragonViewer = React.createClass({
     viewer.addViewerInputHook({hooks: [
         {tracker: 'viewer', handler: 'clickHandler', hookHandler: disableKeyboard}
     ]});
+
   },
 
   baseOptions: function() {

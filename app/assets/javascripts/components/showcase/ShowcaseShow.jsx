@@ -159,7 +159,7 @@ var ShowcaseShow = React.createClass({
             previousUrl={prev}
             nextUrl={next}
         />
-        <MediaQuery minHeight={500} minWidth={520}>
+        <MediaQuery minHeight={700}>
           <ShowcaseTitleBar percentFade={this.state.titleSectionPercentVisible} height={showcaseTitleHeight} showcase={this.props.showcase} />
         </MediaQuery>
         <ReactCSSTransitionGroup
@@ -169,9 +169,7 @@ var ShowcaseShow = React.createClass({
           transitionEnterTimeout={0}
           transitionLeaveTimeout={0}>
           <div id="showcase-outer" ref="showcaseOuter" className="showcase-outer" style={this.styleOuter(showcaseHeight)} onScroll={this.onScroll}>
-            <MediaQuery minHeight={500} minWidth={520}>
-              <Scroller target="#showcase-outer" height={this.props.height} />
-            </MediaQuery>
+            <Scroller target="#showcase-outer" height={this.props.height} />
 
             <ShowcaseInnerContent height={showcaseInnerHeight} showcase={this.props.showcase} />
           </div>

@@ -88,9 +88,10 @@ var SearchBox = React.createClass({
         {this.input()}
         <mui.RaisedButton
           onClick={this.onClick}
-          style={{zIndex: '0', minWidth: 'auto', boxShadow: 'none',  }}
+          style={{zIndex: '0', minWidth: 'auto', boxShadow: 'none',  lineHeight: '36px'}}
           primary={false}
           secondary={true}
+          disableTouchRipple={true}
         >
           <mui.FontIcon className="material-icons" style={this.lightIconStyle()}>search</mui.FontIcon>
         </mui.RaisedButton>

@@ -1,6 +1,8 @@
 //app/assets/javascripts/components/ItemShow.jsx
 var React = require("react");
 var mui = require('material-ui');
+var MediaQuery = require("react-responsive");
+
 
 var ItemShow = React.createClass({
   displayName: "Item Show",
@@ -45,13 +47,25 @@ var ItemShow = React.createClass({
         <div style={this.outerStyles()}>
           <Details item={this.props.item} additionalDetails={this.props.additionalDetails} showDetails={false} />
           <div className="item-detail-zoom" style={this.zoomStyles()}>
-            <OpenseadragonViewer
-              image={this.props.item.image}
-              containerID={this.props.item.id}
-              height={this.props.height}
-              toolbarTop={60}
-              toolbarLeft={40}
-              showFullPageControl={false} />
+            <MediaQuery minWidth={650}>
+              <OpenseadragonViewer
+                image={this.props.item.image}
+                containerID={this.props.item.id}
+                height={this.props.height}
+                toolbarTop={60}
+                toolbarLeft={40}
+                showFullPageControl={false} />
+            </MediaQuery>
+            <MediaQuery maxWidth={650}>
+              <OpenseadragonViewer
+                image={this.props.item.image}
+                containerID={this.props.item.id}
+                height={this.props.height}
+                toolbarTop={60}
+                toolbarLeft={40}
+                showFullPageControl={false}
+                showNavigator={false} />              
+            </MediaQuery>
           </div>
         </div>
       );

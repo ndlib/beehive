@@ -1,8 +1,5 @@
 var React = require('react');
-var Scroll = require('react-scroll');
-
-var Link = Scroll.Link;
-var Element = Scroll.Element;
+var mui = require('material-ui');
 
 var CollectionDescription = React.createClass({
   mixins: [MuiThemeMixin],
@@ -25,13 +22,26 @@ var CollectionDescription = React.createClass({
     }
   },
 
+  showNext: function() {
+    if(this.props.collection &&
+      this.props.collection.showcases &&
+      this.props.collection.showcases.length > 0){
+      return (
+        <mui.Paper>
+          <ShowcaseCard showcase={this.props.collection.showcases[0]}  addNextButton={true}/>
+        </mui.Paper>
+      );
+    }
+    else {
+      return null;
+    }
+  },
+
   render: function() {
     return (
       <div style={this.style()} id={this.props.id}>
         {this.introContent()}
-        <Element name="startShowcases" className="element startShowcase">
-          <StartShowcaseButton collection={this.props.collection}  style={{height:'auto'}}/>
-        </Element>
+        {this.showNext()}
       </div>
     );
   }

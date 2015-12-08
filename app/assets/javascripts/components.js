@@ -88,7 +88,6 @@ ShowcaseInnerContent = require("./components/showcase/ShowcaseInnerContent");
 ShowcaseSections = require("./components/showcase/ShowcaseSections");
 ShowcaseTitleBar = require("./components/showcase/ShowcaseTitleBar");
 ShowcaseBackground = require("./components/showcase/ShowcaseBackground");
-StartShowcaseButton = require("./components/showcase/StartShowcaseButton");
 // cards
 ShowcaseCard = require("./components/showcase/cards/ShowcaseCard");
 ShowcaseEndingCard = require("./components/showcase/cards/ShowcaseEndingCard");

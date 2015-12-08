@@ -1,4 +1,4 @@
-//app/assets/javascripts/components/ShowcaseCard.jsx
+'use strict'
 var React = require("react");
 var mui = require('material-ui');
 
@@ -36,7 +36,7 @@ var ShowcaseCard = React.createClass({
         top: '0',
         left: '0',
         right: '0',
-        bottom: '0', 
+        bottom: '0',
         margin: 'auto',
         minWidth:'50%',
         minHeight: '50%',
@@ -64,7 +64,7 @@ var ShowcaseCard = React.createClass({
   nextButton: function() {
     if (this.props.addNextButton) {
       return (
-        <mui.CardActions style={ {position:'absolute', right:'10px', top:'433px'} }>
+        <mui.CardActions style={ {position:'absolute', right:'10px', top:'363'} }>
           <mui.FloatingActionButton
             primary={true}
             linkButton={true}
@@ -89,11 +89,11 @@ var ShowcaseCard = React.createClass({
   cardMedia: function () {
     if (this.props.showcase.image) {
       return (
-        <mui.CardMedia 
+        <mui.CardMedia
           //mediaStyle={{position: 'absolute', height:'200%', width:'200%', overflow: 'hidden'}}
           mediaStyle={{background:'url(' + this.image() + ')', height:'100%', width:'100%', backgroundSize:'cover', backgroundPosition:'center top'}}
-          className="temp" 
-          style={{height: '400px', overflow:'hidden'}} 
+          className="temp"
+          style={{height: '400px', overflow:'hidden'}}
           overlay={this.cardTitle()}>
           <img src={this.image()}  style={this.imageSize()} />
         </mui.CardMedia>);

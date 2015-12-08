@@ -19,11 +19,6 @@ var CollectionIntroduction = React.createClass({
     if(!this.state.remoteCollectionLoaded) {
       return null;
     }
-
-    var nextShowcase;
-    if (this.state.collection.showcases && this.state.collection.showcases.length > 0) {
-      nextShowcase = (<PreviewLink showcase={this.state.collection.showcases[0]} />);
-    }
     return (
       <mui.AppCanvas>
         <CollectionPageHeader collection={this.state.collection} >
@@ -35,7 +30,6 @@ var CollectionIntroduction = React.createClass({
           </div>
         </PageContent>
 
-        {nextShowcase}
         <CollectionPageFooter collection={this.state.collection} />
       </mui.AppCanvas>
     );

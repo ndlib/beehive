@@ -53,7 +53,7 @@ var SideNavButton = React.createClass({
       textAlign: "center",
       lineHeight: "60px",
       position: "fixed",
-      zIndex: "100",
+      zIndex: "8",
     };
 
     if (this.props.rightIcon) {
@@ -97,6 +97,7 @@ var SideNavButton = React.createClass({
         onMouseLeave={this._handleMouseLeave}
         onMouseEnter={this._handleMouseEnter}
         onTouchStart={this._handleTouchStart}
+        disableTouchRipple={true}
         >
         <mui.FontIcon className="material-icons" style={this.iconStyles()} >{this.chevron()}</mui.FontIcon>
       </mui.EnhancedButton>
