@@ -28,7 +28,7 @@ var ShowcaseEndingCard = React.createClass({
   render: function() {
     return (
       <mui.Paper style={this.style()} >
-        <ShowcaseCard showcase={this.props.showcase} addNextButton={true} headerTitle="Next Showcase" />
+        <ShowcaseCard showcase={this.props.showcase} addNextButton={true} headerTitle="Next Showcase" fixedSize={false}/>
       </mui.Paper>
     );
   }

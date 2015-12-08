@@ -117,6 +117,7 @@ var CollectionLeftNav = React.createClass({
 
   navStyle: function () {
     return ({
+      zIndex: '999999999999999'
     });
   },
 

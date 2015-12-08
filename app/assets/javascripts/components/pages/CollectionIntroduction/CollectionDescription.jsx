@@ -27,9 +27,14 @@ var CollectionDescription = React.createClass({
       this.props.collection.showcases &&
       this.props.collection.showcases.length > 0){
       return (
-        <mui.Paper>
-          <ShowcaseCard showcase={this.props.collection.showcases[0]}  addNextButton={true}/>
-        </mui.Paper>
+          <div style={{margin: '0 auto', maxWidth: '500px'}}>
+            <ShowcaseCard
+              headerTitle="Start Showcases"
+              showcase={this.props.collection.showcases[0]}
+              addNextButton={true}
+              fixedSize={false}
+            />
+          </div>
       );
     }
     else {

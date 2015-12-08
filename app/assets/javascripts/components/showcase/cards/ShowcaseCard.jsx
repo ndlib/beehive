@@ -8,12 +8,15 @@ var ShowcaseCard = React.createClass({
   propTypes: {
     showcase: React.PropTypes.object.isRequired,
     addNextButton: React.PropTypes.bool,
+    fixedSize: React.PropTypes.bool,
+    headerTitle: React.PropTypes.string,
   },
 
   getDefaultProps: function() {
     return {
       addNextButton: false,
-      headerTitle: false,
+      headerTitle: null,
+      fixedSize: true,
     }
   },
 
@@ -26,7 +29,8 @@ var ShowcaseCard = React.createClass({
     return {
       position: "relative",
       cursor: "pointer",
-      height: '500px',
+      minHeight: '500px',
+      height: this.props.fixedSize ? '500px' : 'auto'
     };
   },
 
@@ -54,7 +58,7 @@ var ShowcaseCard = React.createClass({
   description: function() {
     if (this.props.showcase.description) {
       return (
-        <mui.CardText style={{}}>
+        <mui.CardText style={{whiteSpace:'normal'}}>
           {this.props.showcase.description}
         </mui.CardText>
       );
@@ -64,12 +68,17 @@ var ShowcaseCard = React.createClass({
   nextButton: function() {
     if (this.props.addNextButton) {
       return (
-        <mui.CardActions style={ {position:'absolute', right:'10px', top:'363'} }>
+        <mui.CardActions
+          style={{position:'absolute', right:'10px', top: this.props.headerTitle != null ? '33px' : '363px'}}
+          zDepth={2}
+        >
           <mui.FloatingActionButton
             primary={true}
             linkButton={true}
-            href={this.props.showcase['@id']}>
-              <mui.FontIcon className="material-icons">arrow_forward</mui.FontIcon>
+            href={this.props.showcase['@id']}
+            disableTouchRipple={true}
+          >
+            <mui.FontIcon className="material-icons">arrow_forward</mui.FontIcon>
           </mui.FloatingActionButton>
         </mui.CardActions>
       );
@@ -90,7 +99,6 @@ var ShowcaseCard = React.createClass({
     if (this.props.showcase.image) {
       return (
         <mui.CardMedia
-          //mediaStyle={{position: 'absolute', height:'200%', width:'200%', overflow: 'hidden'}}
           mediaStyle={{background:'url(' + this.image() + ')', height:'100%', width:'100%', backgroundSize:'cover', backgroundPosition:'center top'}}
           className="temp"
           style={{height: '400px', overflow:'hidden'}}
