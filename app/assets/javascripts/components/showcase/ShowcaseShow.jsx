@@ -12,7 +12,7 @@ var minBackgroundBlur = 0.3;
 var maxBackgroundBlur = 0.8;
 
 var ShowcaseShow = React.createClass({
-  mixins: [CollectionUrlMixin, IEMixin, LoadRemoteMixin ],
+  mixins: [CollectionUrlMixin, BrowserMixin, LoadRemoteMixin ],
   displayName: "Showcase Show",
   propTypes: {
     collection: React.PropTypes.object,
@@ -46,7 +46,7 @@ var ShowcaseShow = React.createClass({
   initializeScrollbar: function() {
     this.scrollbarInitialized = true;
     this.state.outerElement.perfectScrollbar({useBothWheelAxes: true, suppressScrollY: true });
-    if(this.ie()) {
+    if(this.ie() || this.ios()) {
       this.state.outerElement.find(".ps-scrollbar-x-rail").hide();
     }
   },
@@ -54,7 +54,7 @@ var ShowcaseShow = React.createClass({
   updateScrollbar: function() {
     if (this.scrollbarInitialized) {
       this.state.outerElement.perfectScrollbar("update");
-      if(this.ie()) {
+      if(this.ie() || this.ios()) {
         this.state.outerElement.find(".ps-scrollbar-x-rail").hide();
       }
     }

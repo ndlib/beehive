@@ -13,7 +13,7 @@ LoadRemoteMixin = require("./mixins/LoadRemoteMixin");
 TitleConcatMixin = require("./mixins/TitleConcatMixin");
 MuiThemeMixin = require("./mixins/MuiThemeMixin");
 CurrentThemeMixin = require("./mixins/CurrentThemeMixin");
-IEMixin = require("./mixins/IEMixin");
+BrowserMixin = require("./mixins/BrowserMixin");
 
 // Pages
 //// SiteIndex
