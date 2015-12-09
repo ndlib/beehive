@@ -3,7 +3,7 @@ var React = require('react');
 var mui = require('material-ui');
 
 var Showcase = React.createClass({
-  mixins: [PageHeightMixin, LoadRemoteMixin, MuiThemeMixin, CurrentThemeMixin],
+  mixins: [PageHeightMixin, LoadRemoteMixin, MuiThemeMixin, CurrentThemeMixin, BrowserMixin],
 
   getInitialState: function() {
     return {
@@ -59,10 +59,14 @@ var Showcase = React.createClass({
     } else {
       showcaseShow = (<Loading />);
     }
+    var header;
+    if(!this.ios()){
+      header = (<CollectionPageHeader collection={this.state.collection} />);
+    }
     // this is a div instead of mui.AppCanvas because of a bug in 12.3 which is fixed in master.
     return (
       <div style={{ backgroundColor: 'inherit' }}>
-        <CollectionPageHeader collection={this.state.collection} />
+        {header}
         <PageContent fluidLayout={true}>
           {showcaseShow}
         </PageContent>

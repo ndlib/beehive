@@ -1,4 +1,4 @@
-//app/assets/javascripts/components/ShowcaseShow.jsx
+'use strict'
 var React = require("react");
 var ReactDOM = require("react-dom");
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
@@ -133,6 +133,10 @@ var ShowcaseShow = React.createClass({
       showcaseHeight = maxShowcaseHeight;
     }
     var showcaseInnerHeight = showcaseHeight - scrollPadding;
+
+    var scroller = (<Scroller target="#showcase-outer" height={this.props.height} />);
+
+
     var backgroundBlur = 1 - this.state.titleSectionPercentVisible;
     if (backgroundBlur < minBackgroundBlur) {
       backgroundBlur = minBackgroundBlur;
@@ -149,6 +153,14 @@ var ShowcaseShow = React.createClass({
         next = this.state.currentSection.nextSection['@id'];
       }
     }
+
+    // overwrite some stuff for iOS. TODO: Android
+    if(this.ios()){
+      showcaseHeight = window.screen.height;
+      showcaseInnerHeight = Math.floor(window.screen.height * 0.9);
+      scroller = null;
+    }
+
     return (
       <div>
         <AttentionHelp start={this.state.startTime} hasScrolled={this.state.hasScrolled} />
@@ -169,11 +181,11 @@ var ShowcaseShow = React.createClass({
           transitionEnterTimeout={0}
           transitionLeaveTimeout={0}>
           <div id="showcase-outer" ref="showcaseOuter" className="showcase-outer" style={this.styleOuter(showcaseHeight)} onScroll={this.onScroll}>
-            <Scroller target="#showcase-outer" height={this.props.height} />
-
+            {scroller}
             <ShowcaseInnerContent height={showcaseInnerHeight} showcase={this.props.showcase} />
           </div>
         </ReactCSSTransitionGroup>
+        <CollectionHomeButton collection={this.props.collection}/>
       </div>
     );
   }

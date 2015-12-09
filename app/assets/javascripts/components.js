@@ -35,6 +35,7 @@ CollectionDescription = require("./components/pages/CollectionIntroduction/Colle
 
 //// Showcase
 Showcase = require("./components/pages/Showcase/Showcase");
+CollectionHomeButton = require("./components/pages/Showcase/CollectionHomeButton");
 
 //// Pages
 AboutPage = require("./components/pages/Pages/AboutPage");
