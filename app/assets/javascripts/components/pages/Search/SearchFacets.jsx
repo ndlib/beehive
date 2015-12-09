@@ -3,13 +3,21 @@ var React = require('react');
 var mui = require('material-ui');
 var List = mui.List;
 var ListItem = mui.ListItem;
+var SearchStore = require('../../../stores/SearchStore');
+var SearchActions = require("../../../actions/SearchActions");
 
 var SearchFacets = React.createClass({
-  mixins: [SearchUrlMixin, CurrentThemeMixin],
+  mixins: [CurrentThemeMixin],
   propTypes: {
     collection: React.PropTypes.object.isRequired,
     facets: React.PropTypes.array,
     selectedFacet: React.PropTypes.object,
+  },
+
+  getInitialState: function() {
+    return {
+      selectedFacet: this.props.selectedFacet
+    };
   },
 
   facetOnClick: function(e) {
@@ -18,9 +26,9 @@ var SearchFacets = React.createClass({
 
   valueOnClick: function(e) {
     var values = e.currentTarget.getAttribute("value").split("|");
-    if(window.searchStore.facetOption) {
-      if (window.searchStore.facetOption.name &&
-          window.searchStore.facetOption.value == values[1]) {
+    if(SearchStore.facetOption) {
+      if (SearchStore.facetOption.name &&
+          SearchStore.facetOption.value == values[1]) {
         this.setFacet([null, null]);
       }
       else {
@@ -33,12 +41,7 @@ var SearchFacets = React.createClass({
   },
 
   setFacet: function(values) {
-    if(!window.searchStore.facetOption) {
-      window.searchStore.facetOption = {};
-    }
-    window.searchStore.facetOption.name = values[0];
-    window.searchStore.facetOption.value = values[1];
-    window.location.assign(this.searchUrl(this.props.collection));
+    SearchActions.setSelectedFacet({ name: values[0], value: values[1] });
   },
 
   facets: function(){
@@ -60,22 +63,24 @@ var SearchFacets = React.createClass({
     var parentFacet = facet.field;
     if (facet.values) {
       return (facet.values.map(function(e, index) {
-        var selectedKey = encodeURIComponent(parentFacet);
+        var selectedKey;
         var selectedValue;
-        if(self.props.selectedFacet) {
-          selectedValue = encodeURIComponent(self.props.selectedFacet[selectedKey]);
+        if(self.state.selectedFacet) {
+          selectedKey = encodeURIComponent(self.state.selectedFacet.name);
+          if(parentFacet == selectedKey) {
+            selectedValue = self.state.selectedFacet.value;
+          }
         }
-        var value = encodeURIComponent(e.name);
         return (
           <ListItem
             key={e.name}
             primaryText={<span style={{marginLeft:'30px'}}>{e.name}</span>}
             secondaryText={"(" + e.count + ")"}
-            value={parentFacet +"|"+ value}
+            value={parentFacet +"|"+ e.name}
             onClick={self.valueOnClick}
             innerDivStyle={{padding:'10px 16px'}}
             className="facet"
-            leftIcon={value == selectedValue ?  ( <mui.FontIcon className="material-icons" style={{fontSize: '28px', left: '-6px', top: '-6px', width: '24px' }}>check_circle</mui.FontIcon>) : null}
+            leftIcon={e.name == selectedValue ?  ( <mui.FontIcon className="material-icons" style={{fontSize: '28px', left: '-6px', top: '-6px', width: '24px' }}>check_circle</mui.FontIcon>) : null}
           />
         );
       }));
@@ -83,16 +88,12 @@ var SearchFacets = React.createClass({
     return (<div></div>);
   },
 
+  searchStoreChanged() {
+    this.setState({ selectedFacet: SearchStore.facetOption });
+  },
+
   componentWillMount: function() {
-    this.initSearchStore();
-    if(this.props.selectedFacet){
-      var key = Object.keys(this.props.selectedFacet)[0];
-      var value = encodeURIComponent(this.props.selectedFacet[key]);
-      window.searchStore.facetOption = {
-        name: key,
-        value: value,
-      };
-    }
+    SearchStore.on("SearchStoreChanged", this.searchStoreChanged);
   },
 
   render: function() {

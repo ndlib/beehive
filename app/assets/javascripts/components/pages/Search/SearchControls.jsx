@@ -4,12 +4,14 @@ var mui = require('material-ui');
 var EventEmitter = require("../../../EventEmitter");
 var CloseButton = require('../../other/CloseButton');
 var MediaQuery = require('react-responsive');
+var SearchStore = require('../../../stores/SearchStore');
+var SearchActions = require("../../../actions/SearchActions");
 
 var gridView = {view: "grid"};
 var listView = {view: "list"};
 
 var SearchControls = React.createClass({
-  mixins: [CurrentThemeMixin, CollectionUrlMixin, SearchUrlMixin],
+  mixins: [CurrentThemeMixin, CollectionUrlMixin],
 
   propTypes: {
     collection: React.PropTypes.object,
@@ -20,7 +22,7 @@ var SearchControls = React.createClass({
 
   getInitialState: function() {
     var state = {
-      view: null,
+      view: SearchStore.view,
     }
     return state;
   },
@@ -44,12 +46,10 @@ var SearchControls = React.createClass({
 
   setGrid: function() {
     this.storeView("grid");
-    this.addViewToUrl("grid");
   },
 
   setList: function() {
     this.storeView("list");
-    this.addViewToUrl("list");
   },
 
   checkView: function(view) {
@@ -60,44 +60,22 @@ var SearchControls = React.createClass({
   },
 
   componentWillMount: function() {
-    var regex = /\S+&view=/;
-    var view;
-    var urlView = window.location.search.replace(regex, '');
-    var storedState = JSON.parse(localStorage.getItem("ListViewLayout"));
-
-    // check url for a valid view
-    if(this.checkView(urlView)) {
-      view = urlView;
-    }
-    // next check localStorage
-    else if(storedState && this.checkView(storedState.view)) {
-      view = storedState.view;
-      this.addViewToUrl(view);
-    }
-    // if we still don't have a view give it a default
-    else {
-      view = 'grid';
-      this.addViewToUrl(view);
-    }
-    this.storeView(view);
+    SearchStore.on("SearchStoreChanged", this.storeChanged);
+    SearchStore.on("SearchStoreViewChanged", this.storeViewChanged);
   },
 
   storeView: function(view) {
-    this.setState({view: view});
-    localStorage.setItem("ListViewLayout", JSON.stringify({view: view}));
-    EventEmitter.emit('SetGridList', view);
+    SearchActions.setView(view);
   },
 
-  addViewToUrl: function(view) {
-    var searchString = window.location.search;
-    var regex = /\S+&view=/;
-    var garbage;
-    if(searchString.indexOf('&view=') > -1) {
-      garbage = searchString.replace(regex, '');
-      searchString = searchString.replace('&view=' + garbage, '');
-    }
-    var url = searchString + '&view=' + view;
-    window.history.pushState('', '', url);
+  storeChanged: function() {
+    this.setState({ view: SearchStore.view });
+  },
+
+  storeViewChanged: function() {
+    this.setState({ view: SearchStore.view });
+    var url = window.location.origin + SearchStore.searchUri();
+    window.history.pushState({ store: SearchStore.getQueryParams() }, '', url);
   },
 
   render: function() {
@@ -135,7 +113,7 @@ var SearchControls = React.createClass({
                   className="material-icons"
                   style={this.state.view == 'grid' ? this.lightIconStyle() : this.darkIconStyle()}
                 >view_module</mui.FontIcon>
-              </mui.RaisedButton>            
+              </mui.RaisedButton>
           </MediaQuery>
         </mui.ToolbarGroup>
       </mui.Toolbar>

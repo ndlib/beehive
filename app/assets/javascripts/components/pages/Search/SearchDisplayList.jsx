@@ -4,6 +4,7 @@ var mui = require('material-ui');
 var EventEmitter = require("../../../EventEmitter");
 var theme = require('../../../themes/beehive');
 var MediaQuery = require('react-responsive');
+var SearchStore = require('../../../stores/SearchStore');
 
 var SearchDisplayList = React.createClass({
   mixins: [CollectionUrlMixin, MuiThemeMixin ],
@@ -21,14 +22,9 @@ var SearchDisplayList = React.createClass({
   },
 
   getInitialState: function () {
-    var storedState = JSON.parse(localStorage.getItem("ListViewLayout"));
-    var view = 'grid';
-    if(storedState) {
-      view = storedState.view;
-    }
     return {
       sidebar: false,
-      view: view,
+      view: SearchStore.view,
     };
   },
 
@@ -49,17 +45,18 @@ var SearchDisplayList = React.createClass({
   },
 
   componentWillMount: function() {
-    EventEmitter.on("SetGridList", this.setGridListState);
+    SearchStore.on("SearchStoreChanged", this.storeViewChanged);
+    SearchStore.on("SearchStoreViewChanged", this.storeViewChanged);
   },
 
-  setGridListState: function(view) {
-    this.setState({view: view});
+  storeViewChanged: function() {
+    this.setState({ view: SearchStore.view });
   },
 
   nextUrl: function(index) {
     var id;
-    if (index <  window.searchStore.items.length - 1) {
-      id = window.searchStore.items[index + 1];
+    if (index <  SearchStore.items.length - 1) {
+      id = SearchStore.items[index + 1];
     }
     return id;
   },
@@ -67,7 +64,7 @@ var SearchDisplayList = React.createClass({
   prevUrl: function(index) {
     var id;
     if (index > 0) {
-      id = window.searchStore.items[index - 1];
+      id = SearchStore.items[index - 1];
     }
     return id;
   },
@@ -140,7 +137,7 @@ var SearchDisplayList = React.createClass({
             facets={this.props.facets}
             selectedFacet={this.props.selectedFacet}
           />
-                  
+
           <mui.Paper style={{width: "74%"}} zDepth={0}>
             {this.itemList()}
 

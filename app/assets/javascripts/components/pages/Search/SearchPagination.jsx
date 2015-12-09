@@ -1,9 +1,9 @@
 'use strict'
 var React = require('react');
 var mui = require('material-ui');
+var SearchStore = require('../../../stores/SearchStore');
 
 var SearchPagination = React.createClass({
-  mixins: [SearchUrlMixin],
   propTypes: {
     collection: React.PropTypes.object.isRequired,
     found: React.PropTypes.number,
@@ -35,7 +35,7 @@ var SearchPagination = React.createClass({
       );
     }
     else {
-      var searchUrl = this.searchUrl(this.props.collection) + '&start=' + (i-1)*this.props.count;
+      var searchUrl = window.location.origin + SearchStore.searchUri({ start: (i-1)*this.props.count });
       return(
         <a href={searchUrl} style={this.paginationButton()}>{i}</a>
       );
@@ -46,7 +46,7 @@ var SearchPagination = React.createClass({
     var nodes = [];
     // if not first page
     if(this.props.start != 0) {
-      var backLink = this.searchUrl(this.props.collection) + '&start=0';
+      var backLink = window.location.origin + SearchStore.searchUri({ start: 0 });
       nodes.push((<a href={backLink}> <i className="material-icons" style={{fontSize: '1em',}}>arrow_back</i> </a>));
     }
     var last = Math.floor(this.props.found/this.props.count);
@@ -64,7 +64,7 @@ var SearchPagination = React.createClass({
 
     // if not last page
     if(this.props.start + this.props.count < this.props.found) {
-      var forwardLink = this.searchUrl(this.props.collection) + '&start=' + this.props.count*(last - 1);
+      var forwardLink = window.location.origin + SearchStore.searchUri({ start: this.props.count*(last - 1) });
       nodes.push((<a href={forwardLink}> <i className="material-icons" style={{fontSize: '1em'}}>arrow_forward</i> </a>));
     }
     return nodes;
@@ -72,6 +72,7 @@ var SearchPagination = React.createClass({
 
   render: function() {
     // people think of the first record as 1, not 0.
+    // Am I not a people?
     var startHuman = this.props.start + 1;
     var endHuman = Math.min(this.props.start + this.props.count, this.props.found);
     return (

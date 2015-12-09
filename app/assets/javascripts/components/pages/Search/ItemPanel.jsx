@@ -24,10 +24,16 @@ var ItemPanel = React.createClass({
   componentWillMount: function() {
     EventEmitter.on("ItemDialogWindow", this.setCurrentItem);
     EventEmitter.on("HideItemDialogWindow", this.removeCurrentItem);
+    window.addEventListener("popstate", this.handleHash);
+    this.handleHash();
+  },
 
+  handleHash: function() {
     if(window.location.hash) {
       var url = this.remoteItem(window.location.hash.replace("#", ""));
       this.loadRemoteItem(url);
+    } else {
+      ItemActions.hideItemDialogWindow();
     }
   },
 
@@ -45,13 +51,16 @@ var ItemPanel = React.createClass({
 
   closeButtonClick: function() {
     ItemActions.hideItemDialogWindow();
+    window.location.hash = "";
   },
 
   nextButtonClick: function() {
+    //console.log("next");
     ItemActions.showItemDialogWindow(this.state.currentItem);
   },
 
   prevButtonClick: function() {
+    //console.log("previous");
     ItemActions.showItemDialogWindow(this.state.currentItem);
   },
 

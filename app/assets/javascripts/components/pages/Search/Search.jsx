@@ -2,9 +2,12 @@
 var React = require('react');
 var mui = require('material-ui');
 var ItemPanel = require("./ItemPanel");
+var SearchActions = require('../../../actions/SearchActions');
+var SearchActionTypes = require('../../../constants/SearchActionTypes');
+var SearchStore = require('../../../stores/SearchStore');
 
 var Search = React.createClass({
-  mixins: [SearchUrlMixin, LoadRemoteMixin, SearchMixin, MuiThemeMixin ],
+  mixins: [LoadRemoteMixin, MuiThemeMixin ],
 
   propTypes: {
     hits: React.PropTypes.oneOfType([
@@ -15,6 +18,7 @@ var Search = React.createClass({
     sortTerm: React.PropTypes.string,
     facet: React.PropTypes.object,
     start: React.PropTypes.number,
+    view: React.PropTypes.string,
   },
 
   getInitialState: function() {
@@ -27,30 +31,56 @@ var Search = React.createClass({
     };
   },
 
+  searchStoreChanged: function(reason) {
+    this.setState({
+      remoteCollectionLoaded: true,
+      collection: SearchStore.collection,
+      facets: SearchStore.facets,
+      sortOptions: SearchStore.sorts,
+      selectedIndex: SearchStore.selectedPageIndex,
+      items: SearchStore.items,
+      found: SearchStore.found,
+      start: SearchStore.start,
+    });
+
+    if(reason == "load") {
+      var hash = window.location.hash;
+      var path = window.location.origin + SearchStore.searchUri() + hash;
+      window.history.pushState({ store: SearchStore.getQueryParams() }, '', path);
+    }
+  },
+
+  // Callback from LoadRemoteMixin when remote collection is loaded
+  setValues: function(collection) {
+    SearchActions.loadSearchResults(collection, this.props.hits, this.props.searchTerm, this.facetObject(), this.props.sortTerm, this.props.start, this.props.view);
+    return true;
+  },
+
+  onWindowPopState: function(event) {
+    if(event.state){
+      SearchActions.reloadSearchResults(event.state.store);
+    }
+  },
+
   componentWillMount: function() {
-    this.initSearchStore();
+    SearchStore.on("SearchStoreChanged", this.searchStoreChanged);
+    SearchStore.on("SearchStoreQueryFailed", function(result) { window.location = window.location.origin + '/404' });
+    window.addEventListener("popstate", this.onWindowPopState);
+
     if ('object' == typeof(this.props.collection)) {
       this.setValues(this.props.collection);
     } else {
       this.loadRemoteCollection(this.props.collection);
     }
-    var url = this.props.hits + "?q=" + encodeURIComponent(this.props.searchTerm);
-    if(this.props.facet) {
-      var key = Object.keys(this.props.facet)[0];
-      var value = encodeURIComponent(this.props.facet[key]);
-      url += "&facets[" + key + "]=" + value;
-    }
-    if(this.props.sortTerm) {
-      url += "&sort=" + this.props.sortTerm;
-    }
+  },
 
-    var regex = /\S+&start=/;
-    var requestedStart = 0;
-    if(window.location.search.match(regex)) {
-      requestedStart = window.location.search.replace(regex, '').split('&')[0];
+  facetObject: function() {
+    var facet;
+    if(this.props.facet) {
+      var facetKey = Object.keys(this.props.facet)[0];
+      facet = { name: facetKey, value: this.props.facet[facetKey] };
     }
-    url += "&start=" + requestedStart;
-    this.loadSearchResults(url);
+    return facet;
   },
 
   render: function() {
@@ -80,7 +110,7 @@ var Search = React.createClass({
             sortOptions={this.state.sortOptions}
             searchTerm={this.props.searchTerm}
             selectedIndex={this.state.selectedIndex}
-            selectedFacet={this.props.facet}
+            selectedFacet={this.facetObject()}
             found={this.state.found}
             start={this.state.start}
           />
