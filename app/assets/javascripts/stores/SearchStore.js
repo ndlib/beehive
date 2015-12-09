@@ -216,10 +216,11 @@ class SearchStore extends EventEmitter {
     for(var i = 0; i < this.items.length; ++i) {
       if(this.items[i]["@id"] == item["@id"]) {
         var nextI = (i + 1);
-        if(nextI > this.items.length - 1)
+        if(nextI > this.items.length - 1) {
           return null;
-        else
+        } else {
           return this.items[nextI];
+        }
       }
     }
     return null;

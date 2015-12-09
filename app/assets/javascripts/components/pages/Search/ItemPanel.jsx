@@ -4,7 +4,7 @@ var mui = require('material-ui');
 var CloseButton = require('../../other/CloseButton');
 var SideNavButton = require("../../other/SideNavButton");
 var OverlayPage = require("../../layout/OverlayPage");
-var SearchStore = require('../../../stores/Search');
+var SearchStore = require('../../../stores/SearchStore');
 
 var ItemPanel = React.createClass({
   mixins: [ CurrentThemeMixin, CollectionUrlMixin, LoadRemoteMixin ],
@@ -48,6 +48,7 @@ var ItemPanel = React.createClass({
       nextItem: nextItem,
       previousItem: previousItem,
     });
+    window.location.hash = item['@id'].split("/").pop();
   },
 
   removeCurrentItem: function() {
