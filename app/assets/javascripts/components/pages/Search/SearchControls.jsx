@@ -4,8 +4,8 @@ var mui = require('material-ui');
 var EventEmitter = require("../../../EventEmitter");
 var CloseButton = require('../../other/CloseButton');
 var MediaQuery = require('react-responsive');
-var SearchStore = require('../../../stores/Search');
-var SearchActions = require("../../../actions/Search");
+var SearchStore = require('../../../stores/SearchStore');
+var SearchActions = require("../../../actions/SearchActions");
 
 var gridView = {view: "grid"};
 var listView = {view: "list"};
@@ -113,7 +113,7 @@ var SearchControls = React.createClass({
                   className="material-icons"
                   style={this.state.view == 'grid' ? this.lightIconStyle() : this.darkIconStyle()}
                 >view_module</mui.FontIcon>
-              </mui.RaisedButton>            
+              </mui.RaisedButton>
           </MediaQuery>
         </mui.ToolbarGroup>
       </mui.Toolbar>

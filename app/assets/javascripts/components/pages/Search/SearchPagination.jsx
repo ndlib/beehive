@@ -1,7 +1,7 @@
 'use strict'
 var React = require('react');
 var mui = require('material-ui');
-var SearchStore = require('../../../stores/Search');
+var SearchStore = require('../../../stores/SearchStore');
 
 var SearchPagination = React.createClass({
   propTypes: {

@@ -2,8 +2,8 @@
 var React = require('react');
 var mui = require('material-ui');
 var ColorManipulator = require('material-ui/lib/utils/color-manipulator');
-var SearchStore = require('../../stores/Search');
-var SearchActions = require("../../actions/Search");
+var SearchStore = require('../../stores/SearchStore');
+var SearchActions = require("../../actions/SearchActions");
 
 var SearchBox = React.createClass({
   mixins: [CurrentThemeMixin],

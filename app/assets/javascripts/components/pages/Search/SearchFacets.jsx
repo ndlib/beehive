@@ -3,8 +3,8 @@ var React = require('react');
 var mui = require('material-ui');
 var List = mui.List;
 var ListItem = mui.ListItem;
-var SearchStore = require('../../../stores/Search');
-var SearchActions = require("../../../actions/Search");
+var SearchStore = require('../../../stores/SearchStore');
+var SearchActions = require("../../../actions/SearchActions");
 
 var SearchFacets = React.createClass({
   mixins: [CurrentThemeMixin],

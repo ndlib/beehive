@@ -2,9 +2,9 @@
 var React = require('react');
 var mui = require('material-ui');
 var ItemPanel = require("./ItemPanel");
-var SearchActions = require('../../../actions/Search');
+var SearchActions = require('../../../actions/SearchActions');
 var SearchActionTypes = require('../../../constants/SearchActionTypes');
-var SearchStore = require('../../../stores/Search');
+var SearchStore = require('../../../stores/SearchStore');
 
 var Search = React.createClass({
   mixins: [LoadRemoteMixin, MuiThemeMixin ],

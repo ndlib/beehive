@@ -4,7 +4,7 @@ var mui = require('material-ui');
 var EventEmitter = require("../../../EventEmitter");
 var theme = require('../../../themes/beehive');
 var MediaQuery = require('react-responsive');
-var SearchStore = require('../../../stores/Search');
+var SearchStore = require('../../../stores/SearchStore');
 
 var SearchDisplayList = React.createClass({
   mixins: [CollectionUrlMixin, MuiThemeMixin ],

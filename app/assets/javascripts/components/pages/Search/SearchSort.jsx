@@ -3,8 +3,8 @@ var React = require('react');
 var mui = require('material-ui');
 var SelectField = mui.SelectField;
 var MenuItem = mui.MenuItem;
-var SearchStore = require('../../../stores/Search');
-var SearchActions = require('../../../actions/Search');
+var SearchStore = require('../../../stores/SearchStore');
+var SearchActions = require('../../../actions/SearchActions');
 
 var SearchSort = React.createClass({
   propTypes: {
