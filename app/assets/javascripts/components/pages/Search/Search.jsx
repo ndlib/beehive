@@ -44,7 +44,8 @@ var Search = React.createClass({
     });
 
     if(reason == "load") {
-      var path = window.location.origin + SearchStore.searchUri();
+      var hash = window.location.hash;
+      var path = window.location.origin + SearchStore.searchUri() + hash;
       window.history.pushState({ store: SearchStore.getQueryParams() }, '', path);
     }
   },
@@ -64,7 +65,7 @@ var Search = React.createClass({
   componentWillMount: function() {
     SearchStore.on("SearchStoreChanged", this.searchStoreChanged);
     SearchStore.on("SearchStoreQueryFailed", function(result) { window.location = window.location.origin + '/404' });
-    window.onpopstate = this.onWindowPopState;
+    window.addEventListener("popstate", this.onWindowPopState);
 
     if ('object' == typeof(this.props.collection)) {
       this.setValues(this.props.collection);
