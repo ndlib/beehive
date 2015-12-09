@@ -4,6 +4,7 @@ var mui = require('material-ui');
 var CloseButton = require('../../other/CloseButton');
 var SideNavButton = require("../../other/SideNavButton");
 var OverlayPage = require("../../layout/OverlayPage");
+var SearchStore = require('../../../stores/Search');
 
 var ItemPanel = React.createClass({
   mixins: [ CurrentThemeMixin, CollectionUrlMixin, LoadRemoteMixin ],
@@ -18,6 +19,8 @@ var ItemPanel = React.createClass({
   getInitialState: function() {
     return {
       currentItem: null,
+      nextItem: null,
+      previousItem: null
     };
   },
 
@@ -38,8 +41,12 @@ var ItemPanel = React.createClass({
   },
 
   setCurrentItem: function(item) {
+    var previousItem = SearchStore.getPreviousItem(item);
+    var nextItem = SearchStore.getNextItem(item);
     this.setState({
       currentItem: item,
+      nextItem: nextItem,
+      previousItem: previousItem,
     });
   },
 
@@ -55,13 +62,15 @@ var ItemPanel = React.createClass({
   },
 
   nextButtonClick: function() {
-    //console.log("next");
-    ItemActions.showItemDialogWindow(this.state.currentItem);
+    if(this.state.nextItem) {
+      this.loadRemoteItem(this.state.nextItem["@id"]);
+    }
   },
 
   prevButtonClick: function() {
-    //console.log("previous");
-    ItemActions.showItemDialogWindow(this.state.currentItem);
+    if(this.state.previousItem) {
+      this.loadRemoteItem(this.state.previousItem["@id"]);
+    }
   },
 
   render: function() {
@@ -73,9 +82,9 @@ var ItemPanel = React.createClass({
       <OverlayPage
         title={this.state.currentItem.name}
         onCloseButtonClick={this.closeButtonClick}
-        onNextButtonClick={this.nextButtonClick}
-        onPrevButtonClick={this.prevButtonClick}
-        >
+        onNextButtonClick={this.state.nextItem ? this.nextButtonClick : null}
+        onPrevButtonClick={this.state.previousItem ? this.prevButtonClick : null}
+      >
         <ItemShow item={this.state.currentItem} />
       </OverlayPage>
     );
