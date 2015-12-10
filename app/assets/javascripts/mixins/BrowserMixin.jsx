@@ -23,10 +23,6 @@ BrowserMixin = {
     if(iphone > 0) {
       return true;
     }
-    var ipad = ua.indexOf('iPad');
-    if(ipad > 0) {
-      return true;
-    }
     var ipod = ua.indexOf('iPod');
     if(ipod > 0) {
       return true;
