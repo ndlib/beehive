@@ -46,7 +46,7 @@ var ShowcaseShow = React.createClass({
   initializeScrollbar: function() {
     this.scrollbarInitialized = true;
     this.state.outerElement.perfectScrollbar({useBothWheelAxes: true, suppressScrollY: true });
-    if(this.ie() || this.ios()) {
+    if(this.ie() || this.mobile()) {
       this.state.outerElement.find(".ps-scrollbar-x-rail").hide();
     }
   },
@@ -54,7 +54,7 @@ var ShowcaseShow = React.createClass({
   updateScrollbar: function() {
     if (this.scrollbarInitialized) {
       this.state.outerElement.perfectScrollbar("update");
-      if(this.ie() || this.ios()) {
+      if(this.ie() || this.mobile()) {
         this.state.outerElement.find(".ps-scrollbar-x-rail").hide();
       }
     }
@@ -156,7 +156,7 @@ var ShowcaseShow = React.createClass({
 
     // overwrite some stuff for iOS. TODO: Android
     var mobileHomeButton;
-    if(this.ios()){
+    if(this.mobile()){
       showcaseHeight = window.screen.height;
       showcaseInnerHeight = Math.floor(window.screen.height * 0.9);
       scroller = null;

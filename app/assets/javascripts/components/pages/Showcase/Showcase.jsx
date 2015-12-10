@@ -60,7 +60,7 @@ var Showcase = React.createClass({
       showcaseShow = (<Loading />);
     }
     var header;
-    if(!this.ios()){
+    if(!this.mobile()){
       header = (<CollectionPageHeader collection={this.state.collection} />);
     }
     // this is a div instead of mui.AppCanvas because of a bug in 12.3 which is fixed in master.
