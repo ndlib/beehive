@@ -12,25 +12,40 @@ var SearchActionTypes = require("../constants/SearchActionTypes");
 
 class SearchStore extends EventEmitter {
   constructor() {
-    this.baseApiUrl = "";   // Bases url to use when connecting to the Honeycomb API
-    this.collection = null; // Collection json
-    this.searchTerm = "";   // The primary search term to use when querying the API
-    this.items = [];    // Subset of items returned by the query after filtering on facet, row limit,
-                        // and starting item.
-    this.found = null;  // Total number of items that were found using the search term.
-    this.start = null;  // Start item for the query
-    this.facets = null; // List of facet options available for this collection
-    this.sorts = null;  // List of sort options available for this collection
-    this.count = 0;     // The count of items returned by the current query (<= found since items returned is a subset).
-    this.rowLimit = 12; // The maximum number of items that a query will return.
+    this._baseApiUrl = "";   // Bases url to use when connecting to the Honeycomb API
+    this._collection = null; // Collection json
+    this._searchTerm = "";   // The primary search term to use when querying the API
+    this._items = [];    // Subset of items returned by the query after filtering on facet, row limit,
+                         // and starting item.
+    this._found = null;  // Total number of items that were found using the search term.
+    this._start = null;  // Start item for the query
+    this._facets = null; // List of facet options available for this collection
+    this._sorts = null;  // List of sort options available for this collection
+    this._count = 0;     // The count of items returned by the current query (<= found since items returned is a subset).
+    this._rowLimit = 12; // The maximum number of items that a query will return.
 
     // User selections that affect the data
-    this.facetOption = null;
-    this.sortOption = null;
+    this._facetOption = null;
+    this._sortOption = null;
 
     // User selections that only affect the view (don't require a reload)
-    this.selectedItem = null;
-    this.view = null;
+    this._selectedItem = null;
+    this._view = null;
+
+    Object.defineProperty(this, "baseApiUrl", { get: function() { return this._baseApiUrl; } });
+    Object.defineProperty(this, "collection", { get: function() { return this._collection; } });
+    Object.defineProperty(this, "searchTerm", { get: function() { return this._searchTerm; } });
+    Object.defineProperty(this, "items", { get: function() { return this._items; } });
+    Object.defineProperty(this, "found", { get: function() { return this._found; } });
+    Object.defineProperty(this, "start", { get: function() { return this._start; } });
+    Object.defineProperty(this, "facets", { get: function() { return this._facets; } });
+    Object.defineProperty(this, "sorts", { get: function() { return this._sorts; } });
+    Object.defineProperty(this, "count", { get: function() { return this._count; } });
+    Object.defineProperty(this, "rowLimit", { get: function() { return this._rowLimit; } });
+    Object.defineProperty(this, "facetOption", { get: function() { return this._facetOption; } });
+    Object.defineProperty(this, "sortOption", { get: function() { return this._sortOption; } });
+    Object.defineProperty(this, "selectedItem", { get: function() { return this._selectedItem; } });
+    Object.defineProperty(this, "view", { get: function() { return this._view; } });
 
     AppDispatcher.register(this.receiveAction.bind(this));
   }
@@ -49,39 +64,39 @@ class SearchStore extends EventEmitter {
   }
 
   setQueryParams(params) {
-    this.collection = params.collection;
-    this.baseApiUrl = params.baseApiUrl;
-    this.searchTerm = params.searchTerm;
-    this.facetOption = params.facetOption;
-    this.sortOption = params.sortOption;
-    this.start = params.start;
-    this.view = params.view ? params.view : "grid";
+    this._collection = params.collection;
+    this._baseApiUrl = params.baseApiUrl;
+    this._searchTerm = params.searchTerm;
+    this._facetOption = params.facetOption;
+    this._sortOption = params.sortOption;
+    this._start = params.start;
+    this._view = params.view ? params.view : "grid";
   }
 
   getQueryParams() {
     return {
-      collection: this.collection,
-      baseApiUrl: this.baseApiUrl,
-      searchTerm: this.searchTerm,
-      facetOption: this.facetOption,
-      sortOption: this.sortOption,
-      start: this.start,
-      view: this.view,
+      collection: this._collection,
+      baseApiUrl: this._baseApiUrl,
+      searchTerm: this._searchTerm,
+      facetOption: this._facetOption,
+      sortOption: this._sortOption,
+      start: this._start,
+      view: this._view,
     };
   }
 
   executeQuery(reason) {
     reason = typeof reason != "undefined" ? reason : "load";
 
-    var url = this.baseApiUrl + "?q=" + encodeURIComponent(this.searchTerm);
-    if(this.facetOption && this.facetOption.name && this.facetOption.value) {
-      url += "&facets[" + this.facetOption.name + "]=" + this.facetOption.value;
+    var url = this._baseApiUrl + "?q=" + encodeURIComponent(this._searchTerm);
+    if(this._facetOption && this._facetOption.name && this._facetOption.value) {
+      url += "&facets[" + this._facetOption.name + "]=" + this._facetOption.value;
     }
-    if(this.sortOption) {
-      url += "&sort=" + this.sortOption;
+    if(this._sortOption) {
+      url += "&sort=" + this._sortOption;
     }
-    url += "&start=" + this.start;
-    url += "&rows=" + this.rowLimit;
+    url += "&start=" + this._start;
+    url += "&rows=" + this._rowLimit;
 
     $.ajax({
       context: this,
@@ -90,8 +105,8 @@ class SearchStore extends EventEmitter {
       dataType: "json",
       success: function(result) {
         this.setItems(result.hits);
-        this.sorts = result.sorts;
-        this.facets = result.facets;
+        this._sorts = result.sorts;
+        this._facets = result.facets;
         this.emit("SearchStoreChanged", reason);
       },
       error: function(request, status, thrownError) {
@@ -101,17 +116,17 @@ class SearchStore extends EventEmitter {
   }
 
   setTerm(term) {
-    this.searchTerm = term;
+    this._searchTerm = term;
     this.executeQuery();
   }
 
   setSelectedFacet(facet) {
-    this.facetOption = facet;
+    this._facetOption = facet;
     this.executeQuery();
   }
 
   setSelectedSort(sort) {
-    this.sortOption = sort;
+    this._sortOption = sort;
     this.executeQuery();
   }
 
@@ -131,21 +146,21 @@ class SearchStore extends EventEmitter {
   // Translates all hits to items. A hit json has a different structure from an item,
   // and most objects that interact with this store expect an item to look like an item json.
   setItems(hits) {
-    this.items = [];
-    this.found = hits.found;
-    this.start = hits.start;
+    this._items = [];
+    this._found = hits.found;
+    this._start = hits.start;
     for (var h in hits.hit) {
       if (hits.hit.hasOwnProperty(h)){
         var hit = hits.hit[h];
         var item = this.mapHitToItem(hit);
-        this.items.push(item);
+        this._items.push(item);
       }
     }
-    this.count = this.items.length;
+    this._count = this._items.length;
   }
 
   setView(view) {
-    this.view = view;
+    this._view = view;
     this.emit("SearchStoreViewChanged");
   }
 
@@ -153,21 +168,21 @@ class SearchStore extends EventEmitter {
   // This was primarily created to allow pagination to generate links using the same search, but
   // with other start values.
   searchUri(overrides) {
-    var uri = "/" + this.collection.id +
-      "/" + this.collection.slug +
-      "/search?q=" + this.searchTerm;
-    if(this.facetOption && this.facetOption.name && this.facetOption.value){
-      uri += "&facet[" + this.facetOption.name + "]=" + this.facetOption.value;
+    var uri = "/" + this._collection.id +
+      "/" + this._collection.slug +
+      "/search?q=" + this._searchTerm;
+    if(this._facetOption && this._facetOption.name && this._facetOption.value){
+      uri += "&facet[" + this._facetOption.name + "]=" + this._facetOption.value;
     }
-    if(this.sortOption) {
-      uri += "&sort=" + this.sortOption;
+    if(this._sortOption) {
+      uri += "&sort=" + this._sortOption;
     }
     if(overrides && overrides.start != "undefined") {
       uri += "&start=" + overrides.start;
-    } else if(this.start) {
-      uri += "&start=" + this.start;
+    } else if(this._start) {
+      uri += "&start=" + this._start;
     }
-    uri += "&view=" + this.view;
+    uri += "&view=" + this._view;
     return uri;
   }
 
@@ -198,13 +213,13 @@ class SearchStore extends EventEmitter {
   }
 
   getNextItem(item) {
-    for(var i = 0; i < this.items.length; ++i) {
-      if(this.items[i]["@id"] == item["@id"]) {
+    for(var i = 0; i < this._items.length; ++i) {
+      if(this._items[i]["@id"] == item["@id"]) {
         var nextI = (i + 1);
-        if(nextI > this.items.length - 1) {
+        if(nextI > this._items.length - 1) {
           return null;
         } else {
-          return this.items[nextI];
+          return this._items[nextI];
         }
       }
     }
@@ -212,13 +227,13 @@ class SearchStore extends EventEmitter {
   }
 
   getPreviousItem(item) {
-    for(var i = 0; i < this.items.length; ++i) {
-      if(this.items[i]["@id"] == item["@id"]) {
+    for(var i = 0; i < this._items.length; ++i) {
+      if(this._items[i]["@id"] == item["@id"]) {
         var prevI = i - 1;
         if(prevI < 0) {
           return null;
         } else {
-          return this.items[prevI];
+          return this._items[prevI];
         }
       }
     }
