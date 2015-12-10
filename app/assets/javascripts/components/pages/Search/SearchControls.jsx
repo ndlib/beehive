@@ -13,13 +13,6 @@ var listView = {view: "list"};
 var SearchControls = React.createClass({
   mixins: [CurrentThemeMixin, CollectionUrlMixin],
 
-  propTypes: {
-    collection: React.PropTypes.object,
-    searchTerm: React.PropTypes.string,
-    selectedIndex: React.PropTypes.number,
-    sortOptions: React.PropTypes.array,
-  },
-
   getInitialState: function() {
     var state = {
       view: SearchStore.view,
@@ -60,7 +53,8 @@ var SearchControls = React.createClass({
   },
 
   componentWillMount: function() {
-    SearchStore.on("SearchStoreChanged", this.storeChanged);
+    // View changes don't change the top level query, so we have to listen
+    // for those changes in order to force a rerender
     SearchStore.on("SearchStoreViewChanged", this.storeViewChanged);
   },
 
@@ -83,15 +77,11 @@ var SearchControls = React.createClass({
       <div style={{height: "65px" }}>
       <mui.Toolbar className="controls" style={this.controlsStyle()}>
         <mui.ToolbarGroup key={0} float="left">
-          <SearchBox collection={this.props.collection} searchTerm={this.props.searchTerm} primary={false} active={true} />
+          <SearchBox primary={false} active={true} />
         </mui.ToolbarGroup>
         <mui.ToolbarGroup key={1} float="right">
           <MediaQuery minWidth={700}>
-            <SearchSort
-              collection={this.props.collection}
-              sortOptions={this.props.sortOptions}
-              selectedIndex={this.props.selectedIndex}
-              />
+            <SearchSort/>
               <mui.RaisedButton
                 secondary={this.state.view == 'list'}
                 onClick={this.setList}

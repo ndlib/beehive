@@ -9,18 +9,6 @@ var SearchStore = require('../../../stores/SearchStore');
 var SearchDisplayList = React.createClass({
   mixins: [CollectionUrlMixin, MuiThemeMixin ],
 
-  propTypes: {
-    collection: React.PropTypes.object,
-    items: React.PropTypes.array,
-    facets: React.PropTypes.array,
-    searchTerm: React.PropTypes.string,
-    sortOptions: React.PropTypes.array,
-    selectedIndex: React.PropTypes.number,
-    selectedFacet: React.PropTypes.object,
-    found: React.PropTypes.number,
-    start: React.PropTypes.number,
-  },
-
   getInitialState: function () {
     return {
       sidebar: false,
@@ -28,24 +16,15 @@ var SearchDisplayList = React.createClass({
     };
   },
 
-  getDefaultProps: function() {
-    return {
-      items: [],
-      facets: [],
-      searchTerm: "",
-      found: 0,
-      start: 0,
-    };
-  },
-
   componentDidMount: function() {
-    if(this.props.sortOptions || this.props.facets) {
+    if(SearchStore.sorts || SearchStore.facets) {
       this.setState({sidebar: true});
     }
   },
 
   componentWillMount: function() {
-    SearchStore.on("SearchStoreChanged", this.storeViewChanged);
+    // View changes don't change the top level query, so we have to listen
+    // for those changes in order to force a rerender
     SearchStore.on("SearchStoreViewChanged", this.storeViewChanged);
   },
 
@@ -53,25 +32,9 @@ var SearchDisplayList = React.createClass({
     this.setState({ view: SearchStore.view });
   },
 
-  nextUrl: function(index) {
-    var id;
-    if (index <  SearchStore.items.length - 1) {
-      id = SearchStore.items[index + 1];
-    }
-    return id;
-  },
-
-  prevUrl: function(index) {
-    var id;
-    if (index > 0) {
-      id = SearchStore.items[index - 1];
-    }
-    return id;
-  },
-
   itemList: function() {
     var view = this.state.view;
-    var itemNodes = this.props.items.map(function(item, index) {
+    var itemNodes = SearchStore.items.map(function(item, index) {
       return (
         <ItemListItem
           item={item}
@@ -121,31 +84,16 @@ var SearchDisplayList = React.createClass({
         <MediaQuery maxWidth={700}>
           <mui.Paper zDepth={0}>
             {this.itemList()}
-
-            <SearchPagination
-              collection={this.props.collection}
-              found={this.props.found}
-              start={this.props.start}
-            />
+            <SearchPagination />
           </mui.Paper>
         </MediaQuery>
 
         <MediaQuery minWidth={700}>
-          <SearchSidebar
-            collection={this.props.collection}
-            show={this.state.sidebar}
-            facets={this.props.facets}
-            selectedFacet={this.props.selectedFacet}
-          />
+          <SearchSidebar show={this.state.sidebar} />
 
           <mui.Paper style={{width: "74%"}} zDepth={0}>
             {this.itemList()}
-
-            <SearchPagination
-              collection={this.props.collection}
-              found={this.props.found}
-              start={this.props.start}
-            />
+            <SearchPagination />
           </mui.Paper>
         </MediaQuery>
       </div>

@@ -12,19 +12,21 @@ var SearchActionTypes = require("../constants/SearchActionTypes");
 
 class SearchStore extends EventEmitter {
   constructor() {
-    this.baseApiUrl = "";
-    this.collection = null;
-    this.searchTerm = "";
-    this.items = [];
-    this.found = null;
-    this.start = null;
-    this.facets = null;
-    this.sorts = null;
+    this.baseApiUrl = "";   // Bases url to use when connecting to the Honeycomb API
+    this.collection = null; // Collection json
+    this.searchTerm = "";   // The primary search term to use when querying the API
+    this.items = [];    // Subset of items returned by the query after filtering on facet, row limit,
+                        // and starting item.
+    this.found = null;  // Total number of items that were found using the search term.
+    this.start = null;  // Start item for the query
+    this.facets = null; // List of facet options available for this collection
+    this.sorts = null;  // List of sort options available for this collection
+    this.count = 0;     // The count of items returned by the current query (<= found since items returned is a subset).
+    this.rowLimit = 12; // The maximum number of items that a query will return.
 
     // User selections that affect the data
     this.facetOption = null;
     this.sortOption = null;
-    this.selectedPageIndex = null;
 
     // User selections that only affect the view (don't require a reload)
     this.selectedItem = null;
@@ -79,6 +81,7 @@ class SearchStore extends EventEmitter {
       url += "&sort=" + this.sortOption;
     }
     url += "&start=" + this.start;
+    url += "&rows=" + this.rowLimit;
 
     $.ajax({
       context: this,
@@ -87,8 +90,8 @@ class SearchStore extends EventEmitter {
       dataType: "json",
       success: function(result) {
         this.setItems(result.hits);
-        this.setSorts(result.sorts);
-        this.setFacets(result.facets);
+        this.sorts = result.sorts;
+        this.facets = result.facets;
         this.emit("SearchStoreChanged", reason);
       },
       error: function(request, status, thrownError) {
@@ -125,6 +128,8 @@ class SearchStore extends EventEmitter {
     return item;
   }
 
+  // Translates all hits to items. A hit json has a different structure from an item,
+  // and most objects that interact with this store expect an item to look like an item json.
   setItems(hits) {
     this.items = [];
     this.found = hits.found;
@@ -136,15 +141,7 @@ class SearchStore extends EventEmitter {
         this.items.push(item);
       }
     }
-  }
-
-  setFacets(facets) {
-    this.facets = facets;
-  }
-
-  setSorts(sorts) {
-    this.sorts = sorts;
-    this.selectedPageIndex = sorts.map(function(s) {return s.value; }).indexOf(this.sortOption);
+    this.count = this.items.length;
   }
 
   setView(view) {
@@ -194,18 +191,6 @@ class SearchStore extends EventEmitter {
         break;
       case SearchActionTypes.SEARCH_SET_VIEW:
         this.setView(action.view);
-        break;
-      case SearchActionTypes.SEARCH_SHOW_ITEM:
-        this.selectedItem = action.item;
-        this.emit("SearchStoreSelectedItemChanged");
-        break;
-      case SearchActionTypes.SEARCH_SHOW_NEXT_ITEM:
-        this.setProps(action.item);
-        this.emit("SearchStoreSelectedItemChanged");
-        break;
-      case SearchActionTypes.SEARCH_SHOW_PREVIOUS_ITEM:
-        this.setProps(action.item);
-        this.emit("SearchStoreSelectedItemChanged");
         break;
       default:
         break;

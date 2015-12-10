@@ -44,30 +44,6 @@ class SearchActions {
     });
   }
 
-  // Shows the item in a zoomed in window
-  showItem(item) {
-    AppDispatcher.dispatch({
-      actionType: SearchActionTypes.SEARCH_SHOW_ITEM,
-      item: item
-    });
-  }
-
-  // Shows the next item in the search results, relative to the given item
-  showNextItem(item) {
-    AppDispatcher.dispatch({
-      actionType: SearchActionTypes.SEARCH_SHOW_NEXT_ITEM,
-      item: item
-    });
-  }
-
-  // Shows the previous item in the search results, relative to the given item
-  showPreviousItem(item) {
-    AppDispatcher.dispatch({
-      actionType: SearchActionTypes.SEARCH_SHOW_PREVIOUS_ITEM,
-      item: item
-    });
-  }
-
   setView(view) {
     AppDispatcher.dispatch({
       actionType: SearchActionTypes.SEARCH_SET_VIEW,
