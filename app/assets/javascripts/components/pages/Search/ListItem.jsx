@@ -13,7 +13,7 @@ var ListItem = React.createClass({
     var avatar;
     if(item.image) {
       avatar = (
-        <div style={{top: '4px', left: '16px', width: '77px', height: '75px'}}>
+        <div style={{top: '4px', left: '16px', padding: "2px", width: '77px', height: '75px'}}>
           <ItemImage image={item.image} />
         </div>
       );
@@ -23,15 +23,15 @@ var ListItem = React.createClass({
     }
 
     var name = (
-      <span style={{marginLeft: '48px'}}>
+      <span style={{marginLeft: '30px'}}>
         {item.name}
       </span>
     );
 
     var description = (
         <span style={{
-            maxWidth: '40em',
-            marginLeft: '48px'}}
+            maxWidth: '50em',
+            marginLeft: '30px'}}
         >
           {item.description}
 
@@ -48,7 +48,7 @@ var ListItem = React.createClass({
           onClick={this.itemOnClick}
           innerDivStyle={{paddingLeft:'80px', height:'85px'}}
         />
-      <mui.ListDivider inset={true} style={{marginLeft: "130px" }} />
+      <mui.ListDivider  style={{marginLeft: "110px" }} />
       </div>
     );
   }
