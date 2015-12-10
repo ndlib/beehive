@@ -41,7 +41,11 @@ var CollectionCard = React.createClass({
   },
 
   image: function() {
-    return this.props.collection.image["thumbnail/medium"].contentUrl;
+    if (this.props.collection.image) {
+      return this.props.collection.image["thumbnail/medium"].contentUrl;
+    } else {
+      return '/images/marble.jpg';
+    }
   },
 
   description: function() {
@@ -65,7 +69,7 @@ var CollectionCard = React.createClass({
   },
 
   cardMedia: function () {
-    if (this.props.collection.image) {
+    //if (this.props.collection.image) {
       return (
         <mui.CardMedia
           mediaStyle={{position: 'absolute', height:'200%', width:'200%', overflow: 'hidden' }}
@@ -74,9 +78,9 @@ var CollectionCard = React.createClass({
           overlay={this.cardTitle()}>
           <img src={this.image()}  style={this.imageSize()} />
         </mui.CardMedia>);
-    } else {
-      return (this.cardTitle());
-    }
+    //} else {
+    //  return (this.cardTitle());
+    //}
   },
 
   render: function() {

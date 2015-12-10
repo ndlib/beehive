@@ -49,15 +49,17 @@ var ShowcaseTitleCard = React.createClass({
   titleStyle: function() {
     return {
       color: "#fff",
-      fontSize: "50px",
+      fontSize: "4vw",
       paddingBottom: "10px",
+      lineHeight:'4.1vw'
     };
   },
 
   subtitleStyle: function() {
     return {
       color: "#fff",
-      fontSize: "24px",
+      fontSize: "3vw",
+      lineHeight:"3.1vw"
     };
   },
 

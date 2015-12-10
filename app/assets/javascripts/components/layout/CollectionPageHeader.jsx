@@ -22,7 +22,7 @@ var CollectionPageHeader = React.createClass({
 
   smallScreenStyle: function() {
     return ({
-      height: '45px',
+      height: '65px',
       width: '100%',
       zIndex: "1000",
     });
