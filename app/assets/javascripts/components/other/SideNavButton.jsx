@@ -14,6 +14,7 @@ var SideNavButton = React.createClass({
     onMouseEnter: React.PropTypes.func,
     onMouseLeave: React.PropTypes.func,
     onTouchStart: React.PropTypes.func,
+    buttonOnOverlay: React.PropTypes.bool,
   },
 
   getDefaultProps: function() {
@@ -26,6 +27,7 @@ var SideNavButton = React.createClass({
       onMouseEnter: () => {},
       onMouseLeave: () => {},
       onTouchStart: () => {},
+      buttonOnOverlay: false,
     };
   },
 
@@ -41,7 +43,6 @@ var SideNavButton = React.createClass({
     var hovered = (this.state.hovered || this.state.isKeyboardFocused);
     var styles = {
       top: (this.props.offsetTop - 30) + 'px',
-      zIndex: 100,
       opacity: hovered ? "1" : "0.7",
       backgroundColor: hovered ? ColorManipulator.darken(this.getCurrentPallette().accent3Color, .2) : this.getCurrentPallette().accent3Color,
       borderRadius: "50%",
@@ -53,7 +54,7 @@ var SideNavButton = React.createClass({
       textAlign: "center",
       lineHeight: "60px",
       position: "fixed",
-      zIndex: "8",
+      zIndex: "3",
     };
 
     if (this.props.rightIcon) {
