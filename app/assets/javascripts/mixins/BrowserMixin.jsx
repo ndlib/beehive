@@ -17,7 +17,11 @@ BrowserMixin = {
     return false;
   },
 
-  ios: function() {
+  mobile: function() {
+    var checkWidth = 650;
+    if(screen.width == checkWidth){
+      return true;
+    }
     var ua = window.navigator.userAgent;
     var iphone = ua.indexOf('iPhone');
     if(iphone > 0) {
@@ -25,6 +29,10 @@ BrowserMixin = {
     }
     var ipod = ua.indexOf('iPod');
     if(ipod > 0) {
+      return true;
+    }
+    var android = ua.indexOf('android');
+    if(android > -1) {
       return true;
     }
     return false;

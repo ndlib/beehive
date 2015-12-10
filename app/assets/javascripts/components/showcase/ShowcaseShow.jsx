@@ -155,12 +155,12 @@ var ShowcaseShow = React.createClass({
     }
 
     // overwrite some stuff for iOS. TODO: Android
-    var iosHomeButton;
+    var mobileHomeButton;
     if(this.ios()){
       showcaseHeight = window.screen.height;
       showcaseInnerHeight = Math.floor(window.screen.height * 0.9);
       scroller = null;
-      iosHomeButton = (<CollectionHomeButton collection={this.props.collection}/>);
+      mobileHomeButton = (<CollectionHomeButton collection={this.props.collection}/>);
     }
 
     return (
@@ -187,7 +187,7 @@ var ShowcaseShow = React.createClass({
             <ShowcaseInnerContent height={showcaseInnerHeight} showcase={this.props.showcase} />
           </div>
         </ReactCSSTransitionGroup>
-        {iosHomeButton}
+        {mobileHomeButton}
       </div>
     );
   }
