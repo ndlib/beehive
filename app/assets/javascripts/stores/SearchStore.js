@@ -211,6 +211,34 @@ class SearchStore extends EventEmitter {
         break;
     }
   }
+
+  getNextItem(item) {
+    for(var i = 0; i < this.items.length; ++i) {
+      if(this.items[i]["@id"] == item["@id"]) {
+        var nextI = (i + 1);
+        if(nextI > this.items.length - 1) {
+          return null;
+        } else {
+          return this.items[nextI];
+        }
+      }
+    }
+    return null;
+  }
+
+  getPreviousItem(item) {
+    for(var i = 0; i < this.items.length; ++i) {
+      if(this.items[i]["@id"] == item["@id"]) {
+        var prevI = i - 1;
+        if(prevI < 0) {
+          return null;
+        } else {
+          return this.items[prevI];
+        }
+      }
+    }
+    return null;
+  }
 }
 
 var searchStore = new SearchStore();
