@@ -8,14 +8,11 @@ var SearchActions = require("../../actions/SearchActions");
 var SearchBox = React.createClass({
   mixins: [CurrentThemeMixin],
   propTypes: {
-    collection: React.PropTypes.object.isRequired,
-    searchTerm: React.PropTypes.string,
     primary: React.PropTypes.bool,
   },
 
   getDefaultProps: function() {
     return {
-      searchTerm: "",
       primary: true,
       active: false,
     };
@@ -23,7 +20,6 @@ var SearchBox = React.createClass({
 
   getInitialState: function() {
     var state = {
-      searchTerm: this.props.searchTerm,
       active: this.props.active,
     };
     return state;
@@ -44,7 +40,7 @@ var SearchBox = React.createClass({
   },
 
   componentDidMount: function() {
-    this.setTerm(this.props.searchTerm);
+    this.setTerm(SearchStore.searchTerm);
   },
 
   setTerm: function(term) {
@@ -72,7 +68,7 @@ var SearchBox = React.createClass({
         placeholder='search'
         ref='searchBox'
         onChange={this.onChange}
-        defaultValue={this.props.searchTerm}
+        defaultValue={SearchStore.searchTerm}
         onKeyDown={this.handleKeyDown}
         inputStyle={this.inputStyle()}
         style={{height:'36px', verticalAlign:'top'}}

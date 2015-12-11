@@ -21,26 +21,9 @@ var Search = React.createClass({
     view: React.PropTypes.string,
   },
 
-  getInitialState: function() {
-    return {
-      items: [],
-      sortOptions: [],
-      selectedIndex: 0,
-      found: 0,
-      start: 0,
-    };
-  },
-
   searchStoreChanged: function(reason) {
     this.setState({
-      remoteCollectionLoaded: true,
-      collection: SearchStore.collection,
-      facets: SearchStore.facets,
-      sortOptions: SearchStore.sorts,
-      selectedIndex: SearchStore.selectedPageIndex,
-      items: SearchStore.items,
-      found: SearchStore.found,
-      start: SearchStore.start,
+      readyToRender: true,
     });
 
     if(reason == "load") {
@@ -74,6 +57,7 @@ var Search = React.createClass({
     }
   },
 
+  // Translates the facet option given in props to the structure the SearchStore expects.
   facetObject: function() {
     var facet;
     if(this.props.facet) {
@@ -84,38 +68,21 @@ var Search = React.createClass({
   },
 
   render: function() {
-    if(!this.state.remoteCollectionLoaded) {
+    // All children of this object expect the collection and all data to be loaded into the SearchStore.
+    // This will prevent mounting them until ready.
+    if(!this.state.readyToRender) {
       return null;
     }
 
     return (
       <mui.AppCanvas>
-        <CollectionPageHeader collection={this.state.collection} ></CollectionPageHeader>
-
+        <CollectionPageHeader collection={SearchStore.collection} ></CollectionPageHeader>
         <ItemPanel />
-
-        <SearchControls
-          collection={this.state.collection}
-          searchTerm={this.props.searchTerm}
-          sortOptions={this.state.sortOptions}
-          selectedIndex={this.state.selectedIndex}
-          searchStyle={{height:'50px'}}
-        />
-
+        <SearchControls searchStyle={{height:'50px'}}/>
         <PageContent fluidLayout={false}>
-          <SearchDisplayList
-            collection={this.state.collection}
-            items={this.state.items}
-            facets={this.state.facets}
-            sortOptions={this.state.sortOptions}
-            searchTerm={this.props.searchTerm}
-            selectedIndex={this.state.selectedIndex}
-            selectedFacet={this.facetObject()}
-            found={this.state.found}
-            start={this.state.start}
-          />
+          <SearchDisplayList />
         </PageContent>
-        <CollectionPageFooter collection={this.state.collection} />
+        <CollectionPageFooter collection={SearchStore.collection} />
       </mui.AppCanvas>
     );
   }

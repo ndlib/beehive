@@ -8,15 +8,10 @@ var SearchActions = require("../../../actions/SearchActions");
 
 var SearchFacets = React.createClass({
   mixins: [CurrentThemeMixin],
-  propTypes: {
-    collection: React.PropTypes.object.isRequired,
-    facets: React.PropTypes.array,
-    selectedFacet: React.PropTypes.object,
-  },
 
   getInitialState: function() {
     return {
-      selectedFacet: this.props.selectedFacet
+      selectedFacet: SearchStore.selectedFacet
     };
   },
 
@@ -46,7 +41,7 @@ var SearchFacets = React.createClass({
 
   facets: function(){
     self = this;
-    return this.props.facets.map(function(e, index) {
+    return SearchStore.facets.map(function(e, index) {
       return (
         <List
           key={e.name}
