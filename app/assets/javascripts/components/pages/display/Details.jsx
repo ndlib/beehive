@@ -33,7 +33,7 @@ var Details = React.createClass({
       backgroundColor: this.getCurrentPallette().accent3Color,
       position: "absolute",
       top: "-45px",
-      right: "43px",
+      right: "0",
     };
 
     return arr;
@@ -44,7 +44,8 @@ var Details = React.createClass({
       maxHeight: "70%",
       width: "30%",
       position: "absolute",
-      right: "30px",
+      right: "70px",
+      top:'-0',
       zIndex: "100",
       opacity: "0.8",
       backgroundColor: "#fff",
@@ -70,7 +71,7 @@ var Details = React.createClass({
         >
           <span style={{fontSize: "20px", letterSpacing: "0", textTransform: "uppercase", fontWeight: "500", padding: "0px 10px" }}>
             Details
-            <mui.FontIcon className="material-icons">{this.state.showDetails ? "arrow_forward" : "arrow_back"}</mui.FontIcon>
+            <mui.FontIcon className="material-icons" style={{verticalAlign:'top', marginLeft:'5px'}}>{this.state.showDetails ? "arrow_forward" : "arrow_back"}</mui.FontIcon>
           </span>
         </mui.RaisedButton>
 

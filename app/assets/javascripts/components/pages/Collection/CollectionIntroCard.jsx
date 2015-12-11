@@ -14,6 +14,8 @@ var CollectionIntroCard = React.createClass({
       position: "relative",
       cursor: "pointer",
       height: "500px",
+      backgroundImage: "url(/images/intro.jpg)",
+      backgroundSize: "cover"
     };
   },
 
