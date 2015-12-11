@@ -17,6 +17,7 @@ var SectionShow = React.createClass({
 
   closeDialog: function () {
     SectionActions.hideSectionDialogWindow();
+    window.location.hash = "";
   },
 
   styles: function () {
