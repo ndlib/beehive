@@ -88,7 +88,6 @@ var CollectionCard = React.createClass({
       <mui.Card onClick={this.onClick} style={this.style()} >
         {this.headerTitle()}
         {this.cardMedia()}
-        {this.description()}
         <mui.CardActions>
           <mui.FlatButton label="Explore" href={this.collectionUrl(this.props.collection)} />
         </mui.CardActions>
