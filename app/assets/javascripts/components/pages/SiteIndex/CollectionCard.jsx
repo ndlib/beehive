@@ -8,6 +8,7 @@ var CollectionCard = React.createClass({
 
   propTypes: {
     collection: React.PropTypes.object.isRequired,
+    cardHeight: React.PropTypes.string.isRequired
   },
 
   onClick: function(e) {
@@ -19,7 +20,7 @@ var CollectionCard = React.createClass({
     return {
       position: "relative",
       cursor: "pointer",
-      Height: 'auto',
+      height: this.props.cardHeight + 'px',
       //padding: theme.spacing.desktopGutter,
     };
   },
@@ -74,8 +75,7 @@ var CollectionCard = React.createClass({
         <mui.CardMedia
           mediaStyle={{position: 'absolute', height:'200%', width:'200%', overflow: 'hidden' }}
           className="temp"
-          style={{height: '400px', overflow:'hidden'}}
-          overlay={this.cardTitle()}>
+          style={{height: '300px', overflow:'hidden'}}>
           <img src={this.image()}  style={this.imageSize()} />
         </mui.CardMedia>);
     //} else {
@@ -83,12 +83,20 @@ var CollectionCard = React.createClass({
     //}
   },
 
+  exploreButtonStyle: function() {
+    return {
+      position: "absolute",
+      top: (this.props.cardHeight - 50) + 'px',
+    };
+  },
+
   render: function() {
     return (
       <mui.Card onClick={this.onClick} style={this.style()} >
         {this.headerTitle()}
         {this.cardMedia()}
-        <mui.CardActions>
+        {this.cardTitle()}
+        <mui.CardActions style={this.exploreButtonStyle()} >
           <mui.FlatButton label="Explore" href={this.collectionUrl(this.props.collection)} />
         </mui.CardActions>
       </mui.Card>
