@@ -7,12 +7,6 @@ var SearchStore = require('../../../stores/SearchStore');
 var SearchActions = require('../../../actions/SearchActions');
 
 var SearchSort = React.createClass({
-  propTypes: {
-    collection: React.PropTypes.object.isRequired,
-    sortOptions: React.PropTypes.array,
-    selectedIndex: React.PropTypes.number,
-  },
-
   getInitialState: function() {
     var state = {
       selectValue: 0,
@@ -20,19 +14,12 @@ var SearchSort = React.createClass({
     return state;
   },
 
-  getDefaultProps: function() {
-    return {
-      sortOptions: [],
-      selectedIndex: -1,
-    };
-  },
-
   onChange: function(prop, e) {
-    SearchActions.setSort(e.target.value);
+    this.setSort(e.target.value);
   },
 
   setSort: function(sortOption) {
-    SearchStore.sortOption = sortOption;
+    SearchActions.setSort(sortOption);
   },
 
   componentWillMount: function() {
@@ -42,10 +29,6 @@ var SearchSort = React.createClass({
       sortOption = window.location.search.replace(regex, '').split('&')[0];
     }
     this.setSort(sortOption);
-  },
-
-  shouldComponentUpdate: function(nextProps, nextState) {
-    return(nextProps.selectedIndex !== this.props.selectedIndex);
   },
 
   sortStyle: function() {
@@ -75,21 +58,13 @@ var SearchSort = React.createClass({
   },
 
   sortOptions: function() {
-    return this.props.sortOptions.map(function(option) {
+    return SearchStore.sorts.map(function(option) {
       return(<option key={option.value} value={option.value}>{option.name}</option>);
     });
   },
 
-  selectedValue: function() {
-    if (this.props.selectedIndex > -1 ) {
-      return this.props.sortOptions[this.props.selectedIndex].value;
-    } else {
-      return this.props.sortOptions[0].value
-    }
-  },
-
   render: function() {
-    if(this.props.sortOptions.length > 0) {
+    if(SearchStore.sorts.length > 0) {
       return(
       <div style={{float: "left", padding: '10px', paddingTop: '15px', color: 'white', fontSize: '16px'}}>
         Sort By:
@@ -98,8 +73,8 @@ var SearchSort = React.createClass({
             ref='searchSort'
             autoWidth={false}
             onChange={this.onChange.bind(this, 'selectValue')}
-            menuItems={this.props.sortOptions}
-            defaultValue={this.selectedValue()}
+            menuItems={SearchStore.sorts}
+            defaultValue={SearchStore.sortOption}
             style={this.sortSelectStyle()}
           >
           {this.sortOptions()}
