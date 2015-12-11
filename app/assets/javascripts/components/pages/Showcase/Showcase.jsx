@@ -54,7 +54,7 @@ var Showcase = React.createClass({
     var showcaseShow;
     if (this.state.showcase) {
       showcaseShow = (
-        <ShowcaseShow height={this.state.height} collection={this.state.collection} showcase={this.state.showcase} />
+        <ShowcaseShow height={this.state.height - 65} collection={this.state.collection} showcase={this.state.showcase} />
       );
     } else {
       showcaseShow = (<Loading />);
