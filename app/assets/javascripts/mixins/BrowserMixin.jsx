@@ -37,6 +37,15 @@ BrowserMixin = {
     }
     return false;
   },
+
+  touchSupport: function() {
+    var msTouchEnabled = window.navigator.msMaxTouchPoints;
+    var generalTouchEnabled = "ontouchstart" in document.createElement("div");
+    if (msTouchEnabled || generalTouchEnabled) {
+        return true;
+    }
+    return false;
+  },
 }
 
 module.exports = BrowserMixin;
