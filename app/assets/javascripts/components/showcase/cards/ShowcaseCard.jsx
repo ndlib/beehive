@@ -51,8 +51,10 @@ var ShowcaseCard = React.createClass({
     };
   },
 
-  image: function() {
-    return this.props.showcase.image["thumbnail/medium"].contentUrl;
+  image: function () {
+    var space = ' ';
+    var re = new RegExp(space, 'g');
+    return this.props.showcase.image["thumbnail/medium"].contentUrl.replace(re, '%20');
   },
 
   description: function() {

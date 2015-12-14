@@ -20,7 +20,9 @@ var CollectionShow = React.createClass({
   },
 
   image: function () {
-    return this.props.collection.image["thumbnail/medium"].contentUrl;
+    var space = ' ';
+    var re = new RegExp(space, 'g');
+    return this.props.collection.image["thumbnail/medium"].contentUrl.replace(re, '%20');
   },
 
   viewExhibitUrl: function() {
