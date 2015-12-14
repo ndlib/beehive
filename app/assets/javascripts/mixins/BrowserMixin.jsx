@@ -19,7 +19,7 @@ BrowserMixin = {
 
   mobile: function() {
     var checkWidth = 650;
-    if(screen.width == checkWidth){
+    if(screen.width <= checkWidth || window.innerWidth <= checkWidth){
       return true;
     }
     var ua = window.navigator.userAgent;
