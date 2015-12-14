@@ -66,7 +66,15 @@ var CollectionCard = React.createClass({
   },
 
   cardTitle: function() {
-    return (<mui.CardTitle title={this.props.collection.name_line_1} subtitle={this.props.collection.name_line_2} />);
+    var titleStyle = {
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+    };
+    return (<mui.CardTitle title={this.props.collection.name_line_1}
+                           titleStyle={titleStyle}
+                           subtitle={this.props.collection.name_line_2}
+                           subtitleStyle={titleStyle} />);
   },
 
   cardMedia: function () {
@@ -83,11 +91,19 @@ var CollectionCard = React.createClass({
     //}
   },
 
-  exploreButtonStyle: function() {
+  actionButtonsStyle: function() {
     return {
       position: "absolute",
-      top: (this.props.cardHeight - 50) + 'px',
+      top: (this.props.cardHeight - 60) + 'px',
+      width: '100%',
+      borderTopColor: 'rgba(0,0,0,0.12)',
+      borderTopStyle: 'solid',
+      borderTopWidth: '1px',
     };
+  },
+
+  exploreLabelStyle: function() {
+    return { color: '#d9a91b' };
   },
 
   render: function() {
@@ -96,8 +112,8 @@ var CollectionCard = React.createClass({
         {this.headerTitle()}
         {this.cardMedia()}
         {this.cardTitle()}
-        <mui.CardActions style={this.exploreButtonStyle()} >
-          <mui.FlatButton label="Explore" href={this.collectionUrl(this.props.collection)} />
+        <mui.CardActions style={this.actionButtonsStyle()} >
+          <mui.FlatButton label="Explore" href={this.collectionUrl(this.props.collection)} labelStyle={ this.exploreLabelStyle() } />
         </mui.CardActions>
       </mui.Card>
     );
