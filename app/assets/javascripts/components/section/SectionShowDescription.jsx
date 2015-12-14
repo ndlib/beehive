@@ -14,6 +14,7 @@ var SectionShowDescription = React.createClass({
         height: this.props.height + 'px',
         overflowY: 'scroll',
         maxWidth: "60em",
+        margin: '0 auto'
       };
     } else {
       return {};
