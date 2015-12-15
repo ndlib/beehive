@@ -46,7 +46,9 @@ var CollectionCard = React.createClass({
 
   image: function() {
     if (this.props.collection.image) {
-      return this.props.collection.image["thumbnail/medium"].contentUrl;
+      var space = ' ';
+      var re = new RegExp(space, 'g');
+      return this.props.collection.image["thumbnail/medium"].contentUrl.replace(re, '%20');;
     } else {
       return '/images/marble.jpg';
     }
@@ -88,7 +90,7 @@ var CollectionCard = React.createClass({
           className="temp"
           style={{ overflow:'hidden'}}>
           <img src={this.image()}  style={this.imageSize()} />
-          
+
         </mui.CardMedia>);
     //} else {
     //  return (this.cardTitle());
