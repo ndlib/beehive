@@ -12,7 +12,7 @@ var CollectionsList = React.createClass({
 
   collectionNodes: function() {
     return this.props.collections.map(function(collection, index) {
-      return (<CollectionCard collection={collection}  />);
+      return (<CollectionCard collection={collection} cardHeight={450} />);
     });
   },
 

@@ -8,6 +8,7 @@ var CollectionCard = React.createClass({
 
   propTypes: {
     collection: React.PropTypes.object.isRequired,
+    cardHeight: React.PropTypes.string.isRequired
   },
 
   onClick: function(e) {
@@ -19,7 +20,7 @@ var CollectionCard = React.createClass({
     return {
       position: "relative",
       cursor: "pointer",
-      Height: 'auto',
+      height: this.props.cardHeight + 'px',
       //padding: theme.spacing.desktopGutter,
     };
   },
@@ -65,7 +66,15 @@ var CollectionCard = React.createClass({
   },
 
   cardTitle: function() {
-    return (<mui.CardTitle title={this.props.collection.name_line_1} subtitle={this.props.collection.name_line_2} />);
+    var titleStyle = {
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+    };
+    return (<mui.CardTitle title={this.props.collection.name_line_1}
+                           titleStyle={titleStyle}
+                           subtitle={this.props.collection.name_line_2}
+                           subtitleStyle={titleStyle} />);
   },
 
   cardMedia: function () {
@@ -74,8 +83,7 @@ var CollectionCard = React.createClass({
         <mui.CardMedia
           mediaStyle={{position: 'absolute', height:'200%', width:'200%', overflow: 'hidden' }}
           className="temp"
-          style={{height: '400px', overflow:'hidden'}}
-          overlay={this.cardTitle()}>
+          style={{height: '300px', overflow:'hidden'}}>
           <img src={this.image()}  style={this.imageSize()} />
         </mui.CardMedia>);
     //} else {
@@ -83,13 +91,29 @@ var CollectionCard = React.createClass({
     //}
   },
 
+  actionButtonsStyle: function() {
+    return {
+      position: "absolute",
+      top: (this.props.cardHeight - 60) + 'px',
+      width: '100%',
+      borderTopColor: 'rgba(0,0,0,0.12)',
+      borderTopStyle: 'solid',
+      borderTopWidth: '1px',
+    };
+  },
+
+  exploreLabelStyle: function() {
+    return { color: '#d9a91b' };
+  },
+
   render: function() {
     return (
       <mui.Card onClick={this.onClick} style={this.style()} >
         {this.headerTitle()}
         {this.cardMedia()}
-        <mui.CardActions>
-          <mui.FlatButton label="Explore" href={this.collectionUrl(this.props.collection)} />
+        {this.cardTitle()}
+        <mui.CardActions style={this.actionButtonsStyle()} >
+          <mui.FlatButton label="Explore" href={this.collectionUrl(this.props.collection)} labelStyle={ this.exploreLabelStyle() } />
         </mui.CardActions>
       </mui.Card>
     );
