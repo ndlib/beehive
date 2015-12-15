@@ -20,8 +20,11 @@ var CollectionCard = React.createClass({
     return {
       position: "relative",
       cursor: "pointer",
-      height: this.props.cardHeight + 'px',
+      //height: this.props.cardHeight + 'px',
+      maxHeight:'450px',
       //padding: theme.spacing.desktopGutter,
+      height:'100%',
+      paddingBottom:'60px'
     };
   },
 
@@ -37,7 +40,7 @@ var CollectionCard = React.createClass({
         minHeight: '50%',
         maxWidth: 'initial',
         maxHeight:'initial',
-
+        display: 'none'
     };
   },
 
@@ -81,10 +84,11 @@ var CollectionCard = React.createClass({
     //if (this.props.collection.image) {
       return (
         <mui.CardMedia
-          mediaStyle={{position: 'absolute', height:'200%', width:'200%', overflow: 'hidden' }}
+          mediaStyle={{background:'url(' + this.image() + ')', paddingBottom:'46.85%', backgroundSize:'cover', backgroundPosition:'top center', height:'100%', width:'100%', overflow: 'hidden' }}
           className="temp"
-          style={{height: '300px', overflow:'hidden'}}>
+          style={{ overflow:'hidden'}}>
           <img src={this.image()}  style={this.imageSize()} />
+          
         </mui.CardMedia>);
     //} else {
     //  return (this.cardTitle());
@@ -94,7 +98,8 @@ var CollectionCard = React.createClass({
   actionButtonsStyle: function() {
     return {
       position: "absolute",
-      top: (this.props.cardHeight - 60) + 'px',
+      //top: (this.props.cardHeight - 60) + 'px',
+      bottom:'0',
       width: '100%',
       borderTopColor: 'rgba(0,0,0,0.12)',
       borderTopStyle: 'solid',

@@ -18,7 +18,7 @@ var CollectionsList = React.createClass({
 
   gridList: function(cols) {
     return (
-      <mui.GridList cols={cols} cellHeight={450} padding={24}>
+      <mui.GridList cols={cols} cellHeight={'auto'} padding={24}>
         {this.collectionNodes()}
       </mui.GridList>
     );
