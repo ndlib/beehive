@@ -5,7 +5,7 @@ var CloseButton = require('../other/CloseButton');
 var SideNavButton = require("../other/SideNavButton");
 
 var SectionShow = React.createClass({
-  mixins: [ CurrentThemeMixin, LoadRemoteMixin ],
+  mixins: [ CurrentThemeMixin, LoadRemoteMixin, BrowserMixin ],
 
   displayName: 'Section Show',
   propTypes: {
@@ -29,6 +29,7 @@ var SectionShow = React.createClass({
   titleStyle: function () {
     return {
       color: this.getCurrentPallette().textColor,
+      lineHeight: this.mobile() ? '24px' : '56px',
     }
   },
 
@@ -46,14 +47,14 @@ var SectionShow = React.createClass({
     if (this.props.section.item) {
       return this.props.section.item.name;
     } else {
-      return this.props.section.title;
+      return this.props.section.name;
     }
   },
 
   toolbar: function() {
     return (
       <mui.Toolbar style={this.styles()} >
-        <mui.ToolbarGroup key={0} float="left" >
+        <mui.ToolbarGroup key={0} float="left" style={{maxWidth: this.mobile ? '80%': '90%'}}>
           <mui.ToolbarTitle text={this.title()} style={this.titleStyle()} />
         </mui.ToolbarGroup>
         <mui.ToolbarGroup key={1} float="right">

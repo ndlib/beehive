@@ -48,9 +48,7 @@ var ItemShow = React.createClass({
           <MediaQuery minWidth={650}>
             <Details item={this.props.item} additionalDetails={this.props.additionalDetails} showDetails={true} />
           </MediaQuery>
-          <MediaQuery maxWidth={650}>
-            <Details item={this.props.item} additionalDetails={this.props.additionalDetails} showDetails={false} />
-          </MediaQuery>
+
           <div className="item-detail-zoom" style={this.zoomStyles()}>
             <MediaQuery minWidth={650}>
               <OpenseadragonViewer
