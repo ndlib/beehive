@@ -29,8 +29,8 @@ var ShowcaseCard = React.createClass({
     return {
       position: "relative",
       cursor: "pointer",
-      minHeight: '500px',
-      height: this.props.fixedSize ? '500px' : 'auto'
+      minHeight: '400px',
+      height: this.props.fixedSize ? '400px' : 'auto'
     };
   },
 
@@ -55,16 +55,6 @@ var ShowcaseCard = React.createClass({
     var space = ' ';
     var re = new RegExp(space, 'g');
     return this.props.showcase.image["thumbnail/medium"].contentUrl.replace(re, '%20');
-  },
-
-  description: function() {
-    if (this.props.showcase.description) {
-      return (
-        <mui.CardText style={{whiteSpace:'normal'}}>
-          {this.props.showcase.description}
-        </mui.CardText>
-      );
-    }
   },
 
   nextButton: function() {
@@ -117,7 +107,6 @@ var ShowcaseCard = React.createClass({
       <mui.Card onClick={this.onClick} style={this.style()} >
         {this.headerTitle()}
         {this.cardMedia()}
-        {this.description()}
         {this.nextButton()}
       </mui.Card>
     );
