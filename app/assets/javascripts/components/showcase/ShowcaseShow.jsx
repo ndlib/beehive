@@ -157,19 +157,19 @@ var ShowcaseShow = React.createClass({
     // overwrite some stuff for iOS. TODO: Android
     var mobileHomeButton;
     if(this.mobile()){
-      showcaseHeight = window.screen.height;
-      showcaseInnerHeight = Math.floor(window.screen.height * 0.9);
+      showcaseHeight = window.innerHeight * 0.95;
+      showcaseInnerHeight = Math.floor(showcaseHeight * 0.95);
       scroller = null;
       mobileHomeButton = (<CollectionHomeButton collection={this.props.collection}/>);
     }
 
     return (
-      <div>
+      <div style={{height: window.innerHeight}}>
         <AttentionHelp start={this.state.startTime} hasScrolled={this.state.hasScrolled} />
-        <ShowcaseBackground percentBlur={backgroundBlur} height={this.props.height} showcase={this.props.showcase} />
+        <ShowcaseBackground percentBlur={backgroundBlur} height={window.innerHeight} showcase={this.props.showcase} />
         <SectionShow
             section={this.state.currentSection}
-            height={this.props.height}
+            height={this.mobile() ? window.innerHeight : this.props.height}
             previousUrl={prev}
             nextUrl={next}
         />
