@@ -19,7 +19,7 @@ var PagesShow = React.createClass({
 
   render: function() {
     var pageName;
-    var pageContent = (<Loading/>);
+    var pageContent = (<div className="essay-content" />);
     if(this.props.title) {
       pageName = (<h2>{this.props.title}</h2>);
     }
