@@ -6,15 +6,24 @@ var MetadataList = React.createClass({
   propTypes: {
     metadata: React.PropTypes.object.isRequired,
   },
-  render: function() {
-    var metadataNodes = Object.keys(this.props.metadata).map(function(key) {
-      return (
-        <MetadataItem key={key} metadata={this.props.metadata[key]} />
-      )
+
+  // Filters out any keys that should not be displayed
+  filteredMetaKeys: function() {
+    return Object.keys(this.props.metadata).filter(function(key) {
+      return key != "user_defined_id";
+    });
+  },
+
+  metadataNodes: function() {
+    return this.filteredMetaKeys().map(function(key) {
+        return (<MetadataItem key={key} metadata={this.props.metadata[key]} />)
     }.bind(this));
+  },
+
+  render: function() {
     return (
       <div className="metadata-list">
-        {metadataNodes}
+        { this.metadataNodes() }
       </div>
     );
   }
