@@ -14,7 +14,6 @@ var PagesShow = React.createClass({
 
   style: function() {
     return {
-      maxWidth: "60em",
     }
   },
 

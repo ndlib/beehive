@@ -25,7 +25,7 @@ var CollectionIntroduction = React.createClass({
           <div className="bee-page-title-bar"><h2 className="bee-page-title-bar-title">Introduction</h2></div>
         </CollectionPageHeader>
         <PageContent>
-          <div style={{maxWidth:'960px', margin:'0 auto'}}>
+          <div style={{margin:'0 auto'}}>
             <CollectionDescription collection={this.state.collection} />
           </div>
         </PageContent>
