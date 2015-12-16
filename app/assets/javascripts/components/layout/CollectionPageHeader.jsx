@@ -130,7 +130,7 @@ var CollectionPageHeader = React.createClass({
     if (this.props.collection.enable_search) {
       return (
         <div style={ {float:'right', marginTop:'-8px' } }>
-          <SearchBox collection={this.props.collection} />
+          <SearchBox collection={this.props.collection} useStore={false}/>
         </div>
       );
     }

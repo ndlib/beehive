@@ -8,13 +8,16 @@ var SearchActions = require("../../actions/SearchActions");
 var SearchBox = React.createClass({
   mixins: [CurrentThemeMixin],
   propTypes: {
+    collection: React.PropTypes.object,
     primary: React.PropTypes.bool,
+    useStore: React.PropTypes.bool,
   },
 
   getDefaultProps: function() {
     return {
       primary: true,
       active: false,
+      useStore: true,
     };
   },
 
@@ -31,7 +34,15 @@ var SearchBox = React.createClass({
 
   onClick: function(e) {
     if (this.state.active && this.state.searchTerm) {
-      SearchActions.setSearchTerm(this.state.searchTerm);
+      if(this.props.useStore) {
+        SearchActions.setSearchTerm(this.state.searchTerm);
+      } else {
+        var url = window.location.origin
+          + "/" + this.props.collection.id
+          + "/" + this.props.collection.slug
+          + "/search?q=" + this.state.searchTerm;
+        window.location = url;
+      }
     } else if (this.state.active) {
       this.setState({active: false});
     } else {
