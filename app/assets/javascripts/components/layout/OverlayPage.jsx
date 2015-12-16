@@ -31,7 +31,7 @@ var OverlayPage = React.createClass({
       width: "100%",
       position: "fixed",
       backgroundColor: this.getCurrentPallette().canvasColor,
-      zIndex: "1000",
+      zIndex: "4",
     }
   },
 
