@@ -9,6 +9,8 @@ var Showcase = React.createClass({
     return {
       showcase: null,
       currentSection: null,
+      height: window.innerHeight,
+      widht: window.innerWidth,
     };
   },
 
@@ -38,6 +40,15 @@ var Showcase = React.createClass({
     } else {
       this.loadRemoteCollection(this.props.collection)
     }
+    window.addEventListener('resize', this.handleResize, false);
+    this.handleResize();
+  },
+
+  handleResize: function() {
+    this.setState({
+      height: window.innerHeight,
+      width: window.innerWidth,
+    });
   },
 
   setCurrentSection: function(section) {

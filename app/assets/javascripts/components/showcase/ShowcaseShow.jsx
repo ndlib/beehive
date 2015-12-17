@@ -160,7 +160,7 @@ var ShowcaseShow = React.createClass({
       mobileHomeButton = (<CollectionHomeButton collection={this.props.collection}/>);
       showcaseHeight = this.state.height;
     }
-    if(this.state.mobile || this.state.height < 700){
+    if(this.state.mobile || this.state.height < 960){
       titleBar = null;
     }
 
@@ -190,7 +190,7 @@ var ShowcaseShow = React.createClass({
         <ShowcaseBackground percentBlur={backgroundBlur} height={this.state.mobile ? this.state.height : this.state.height - scrollPadding} showcase={this.props.showcase} />
         <SectionShow
             section={this.state.currentSection}
-            height={window.innerHeight}
+            height={this.state.mobile ? window.innerHeight : showcaseInnerHeight}
             previousUrl={prev}
             nextUrl={next}
         />
