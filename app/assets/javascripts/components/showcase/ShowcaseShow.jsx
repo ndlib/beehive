@@ -190,7 +190,7 @@ var ShowcaseShow = React.createClass({
         <ShowcaseBackground percentBlur={backgroundBlur} height={this.state.mobile ? this.state.height : this.state.height - scrollPadding} showcase={this.props.showcase} />
         <SectionShow
             section={this.state.currentSection}
-            height={this.state.mobile ? window.innerHeight : showcaseInnerHeight}
+            height={this.state.mobile ? window.innerHeight : window.innerHeight - showcaseTitleHeight}
             previousUrl={prev}
             nextUrl={next}
         />

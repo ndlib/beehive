@@ -4,6 +4,9 @@
 React = require("react");
 EventEmitter = require("./EventEmitter");
 
+// Modules
+Browser = require("./modules/Browser");
+
 // Mixins
 CollectionUrlMixin = require("./mixins/CollectionUrlMixin");
 HorizontalScrollMixin = require("./mixins/HorizontalScrollMixin");

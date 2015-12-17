@@ -47,7 +47,7 @@ var Showcase = React.createClass({
   handleResize: function() {
     this.setState({
       height: window.innerHeight,
-      width: window.innerWidth,
+      width: window.innerWidth
     });
   },
 
