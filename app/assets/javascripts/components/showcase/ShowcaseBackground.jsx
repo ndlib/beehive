@@ -1,4 +1,4 @@
-//app/assets/javascripts/components/ShowcaseBackground.jsx
+'use strict'
 var React = require('react');
 
 var ShowcaseBackground = React.createClass({
@@ -15,9 +15,6 @@ var ShowcaseBackground = React.createClass({
   },
 
   style: function() {
-    // var blurAmt = Math.min(Math.max(Math.floor((this.props.percentBlur) * 10), 0), 10);
-    // var blurBrightness = Math.min(Math.max(Math.floor(100 - (this.props.percentBlur) * 60), 70), 100);
-    // var blurStr = "blur(" + blurAmt + "px) brightness(" + blurBrightness + "%)";
     var backgroundImage;
     if (this.props.showcase.image) {
       backgroundImage = "url(\"" + this.props.showcase.image.contentUrl + "\")";
@@ -31,10 +28,6 @@ var ShowcaseBackground = React.createClass({
       backgroundRepeat: "no-repeat",
       backgroundSize: "cover",
       zIndex: "-1",
-      // WebkitFilter: blurStr,
-      // MozFilter: blurStr,
-      // OFilter: blurStr,
-      // filter: blurStr,
     };
   },
 
@@ -57,5 +50,4 @@ var ShowcaseBackground = React.createClass({
   }
 });
 
-// each file will export exactly one component
 module.exports = ShowcaseBackground;

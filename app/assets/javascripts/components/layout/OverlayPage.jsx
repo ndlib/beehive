@@ -5,7 +5,7 @@ var CloseButton = require('../other/CloseButton');
 var SideNavButton = require("../other/SideNavButton");
 
 var OverlayPage = React.createClass({
-  mixins: [ CurrentThemeMixin, PageHeightMixin ],
+  mixins: [ CurrentThemeMixin ],
   propTypes: {
     title: React.PropTypes.string,
     onPrevButtonClick: React.PropTypes.func,
@@ -27,7 +27,7 @@ var OverlayPage = React.createClass({
 
   pageStyles: function() {
     return {
-      height: this.getHeight() + "px",
+      height: window.innerHeight + "px",
       width: "100%",
       position: "fixed",
       backgroundColor: this.getCurrentPallette().canvasColor,

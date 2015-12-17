@@ -3,7 +3,6 @@ var React = require('react');
 var mui = require('material-ui');
 
 var SearchSidebar = React.createClass({
-  mixins: [PageHeightMixin],
 
   getInitialState: function () {
     return {

@@ -13,11 +13,9 @@ var maxBackgroundBlur = 0.8;
 
 var ShowcaseShow = React.createClass({
   mixins: [CollectionUrlMixin, BrowserMixin, LoadRemoteMixin ],
-  displayName: "Showcase Show",
   propTypes: {
     collection: React.PropTypes.object,
     showcase: React.PropTypes.object,
-    height: React.PropTypes.number.isRequired,
   },
 
   getInitialState: function() {
@@ -28,15 +26,15 @@ var ShowcaseShow = React.createClass({
       outerElement: null,
       element: null,
       currentSection: null,
+      width: window.innerWidth,
+      height: window.innerHeight,
+      mobile: this.mobile(),
     }
   },
 
   componentDidUpdate: function(prevProps, prevState) {
     if (!this.scrollbarInitialized) {
       this.initializeScrollbar();
-    }
-    if (this.props.height != prevProps.height) {
-      this.updateScrollbar();
     }
     if(this.state.hasScrolled != prevState.hasScrolled) {
       this.updateScrollbar();
@@ -46,7 +44,7 @@ var ShowcaseShow = React.createClass({
   initializeScrollbar: function() {
     this.scrollbarInitialized = true;
     this.state.outerElement.perfectScrollbar({useBothWheelAxes: true, suppressScrollY: true });
-    if(this.ie() || this.mobile()) {
+    if(this.ie() || this.state.mobile) {
       this.state.outerElement.find(".ps-scrollbar-x-rail").hide();
     }
   },
@@ -54,13 +52,23 @@ var ShowcaseShow = React.createClass({
   updateScrollbar: function() {
     if (this.scrollbarInitialized) {
       this.state.outerElement.perfectScrollbar("update");
-      if(this.ie() || this.mobile()) {
+      if(this.ie() || this.state.mobile) {
         this.state.outerElement.find(".ps-scrollbar-x-rail").hide();
       }
     }
   },
 
+  handleResize: function() {
+    this.setState({
+      width: window.innerWidth,
+      height: window.innerHeight,
+      mobile: this.mobile(),
+    });
+  },
+
   componentDidMount: function() {
+    window.addEventListener('resize', this.handleResize, false);
+    this.handleResize();
     this.setState({
       outerElement: $(this.refs.showcaseOuter),
       element: $(ReactDOM.findDOMNode(this)),
@@ -69,7 +77,7 @@ var ShowcaseShow = React.createClass({
 
   componentWillUnmount: function() {
     window.removeEventListener("hashchange", this.checkHash);
-    // .rwindowemoveEventListener("resize", this.handleResize);
+    window.removeEventListener('resize', this.handleResize);
     document.body.style.backgroundImage = null;
   },
 
@@ -128,15 +136,35 @@ var ShowcaseShow = React.createClass({
   },
 
   render: function() {
-    var showcaseHeight = this.props.height - showcaseTitleHeight;
+    var showcaseHeight = this.state.height - showcaseTitleHeight;
     if (showcaseHeight > maxShowcaseHeight) {
       showcaseHeight = maxShowcaseHeight;
     }
     var showcaseInnerHeight = showcaseHeight - scrollPadding;
 
-    var scroller = (<Scroller target="#showcase-outer" height={this.props.height} />);
+    var scroller = (<Scroller target="#showcase-outer" height={showcaseHeight} />);
+    var titleBar = (
+      <ShowcaseTitleBar
+        percentFade={this.state.titleSectionPercentVisible}
+        height={showcaseTitleHeight}
+        showcase={this.props.showcase}
+      />
+    );
 
+    // overwrite some stuff for iOS. TODO: Android
+    var mobileHomeButton;
+    if(this.state.mobile){
+      showcaseHeight = this.state.height * 0.95;
+      showcaseInnerHeight = Math.floor(showcaseHeight * 0.95);
+      scroller = null;
+      mobileHomeButton = (<CollectionHomeButton collection={this.props.collection}/>);
+      showcaseHeight = this.state.height;
+    }
+    if(this.state.mobile || this.state.height < 700){
+      titleBar = null;
+    }
 
+    // background stuff
     var backgroundBlur = 1 - this.state.titleSectionPercentVisible;
     if (backgroundBlur < minBackgroundBlur) {
       backgroundBlur = minBackgroundBlur;
@@ -144,6 +172,8 @@ var ShowcaseShow = React.createClass({
       backgroundBlur = maxBackgroundBlur;
     }
 
+
+    // next/previous
     var prev, next;
     if(this.state.currentSection){
       if(this.state.currentSection.previousSection) {
@@ -154,28 +184,17 @@ var ShowcaseShow = React.createClass({
       }
     }
 
-    // overwrite some stuff for iOS. TODO: Android
-    var mobileHomeButton;
-    if(this.mobile()){
-      showcaseHeight = window.innerHeight * 0.95;
-      showcaseInnerHeight = Math.floor(showcaseHeight * 0.95);
-      scroller = null;
-      mobileHomeButton = (<CollectionHomeButton collection={this.props.collection}/>);
-    }
-
     return (
-      <div style={{height: window.innerHeight}}>
+      <div style={{height: showcaseHeight}}>
         <AttentionHelp start={this.state.startTime} hasScrolled={this.state.hasScrolled} />
-        <ShowcaseBackground percentBlur={backgroundBlur} height={window.innerHeight} showcase={this.props.showcase} />
+        <ShowcaseBackground percentBlur={backgroundBlur} height={this.state.mobile ? this.state.height : this.state.height - scrollPadding} showcase={this.props.showcase} />
         <SectionShow
             section={this.state.currentSection}
-            height={this.mobile() ? window.innerHeight : this.props.height}
+            height={window.innerHeight}
             previousUrl={prev}
             nextUrl={next}
         />
-        <MediaQuery minHeight={700}>
-          <ShowcaseTitleBar percentFade={this.state.titleSectionPercentVisible} height={showcaseTitleHeight} showcase={this.props.showcase} />
-        </MediaQuery>
+        {titleBar}
         <ReactCSSTransitionGroup
           transitionName="showcase-slide-in"
           transitionAppear={true}
@@ -193,5 +212,4 @@ var ShowcaseShow = React.createClass({
   }
 });
 
-// each file will export exactly one component
 module.exports = ShowcaseShow;

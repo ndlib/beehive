@@ -3,7 +3,7 @@ var React = require('react');
 var mui = require('material-ui');
 
 var Showcase = React.createClass({
-  mixins: [PageHeightMixin, LoadRemoteMixin, MuiThemeMixin, CurrentThemeMixin, BrowserMixin],
+  mixins: [LoadRemoteMixin, MuiThemeMixin, CurrentThemeMixin, BrowserMixin],
 
   getInitialState: function() {
     return {
@@ -26,8 +26,6 @@ var Showcase = React.createClass({
 
       var newMuiTheme = this.state.muiTheme;
       newMuiTheme.paper.backgroundColor = 'inherit';
-      //console.log(newMuiTheme);
-      //newMuiTheme.appCanvas.backgroundColor = 'inherit';
 
       this.setState({
         muiTheme: newMuiTheme,
@@ -54,7 +52,7 @@ var Showcase = React.createClass({
     var showcaseShow;
     if (this.state.showcase) {
       showcaseShow = (
-        <ShowcaseShow height={this.state.height - 65} collection={this.state.collection} showcase={this.state.showcase} />
+        <ShowcaseShow collection={this.state.collection} showcase={this.state.showcase} />
       );
     } else {
       showcaseShow = (<Loading />);

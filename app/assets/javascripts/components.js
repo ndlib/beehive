@@ -7,7 +7,6 @@ EventEmitter = require("./EventEmitter");
 // Mixins
 CollectionUrlMixin = require("./mixins/CollectionUrlMixin");
 HorizontalScrollMixin = require("./mixins/HorizontalScrollMixin");
-PageHeightMixin = require("./mixins/PageHeightMixin");
 PrevNextMixin = require("./mixins/PrevNextMixin");
 LoadRemoteMixin = require("./mixins/LoadRemoteMixin");
 TitleConcatMixin = require("./mixins/TitleConcatMixin");
