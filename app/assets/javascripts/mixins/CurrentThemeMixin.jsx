@@ -40,8 +40,8 @@ var CurrentThemeMixin = {
 
   pageWidth() {
     return {
-      maxWidth: '960px',
-      margin: '0 auto',
+      //maxWidth: '960px',
+      margin: '0 8%',
     };
   },
 

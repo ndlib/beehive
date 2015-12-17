@@ -45,7 +45,6 @@ var Details = React.createClass({
       width: "30%",
       position: "absolute",
       right: "70px",
-      top:'-0',
       zIndex: "100",
       opacity: "0.8",
       backgroundColor: "#fff",
