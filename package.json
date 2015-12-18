@@ -25,29 +25,6 @@
     "react-tools": "^0.12.2"
   },
   "engines": {
-    "node": ">=0.10.0 <0.12"
-  },
-  "scripts": {
-    "test": "node ./node_modules/jest-cli/bin/jest.js"
-  },
-  "jest": {
-    "rootDir": "./app/assets/javascripts/components",
-    "scriptPreprocessor": "<rootDir>/__tests__/preprocessor.js",
-    "collectCoverage": true,
-    "moduleFileExtensions": [
-      "js",
-      "jsx"
-    ],
-    "unmockedModulePathPatterns": [
-      "react",
-      "jquery"
-    ],
-    "testFileExtensions": [
-      "js",
-      "jsx"
-    ],
-    "testPathIgnorePatterns": [
-      "preprocessor.js"
-    ]
+    "node": ">=4.2.0"
   }
 }
