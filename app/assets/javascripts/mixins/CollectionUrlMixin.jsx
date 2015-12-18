@@ -7,6 +7,14 @@ var CollectionUrlMixin = {
     return url;
   },
 
+  aboutUrl: function(collection) {
+    return this.collectionUrl(collection) + '/about';
+  },
+
+  browseUrl: function(collection) {
+    return this.collectionUrl(collection) + '/search?q=';
+  },
+
   sectionUrl: function(section) {
     return this.collectionObjectUrl('sections', section);
   },
@@ -47,15 +55,23 @@ var CollectionUrlMixin = {
     var environmentUrl = window.location.origin;
     var returnUrl;
     if (environmentUrl.indexOf('pprd') > -1) {
-      returnUrl = 'http://beehivepprd-vm.library.nd.edu/v1/'
+      returnUrl = 'http://honeycombpprd-vm.library.nd.edu/v1/'
     }
     else if(environmentUrl.indexOf('localhost') > -1) {
       returnUrl = 'http://localhost:3017/v1/';
     }
     else {
-      returnUrl = 'http://beehive.library.nd.edu/v1/'
+      returnUrl = 'http://honeycomb.library.nd.edu/v1/'
     }
     return returnUrl;
+  },
+
+  remoteItem: function(item) {
+    return this.remoteUrlBase() + '/items/' + item;
+  },
+
+  remoteSection: function(section) {
+    return this.remoteUrlBase() + '/sections/' + section;
   }
 
 }

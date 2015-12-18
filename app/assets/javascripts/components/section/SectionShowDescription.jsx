@@ -13,6 +13,8 @@ var SectionShowDescription = React.createClass({
       return {
         height: this.props.height + 'px',
         overflowY: 'scroll',
+        maxWidth: "60em",
+        margin: '0 auto'
       };
     } else {
       return {};
@@ -21,16 +23,9 @@ var SectionShowDescription = React.createClass({
 
   render: function() {
     return (
-      <div style={this.styles()}>
-        <div className="row">
-          <div className="col-md-12">
-            <div className="section-description">
-              <h2 className="section-container-text-title">{this.props.section.name}</h2>
-              <div dangerouslySetInnerHTML={{__html: this.props.section.description}} />
-            </div>
-          </div>
-        </div>
-      </div>
+      <PageContent>
+        <div ref="sectionContent" style={this.styles()} dangerouslySetInnerHTML={{__html:this.props.section.description}} />
+      </PageContent>
     );
   }
 

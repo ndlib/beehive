@@ -65,17 +65,12 @@ GEM
     autoprefixer-rails (5.1.9)
       execjs
       json
-    babel-source (5.8.23)
+    babel-source (5.8.33)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-material-design (0.2.0)
-      bootstrap-sass (~> 3.0)
-    bootstrap-sass (3.3.4.1)
-      autoprefixer-rails (>= 5.0.0.1)
-      sass (>= 3.2.19)
     browserify-rails (0.7.2)
       sprockets (~> 2.0)
     builder (3.2.2)
@@ -111,6 +106,8 @@ GEM
     coffee-script-source (1.9.1.1)
     colorize (0.7.5)
     connection_pool (2.2.0)
+    coolline (0.5.0)
+      unicode_utils (~> 1.4)
     coveralls (0.7.9)
       multi_json (~> 1.10)
       rest-client (~> 1.7)
@@ -204,6 +201,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-coolline (0.2.5)
+      coolline (~> 0.5)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -238,7 +237,7 @@ GEM
       ffi (>= 0.5.0)
     rdoc (4.2.0)
       json (~> 1.4)
-    react-rails (1.2.0)
+    react-rails (1.4.1)
       babel-transpiler (>= 0.7.0)
       coffee-script-source (~> 1.8)
       connection_pool
@@ -335,6 +334,7 @@ GEM
     uglifier (2.7.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unicode_utils (1.4.0)
     web-console (2.1.1)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -349,8 +349,6 @@ PLATFORMS
 DEPENDENCIES
   airbrake
   autoprefixer-rails
-  bootstrap-material-design
-  bootstrap-sass (~> 3.3.1)
   browserify-rails (~> 0.5)
   capistrano (~> 3.1)
   capistrano-npm
@@ -373,8 +371,9 @@ DEPENDENCIES
   mime-types (~> 2.6.1)
   newrelic_rpm
   pry
+  pry-coolline
   rails (~> 4.2)
-  react-rails
+  react-rails (~> 1.4.1)
   rspec-collection_matchers
   rspec-rails
   rubocop

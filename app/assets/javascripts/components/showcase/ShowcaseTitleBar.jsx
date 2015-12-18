@@ -1,12 +1,10 @@
 //app/assets/javascripts/components/ShowcaseTitleBar.jsx
 var React = require('react');
-
-var titleHeight = 16;
-var marginBottom = 5;
-var borderBottom = 1;
+var mui = require('material-ui');
+var CloseButton = require('../other/CloseButton');
 
 var ShowcaseTitleBar = React.createClass({
-  mixins: [TitleConcatMixin],
+  mixins: [ MuiThemeMixin, CurrentThemeMixin, CollectionUrlMixin],
 
   displayName: 'Showcase Title Bar',
 
@@ -24,34 +22,40 @@ var ShowcaseTitleBar = React.createClass({
   },
 
   style: function() {
-    var verticalPadding = (this.props.height - (titleHeight + marginBottom + borderBottom)) / 2;
     return {
       opacity: 1 - this.props.percentFade,
-      borderBottomWidth: borderBottom + "px",
-      padding: verticalPadding + "px 40px",
-      marginBottom: marginBottom + "px",
+      backgroundColor: this.getCurrentPallette().primary2Color,
+      //height: '34px',
+      zIndex: '200',
     };
   },
 
-  titleStyle: function() {
+  titleBarStyle: function () {
     return {
-      fontSize: titleHeight + "px",
-      lineHeight: titleHeight + "px",
-    };
+      color: this.getCurrentPallette().alternateTextColor,
+    }
   },
 
   name: function () {
-    return this.titleConcat(this.props.showcase.name_line_1, this.props.showcase.name_line_2);
+    return this.props.showcase.name_line_1;
+  },
+
+  clickCloseButton: function() {
+    var url = window.location.pathname.split("/");
+    window.location.href = "/" + url[1] + "/" + url[2];
   },
 
   render: function() {
     if (this.props.showcase) {
       return (
-        <div className="showcases-title-bar" id="showcases-title-bar" style={this.style()}>
-          <h2 className="showcases-title-bar-title overflow-ellipsis" style={this.titleStyle()} title={this.name()}>
-            <span className="title">{this.name()}</span>
-          </h2>
-        </div>
+        <mui.Toolbar style={this.style()}>
+          <mui.ToolbarGroup key={0} float="left">
+            <mui.ToolbarTitle text={this.name()} style={this.titleBarStyle()} />
+          </mui.ToolbarGroup>
+          <mui.ToolbarGroup key={1} float="right">
+            <CloseButton clickEvent={this.clickCloseButton} alternate={true} />
+          </mui.ToolbarGroup>
+        </mui.Toolbar>
       );
     } else {
       return (<div />)

@@ -11,6 +11,11 @@ $title-offset: $dropdown-button-size + ($dropdown-button-padding * 2) + $dropdow
   padding: 15px 0;
   margin: 0;
   height: 50px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 5;
 }
 
 .brand-bar a {
@@ -44,13 +49,42 @@ $title-offset: $dropdown-button-size + ($dropdown-button-padding * 2) + $dropdow
 }
 
 footer {
-  padding-top: 5em;
+
   color: #999999;
+  background-color: #2b2a2a;
+    background-image: linear-gradient(to top, #2b2a2a 0%, #393838 140%);
+    bottom: 0;
+    height: 49px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    margin-top: 3em;
+    clear: both;
+
+    a {
+      float: right;
+      width: 100px;
+      height: 0;
+      overflow: hidden;
+      padding-top: 33px;
+      display: block;
+      margin: 8px;
+    }
+    .hesburgh-logo {
+      background-image: image_url("ndmark300.w.png");
+      background-size: cover;
+    }
+    .dec-logo {
+      background-image: image_url("dec.logo.svg");
+      background-size: cover;
+    }
+    .connecting-logo {
+      background-image: image_url("connecting.logo.png");
+      background-size: cover;
+      width: 120px;
+    }
 }
 
-.hesburgh-logo {
-  width: 200px;
-}
 
 .navbar-header {
   .btn-group {

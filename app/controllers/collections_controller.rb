@@ -5,6 +5,10 @@ class CollectionsController < ApplicationController
     @collections_url = collections_api_base
   end
 
+  def about
+    @collections_url = collections_api_base + "/" + params[:id]
+  end
+
   def intro
     @collections_url = collections_api_base + "/" + params[:id] + "/showcases"
   end
@@ -18,6 +22,9 @@ class CollectionsController < ApplicationController
 
   def show
     @collections_url = collections_api_base + "/" + params[:id] + "/showcases"
+  end
+
+  def theme
   end
 
   private

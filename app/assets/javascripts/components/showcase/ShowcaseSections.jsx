@@ -1,4 +1,5 @@
 var React = require("react");
+var mui = require('material-ui');
 
 var ShowcaseSections = React.createClass({
   displayName: "Sections List",
@@ -13,7 +14,8 @@ var ShowcaseSections = React.createClass({
       height: this.props.height + "px",
       display: "inline-block",
       paddingRight: "175px",
-      lineHeight: this.props.height + "px",
+      boxShadow: "none",
+      //lineHeight: this.props.height + "px",
     }
   },
 
@@ -24,7 +26,7 @@ var ShowcaseSections = React.createClass({
         var nodes = [];
 
         nodes.push((
-          <Section section={section} height={this.props.height} />
+          <SectionCard section={section} height={this.props.height} />
         ));
         return nodes;
       }.bind(this));
@@ -37,17 +39,17 @@ var ShowcaseSections = React.createClass({
   nextShowcase: function() {
     var nextShowcase;
     if(this.props.showcase.nextShowcase) {
-      nextShowcase = (<ShowcaseEnding height={this.props.height} showcase={this.props.showcase.nextShowcase} />);
+      nextShowcase = (<ShowcaseEndingCard height={this.props.height} showcase={this.props.showcase.nextShowcase} />);
     }
     return nextShowcase;
   },
 
   render: function() {
     return (
-      <div id="sections-content-inner" className="sections-content-inner" style={this.style()}>
+      <mui.Paper id="sections-content-inner" className="sections-content-inner" style={this.style()}>
         {this.sections()}
         {this.nextShowcase()}
-      </div>
+      </mui.Paper>
     );
   }
 });

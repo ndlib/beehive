@@ -15,7 +15,7 @@ class SectionActions {
   }
 
   hideSectionDialogWindow() {
-    EventEmitter.emit("SectionDialogWindow", 'hide');
+    EventEmitter.emit("HideSectionDialogWindow", 'hide');
   }
 
 }
