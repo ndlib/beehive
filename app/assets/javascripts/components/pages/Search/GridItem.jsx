@@ -26,17 +26,6 @@ var GridItem = React.createClass({
         >
           <ItemImage image={item.image} />
         </mui.CardMedia>
-        <mui.CardText
-          style={{
-            padding: '0',
-            height: '72px'}}
-        >
-          <mui.ListItem
-            secondaryText={item.description}
-            secondaryTextLines={2}
-            disabled={true}
-          />
-        </mui.CardText>
       </mui.Card>
     );
   }
