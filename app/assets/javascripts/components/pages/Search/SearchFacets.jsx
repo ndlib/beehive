@@ -40,30 +40,28 @@ var SearchFacets = React.createClass({
   },
 
   facets: function(){
-    self = this;
     return SearchStore.facets.map(function(e, index) {
       return (
         <List
           key={e.name}
           subheader={e.name}
         >
-          {self.values(e)}
+          {this.values(e)}
         </List>
       );
-    });
+    }.bind(this));
   },
 
   values: function(facet) {
-    self = this;
     var parentFacet = facet.field;
     if (facet.values) {
       return (facet.values.map(function(e, index) {
         var selectedKey;
         var selectedValue;
-        if(self.state.selectedFacet) {
-          selectedKey = encodeURIComponent(self.state.selectedFacet.name);
+        if(this.state.selectedFacet) {
+          selectedKey = encodeURIComponent(this.state.selectedFacet.name);
           if(parentFacet == selectedKey) {
-            selectedValue = self.state.selectedFacet.value;
+            selectedValue = this.state.selectedFacet.value;
           }
         }
         return (
@@ -72,13 +70,13 @@ var SearchFacets = React.createClass({
             primaryText={<span style={{marginLeft:'30px'}}>{e.name}</span>}
             secondaryText={"(" + e.count + ")"}
             value={parentFacet +"|"+ e.name}
-            onClick={self.valueOnClick}
+            onClick={this.valueOnClick}
             innerDivStyle={{padding:'10px 16px'}}
             className="facet"
             leftIcon={e.name == selectedValue ?  ( <mui.FontIcon className="material-icons" style={{fontSize: '28px', left: '-6px', top: '-6px', width: '24px' }}>check_circle</mui.FontIcon>) : null}
           />
         );
-      }));
+      }.bind(this)));
     }
     return (<div></div>);
   },
