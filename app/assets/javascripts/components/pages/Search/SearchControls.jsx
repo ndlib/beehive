@@ -77,7 +77,7 @@ var SearchControls = React.createClass({
       <div style={{height: "65px" }}>
       <mui.Toolbar className="controls" style={this.controlsStyle()}>
         <mui.ToolbarGroup key={0} float="left">
-          <SearchBox primary={false} active={true} />
+          <SearchBox primary={false} active={true} useStore={true} />
         </mui.ToolbarGroup>
         <mui.ToolbarGroup key={1} float="right">
           <MediaQuery minWidth={700}>
