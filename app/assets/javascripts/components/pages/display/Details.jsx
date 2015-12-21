@@ -48,6 +48,7 @@ var Details = React.createClass({
       zIndex: "100",
       opacity: "0.8",
       backgroundColor: "#fff",
+      overflow: "auto"
     };
   },
 
