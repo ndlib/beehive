@@ -11,7 +11,7 @@ set :log_level, :info
 
 # Default branch is set to a tag
 if fetch(:stage).to_s == "production"
-  set :branch, "v1.2.2"
+  set :branch, "v2.0.0"
 else
   if ENV["SCM_BRANCH"] && !(ENV["SCM_BRANCH"] == "")
     set :branch, ENV["SCM_BRANCH"]
