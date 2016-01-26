@@ -71,15 +71,15 @@ footer {
       margin: 8px;
     }
     .hesburgh-logo {
-      background-image: image_url("ndmark300.w.png");
+      background-image: url("../images/ndmark300.w.png");
       background-size: cover;
     }
     .dec-logo {
-      background-image: image_url("dec.logo.svg");
+      background-image: url("../images/dec.logo.svg");
       background-size: cover;
     }
     .connecting-logo {
-      background-image: image_url("connecting.logo.png");
+      background-image: url("../images/connecting.logo.png");
       background-size: cover;
       width: 120px;
     }

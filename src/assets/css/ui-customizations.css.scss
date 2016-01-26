@@ -60,19 +60,19 @@ body {
   }
 
   &:-webkit-full-screen {
-    background-image: image_url("black-linen.png") !important;
+    background-image: url("../images/black-linen.png") !important;
     background-repeat: repeat !important;
     background-size: auto !important;
   }
 
   &:-moz-full-screen {
-    background-image: image_url("black-linen.png") !important;
+    background-image: url("../images/black-linen.png") !important;
     background-repeat: repeat !important;
     background-size: auto !important;
   }
 
   &:fullscreen {
-    background-image: image_url("black-linen.png") !important;
+    background-image: url("../images/black-linen.png") !important;
     background-repeat: repeat !important;
     background-size: auto !important;
   }
@@ -650,7 +650,7 @@ div.dataTables_filter {
 .item-modal,
 .section-modal {
   .modal-content {
-    background-image: image_url("black-linen.png");
+    background-image: url("../images/black-linen.png");
   }
 }
 
@@ -663,7 +663,7 @@ div.dataTables_filter {
 }
 
 .bee-homepage-banner {
-  background-image: image_url("home.jpg");
+  background-image: url("../images/home.jpg");
   background-position: left top;
   background-repeat: no-repeat;
   background-size: cover;
@@ -681,7 +681,7 @@ div.dataTables_filter {
   }
 
   h1 {
-    background-image: image_url("dec.logo.svg");
+    background-image: url("../images/dec.logo.svg");
     background-size: cover;
     height: 0;
     margin: 0;
@@ -691,7 +691,7 @@ div.dataTables_filter {
   }
 
   h3 {
-    background-image: image_url("powered.png");
+    background-image: url("../images/powered.png");
     background-size: cover;
     bottom: 60px;
     height: 0;
@@ -1006,7 +1006,7 @@ div.dataTables_filter {
 .errorframe {
   margin: 0 auto;
   width: 50vw;
-  background: image_url("frame.png") no-repeat;
+  background: url("../images/frame.png") no-repeat;
   background-size: contain;
   padding:20vh 10vw;
   max-width: 790px;
@@ -1025,13 +1025,12 @@ div.dataTables_filter {
   }
 }
 
-@import "cards.css.scss";
 @import "collection.css.scss";
 @import "showcase.css.scss";
 @import "theme-light.css.scss";
 
 @import "_material-design-overwrites.scss";
 
-// media-query stylesheet
+/* media-query stylesheet */
 @import "_media-medium.css.scss";
 @import "_media-small.css.scss";

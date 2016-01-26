@@ -28,10 +28,15 @@ module.exports = [
         {
           test: /\.(css|scss)$/,
           exclude: /node_modules/,
-          loader: ExtractTextPlugin.extract("style-loader", "css-loader", "sass-loader")
+          loader: ExtractTextPlugin.extract("style", "css!sass")
         },
         {
-          test: /\.(eot|woff|woff2|ttf|svg|png|jpg|gif)([\?]?.*)$/,
+          test: /\.(svg|png|jpg|gif)([\?]?.*)$/,
+          exclude: /node_modules/,
+          loader: "file-loader?name=images/[name].[ext]"
+        },
+        {
+          test: /\.(eot|woff|woff2|ttf)([\?]?.*)$/,
           exclude: /node_modules/,
           loader: 'url-loader'
         }

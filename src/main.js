@@ -1,5 +1,4 @@
-import './assets/css/material-icons.css';
-import './assets/css/main.css';
+import "./assets/css/main.scss";
 
 import injectTapEventPlugin from "react-tap-event-plugin";
 injectTapEventPlugin();
