@@ -1,11 +1,9 @@
 
 module.exports = function() {
-  let HONEYCOMB_URL;
-  if(process.env.NODE_ENV == 'development') {
-    HONEYCOMB_URL = 'http://localhost:3017';
+  if(process.env.NODE_ENV == 'production') {
+    return 'http://honeycomb.library.nd.edu'
   }
-  else if(process.env.NODE_ENV == 'production') {
-    HONEYCOMB_URL = 'http://honeycomb.library.nd.edu'
+  else {
+    return 'http://localhost:3017';
   }
-  return HONEYCOMB_URL;
 }
