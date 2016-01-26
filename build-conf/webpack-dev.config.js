@@ -43,7 +43,12 @@ module.exports = [
       ]
     },
     plugins: [
-      new ExtractTextPlugin("styles.css")
+      new ExtractTextPlugin("styles.css"),
+      new webpack.DefinePlugin({
+        "process.env": {
+          NODE_ENV: JSON.stringify("development")
+        }
+      })
     ],
     externals: {
       "jquery": "jQuery"
