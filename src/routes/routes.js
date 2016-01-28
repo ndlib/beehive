@@ -25,7 +25,7 @@ export default function() {
         <Route path=":collectionID/*/showcases/:showcaseID/*" component={ShowcasePage} />
         <Route path=":collectionID/*" component={CollectionPage} />
         <Route path="404" component={ErrorPage}/>
-    </Route>
+      </Route>
     </Router>
   );
 }

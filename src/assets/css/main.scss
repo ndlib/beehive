@@ -1,11 +1,11 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900);
+@import url('//fonts.googleapis.com/css?family=Roboto');
 @import './bootstrap.css';
 @import './material-icons.css';
 @import './prev-next.css.scss';
 @import './components/itemImageZoomButton.css.scss';
 @import './components/itemShowImageBox.css.scss';
 @import './components/thumbnail.css.scss';
-// require bootstrap-material-design
+@import './bootstrap-material-design.css';
 @import './nav_bar.css.scss';
 @import './animations.css.scss';
 @import './perfect-scrollbar.css';

@@ -10,7 +10,6 @@ $navbar-dropdown-background: #2b2a2a;
 $footer-height: 0;
 $secondary-background: rgba(0, 0, 0, .541176);
 $secondary-background-hover: rgba(0, 0, 0, .441176);
-
 @import "fonts.css.scss";
 
 html {
@@ -84,9 +83,7 @@ body {
 
 
 
-h1, h2, h3, h4, h5, h6 {
-  margin-top: 0;
-}
+
 
 p {
   margin-bottom: 20px;
@@ -894,7 +891,6 @@ div.dataTables_filter {
     dt {
       margin-bottom: .3em;
       font-size: 15px;
-      font-family: serif;
       color: $darkgrey;
     }
 
@@ -1029,7 +1025,7 @@ div.dataTables_filter {
 @import "showcase.css.scss";
 @import "theme-light.css.scss";
 
-@import "_material-design-overwrites.scss";
+
 
 /* media-query stylesheet */
 @import "_media-medium.css.scss";

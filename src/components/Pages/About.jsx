@@ -4,7 +4,7 @@ var mui = require('material-ui');
 var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx');
 var PageContent = require('../../layout/PageContent.jsx');
 var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx');
-var PagesShow = require('./PagesShow.jsx');
+var PagesShow = require('../Pages/PagesShow.jsx');
 
 var About = React.createClass({
   mixins: [
