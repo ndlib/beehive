@@ -8,8 +8,8 @@ module.exports = [
         main: './src/main.js'
     },
     output: {
-        path: './public/resources',
-        filename: 'bundle.js'
+        path: './public',
+        filename: 'resources/bundle.js'
     },
     devtool: 'inline-source-map',
     debug: true,
@@ -43,7 +43,7 @@ module.exports = [
       ]
     },
     plugins: [
-      new ExtractTextPlugin("styles.css"),
+      new ExtractTextPlugin("resources/styles.css"),
       new webpack.DefinePlugin({
         "process.env": {
           NODE_ENV: JSON.stringify("development")

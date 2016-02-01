@@ -8,8 +8,8 @@ module.exports = [
       main: './src/main.js'
     },
     output: {
-      path: './public/resources',
-      filename: 'bundle.js'
+      path: './public',
+      filename: 'resources/bundle.js'
     },
     module: {
       loaders: [
@@ -41,7 +41,7 @@ module.exports = [
       ]
     },
     plugins: [
-      new ExtractTextPlugin("styles.css"),
+      new ExtractTextPlugin("resources/styles.css"),
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin({
         compress: {
