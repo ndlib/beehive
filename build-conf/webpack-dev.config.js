@@ -33,7 +33,7 @@ module.exports = [
         {
           test: /\.(svg|png|jpg|gif)([\?]?.*)$/,
           exclude: /node_modules/,
-          loader: "file-loader?name=images/[name].[ext]"
+          loader: "file-loader?name=/images/[name].[ext]"
         },
         {
           test: /\.(eot|woff|woff2|ttf)([\?]?.*)$/,
