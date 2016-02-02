@@ -1,0 +1,108 @@
+$navbar-button-background: #2b2a2a;
+$dropdown-button-size: 30px;
+$dropdown-button-padding: 10px;
+$dropdown-button-margin-left: 15px;
+$title-offset: $dropdown-button-size + ($dropdown-button-padding * 2) + $dropdown-button-margin-left;
+
+.brand-bar {
+  background-color: #002b5b;
+  background-image: none;
+  border-bottom: none;
+  padding: 15px 0;
+  margin: 0;
+  height: 50px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 5;
+}
+
+.brand-bar a {
+  color: white;
+  font-size: 1em;
+  font-family: "Adobe Garamond Pro", Georgia, serif;
+  letter-spacing: 0.2em;
+  padding: 0.15em 0;
+  text-transform: uppercase;
+}
+
+.brand-bar a i {
+  text-transform: none;
+}
+
+.title-bar {
+  background-color: #dcb439;
+  background-image: none;
+  border-top: none;
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.navbar-default .title-bar .navbar-brand {
+  color: #302205;
+  max-width: calc(100% - #{$title-offset});
+}
+
+.navbar-default .title-bar .navbar-nav > li > a {
+  color: #302205;
+}
+
+footer {
+
+  color: #999999;
+  background-color: #2b2a2a;
+    background-image: linear-gradient(to top, #2b2a2a 0%, #393838 140%);
+    bottom: 0;
+    height: 49px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    margin-top: 3em;
+    clear: both;
+
+    a {
+      float: right;
+      width: 100px;
+      height: 0;
+      overflow: hidden;
+      padding-top: 33px;
+      display: block;
+      margin: 8px;
+    }
+    .hesburgh-logo {
+      background-image: url("../images/ndmark300.w.png");
+      background-size: cover;
+    }
+    .dec-logo {
+      background-image: url("../images/dec.logo.svg");
+      background-size: cover;
+    }
+    .connecting-logo {
+      background-image: url("../images/connecting.logo.png");
+      background-size: cover;
+      width: 120px;
+    }
+}
+
+
+.navbar-header {
+  .btn-group {
+    background-color: $navbar-button-background;
+    border-radius: 0;
+    float: left;
+    margin-left: $dropdown-button-margin-left;
+    padding: $dropdown-button-padding;
+  }
+}
+
+.featured-content-dropdown-button {
+  background: transparent;
+  height: $dropdown-button-size;
+  padding: 0;
+  width: $dropdown-button-size;
+
+  &.btn-primary:not(.btn-link):not(.btn-flat) {
+    background: transparent;
+  }
+}
