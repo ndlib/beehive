@@ -4,17 +4,17 @@ var mui = require('material-ui');
 var theme = require('../../themes/beehive.jsx');
 var MediaQuery = require('react-responsive');
 
-var ShowcaseCard = require('./ShowcaseCard.jsx');
+var SitePathCard = require('./SitePathCard.jsx');
 
-var ShowcasesCardList = React.createClass({
+var SitePathCardList = React.createClass({
   propTypes: {
-    showcases: React.PropTypes.array.isRequired,
+    sitePath: React.PropTypes.array.isRequired,
     intro: React.PropTypes.element,
   },
 
-  showcaseNodes: function() {
-    return this.props.showcases.map(function(showcase, index) {
-      return (<ShowcaseCard showcase={showcase} key={index} />);
+  pathNodes: function() {
+    return this.props.sitePath.map(function(siteObject, index) {
+      return (<SitePathCard siteObject={siteObject} key={index} />);
     });
   },
 
@@ -25,7 +25,7 @@ var ShowcasesCardList = React.createClass({
         <div key="intro">{this.props.intro}</div>
       );
     }
-    return nodes.concat(this.showcaseNodes());
+    return nodes.concat(this.pathNodes());
   },
 
   gridList: function(cols) {
@@ -37,7 +37,7 @@ var ShowcasesCardList = React.createClass({
   },
 
   render: function() {
-    if (this.props.showcases.length > 0 || this.props.intro) {
+    if (this.props.sitePath.length > 0 || this.props.intro) {
       return (
         <div>
           <MediaQuery maxWidth={650}>
@@ -61,4 +61,4 @@ var ShowcasesCardList = React.createClass({
   }
 });
 
-module.exports = ShowcasesCardList;
+module.exports = SitePathCardList;

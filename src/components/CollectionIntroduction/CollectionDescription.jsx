@@ -1,7 +1,7 @@
 var React = require('react');
 var mui = require('material-ui');
 
-var ShowcaseCard = require('../Collection/ShowcaseCard.jsx');
+var SitePathCard = require('../Collection/SitePathCard.jsx');
 var PagesShow = require('../Pages/PagesShow.jsx');
 
 var CollectionDescription = React.createClass({
@@ -29,13 +29,13 @@ var CollectionDescription = React.createClass({
 
   showNext: function() {
     if(this.props.collection &&
-      this.props.collection.showcases &&
-      this.props.collection.showcases.length > 0){
+      this.props.collection.site_path &&
+      this.props.collection.site_path.length > 0){
       return (
           <div style={{margin: '0 auto', maxWidth: '500px'}}>
-            <ShowcaseCard
-              headerTitle="Start Showcases"
-              showcase={this.props.collection.showcases[0]}
+            <SitePathCard
+              headerTitle="Continue to"
+              siteObject={this.props.collection.site_path[0]}
               addNextButton={true}
               fixedSize={false}
             />

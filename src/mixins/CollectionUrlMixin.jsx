@@ -15,19 +15,11 @@ var CollectionUrlMixin = {
     return this.collectionUrl(collection) + '/search?q=';
   },
 
-  sectionUrl: function(section) {
-    return this.collectionObjectUrl('sections', section);
-  },
-
-  showcaseUrl: function(showcase) {
-    return this.collectionObjectUrl('showcases', showcase);
-  },
-
-  firstShowcaseUrl: function(showcase) {
+  startSitePathUrl: function() {
     var url;
-    if(this.props.collection.showcases){
-      if(this.props.collection.showcases.length > 0) {
-        url = this.showcaseUrl(this.props.collection.showcases[0]);
+    if(this.props.collection.site_path){
+      if(this.props.collection.site_path.length > 0) {
+        url = this.collectionObjectUrl(this.props.collection.site_path[0]);
       }
     }
     return url;
@@ -37,9 +29,24 @@ var CollectionUrlMixin = {
     return this.collectionObjectUrl('items', item);
   },
 
-  collectionObjectUrl: function(basePath, object) {
+  collectionObjectUrl: function(object) {
     var collectionPath = window.location.pathname.match(/(?:\/[^\/]+){2}/);
-    var path = collectionPath + '/' + basePath + '/' + encodeURIComponent(object.id) + '/' + encodeURIComponent(object.slug);
+    var typePath = ""
+    switch(object.additionalType){
+      case "https://github.com/ndlib/honeycomb/wiki/Page":
+        typePath = "pages";
+        break;
+      case "https://github.com/ndlib/honeycomb/wiki/Showcase":
+        typePath = "showcases";
+        break;
+      case "https://github.com/ndlib/honeycomb/wiki/Section":
+        typePath = "sections";
+        break;
+      default:
+        typePath = "";
+        break;
+    }
+    var path = collectionPath + '/' + typePath + '/' + encodeURIComponent(object.id) + '/' + encodeURIComponent(object.slug);
     return path;
   },
 

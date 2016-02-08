@@ -10,7 +10,7 @@ class CollectionIntroductionPage extends Component {
     return (
       <CollectionIntroduction
         collection={HoneycombURL() + "/v1/collections/"
-          + this.props.params.collectionID + "/showcases"}
+          + this.props.params.collectionID + "/site_path"}
       />
     )
   }

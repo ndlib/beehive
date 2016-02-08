@@ -3,8 +3,8 @@ var React = require('react');
 var mui = require('material-ui');
 
 var CollectionIntroCard = require('./CollectionIntroCard.jsx');
-var ShowcasesCardList = require('./ShowcasesCardList.jsx');
-var CollectionShowShowcases = React.createClass({
+var SitePathCardList = require('./SitePathCardList.jsx');
+var CollectionShowSitePath = React.createClass({
 
   propTypes: {
     collection: React.PropTypes.object.isRequired,
@@ -19,9 +19,9 @@ var CollectionShowShowcases = React.createClass({
   },
 
   render: function() {
-    if (this.props.collection.showcases) {
+    if (this.props.collection.site_path) {
       return (
-        <ShowcasesCardList showcases={this.props.collection.showcases} intro={this.intro()} />
+        <SitePathCardList sitePath={this.props.collection.site_path} intro={this.intro()} />
       );
     } else {
       return (
@@ -31,4 +31,4 @@ var CollectionShowShowcases = React.createClass({
   }
 });
 
-module.exports = CollectionShowShowcases;
+module.exports = CollectionShowSitePath;

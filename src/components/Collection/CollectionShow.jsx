@@ -26,11 +26,11 @@ var CollectionShow = React.createClass({
     return this.props.collection.image["thumbnail/medium"].contentUrl.replace(re, '%20');
   },
 
-  viewExhibitUrl: function() {
+  startUrl: function() {
     var url = this.introUrl(this.props.collection)
 
     if (!url) {
-      url = this.firstShowcaseUrl(this.props.collection.showcase);
+      url = this.startSitePathUrl();
     }
 
     return url;
@@ -47,13 +47,13 @@ var CollectionShow = React.createClass({
     });
   },
 
-  firstExhibitLink: function() {
-    if (this.viewExhibitUrl()) {
+  startButton: function() {
+    if (this.startUrl()) {
       return (
         <mui.FloatingActionButton
           primary={true}
           linkButton={true}
-          href={this.viewExhibitUrl()}
+          href={this.startUrl()}
         >
             <mui.FontIcon className="material-icons">arrow_forward</mui.FontIcon>
         </mui.FloatingActionButton>
@@ -92,13 +92,10 @@ var CollectionShow = React.createClass({
         <mui.Paper circle={false} rounded={false} zDepth={0} >
           <mui.Card>
             {this.cardMediaSection()}
-            <mui.CardActions style={this.pageWidth()} className="startButton">
-              {this.firstExhibitLink()}
-            </mui.CardActions>
           </mui.Card>
           <mui.CardActions style={this.pageWidth()} className="startButton">
-              {this.firstExhibitLink()}
-            </mui.CardActions>
+            {this.startButton()}
+          </mui.CardActions>
         </mui.Paper>
       );
     } else {

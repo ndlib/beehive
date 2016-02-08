@@ -6,7 +6,7 @@ var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx');
 var CollectionShow = require('./CollectionShow.jsx');
 var PageContent = require('../../layout/PageContent.jsx');
 var CollectionIntro = require('./CollectionIntro.jsx');
-var CollectionShowShowcases = require('./CollectionShowShowcases.jsx');
+var CollectionShowSitePath = require('./CollectionShowSitePath.jsx');
 var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx');
 
 var Collection = React.createClass({
@@ -47,7 +47,7 @@ var Collection = React.createClass({
             <CollectionShow collection={this.state.collection} />
             <PageContent fluidLayout={false}>
               <CollectionIntro collection={this.state.collection} />
-              <CollectionShowShowcases collection={this.state.collection} />
+              <CollectionShowSitePath collection={this.state.collection} />
             </PageContent>
             <CollectionPageFooter collection={this.state.collection} />
         </div>
