@@ -11,7 +11,7 @@ import ShowcasePage from './ShowcasePage.jsx';
 import SearchPage from './SearchPage.jsx';
 import ErrorPage from './ErrorPage.jsx';
 import AboutPage from './AboutPage.jsx';
-// import PagesPage from './PagesPage.jsx';
+import PagesPage from './PagesPage.jsx';
 
 export default function() {
   const history = createHistory();
@@ -23,6 +23,7 @@ export default function() {
         <Route path=":collectionID/*/about" component={AboutPage} />
         <Route path=":collectionID/*/search" component={SearchPage} />
         <Route path=":collectionID/*/showcases/:showcaseID/*" component={ShowcasePage} />
+        <Route path=":collectionID/*/pages/:pageID/*" component={PagesPage} />
         <Route path=":collectionID/*" component={CollectionPage} />
         <Route path="404" component={ErrorPage}/>
       </Route>

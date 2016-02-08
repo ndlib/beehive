@@ -5,6 +5,7 @@ var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx');
 var PageContent = require('../../layout/PageContent.jsx');
 var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx');
 var PagesShow = require('./PagesShow.jsx');
+var SitePathCard = require('../Collection/SitePathCard.jsx');
 
 var Page = React.createClass({
   mixins: [
@@ -19,12 +20,6 @@ var Page = React.createClass({
     ]),
   },
 
-  getInitialState: function() {
-    return {
-      collection: {},
-    };
-  },
-
   componentDidMount: function() {
     if ('object' == typeof(this.props.collection)) {
       this.setState({
@@ -35,17 +30,33 @@ var Page = React.createClass({
     }
   },
 
+  nextCard: function() {
+    var nextCard = null;
+    if(this.state.collection.pages.nextObject) {
+      nextCard = (
+        <div style={{margin: '0 auto', maxWidth: '500px'}}>
+          <SitePathCard
+            headerTitle="Continue to"
+            siteObject={this.state.collection.pages.nextObject}
+            addNextButton={true}
+            fixedSize={false}
+          />
+        </div>
+      );
+    }
+    return nextCard;
+  },
+
   render: function() {
     if(!this.state.remoteCollectionLoaded) {
       return null;
     }
 
-    var pageContent = (<Loading/>);
+    var pageContent = (<div/>);
     var pageName;
     if(this.state.collection && this.state.collection.pages) {
       pageName = this.state.collection.pages.name;
       pageContent = this.state.collection.pages.content;
-
     }
 
     return (
@@ -53,6 +64,7 @@ var Page = React.createClass({
         <CollectionPageHeader collection={this.state.collection} branding={true}/>
           <PageContent>
             <PagesShow title={pageName} content={pageContent} />
+            { this.nextCard() }
           </PageContent>
         <CollectionPageFooter collection={this.state.collection} />
       </mui.AppCanvas>
