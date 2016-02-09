@@ -15,8 +15,19 @@ var PagesShow = React.createClass({
     ]).isRequired,
   },
 
-  style: function() {
+  headerStyle: function() {
     return {
+      maxWidth: "80%",
+      margin: "36px auto 36px",
+      textAlign: "center",
+    }
+  },
+
+  contentStyle: function() {
+    return {
+      fontSize: "16px",
+      maxWidth: "37em", // Should put it between 70-75 characters at 1em (16px)
+      margin: "0 auto",
     }
   },
 
@@ -24,16 +35,16 @@ var PagesShow = React.createClass({
     var pageName;
     var pageContent = (<div className="essay-content" />);
     if(this.props.title) {
-      pageName = (<h2>{this.props.title}</h2>);
+      pageName = (<h2 style={this.headerStyle()} >{this.props.title}</h2>);
     }
     if(this.props.content) {
       pageContent = (
-        <div className="essay-content" style={this.style()} dangerouslySetInnerHTML={{__html:this.props.content}} />
+        <div style={this.contentStyle()} dangerouslySetInnerHTML={{__html:this.props.content}} />
       );
     }
 
     return (
-      <div>
+      <div className="essay-content">
         {pageName}
         {pageContent}
       </div>

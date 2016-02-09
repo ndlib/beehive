@@ -27,14 +27,24 @@ var PageContent = React.createClass({
         padding: '0 8%',
         background: 'none',
         position: 'relative',
-        //top: '50px',
+        maxWidth: "1100px",
+        margin: "0 auto",
+        padding: "2rem"
       });
+    }
+  },
+
+  paperStyle: function() {
+    return {
+      maxWidth: "1100px",
+      margin: "0 auto",
+      padding: "2rem"
     }
   },
 
   render: function() {
     return (
-      <mui.Paper transitionEnabled={false} circle={false} rounded={false} zDepth={0} style={this.style()} >
+      <mui.Paper transitionEnabled={false} circle={false} rounded={false} zDepth={1} style={this.style()} >
         {this.props.children}
       </mui.Paper>
     );
