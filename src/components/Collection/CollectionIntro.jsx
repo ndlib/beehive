@@ -1,7 +1,5 @@
 var React = require('react');
 
-var PagesShow = require('../Pages/PagesShow.jsx');
-
 var CollectionIntro = React.createClass({
   mixins: [
     require("../../mixins/MuiThemeMixin.jsx")

@@ -1,6 +1,9 @@
 var React = require('react');
 var mui = require('material-ui');
 
+var OverlayPage = require("../../layout/OverlayPage.jsx");
+var ItemShow = require('../../display/ItemShow.jsx');
+
 var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx');
 var PageContent = require('../../layout/PageContent.jsx');
 var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx');
@@ -31,6 +34,36 @@ var Page = React.createClass({
     }
   },
 
+  closeItem: function () {
+    this.setState({ item: null });
+  },
+
+  contentClicked: function(event) {
+    var item = getItemFromEvent(event);
+    if(item) {
+        this.setState({item: item });
+      }
+    }
+  },
+
+  contentMouseOver: function(event) {
+    var item = getItemFromEvent(event);
+    if(item) {
+      event.target.style.cursor = "pointer";
+    }
+  },
+
+  getItemFromEvent: function(event) {
+    var item;
+    var itemId = event.target.getAttribute("item_id");
+    if(itemId && this.state.collection.pages.items) {
+      item = this.state.collection.pages.items.find(function(e, i, a) {
+        return e["id"] == itemId;
+      });
+    }
+    return item;
+  },
+
   nextCard: function() {
     var nextCard = null;
     if(this.state.collection.pages.nextObject) {
@@ -55,23 +88,36 @@ var Page = React.createClass({
     return null;
   },
 
+  renderItem: function() {
+    if(this.state.item) {
+      return(
+        <OverlayPage title={this.state.item.name} onCloseButtonClick={this.closeItem}>
+          <ItemShow item={this.state.item} onClose={this.closeItem}/>
+        </OverlayPage>
+      );
+    }
+  },
+
+  pageContent: function() {
+    var pageContent = (<div/>);
+    if(this.state.collection && this.state.collection.pages) {
+      return (this.state.collection.pages.content);
+    } else {
+      return (<div/>);
+    }
+  },
+
   render: function() {
     if(!this.state.remoteCollectionLoaded) {
       return null;
     }
 
-    var pageContent = (<div/>);
-    var pageName;
-    if(this.state.collection && this.state.collection.pages) {
-      pageName = this.state.collection.pages.name;
-      pageContent = this.state.collection.pages.content;
-    }
-
     return (
       <mui.AppCanvas>
         <CollectionPageHeader collection={this.state.collection} branding={true}/>
-          <PageContent>
-            <PagesShow title={pageName} content={pageContent}>
+          { this.renderItem() }
+          <PageContent onClick={this.contentClicked} onMouseOver={this.contentMouseOver}>
+            <PagesShow title={this.state.collection.pages.name} content={this.pageContent()}>
               { this.nextCard() }
               { this.previewCard() }
             </PagesShow>
