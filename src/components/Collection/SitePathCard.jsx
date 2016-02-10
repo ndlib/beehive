@@ -53,6 +53,12 @@ var SitePathCard = React.createClass({
     };
   },
 
+  buttonStyle: function() {
+    return {
+      backgroundColor: "#2c5882",
+    }
+  },
+
   image: function () {
     var space = ' ';
     var re = new RegExp(space, 'g');
@@ -69,7 +75,8 @@ var SitePathCard = React.createClass({
           <mui.FloatingActionButton
             primary={true}
             linkButton={true}
-            href={this.props.siteObject['@id']}
+            style={this.buttonStyle()}
+            href={this.collectionObjectUrl(this.props.siteObject)}
             disableTouchRipple={true}
           >
             <mui.FontIcon className="material-icons">arrow_forward</mui.FontIcon>

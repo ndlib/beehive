@@ -6,6 +6,7 @@ var PageContent = require('../../layout/PageContent.jsx');
 var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx');
 var PagesShow = require('./PagesShow.jsx');
 var SitePathCard = require('../Collection/SitePathCard.jsx');
+var PreviewLink = require('../../layout/PreviewLink.jsx')
 
 var Page = React.createClass({
   mixins: [
@@ -47,6 +48,13 @@ var Page = React.createClass({
     return nextCard;
   },
 
+  previewCard: function() {
+    if(this.state.collection.pages.nextObject) {
+      return (<PreviewLink siteObject={this.state.collection.pages.nextObject}/>);
+    }
+    return null;
+  },
+
   render: function() {
     if(!this.state.remoteCollectionLoaded) {
       return null;
@@ -65,6 +73,7 @@ var Page = React.createClass({
           <PageContent>
             <PagesShow title={pageName} content={pageContent} />
             { this.nextCard() }
+            { this.previewCard() }
           </PageContent>
         <CollectionPageFooter collection={this.state.collection} />
       </mui.AppCanvas>
