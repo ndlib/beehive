@@ -20,7 +20,7 @@ var CollectionIntro = React.createClass({
   render: function() {
     if(this.props.collection) {
       return (
-        <PagesShow content={this.props.collection.short_description } />
+        <div className="essay-content" style={this.style()} dangerouslySetInnerHTML={{__html:this.props.collection.short_description}} />
       );
     }
   }

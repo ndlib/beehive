@@ -33,11 +33,8 @@ var CollectionIntroduction = React.createClass({
           <div className="bee-page-title-bar"><h2 className="bee-page-title-bar-title">Introduction</h2></div>
         </CollectionPageHeader>
         <PageContent>
-          <div style={{margin:'0 auto'}}>
-            <CollectionDescription collection={this.state.collection} />
-          </div>
+          <CollectionDescription collection={this.state.collection} />
         </PageContent>
-
         <CollectionPageFooter collection={this.state.collection} />
       </mui.AppCanvas>
     );

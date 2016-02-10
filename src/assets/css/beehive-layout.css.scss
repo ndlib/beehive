@@ -9,18 +9,26 @@ $scrollbar-color: #666;
 
   h1 {
     font-size: 36px;
+    line-height: 40pt;
+    letter-spacing: 0
   }
 
   h2 {
     font-size: 30px;
+    line-height: 32pt;
+    letter-spacing: 0
   }
 
   h3 {
     font-size: 24px;
+    line-height: 28pt;
+    letter-spacing: 0
   }
 
   h4 {
     font-size: 18px;
+    line-height: 28pt;
+    letter-spacing: 0
   }
 
   blockquote {
@@ -34,14 +42,20 @@ $scrollbar-color: #666;
     padding-left: 0;
     color: #777;
     font-style: italic;
+    line-height: 24pt;
+    letter-spacing: 0
   }
 
   h5 {
     font-size: 16px;
+    line-height: 24pt;
+    letter-spacing: 0
   }
 
   p {
     font-size: 16px;
+    line-height: 20pt;
+    letter-spacing: 0
   }
 
 }

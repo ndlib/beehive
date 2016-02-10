@@ -26,8 +26,16 @@ var PagesShow = React.createClass({
   contentStyle: function() {
     return {
       fontSize: "16px",
-      maxWidth: "37em", // Should put it between 70-75 characters at 1em (16px)
+      maxWidth: "32.5em", // Should put it between 70-75 characters at 1em (16px)
       margin: "0 auto",
+    }
+  },
+
+  paperStyle: function() {
+    return {
+      maxWidth: "1100px",
+      margin: "0 auto",
+      padding: "2rem"
     }
   },
 
@@ -44,10 +52,11 @@ var PagesShow = React.createClass({
     }
 
     return (
-      <div className="essay-content">
+      <mui.Paper className="essay-content" zDepth={1} style={this.paperStyle()}>
         {pageName}
         {pageContent}
-      </div>
+        {this.props.children}
+      </mui.Paper>
     )
   }
 });

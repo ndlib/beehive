@@ -71,9 +71,10 @@ var Page = React.createClass({
       <mui.AppCanvas>
         <CollectionPageHeader collection={this.state.collection} branding={true}/>
           <PageContent>
-            <PagesShow title={pageName} content={pageContent} />
-            { this.nextCard() }
-            { this.previewCard() }
+            <PagesShow title={pageName} content={pageContent}>
+              { this.nextCard() }
+              { this.previewCard() }
+            </PagesShow>
           </PageContent>
         <CollectionPageFooter collection={this.state.collection} />
       </mui.AppCanvas>
