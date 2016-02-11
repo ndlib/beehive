@@ -8,8 +8,10 @@ var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx');
 var PageContent = require('../../layout/PageContent.jsx');
 var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx');
 var PagesShow = require('./PagesShow.jsx');
+var PageTitleBar = require('./PageTitleBar.jsx');
 var SitePathCard = require('../Collection/SitePathCard.jsx');
-var PreviewLink = require('../../layout/PreviewLink.jsx')
+var PreviewLink = require('../../layout/PreviewLink.jsx');
+var MediaQuery = require('react-responsive');
 
 var Page = React.createClass({
   mixins: [
@@ -24,6 +26,13 @@ var Page = React.createClass({
     ]),
   },
 
+  getInitialState: function() {
+    return {
+      currentItem: null,
+      titleSectionPercentVisible: 0,
+    };
+  },
+
   componentDidMount: function() {
     if ('object' == typeof(this.props.collection)) {
       this.setState({
@@ -34,20 +43,46 @@ var Page = React.createClass({
     }
   },
 
+  // Callback from loadRemoteCollection
+  setValues: function(result){
+    if(result.pages.items) {
+      this.linkItems(result.pages.items);
+    }
+    this.setState({
+      remoteCollectionLoaded: true,
+      collection: result,
+    });
+    return true;
+  },
+
+  // Creates doubly linked list from items to make subsequent
+  // item navigation operations easier/faster
+  linkItems: function(items) {
+    items.forEach(function(item, i, array) {
+      var nextI = i + 1;
+      var prevI = i - 1;
+      if(nextI < array.length) {
+        item.nextItem = array[nextI];
+      }
+      if(prevI >= 0) {
+        item.previousItem = array[prevI];
+      }
+    });
+  },
+
   closeItem: function () {
-    this.setState({ item: null });
+    this.setState({ currentItem: null });
   },
 
   contentClicked: function(event) {
-    var item = getItemFromEvent(event);
+    var item = this.getItemFromEvent(event);
     if(item) {
-        this.setState({item: item });
-      }
+      this.setState({currentItem: item });
     }
   },
 
   contentMouseOver: function(event) {
-    var item = getItemFromEvent(event);
+    var item = this.getItemFromEvent(event);
     if(item) {
       event.target.style.cursor = "pointer";
     }
@@ -67,16 +102,28 @@ var Page = React.createClass({
   nextCard: function() {
     var nextCard = null;
     if(this.state.collection.pages.nextObject) {
-      nextCard = (
-        <div style={{margin: '0 auto', maxWidth: '500px'}}>
-          <SitePathCard
-            headerTitle="Continue to"
-            siteObject={this.state.collection.pages.nextObject}
-            addNextButton={true}
-            fixedSize={false}
-          />
-        </div>
-      );
+      nextCard = [
+        <MediaQuery minWidth={1000}>
+          <div style={{margin: '0 auto', maxWidth: '500px'}}>
+            <SitePathCard
+              headerTitle="Continue to"
+              siteObject={this.state.collection.pages.nextObject}
+              addNextButton={true}
+              fixedSize={false}
+            />
+          </div>
+        </MediaQuery>,
+        <MediaQuery maxWidth={1000}>
+          <div style={{margin: '0 0', maxWidth: '500px'}}>
+            <SitePathCard
+              headerTitle="Continue to"
+              siteObject={this.state.collection.pages.nextObject}
+              addNextButton={true}
+              fixedSize={false}
+            />
+          </div>
+        </MediaQuery>
+      ];
     }
     return nextCard;
   },
@@ -89,12 +136,26 @@ var Page = React.createClass({
   },
 
   renderItem: function() {
-    if(this.state.item) {
+    if(this.state.currentItem) {
       return(
-        <OverlayPage title={this.state.item.name} onCloseButtonClick={this.closeItem}>
-          <ItemShow item={this.state.item} onClose={this.closeItem}/>
+        <OverlayPage title={this.state.currentItem.name} onCloseButtonClick={this.closeItem}
+          onNextButtonClick={this.state.currentItem.nextItem ? this.nextButtonClick : null}
+          onPrevButtonClick={this.state.currentItem.previousItem ? this.prevButtonClick : null}>
+          <ItemShow item={this.state.currentItem} onClose={this.closeItem}/>
         </OverlayPage>
       );
+    }
+  },
+
+  nextButtonClick: function() {
+    if(this.state.currentItem.nextItem) {
+      this.setState({currentItem: this.state.currentItem.nextItem});
+    }
+  },
+
+  prevButtonClick: function() {
+    if(this.state.currentItem.previousItem) {
+      this.setState({currentItem: this.state.currentItem.previousItem});
     }
   },
 
@@ -114,10 +175,12 @@ var Page = React.createClass({
 
     return (
       <mui.AppCanvas>
-        <CollectionPageHeader collection={this.state.collection} branding={true}/>
+        <CollectionPageHeader collection={this.state.collection} branding={false}>
+          <PageTitleBar ref="PageTitleBar" title={this.state.collection.pages.name}/>
+        </CollectionPageHeader>
           { this.renderItem() }
           <PageContent onClick={this.contentClicked} onMouseOver={this.contentMouseOver}>
-            <PagesShow title={this.state.collection.pages.name} content={this.pageContent()}>
+            <PagesShow content={this.pageContent()}>
               { this.nextCard() }
               { this.previewCard() }
             </PagesShow>
