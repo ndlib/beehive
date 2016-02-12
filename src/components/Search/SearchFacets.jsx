@@ -54,6 +54,26 @@ var SearchFacets = React.createClass({
     }.bind(this));
   },
 
+  isSelected: function(name) {
+    if(this.state.selectedFacet) {
+      for(var i = 0; i < this.state.selectedFacet.length; i++){
+        if(name == this.state.selectedFacet[i].value) {
+          return true;
+        }
+      }
+    }
+    return false;
+
+  },
+
+  checkBoxStyle: function() {
+    return {
+      fontSize: '24px',
+      top: '-6px',
+      width: '24px'
+    };
+  },
+
   values: function(facet) {
     var parentFacet = facet.field;
     if (facet.values) {
@@ -75,7 +95,7 @@ var SearchFacets = React.createClass({
             onClick={this.valueOnClick}
             innerDivStyle={{padding:'10px 16px'}}
             className="facet"
-            leftIcon={e.name == selectedValue ?  ( <mui.FontIcon className="material-icons" style={{fontSize: '28px', left: '-6px', top: '-6px', width: '24px' }}>check_circle</mui.FontIcon>) : null}
+            leftIcon={this.isSelected(e.name) ?  (<mui.FontIcon className="material-icons" style={this.checkBoxStyle()}>check_box</mui.FontIcon>) :  ( <mui.FontIcon className="material-icons" style={this.checkBoxStyle()}>check_box_outline_blank</mui.FontIcon>)}
           />
         );
       }.bind(this)));
@@ -85,6 +105,10 @@ var SearchFacets = React.createClass({
 
   searchStoreChanged() {
     this.setState({ selectedFacet: SearchStore.facetOption });
+  },
+
+  componentDidMount: function() {
+    this.searchStoreChanged();
   },
 
   componentWillMount: function() {
