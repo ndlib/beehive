@@ -179,6 +179,7 @@ var CollectionPageHeader = React.createClass({
             iconElementRight={rightNav}
             style={this.baseScreenStyle()}
           />
+          <div id="whiteSpacer" style={{ width: "100%", backgroundColor: "white", position: "fixed", top: this.state.themeVariables.height + "px", height: "1px", zIndex: "1000" }} />
           {this.props.children}
           </mui.Paper>
         </MediaQuery>
@@ -191,6 +192,7 @@ var CollectionPageHeader = React.createClass({
               iconElementRight={rightNav}
               style={this.appBarStyle()}
             />
+            <div id="whiteSpacer" style={{ width: "100%", backgroundColor: "white", position: "fixed", top: this.state.themeVariables.height + "px", height: "1px", zIndex: "1000" }} />
             {this.props.children}
           </mui.Paper>
         </MediaQuery>

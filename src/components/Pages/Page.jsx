@@ -176,9 +176,10 @@ var Page = React.createClass({
     return (
       <mui.AppCanvas>
         <CollectionPageHeader collection={this.state.collection} branding={false}>
-          <PageTitleBar ref="PageTitleBar" title={this.state.collection.pages.name}/>
+          <PageTitleBar title={this.state.collection.pages.name} height={35}/>
         </CollectionPageHeader>
           { this.renderItem() }
+          <div id="TitleSpacer" style={{ height: 35, width: "100%" }} />
           <PageContent onClick={this.contentClicked} onMouseOver={this.contentMouseOver}>
             <PagesShow content={this.pageContent()}>
               { this.nextCard() }

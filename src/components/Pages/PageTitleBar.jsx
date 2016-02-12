@@ -11,6 +11,13 @@ var PageTitleBar = React.createClass({
 
   propTypes: {
     title: React.PropTypes.object.isRequired,
+    height: React.PropTypes.number
+  },
+
+  getDefaultProps: function() {
+    return {
+      height: 35,
+    };
   },
 
   getInitialState: function() {
@@ -26,11 +33,11 @@ var PageTitleBar = React.createClass({
   style: function() {
     return {
       position: "fixed",
-      height: this.getCurrentTheme().appBar.height + "px",
       top: this.getCurrentTheme().appBar.height + 1 + "px",
+      height: this.props.height + "px",
       opacity: this.state.opacity,
       backgroundColor: "rgba(51,51,51,1)",
-      zIndex: '9',
+      zIndex: '1',
     };
   },
 
@@ -45,8 +52,15 @@ var PageTitleBar = React.createClass({
 
   titleBarStyle: function () {
     return {
+      lineHeight: this.props.height + "px",
       color: this.getCurrentPallette().alternateTextColor,
     }
+  },
+
+  closeButtonStyle: function() {
+    return {
+      marginLeft: 'auto',
+    };
   },
 
   clickCloseButton: function() {
@@ -56,12 +70,12 @@ var PageTitleBar = React.createClass({
 
   render: function() {
     return (
-      <mui.Toolbar style={this.style()}>
+      <mui.Toolbar id="PageTitleBar" style={this.style()}>
         <mui.ToolbarGroup key={0} float="left">
           <mui.ToolbarTitle text={this.props.title} style={this.titleBarStyle()} />
         </mui.ToolbarGroup>
-        <mui.ToolbarGroup key={1} float="right">
-          <CloseButton clickEvent={this.clickCloseButton} alternate={true} />
+        <mui.ToolbarGroup key={1} float="right" style={this.closeButtonStyle()}>
+          <CloseButton clickEvent={this.clickCloseButton} alternate={true} height={this.props.height} />
         </mui.ToolbarGroup>
       </mui.Toolbar>
     );

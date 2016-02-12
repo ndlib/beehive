@@ -21,7 +21,7 @@ var ShowcaseTitleBar = React.createClass({
   getDefaultProps: function() {
     return {
       percentFade: 0,
-      height: 40,
+      height: 35,
     }
   },
 
@@ -29,7 +29,7 @@ var ShowcaseTitleBar = React.createClass({
     return {
       opacity: 1 - this.props.percentFade,
       backgroundColor: this.getCurrentPallette().primary2Color,
-      //height: '34px',
+      height: this.props.height + 'px',
       zIndex: '200',
     };
   },
@@ -37,11 +37,18 @@ var ShowcaseTitleBar = React.createClass({
   titleBarStyle: function () {
     return {
       color: this.getCurrentPallette().alternateTextColor,
+      lineHeight: this.props.height + "px",
     }
   },
 
   name: function () {
     return this.props.showcase.name_line_1;
+  },
+
+  closeButtonStyle: function() {
+    return {
+      marginLeft: 'auto',
+    };
   },
 
   clickCloseButton: function() {
@@ -56,8 +63,8 @@ var ShowcaseTitleBar = React.createClass({
           <mui.ToolbarGroup key={0} float="left">
             <mui.ToolbarTitle text={this.name()} style={this.titleBarStyle()} />
           </mui.ToolbarGroup>
-          <mui.ToolbarGroup key={1} float="right">
-            <CloseButton clickEvent={this.clickCloseButton} alternate={true} />
+          <mui.ToolbarGroup key={1} float="right" style={this.closeButtonStyle()}>
+            <CloseButton clickEvent={this.clickCloseButton} alternate={true} height={this.props.height}/>
           </mui.ToolbarGroup>
         </mui.Toolbar>
       );
