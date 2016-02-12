@@ -24,7 +24,10 @@ var Search = React.createClass({
     ]),
     searchTerm: React.PropTypes.string,
     sortTerm: React.PropTypes.string,
-    facet: React.PropTypes.object,
+    facet: React.PropTypes.oneOfType([
+      React.PropTypes.object,
+      React.PropTypes.array,
+    ]),
     start: React.PropTypes.number,
     view: React.PropTypes.string,
   },
@@ -71,12 +74,19 @@ var Search = React.createClass({
 
   // Translates the facet option given in props to the structure the SearchStore expects.
   facetObject: function() {
-    var facet;
+    var facets;
     if(this.props.facet) {
-      var facetKey = Object.keys(this.props.facet)[0];
-      facet = { name: facetKey, value: this.props.facet[facetKey] };
+      facets = new Array()
+      for(var i = 0; i < this.props.facet.length; i++){
+        var facetKey = Object.keys(this.props.facet[i])[0];
+        var facetValue = Object.keys(this.props.facet[i])[1];
+        facets.push({
+          name: this.props.facet[i][facetKey],
+          value: this.props.facet[i][facetValue]
+        });
+      }
     }
-    return facet;
+    return facets;
   },
 
   render: function() {
