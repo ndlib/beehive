@@ -90,8 +90,16 @@ class SearchStore extends EventEmitter {
     reason = typeof reason != "undefined" ? reason : "load";
 
     var url = this._baseApiUrl + "?q=" + encodeURIComponent(this._searchTerm);
-    if(this._facetOption && this._facetOption.name && this._facetOption.value) {
-      url += "&facets[" + this._facetOption.name + "]=" + this._facetOption.value;
+    if(this._facetOption !== null){
+      for(var i = 0; i < this._facetOption.length; i++) {
+        if(this._facetOption[i].name && this._facetOption[i].value) {
+          url += "&facets["
+             + this._facetOption[i].name
+             + "]="
+             + this._facetOption[i].value;
+        }
+      }
+
     }
     if(this._sortOption) {
       url += "&sort=" + this._sortOption;
@@ -122,7 +130,28 @@ class SearchStore extends EventEmitter {
   }
 
   setSelectedFacet(facet) {
-    this._facetOption = facet;
+    if(!this._facetOption){
+      this._facetOption = [];
+    }
+    // should we add the facet, start by assuming yes we should
+    var addFacet = true;
+    // look for a facet wit the same name
+    // if it is found, delete it
+    // if it has the same name and same value, we don't want to add it so
+    // set addFacet to false
+    for (var i = 0; i < this._facetOption.length; i++) {
+      if(this._facetOption[i].name == facet.name){
+        if(this._facetOption[i].value == facet.value) {
+          addFacet = false;
+        }
+        this._facetOption.splice(i, 1);
+      }
+    }
+    if(addFacet){
+      this._facetOption.push(facet);
+    }
+
+
     this.executeQuery();
   }
 
@@ -172,8 +201,15 @@ class SearchStore extends EventEmitter {
     var uri = "/" + this._collection.id +
       "/" + this._collection.slug +
       "/search?q=" + this._searchTerm;
-    if(this._facetOption && this._facetOption.name && this._facetOption.value){
-      uri += "&facet[" + this._facetOption.name + "]=" + this._facetOption.value;
+    if(this._facetOption && this._facetOption.length > 0) {
+      for (var i = 0; i < this._facetOption.length; i++) {
+        if(this._facetOption[i].name && this._facetOption[i].value) {
+          uri += "&facet["
+             + this._facetOption[i].name
+             + "]="
+             + this._facetOption[i].value;
+        }
+      }
     }
     if(this._sortOption) {
       uri += "&sort=" + this._sortOption;
