@@ -5,7 +5,7 @@ module.exports = function(url) {
   var facetReg = reg.exec(href);
   while(facetReg !== null) {
     var string = facetReg[0].replace("facet[", "");
-    var arr = string.split("]=)";
+    var arr = string.split("]=");
     facets.push({name: arr[0], value: arr[1]});
     href = href.replace(facetReg[0], "");
     facetReg = reg.exec(href);
