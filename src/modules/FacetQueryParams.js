@@ -3,7 +3,7 @@ module.exports = function(url) {
   var facets = [];
   var reg = new RegExp( "(facet\\[.*?\\]=[^&#]*)", "i" );
   var facetReg = reg.exec(href);
-  while(facetReg != null) {
+  while(facetReg !== null) {
     var string = facetReg[0].replace("facet[", "");
     var arr = string.split("]=");
     facets.push({name: arr[0], value: arr[1]});

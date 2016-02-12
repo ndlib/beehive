@@ -90,13 +90,13 @@ class SearchStore extends EventEmitter {
     reason = typeof reason != "undefined" ? reason : "load";
 
     var url = this._baseApiUrl + "?q=" + encodeURIComponent(this._searchTerm);
-    if(this._facetOption != null){
+    if(this._facetOption !== undefined && this._facetOption !== null){
       for(var i = 0; i < this._facetOption.length; i++) {
         if(this._facetOption[i].name && this._facetOption[i].value) {
           url += "&facets["
-             + this._facetOption[i].name
-             + "]="
-             + this._facetOption[i].value;
+            + this._facetOption[i].name
+            + "]="
+            + this._facetOption[i].value;
         }
       }
 
@@ -205,9 +205,9 @@ class SearchStore extends EventEmitter {
       for (var i = 0; i < this._facetOption.length; i++) {
         if(this._facetOption[i].name && this._facetOption[i].value) {
           uri += "&facet["
-             + this._facetOption[i].name
-             + "]="
-             + this._facetOption[i].value;
+            + this._facetOption[i].name
+            + "]="
+            + this._facetOption[i].value;
         }
       }
     }
