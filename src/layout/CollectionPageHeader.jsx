@@ -161,7 +161,7 @@ var CollectionPageHeader = React.createClass({
     );
 
     var rightNav = (
-      <div>
+      <div style={{ marginRight: "16px" }}>
         {this.searchBox()}
         <MediaQuery minWidth={650}>
           {this.tabs()}

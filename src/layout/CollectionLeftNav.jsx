@@ -119,7 +119,7 @@ var CollectionLeftNav = React.createClass({
     }
     else {
       return (
-        <div style={{margin:'0'}}>
+        <div id="CollectionLeftNav" style={{margin:'0', marginLeft: "16px"}}>
           <mui.FlatButton
             onClick={this.clickEvent}
             style={this.buttonStyle()}
