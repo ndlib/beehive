@@ -52,7 +52,7 @@ var ListItem = React.createClass({
           onClick={this.itemOnClick}
           innerDivStyle={{paddingLeft:'80px', height:'85px'}}
         />
-      <mui.ListDivider  style={{marginLeft: "110px" }} />
+      <mui.Divider  style={{marginLeft: "110px" }} />
       </div>
     );
   }
