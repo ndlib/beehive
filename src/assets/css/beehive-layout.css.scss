@@ -9,53 +9,53 @@ $scrollbar-color: #666;
 
   h1 {
     font-size: 36px;
+    letter-spacing: 0;
     line-height: 40pt;
-    letter-spacing: 0
   }
 
   h2 {
     font-size: 30px;
+    letter-spacing: 0;
     line-height: 32pt;
-    letter-spacing: 0
   }
 
   h3 {
     font-size: 24px;
+    letter-spacing: 0;
     line-height: 28pt;
-    letter-spacing: 0
   }
 
   h4 {
     font-size: 18px;
+    letter-spacing: 0;
     line-height: 28pt;
-    letter-spacing: 0
   }
 
   blockquote {
+    background: none;
+    border: none;
+    box-shadow: none;
+    color: #777;
     font-size: 18px;
+    font-style: italic;
+    letter-spacing: 0;
+    line-height: 24pt;
     margin: 0;
     margin-bottom: 15px;
-    border: none;
-    background: none;
-    box-shadow: none;
     margin-left: 1.6em !important;
     padding-left: 0;
-    color: #777;
-    font-style: italic;
-    line-height: 24pt;
-    letter-spacing: 0
   }
 
   h5 {
     font-size: 16px;
+    letter-spacing: 0;
     line-height: 24pt;
-    letter-spacing: 0
   }
 
   p {
     font-size: 16px;
+    letter-spacing: 0;
     line-height: 20pt;
-    letter-spacing: 0
   }
 
 }
