@@ -62,7 +62,11 @@ var SitePathCard = React.createClass({
   image: function () {
     var space = ' ';
     var re = new RegExp(space, 'g');
-    return this.props.siteObject.image["thumbnail/medium"].contentUrl.replace(re, '%20');
+    if(this.props.siteObject.image && this.props.siteObject.image["thumbnail/medium"]) {
+      return this.props.siteObject.image["thumbnail/medium"].contentUrl.replace(re, '%20');
+    } else {
+      return '/images/intro.jpg';
+    }
   },
 
   nextButton: function() {
@@ -97,18 +101,14 @@ var SitePathCard = React.createClass({
   },
 
   cardMedia: function () {
-    if (this.props.siteObject.image && this.props.siteObject.image["@id"]) {
-      return (
-        <mui.CardMedia
-          mediaStyle={{background:'url(' + this.image() + ')', height:'100%', width:'100%', backgroundSize:'cover', backgroundPosition:'center top'}}
-          className="temp"
-          style={{height: '400px', overflow:'hidden'}}
-          overlay={this.cardTitle()}>
-          <img src={this.image()}  style={this.imageSize()} />
-        </mui.CardMedia>);
-    } else {
-      return (this.cardTitle());
-    }
+    return (
+      <mui.CardMedia
+        mediaStyle={{background:'url(' + this.image() + ')', height:'100%', width:'100%', backgroundSize:'cover', backgroundPosition:'center top'}}
+        className="temp"
+        style={{height: '400px', overflow:'hidden'}}
+        overlay={this.cardTitle()}>
+        <img src={this.image()}  style={this.imageSize()} />
+      </mui.CardMedia>);
   },
 
   render: function() {
