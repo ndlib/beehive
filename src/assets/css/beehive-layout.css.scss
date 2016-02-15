@@ -2,6 +2,7 @@ $white: #fff;
 $transparent-white: rgba(244, 244, 244, 0.8);
 $scrollbar-rail-color: #dedede;
 $scrollbar-color: #666;
+$blockquote-gray: #777;
 
 // The styles should match redactor editor in honeycomb
 .essay-content {
@@ -33,16 +34,16 @@ $scrollbar-color: #666;
 
   blockquote {
     background: none;
-    border: none;
+    border: 0;
     box-shadow: none;
-    color: #777;
+    color: $blockquote-gray;
     font-size: 18px;
     font-style: italic;
     letter-spacing: 0;
     line-height: 24pt;
     margin: 0;
     margin-bottom: 15px;
-    margin-left: 1.6em !important;
+    margin-left: 1.6em;
     padding-left: 0;
   }
 
