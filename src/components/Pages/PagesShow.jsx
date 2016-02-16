@@ -29,7 +29,7 @@ var PagesShow = React.createClass({
     var style = {
       fontSize: "16px",
       maxWidth: "32.5em", // Should put it between 70-75 characters at 1em (16px)
-      margin: "0 auto",
+      margin: "0 auto 60px",
     };
     if(media == "narrow") {
       style.margin = "0 0"

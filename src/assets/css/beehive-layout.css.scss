@@ -4,7 +4,9 @@ $scrollbar-rail-color: #dedede;
 $scrollbar-color: #666;
 $blockquote-gray: #777;
 
-// The styles should match redactor editor in honeycomb
+// If anything needs to change here, make sure to
+// make the same changes in ui-customizations.css.scss
+// in honeycomb.
 .essay-content {
   margin: 60px 0px;
 
@@ -12,24 +14,32 @@ $blockquote-gray: #777;
     font-size: 36px;
     letter-spacing: 0;
     line-height: 40pt;
+    margin-top: 20px;
+    margin-bottom: 10px;
   }
 
   h2 {
     font-size: 30px;
     letter-spacing: 0;
     line-height: 32pt;
+    margin-top: 20px;
+    margin-bottom: 10px;
   }
 
   h3 {
     font-size: 24px;
     letter-spacing: 0;
     line-height: 28pt;
+    margin-top: 20px;
+    margin-bottom: 10px;
   }
 
   h4 {
     font-size: 18px;
     letter-spacing: 0;
     line-height: 28pt;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 
   blockquote {
@@ -51,12 +61,16 @@ $blockquote-gray: #777;
     font-size: 16px;
     letter-spacing: 0;
     line-height: 24pt;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 
   p {
     font-size: 16px;
     letter-spacing: 0;
     line-height: 20pt;
+    margin-top: 0px;
+    margin-bottom: 20px;
   }
 
 }
