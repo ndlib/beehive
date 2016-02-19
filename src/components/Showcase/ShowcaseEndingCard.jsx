@@ -1,7 +1,7 @@
 var React = require("react");
 var mui = require('material-ui');
 
-var ShowcaseCard = require('../Collection/ShowcaseCard.jsx');
+var SitePathCard = require('../Collection/SitePathCard.jsx');
 
 var ShowcaseEndingCard = React.createClass({
   displayName: "Showcase Ending",
@@ -12,7 +12,7 @@ var ShowcaseEndingCard = React.createClass({
 
   propTypes: {
     height: React.PropTypes.number.isRequired,
-    showcase: React.PropTypes.object.isRequired,
+    siteObject: React.PropTypes.object.isRequired,
   },
 
   style: function() {
@@ -33,7 +33,7 @@ var ShowcaseEndingCard = React.createClass({
   render: function() {
     return (
       <mui.Paper style={this.style()} >
-        <ShowcaseCard showcase={this.props.showcase} addNextButton={true} headerTitle="Next Showcase" fixedSize={false}/>
+        <SitePathCard siteObject={this.props.siteObject} addNextButton={true} headerTitle="Continue to" fixedSize={false}/>
       </mui.Paper>
     );
   }

@@ -1,7 +1,5 @@
 var React = require('react');
 
-var PagesShow = require('../Pages/PagesShow.jsx');
-
 var CollectionIntro = React.createClass({
   mixins: [
     require("../../mixins/MuiThemeMixin.jsx")
@@ -20,7 +18,7 @@ var CollectionIntro = React.createClass({
   render: function() {
     if(this.props.collection) {
       return (
-        <PagesShow content={this.props.collection.short_description } />
+        <div className="essay-content" style={this.style()} dangerouslySetInnerHTML={{__html:this.props.collection.short_description}} />
       );
     }
   }

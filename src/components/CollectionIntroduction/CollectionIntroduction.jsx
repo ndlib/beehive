@@ -6,6 +6,7 @@ var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx');
 var PageContent = require('../../layout/PageContent.jsx');
 var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx');
 var CollectionDescription = require('./CollectionDescription.jsx');
+var PageTitleBar = require('../Pages/PageTitleBar.jsx');
 
 var CollectionIntroduction = React.createClass({
   mixins: [
@@ -30,14 +31,12 @@ var CollectionIntroduction = React.createClass({
     return (
       <mui.AppCanvas>
         <CollectionPageHeader collection={this.state.collection} >
-          <div className="bee-page-title-bar"><h2 className="bee-page-title-bar-title">Introduction</h2></div>
+          <PageTitleBar title="Introduction" height={35}/>
         </CollectionPageHeader>
+        <div id="TitleSpacer" style={{ height: 35, width: "100%" }} />
         <PageContent>
-          <div style={{margin:'0 auto'}}>
-            <CollectionDescription collection={this.state.collection} />
-          </div>
+          <CollectionDescription collection={this.state.collection} />
         </PageContent>
-
         <CollectionPageFooter collection={this.state.collection} />
       </mui.AppCanvas>
     );

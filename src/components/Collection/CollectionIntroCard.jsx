@@ -39,12 +39,6 @@ var CollectionIntroCard = React.createClass({
     window.location = this.introUrl(this.props.collection);
   },
 
-  mockShowcase: function() {
-    return {
-      name_line_1: "Introduction",
-    }
-  },
-
   render: function() {
     return (
       <mui.Card onClick={this.onClick} style={this.style()} >

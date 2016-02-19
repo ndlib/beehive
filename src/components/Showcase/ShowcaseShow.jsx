@@ -6,8 +6,8 @@ var ReactDOM = require('react-dom')
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 var MediaQuery = require('react-responsive');
 
-var maxShowcaseHeight = 840;
-var showcaseTitleHeight = 65;
+var maxShowcaseHeight = 805;
+var showcaseTitleHeight = 35;
 var scrollPadding = 80;
 var titleSectionWidthPercent = 0.85;
 var minBackgroundBlur = 0.3;

@@ -41,8 +41,8 @@ var ShowcaseSections = React.createClass({
 
   nextShowcase: function() {
     var nextShowcase;
-    if(this.props.showcase.nextShowcase) {
-      nextShowcase = (<ShowcaseEndingCard height={this.props.height} showcase={this.props.showcase.nextShowcase} />);
+    if(this.props.showcase.nextObject) {
+      nextShowcase = (<ShowcaseEndingCard height={this.props.height} siteObject={this.props.showcase.nextObject} />);
     }
     return nextShowcase;
   },

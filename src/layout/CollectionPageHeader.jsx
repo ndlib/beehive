@@ -19,9 +19,19 @@ var CollectionPageHeader = React.createClass({
     branding: React.PropTypes.bool,
   },
 
+  getInitialState: function() {
+    return {
+      themeVariables: this.getCurrentTheme().appBar,
+    }
+  },
+
   largeScreenStyle: function() {
+    var height = this.state.themeVariables.height + 1;
+    if(this.props.branding) {
+      height += 50;
+    }
     return ({
-      height: (this.props.branding ? '115px' : '65px'),
+      height: height + 'px',
       width: '100%',
       zIndex: "1000",
     });
@@ -29,7 +39,7 @@ var CollectionPageHeader = React.createClass({
 
   smallScreenStyle: function() {
     return ({
-      height: '65px',
+      height: this.state.themeVariables.height + 1 + 'px',
       width: '100%',
       zIndex: "1000",
     });
@@ -37,8 +47,6 @@ var CollectionPageHeader = React.createClass({
 
 
   titleStyle: function () {
-    var themeVariables = this.getCurrentTheme().appBar;
-
     return {
       whiteSpace: 'nowrap',
       overflow: 'hidden',
@@ -47,8 +55,8 @@ var CollectionPageHeader = React.createClass({
       paddingTop: 0,
       letterSpacing: 0,
       fontSize: 24,
-      color: themeVariables.alternateTextColor,
-      lineHeight: themeVariables.height + 'px',
+      color: this.state.themeVariables.alternateTextColor,
+      lineHeight: this.state.themeVariables.height + 'px',
     };
   },
 
@@ -153,7 +161,7 @@ var CollectionPageHeader = React.createClass({
     );
 
     var rightNav = (
-      <div>
+      <div style={{ marginRight: "16px" }}>
         {this.searchBox()}
         <MediaQuery minWidth={650}>
           {this.tabs()}
@@ -171,6 +179,8 @@ var CollectionPageHeader = React.createClass({
             iconElementRight={rightNav}
             style={this.baseScreenStyle()}
           />
+          <div id="whiteSpacer" style={{ width: "100%", backgroundColor: "white", position: "fixed", top: this.state.themeVariables.height + "px", height: "1px", zIndex: "1000" }} />
+          {this.props.children}
           </mui.Paper>
         </MediaQuery>
         <MediaQuery minWidth={650}>
@@ -182,6 +192,8 @@ var CollectionPageHeader = React.createClass({
               iconElementRight={rightNav}
               style={this.appBarStyle()}
             />
+            <div id="whiteSpacer" style={{ width: "100%", backgroundColor: "white", position: "fixed", top: this.state.themeVariables.height + "px", height: "1px", zIndex: "1000" }} />
+            {this.props.children}
           </mui.Paper>
         </MediaQuery>
       </div>

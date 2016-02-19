@@ -2,17 +2,27 @@
 var React = require("react");
 var mui = require('material-ui');
 
-var PreviewLink = React.createClass({
-  mixins: [CollectionUrlMixin],
+var HoneycombImage = require("../other/HoneycombImage.jsx");
+var MediaQuery = require('react-responsive');
 
+var PreviewLink = React.createClass({
+  mixins: [
+    require("../mixins/CollectionUrlMixin.jsx"),
+    require("../mixins/MuiThemeMixin.jsx")
+  ],
   propTypes: {
-    showcase: React.PropTypes.object,
+    siteObject: React.PropTypes.object,
   },
 
   getInitialState: function () {
     return {
       hover: false
     };
+  },
+
+  onClick: function(e) {
+    e.preventDefault();
+    window.location = this.collectionObjectUrl(this.props.siteObject);
   },
 
   mouseOver: function () {
@@ -23,7 +33,7 @@ var PreviewLink = React.createClass({
     this.setState({hover: false});
   },
 
-  style: function() {
+  style: function(media) {
     return {
       position: "fixed",
       bottom: "60px",
@@ -32,18 +42,48 @@ var PreviewLink = React.createClass({
       color: "#f5f5f5",
       opacity: this.state.hover ? "1.0" : "0.3",
       maxWidth: "200px",
+    };
+  },
+
+  buttonStyle: function() {
+    return {
+      position: "fixed",
+      bottom: "107px",
+      right: "40px",
+      cursor: "pointer",
+      backgroundColor: "#2c5882",
     }
+  },
+
+  getCard: function(media) {
+    var url = this.collectionObjectUrl(this.props.siteObject);
+    return (
+      <mui.Card style={this.style(media)} onClick={this.onClick}  onMouseOver={this.mouseOver} onMouseOut={this.mouseOut} >
+        <mui.CardMedia overlay={<mui.CardTitle title="Continue" />}>
+          <HoneycombImage image={this.props.siteObject.image} size="small" />
+        </mui.CardMedia>
+        <mui.FloatingActionButton
+          linkButton={true}
+          href={ url }
+          style={this.buttonStyle()}
+          zDepth={2}
+        >
+          <mui.FontIcon style={{ mixBlendMode: "soft-light" }} className="material-icons">arrow_forward</mui.FontIcon>
+        </mui.FloatingActionButton>
+      </mui.Card>
+    );
   },
 
   render: function() {
     return (
-      <a href={this.showcaseUrl(this.props.showcase)} style={this.style()} onMouseOver={this.mouseOver} onMouseOut={this.mouseOut} >
-        <mui.Card>
-          <mui.CardMedia overlay={<mui.CardTitle title="Start Showcases"/>}>
-            <HoneycombImage image={this.props.showcase.image} size="small" />
-          </mui.CardMedia>
-        </mui.Card>
-      </a>
+      <MediaQuery minWidth={850}>
+        <MediaQuery minWidth={1500}>
+          { this.getCard("wide") }
+        </MediaQuery>
+        <MediaQuery maxWidth={1500}>
+          { this.getCard("narrow") }
+        </MediaQuery>
+      </MediaQuery>
     );
   }
 });

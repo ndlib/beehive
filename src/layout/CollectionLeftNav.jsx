@@ -19,21 +19,20 @@ var CollectionLeftNav = React.createClass({
 
   getInitialState: function() {
     return {
-      showcases: [],
+      sitePath: [],
     };
   },
 
   componentDidMount: function() {
-    var url = this.props.collection['@id'] + '/showcases';
+    var url = this.props.collection['@id'] + '/site_path';
     $.ajax({
       context: this,
       type: "GET",
       url: url,
       dataType: "json",
       success: function(result) {
-        var showcases = result.showcases;
         this.setState({
-          showcases: showcases,
+          sitePath: result.site_path,
         });
       },
       error: function(request, status, thrownError) {
@@ -73,9 +72,6 @@ var CollectionLeftNav = React.createClass({
       ));
     }
     options.push((<mui.Divider/>));
-    options.push((
-      <mui.MenuItem primaryText='Showcases' key='showcases' />
-    ));
 
     if (introUrl) {
       options.push((
@@ -83,11 +79,11 @@ var CollectionLeftNav = React.createClass({
       ));
     }
 
-    this.state.showcases.forEach(function(showcase){
-      var url = collectionUrl + "/showcases/" + encodeURIComponent(showcase.id) + "/" + encodeURIComponent(showcase.slug);
-      var showcaseName = showcase.name_line_1;
+    this.state.sitePath.forEach(function(siteObject){
+      var url = this.collectionObjectUrl(siteObject);
+      var name = siteObject.name || siteObject.name_line_1;
       options.push ((
-        <mui.MenuItem onTouchTap={() => {this.menuItemAction(url)}} primaryText={showcaseName} key={showcase.slug} />
+        <mui.MenuItem onTouchTap={() => {this.menuItemAction(url)}} primaryText={name} key={siteObject.id} />
       ));
     }.bind(this));
 
@@ -123,7 +119,7 @@ var CollectionLeftNav = React.createClass({
     }
     else {
       return (
-        <div style={{margin:'0'}}>
+        <div id="CollectionLeftNav" style={{margin:'0', marginLeft: "16px"}}>
           <mui.FlatButton
             onClick={this.clickEvent}
             style={this.buttonStyle()}

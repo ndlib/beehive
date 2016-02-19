@@ -2,13 +2,13 @@
 var React = require("react");
 var mui = require('material-ui');
 
-var ShowcaseCard = React.createClass({
+var SitePathCard = React.createClass({
   mixins: [
     require('../../mixins/CollectionUrlMixin.jsx')
   ],
 
   propTypes: {
-    showcase: React.PropTypes.object.isRequired,
+    siteObject: React.PropTypes.object.isRequired,
     addNextButton: React.PropTypes.bool,
     fixedSize: React.PropTypes.bool,
     headerTitle: React.PropTypes.string,
@@ -24,7 +24,7 @@ var ShowcaseCard = React.createClass({
 
   onClick: function(e) {
     e.preventDefault();
-    window.location = this.showcaseUrl(this.props.showcase);
+    window.location = this.collectionObjectUrl(this.props.siteObject);
   },
 
   style: function() {
@@ -53,10 +53,20 @@ var ShowcaseCard = React.createClass({
     };
   },
 
+  buttonStyle: function() {
+    return {
+      backgroundColor: "#2c5882",
+    }
+  },
+
   image: function () {
     var space = ' ';
     var re = new RegExp(space, 'g');
-    return this.props.showcase.image["thumbnail/medium"].contentUrl.replace(re, '%20');
+    if(this.props.siteObject.image && this.props.siteObject.image["thumbnail/medium"]) {
+      return this.props.siteObject.image["thumbnail/medium"].contentUrl.replace(re, '%20');
+    } else {
+      return '/images/intro.jpg';
+    }
   },
 
   nextButton: function() {
@@ -69,7 +79,8 @@ var ShowcaseCard = React.createClass({
           <mui.FloatingActionButton
             primary={true}
             linkButton={true}
-            href={this.props.showcase['@id']}
+            style={this.buttonStyle()}
+            href={this.collectionObjectUrl(this.props.siteObject)}
             disableTouchRipple={true}
           >
             <mui.FontIcon className="material-icons">arrow_forward</mui.FontIcon>
@@ -86,22 +97,18 @@ var ShowcaseCard = React.createClass({
   },
 
   cardTitle: function() {
-    return (<mui.CardTitle title={this.props.showcase.name_line_1} subtitle={this.props.showcase.name_line_2} />);
+    return (<mui.CardTitle title={this.props.siteObject.name || this.props.siteObject.name_line_1} subtitle={this.props.siteObject.name_line_2} />);
   },
 
   cardMedia: function () {
-    if (this.props.showcase.image) {
-      return (
-        <mui.CardMedia
-          mediaStyle={{background:'url(' + this.image() + ')', height:'100%', width:'100%', backgroundSize:'cover', backgroundPosition:'center top'}}
-          className="temp"
-          style={{height: '400px', overflow:'hidden'}}
-          overlay={this.cardTitle()}>
-          <img src={this.image()}  style={this.imageSize()} />
-        </mui.CardMedia>);
-    } else {
-      return (this.cardTitle());
-    }
+    return (
+      <mui.CardMedia
+        mediaStyle={{background:'url(' + this.image() + ')', height:'100%', width:'100%', backgroundSize:'cover', backgroundPosition:'center top'}}
+        className="temp"
+        style={{height: '400px', overflow:'hidden'}}
+        overlay={this.cardTitle()}>
+        <img src={this.image()}  style={this.imageSize()} />
+      </mui.CardMedia>);
   },
 
   render: function() {
@@ -116,4 +123,4 @@ var ShowcaseCard = React.createClass({
 });
 
 // each file will export exactly one component
-module.exports = ShowcaseCard;
+module.exports = SitePathCard;
