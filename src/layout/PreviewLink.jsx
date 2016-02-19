@@ -34,7 +34,7 @@ var PreviewLink = React.createClass({
   },
 
   style: function(media) {
-    var styleObj = {
+    return {
       position: "fixed",
       bottom: "60px",
       right: "40px",
@@ -43,13 +43,6 @@ var PreviewLink = React.createClass({
       opacity: this.state.hover ? "1.0" : "0.3",
       maxWidth: "200px",
     };
-    switch(media){
-      case "wide":
-        break;
-      case "narrow":
-        break;
-    }
-    return styleObj;
   },
 
   buttonStyle: function() {

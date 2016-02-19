@@ -17,10 +17,8 @@ var CollectionUrlMixin = {
 
   startSitePathUrl: function() {
     var url;
-    if(this.props.collection.site_path){
-      if(this.props.collection.site_path.length > 0) {
-        url = this.collectionObjectUrl(this.props.collection.site_path[0]);
-      }
+    if(this.props.collection.site_path && this.props.collection.site_path.length > 0) {
+      url = this.collectionObjectUrl(this.props.collection.site_path[0]);
     }
     return url;
   },
