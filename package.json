@@ -8,6 +8,7 @@
   "scripts": {
     "test": "test",
     "build": "webpack --config ./build-conf/webpack.config.js --progress --colors",
+    "build-pprd": "webpack --config ./build-conf/webpack-pprd.config.js --progress --colors",
     "build-dev": "webpack --config ./build-conf/webpack-dev.config.js --progress --colors"
   },
   "dependencies": {
