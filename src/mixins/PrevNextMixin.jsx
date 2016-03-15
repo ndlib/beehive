@@ -35,12 +35,13 @@ var React = require('react');
   clickAction: function(event) {
     event.preventDefault();
     var id = this.props.url.split("/").pop();
-    window.location.hash = id;
     if(this.props.url.indexOf('item') > -1) {
       this.loadRemoteItem(this.props.url);
+      OpenItemDisplay(id, 'item');
     }
     else if(this.props.url.indexOf('section') > -1) {
       this.loadRemoteSection(this.props.url);
+      OpenItemDisplay(id, 'section');
     }
     else {
       console.log('an invalid url was provided', this.props.url);

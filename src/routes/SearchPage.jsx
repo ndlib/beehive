@@ -19,6 +19,7 @@ class SearchPage extends Component {
           facet={FacetQueryParms()}
           start={QueryParm('start')}
           view={QueryParm('view')}
+          currentItem={QueryParm('item')}
         />
         {this.props.children}
       </div>
