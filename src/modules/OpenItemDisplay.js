@@ -13,10 +13,10 @@ module.exports = function(id, string){
     var searchStr = window.location.search;
 
     var searchReg = reg.exec(searchStr);
-
-    if(searchStr.length > 0 && searchReg === undefined) {
+    console.log(searchReg);
+    if(searchStr.length > 0 && searchReg === null) {
       searchStr += '&' + string + '=' + id;
-    } else if(searchStr.length > 0 && searchReg !== undefined) {
+    } else if(searchStr.length > 0 && searchReg !== null) {
       searchStr = searchStr.replace(reg, string + '=' + id);
     }
     else {
