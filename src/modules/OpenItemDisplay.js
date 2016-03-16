@@ -8,7 +8,7 @@ module.exports = function(id, string){
     if(path.substr(-1) === '/') {
         path =  path.substr(0, path.length - 1);
     }
-    var reg = new RegExp('(' + string +')=[0-9a-z-]*', 'i');
+    var reg = new RegExp('(' + string +')=.*[^&]', 'i');
 
     var searchStr = window.location.search;
 
