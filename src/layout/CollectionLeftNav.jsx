@@ -71,7 +71,7 @@ var CollectionLeftNav = React.createClass({
         <mui.MenuItem onTouchTap={() => {this.menuItemAction(aboutUrl)}} primaryText='About' key='about'/>
       ));
     }
-    options.push((<mui.Divider/>));
+    options.push((<mui.Divider key="divider"/>));
 
     if (introUrl) {
       options.push((
