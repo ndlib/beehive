@@ -8,7 +8,7 @@ var ItemShow = require('../../display/ItemShow.jsx');
 var SectionShowDescription = require('./SectionShowDescription.jsx');
 var SideNavButton = require('../../other/SideNavButton.jsx');
 var SectionActions = require('../../actions/SectionActions.jsx');
-
+var OpenItemDisplay = require('../../modules/OpenItemDisplay.js');
 var SectionShow = React.createClass({
   mixins: [
     require('../../mixins/CurrentThemeMixin.jsx'),
@@ -26,7 +26,7 @@ var SectionShow = React.createClass({
 
   closeDialog: function () {
     SectionActions.hideSectionDialogWindow();
-    window.location.hash = "";
+    history.pushState({}, '', window.location.pathname);
   },
 
   styles: function () {
@@ -96,7 +96,8 @@ var SectionShow = React.createClass({
   clickSideNavEvent: function(event, url) {
     event.preventDefault();
     var id = url.split("/").pop();
-    window.location.hash = id;
+    OpenItemDisplay(id, 'section');
+
     if(url.indexOf('item') > -1) {
       this.loadRemoteItem(url);
     }

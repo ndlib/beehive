@@ -8,6 +8,8 @@ var SearchStore = require('../../store/SearchStore.js');
 var ItemShow = require('../../display/ItemShow.jsx');
 var ItemActions = require('../../actions/ItemActions.jsx');
 var EventEmitter = require('../../middleware/EventEmitter.js');
+var OpenItemDisplay = require('../../modules/OpenItemDisplay.js');
+var HoneycombURL = require('../../modules/HoneycombURL.js');
 
 var ItemPanel = React.createClass({
   mixins: [
@@ -20,6 +22,7 @@ var ItemPanel = React.createClass({
     title: React.PropTypes.string,
     previousUrl: React.PropTypes.string,
     nextUrl: React.PropTypes.string,
+    currentItem: React.PropTypes.string,
   },
 
   getInitialState: function() {
@@ -33,16 +36,9 @@ var ItemPanel = React.createClass({
   componentWillMount: function() {
     EventEmitter.on("ItemDialogWindow", this.setCurrentItem);
     EventEmitter.on("HideItemDialogWindow", this.removeCurrentItem);
-    window.addEventListener("popstate", this.handleHash);
-    this.handleHash();
-  },
-
-  handleHash: function() {
-    if(window.location.hash) {
-      var url = this.remoteItem(window.location.hash.replace("#", ""));
+    if(this.props.currentItem) {
+      var url = HoneycombURL() + '/v1/items/' + this.props.currentItem;
       this.loadRemoteItem(url);
-    } else {
-      ItemActions.hideItemDialogWindow();
     }
   },
 
@@ -54,7 +50,7 @@ var ItemPanel = React.createClass({
       nextItem: nextItem,
       previousItem: previousItem,
     });
-    window.location.hash = item['@id'].split("/").pop();
+    OpenItemDisplay(this.state.currentItem.id);
   },
 
   removeCurrentItem: function() {
@@ -65,18 +61,25 @@ var ItemPanel = React.createClass({
 
   closeButtonClick: function() {
     ItemActions.hideItemDialogWindow();
-    window.location.hash = "";
+    var path = window.location.pathname;
+    var searchStr = window.location.search;
+    var removeStr = '&item=' + this.state.currentItem.id;
+    searchStr = searchStr.replace(removeStr, '');
+    history.pushState({}, '', path + searchStr);
+    this.removeCurrentItem();
   },
 
   nextButtonClick: function() {
     if(this.state.nextItem) {
       this.loadRemoteItem(this.state.nextItem["@id"]);
+      OpenItemDisplay(this.state.nextItem["@id"].split("/").pop(), 'item');
     }
   },
 
   prevButtonClick: function() {
     if(this.state.previousItem) {
       this.loadRemoteItem(this.state.previousItem["@id"]);
+      OpenItemDisplay(this.state.previousItem["@id"].split("/").pop(), 'item');
     }
   },
 

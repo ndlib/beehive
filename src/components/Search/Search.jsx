@@ -30,6 +30,7 @@ var Search = React.createClass({
     ]),
     start: React.PropTypes.number,
     view: React.PropTypes.string,
+    currentItem: React.PropTypes.string,
   },
 
   searchStoreChanged: function(reason) {
@@ -38,8 +39,11 @@ var Search = React.createClass({
     });
 
     if(reason == "load") {
-      var hash = window.location.hash;
-      var path = window.location.origin + SearchStore.searchUri() + hash;
+      var currentItem = '';
+      if(this.props.currentItem) {
+        currentItem = '&item=' + this.props.currentItem;
+      }
+      var path = window.location.origin + SearchStore.searchUri() + currentItem;
       window.history.pushState({ store: SearchStore.getQueryParams() }, '', path);
     }
   },
@@ -99,7 +103,7 @@ var Search = React.createClass({
     return (
       <mui.AppCanvas>
         <CollectionPageHeader collection={SearchStore.collection} ></CollectionPageHeader>
-        <ItemPanel />
+        <ItemPanel currentItem={this.props.currentItem}/>
         <SearchControls searchStyle={{height:'50px'}}/>
         <PageContent fluidLayout={false}>
           <SearchDisplayList />
