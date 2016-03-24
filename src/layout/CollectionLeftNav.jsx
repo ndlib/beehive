@@ -83,7 +83,7 @@ var CollectionLeftNav = React.createClass({
       var url = this.collectionObjectUrl(siteObject);
       var name = siteObject.name || siteObject.name_line_1;
       options.push ((
-        <mui.MenuItem onTouchTap={() => {this.menuItemAction(url)}} primaryText={name} key={siteObject.id} />
+        <mui.MenuItem onTouchTap={() => {this.menuItemAction(url)}} primaryText={name} key={siteObject.id} className="collection-left-nav-item" />
       ));
     }.bind(this));
 
