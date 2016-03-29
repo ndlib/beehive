@@ -2,13 +2,13 @@ var CollectionUrlMixin = {
   introUrl: function(collection) {
     var url;
     if (collection.description) {
-      url = this.collectionUrl(collection) + '/intro'
+      url = this.collectionUrl(collection) + '/intro/'
     }
     return url;
   },
 
   aboutUrl: function(collection) {
-    return this.collectionUrl(collection) + '/about';
+    return this.collectionUrl(collection) + '/about/';
   },
 
   browseUrl: function(collection) {
@@ -66,7 +66,7 @@ var CollectionUrlMixin = {
       returnUrl = 'http://localhost:3017/v1/';
     }
     else {
-      returnUrl = 'http://honeycomb.library.nd.edu/v1/'
+      returnUrl = 'https://honeycomb.library.nd.edu/v1/'
     }
     return returnUrl;
   },

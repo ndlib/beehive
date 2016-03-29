@@ -45,7 +45,7 @@ var SearchDisplayList = React.createClass({
         <ItemListItem
           item={item}
           view={view}
-          key={item.name}
+          key={item["@id"]}
         />
       );
     });

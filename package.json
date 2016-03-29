@@ -8,6 +8,7 @@
   "scripts": {
     "test": "test",
     "build": "webpack --config ./build-conf/webpack.config.js --progress --colors",
+    "build-pprd": "webpack --config ./build-conf/webpack-pprd.config.js --progress --colors",
     "build-dev": "webpack --config ./build-conf/webpack-dev.config.js --progress --colors"
   },
   "dependencies": {
@@ -32,7 +33,7 @@
     "react-addons-transition-group": "0.14.6",
     "react-addons-update": "0.14.6",
     "react-dom": "0.14.6",
-    "react-responsive": "^1.1.0",
+    "react-responsive": "1.1.1",
     "react-router": "1.0.0",
     "react-scroll": "^0.35.0",
     "react-tap-event-plugin": "0.2.1",

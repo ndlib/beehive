@@ -103,11 +103,9 @@ var SitePathCard = React.createClass({
   cardMedia: function () {
     return (
       <mui.CardMedia
-        mediaStyle={{background:'url(' + this.image() + ')', height:'100%', width:'100%', backgroundSize:'cover', backgroundPosition:'center top'}}
-        className="temp"
-        style={{height: '400px', overflow:'hidden'}}
-        overlay={this.cardTitle()}>
-        <img src={this.image()}  style={this.imageSize()} />
+        className="collection-site-path-card"
+        style={{ backgroundImage:'url(' + this.image() + ')' }}
+        overlay={ this.cardTitle() }>
       </mui.CardMedia>);
   },
 

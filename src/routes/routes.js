@@ -19,8 +19,8 @@ export default function() {
     <Router history={ history }>
       <Route path="/" component="div">
         <IndexRoute component={ SiteIndexPage } />
-        <Route path=":collectionID/*/intro" component={CollectionIntroductionPage} />
-        <Route path=":collectionID/*/about" component={AboutPage} />
+        <Route path=":collectionID/*/intro/" component={CollectionIntroductionPage} />
+        <Route path=":collectionID/*/about/" component={AboutPage} />
         <Route path=":collectionID/*/search" component={SearchPage} />
         <Route path=":collectionID/*/showcases/:showcaseID/*" component={ShowcasePage} />
         <Route path=":collectionID/*/pages/:pageID/*" component={PagesPage} />

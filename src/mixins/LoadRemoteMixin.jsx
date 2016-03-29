@@ -2,6 +2,7 @@
 var React = require("react");
 var ItemActions = require('../actions/ItemActions.jsx');
 var SectionActions = require('../actions/SectionActions.jsx');
+var OpenItemDisplay = require('../modules/OpenItemDisplay.js');
 
 var LoadRemoteMixin = {
   propTypes: {
@@ -71,12 +72,12 @@ var LoadRemoteMixin = {
 
   itemOnClick: function() {
     this.loadRemoteItem(this.props.item['@id']);
-    window.location.hash = this.props.item['@id'].split("/").pop();
+    OpenItemDisplay(this.props.item['@id'].split("/").pop(), 'item');
   },
 
   sectionOnClick: function() {
     this.loadRemoteSection(this.props.section['@id']);
-    window.location.hash = this.props.section['@id'].split("/").pop();
+    OpenItemDisplay(this.props.section['@id'].split("/").pop(), 'section');
   },
 }
 

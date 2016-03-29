@@ -8,6 +8,8 @@ $blockquote-gray: #777;
 // make the same changes in ui-customizations.css.scss
 // in honeycomb.
 .essay-content {
+  overflow: auto;
+
   h1 {
     font-size: 36px;
     letter-spacing: 0;

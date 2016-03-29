@@ -20,6 +20,8 @@ var AttentionHelp = require('../../other/AttentionHelp.jsx');
 var SectionShow = require('./SectionShow.jsx');
 var ShowcaseInnerContent = require('./ShowcaseInnerContent.jsx');
 var Scroller = require('../../other/Scroller.jsx');
+var OpenItemDisplay = require('../../modules/OpenItemDisplay.js');
+var CollectionHomeButton  = require('./CollectionHomeButton.jsx');
 
 var ShowcaseShow = React.createClass({
   mixins: [
@@ -124,8 +126,13 @@ var ShowcaseShow = React.createClass({
     document.body.className = document.body.className + " showcase-bg";
     EventEmitter.on("SectionDialogWindow", this.setCurrentSection);
     EventEmitter.on("HideSectionDialogWindow", this.removeCurrentSection);
-    if(window.location.hash) {
-      var url = this.remoteUrlBase() + "sections/" + window.location.hash.replace("#", "");
+
+    var id;
+    var url;
+    if(window.location.search != null) {
+      id = window.location.search.replace("?section=", "");
+      url = this.remoteUrlBase() + "sections/" + id;
+      OpenItemDisplay(id, 'section');
       this.loadRemoteSection(url);
     }
   },
