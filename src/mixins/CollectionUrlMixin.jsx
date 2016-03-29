@@ -66,7 +66,7 @@ var CollectionUrlMixin = {
       returnUrl = 'http://localhost:3017/v1/';
     }
     else {
-      returnUrl = 'http://honeycomb.library.nd.edu/v1/'
+      returnUrl = 'https://honeycomb.library.nd.edu/v1/'
     }
     return returnUrl;
   },
