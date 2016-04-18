@@ -13,10 +13,23 @@ import ErrorPage from './ErrorPage.jsx';
 import AboutPage from './AboutPage.jsx';
 import PagesPage from './PagesPage.jsx';
 
+var ga = require('react-ga');
+ga.initialize('UA-2118378-44');
+
+function logPageView() {
+
+  if(this.state.location.search === "") {
+    ga.pageview(this.state.location.pathname);
+  }
+  else {
+    ga.pageview(this.state.location.pathname + '/' + this.state.location.search);
+  }
+}
+
 export default function() {
   const history = createHistory();
   return (
-    <Router history={ history }>
+    <Router history={ history } onUpdate={ logPageView } >
       <Route path="/" component="div">
         <IndexRoute component={ SiteIndexPage } />
         <Route path=":collectionID/*/intro/" component={CollectionIntroductionPage} />
