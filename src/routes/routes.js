@@ -18,11 +18,12 @@ ga.initialize('UA-2118378-44');
 
 function logPageView() {
 
-  if(this.state.location.search === "") {
+  if(this.state.location.search === '') {
     ga.pageview(this.state.location.pathname);
   }
   else {
-    ga.pageview(this.state.location.pathname + '/' + this.state.location.search);
+    ga.pageview(this.state.location.pathname
+      + '/' + this.state.location.search);
   }
 }
 
