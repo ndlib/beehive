@@ -22,8 +22,7 @@ function logPageView() {
     ga.pageview(this.state.location.pathname);
   }
   else {
-    ga.pageview(this.state.location.pathname
-      + '/' + this.state.location.search);
+    ga.pageview(this.state.location.pathname + '/' + this.state.location.search);
   }
 }
 
