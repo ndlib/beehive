@@ -97,7 +97,7 @@ var SitePathCard = React.createClass({
   },
 
   cardTitle: function() {
-    return (<mui.CardTitle title={this.props.siteObject.name || this.props.siteObject.name_line_1} subtitle={this.props.siteObject.name_line_2} />);
+    return (<mui.CardTitle title={this.props.siteObject.name_line_1 || this.props.siteObject.name} subtitle={this.props.siteObject.name_line_2} />);
   },
 
   cardMedia: function () {
