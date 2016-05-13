@@ -89,7 +89,7 @@ class SearchStore extends EventEmitter {
   executeQuery(reason) {
     reason = typeof reason != "undefined" ? reason : "load";
 
-    var url = this._baseApiUrl + "?q=" + encodeURIComponent(this._searchTerm);
+    var url = this._baseApiUrl + "?q=" + this._searchTerm;
     if(this._facetOption !== undefined && this._facetOption !== null){
       for(var i = 0; i < this._facetOption.length; i++) {
         if(this._facetOption[i].name && this._facetOption[i].value) {
