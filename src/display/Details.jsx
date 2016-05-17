@@ -4,6 +4,36 @@ var mui = require("material-ui");
 
 var MetadataList = require('../display/MetadataList.jsx');
 
+var Styles = {
+  // The outer containing div for this component
+  outer: {
+    height: "100%",
+    position: "absolute",
+    right: "70px",
+    zIndex: 100,
+    width: "350px"
+  },
+  // The details Paper
+  details: {
+    backgroundColor: "#fff",
+    color: "#555",
+    display: "block",
+    padding: "10px",
+    paddingTop: "35px",
+    position: "relative",
+    overflow: "auto",
+    opacity: "0.8",
+    maxHeight: "70%",
+    top: "5px",
+    width: "100%",
+  },
+  // The shrink/expand details button
+  detailsButton: {
+    position: "relative",
+    left: "220",
+  },
+};
+
 var Details = React.createClass({
   mixins: [
     require('../mixins/CurrentThemeMixin.jsx')
@@ -32,17 +62,6 @@ var Details = React.createClass({
     });
   },
 
-  detailsButtonStyle: function() {
-    var arr = {
-      backgroundColor: this.getCurrentPallette().accent3Color,
-      position: "absolute",
-      top: "-45px",
-      right: "0",
-    };
-
-    return arr;
-  },
-
   arrowIcon: function() {
     return (
       <mui.FontIcon className="material-icons" style={{ verticalAlign:'top', margin:'5px 10px 5px 0px' }}>
@@ -55,7 +74,7 @@ var Details = React.createClass({
     return (
       <mui.RaisedButton
         onClick={this.toggleDetails}
-        style={this.detailsButtonStyle()}
+        style={ Styles.detailsButton }
         disableTouchRipple={true}
         label="Details"
         labelStyle={{fontSize: "20px", letterSpacing: "0", textTransform: "uppercase", fontWeight: "500", padding: "0px 10px" }}
@@ -68,45 +87,22 @@ var Details = React.createClass({
   details: function() {
     if(this.state.showDetails){
       return (
-        <div className="item-details" style={this.detailsStyle()}>
+        <mui.Paper className="item-details" style={ Styles.details }>
           <div className="additional-details" dangerouslySetInnerHTML={{__html: this.props.additionalDetails}} />
           <MetadataList metadata={this.props.item.metadata} />
-        </div>
+        </mui.Paper>
       );
     } else {
       return null;
     }
   },
 
-  paperStyle: function() {
-    return {
-      height: this.state.showDetails ? "70%" : "0px",
-      width: "30%",
-      position: "absolute",
-      right: "70px",
-      zIndex: "100",
-      opacity: "0.8",
-      backgroundColor: "#fff",
-      overflow: "visible"
-    };
-  },
-
-  detailsStyle: function () {
-    return {
-      display: "block",
-      padding: "10px",
-      paddingTop: "35px",
-      overflow: "auto",
-      height: "100%"
-    }
-  },
-
   render: function () {
     return (
-      <mui.Paper className="details" style={this.paperStyle()}>
+      <div style={ Styles.outer }>
         { this.detailsButton() }
         { this.details() }
-      </mui.Paper>
+      </div>
     );
   }
 });
