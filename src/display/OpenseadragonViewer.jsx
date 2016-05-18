@@ -60,6 +60,7 @@ var OpenseadragonViewer = React.createClass({
     if (/^http:\/\/localhost/.test(image.contentUrl)) {
       sourceImage = this.legacySource(image);
     }
+    viewer.viewport.defaultZoomLevel = this.defaultZoom(parseInt(image.width), parseInt(image.height), window.innerWidth, this.props.height);
     viewer.open(sourceImage);
   },
 
@@ -109,6 +110,16 @@ var OpenseadragonViewer = React.createClass({
 
   },
 
+  // Use with viewport.defaultZoomLevel.
+  // If the image is larger than the viewport in width or height, returns 0 to allow
+  // the viewport to fit the image within the bounds (the default behavior). If the
+  // image is smaller than the viewport, returns a zoom that will render the image's native size.
+  defaultZoom: function(imageWidth, imageHeight, viewportWidth, viewportHeight) {
+    var widthRatio = imageWidth / viewportWidth;
+    var heightRatio = imageHeight / viewportHeight;
+    return Math.max(widthRatio, heightRatio) >= 1.0 ? 0 : widthRatio;
+  },
+
   baseOptions: function() {
     var toolbarDiv = 'toolbar-' + this.props.containerID;
     var zoomInID = 'zoom-in-' + this.props.containerID;
@@ -120,14 +131,7 @@ var OpenseadragonViewer = React.createClass({
 
     OpenSeadragon.setString("Tooltips.Home","Reset image");
 
-    var widthRatio = parseInt(this.props.image.width) / window.innerWidth;
-    var heightRatio = parseInt(this.props.image.height) / this.props.height;
-
-    var contentAspect = parseInt(this.props.image.width) / parseInt(this.props.image.height);
-    var viewportAspect = window.innerWidth / this.props.height;
-
-    var fitZoom = (contentAspect / viewportAspect); // Fit to viewport
-    var zoom = Math.max(widthRatio, heightRatio) >= 1.0 ? fitZoom : widthRatio;
+    var zoom = this.defaultZoom(parseInt(this.props.image.width), parseInt(this.props.image.height), window.innerWidth, this.props.height);
 
     return {
       id: this.props.containerID,
