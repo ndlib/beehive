@@ -103,7 +103,7 @@ var Search = React.createClass({
     return (
       <mui.AppCanvas>
         <CollectionPageHeader collection={SearchStore.collection} ></CollectionPageHeader>
-        <ItemPanel currentItem={this.props.currentItem}/>
+        <ItemPanel height={ window.innerHeight - 50 } currentItem={this.props.currentItem}/>
         <SearchControls searchStyle={{height:'50px'}}/>
         <PageContent fluidLayout={false}>
           <SearchDisplayList />

@@ -119,11 +119,22 @@ var OpenseadragonViewer = React.createClass({
     var rightID = 'right-' + this.props.containerID;
 
     OpenSeadragon.setString("Tooltips.Home","Reset image");
+
+    var widthRatio = parseInt(this.props.image.width) / window.innerWidth;
+    var heightRatio = parseInt(this.props.image.height) / this.props.height;
+
+    var contentAspect = parseInt(this.props.image.width) / parseInt(this.props.image.height);
+    var viewportAspect = window.innerWidth / this.props.height;
+
+    var fitZoom = (contentAspect / viewportAspect); // Fit to viewport
+    var zoom = Math.max(widthRatio, heightRatio) >= 1.0 ? fitZoom : widthRatio;
+
     return {
       id: this.props.containerID,
       element: ReactDOM.findDOMNode(),
       prefixUrl: "/openseadragon/",
       autoHideControls: false,
+      defaultZoomLevel: zoom,
       showNavigator: this.props.showNavigator,
       showFullPageControl: this.props.showFullPageControl,
       navigatorHeight:   navigatorSize + 'px',
@@ -187,9 +198,13 @@ var OpenseadragonViewer = React.createClass({
   },
 
   style: function() {
+    var height = this.props.height;
+    if (this.props.showNavigator) {
+      height -= 10;
+    }
     return {
       //height: "" + (this.props.height ? this.props.height : 600) + "px",
-      height: '100vh',
+      height: height + "px",
       overflow: 'hidden',
     };
   },
