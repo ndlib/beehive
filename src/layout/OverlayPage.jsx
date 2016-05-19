@@ -14,6 +14,7 @@ var OverlayPage = React.createClass({
     onPrevButtonClick: React.PropTypes.func,
     onNextButtonClick: React.PropTypes.func,
     onCloseButtonClick: React.PropTypes.func,
+    height: React.PropTypes.number,
   },
 
   styles: function () {
@@ -30,7 +31,7 @@ var OverlayPage = React.createClass({
 
   pageStyles: function() {
     return {
-      height: window.innerHeight + "px",
+      height: this.props.height + "px",
       width: "100%",
       position: "fixed",
       backgroundColor: this.getCurrentPallette().canvasColor,
