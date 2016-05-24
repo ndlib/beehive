@@ -39,10 +39,7 @@ var ItemShow = React.createClass({
   },
 
   render: function() {
-    var prevLink, nextLink, offsetTop;
-    if (this.props.height) {
-      offsetTop = this.props.height / 2;
-    }
+    var prevLink, nextLink;
     if (this.props.item) {
       return (
         <div style={this.outerStyles()}>
@@ -55,7 +52,7 @@ var ItemShow = React.createClass({
               <OpenseadragonViewer
                 image={this.props.item.image}
                 containerID={this.props.item.id}
-                height={this.props.height}
+                height={this.props.height - 60}
                 toolbarTop={60}
                 toolbarLeft={40}
                 showFullPageControl={false} />
@@ -64,7 +61,7 @@ var ItemShow = React.createClass({
               <OpenseadragonViewer
                 image={this.props.item.image}
                 containerID={this.props.item.id}
-                height={this.props.height}
+                height={this.props.height - 60}
                 toolbarTop={60}
                 toolbarLeft={40}
                 showFullPageControl={false}

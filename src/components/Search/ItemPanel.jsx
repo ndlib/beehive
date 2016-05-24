@@ -23,6 +23,7 @@ var ItemPanel = React.createClass({
     previousUrl: React.PropTypes.string,
     nextUrl: React.PropTypes.string,
     currentItem: React.PropTypes.string,
+    height: React.PropTypes.number,
   },
 
   getInitialState: function() {
@@ -94,8 +95,9 @@ var ItemPanel = React.createClass({
         onCloseButtonClick={this.closeButtonClick}
         onNextButtonClick={this.state.nextItem ? this.nextButtonClick : null}
         onPrevButtonClick={this.state.previousItem ? this.prevButtonClick : null}
+        height={ this.props.height }
       >
-        <ItemShow item={this.state.currentItem} />
+        <ItemShow item={this.state.currentItem} height={ this.props.height } />
       </OverlayPage>
     );
   }
