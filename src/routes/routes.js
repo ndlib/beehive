@@ -1,8 +1,7 @@
 'use strict';
 
 import React from 'react';
-import { Router, Route, IndexRoute } from 'react-router';
-import { createHistory } from 'history';
+import { browserHistory, Router, Route, IndexRoute } from 'react-router';
 
 import SiteIndexPage from './SiteIndexPage.jsx';
 import CollectionPage from './CollectionPage.jsx';
@@ -27,9 +26,8 @@ function logPageView() {
 }
 
 export default function() {
-  const history = createHistory();
   return (
-    <Router history={ history } onUpdate={ logPageView } >
+    <Router history={ browserHistory } onUpdate={ logPageView } >
       <Route path="/" component="div">
         <IndexRoute component={ SiteIndexPage } />
         <Route path=":collectionID/*/intro" component={CollectionIntroductionPage} />
