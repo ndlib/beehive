@@ -11,24 +11,35 @@ var GridItem = React.createClass({
     item: React.PropTypes.object.isRequired,
   },
 
-  render: function() {
-    var item = this.props.item;
+  mediaOverlay: function() {
     var name = (
       <span style={{fontFamily: 'GPCMed'}}>
-        {item.name}
+        { this.props.item.name }
       </span>
     );
+    return (<mui.CardTitle title={ name }/>);
+  },
 
+  cardMedia: function() {
+    var image = this.props.item.image;
+    if(!image) {
+      image = { "thumbnail/medium": { contentUrl: "/images/meta-only-item.jpg" }};
+    }
+
+    return (
+      <mui.CardMedia overlay={ this.mediaOverlay() }>
+        <ItemImage image={ image } />
+      </mui.CardMedia>
+    );
+  },
+
+  render: function() {
     return (
       <mui.Card
         onClick={this.itemOnClick}
         style={{cursor: 'pointer'}}
       >
-        <mui.CardMedia
-          overlay={<mui.CardTitle title={name}/>}
-        >
-          <ItemImage image={item.image} />
-        </mui.CardMedia>
+        { this.cardMedia() }
       </mui.Card>
     );
   }

@@ -12,47 +12,47 @@ var ListItem = React.createClass({
     item: React.PropTypes.object.isRequired,
   },
 
-  render: function() {
-    var item = this.props.item;
-    var avatar;
-    if(item.image) {
-      avatar = (
-        <div style={{top: '4px', left: '16px', padding: "2px", width: '77px', height: '75px'}}>
-          <ItemImage image={item.image} />
-        </div>
-      );
-    }
-    else {
-      avatar = (<mui.Avatar>{item.name.charAt(0).toUpperCase()}</mui.Avatar>);
+  leftIcon: function() {
+    var image = this.props.item.image;
+    if(!image) {
+      image = { "thumbnail/medium": { contentUrl: "/images/meta-only-item.jpg" }};
     }
 
-    var name = (
+    return (
+      <div style={{top: '4px', left: '16px', padding: "2px", width: '77px', height: '75px', margin: "0 12px" }}>
+        <ItemImage image={image} />
+      </div>
+    );
+  },
+
+  primaryText: function() {
+    return (
       <span style={{marginLeft: '30px'}}>
-        {item.name}
+        {this.props.item.name}
       </span>
     );
+  },
 
-    var description = (
-        <span style={{
-            maxWidth: '50em',
-            marginLeft: '30px'}}
-        >
-          {item.description}
-
-        </span>
+  secondaryText: function() {
+    return (
+      <span style={{ maxWidth: '50em', marginLeft: '30px'}}>
+        { this.props.item.description }
+      </span>
     );
+  },
 
+  render: function() {
     return (
       <div>
         <mui.ListItem
-          leftIcon={avatar}
-          primaryText={name}
-          secondaryText={description}
+          leftIcon={this.leftIcon()}
+          primaryText={this.primaryText()}
+          secondaryText={this.secondaryText()}
           secondaryTextLines={2}
           onClick={this.itemOnClick}
           innerDivStyle={{paddingLeft:'80px', height:'85px'}}
         />
-      <mui.Divider  style={{marginLeft: "110px" }} />
+        <mui.Divider  style={{marginLeft: "110px" }} />
       </div>
     );
   }

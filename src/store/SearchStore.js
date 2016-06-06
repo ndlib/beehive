@@ -165,10 +165,13 @@ class SearchStore extends EventEmitter {
     item["@id"] = hit["@id"];
     item.name = hit.name;
     item.description = hit.description;
-    item.image = {
-      "thumbnail/medium": {
-        contentUrl: hit.thumbnailURL
-      }
+    item.shortDescription = hit.shortDescription;
+    if(hit.thumbnailURL){
+      item.image = {
+        "thumbnail/medium": {
+          contentUrl: hit.thumbnailURL
+        }
+      };
     };
     return item;
   }
