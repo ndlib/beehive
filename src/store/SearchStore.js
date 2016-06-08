@@ -10,6 +10,7 @@ var AppDispatcher = require("../dispatcher/AppDispatcher.jsx");
 var EventEmitter = require("events").EventEmitter;
 var SearchActionTypes = require("../constants/SearchActionTypes.jsx");
 
+
 class SearchStore extends EventEmitter {
   constructor() {
     super();
