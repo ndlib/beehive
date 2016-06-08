@@ -33,6 +33,12 @@ var OverlayPage = React.createClass({
     }
   },
 
+  closeButtonStyle: function () {
+    return {
+      height: "100%"
+    }
+  },
+
   pageStyles: function() {
     return {
       height: this.props.height + "px",
@@ -49,7 +55,7 @@ var OverlayPage = React.createClass({
         <mui.ToolbarGroup key={0} float="left"  style={this.titleStyle()}>
           <mui.ToolbarTitle text={this.props.title} />
         </mui.ToolbarGroup>
-        <mui.ToolbarGroup key={1} float="right" >
+        <mui.ToolbarGroup key={1} float="right" style={this.closeButtonStyle()}>
           {this.closeButton()}
         </mui.ToolbarGroup>
       </mui.Toolbar>
