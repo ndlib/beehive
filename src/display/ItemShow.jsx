@@ -12,6 +12,17 @@ var ItemShow = React.createClass({
     item: React.PropTypes.object,
     additionalDetails: React.PropTypes.string,
     height: React.PropTypes.number,
+    minMediaHeight: React.PropTypes.number, // If splitting the space between media and meta
+                                            // causes the media to go smaller than this, it
+                                            // will switch to full screen media render
+    mediaBottom: React.PropTypes.number,    // Distance from bottom of media to bottom of viewport
+  },
+
+  getDefaultProps: function() {
+    return {
+      minMediaHeight: 300,
+      mediaBottom: 200
+    }
   },
 
   componentWillMount: function() {
@@ -47,38 +58,32 @@ var ItemShow = React.createClass({
   },
 
   image: function() {
-    if(this.props.item.image){
-      var height = this.props.height < 500 ? this.props.height : this.props.height - 300;
-      return (
-        <div className="item-detail-zoom" style={this.zoomStyles()}>
-          <MediaQuery minWidth={650}>
-            <OpenseadragonViewer
-              image={this.props.item.image}
-              containerID={this.props.item.id}
-              height={height - 60}
-              toolbarTop={60}
-              toolbarLeft={40}
-              showFullPageControl={false} />
-          </MediaQuery>
-          <MediaQuery maxWidth={650}>
-            <OpenseadragonViewer
-              image={this.props.item.image}
-              containerID={this.props.item.id}
-              height={height - 60}
-              toolbarTop={60}
-              toolbarLeft={40}
-              showFullPageControl={false}
-              showNavigator={false} />
-          </MediaQuery>
-        </div>
-      );
+    var height = this.props.height - this.props.mediaBottom;
+    if( height < this.props.minMediaHeight ){
+      height = this.props.height;
     }
-    return null;
-  },
-
-  metadata: function() {
     return (
-      <Details item={this.props.item} additionalDetails={this.props.additionalDetails} showDetails={true} />
+      <div className="item-detail-zoom" style={this.zoomStyles()}>
+        <MediaQuery minWidth={650}>
+          <OpenseadragonViewer
+            image={this.props.item.image}
+            containerID={this.props.item.id}
+            height={height - 60}
+            toolbarTop={60}
+            toolbarLeft={40}
+            showFullPageControl={false} />
+        </MediaQuery>
+        <MediaQuery maxWidth={650}>
+          <OpenseadragonViewer
+            image={this.props.item.image}
+            containerID={this.props.item.id}
+            height={height - 60}
+            toolbarTop={60}
+            toolbarLeft={40}
+            showFullPageControl={false}
+            showNavigator={false} />
+        </MediaQuery>
+      </div>
     );
   },
 
@@ -87,8 +92,8 @@ var ItemShow = React.createClass({
     if (this.props.item) {
       return (
         <div style={this.outerStyles()}>
-          { this.image() }
-          { this.metadata() }
+          { this.props.item.image && this.image() }
+          <Details item={this.props.item} additionalDetails={this.props.additionalDetails} showDetails={true} />
         </div>
       );
     } else {
