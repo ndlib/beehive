@@ -20,12 +20,16 @@ var OverlayPage = React.createClass({
   styles: function () {
     return {
       backgroundColor: this.getCurrentPallette.primary3Color,
+      display: "block",
+      overflow: "hidden"
     }
   },
 
   titleStyle: function () {
     return {
       color: this.getCurrentPallette().textColor,
+      position: "fixed",
+      width: "80%"
     }
   },
 
@@ -42,10 +46,10 @@ var OverlayPage = React.createClass({
   toolbar: function() {
     return (
       <mui.Toolbar style={this.styles()} >
-        <mui.ToolbarGroup key={0} float="left" >
-          <mui.ToolbarTitle text={this.props.title} style={this.titleStyle()} />
+        <mui.ToolbarGroup key={0} float="left"  style={this.titleStyle()}>
+          <mui.ToolbarTitle text={this.props.title} />
         </mui.ToolbarGroup>
-        <mui.ToolbarGroup key={1} float="right">
+        <mui.ToolbarGroup key={1} float="right" >
           {this.closeButton()}
         </mui.ToolbarGroup>
       </mui.Toolbar>

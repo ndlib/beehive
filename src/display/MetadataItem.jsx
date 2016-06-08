@@ -1,5 +1,6 @@
 'use strict'
 var React = require('react');
+var mui = require('material-ui');
 
 var MetadataString = require('./MetadataString.jsx');
 var MetadataDate = require('./MetadataDate.jsx');
@@ -11,6 +12,19 @@ var fieldTypeMap = {
   MetadataDate: MetadataDate,
   MetadataHTML: MetadataHTML,
   MetadataText: MetadataText,
+};
+
+var Styles = {
+  fieldName: {
+    fontSize: "14pt"
+  },
+  fieldValue: {
+
+  },
+  divider: {
+    marginTop: "3px",
+    marginBottom: "8px"
+  }
 };
 
 var MetadataItem = React.createClass({
@@ -34,8 +48,9 @@ var MetadataItem = React.createClass({
   render: function() {
     return (
       <dl>
-        <dt>{this.props.metadata.label}</dt>
-        <dd>{this.map_arrays_to_values()}</dd>
+        <dt style={ Styles.fieldName }>{this.props.metadata.label.toUpperCase()}</dt>
+        <mui.Divider style={ Styles.divider } inset={false} />
+        <dd style={ Styles.fieldValue }>{this.map_arrays_to_values()}</dd>
       </dl>
     );
   }

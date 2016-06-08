@@ -33,6 +33,42 @@ var Search = React.createClass({
     currentItem: React.PropTypes.string,
   },
 
+  getInitialState: function() {
+    return {
+      windowHeight: window.innerHeight
+    };
+  },
+
+  componentWillMount: function() {
+    SearchStore.on("SearchStoreChanged", this.searchStoreChanged);
+    SearchStore.on("SearchStoreQueryFailed",
+      function(result) {
+        window.location = window.location.origin + '/404'
+      }
+    );
+    window.addEventListener("popstate", this.onWindowPopState);
+
+    if ('object' == typeof(this.props.collection)) {
+      this.setValues(this.props.collection);
+    } else {
+      this.loadRemoteCollection(this.props.collection);
+    }
+  },
+
+  componentDidMount: function() {
+    window.addEventListener('resize', this.handleResize);
+  },
+
+  componentWillUnmount: function() {
+    window.removeEventListener('resize', this.handleResize);
+  },
+
+  handleResize: function(e) {
+    this.setState({
+      windowHeight: window.innerHeight
+    });
+  },
+
   searchStoreChanged: function(reason) {
     this.setState({
       readyToRender: true,
@@ -57,22 +93,6 @@ var Search = React.createClass({
   onWindowPopState: function(event) {
     if(event.state){
       SearchActions.reloadSearchResults(event.state.store);
-    }
-  },
-
-  componentWillMount: function() {
-    SearchStore.on("SearchStoreChanged", this.searchStoreChanged);
-    SearchStore.on("SearchStoreQueryFailed",
-      function(result) {
-        window.location = window.location.origin + '/404'
-      }
-    );
-    window.addEventListener("popstate", this.onWindowPopState);
-
-    if ('object' == typeof(this.props.collection)) {
-      this.setValues(this.props.collection);
-    } else {
-      this.loadRemoteCollection(this.props.collection);
     }
   },
 
@@ -103,7 +123,7 @@ var Search = React.createClass({
     return (
       <mui.AppCanvas>
         <CollectionPageHeader collection={SearchStore.collection} ></CollectionPageHeader>
-        <ItemPanel height={ window.innerHeight - 50 } currentItem={this.props.currentItem}/>
+        <ItemPanel height={ this.state.windowHeight - 50 } currentItem={this.props.currentItem}/>
         <SearchControls searchStyle={{height:'50px'}}/>
         <PageContent fluidLayout={false}>
           <SearchDisplayList />
