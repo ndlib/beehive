@@ -125,6 +125,8 @@ class SearchStore extends EventEmitter {
   }
 
   setTerm(term) {
+    // Reset starting item since the query has changed
+    this._start = null;
     this._searchTerm = term;
     this.executeQuery();
   }
@@ -150,13 +152,15 @@ class SearchStore extends EventEmitter {
     if(addFacet){
       this._facetOption.push(facet);
     }
-
-
+    // Reset starting item since the query has changed
+    this._start = null;
     this.executeQuery();
   }
 
   setSelectedSort(sort) {
     this._sortOption = sort;
+    // Reset starting item since the query has changed
+    this._start = null;
     this.executeQuery();
   }
 

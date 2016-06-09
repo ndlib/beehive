@@ -28,7 +28,6 @@ var SearchSort = React.createClass({
     if(window.location.search.match(regex)) {
       sortOption = window.location.search.replace(regex, '').split('&')[0];
     }
-    this.setSort(sortOption);
   },
 
   sortStyle: function() {
