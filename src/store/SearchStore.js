@@ -104,8 +104,12 @@ class SearchStore extends EventEmitter {
     if(this._sortOption) {
       url += "&sort=" + this._sortOption;
     }
-    url += "&start=" + this._start;
-    url += "&rows=" + this._rowLimit;
+    if(this._start) {
+      url += "&start=" + this._start;
+    }
+    if(this._rowLimit) {
+      url += "&rows=" + this._rowLimit;
+    }
 
     $.ajax({
       context: this,
