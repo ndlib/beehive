@@ -104,8 +104,12 @@ class SearchStore extends EventEmitter {
     if(this._sortOption) {
       url += "&sort=" + this._sortOption;
     }
-    url += "&start=" + this._start;
-    url += "&rows=" + this._rowLimit;
+    if(this._start) {
+      url += "&start=" + this._start;
+    }
+    if(this._rowLimit) {
+      url += "&rows=" + this._rowLimit;
+    }
 
     $.ajax({
       context: this,
@@ -125,6 +129,8 @@ class SearchStore extends EventEmitter {
   }
 
   setTerm(term) {
+    // Reset starting item since the query has changed
+    this._start = null;
     this._searchTerm = term;
     this.executeQuery();
   }
@@ -150,13 +156,15 @@ class SearchStore extends EventEmitter {
     if(addFacet){
       this._facetOption.push(facet);
     }
-
-
+    // Reset starting item since the query has changed
+    this._start = null;
     this.executeQuery();
   }
 
   setSelectedSort(sort) {
     this._sortOption = sort;
+    // Reset starting item since the query has changed
+    this._start = null;
     this.executeQuery();
   }
 
