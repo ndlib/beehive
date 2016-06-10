@@ -12,6 +12,25 @@ var ItemShow = React.createClass({
     item: React.PropTypes.object,
     additionalDetails: React.PropTypes.string,
     height: React.PropTypes.number,
+    minMediaHeight: React.PropTypes.number, // If splitting the space between media and meta
+                                            // causes the media to go smaller than this, it
+                                            // will switch to full screen media render
+    mediaBottom: React.PropTypes.number,    // Distance from bottom of media to bottom of viewport
+  },
+
+  getDefaultProps: function() {
+    return {
+      minMediaHeight: 300,
+      mediaBottom: 200
+    }
+  },
+
+  componentWillMount: function() {
+    document.body.classList.toggle('noscroll', true);
+  },
+
+  componentWillUnmount: function() {
+    document.body.classList.toggle('noscroll', false);
   },
 
   outerStyles: function() {
@@ -19,6 +38,7 @@ var ItemShow = React.createClass({
       return {
         height: this.props.height,
         position: "relative",
+        overflow: "auto"
       }
     } else {
       return {}
@@ -28,8 +48,7 @@ var ItemShow = React.createClass({
   zoomStyles: function() {
     if (this.props.height) {
       return {
-        height: this.props.height,
-        position: "absolute",
+        background: "rgba(200,200,200,1)",
         top: 0,
         width: "100%",
       }
@@ -38,36 +57,43 @@ var ItemShow = React.createClass({
     }
   },
 
+  image: function() {
+    var height = this.props.height - this.props.mediaBottom;
+    if( height < this.props.minMediaHeight ){
+      height = this.props.height;
+    }
+    return (
+      <div className="item-detail-zoom" style={this.zoomStyles()}>
+        <MediaQuery minWidth={650}>
+          <OpenseadragonViewer
+            image={this.props.item.image}
+            containerID={this.props.item.id}
+            height={height - 60}
+            toolbarTop={60}
+            toolbarLeft={40}
+            showFullPageControl={false} />
+        </MediaQuery>
+        <MediaQuery maxWidth={650}>
+          <OpenseadragonViewer
+            image={this.props.item.image}
+            containerID={this.props.item.id}
+            height={height - 60}
+            toolbarTop={60}
+            toolbarLeft={40}
+            showFullPageControl={false}
+            showNavigator={false} />
+        </MediaQuery>
+      </div>
+    );
+  },
+
   render: function() {
     var prevLink, nextLink;
     if (this.props.item) {
       return (
         <div style={this.outerStyles()}>
-          <MediaQuery minWidth={650}>
-            <Details item={this.props.item} additionalDetails={this.props.additionalDetails} showDetails={true} />
-          </MediaQuery>
-
-          <div className="item-detail-zoom" style={this.zoomStyles()}>
-            <MediaQuery minWidth={650}>
-              <OpenseadragonViewer
-                image={this.props.item.image}
-                containerID={this.props.item.id}
-                height={this.props.height - 60}
-                toolbarTop={60}
-                toolbarLeft={40}
-                showFullPageControl={false} />
-            </MediaQuery>
-            <MediaQuery maxWidth={650}>
-              <OpenseadragonViewer
-                image={this.props.item.image}
-                containerID={this.props.item.id}
-                height={this.props.height - 60}
-                toolbarTop={60}
-                toolbarLeft={40}
-                showFullPageControl={false}
-                showNavigator={false} />
-            </MediaQuery>
-          </div>
+          { this.props.item.image && this.image() }
+          <Details item={this.props.item} additionalDetails={this.props.additionalDetails} showDetails={true} />
         </div>
       );
     } else {

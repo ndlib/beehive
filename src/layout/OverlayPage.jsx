@@ -19,13 +19,24 @@ var OverlayPage = React.createClass({
 
   styles: function () {
     return {
-      backgroundColor: this.getCurrentPallette.primary3Color,
+      backgroundColor: "rgba(51,51,51,1)",
+      display: "block",
+      overflow: "hidden"
     }
   },
 
   titleStyle: function () {
     return {
-      color: this.getCurrentPallette().textColor,
+      color: this.getCurrentPallette().alternateTextColor,
+      position: "fixed",
+      width: "80%"
+    }
+  },
+
+  closeButtonStyle: function () {
+    return {
+      color: this.getCurrentPallette().alternateTextColor,
+      height: "100%",
     }
   },
 
@@ -42,10 +53,10 @@ var OverlayPage = React.createClass({
   toolbar: function() {
     return (
       <mui.Toolbar style={this.styles()} >
-        <mui.ToolbarGroup key={0} float="left" >
-          <mui.ToolbarTitle text={this.props.title} style={this.titleStyle()} />
+        <mui.ToolbarGroup key={0} float="left">
+          <mui.ToolbarTitle text={this.props.title}  style={this.titleStyle()} />
         </mui.ToolbarGroup>
-        <mui.ToolbarGroup key={1} float="right">
+        <mui.ToolbarGroup key={1} float="right" style={this.closeButtonStyle()}>
           {this.closeButton()}
         </mui.ToolbarGroup>
       </mui.Toolbar>
@@ -54,7 +65,7 @@ var OverlayPage = React.createClass({
 
   closeButton: function() {
     if(this.props.onCloseButtonClick) {
-      return (<CloseButton clickEvent={this.props.onCloseButtonClick} />);
+      return (<CloseButton clickEvent={this.props.onCloseButtonClick} alternate={true} />);
     }
     return "";
   },

@@ -7,30 +7,24 @@ var MetadataList = require('../display/MetadataList.jsx');
 var Styles = {
   // The outer containing div for this component
   outer: {
-    height: "100%",
-    position: "absolute",
-    right: "70px",
-    zIndex: 100,
-    width: "350px"
+    boxShadow: "0 -5px 5px -5px rgba(0, 0, 0, 0.16), 0 -5px 5px -5px rgba(0, 0, 0, 0.23)",
+    margin: "0 auto 60px",
+    position: "relative",
+    width: "100%",
+    zIndex: 1,
   },
   // The details Paper
   details: {
     backgroundColor: "#fff",
     color: "#555",
     display: "block",
+    fontSize: "16px",
     padding: "10px",
     paddingTop: "35px",
-    position: "relative",
-    overflow: "auto",
     opacity: "0.8",
-    maxHeight: "70%",
-    top: "5px",
+    margin: "0 auto 60px",
     width: "100%",
-  },
-  // The shrink/expand details button
-  detailsButton: {
-    position: "relative",
-    left: "220",
+    maxWidth: "60em",
   },
 };
 
@@ -70,27 +64,13 @@ var Details = React.createClass({
     );
   },
 
-  detailsButton: function() {
-    return (
-      <mui.RaisedButton
-        onClick={this.toggleDetails}
-        style={ Styles.detailsButton }
-        disableTouchRipple={true}
-        label="Details"
-        labelStyle={{fontSize: "20px", letterSpacing: "0", textTransform: "uppercase", fontWeight: "500", padding: "0px 10px" }}
-      >
-        { this.arrowIcon() }
-      </mui.RaisedButton>
-    );
-  },
-
   details: function() {
     if(this.state.showDetails){
       return (
-        <mui.Paper className="item-details" style={ Styles.details }>
+        <div className="item-details" style={ Styles.details }>
           <div className="additional-details" dangerouslySetInnerHTML={{__html: this.props.additionalDetails}} />
           <MetadataList metadata={this.props.item.metadata} />
-        </mui.Paper>
+        </div>
       );
     } else {
       return null;
@@ -99,10 +79,9 @@ var Details = React.createClass({
 
   render: function () {
     return (
-      <div style={ Styles.outer }>
-        { this.detailsButton() }
+      <mui.Paper zDepth={0} style={ Styles.outer }>
         { this.details() }
-      </div>
+      </mui.Paper>
     );
   }
 });

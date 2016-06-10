@@ -37,7 +37,7 @@ var CloseButton = React.createClass({
       <mui.EnhancedButton
         onClick={this.props.clickEvent}
         disableTouchRipple={true}
-        style={{ height: this.props.height, padding: 0 }}
+        style={{ height: "100%", padding: 0 }}
       >
         <mui.FontIcon className="material-icons" color={this.color()} style={this.iconStyle()}>clear</mui.FontIcon>
       </mui.EnhancedButton>

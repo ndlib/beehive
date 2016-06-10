@@ -225,31 +225,38 @@ var OpenseadragonViewer = React.createClass({
     };
   },
 
-  render: function() {
-    var fullPageControl;
-    var toolbarID = 'toolbar-' + this.props.containerID;
-    var zoomInID = 'zoom-in-' + this.props.containerID;
-    var zoomOutID = 'zoom-out-' + this.props.containerID;
-    var homeID = 'home-' + this.props.containerID;
-    var fullID = 'full-page-' + this.props.containerID;
-    var leftID = 'left-' + this.props.containerID;
-    var rightID = 'right-' + this.props.containerID;
-    if (this.props.showFullPageControl) {
-      fullPageControl = (
-        <a id={fullID} href="#full-page"><i className="material-icons">fullscreen</i></a>
-      );
+  renderButtons: function(){
+    if(this.props.showNavigator){
+      var zoomInID = 'zoom-in-' + this.props.containerID;
+      var zoomOutID = 'zoom-out-' + this.props.containerID;
+      var homeID = 'home-' + this.props.containerID;
+      var fullID = 'full-page-' + this.props.containerID;
+      var leftID = 'left-' + this.props.containerID;
+      var rightID = 'right-' + this.props.containerID;
+
+      var nodes = [
+        <a id={zoomInID} href="#zoom-in"><i className="material-icons">zoom_in</i></a>,
+        <a id={zoomOutID} href="#zoom-out"><i className="material-icons">zoom_out</i></a>,
+        <a id={leftID} href="#rotate-left"><i className="material-icons">rotate_left</i></a>,
+        <a id={rightID} href="#rotate-right"><i className="material-icons">rotate_right</i></a>,
+        <a id={homeID} href="#home"><i className="material-icons">refresh</i></a>,
+      ];
+      if(this.props.showFullPageControl) {
+        nodes.push(<a id={fullID} href="#full-page"><i className="material-icons">fullscreen</i></a>);
+      }
+      return nodes;
     }
+    return null;
+  },
+
+  render: function() {
+    var toolbarID = 'toolbar-' + this.props.containerID;
+
     return (
       <div className="hc-openseadragon-viewer" id={this.props.containerID} style={this.style()}>
         <div id={toolbarID} className="os-toolbar" style={this.toolbarStyle()}>
-          <a id={zoomInID} href="#zoom-in"><i className="material-icons">zoom_in</i></a>
-          <a id={zoomOutID} href="#zoom-out"><i className="material-icons">zoom_out</i></a>
-          <a id={leftID} href="#rotate-left"><i className="material-icons">rotate_left</i></a>
-          <a id={rightID} href="#rotate-right"><i className="material-icons">rotate_right</i></a>
-          <a id={homeID} href="#home"><i className="material-icons">refresh</i></a>
-          {fullPageControl}
+          { this.renderButtons() }
         </div>
-        <div ></div>
       </div>
     );
   }

@@ -31,14 +31,21 @@ var SectionShow = React.createClass({
 
   styles: function () {
     return {
-      backgroundColor: this.getCurrentPallette.primary3Color,
+      backgroundColor: "rgba(51,51,51,1)",
     }
   },
 
   titleStyle: function () {
     return {
-      color: this.getCurrentPallette().textColor,
+      color: this.getCurrentPallette().alternateTextColor,
       lineHeight: this.mobile() ? '24px' : '56px',
+    }
+  },
+
+  closeButtonStyle: function () {
+    return {
+      color: this.getCurrentPallette().alternateTextColor,
+      height: "100%",
     }
   },
 
@@ -66,8 +73,8 @@ var SectionShow = React.createClass({
         <mui.ToolbarGroup key={0} float="left" style={{maxWidth: this.mobile ? '80%': '90%'}}>
           <mui.ToolbarTitle text={this.title()} style={this.titleStyle()} />
         </mui.ToolbarGroup>
-        <mui.ToolbarGroup key={1} float="right">
-          <CloseButton clickEvent={this.closeDialog} />
+        <mui.ToolbarGroup key={1} float="right" style={this.closeButtonStyle()}>
+          <CloseButton clickEvent={this.closeDialog} alternate={true} />
         </mui.ToolbarGroup>
       </mui.Toolbar>
     )
