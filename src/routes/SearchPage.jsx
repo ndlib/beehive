@@ -6,7 +6,6 @@ import FacetQueryParms from '../modules/FacetQueryParams.js';
 import HoneycombURL from '../modules/HoneycombURL.js'
 
 class SearchPage extends Component {
-
   render() {
     return (
       <div>
@@ -20,6 +19,7 @@ class SearchPage extends Component {
           start={QueryParm('start')}
           view={QueryParm('view')}
           currentItem={QueryParm('item')}
+          compact={ QueryParm('compact') === "true" }
         />
         {this.props.children}
       </div>

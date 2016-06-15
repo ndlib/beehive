@@ -20,6 +20,7 @@ var Search = React.createClass({
   ],
 
   propTypes: {
+    compact: React.PropTypes.bool,
     hits: React.PropTypes.oneOfType([
       React.PropTypes.string,
       React.PropTypes.array,
@@ -33,6 +34,13 @@ var Search = React.createClass({
     start: React.PropTypes.number,
     view: React.PropTypes.string,
     currentItem: React.PropTypes.string,
+  },
+
+  getDefaultProps: function() {
+    return {
+      compact: false,
+      footerHeight: 50
+    }
   },
 
   getInitialState: function() {
@@ -68,8 +76,12 @@ var Search = React.createClass({
 
   handleResize: function(e) {
     this.setState({
-      windowHeight: window.innerHeight
+      windowHeight: this.calcHeight()
     });
+  },
+
+  calcHeight: function() {
+    window.innerHeight - (this.props.compact ? this.props.footerHeight : 0);
   },
 
   searchStoreChanged: function(reason) {
@@ -83,6 +95,7 @@ var Search = React.createClass({
         currentItem = '&item=' + this.props.currentItem;
       }
       var path = window.location.origin + SearchStore.searchUri() + currentItem;
+      path += "&compact=" + this.props.compact;
       window.history.pushState({ store: SearchStore.getQueryParams() }, '', path);
     }
   },
@@ -130,13 +143,13 @@ var Search = React.createClass({
 
     return (
       <mui.AppCanvas>
-        <CollectionPageHeader collection={SearchStore.collection} ></CollectionPageHeader>
-        <ItemPanel height={ this.state.windowHeight - 50 } currentItem={this.props.currentItem}/>
+        { !this.props.compact && <CollectionPageHeader collection={SearchStore.collection} ></CollectionPageHeader> }
+        <ItemPanel height={ this.state.windowHeight } currentItem={this.props.currentItem}/>
         <SearchControls searchStyle={{height:'50px'}}/>
         <PageContent fluidLayout={false}>
           <SearchDisplayList />
         </PageContent>
-        <CollectionPageFooter collection={SearchStore.collection} />
+        { !this.props.compact && <CollectionPageFooter collection={SearchStore.collection} height={this.props.footerHeight}/> }
       </mui.AppCanvas>
     );
   }
