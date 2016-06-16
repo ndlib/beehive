@@ -5,6 +5,23 @@ var ColorManipulator = require('material-ui/lib/utils/color-manipulator');
 var SearchStore = require('../store/SearchStore.js');
 var SearchActions = require('../actions/SearchActions.js');
 
+var Styles = {
+  searchTextField: {
+    height: '38px',
+    width: '500px',
+    verticalAlign:'top',
+    paddingRight: "50px",
+  },
+  clearButton: {
+    marginLeft: "-41px",
+    height: "25px",
+    width: "40px",
+    verticalAlign: 'text-bottom',
+    fontSize: '16px',
+    paddingTop: '6px',
+  },
+}
+
 var SearchBox = React.createClass({
   mixins: [
     require('../mixins/CurrentThemeMixin.jsx')
@@ -36,19 +53,29 @@ var SearchBox = React.createClass({
 
   onClick: function(e) {
     if (this.state.active && this.state.searchTerm) {
-      if(this.props.useStore) {
-        SearchActions.setSearchTerm(this.state.searchTerm);
-      } else {
-        var url = window.location.origin
-          + "/" + this.props.collection.id
-          + "/" + this.props.collection.slug
-          + "/search?q=" + this.state.searchTerm;
-        window.location = url;
-      }
+      this.setSearchTerm(this.state.searchTerm)
     } else if (this.state.active) {
       this.setState({active: false});
     } else {
       this.setState({active: true});
+    }
+  },
+
+  clearClick: function() {
+    this.setSearchTerm("");
+  },
+
+  setSearchTerm(searchTerm) {
+    this.setTerm(searchTerm);
+    
+    if(this.props.useStore) {
+      SearchActions.setSearchTerm(searchTerm);
+    } else {
+      var url = window.location.origin
+        + "/" + this.props.collection.id
+        + "/" + this.props.collection.slug
+        + "/search?q=" + searchTerm;
+      window.location = url;
     }
   },
 
@@ -68,6 +95,18 @@ var SearchBox = React.createClass({
     });
   },
 
+  clearButton: function() {
+    if (SearchStore.searchTerm && this.state.active) {
+      return (
+        <mui.IconButton onClick={this.clearClick} style={Styles.clearButton} tooltip="Clear Search">
+          <mui.FontIcon color="gray" className="material-icons">clear</mui.FontIcon>
+        </mui.IconButton>
+      );
+    } else {
+      return;
+    }
+  },
+
   handleKeyDown: function(e) {
     var ENTER = 13;
     if( e.keyCode == ENTER ) {
@@ -81,10 +120,10 @@ var SearchBox = React.createClass({
         placeholder='search'
         ref='searchBox'
         onChange={this.onChange}
-        //defaultValue={SearchStore.searchTerm}
+        value={this.state.searchTerm}
         onKeyDown={this.handleKeyDown}
         inputStyle={this.inputStyle()}
-        style={{height:'36px', verticalAlign:'top'}}
+        style={ Styles.searchTextField }
       />);
     } else {
       return (<div />);
@@ -95,9 +134,10 @@ var SearchBox = React.createClass({
     return(
       <div style={{display:'inline-block', margin:'14px 0'}}>
         {this.input()}
+        {this.clearButton()}
         <mui.RaisedButton
           onClick={this.onClick}
-          style={{zIndex: '0', minWidth: 'auto', boxShadow: 'none',  lineHeight: '36px'}}
+          style={{zIndex: '0', minWidth: 'auto', boxShadow: 'none',  lineHeight: '36px', width: "50px", height: "38px"}}
           primary={false}
           secondary={true}
           disableTouchRipple={true}
