@@ -12,6 +12,8 @@ var PageTitleBar = require('./PageTitleBar.jsx');
 var SitePathCard = require('../Collection/SitePathCard.jsx');
 var PreviewLink = require('../../layout/PreviewLink.jsx');
 var MediaQuery = require('react-responsive');
+var ConfigurationActions = require("../../actions/ConfigurationActions.js");
+var ConfigurationStore = require("../../store/ConfigurationStore.js");
 
 var Page = React.createClass({
   mixins: [
@@ -34,6 +36,7 @@ var Page = React.createClass({
   },
 
   componentDidMount: function() {
+    ConfigurationStore.addChangeListener(this.configurationLoaded);
     if ('object' == typeof(this.props.collection)) {
       this.setState({
         collection: this.props.collection,
@@ -45,6 +48,7 @@ var Page = React.createClass({
 
   // Callback from loadRemoteCollection
   setValues: function(result){
+    ConfigurationActions.load(result);
     if(result.pages.items) {
       this.linkItems(result.pages.items);
     }
@@ -53,6 +57,10 @@ var Page = React.createClass({
       collection: result,
     });
     return true;
+  },
+
+  configurationLoaded: function(){
+    this.setState({ configurationLoaded: true });
   },
 
   // Creates doubly linked list from items to make subsequent
@@ -141,7 +149,7 @@ var Page = React.createClass({
         <OverlayPage title={this.state.currentItem.name} onCloseButtonClick={this.closeItem}
           onNextButtonClick={this.state.currentItem.nextItem ? this.nextButtonClick : null}
           onPrevButtonClick={this.state.currentItem.previousItem ? this.prevButtonClick : null}>
-          <ItemShow item={this.state.currentItem} onClose={this.closeItem}/>
+          <ItemShow item={this.state.currentItem} height={window.innerHeight - 35} onClose={this.closeItem}/>
         </OverlayPage>
       );
     }

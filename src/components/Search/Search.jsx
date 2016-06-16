@@ -10,6 +10,8 @@ var SearchControls = require('./SearchControls.jsx');
 var SearchStore = require('../../store/SearchStore.js');
 var SearchActions = require('../../actions/SearchActions.js');
 var SearchDisplayList = require('./SearchDisplayList.jsx');
+var ConfigurationActions = require("../../actions/ConfigurationActions.js");
+var ConfigurationStore = require("../../store/ConfigurationStore.js");
 
 var Search = React.createClass({
   mixins: [
@@ -40,6 +42,7 @@ var Search = React.createClass({
   },
 
   componentWillMount: function() {
+    ConfigurationStore.addChangeListener(this.configurationLoaded);
     SearchStore.on("SearchStoreChanged", this.searchStoreChanged);
     SearchStore.on("SearchStoreQueryFailed",
       function(result) {
@@ -84,8 +87,13 @@ var Search = React.createClass({
     }
   },
 
+  configurationLoaded: function(){
+    this.setState({ configurationLoaded: true });
+  },
+
   // Callback from LoadRemoteMixin when remote collection is loaded
   setValues: function(collection) {
+    ConfigurationActions.load(collection);
     SearchActions.loadSearchResults(collection, this.props.hits, this.props.searchTerm, this.facetObject(), this.props.sortTerm, this.props.start, this.props.view);
     return true;
   },

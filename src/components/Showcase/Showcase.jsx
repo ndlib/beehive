@@ -7,6 +7,8 @@ var ShowcaseShow = require('./ShowcaseShow.jsx');
 var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx');
 var PageContent = require('../../layout/PageContent.jsx');
 var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx');
+var ConfigurationActions = require("../../actions/ConfigurationActions.js");
+var ConfigurationStore = require("../../store/ConfigurationStore.js");
 
 var Showcase = React.createClass({
   mixins: [
@@ -25,7 +27,12 @@ var Showcase = React.createClass({
     };
   },
 
+  configurationLoaded: function(){
+    this.setState({ configurationLoaded: true });
+  },
+
   setValues: function(collection) {
+    ConfigurationActions.load(collection);
     this.setState({
       remoteCollectionLoaded: true,
       collection: collection,
@@ -35,6 +42,7 @@ var Showcase = React.createClass({
   },
 
   componentWillMount: function() {
+    ConfigurationStore.addChangeListener(this.configurationLoaded);
     EventEmitter.on("ItemDialogWindow", this.setCurrentSection);
 
       var newMuiTheme = this.state.muiTheme;

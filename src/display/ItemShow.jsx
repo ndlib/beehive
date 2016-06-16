@@ -11,7 +11,7 @@ var ItemShow = React.createClass({
   propTypes: {
     item: React.PropTypes.object,
     additionalDetails: React.PropTypes.string,
-    height: React.PropTypes.number,
+    height: React.PropTypes.number.isRequired,
     minMediaHeight: React.PropTypes.number, // If splitting the space between media and meta
                                             // causes the media to go smaller than this, it
                                             // will switch to full screen media render

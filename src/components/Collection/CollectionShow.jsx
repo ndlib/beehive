@@ -1,6 +1,7 @@
 'use strict'
 var React = require('react');
 var mui = require('material-ui');
+var ConfigurationActions = require("../../actions/ConfigurationActions.js");
 
 var CollectionShow = React.createClass({
   mixins: [
@@ -14,6 +15,7 @@ var CollectionShow = React.createClass({
 
   collectionLoaded: function () {
     if (this.props.collection.name) {
+
       return true;
     } else {
       return false;
