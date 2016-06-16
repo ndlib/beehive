@@ -2,12 +2,13 @@
 import React, { Component, PropTypes } from 'react';
 
 import Collection from '../components/Collection/Collection.jsx';
-import HoneycombURL from '../modules/HoneycombURL.js'
+import HoneycombURL from '../modules/HoneycombURL.js';
+import { browserHistory } from 'react-router';
 
 class CustomCollectionPage extends Component {
 
   state = {
-      collectionResult: undefined,
+    collectionResult: undefined,
   }
 
   componentWillMount() {
@@ -18,8 +19,10 @@ class CustomCollectionPage extends Component {
       dataType: "json",
       success: function(result) {
         this.setState({
-          collectionResult: result
-        });
+            collectionResult: result
+          },
+          browserHistory.push(result["id"] + "/" + result["slug"])
+        );
       },
       error: function(request, status, thrownError) {
         console.log("Custom slug access not available " + thrownError);
@@ -32,7 +35,7 @@ class CustomCollectionPage extends Component {
     if (this.state.collectionResult) {
       return (
         <Collection
-          collection={ this.state.collectionResult["@id"] + "/site_path" }
+          collection={ this.state.collectionResult }
           />
       )
     } else {
