@@ -61,8 +61,8 @@ var SearchPagination = React.createClass({
     var startHuman = SearchStore.start + 1;
     var endHuman = Math.min(SearchStore.start + SearchStore.rowLimit, SearchStore.found);
     return (
-      <div style={{margin: '2em 0 4em', float:'right'}}>
-        <div style={{color:'rgba(0, 0, 0, 0.870588)', float: 'right', textAlign: 'right'}}>
+      <div style={{margin: '2em 0 4em'}}>
+        <div style={{color:'rgba(0, 0, 0, 0.870588)', textAlign: 'right'}}>
           <div className="pagination">
             <span style={{marginRight:'15px', display:'inline-block', verticalAlign:'top'}}>Showing {startHuman} - {endHuman} of {SearchStore.found}</span>
             {this.pageLinks()}
