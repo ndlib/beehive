@@ -11,7 +11,6 @@ class CustomCollectionPage extends Component {
   }
 
   componentWillMount() {
-    console.log("component will mount", this.props.params)
     $.ajax({
       context: this,
       type: "GET",
@@ -30,8 +29,6 @@ class CustomCollectionPage extends Component {
   }
 
   render() {
-    console.log("render called");
-    console.log(this.state.collectionResult);
     if (this.state.collectionResult) {
       return (
         <Collection
