@@ -45,7 +45,7 @@ var Search = React.createClass({
 
   getInitialState: function() {
     return {
-      windowHeight: window.innerHeight
+      windowHeight: this.calcHeight()
     };
   },
 
@@ -81,7 +81,7 @@ var Search = React.createClass({
   },
 
   calcHeight: function() {
-    window.innerHeight - (this.props.compact ? this.props.footerHeight : 0);
+    return window.innerHeight - (this.props.compact ? 0: this.props.footerHeight);
   },
 
   searchStoreChanged: function(reason) {
@@ -147,7 +147,7 @@ var Search = React.createClass({
         <ItemPanel height={ this.state.windowHeight } currentItem={this.props.currentItem}/>
         <SearchControls searchStyle={{height:'50px'}}/>
         <PageContent fluidLayout={false}>
-          <SearchDisplayList />
+          <SearchDisplayList compact={ this.props.compact } />
         </PageContent>
         { !this.props.compact && <CollectionPageFooter collection={SearchStore.collection} height={this.props.footerHeight}/> }
       </mui.AppCanvas>
