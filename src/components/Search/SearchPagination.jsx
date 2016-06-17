@@ -4,6 +4,16 @@ var mui = require('material-ui');
 var SearchStore = require('../../store/SearchStore.js');
 
 var SearchPagination = React.createClass({
+  propTypes: {
+    compact: React.PropTypes.bool,
+  },
+
+  getDefaultProps: function() {
+    return {
+      compact: false,
+    }
+  },
+
   paginationButton: function() {
     return {
       border:'solid 1px',
@@ -20,7 +30,7 @@ var SearchPagination = React.createClass({
       );
     }
     else {
-      var searchUrl = window.location.origin + SearchStore.searchUri({ start: (i-1)*SearchStore.rowLimit });
+      var searchUrl = window.location.origin + SearchStore.searchUri({ start: (i-1)*SearchStore.rowLimit }) + "&compact=" + this.props.compact;
       return(
         <a href={searchUrl} style={this.paginationButton()}>{i}</a>
       );
@@ -31,7 +41,7 @@ var SearchPagination = React.createClass({
     var nodes = [];
     // if not first page
     if(SearchStore.start != 0) {
-      var backLink = window.location.origin + SearchStore.searchUri({ start: 0 });
+      var backLink = window.location.origin + SearchStore.searchUri({ start: 0 }) + "&compact=" + this.props.compact;
       nodes.push((<a href={backLink}> <i className="material-icons" style={{fontSize: '1em',}}>arrow_back</i> </a>));
     }
     var last = Math.floor(SearchStore.found/SearchStore.rowLimit);
@@ -49,7 +59,7 @@ var SearchPagination = React.createClass({
 
     // if not last page
     if(SearchStore.start + SearchStore.rowLimit < SearchStore.found) {
-      var forwardLink = window.location.origin + SearchStore.searchUri({ start: SearchStore.rowLimit*(last - 1) });
+      var forwardLink = window.location.origin + SearchStore.searchUri({ start: SearchStore.rowLimit*(last - 1) }) + "&compact=" + this.props.compact;
       nodes.push((<a href={forwardLink}> <i className="material-icons" style={{fontSize: '1em'}}>arrow_forward</i> </a>));
     }
     return nodes;

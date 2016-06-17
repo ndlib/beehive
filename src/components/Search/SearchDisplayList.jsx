@@ -15,6 +15,16 @@ var SearchDisplayList = React.createClass({
     require('../../mixins/MuiThemeMixin.jsx')
   ],
 
+  propTypes: {
+    compact: React.PropTypes.bool,
+  },
+
+  getDefaultProps: function() {
+    return {
+      compact: false,
+    }
+  },
+
   getInitialState: function () {
     return {
       sidebar: false,
@@ -99,7 +109,7 @@ var SearchDisplayList = React.createClass({
 
           <mui.Paper style={{width: "74%"}} zDepth={0}>
             {this.itemList()}
-            <SearchPagination />
+            <SearchPagination compact={ this.props.compact } />
           </mui.Paper>
         </MediaQuery>
       </div>
