@@ -67,7 +67,7 @@ var SearchBox = React.createClass({
 
   setSearchTerm(searchTerm) {
     this.setTerm(searchTerm);
-    
+
     if(this.props.useStore) {
       SearchActions.setSearchTerm(searchTerm);
     } else {
@@ -84,8 +84,7 @@ var SearchBox = React.createClass({
   },
 
   setTerm: function(term) {
-    var cleanTerm = encodeURIComponent(term);
-    this.setState({searchTerm: cleanTerm});
+    this.setState({searchTerm: term});
   },
 
   inputStyle: function() {
