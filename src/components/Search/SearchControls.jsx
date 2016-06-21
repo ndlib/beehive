@@ -75,12 +75,20 @@ var SearchControls = React.createClass({
     window.history.pushState({ store: SearchStore.getQueryParams() }, '', url);
   },
 
+  searchBox: function() {
+    if (SearchStore.searchEnabled()) {
+      return (<SearchBox primary={false} active={true} useStore={true} />);
+    } else {
+      return null;
+    }
+  },
+
   render: function() {
     return (
       <div style={{height: "65px" }}>
       <mui.Toolbar className="controls" style={this.controlsStyle()}>
         <mui.ToolbarGroup key={0} float="left">
-          <SearchBox primary={false} active={true} useStore={true} />
+          { this.searchBox() }
         </mui.ToolbarGroup>
         <mui.ToolbarGroup key={1} float="right">
           <MediaQuery minWidth={700}>
