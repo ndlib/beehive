@@ -27,7 +27,7 @@ var ListItem = React.createClass({
 
   primaryText: function() {
     return (
-      <span style={{marginLeft: '30px'}}>
+      <span style={{marginLeft: '30px', display: 'inline-block'}}>
         {this.props.item.name}
       </span>
     );

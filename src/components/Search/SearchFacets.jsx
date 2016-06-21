@@ -89,7 +89,7 @@ var SearchFacets = React.createClass({
         return (
           <ListItem
             key={e.name}
-            primaryText={<span style={{marginLeft:'30px'}}>{e.name}</span>}
+            primaryText={<span style={{marginLeft:'30px', display: 'inline-block', maxWidth: 'calc(100% - 60px)'}}>{e.name}</span>}
             secondaryText={"(" + e.count + ")"}
             value={parentFacet +"|"+ e.name}
             onClick={this.valueOnClick}
