@@ -5,6 +5,7 @@ var MediaQuery = require('react-responsive');
 
 var BrandBar = require('./BrandBar.jsx');
 var CollectionLeftNav = require('./CollectionLeftNav.jsx');
+var SearchStore = require('../store/SearchStore.js');
 var SearchBox = require('./SearchBox.jsx');
 
 var CollectionPageHeader = React.createClass({
@@ -80,7 +81,7 @@ var CollectionPageHeader = React.createClass({
   },
 
   browseTab: function() {
-    if (this.props.collection.enableBrowse) {
+    if (SearchStore.browseEnabled()) {
       return (<mui.Tab label="Browse Collection" value="search" onActive={this._handleTabs} />);
     } else {
       return "";
@@ -142,7 +143,7 @@ var CollectionPageHeader = React.createClass({
   },
 
   searchBox: function() {
-    if (this.props.collection.enable_search) {
+    if (SearchStore.searchEnabled()) {
       return (
         <div style={ {float:'right', marginTop:'-8px' } }>
           <SearchBox collection={this.props.collection} useStore={false}/>
