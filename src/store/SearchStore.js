@@ -171,12 +171,10 @@ class SearchStore extends EventEmitter {
   }
 
   removeSelectedFacet(facet) {
-    console.log('rsf', this._facetOption, facet);
     for (var i = 0; i < this._facetOption.length; i++) {
       if(this._facetOption[i].name === facet.name){
         if(this._facetOption[i].value === facet.value) {
           this._facetOption.splice(i, 1);
-          console.log('remove', this._facetOption, 'remove');
           this._start = null;
           this.executeQuery();
         }

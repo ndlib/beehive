@@ -25,12 +25,10 @@ var SearchFacets = React.createClass({
   },
 
   setFacet: function(values) {
-    console.log('set')
     SearchActions.setSelectedFacet({ name: values[0], value: values[1] });
   },
 
   removeFacet: function(values) {
-    console.log('remove');
     SearchStore.removeSelectedFacet({ name: values[0], value: values[1] });
   },
 
