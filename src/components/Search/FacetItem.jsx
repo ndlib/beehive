@@ -32,7 +32,6 @@ var FacetItem = React.createClass({
     SearchActions.setSelectedFacet({ name: values[0], value: values[1] });
   },
 
-
   isSelected: function() {
     if(SearchStore.facetOption) {
       for(var i = 0; i < SearchStore.facetOption.length; i++){
