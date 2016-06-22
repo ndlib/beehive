@@ -4,13 +4,13 @@ var mui = require('material-ui');
 var ListItem = mui.ListItem;
 var FontIcon = mui.FontIcon;
 var SearchStore = require('../../store/SearchStore.js');
+var SearchActions = require('../../actions/SearchActions.js');
 
 var FacetItem = React.createClass({
 
   propTypes: {
     field: React.PropTypes.string.isRequired,
     facet: React.PropTypes.object.isRequired,
-    clickAction: React.PropTypes.func.isRequired,
   },
 
   getDefaultProps: function() {
@@ -19,9 +19,19 @@ var FacetItem = React.createClass({
     }
   },
 
-  onClick: function(e) {
-    this.props.clickAction(e);
+  valueOnClick: function(e) {
+    var values = e.currentTarget.getAttribute("value").split("|");
+    if(SearchStore.facetOption) {
+      for(var i = 0; i < SearchStore.facetOption.length; i++) {
+        if (SearchStore.facetOption[i].name === values[0] && SearchStore.facetOption[i].value === values[1]) {
+          SearchStore.removeSelectedFacet({ name: values[0], value: values[1] });
+          return
+        }
+      }
+    }
+    SearchActions.setSelectedFacet({ name: values[0], value: values[1] });
   },
+
 
   isSelected: function() {
     if(SearchStore.facetOption) {
@@ -57,7 +67,7 @@ var FacetItem = React.createClass({
         primaryText={<span style={{marginLeft:'30px', display: 'inline-block', maxWidth: 'calc(100% - 60px)'}}>{this.props.facet.name}</span>}
         secondaryText={"(" + this.props.facet.count + ")"}
         value={this.props.field +"|"+ this.props.facet.name}
-        onClick={this.onClick}
+        onClick={this.valueOnClick}
         innerDivStyle={{padding:'10px 16px'}}
         className="facet"
         leftIcon={this.leftIcon()}
