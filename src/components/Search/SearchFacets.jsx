@@ -16,31 +16,12 @@ var SearchFacets = React.createClass({
     if(SearchStore.facetOption) {
       for(var i = 0; i < SearchStore.facetOption.length; i++) {
         if (SearchStore.facetOption[i].name === values[0] && SearchStore.facetOption[i].value === values[1]) {
-          this.removeFacet(values);
+          SearchStore.removeSelectedFacet({ name: values[0], value: values[1] });
           return
         }
       }
     }
-    this.setFacet(values);
-  },
-
-  setFacet: function(values) {
     SearchActions.setSelectedFacet({ name: values[0], value: values[1] });
-  },
-
-  removeFacet: function(values) {
-    SearchStore.removeSelectedFacet({ name: values[0], value: values[1] });
-  },
-
-  isSelected: function(name) {
-    if(SearchStore.facetOption) {
-      for(var i = 0; i < SearchStore.facetOption.length; i++){
-        if(encodeURIComponent(name) === encodeURIComponent(decodeURIComponent(SearchStore.facetOption[i].value))) {
-          return true;
-        }
-      }
-    }
-    return false;
   },
 
   values: function(facet) {
@@ -59,7 +40,6 @@ var SearchFacets = React.createClass({
           <FacetItem
             field={ facet.field}
             facet={ e }
-            isSelected={ this.isSelected(e.name) }
             clickAction={ this.valueOnClick }
             key={ e.name }
           />

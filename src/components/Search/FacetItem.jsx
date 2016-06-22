@@ -3,12 +3,13 @@ var React = require('react');
 var mui = require('material-ui');
 var ListItem = mui.ListItem;
 var FontIcon = mui.FontIcon;
+var SearchStore = require('../../store/SearchStore.js');
+
 var FacetItem = React.createClass({
 
   propTypes: {
     field: React.PropTypes.string.isRequired,
     facet: React.PropTypes.object.isRequired,
-    isSelected: React.PropTypes.bool,
     clickAction: React.PropTypes.func.isRequired,
   },
 
@@ -22,8 +23,19 @@ var FacetItem = React.createClass({
     this.props.clickAction(e);
   },
 
+  isSelected: function() {
+    if(SearchStore.facetOption) {
+      for(var i = 0; i < SearchStore.facetOption.length; i++){
+        if(encodeURIComponent(this.props.facet.name) === encodeURIComponent(decodeURIComponent(SearchStore.facetOption[i].value))) {
+          return true;
+        }
+      }
+    }
+    return false;
+  },
+
   leftIcon: function() {
-    if(this.props.isSelected) {
+    if(this.isSelected()) {
       return (<FontIcon className="material-icons" style={this.checkBoxStyle()}>check_box</FontIcon>);
     } else {
       return (<FontIcon className="material-icons" style={this.checkBoxStyle()}>check_box_outline_blank</FontIcon>);
