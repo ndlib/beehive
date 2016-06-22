@@ -156,7 +156,7 @@ class SearchStore extends EventEmitter {
     // set addFacet to false
     for (var i = 0; i < this._facetOption.length; i++) {
       if(this._facetOption[i].name == facet.name){
-        if(this._facetOption[i].value == facet.value) {
+        if(this._facetOption[i].value == encodeURIComponent(facet.value)) {
           addFacet = false;
         }
         this._facetOption.splice(i, 1);
@@ -168,6 +168,20 @@ class SearchStore extends EventEmitter {
     // Reset starting item since the query has changed
     this._start = null;
     this.executeQuery();
+  }
+
+  removeSelectedFacet(facet) {
+    console.log('rsf', this._facetOption, facet);
+    for (var i = 0; i < this._facetOption.length; i++) {
+      if(this._facetOption[i].name === facet.name){
+        if(this._facetOption[i].value === facet.value) {
+          this._facetOption.splice(i, 1);
+          console.log('remove', this._facetOption, 'remove');
+          this._start = null;
+          this.executeQuery();
+        }
+      }
+    }
   }
 
   setSelectedSort(sort) {
