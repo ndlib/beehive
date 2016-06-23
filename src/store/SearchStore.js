@@ -150,13 +150,13 @@ class SearchStore extends EventEmitter {
     }
     // should we add the facet, start by assuming yes we should
     var addFacet = true;
-    // look for a facet wit the same name
+    // look for a facet with the same name
     // if it is found, delete it
     // if it has the same name and same value, we don't want to add it so
     // set addFacet to false
     for (var i = 0; i < this._facetOption.length; i++) {
       if(this._facetOption[i].name == facet.name){
-        if(this._facetOption[i].value == facet.value) {
+        if(this._facetOption[i].value == encodeURIComponent(facet.value)) {
           addFacet = false;
         }
         this._facetOption.splice(i, 1);
@@ -168,6 +168,18 @@ class SearchStore extends EventEmitter {
     // Reset starting item since the query has changed
     this._start = null;
     this.executeQuery();
+  }
+
+  removeSelectedFacet(facet) {
+    for (var i = 0; i < this._facetOption.length; i++) {
+      if(this._facetOption[i].name === facet.name){
+        if(this._facetOption[i].value === facet.value) {
+          this._facetOption.splice(i, 1);
+          this._start = null;
+          this.executeQuery();
+        }
+      }
+    }
   }
 
   setSelectedSort(sort) {
