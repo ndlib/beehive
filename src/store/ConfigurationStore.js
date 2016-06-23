@@ -29,6 +29,7 @@ class ConfigurationStore extends StoreEventEmitter {
         this._facets = action.configuration.facets;
         this._enableSearch = action.configuration.enableSearch
         this._enableBrowse = action.configuration.enableBrowse
+        this._hasAboutPage = action.configuration.hasAboutPage
 
         this.emitChange();
         break;
@@ -45,6 +46,10 @@ class ConfigurationStore extends StoreEventEmitter {
 
   browseEnabled() {
     return this._enableBrowse;
+  }
+
+  hasAboutPage() {
+    return this._hasAboutPage;
   }
 }
 

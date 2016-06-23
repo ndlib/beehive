@@ -102,7 +102,7 @@ var CollectionPageHeader = React.createClass({
   },
 
   aboutTab: function() {
-    if (this.props.collection.about) {
+    if (ConfigurationStore.hasAboutPage()) {
       return (<mui.Tab label="About" value="about" onActive={this._handleTabs} />);
     } else {
       return "";
@@ -114,7 +114,7 @@ var CollectionPageHeader = React.createClass({
     if (ConfigurationStore.browseEnabled()) {
       ret.push({label: "Browse Collection", value: "search"});
     }
-    if (this.props.collection.about) {
+    if (ConfigurationStore.hasAboutPage()) {
       ret.push({label: "About", value: "about"});
     }
     return ret;
