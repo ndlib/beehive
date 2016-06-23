@@ -29,7 +29,7 @@ var FacetItem = React.createClass({
   isSelected: function() {
     if(SearchStore.facetOption) {
       for(var i = 0; i < SearchStore.facetOption.length; i++){
-        if(encodeURIComponent(this.props.facet.name) === encodeURIComponent(decodeURIComponent(SearchStore.facetOption[i].value))) {
+        if(this.props.facet.name === decodeURIComponent(SearchStore.facetOption[i].value)) {
           return true;
         }
       }
