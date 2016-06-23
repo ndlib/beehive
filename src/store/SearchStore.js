@@ -150,7 +150,7 @@ class SearchStore extends EventEmitter {
     }
     // should we add the facet, start by assuming yes we should
     var addFacet = true;
-    // look for a facet wit the same name
+    // look for a facet with the same name
     // if it is found, delete it
     // if it has the same name and same value, we don't want to add it so
     // set addFacet to false
