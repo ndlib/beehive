@@ -11,14 +11,11 @@ var SearchFacets = React.createClass({
   ],
 
   values: function(facet) {
-    var parentFacet = facet.field;
     if (facet.values) {
       return (facet.values.map(function(e, index) {
-        var selectedKey;
         var selectedValue;
         if(SearchStore.facetOption) {
-          selectedKey = encodeURIComponent(SearchStore.facetOption.name);
-          if(parentFacet == selectedKey) {
+          if(facet.field == encodeURIComponent(SearchStore.facetOption.name)) {
             selectedValue = SearchStore.facetOption.value;
           }
         }
