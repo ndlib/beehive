@@ -5,18 +5,11 @@ var ListItem = mui.ListItem;
 var FontIcon = mui.FontIcon;
 var SearchStore = require('../../store/SearchStore.js');
 var SearchActions = require('../../actions/SearchActions.js');
-
 var FacetItem = React.createClass({
 
   propTypes: {
     field: React.PropTypes.string.isRequired,
     facet: React.PropTypes.object.isRequired,
-  },
-
-  getDefaultProps: function() {
-    return {
-      isSelected: false,
-    }
   },
 
   valueOnClick: function(e) {
@@ -31,6 +24,7 @@ var FacetItem = React.createClass({
     }
     SearchActions.setSelectedFacet({ name: values[0], value: values[1] });
   },
+
 
   isSelected: function() {
     if(SearchStore.facetOption) {
