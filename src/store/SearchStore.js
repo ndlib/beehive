@@ -87,14 +87,6 @@ class SearchStore extends EventEmitter {
     };
   }
 
-  searchEnabled() {
-    return this._collection.enable_search;
-  }
-
-  browseEnabled() {
-    return this._collection.browse_enabled;
-  }
-
   executeQuery(reason) {
     reason = typeof reason != "undefined" ? reason : "load";
 

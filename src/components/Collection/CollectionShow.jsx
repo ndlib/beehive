@@ -15,7 +15,6 @@ var CollectionShow = React.createClass({
 
   collectionLoaded: function () {
     if (this.props.collection.name) {
-
       return true;
     } else {
       return false;

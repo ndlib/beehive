@@ -5,6 +5,7 @@ var MediaQuery = require('react-responsive');
 var SearchBox = require('../../layout/SearchBox.jsx');
 var SearchSort = require('./SearchSort.jsx');
 var SearchStore = require('../../store/SearchStore.js');
+var ConfigurationStore = require('../../store/ConfigurationStore.js');
 var SearchActions = require('../../actions/SearchActions.js');
 
 var gridView = {view: "grid"};
@@ -76,7 +77,7 @@ var SearchControls = React.createClass({
   },
 
   searchBox: function() {
-    if (SearchStore.searchEnabled()) {
+    if (ConfigurationStore.searchEnabled()) {
       return (<SearchBox primary={false} active={true} useStore={true} />);
     } else {
       return null;

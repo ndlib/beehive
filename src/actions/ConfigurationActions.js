@@ -16,7 +16,8 @@ class ConfigurationActions {
       success: function(result) {
         AppDispatcher.dispatch({
           actionType: ActionTypes.LOAD_CONFIGURAION,
-          configuration: result
+          configuration: result,
+          collection: collection,
         });
       },
       error: function(request, status, thrownError) {
