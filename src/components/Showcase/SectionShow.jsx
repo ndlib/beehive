@@ -32,6 +32,7 @@ var SectionShow = React.createClass({
   styles: function () {
     return {
       backgroundColor: "rgba(51,51,51,1)",
+      overflow: 'hidden',
     }
   },
 
