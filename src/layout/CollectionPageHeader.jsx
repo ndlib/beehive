@@ -5,7 +5,8 @@ var MediaQuery = require('react-responsive');
 
 var BrandBar = require('./BrandBar.jsx');
 var CollectionLeftNav = require('./CollectionLeftNav.jsx');
-var SearchStore = require('../store/SearchStore.js');
+var ConfigurationStore = require('../store/ConfigurationStore.js');
+var ConfigurationActions = require('../actions/ConfigurationActions.js');
 var SearchBox = require('./SearchBox.jsx');
 
 var CollectionPageHeader = React.createClass({
@@ -23,7 +24,19 @@ var CollectionPageHeader = React.createClass({
   getInitialState: function() {
     return {
       themeVariables: this.getCurrentTheme().appBar,
+      configurationLoaded: ConfigurationStore.loaded(),
     }
+  },
+
+  componentDidMount: function() {
+    ConfigurationStore.addChangeListener(this.configurationLoaded);
+    if (!this.state.configurationLoaded) {
+      ConfigurationActions.load(this.props.collection);
+    }
+  },
+
+  configurationLoaded: function() {
+    this.setState({ configurationLoaded: true });
   },
 
   largeScreenStyle: function() {
@@ -81,7 +94,7 @@ var CollectionPageHeader = React.createClass({
   },
 
   browseTab: function() {
-    if (SearchStore.browseEnabled()) {
+    if (ConfigurationStore.browseEnabled()) {
       return (<mui.Tab label="Browse Collection" value="search" onActive={this._handleTabs} />);
     } else {
       return "";
@@ -89,7 +102,7 @@ var CollectionPageHeader = React.createClass({
   },
 
   aboutTab: function() {
-    if (this.props.collection.about) {
+    if (ConfigurationStore.hasAboutPage()) {
       return (<mui.Tab label="About" value="about" onActive={this._handleTabs} />);
     } else {
       return "";
@@ -98,10 +111,10 @@ var CollectionPageHeader = React.createClass({
 
   availableTabs: function() {
     var ret = [];
-    if (this.props.collection.enable_browse) {
+    if (ConfigurationStore.browseEnabled()) {
       ret.push({label: "Browse Collection", value: "search"});
     }
-    if (this.props.collection.about) {
+    if (ConfigurationStore.hasAboutPage()) {
       ret.push({label: "About", value: "about"});
     }
     return ret;
@@ -143,7 +156,7 @@ var CollectionPageHeader = React.createClass({
   },
 
   searchBox: function() {
-    if (SearchStore.searchEnabled()) {
+    if (ConfigurationStore.searchEnabled()) {
       return (
         <div style={ {float:'right', marginTop:'-8px' } }>
           <SearchBox collection={this.props.collection} useStore={false}/>
