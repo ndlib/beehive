@@ -1,6 +1,11 @@
 #!/bin/bash
 # Usage: deploy-pprd {branchname}
 # Ex: deploy-pprd v4.0.02
+if [[ $# -eq 0 ]] ; then
+  echo "Please specify a branch to deploy"
+  exit 0
+fi
+
 BRANCH=$1
 
 DIR="./public"
@@ -8,11 +13,6 @@ SITE="collections-pprd"
 
 BUCKET=${SITE}.library.nd.edu
 CURRENT_BRANCH=`$(git rev-parse --abbrev-ref HEAD)`
-
-if [ -z ${BRANCH+x} ]; then
-  echo "Please specify a branch to deploy"
-  exit 1
-fi
 
 git checkout master
 git pull
