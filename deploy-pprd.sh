@@ -9,6 +9,11 @@ SITE="collections-pprd"
 BUCKET=${SITE}.library.nd.edu
 CURRENT_BRANCH=git rev-parse --abbrev-ref HEAD
 
+if [ -z ${BRANCH+x} ]; then
+  echo "Please specify a branch to deploy"
+  exit 1
+fi
+
 git checkout master
 git pull
 git fetch --tags
