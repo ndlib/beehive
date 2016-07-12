@@ -1,13 +1,18 @@
 #!/bin/bash
 # Usage: deploy-prod {branchname}
 # Ex: deploy-prod v4.0.02
+if [[ $# -eq 0 ]] ; then
+  echo "Please specify a branch to deploy"
+  exit 0
+fi
+
 BRANCH=$1
 
 DIR="./public"
 SITE="collections"
 
 BUCKET=${SITE}.library.nd.edu
-CURRENT_BRANCH=git rev-parse --abbrev-ref HEAD
+CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
 
 git checkout master
 git pull
