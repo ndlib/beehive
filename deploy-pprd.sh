@@ -21,4 +21,4 @@ aws s3 sync ${DIR} s3://${BUCKET} --exclude '.*' --exclude '*.md' --delete --acl
 
 echo ${BUCKET}.s3-website-us-east-1.amazonaws.com
 
-git checkout CURRENT_BRANCH
+git checkout ${CURRENT_BRANCH}
