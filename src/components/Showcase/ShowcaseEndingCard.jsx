@@ -26,6 +26,7 @@ var ShowcaseEndingCard = React.createClass({
       cursor: "pointer",
       width: "500px",
       overflow: "hidden",
+      marginTop: "12vh",
       backgroundColor: this.getCurrentPallette().showcaseTextCardColor,
     };
   },
