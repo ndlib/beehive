@@ -1,6 +1,6 @@
 #!/bin/bash
-# Usage: aws_sync directory sitename
-# Ex: aws-s3-sync public collections-pprd
+# Usage: deploy-prod {branchname}
+# Ex: deploy-prod v4.0.02
 BRANCH=$1
 
 DIR="./public"
