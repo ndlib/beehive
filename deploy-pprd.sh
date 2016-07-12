@@ -12,7 +12,7 @@ DIR="./public"
 SITE="collections-pprd"
 
 BUCKET=${SITE}.library.nd.edu
-CURRENT_BRANCH=`$(git rev-parse --abbrev-ref HEAD)`
+CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
 
 git checkout master
 git pull
