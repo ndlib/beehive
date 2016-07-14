@@ -5,3 +5,4 @@ exclude_paths:
 - "src/assets/scripts/perfect-scrollbar.js"
 - "src/assets/scripts/perfect-scrollbar.jquery.js"
 - "src/assets/scripts/openseadragon.js"
+- "build-conf/"
