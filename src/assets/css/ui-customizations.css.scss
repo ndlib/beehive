@@ -1025,6 +1025,29 @@ div.dataTables_filter {
   }
 }
 
+
+.essay-content {
+  figure {
+    width: 15.5em;
+    height: auto;
+    float: left;
+		margin: 0px 10px 10px 0px;    
+  }
+
+  figcaption {
+    margin: .3rem 0;
+    font-size: 11px;
+    font-style: italic;
+    text-align: left;
+  }
+
+  img {
+    width: inherit;
+    height: inherit;
+  }
+}
+
+
 @import "collection.css.scss";
 @import "showcase.css.scss";
 @import "theme-light.css.scss";

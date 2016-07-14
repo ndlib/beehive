@@ -112,7 +112,7 @@ var Page = React.createClass({
     if(this.state.collection.pages.nextObject) {
       nextCard = [
         <MediaQuery minWidth={1000}>
-          <div style={{margin: '0 auto', maxWidth: '500px'}}>
+          <div style={{margin: '0 auto', maxWidth: '500px', clear: 'both' }}>
             <SitePathCard
               headerTitle="Continue to"
               siteObject={this.state.collection.pages.nextObject}
@@ -122,7 +122,7 @@ var Page = React.createClass({
           </div>
         </MediaQuery>,
         <MediaQuery maxWidth={1000}>
-          <div style={{margin: '0 0', maxWidth: '500px'}}>
+          <div style={{margin: '0 0', maxWidth: '500px', clear: 'both' }}>
             <SitePathCard
               headerTitle="Continue to"
               siteObject={this.state.collection.pages.nextObject}
