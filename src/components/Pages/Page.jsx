@@ -111,26 +111,29 @@ var Page = React.createClass({
     var nextCard = null;
     if(this.state.collection.pages.nextObject) {
       nextCard = [
-        <MediaQuery minWidth={1000}>
-          <div style={{margin: '0 auto', maxWidth: '500px'}}>
-            <SitePathCard
-              headerTitle="Continue to"
-              siteObject={this.state.collection.pages.nextObject}
-              addNextButton={true}
-              fixedSize={false}
-            />
-          </div>
-        </MediaQuery>,
-        <MediaQuery maxWidth={1000}>
-          <div style={{margin: '0 0', maxWidth: '500px'}}>
-            <SitePathCard
-              headerTitle="Continue to"
-              siteObject={this.state.collection.pages.nextObject}
-              addNextButton={true}
-              fixedSize={false}
-            />
-          </div>
-        </MediaQuery>
+        <div style={{ clear: "both" }}>
+          <hr />
+          <MediaQuery minWidth={1000}>
+            <div style={{margin: '0 auto', maxWidth: '500px' }}>
+              <SitePathCard
+                headerTitle="Continue to"
+                siteObject={this.state.collection.pages.nextObject}
+                addNextButton={true}
+                fixedSize={false}
+              />
+            </div>
+          </MediaQuery>,
+          <MediaQuery maxWidth={1000}>
+            <div style={{margin: '0 0', maxWidth: '500px' }}>
+              <SitePathCard
+                headerTitle="Continue to"
+                siteObject={this.state.collection.pages.nextObject}
+                addNextButton={true}
+                fixedSize={false}
+              />
+            </div>
+          </MediaQuery>
+        </div>
       ];
     }
     return nextCard;
