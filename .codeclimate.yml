@@ -1,7 +1,5 @@
 languages:
-  Ruby: true
   JavaScript: true
-  PHP: false
 exclude_paths:
 - "app/assets/javascripts/redactor.js"
 - "src/assets/scripts/perfect-scrollbar.js"
