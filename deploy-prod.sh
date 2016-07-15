@@ -1,13 +1,7 @@
 #!/bin/bash
 # Usage: deploy-prod {branchname}
-# Ex: deploy-prod v4.0.02
-if [[ $# -eq 0 ]] ; then
-  echo "Please specify a branch to deploy"
-  exit 0
-fi
-
-BRANCH=$1
-
+# Ex: deploy-prod
+BRANCH="v3.1.1"
 DIR="./public"
 SITE="collections"
 
