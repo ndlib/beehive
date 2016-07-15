@@ -14,7 +14,7 @@ git fetch --tags
 
 git checkout ${BRANCH}
 
-npm run build-prod
+npm run build
 
 aws s3 sync ${DIR} s3://${BUCKET} --exclude '.*' --exclude '*.md' --delete --acl public-read
 
