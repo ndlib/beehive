@@ -1,4 +1,16 @@
 # Change Log
+## [3.1.1](https://github.com/ndlib/beehive/releases/tag/v3.1.1) (2016-07-15)
+[Full Changelog](https://github.com/ndlib/beehive/compare/v3.1.0...v3.1.1)
+
+###Bug fixes:###
+  - Fixed an alignment issue on facets and item names that wrapped to two lines ([DEC-1073](https://jira.library.nd.edu/browse/DEC-1073), [#243](https://github.com/ndlib/beehive/pull/243))
+  - Fixed an issue where the search box will still show if the collection has browsing enabled, but not searching ([DEC-836](https://jira.library.nd.edu/browse/DEC-836), [#244](https://github.com/ndlib/beehive/pull/244), [#246](https://github.com/ndlib/beehive/pull/246))
+  - Facet checkboxes will now reflect the facet selections when returning to a search state, such as when refreshing the page or returning via a bookmark or shared url ([DEC-1056](https://jira.library.nd.edu/browse/DEC-1056), [#245](https://github.com/ndlib/beehive/pull/245))
+  - Items with long names will no longer squish the metadata to the right side when zooming in on the item ([DEC-1095](https://jira.library.nd.edu/browse/DEC-1095), [#247](https://github.com/ndlib/beehive/pull/247))
+  - Added missing Apple touch icons ([DEC-865](https://jira.library.nd.edu/browse/DEC-865), [#249](https://github.com/ndlib/beehive/pull/249))
+  - "Next Showcase" cards are now centered vertically ([DEC-1129](https://jira.library.nd.edu/browse/DEC-1129), [#248](https://github.com/ndlib/beehive/pull/248))
+  - Fixed an issue with rendering of images and captions in pages ([DEC-795](https://jira.library.nd.edu/browse/DEC-795), [#252](https://github.com/ndlib/beehive/pull/252))
+  
 ## [3.1.0](https://github.com/ndlib/beehive/releases/tag/v3.1.0) (2016-06-16)
 [Full Changelog](https://github.com/ndlib/beehive/compare/v3.0.2...v3.1.0)
 
