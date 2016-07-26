@@ -4,6 +4,7 @@ var mui = require('material-ui');
 var MediaQuery = require("react-responsive");
 var Details = require('../display/Details.jsx');
 var OpenseadragonViewer = require('../display/OpenseadragonViewer.jsx');
+var MultimediaViewer = require('../layout/MultimediaViewer.jsx')
 
 var ItemShow = React.createClass({
   displayName: "Item Show",
@@ -56,7 +57,28 @@ var ItemShow = React.createClass({
       return {}
     }
   },
+  multimedia: function() {
+    var height;
+    if(this.props.item.multimedia["@type"] === "AudioObject") {
+      height = 40;
+    }
+    else  {
+      height = this.props.height - this.props.mediaBottom;
+      if( height < this.props.minMediaHeight ) {
+        height = this.props.height;
+      }
+    }
 
+    return (
+      <div className="item-detail-zoom" style={this.zoomStyles()}>
+        <MultimediaViewer
+          url={ this.props.item.multimedia.embedUrl }
+          autostart={ true }
+          height={ height + "px" }
+        />
+      </div>
+    );
+  },
   image: function() {
     var height = this.props.height - this.props.mediaBottom;
     if( height < this.props.minMediaHeight ){
@@ -89,10 +111,17 @@ var ItemShow = React.createClass({
 
   render: function() {
     var prevLink, nextLink;
-    if (this.props.item) {
+    if (this.props.item && this.props.item.image) {
       return (
         <div style={this.outerStyles()}>
           { this.props.item.image && this.image() }
+          <Details item={this.props.item} additionalDetails={this.props.additionalDetails} showDetails={true} />
+        </div>
+      );
+    } else if (this.props.item && this.props.item.multimedia) {
+      return (
+        <div style={this.outerStyles()}>
+          { this.props.item.multimedia && this.multimedia() }
           <Details item={this.props.item} additionalDetails={this.props.additionalDetails} showDetails={true} />
         </div>
       );

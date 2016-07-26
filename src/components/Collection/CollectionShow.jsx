@@ -2,6 +2,7 @@
 var React = require('react');
 var mui = require('material-ui');
 var ConfigurationActions = require("../../actions/ConfigurationActions.js");
+var Loading = require("../../other/Loading.jsx");
 
 var CollectionShow = React.createClass({
   mixins: [

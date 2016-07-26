@@ -4,11 +4,12 @@ var mui = require('material-ui');
 var ThemeColors = require('material-ui/lib/styles/colors');
 var TextCard = require("./TextCard.jsx");
 var ImageCard = require("./ImageCard.jsx");
+var MultimediaCard = require("./MultimediaCard.jsx");
 
 var SectionCard = React.createClass({
   mixins: [
-    require('../../mixins/CollectionUrlMixin.jsx'), 
-    require('../../mixins/LoadRemoteMixin.jsx'), 
+    require('../../mixins/CollectionUrlMixin.jsx'),
+    require('../../mixins/LoadRemoteMixin.jsx'),
     require('../../mixins/CurrentThemeMixin.jsx')
   ],
   displayName: 'Section',
@@ -40,7 +41,12 @@ var SectionCard = React.createClass({
 
   sectionType: function() {
     if (this.props.section.item) {
-      return "image";
+      if(this.props.section.item.image){
+        return "image";
+      }
+      else if(this.props.section.item.multimedia){
+        return "video";
+      }
     } else {
       return "text";
     }
@@ -51,10 +57,22 @@ var SectionCard = React.createClass({
   },
 
   card: function() {
-    if (this.sectionType() == "image") {
-      return (<ImageCard section={this.props.section} />);
-    } else {
-      return (<TextCard section={this.props.section} />);
+    switch(this.sectionType()) {
+      case "image":
+        return (<ImageCard section={this.props.section} />);
+        break;
+      case "text":
+        return (<TextCard section={this.props.section} />);
+        break;
+      case "video":
+        return (<MultimediaCard section={this.props.section} />);
+        break;
+      case "audio":
+        return (<MultimediaCard section={this.props.section} />);
+        break;
+      default:
+        return (<div/>);
+        break;
     }
   },
 
