@@ -1,21 +1,16 @@
 'use strict'
 import React, { Component, PropTypes } from 'react';
 import mui, { CardMedia, CardTitle, CardText } from 'material-ui';
-var CardCaption = require("./CardCaption.jsx");
+import CardCaption from "./CardCaption.jsx";
 
-class MultimediaCard extends Component {
-
-  constructor(props) {
-    super(props);
-  }
-
-  titleStyle() {
+var style = {
+  title: function() {
     return {
       color: "lightgrey",
     }
-  }
+  },
 
-  style() {
+  text: function() {
     return {
       color:'lightgrey',
       paddingTop:'0',
@@ -25,14 +20,21 @@ class MultimediaCard extends Component {
       lineHeight: '120px'
     };
   }
+}
+
+class MultimediaCard extends Component {
+
+  constructor(props) {
+    super(props);
+  }
 
   image() {
     if(this.props.section.item.multimedia["@type"] === "AudioObject") {
       return (
-        <div style={this.style()} className="text">
-          <CardTitle title={ this.props.section.item.multimedia.name } titleStyle={ this.titleStyle() } />
+        <div style={style.text()} className="text">
+          <CardTitle title={ this.props.section.item.multimedia.name } titleStyle={ style.title() } />
           <CardText>
-            <div><i className="material-icons" style={ this.style() }>library_music</i></div>
+            <div><i className="material-icons" style={ style.text() }>library_music</i></div>
           </CardText>
         </div>
 
@@ -46,7 +48,7 @@ class MultimediaCard extends Component {
   }
   render() {
     return (
-      <div style={this.style()}>
+      <div style={style.text()}>
         <mui.CardMedia className="img">
           {this.image()}
         </mui.CardMedia>
