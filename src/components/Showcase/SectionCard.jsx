@@ -45,7 +45,7 @@ var SectionCard = React.createClass({
         return "image";
       }
       else if(this.props.section.item.multimedia){
-        return "video";
+        return "multimedia";
       }
     } else {
       return "text";
@@ -64,10 +64,7 @@ var SectionCard = React.createClass({
       case "text":
         return (<TextCard section={this.props.section} />);
         break;
-      case "video":
-        return (<MultimediaCard section={this.props.section} />);
-        break;
-      case "audio":
+      case "multimedia":
         return (<MultimediaCard section={this.props.section} />);
         break;
       default:
