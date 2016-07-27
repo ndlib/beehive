@@ -13,17 +13,9 @@ var ListItem = React.createClass({
   },
 
   leftIcon: function() {
-    var item = this.props.item;
-    if(item.image || item.multimedia) {
-      // has an image somewhere
-    } else {
-      // doesn't have an image so give it default
-      item.image = { "thumbnail/medium": { contentUrl: "/images/meta-only-item.jpg" }};
-    }
-
     return (
       <div style={{top: '4px', left: '16px', padding: "2px", width: '77px', height: '75px', margin: "0 12px" }}>
-        <ItemImage item={ item } />
+        <ItemImage item={ this.props.item } />
       </div>
     );
   },
