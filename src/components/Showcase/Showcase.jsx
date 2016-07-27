@@ -9,6 +9,7 @@ var PageContent = require('../../layout/PageContent.jsx');
 var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx');
 var ConfigurationActions = require("../../actions/ConfigurationActions.js");
 var ConfigurationStore = require("../../store/ConfigurationStore.js");
+var Loading = require("../../other/Loading.jsx");
 
 var Showcase = React.createClass({
   mixins: [
