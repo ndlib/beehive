@@ -27,16 +27,12 @@ var ItemImage = React.createClass({
   },
 
   backgroundStyle: function() {
-    if (this.props.item.image || this.props.item.multimedia) {
-      return {
-        width: "100%",
-        height: "100%",
-        position: "absolute",
-        objectFit: "cover"
-      };
-    } else {
-      return {};
-    }
+    return {
+      width: "100%",
+      height: "100%",
+      position: "absolute",
+      objectFit: "cover"
+    };
   },
 
   image: function() {
