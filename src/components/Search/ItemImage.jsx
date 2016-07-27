@@ -43,7 +43,7 @@ var ItemImage = React.createClass({
     if(this.props.item.image) {
       return this.props.item.image["thumbnail/medium"].contentUrl;
     } else if (this.props.item.multimedia) {
-      return this.props.item.thumbnailUrl;
+      return this.props.item.multimedia.thumbnailUrl;
     }
   },
 
