@@ -6,7 +6,7 @@ var ItemImage = React.createClass({
   ],
 
   propTypes : {
-    image: React.PropTypes.object.isRequired,
+    item: React.PropTypes.object.isRequired,
   },
 
   imageStyle: function() {
@@ -27,28 +27,30 @@ var ItemImage = React.createClass({
   },
 
   backgroundStyle: function() {
-    if (this.props.image) {
-      var backgroundImage;
-      backgroundImage = "url(\"" + this.props.image["thumbnail/medium"].contentUrl + "\")";
-      return {
-        width: "100%",
-        height: "100%",
-        position: "absolute",
-        objectFit: "cover"
-      };
-    } else {
-      return {};
-    }
+    return {
+      width: "100%",
+      height: "100%",
+      position: "absolute",
+      objectFit: "cover"
+    };
   },
 
-
+  image: function() {
+    if(this.props.item.image) {
+      return this.props.item.image["thumbnail/medium"].contentUrl;
+    } else if (this.props.item.multimedia) {
+      return this.props.item.multimedia.thumbnailUrl;
+    } else {
+      return "/images/meta-only-item.jpg";
+    }
+  },
 
   render: function() {
     return (
       <div className="bee-item-image-wrapper">
         <div className="bee-item-image" style={this.imageStyle()}>
           <div className="bee-item-holder" style={this.holderStyle()}>
-            <img src={this.props.image["thumbnail/medium"].contentUrl} style={this.backgroundStyle()}/>
+            <img src={ this.image() } style={this.backgroundStyle()}/>
           </div>
         </div>
       </div>

@@ -21,14 +21,9 @@ var GridItem = React.createClass({
   },
 
   cardMedia: function() {
-    var image = this.props.item.image;
-    if(!image) {
-      image = { "thumbnail/medium": { contentUrl: "/images/meta-only-item.jpg" }};
-    }
-
     return (
       <mui.CardMedia overlay={ this.mediaOverlay() }>
-        <ItemImage image={ image } />
+        <ItemImage item={ this.props.item } />
       </mui.CardMedia>
     );
   },

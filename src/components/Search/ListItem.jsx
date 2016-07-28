@@ -13,14 +13,9 @@ var ListItem = React.createClass({
   },
 
   leftIcon: function() {
-    var image = this.props.item.image;
-    if(!image) {
-      image = { "thumbnail/medium": { contentUrl: "/images/meta-only-item.jpg" }};
-    }
-
     return (
       <div style={{top: '4px', left: '16px', padding: "2px", width: '77px', height: '75px', margin: "0 12px" }}>
-        <ItemImage image={image} />
+        <ItemImage item={ this.props.item } />
       </div>
     );
   },
