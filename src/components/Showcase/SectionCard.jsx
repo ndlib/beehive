@@ -41,7 +41,7 @@ var SectionCard = React.createClass({
 
   sectionType: function() {
     if (this.props.section.item) {
-      if(this.props.section.item.image){
+      if(this.props.section.item.media){
         return "image";
       }
       else if(this.props.section.item.multimedia){

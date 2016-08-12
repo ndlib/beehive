@@ -18,7 +18,7 @@ var ImageCard = React.createClass({
     return (
       <div style={this.style()}>
         <mui.CardMedia className="img">
-          <img style={{width: 'auto' }} src={this.props.section.item.image['thumbnail/medium'].contentUrl} />
+          <img style={{width: 'auto' }} src={this.props.section.item.media['thumbnail/medium'].contentUrl} />
         </mui.CardMedia>
         <CardCaption caption={this.props.section.caption} />
       </div>

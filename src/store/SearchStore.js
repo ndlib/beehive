@@ -17,8 +17,8 @@ class SearchStore extends EventEmitter {
     this._baseApiUrl = "";   // Bases url to use when connecting to the Honeycomb API
     this._collection = null; // Collection json
     this._searchTerm = "";   // The primary search term to use when querying the API
-    this._items = [];    // Subset of items returned by the query after filtering on facet, row limit,
-                         // and starting item.
+    this._items = [];    // Subset of item hits returned by the query after filtering on facet, row limit,
+                         // and starting item. Note, these are search hits, not complete item objects
     this._found = null;  // Total number of items that were found using the search term.
     this._start = null;  // Start item for the query
     this._facets = null; // List of facet options available for this collection
@@ -187,13 +187,7 @@ class SearchStore extends EventEmitter {
     item.name = hit.name;
     item.description = hit.description;
     item.shortDescription = hit.shortDescription;
-    if(hit.thumbnailURL){
-      item.image = {
-        "thumbnail/medium": {
-          contentUrl: hit.thumbnailURL
-        }
-      };
-    };
+    item.thumbnailURL = hit.thumbnailURL;
     return item;
   }
 
@@ -203,13 +197,7 @@ class SearchStore extends EventEmitter {
     this._items = [];
     this._found = hits.found;
     this._start = hits.start;
-    for (var h in hits.hit) {
-      if (hits.hit.hasOwnProperty(h)){
-        var hit = hits.hit[h];
-        var item = this.mapHitToItem(hit);
-        this._items.push(item);
-      }
-    }
+    this._items = hits.hit;
     this._count = this._items.length;
   }
 

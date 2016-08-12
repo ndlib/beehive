@@ -36,13 +36,10 @@ var ItemImage = React.createClass({
   },
 
   image: function() {
-    if(this.props.item.image) {
-      return this.props.item.image["thumbnail/medium"].contentUrl;
-    } else if (this.props.item.multimedia) {
-      return this.props.item.multimedia.thumbnailUrl;
-    } else {
+    if(this.props.item.thumbnailURL)
+      return this.props.item.thumbnailURL;
+    else
       return "/images/meta-only-item.jpg";
-    }
   },
 
   render: function() {
