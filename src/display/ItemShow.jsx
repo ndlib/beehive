@@ -57,9 +57,10 @@ var ItemShow = React.createClass({
       return {}
     }
   },
+
   multimedia: function() {
     var height;
-    if(this.props.item.multimedia["@type"] === "AudioObject") {
+    if(this.props.item.media["@type"] === "AudioObject") {
       height = 40;
     }
     else  {
@@ -72,13 +73,14 @@ var ItemShow = React.createClass({
     return (
       <div className="item-detail-zoom" style={this.zoomStyles()}>
         <MultimediaViewer
-          url={ this.props.item.multimedia.embedUrl }
+          url={ this.props.item.media.embedUrl }
           autostart={ true }
           height={ height + "px" }
         />
       </div>
     );
   },
+
   image: function() {
     var height = this.props.height - this.props.mediaBottom;
     if( height < this.props.minMediaHeight ){
@@ -88,7 +90,7 @@ var ItemShow = React.createClass({
       <div className="item-detail-zoom" style={this.zoomStyles()}>
         <MediaQuery minWidth={650}>
           <OpenseadragonViewer
-            image={this.props.item.image}
+            image={this.props.item.media}
             containerID={this.props.item.id}
             height={height - 60}
             toolbarTop={60}
@@ -97,7 +99,7 @@ var ItemShow = React.createClass({
         </MediaQuery>
         <MediaQuery maxWidth={650}>
           <OpenseadragonViewer
-            image={this.props.item.image}
+            image={this.props.item.media}
             containerID={this.props.item.id}
             height={height - 60}
             toolbarTop={60}
@@ -111,23 +113,28 @@ var ItemShow = React.createClass({
 
   render: function() {
     var prevLink, nextLink;
-    if (this.props.item && this.props.item.image) {
-      return (
-        <div style={this.outerStyles()}>
-          { this.props.item.image && this.image() }
-          <Details item={this.props.item} additionalDetails={this.props.additionalDetails} showDetails={true} />
-        </div>
-      );
-    } else if (this.props.item && this.props.item.multimedia) {
-      return (
-        <div style={this.outerStyles()}>
-          { this.props.item.multimedia && this.multimedia() }
-          <Details item={this.props.item} additionalDetails={this.props.additionalDetails} showDetails={true} />
-        </div>
-      );
-    } else {
-      return <Loading />;
+    if (this.props.item && this.props.item.media != null){
+      if(this.props.item.media["@type"] == "ImageObject") {
+        return (
+          <div style={this.outerStyles()}>
+            { this.image() }
+            <Details item={this.props.item} additionalDetails={this.props.additionalDetails} showDetails={true} />
+          </div>
+        );
+      } else if (this.props.item.media["@type"] == "AudioObject" || this.props.item.media["@type"] == "VideoObject") {
+        return (
+          <div style={this.outerStyles()}>
+            { this.multimedia() }
+            <Details item={this.props.item} additionalDetails={this.props.additionalDetails} showDetails={true} />
+          </div>
+        );
+      }
     }
+    return (
+      <div style={this.outerStyles()}>
+        <Details item={this.props.item} additionalDetails={this.props.additionalDetails} showDetails={true} />
+      </div>
+    );
   }
 });
 
