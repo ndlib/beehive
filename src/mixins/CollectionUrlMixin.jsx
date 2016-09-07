@@ -1,3 +1,5 @@
+var HoneycombURL = require('../modules/HoneycombURL.js');
+
 var CollectionUrlMixin = {
   introUrl: function(collection) {
     var url;
@@ -57,18 +59,7 @@ var CollectionUrlMixin = {
   },
 
   remoteUrlBase: function() {
-    var environmentUrl = window.location.origin;
-    var returnUrl;
-    if (environmentUrl.indexOf('pprd') > -1) {
-      returnUrl = 'http://honeycombpprd-vm.library.nd.edu/v1/'
-    }
-    else if(environmentUrl.indexOf('localhost') > -1) {
-      returnUrl = 'http://localhost:3017/v1/';
-    }
-    else {
-      returnUrl = 'https://honeycomb.library.nd.edu/v1/'
-    }
-    return returnUrl;
+    return HoneycombURL "/v1/";
   },
 
   remoteItem: function(item) {
