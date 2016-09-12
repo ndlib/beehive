@@ -59,7 +59,7 @@ var CollectionUrlMixin = {
   },
 
   remoteUrlBase: function() {
-    return HoneycombURL "/v1/";
+    return HoneycombURL + "/v1/";
   },
 
   remoteItem: function(item) {

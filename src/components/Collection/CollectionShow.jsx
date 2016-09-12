@@ -63,6 +63,7 @@ var CollectionShow = React.createClass({
   },
 
   cardMediaSection: function() {
+    console.log(this.props.collection);
     if (this.props.collection.image) {
       var cardTitle = (null);
       if (this.props.collection.display_page_title) {
