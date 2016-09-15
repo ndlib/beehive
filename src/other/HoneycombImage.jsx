@@ -27,7 +27,7 @@ var HoneycombImage = React.createClass({
         return this.props.image.contentUrl;
       }
     } else {
-      return '/images/blank.png';
+      return '/images/intro.jpg';
     }
   },
 
