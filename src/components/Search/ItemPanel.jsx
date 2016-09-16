@@ -34,6 +34,15 @@ var ItemPanel = React.createClass({
     };
   },
 
+  componentWillReceiveProps: function(newProps){
+    if(newProps.currentItem && newProps.currentItem !== this.state.currentItem){
+      var url = HoneycombURL() + '/v1/items/' + newProps.currentItem;
+      this.loadRemoteItem(url);
+    } else {
+      this.removeCurrentItem();
+    }
+  },
+
   componentWillMount: function() {
     EventEmitter.on("ItemDialogWindow", this.setCurrentItem);
     EventEmitter.on("HideItemDialogWindow", this.removeCurrentItem);
@@ -51,7 +60,6 @@ var ItemPanel = React.createClass({
       nextItem: nextItem,
       previousItem: previousItem,
     });
-    OpenItemDisplay(this.state.currentItem.id);
   },
 
   removeCurrentItem: function() {
@@ -66,8 +74,8 @@ var ItemPanel = React.createClass({
     var searchStr = window.location.search;
     var removeStr = '&item=' + this.state.currentItem.id;
     searchStr = searchStr.replace(removeStr, '');
-    history.pushState({}, '', path + searchStr);
     this.removeCurrentItem();
+    history.pushState({}, '', path + searchStr);
   },
 
   nextButtonClick: function() {
