@@ -96,7 +96,6 @@ var Search = React.createClass({
       }
       var path = window.location.origin + SearchStore.searchUri() + currentItem;
       path += "&compact=" + this.props.compact;
-      window.history.pushState({ store: SearchStore.getQueryParams() }, '', path);
     }
   },
 
@@ -112,8 +111,10 @@ var Search = React.createClass({
   },
 
   onWindowPopState: function(event) {
-    if(event.state){
+    if(event.state.store){
       SearchActions.reloadSearchResults(event.state.store);
+    } else {
+      this.forceUpdate();
     }
   },
 
