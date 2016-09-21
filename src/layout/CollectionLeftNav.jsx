@@ -23,8 +23,20 @@ var CollectionLeftNav = React.createClass({
     };
   },
 
+  componentWillMount: function() {
+    if (this.props.collection['site_path']) {
+      this.setState({
+        sitePath: this.props.collection['site_path']
+      });
+    }
+  },
+
   componentDidMount: function() {
+    if (this.props.collection['site_path']) {
+      return;
+    }
     var url = this.props.collection['@id'] + '/site_path';
+
     $.ajax({
       context: this,
       type: "GET",
