@@ -32,8 +32,6 @@ var PageTitleBar = React.createClass({
 
   style: function() {
     return {
-      position: "fixed",
-      top: this.getCurrentTheme().appBar.height + 1 + "px",
       height: this.props.height + "px",
       opacity: this.state.opacity,
       backgroundColor: "rgba(51,51,51,1)",
@@ -60,6 +58,7 @@ var PageTitleBar = React.createClass({
   closeButtonStyle: function() {
     return {
       marginLeft: 'auto',
+      height: "100%",
     };
   },
 
