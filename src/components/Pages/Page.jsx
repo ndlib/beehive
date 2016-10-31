@@ -30,6 +30,7 @@ var Page = React.createClass({
 
   getInitialState: function() {
     return {
+      titleHeight: 56,
       currentItem: null,
       titleSectionPercentVisible: 0,
     };
@@ -152,7 +153,7 @@ var Page = React.createClass({
         <OverlayPage title={this.state.currentItem.name} onCloseButtonClick={this.closeItem}
           onNextButtonClick={this.state.currentItem.nextItem ? this.nextButtonClick : null}
           onPrevButtonClick={this.state.currentItem.previousItem ? this.prevButtonClick : null}>
-          <ItemShow item={this.state.currentItem} height={window.innerHeight - 35} onClose={this.closeItem}/>
+          <ItemShow item={this.state.currentItem} height={window.innerHeight - this.state.titleHeight} onClose={this.closeItem} />
         </OverlayPage>
       );
     }
@@ -186,11 +187,9 @@ var Page = React.createClass({
 
     return (
       <mui.AppCanvas>
-        <CollectionPageHeader collection={this.state.collection} branding={false}>
-          <PageTitleBar title={this.state.collection.pages.name} height={35}/>
-        </CollectionPageHeader>
+        <CollectionPageHeader collection={this.state.collection} branding={false} />
+        <PageTitleBar title={this.state.collection.pages.name} height={this.state.titleHeight} />
           { this.renderItem() }
-          <div id="TitleSpacer" style={{ height: 35, width: "100%" }} />
           <PageContent onClick={this.contentClicked} onMouseOver={this.contentMouseOver}>
             <PagesShow content={this.pageContent()}>
               { this.nextCard() }
