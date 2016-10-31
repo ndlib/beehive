@@ -12,6 +12,7 @@ import SearchPage from './SearchPage.jsx';
 import ErrorPage from './ErrorPage.jsx';
 import AboutPage from './AboutPage.jsx';
 import PagesPage from './PagesPage.jsx';
+import PrintableMetadata from './PrintableMetadata.jsx';
 
 var ga = require('react-ga');
 ga.initialize('UA-2118378-44');
@@ -32,6 +33,7 @@ export default function() {
       <Route path="/" component="div">
         <IndexRoute component={ SiteIndexPage } />
         <Route path="404" component={ErrorPage}/>
+        <Route path="metadata/:itemID" component={PrintableMetadata} />
         <Route path=":customSlug" component={CustomCollectionPage} />
         <Route path=":collectionID/*/intro" component={CollectionIntroductionPage} />
         <Route path=":collectionID/*/about" component={AboutPage} />

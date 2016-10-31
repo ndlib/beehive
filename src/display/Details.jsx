@@ -40,7 +40,8 @@ var Details = React.createClass({
 
   getDefaultProps: function() {
     return {
-      showDetails: true
+      showDetails: true,
+      printable: true,
     }
   },
 
@@ -69,7 +70,7 @@ var Details = React.createClass({
       return (
         <div className="item-details" style={ Styles.details }>
           <div className="additional-details" dangerouslySetInnerHTML={{__html: this.props.additionalDetails}} />
-          <MetadataList metadata={this.props.item.metadata} />
+          <MetadataList metadata={this.props.item.metadata} id={this.props.item.id} printable={this.props.printable} />
         </div>
       );
     } else {

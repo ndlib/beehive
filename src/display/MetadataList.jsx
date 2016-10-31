@@ -1,12 +1,20 @@
 'use strict'
 var React = require('react');
 var MetadataItem = require('./MetadataItem.jsx');
+var mui = require('material-ui');
 var ConfigurationStore = require("../store/ConfigurationStore.js");
 
 var MetadataList = React.createClass({
 
   propTypes: {
     metadata: React.PropTypes.object.isRequired,
+    id: React.PropTypes.string.isRequired,
+  },
+
+  getDefaultProps: function() {
+    return {
+      printable: true,
+    }
   },
 
   componentWillMount: function(){
@@ -41,10 +49,22 @@ var MetadataList = React.createClass({
     }.bind(this));
   },
 
+  printable: function() {
+    if(this.props.printable) {
+      var url = "/metadata/" + this.props.id;
+      return (
+        <a href={url} target="_blank"><mui.FontIcon className="material-icons">print</mui.FontIcon>Printer Friendly View</a>
+      );
+    } else {
+      return (<div/>);
+    }
+  },
+
   render: function() {
     return (
       <div className="metadata-list">
         { this.metadataNodes() }
+        { this.printable() }
       </div>
     );
   }
