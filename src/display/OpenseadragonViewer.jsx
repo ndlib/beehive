@@ -104,10 +104,6 @@ var OpenseadragonViewer = React.createClass({
       event.eventSource.keyUpHandler = null;
       event.eventSource.keyHandler = null;
     }
-    viewer.addViewerInputHook({hooks: [
-        {tracker: 'viewer', handler: 'clickHandler', hookHandler: disableKeyboard}
-    ]});
-
   },
 
   // Use with viewport.defaultZoomLevel.

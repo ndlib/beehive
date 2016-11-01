@@ -26,6 +26,12 @@ var ItemShow = React.createClass({
     }
   },
 
+  getInitialState: function() {
+    return {
+      zoom: false,
+    }
+  },
+
   componentWillMount: function() {
     document.body.classList.toggle('noscroll', true);
   },
@@ -58,16 +64,33 @@ var ItemShow = React.createClass({
     }
   },
 
+  imgStyles: function() {
+    return {
+      maxWidth: "100%",
+      maxHeight: this.getHeight() - 60 + "px",
+      display: "block",
+      margin: "auto",
+    }
+  },
+
+  getHeight: function() {
+    var height = this.props.height - this.props.mediaBottom;
+    if( height < this.props.minMediaHeight ){
+      height = this.props.height;
+    }
+    if(this.state.zoom) {
+      return window.innerHeight;
+    }
+    return height;
+  },
+
   multimedia: function() {
     var height;
     if(this.props.item.media["@type"] === "AudioObject") {
       height = 40;
     }
     else  {
-      height = this.props.height - this.props.mediaBottom;
-      if( height < this.props.minMediaHeight ) {
-        height = this.props.height;
-      }
+      height = getHeight();
     }
 
     return (
@@ -81,34 +104,58 @@ var ItemShow = React.createClass({
     );
   },
 
-  image: function() {
-    var height = this.props.height - this.props.mediaBottom;
-    if( height < this.props.minMediaHeight ){
-      height = this.props.height;
-    }
+  toggleZoom: function() {
     return (
-      <div className="item-detail-zoom" style={this.zoomStyles()}>
-        <MediaQuery minWidth={650}>
-          <OpenseadragonViewer
-            image={this.props.item.media}
-            containerID={this.props.item.id}
-            height={height - 60}
-            toolbarTop={60}
-            toolbarLeft={40}
-            showFullPageControl={false} />
-        </MediaQuery>
-        <MediaQuery maxWidth={650}>
-          <OpenseadragonViewer
-            image={this.props.item.media}
-            containerID={this.props.item.id}
-            height={height - 60}
-            toolbarTop={60}
-            toolbarLeft={40}
-            showFullPageControl={false}
-            showNavigator={false} />
-        </MediaQuery>
+      <div style={{ background: "rgba(200,200,200,1)" }}>
+        <mui.FlatButton label="Toggle Zoom"
+                        onClick={ () => { this.setState({ zoom: !this.state.zoom })} }
+                        style={{ display: "block", margin: "auto" }}
+        />
       </div>
     );
+  },
+
+  image: function() {
+    var height = this.getHeight();
+
+    if(this.state.zoom) {
+      return (
+        <div className="item-detail-zoom" style={this.zoomStyles()}>
+          <MediaQuery minWidth={650}>
+            <OpenseadragonViewer
+              image={this.props.item.media}
+              containerID={this.props.item.id}
+              height={height - 145}
+              toolbarTop={60}
+              toolbarLeft={40}
+              showFullPageControl={false} />
+          </MediaQuery>
+          <MediaQuery maxWidth={650}>
+            <OpenseadragonViewer
+              image={this.props.item.media}
+              containerID={this.props.item.id}
+              height={height - 145}
+              toolbarTop={60}
+              toolbarLeft={40}
+              showFullPageControl={false}
+              showNavigator={false} />
+          </MediaQuery>
+        </div>
+      );
+    } else {
+      return (
+        <div className="item-detail-zoom" style={ this.zoomStyles() }>
+          <img src={ this.props.item.media.contentUrl } style={ this.imgStyles() } />
+        </div>
+      );
+    }
+  },
+
+  details: function() {
+    if (!this.state.zoom) {
+      return (<Details item={this.props.item} additionalDetails={this.props.additionalDetails} showDetails={true} />);
+    }
+    return null;
   },
 
   render: function() {
@@ -118,21 +165,22 @@ var ItemShow = React.createClass({
         return (
           <div style={this.outerStyles()}>
             { this.image() }
-            <Details item={this.props.item} additionalDetails={this.props.additionalDetails} showDetails={true} />
+            { this.toggleZoom() }
+            { this.details() }
           </div>
         );
       } else if (this.props.item.media["@type"] == "AudioObject" || this.props.item.media["@type"] == "VideoObject") {
         return (
           <div style={this.outerStyles()}>
             { this.multimedia() }
-            <Details item={this.props.item} additionalDetails={this.props.additionalDetails} showDetails={true} />
+            { this.details() }
           </div>
         );
       }
     }
     return (
       <div style={this.outerStyles()}>
-        <Details item={this.props.item} additionalDetails={this.props.additionalDetails} showDetails={true} />
+        { this.details() }
       </div>
     );
   }
