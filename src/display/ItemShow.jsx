@@ -90,7 +90,7 @@ var ItemShow = React.createClass({
       height = 40;
     }
     else  {
-      height = getHeight();
+      height = this.getHeight();
     }
 
     return (
