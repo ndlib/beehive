@@ -79,6 +79,13 @@ var OpenseadragonViewer = React.createClass({
     }
   },
 
+  onHomePressed: function() {
+    // seadragon doesn't reset rotation on home by default, we must do it manually
+    if(this.state.viewer) {
+      this.state.viewer.viewport.setRotation(0);
+    }
+  },
+
   buildViewer: function(image) {
     var options;
     if (/^http:\/\/localhost/.test(image.contentUrl)) {
@@ -99,15 +106,7 @@ var OpenseadragonViewer = React.createClass({
       escapeHandler: escapeHandler,
     }, this.openImage(viewer, image));
 
-    var disableKeyboard = function(event) {
-      event.eventSource.keyDownHandler = null;
-      event.eventSource.keyUpHandler = null;
-      event.eventSource.keyHandler = null;
-    }
-    viewer.addViewerInputHook({hooks: [
-        {tracker: 'viewer', handler: 'clickHandler', hookHandler: disableKeyboard}
-    ]});
-
+    viewer.addHandler("home", this.onHomePressed);
   },
 
   // Use with viewport.defaultZoomLevel.
