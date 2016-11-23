@@ -113,7 +113,24 @@ var ItemShow = React.createClass({
 
   render: function() {
     var prevLink, nextLink;
-    if (this.props.item && this.props.item.media != null){
+    if(this.props.item && this.props.item.metadata && this.props.item.metadata.manuscript_url) {
+      return (
+        <div style={this.outerStyles()}>
+          <iframe
+            id='daveFrame'
+            ref='daveFrame'
+            src={this.props.item.metadata.manuscript_url.values[0].value}
+            style={{
+              height: 'calc(100% - 72px)',
+              width: '100%',
+              border: 'none',
+              overflow: 'hidden',
+              position: 'absolute'
+            }}
+          />
+        </div>
+      )
+    } else if (this.props.item && this.props.item.media != null){
       if(this.props.item.media["@type"] == "ImageObject") {
         return (
           <div style={this.outerStyles()}>
