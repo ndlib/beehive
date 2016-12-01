@@ -1,4 +1,23 @@
 # Change Log
+## [3.2.0](https://github.com/ndlib/beehive/releases/tag/v3.2.0) (2016-11-30)
+[Full Changelog](https://github.com/ndlib/beehive/compare/v3.1.1...v3.2.0)
+
+###New features/enhancements:###
+- Add Printable Metadata. ([DEC-1280](https://jira.library.nd.edu/browse/DEC-1280), [#262](https://github.com/ndlib/beehive/pull/262))
+- As an editor I need to be able to embed media in a page. ([DEC-1109](https://jira.library.nd.edu/browse/DEC-1109), [#257](https://github.com/ndlib/beehive/pull/257))
+- Update the api to render the media in the api. ([DEC-1158](https://jira.library.nd.edu/browse/DEC-1158), [#256](https://github.com/ndlib/beehive/pull/256))
+- As a Beehive user I want to see media in the search results. ([DEC-1106](https://jira.library.nd.edu/browse/DEC-1106), [#255](https://github.com/ndlib/beehive/pull/255))
+- As a Beehive user i want to see media in the showcase line up. ([DEC-1105](https://jira.library.nd.edu/browse/DEC-1105), [#254](https://github.com/ndlib/beehive/pull/254))
+
+###Bug fixes:###
+- Video thumbnail not showing up on beehive pprd ([DEC-1309](https://jira.library.nd.edu/browse/DEC-1309), [#265](https://github.com/ndlib/beehive/pull/265))
+- Image reset button does not reset rotation ([DEC-365](https://jira.library.nd.edu/browse/DEC-365), [#263](https://github.com/ndlib/beehive/pull/263))
+- Add ordering to metadata print view ([DEC-1289](https://jira.library.nd.edu/browse/DEC-1289), [#264](https://github.com/ndlib/beehive/pull/264))
+- Close button on page title misaligned ([DEC-1281](https://jira.library.nd.edu/browse/DEC-1281), [#261](https://github.com/ndlib/beehive/pull/261))
+- Showcases/pages not showing in the navigation menu (hamburger icon) on beehive ([DEC-1209](https://jira.library.nd.edu/browse/DEC-1209), [#260](https://github.com/ndlib/beehive/pull/260))
+- Continue box on page looks bad when the next thing does not have an image. ([DEC-1194](https://jira.library.nd.edu/browse/DEC-1194), [#258](https://github.com/ndlib/beehive/pull/258))
+- Search Bug ([DEC-1193](https://jira.library.nd.edu/browse/DEC-1193), [#259](https://github.com/ndlib/beehive/pull/259))
+  
 ## [3.1.1](https://github.com/ndlib/beehive/releases/tag/v3.1.1) (2016-07-15)
 [Full Changelog](https://github.com/ndlib/beehive/compare/v3.1.0...v3.1.1)
 
