@@ -238,6 +238,7 @@ $blockquote-gray: #777;
 }
 
 .openseadragon-container {
+  background: #444  !important;
   z-index: 1;
 }
 
@@ -279,5 +280,5 @@ $blockquote-gray: #777;
 }
 
 .caption a, .caption a:focus, .caption a:hover {
-  color: #d9a91b; 
+  color: #d9a91b;
 }
