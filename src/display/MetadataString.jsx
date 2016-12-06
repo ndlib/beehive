@@ -16,6 +16,15 @@ var MetadataString = React.createClass({
       var matches = this.props.metadata_field.value.split(linkPattern);
       var replacedNodes = matches.map(function(string, index) {
         if (linkPattern.test(string)) {
+          if(string.includes('dave.library.nd.edu') || string.includes('localhost:3024')) {
+            var sIndex = string.indexOf('?');
+            var newReferral = '?ref=' + window.location;
+            if(sIndex > -1) {
+              string = string.substring(0, string.indexOf('?')) + newReferral;
+            } else {
+              string += newReferral;
+            }
+          }
           return (
             <a href={string} key={index} target="_blank" rel="nofollow" style={linkStyle}>{string}</a>
           );
