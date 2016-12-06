@@ -1036,7 +1036,7 @@ div.dataTables_filter {
 
   figcaption {
     font-size: 11px;
-    font-style: italic;    
+    font-style: italic;
     margin: .3rem 0;
     text-align: left;
   }
@@ -1045,6 +1045,9 @@ div.dataTables_filter {
     height: inherit;
     width: inherit;
   }
+}
+.manifest-icon {
+  background-image: url('../images/pt.icon.drk.png')
 }
 
 
