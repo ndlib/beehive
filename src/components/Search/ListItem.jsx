@@ -36,7 +36,7 @@ var ListItem = React.createClass({
 
   manifestIcon: function(item) {
     if(item.metadata && item.metadata.manuscript_url) {
-      return (<img src="/images/pt.icon.drk.png" className="manifest-icon" alt="Manifest Available" title="Manifest Available" />)
+      return (<img src="/images/pt.icon.drk.png" className="manuscript-icon" alt="Manifest Available" title="Manifest Available" />)
     }
     return null
   },

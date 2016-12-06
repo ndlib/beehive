@@ -4,7 +4,8 @@ var mui = require('material-ui');
 var MediaQuery = require("react-responsive");
 var Details = require('../display/Details.jsx');
 var OpenseadragonViewer = require('../display/OpenseadragonViewer.jsx');
-var MultimediaViewer = require('../layout/MultimediaViewer.jsx')
+var MultimediaViewer = require('../layout/MultimediaViewer.jsx');
+import AddReferral from '../modules/AddReferral.js';
 
 var ItemShow = React.createClass({
   displayName: "Item Show",
@@ -55,7 +56,7 @@ var ItemShow = React.createClass({
   zoomStyles: function() {
     if (this.props.height) {
       return {
-        background: "rgba(200,200,200,1)",
+        background: "#444",
         top: 0,
         width: "100%",
       }
@@ -106,15 +107,38 @@ var ItemShow = React.createClass({
 
   toggleZoom: function() {
     return (
-      <div style={{ background: "rgba(200,200,200,1)" }}>
+      <div style={{ background: "#444" }}>
         <mui.FlatButton label="Toggle Zoom"
                         onClick={ () => { this.setState({ zoom: !this.state.zoom })} }
                         style={{ display: "block", margin: "auto" }}
+                        labelStyle={{color: 'white'}}
         />
       </div>
     );
   },
 
+  hasManuscript: function() {
+    return (this.props.item && this.props.item.metadata && this.props.item.metadata.manuscript_url)
+  },
+
+  showManuscript: function () {
+    if(this.hasManuscript()) {
+      return (
+        <div style={{ background: "#444" }}>
+          <mui.FlatButton label="Show Manuscript"
+                          onClick={ (event) => {
+                            event.preventDefault()
+                            window.open(AddReferral(this.props.item.metadata.manuscript_url.values[0].value));
+                          } }
+                          style={{ display: "block", margin: "auto" }}
+                          labelStyle={{color: 'white'}}
+          />
+        </div>
+      );
+    }
+    return null;
+
+  },
   image: function() {
     var height = this.getHeight();
 
@@ -165,7 +189,7 @@ var ItemShow = React.createClass({
         return (
           <div style={this.outerStyles()}>
             { this.image() }
-            { this.toggleZoom() }
+            { this.hasManuscript() ? this.showManuscript() : this.toggleZoom() }
             { this.details() }
           </div>
         );
@@ -180,6 +204,7 @@ var ItemShow = React.createClass({
     }
     return (
       <div style={this.outerStyles()}>
+        { this.showManuscript() }
         { this.details() }
       </div>
     );
