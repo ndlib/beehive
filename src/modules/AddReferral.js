@@ -1,5 +1,6 @@
+import DaveURL from './DaveURL.js'
 module.exports = function(string) {
-  if(string.includes('dave.library.nd.edu') || string.includes('localhost:3024')) {
+  if(string.includes(DaveURL())) {
     var sIndex = string.indexOf('?');
     var newReferral = '?ref=' + window.location;
     if(sIndex > -1) {
