@@ -12,11 +12,18 @@ var SectionCard = React.createClass({
     require('../../mixins/LoadRemoteMixin.jsx'),
     require('../../mixins/CurrentThemeMixin.jsx')
   ],
-  displayName: 'Section',
 
   propTypes: {
     section: React.PropTypes.object.isRequired,
     height: React.PropTypes.number.isRequired,
+  },
+
+  getInitialState: function() {
+    return {
+      fullItem: {},
+      itemLoaded: false,
+
+    }
   },
 
   style: function() {
@@ -73,10 +80,18 @@ var SectionCard = React.createClass({
     }
   },
 
+  manifestIcon: function(item) {
+    if(item && item.metadata && item.metadata.manuscript_url) {
+      return (<img src="/images/pt.icon.drk.png" className="manuscript-icon" alt="Manifest Available" title="Manifest Available" style={{position: 'absolute', right: '0', top: '0', maxWidth: '5%', height: 'auto'}}/>)
+    }
+    return null
+  },
+
   render: function() {
     return (
       <mui.Card className="item" style={this.style()} onClick={this.onClick}>
         { this.card() }
+        {this.manifestIcon(this.props.section.item)}
       </mui.Card>
     );
   }

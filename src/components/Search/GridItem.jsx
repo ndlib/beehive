@@ -28,13 +28,22 @@ var GridItem = React.createClass({
     );
   },
 
+  manifestIcon: function(item) {
+    if(item.metadata && item.metadata.manuscript_url) {
+      return (<img src="/images/pt.icon.drk.png" className="manuscript-icon" alt="Manifest Available" title="Manifest Available" style={{position: 'absolute', right: '0', top: '0', maxWidth: '15%'}}/>)
+    }
+    return null
+  },
+
   render: function() {
     return (
       <mui.Card
         onClick={this.itemOnClick}
-        style={{cursor: 'pointer'}}
+        style={{cursor: 'pointer', position: 'relative'}}
       >
+
         { this.cardMedia() }
+        {this.manifestIcon(this.props.item)}
       </mui.Card>
     );
   }

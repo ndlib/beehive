@@ -4,7 +4,8 @@ var mui = require('material-ui');
 var MediaQuery = require("react-responsive");
 var Details = require('../display/Details.jsx');
 var OpenseadragonViewer = require('../display/OpenseadragonViewer.jsx');
-var MultimediaViewer = require('../layout/MultimediaViewer.jsx')
+var MultimediaViewer = require('../layout/MultimediaViewer.jsx');
+import AddReferral from '../modules/AddReferral.js';
 
 var ItemShow = React.createClass({
   displayName: "Item Show",
@@ -23,6 +24,12 @@ var ItemShow = React.createClass({
     return {
       minMediaHeight: 300,
       mediaBottom: 200
+    }
+  },
+
+  getInitialState: function() {
+    return {
+      zoom: false,
     }
   },
 
@@ -49,7 +56,7 @@ var ItemShow = React.createClass({
   zoomStyles: function() {
     if (this.props.height) {
       return {
-        background: "rgba(200,200,200,1)",
+        background: "#444",
         top: 0,
         width: "100%",
       }
@@ -58,16 +65,33 @@ var ItemShow = React.createClass({
     }
   },
 
+  imgStyles: function() {
+    return {
+      maxWidth: "100%",
+      maxHeight: this.getHeight() - 60 + "px",
+      display: "block",
+      margin: "auto",
+    }
+  },
+
+  getHeight: function() {
+    var height = this.props.height - this.props.mediaBottom;
+    if( height < this.props.minMediaHeight ){
+      height = this.props.height;
+    }
+    if(this.state.zoom) {
+      return window.innerHeight;
+    }
+    return height;
+  },
+
   multimedia: function() {
     var height;
     if(this.props.item.media["@type"] === "AudioObject") {
       height = 40;
     }
     else  {
-      height = this.props.height - this.props.mediaBottom;
-      if( height < this.props.minMediaHeight ) {
-        height = this.props.height;
-      }
+      height = this.getHeight();
     }
 
     return (
@@ -81,34 +105,81 @@ var ItemShow = React.createClass({
     );
   },
 
-  image: function() {
-    var height = this.props.height - this.props.mediaBottom;
-    if( height < this.props.minMediaHeight ){
-      height = this.props.height;
-    }
+  toggleZoom: function() {
     return (
-      <div className="item-detail-zoom" style={this.zoomStyles()}>
-        <MediaQuery minWidth={650}>
-          <OpenseadragonViewer
-            image={this.props.item.media}
-            containerID={this.props.item.id}
-            height={height - 60}
-            toolbarTop={60}
-            toolbarLeft={40}
-            showFullPageControl={false} />
-        </MediaQuery>
-        <MediaQuery maxWidth={650}>
-          <OpenseadragonViewer
-            image={this.props.item.media}
-            containerID={this.props.item.id}
-            height={height - 60}
-            toolbarTop={60}
-            toolbarLeft={40}
-            showFullPageControl={false}
-            showNavigator={false} />
-        </MediaQuery>
+      <div style={{ background: "#444" }}>
+        <mui.FlatButton label="Toggle Zoom"
+                        onClick={ () => { this.setState({ zoom: !this.state.zoom })} }
+                        style={{ display: "block", margin: "auto" }}
+                        labelStyle={{color: 'white'}}
+        />
       </div>
     );
+  },
+
+  hasManuscript: function() {
+    return (this.props.item && this.props.item.metadata && this.props.item.metadata.manuscript_url)
+  },
+
+  showManuscript: function () {
+    if(this.hasManuscript()) {
+      return (
+        <div style={{ background: "#444" }}>
+          <mui.FlatButton label="Show Manuscript"
+                          onClick={ (event) => {
+                            event.preventDefault()
+                            window.open(AddReferral(this.props.item.metadata.manuscript_url.values[0].value));
+                          } }
+                          style={{ display: "block", margin: "auto" }}
+                          labelStyle={{color: 'white'}}
+          />
+        </div>
+      );
+    }
+    return null;
+
+  },
+  image: function() {
+    var height = this.getHeight();
+
+    if(this.state.zoom) {
+      return (
+        <div className="item-detail-zoom" style={this.zoomStyles()}>
+          <MediaQuery minWidth={650}>
+            <OpenseadragonViewer
+              image={this.props.item.media}
+              containerID={this.props.item.id}
+              height={height - 145}
+              toolbarTop={60}
+              toolbarLeft={40}
+              showFullPageControl={false} />
+          </MediaQuery>
+          <MediaQuery maxWidth={650}>
+            <OpenseadragonViewer
+              image={this.props.item.media}
+              containerID={this.props.item.id}
+              height={height - 145}
+              toolbarTop={60}
+              toolbarLeft={40}
+              showFullPageControl={false}
+              showNavigator={false} />
+          </MediaQuery>
+        </div>
+      );
+    } else {
+      return (
+        <div className="item-detail-zoom" style={ this.zoomStyles() }>
+          <img src={ this.props.item.media.contentUrl } style={ this.imgStyles() } />
+        </div>
+      );
+    }
+  },
+
+  details: function() {
+    if (!this.state.zoom) {
+      return (<Details item={this.props.item} additionalDetails={this.props.additionalDetails} showDetails={true} />);
+    }
+    return null;
   },
 
   render: function() {
@@ -118,21 +189,23 @@ var ItemShow = React.createClass({
         return (
           <div style={this.outerStyles()}>
             { this.image() }
-            <Details item={this.props.item} additionalDetails={this.props.additionalDetails} showDetails={true} />
+            { this.hasManuscript() ? this.showManuscript() : this.toggleZoom() }
+            { this.details() }
           </div>
         );
       } else if (this.props.item.media["@type"] == "AudioObject" || this.props.item.media["@type"] == "VideoObject") {
         return (
           <div style={this.outerStyles()}>
             { this.multimedia() }
-            <Details item={this.props.item} additionalDetails={this.props.additionalDetails} showDetails={true} />
+            { this.details() }
           </div>
         );
       }
     }
     return (
       <div style={this.outerStyles()}>
-        <Details item={this.props.item} additionalDetails={this.props.additionalDetails} showDetails={true} />
+        { this.showManuscript() }
+        { this.details() }
       </div>
     );
   }

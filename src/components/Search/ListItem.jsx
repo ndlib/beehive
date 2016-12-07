@@ -4,9 +4,7 @@ var mui = require('material-ui');
 var ItemImage = require('./ItemImage.jsx');
 
 var ListItem = React.createClass({
-  mixins: [
-    require('../../mixins/LoadRemoteMixin.jsx')
-  ],
+
 
   propTypes: {
     item: React.PropTypes.object.isRequired,
@@ -36,6 +34,13 @@ var ListItem = React.createClass({
     );
   },
 
+  manifestIcon: function(item) {
+    if(item.metadata && item.metadata.manuscript_url) {
+      return (<img src="/images/pt.icon.drk.png" className="manuscript-icon" alt="Manifest Available" title="Manifest Available" />)
+    }
+    return null
+  },
+
   render: function() {
     return (
       <div>
@@ -46,6 +51,7 @@ var ListItem = React.createClass({
           secondaryTextLines={2}
           onClick={this.itemOnClick}
           innerDivStyle={{paddingLeft:'80px', height:'85px'}}
+          rightIcon={this.manifestIcon(this.props.item)}
         />
         <mui.Divider  style={{marginLeft: "110px" }} />
       </div>
