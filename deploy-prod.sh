@@ -5,7 +5,7 @@ TAG=`git describe --exact-match --tags HEAD`
 REVISION=`git rev-parse HEAD`
 
 if [ "${TAG}" != "${RELEASE}" ]; then
-  echo "\033[0;31mYou must be on tag ${TAG} to deploy to production.\033[0m"
+  echo "\033[0;31mYou must be on tag ${RELEASE} to deploy to production.\033[0m"
   exit 1
 fi
 
