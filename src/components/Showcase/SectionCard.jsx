@@ -82,7 +82,7 @@ var SectionCard = React.createClass({
 
   manifestIcon: function(item) {
     if(item && item.metadata && item.metadata.manuscript_url) {
-      return (<img src="/images/pt.icon.drk.png" className="manuscript-icon" alt="Manifest Available" title="Manifest Available" style={{position: 'absolute', right: '0', top: '0', maxWidth: '5%', height: 'auto'}}/>)
+      return (<img src="/images/pt.icon.drk.png" className="manuscript-icon" alt="Manifest Available" title="Manifest Available" style={{position: 'absolute', right: '0', top: '0', maxWidth: '10%', height: 'auto'}}/>)
     }
     return null
   },

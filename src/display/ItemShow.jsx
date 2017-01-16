@@ -125,7 +125,7 @@ var ItemShow = React.createClass({
     if(this.hasManuscript()) {
       return (
         <div style={{ background: "#444" }}>
-          <mui.FlatButton label="Show Manuscript"
+          <mui.FlatButton label="View Manuscript"
                           onClick={ (event) => {
                             event.preventDefault()
                             window.open(AddReferral(this.props.item.metadata.manuscript_url.values[0].value));
