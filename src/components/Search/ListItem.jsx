@@ -4,7 +4,9 @@ var mui = require('material-ui');
 var ItemImage = require('./ItemImage.jsx');
 
 var ListItem = React.createClass({
-
+  mixins: [
+    require('../../mixins/LoadRemoteMixin.jsx')
+  ],
 
   propTypes: {
     item: React.PropTypes.object.isRequired,
