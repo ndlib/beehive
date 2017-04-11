@@ -13,9 +13,21 @@ var CollectionsList = React.createClass({
   },
 
   collectionNodes: function() {
-    return this.props.collections.map(function(collection, index) {
+    this.props.collections.reverse();
+    console.log(this.props.collections);
+
+    return this.reverseCollection().map(function(collection, index) {
       return (<CollectionCard collection={collection} cardHeight={450} />);
     });
+  },
+
+  reverseCollection: function() {
+      var temp = [];
+      var len = this.props.collections.length;
+      for (var i = (len - 1); i !== 0; i--) {
+          temp.push(this.props.collections[i]);
+      }
+      return temp;
   },
 
   gridList: function(cols) {
