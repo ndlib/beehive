@@ -88,7 +88,7 @@ var CollectionCard = React.createClass({
     //if (this.props.collection.image) {
       return (
         <mui.CardMedia
-          mediaStyle={{background:'url(' + this.image() + ')', paddingBottom:'46.85%', backgroundSize:'cover', backgroundPosition:'top center', height:'100%', width:'100%', overflow: 'hidden' }}
+          mediaStyle={{background:'url("' + this.image() + '")', paddingBottom:'46.85%', backgroundSize:'cover', backgroundPosition:'top center', height:'100%', width:'100%', overflow: 'hidden' }}
           className="temp"
           style={{ overflow:'hidden'}}>
           <img src={this.image()}  style={this.imageSize()} />

@@ -104,7 +104,7 @@ var SitePathCard = React.createClass({
     return (
       <mui.CardMedia
         className="collection-site-path-card"
-        style={{ backgroundImage:'url(' + this.image() + ')' }}
+        style={{ backgroundImage:'url("' + this.image() + '")' }}
         overlay={ this.cardTitle() }>
       </mui.CardMedia>);
   },

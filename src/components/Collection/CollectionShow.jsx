@@ -43,7 +43,7 @@ var CollectionShow = React.createClass({
       backgroundSize:'cover',
       height:'40vw',
       maxHeight:'450px',
-      backgroundImage: 'url(' + this.image() + ')',
+      backgroundImage: 'url("' + this.image() + '")',
       backgroundPosition:'top'
     });
   },
