@@ -13,9 +13,6 @@ var CollectionsList = React.createClass({
   },
 
   collectionNodes: function() {
-    this.props.collections.reverse();
-    console.log(this.props.collections);
-
     return this.reverseCollection().map(function(collection, index) {
       return (<CollectionCard collection={collection} cardHeight={450} />);
     });
@@ -24,7 +21,7 @@ var CollectionsList = React.createClass({
   reverseCollection: function() {
       var temp = [];
       var len = this.props.collections.length;
-      for (var i = (len - 1); i !== 0; i--) {
+      for (var i = (len - 1); i !== -1; i--) {
           temp.push(this.props.collections[i]);
       }
       return temp;
