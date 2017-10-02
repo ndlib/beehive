@@ -14,6 +14,7 @@ var PreviewLink = require('../../layout/PreviewLink.jsx');
 var MediaQuery = require('react-responsive');
 var ConfigurationActions = require("../../actions/ConfigurationActions.js");
 var ConfigurationStore = require("../../store/ConfigurationStore.js");
+var PageTitle = require('../../modules/PageTitle.js')
 
 var Page = React.createClass({
   mixins: [
@@ -184,7 +185,7 @@ var Page = React.createClass({
     if(!this.state.remoteCollectionLoaded) {
       return null;
     }
-
+    PageTitle(this.state.collection.name)
     return (
       <mui.AppCanvas>
         <CollectionPageHeader collection={this.state.collection} branding={false} />

@@ -10,6 +10,7 @@ var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx');
 var ConfigurationActions = require("../../actions/ConfigurationActions.js");
 var ConfigurationStore = require("../../store/ConfigurationStore.js");
 var Loading = require("../../other/Loading.jsx");
+var PageTitle = require("../../modules/PageTitle.js")
 
 var Showcase = React.createClass({
   mixins: [
@@ -79,7 +80,7 @@ var Showcase = React.createClass({
     if(!this.state.remoteCollectionLoaded) {
       return null;
     }
-
+    PageTitle(this.state.showcase.name)
     var showcaseShow;
     if (this.state.showcase) {
       showcaseShow = (

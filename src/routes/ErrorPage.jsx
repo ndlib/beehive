@@ -4,13 +4,19 @@ var mui = require('material-ui');
 
 var PageHeader = require('../layout/PageHeader.jsx');
 var PageContent = require('../layout/PageContent.jsx');
+var PageTitle = require('../modules/PageTitle.js')
 
 var ErrorPage = React.createClass({
   mixins: [
     require("../mixins/MuiThemeMixin.jsx")
   ],
 
+  componentWillMount() {
+    PageTitle("Page Not Found")
+  },
+
   render: function() {
+
     var url = window.location.origin;
     return (
     <mui.AppCanvas>
