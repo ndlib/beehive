@@ -31,7 +31,8 @@ var ItemPanel = React.createClass({
     return {
       currentItem: null,
       nextItem: null,
-      previousItem: null
+      previousItem: null,
+      originalTitle: document.title,
     };
   },
 
@@ -60,13 +61,14 @@ var ItemPanel = React.createClass({
       currentItem: item,
       nextItem: nextItem,
       previousItem: previousItem,
-    });
+    }, PageTitle(item.name));
+
   },
 
   removeCurrentItem: function() {
     this.setState({
       currentItem: null,
-    });
+    }, PageTitle(this.state.originalTitle, true));
   },
 
   closeButtonClick: function() {
@@ -95,9 +97,8 @@ var ItemPanel = React.createClass({
 
   render: function() {
     if (!this.state.currentItem) {
-      return (<div />);
+      return null;
     }
-    PageTitle(this.state.currentItem.name)
     return (
       <OverlayPage
         title={this.state.currentItem.name}
