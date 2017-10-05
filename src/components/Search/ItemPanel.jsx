@@ -10,6 +10,7 @@ var ItemActions = require('../../actions/ItemActions.jsx');
 var EventEmitter = require('../../middleware/EventEmitter.js');
 var OpenItemDisplay = require('../../modules/OpenItemDisplay.js');
 var HoneycombURL = require('../../modules/HoneycombURL.js');
+var PageTitle = require('../../modules/PageTitle.js')
 
 var ItemPanel = React.createClass({
   mixins: [
@@ -96,7 +97,7 @@ var ItemPanel = React.createClass({
     if (!this.state.currentItem) {
       return (<div />);
     }
-
+    PageTitle(this.state.currentItem.name)
     return (
       <OverlayPage
         title={this.state.currentItem.name}
