@@ -4,6 +4,7 @@ var mui = require('material-ui');
 
 var HoneycombImage = require("../other/HoneycombImage.jsx");
 var MediaQuery = require('react-responsive');
+import { Link } from 'react-router';
 
 var PreviewLink = React.createClass({
   mixins: [
@@ -18,11 +19,6 @@ var PreviewLink = React.createClass({
     return {
       hover: false
     };
-  },
-
-  onClick: function(e) {
-    e.preventDefault();
-    window.location = this.collectionObjectUrl(this.props.siteObject);
   },
 
   mouseOver: function () {
@@ -56,26 +52,28 @@ var PreviewLink = React.createClass({
   },
 
   getCard: function(media) {
-    var url = this.collectionObjectUrl(this.props.siteObject);
+
     return (
-      <mui.Card style={this.style(media)} onClick={this.onClick}  onMouseOver={this.mouseOver} onMouseOut={this.mouseOut} >
-        <mui.CardMedia overlay={<mui.CardTitle title="Continue" />}>
-          <HoneycombImage image={this.props.siteObject.image} size="small" />
-        </mui.CardMedia>
-        <mui.FloatingActionButton
-          linkButton={true}
-          href={ url }
-          style={this.buttonStyle()}
-          zDepth={2}
-        >
-          <mui.FontIcon style={{ mixBlendMode: "soft-light" }} className="material-icons">arrow_forward</mui.FontIcon>
-        </mui.FloatingActionButton>
-      </mui.Card>
+        <mui.Card style={this.style(media)} onMouseOver={this.mouseOver} onMouseOut={this.mouseOut} >
+          <mui.CardMedia overlay={<mui.CardTitle title="Continue" />}>
+            <HoneycombImage image={this.props.siteObject.image} size="small" />
+          </mui.CardMedia>
+          <mui.FloatingActionButton
+            linkButton={false}
+            style={this.buttonStyle()}
+            zDepth={2}
+          >
+            <mui.FontIcon style={{ mixBlendMode: "soft-light" }} className="material-icons">arrow_forward</mui.FontIcon>
+          </mui.FloatingActionButton>
+        </mui.Card>
+
     );
   },
 
   render: function() {
+    var url = this.collectionObjectUrl(this.props.siteObject);
     return (
+      <Link to={url}>
       <MediaQuery minWidth={850}>
         <MediaQuery minWidth={1500}>
           { this.getCard("wide") }
@@ -84,6 +82,7 @@ var PreviewLink = React.createClass({
           { this.getCard("narrow") }
         </MediaQuery>
       </MediaQuery>
+      </Link>
     );
   }
 });
