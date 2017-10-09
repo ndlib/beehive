@@ -10,6 +10,7 @@ var ItemActions = require('../../actions/ItemActions.jsx');
 var EventEmitter = require('../../middleware/EventEmitter.js');
 var OpenItemDisplay = require('../../modules/OpenItemDisplay.js');
 var HoneycombURL = require('../../modules/HoneycombURL.js');
+var PageTitle = require('../../modules/PageTitle.js')
 
 var ItemPanel = React.createClass({
   mixins: [
@@ -30,7 +31,8 @@ var ItemPanel = React.createClass({
     return {
       currentItem: null,
       nextItem: null,
-      previousItem: null
+      previousItem: null,
+      originalTitle: document.title,
     };
   },
 
@@ -59,13 +61,14 @@ var ItemPanel = React.createClass({
       currentItem: item,
       nextItem: nextItem,
       previousItem: previousItem,
-    });
+    }, PageTitle(item.name));
+
   },
 
   removeCurrentItem: function() {
     this.setState({
       currentItem: null,
-    });
+    }, PageTitle(this.state.originalTitle, true));
   },
 
   closeButtonClick: function() {
@@ -94,9 +97,8 @@ var ItemPanel = React.createClass({
 
   render: function() {
     if (!this.state.currentItem) {
-      return (<div />);
+      return null;
     }
-
     return (
       <OverlayPage
         title={this.state.currentItem.name}

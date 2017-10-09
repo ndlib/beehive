@@ -8,7 +8,7 @@ var PageContent = require('../../layout/PageContent.jsx');
 var CollectionIntro = require('./CollectionIntro.jsx');
 var CollectionShowSitePath = require('./CollectionShowSitePath.jsx');
 var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx');
-
+var PageTitle = require('../../modules/PageTitle.js')
 var Collection = React.createClass({
   mixins: [
     require("../../mixins/LoadRemoteMixin.jsx"),
@@ -39,7 +39,7 @@ var Collection = React.createClass({
     if(!this.state.remoteCollectionLoaded) {
       return null;
     }
-
+    PageTitle(this.state.collection.name)
     return (
       <mui.AppCanvas>
         <div className="collection-show-page">

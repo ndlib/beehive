@@ -115,7 +115,7 @@ var Search = React.createClass({
   onWindowPopState: function(event) {
     if(event.state.store){
       SearchActions.reloadSearchResults(event.state.store);
-    } 
+    }
   },
 
   // Translates the facet option given in props to the structure the SearchStore expects.
