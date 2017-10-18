@@ -1,7 +1,6 @@
 'use strict'
 var React = require("react");
 var mui = require('material-ui');
-import { Link } from 'react-router';
 
 var SitePathCard = React.createClass({
   mixins: [
@@ -107,13 +106,14 @@ var SitePathCard = React.createClass({
 
   render: function() {
     return (
-      <Link to={this.collectionObjectUrl(this.props.siteObject)}>
-        <mui.Card style={this.style()} >
+      <mui.Card style={this.style()} >
+        <a href={this.collectionObjectUrl(this.props.siteObject)}>
           {this.headerTitle()}
           {this.cardMedia()}
-          {this.nextButton()}
-        </mui.Card>
-      </Link>
+        </a>
+        {this.nextButton()}
+      </mui.Card>
+
     );
   }
 });

@@ -13,11 +13,6 @@ var CollectionCard = React.createClass({
     cardHeight: React.PropTypes.string.isRequired
   },
 
-  onClick: function(e) {
-    e.preventDefault();
-    window.location = this.collectionUrl(this.props.collection);
-  },
-
   style: function() {
     return {
       position: "relative",
@@ -117,14 +112,18 @@ var CollectionCard = React.createClass({
 
   render: function() {
     return (
-      <mui.Card onClick={this.onClick} style={this.style()} >
-        {this.headerTitle()}
-        {this.cardMedia()}
-        {this.cardTitle()}
+
+      <mui.Card style={this.style()} >
+        <a href={this.collectionUrl(this.props.collection)}>
+          {this.headerTitle()}
+          {this.cardMedia()}
+          {this.cardTitle()}
+        </a>
         <mui.CardActions style={this.actionButtonsStyle()} >
           <mui.FlatButton label="Explore" href={this.collectionUrl(this.props.collection)} labelStyle={ this.exploreLabelStyle() } />
         </mui.CardActions>
       </mui.Card>
+
     );
   }
 });
