@@ -1,7 +1,6 @@
 'use strict'
 var React = require('react');
 var mui = require('material-ui');
-
 var Types = {
   LINK: 'LINK',
   SUBHEADER: 'SUBHEADER'
@@ -69,25 +68,33 @@ var CollectionLeftNav = React.createClass({
     var browseUrl = this.browseUrl(this.props.collection);
 
     options.push((
-      <mui.MenuItem onTouchTap={() => {this.menuItemAction(collectionUrl)}} primaryText='Home' key='home' />
+      <a href={collectionUrl}>
+        <mui.MenuItem primaryText='Home' key='home' />
+      </a>
     ));
 
     if (this.props.collection.enable_browse) {
       options.push((
-        <mui.MenuItem onTouchTap={() => {this.menuItemAction(browseUrl)}} primaryText='Browse Collection' key='browse' />
+        <a href={browseUrl}>
+          <mui.MenuItem primaryText='Browse Collection' key='browse' />
+        </a>
       ));
     }
 
     if (this.props.collection.about) {
       options.push((
-        <mui.MenuItem onTouchTap={() => {this.menuItemAction(aboutUrl)}} primaryText='About' key='about'/>
+        <a href={aboutUrl}>
+          <mui.MenuItem primaryText='About' key='about'/>
+        </a>
       ));
     }
     options.push((<mui.Divider key="divider"/>));
 
     if (introUrl) {
       options.push((
-        <mui.MenuItem onTouchTap={() => {this.menuItemAction(introUrl)}} primaryText='Introduction' key='intro'/>
+        <a href={introUrl}>
+          <mui.MenuItem primaryText='Introduction' key='intro'/>
+        </a>
       ));
     }
 
@@ -95,7 +102,9 @@ var CollectionLeftNav = React.createClass({
       var url = this.collectionObjectUrl(siteObject);
       var name = siteObject.name || siteObject.name_line_1;
       options.push ((
-        <mui.MenuItem onTouchTap={() => {this.menuItemAction(url)}} primaryText={name} key={siteObject.id} className="collection-left-nav-item" />
+        <a href={url}>
+          <mui.MenuItem primaryText={name} key={siteObject.id} className="collection-left-nav-item" />
+        </a>
       ));
     }.bind(this));
 

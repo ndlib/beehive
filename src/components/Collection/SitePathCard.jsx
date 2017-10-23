@@ -22,11 +22,6 @@ var SitePathCard = React.createClass({
     }
   },
 
-  onClick: function(e) {
-    e.preventDefault();
-    window.location = this.collectionObjectUrl(this.props.siteObject);
-  },
-
   style: function() {
     return {
       position: "relative",
@@ -111,11 +106,14 @@ var SitePathCard = React.createClass({
 
   render: function() {
     return (
-      <mui.Card onClick={this.onClick} style={this.style()} >
-        {this.headerTitle()}
-        {this.cardMedia()}
+      <mui.Card style={this.style()} >
+        <a href={this.collectionObjectUrl(this.props.siteObject)}>
+          {this.headerTitle()}
+          {this.cardMedia()}
+        </a>
         {this.nextButton()}
       </mui.Card>
+
     );
   }
 });
