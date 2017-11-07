@@ -28,7 +28,7 @@ var SearchControls = React.createClass({
     return {
       position: "fixed",
       minHeight: "65px",
-      zIndex: "1",
+      zIndex: "2",
     };
   },
 
