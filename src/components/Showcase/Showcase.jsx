@@ -12,9 +12,10 @@ var ConfigurationStore = require("../../store/ConfigurationStore.js");
 var Loading = require("../../other/Loading.jsx");
 var PageTitle = require("../../modules/PageTitle.js")
 
+const BrowserUtils = require('../../shared/BrowserUtils.jsx')
+
 var Showcase = React.createClass({
   mixins: [
-    require("../../mixins/BrowserMixin.jsx"),
     require("../../mixins/LoadRemoteMixin.jsx"),
     require("../../mixins/MuiThemeMixin.jsx"),
     require("../../mixins/CurrentThemeMixin.jsx")
@@ -90,7 +91,7 @@ var Showcase = React.createClass({
       showcaseShow = (<Loading />);
     }
     var header;
-    if(!this.mobile()){
+    if(!BrowserUtils.mobile()){
       header = (<CollectionPageHeader collection={this.state.collection} />);
     }
     // this is a div instead of mui.AppCanvas because of a bug in 12.3 which is fixed in master.

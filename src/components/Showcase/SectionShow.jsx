@@ -9,11 +9,13 @@ var SectionShowDescription = require('./SectionShowDescription.jsx');
 var SideNavButton = require('../../other/SideNavButton.jsx');
 var SectionActions = require('../../actions/SectionActions.jsx');
 var OpenItemDisplay = require('../../modules/OpenItemDisplay.js');
+
+const BrowserUtils = require('../../shared/BrowserUtils.jsx')
+
 var SectionShow = React.createClass({
   mixins: [
     require('../../mixins/CurrentThemeMixin.jsx'),
     require('../../mixins/LoadRemoteMixin.jsx'),
-    require('../../mixins/BrowserMixin.jsx')
   ],
 
   displayName: 'Section Show',
@@ -39,7 +41,7 @@ var SectionShow = React.createClass({
   titleStyle: function () {
     return {
       color: this.getCurrentPallette().alternateTextColor,
-      lineHeight: this.mobile() ? '24px' : '56px',
+      lineHeight: BrowserUtils.mobile() ? '24px' : '56px',
     }
   },
 
