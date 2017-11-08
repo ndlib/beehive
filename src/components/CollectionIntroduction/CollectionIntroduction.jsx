@@ -8,11 +8,26 @@ var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx');
 var CollectionDescription = require('./CollectionDescription.jsx');
 var PageTitleBar = require('../Pages/PageTitleBar.jsx');
 
+const LoadRemote = require('../../modules/LoadRemote.jsx')
+
 var CollectionIntroduction = React.createClass({
   mixins: [
-    require("../../mixins/LoadRemoteMixin.jsx"),
     require("../../mixins/MuiThemeMixin.jsx")
   ],
+
+  propTypes: {
+    collection: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.object,
+    ]),
+  },
+
+  getInitialState: function() {
+    return {
+      collection: {},
+      remoteCollectionLoaded: false,
+    };
+  },
 
   componentDidMount: function() {
     if ("object" == typeof(this.props.collection)) {
@@ -20,8 +35,15 @@ var CollectionIntroduction = React.createClass({
         collection: this.props.collection,
       });
     } else {
-      this.loadRemoteCollection(this.props.collection);
+      LoadRemote.loadRemoteCollection(this.props.collection, this.onLoaded.bind(this));
     }
+  },
+
+  onLoaded: function(result) {
+    this.setState({
+      remoteCollectionLoaded: true,
+      collection: result
+    })
   },
 
   render: function() {

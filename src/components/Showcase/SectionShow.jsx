@@ -11,11 +11,11 @@ var SectionActions = require('../../actions/SectionActions.jsx');
 var OpenItemDisplay = require('../../modules/OpenItemDisplay.js');
 
 const BrowserUtils = require('../../modules/BrowserUtils.jsx')
+const LoadRemote = require('../../modules/LoadRemote.jsx')
 
 var SectionShow = React.createClass({
   mixins: [
     require('../../mixins/CurrentThemeMixin.jsx'),
-    require('../../mixins/LoadRemoteMixin.jsx'),
   ],
 
   displayName: 'Section Show',
@@ -109,10 +109,10 @@ var SectionShow = React.createClass({
     OpenItemDisplay(id, 'section');
 
     if(url.indexOf('item') > -1) {
-      this.loadRemoteItem(url);
+      LoadRemote.loadRemoteItem(url);
     }
     else if(url.indexOf('section') > -1) {
-      this.loadRemoteSection(url);
+      LoadRemote.loadRemoteSection(url);
     }
     else {
       console.log('an invalid url was provided', this.props.url);

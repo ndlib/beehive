@@ -12,7 +12,6 @@ var SearchBox = require('./SearchBox.jsx');
 var CollectionPageHeader = React.createClass({
   mixins: [
     require('../mixins/CollectionUrlMixin.jsx'),
-    require('../mixins/TitleConcatMixin.jsx'),
     require('../mixins/CurrentThemeMixin.jsx')
   ],
 

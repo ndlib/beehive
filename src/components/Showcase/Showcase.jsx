@@ -13,10 +13,10 @@ var Loading = require("../../other/Loading.jsx");
 var PageTitle = require("../../modules/PageTitle.js")
 
 const BrowserUtils = require('../../modules/BrowserUtils.jsx')
+const LoadRemote = require('../../modules/LoadRemote.jsx')
 
 var Showcase = React.createClass({
   mixins: [
-    require("../../mixins/LoadRemoteMixin.jsx"),
     require("../../mixins/MuiThemeMixin.jsx"),
     require("../../mixins/CurrentThemeMixin.jsx")
   ],
@@ -60,7 +60,7 @@ var Showcase = React.createClass({
     if ('object' == typeof(this.props.collection)) {
       this.setValues(this.props.collection);
     } else {
-      this.loadRemoteCollection(this.props.collection)
+      LoadRemote.loadRemoteCollection(this.props.collection, this.setValues.bind(this))
     }
     window.addEventListener('resize', this.handleResize, false);
     this.handleResize();

@@ -5,7 +5,6 @@ var MediaQuery = require('react-responsive');
 
 var PagesShow = React.createClass({
   mixins: [
-    require("../../mixins/LoadRemoteMixin.jsx"),
     require("../../mixins/MuiThemeMixin.jsx")
   ],
 

@@ -7,9 +7,10 @@ var PageContent = require('../../layout/PageContent.jsx');
 var CollectionsList = require('./CollectionsList.jsx');
 var IndexPageFooter = require('../../layout/IndexPageFooter.jsx');
 
+const LoadRemote = require('../../modules/LoadRemote.jsx')
+
 var SiteIndex = React.createClass({
   mixins: [
-    require("../../mixins/LoadRemoteMixin.jsx"),
     require("../../mixins/MuiThemeMixin.jsx")
   ],
 
@@ -23,6 +24,7 @@ var SiteIndex = React.createClass({
   getInitialState: function() {
     return {
       collections: [],
+      remoteCollectionLoaded: false,
     };
   },
 
@@ -32,7 +34,7 @@ var SiteIndex = React.createClass({
         collections: this.props.collections,
       });
     } else {
-      this.loadRemoteCollection(this.props.collections)
+      LoadRemote.loadRemoteCollection(this.props.collections, this.setValues.bind(this))
     }
   },
 

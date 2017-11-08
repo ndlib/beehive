@@ -6,10 +6,11 @@ var TextCard = require("./TextCard.jsx");
 var ImageCard = require("./ImageCard.jsx");
 var MultimediaCard = require("./MultimediaCard.jsx");
 
+const LoadRemote = require('../../modules/LoadRemote.jsx')
+
 var SectionCard = React.createClass({
   mixins: [
     require('../../mixins/CollectionUrlMixin.jsx'),
-    require('../../mixins/LoadRemoteMixin.jsx'),
     require('../../mixins/CurrentThemeMixin.jsx')
   ],
 
@@ -59,10 +60,6 @@ var SectionCard = React.createClass({
     }
   },
 
-  onClick: function(event) {
-    this.sectionOnClick();
-  },
-
   card: function() {
     switch(this.sectionType()) {
       case "image":
@@ -89,7 +86,7 @@ var SectionCard = React.createClass({
 
   render: function() {
     return (
-      <mui.Card className="item" style={this.style()} onClick={this.onClick}>
+      <mui.Card className="item" style={this.style()} onClick={LoadRemote.sectionOnClick(this.props.section)}>
         { this.card() }
         {this.manifestIcon(this.props.section.item)}
       </mui.Card>

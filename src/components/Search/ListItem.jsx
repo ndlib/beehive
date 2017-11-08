@@ -3,11 +3,9 @@ var React = require('react');
 var mui = require('material-ui');
 var ItemImage = require('./ItemImage.jsx');
 
-var ListItem = React.createClass({
-  mixins: [
-    require('../../mixins/LoadRemoteMixin.jsx')
-  ],
+const LoadRemote = require('../../modules/LoadRemote.jsx')
 
+var ListItem = React.createClass({
   propTypes: {
     item: React.PropTypes.object.isRequired,
   },
@@ -51,7 +49,7 @@ var ListItem = React.createClass({
           primaryText={this.primaryText()}
           secondaryText={this.secondaryText()}
           secondaryTextLines={2}
-          onClick={this.itemOnClick}
+          onClick={LoadRemote.itemOnClick(this.props.item)}
           innerDivStyle={{paddingLeft:'80px', height:'85px'}}
           rightIcon={this.manifestIcon(this.props.item)}
         />

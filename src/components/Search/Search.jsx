@@ -13,9 +13,10 @@ var SearchDisplayList = require('./SearchDisplayList.jsx');
 var ConfigurationActions = require("../../actions/ConfigurationActions.js");
 var ConfigurationStore = require("../../store/ConfigurationStore.js");
 
+const LoadRemote = require('../../modules/LoadRemote.jsx')
+
 var Search = React.createClass({
   mixins: [
-    require('../../mixins/LoadRemoteMixin.jsx'),
     require('../../mixins/MuiThemeMixin.jsx')
   ],
 
@@ -34,6 +35,10 @@ var Search = React.createClass({
     start: React.PropTypes.number,
     view: React.PropTypes.string,
     currentItem: React.PropTypes.string,
+    collection: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.object,
+    ]),
   },
 
   getDefaultProps: function() {
@@ -45,7 +50,9 @@ var Search = React.createClass({
 
   getInitialState: function() {
     return {
-      windowHeight: this.calcHeight()
+      windowHeight: this.calcHeight(),
+      collection: {},
+      remoteCollectionLoaded: false,
     };
   },
 
@@ -62,7 +69,7 @@ var Search = React.createClass({
     if ('object' == typeof(this.props.collection)) {
       this.setValues(this.props.collection);
     } else {
-      this.loadRemoteCollection(this.props.collection);
+      LoadRemote.loadRemoteCollection(this.props.collection, this.setValues.bind(this));
     }
   },
 
@@ -105,7 +112,7 @@ var Search = React.createClass({
     this.setState({ configurationLoaded: true });
   },
 
-  // Callback from LoadRemoteMixin when remote collection is loaded
+  // Callback from loadremotecollection when remote collection is loaded
   setValues: function(collection) {
     ConfigurationActions.load(collection);
     SearchActions.loadSearchResults(collection, this.props.hits, this.props.searchTerm, this.facetObject(), this.props.sortTerm, this.props.start, this.props.view);

@@ -12,11 +12,13 @@ var OpenItemDisplay = require('../../modules/OpenItemDisplay.js');
 var HoneycombURL = require('../../modules/HoneycombURL.js');
 var PageTitle = require('../../modules/PageTitle.js')
 
+const LoadRemote = require('../../modules/LoadRemote.jsx')
+
 var ItemPanel = React.createClass({
   mixins: [
     require('../../mixins/CurrentThemeMixin.jsx'),
     require('../../mixins/CollectionUrlMixin.jsx'),
-    require('../../mixins/LoadRemoteMixin.jsx') ],
+  ],
 
   displayName: 'Item Panel',
   propTypes: {
@@ -39,7 +41,7 @@ var ItemPanel = React.createClass({
   componentWillReceiveProps: function(newProps){
     if(newProps.currentItem && newProps.currentItem !== this.state.currentItem){
       var url = HoneycombURL() + '/v1/items/' + newProps.currentItem;
-      this.loadRemoteItem(url);
+      LoadRemote.loadRemoteItem(url);
     } else {
       this.removeCurrentItem();
     }
@@ -50,7 +52,7 @@ var ItemPanel = React.createClass({
     EventEmitter.on("HideItemDialogWindow", this.removeCurrentItem);
     if(this.props.currentItem) {
       var url = HoneycombURL() + '/v1/items/' + this.props.currentItem;
-      this.loadRemoteItem(url);
+      LoadRemote.loadRemoteItem(url);
     }
   },
 
@@ -83,14 +85,14 @@ var ItemPanel = React.createClass({
 
   nextButtonClick: function() {
     if(this.state.nextItem) {
-      this.loadRemoteItem(this.state.nextItem["@id"]);
+      LoadRemote.loadRemoteItem(this.state.nextItem["@id"]);
       OpenItemDisplay(this.state.nextItem["@id"].split("/").pop(), 'item');
     }
   },
 
   prevButtonClick: function() {
     if(this.state.previousItem) {
-      this.loadRemoteItem(this.state.previousItem["@id"]);
+      LoadRemote.loadRemoteItem(this.state.previousItem["@id"]);
       OpenItemDisplay(this.state.previousItem["@id"].split("/").pop(), 'item');
     }
   },

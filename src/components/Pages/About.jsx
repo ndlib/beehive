@@ -6,9 +6,10 @@ var PageContent = require('../../layout/PageContent.jsx');
 var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx');
 var PagesShow = require('../Pages/PagesShow.jsx');
 
+const LoadRemote = require('../../modules/LoadRemote.jsx')
+
 var About = React.createClass({
   mixins: [
-    require("../../mixins/LoadRemoteMixin.jsx"),
     require("../../mixins/MuiThemeMixin.jsx")
   ],
 
@@ -19,14 +20,28 @@ var About = React.createClass({
     ]),
   },
 
+  getInitialState: function() {
+    return {
+      collection: {},
+      remoteCollectionLoaded: false,
+    };
+  },
+
   componentDidMount: function() {
     if ('object' == typeof(this.props.collection)) {
       this.setState({
         collection: this.props.collection,
       });
     } else {
-      this.loadRemoteCollection(this.props.collection);
+      LoadRemote.loadRemoteCollection(this.props.collection, this.onLoaded.bind(this));
     }
+  },
+
+  onLoaded: function(result) {
+    this.setState({
+      remoteCollectionLoaded: true,
+      collection: result
+    })
   },
 
   render: function() {

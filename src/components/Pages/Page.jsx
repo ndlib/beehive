@@ -16,9 +16,10 @@ var ConfigurationActions = require("../../actions/ConfigurationActions.js");
 var ConfigurationStore = require("../../store/ConfigurationStore.js");
 var PageTitle = require('../../modules/PageTitle.js')
 
+const LoadRemote = require('../../modules/LoadRemote.jsx')
+
 var Page = React.createClass({
   mixins: [
-    require("../../mixins/LoadRemoteMixin.jsx"),
     require("../../mixins/MuiThemeMixin.jsx")
   ],
 
@@ -34,6 +35,8 @@ var Page = React.createClass({
       titleHeight: 56,
       currentItem: null,
       titleSectionPercentVisible: 0,
+      collection: {},
+      remoteCollectionLoaded: false,
     };
   },
 
@@ -44,7 +47,7 @@ var Page = React.createClass({
         collection: this.props.collection,
       });
     } else {
-      this.loadRemoteCollection(this.props.collection);
+      LoadRemote.loadRemoteCollection(this.props.collection, this.setValues.bind(this));
     }
   },
 
