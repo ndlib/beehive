@@ -7,7 +7,6 @@ var ShowcaseTitleBar = React.createClass({
   mixins: [
     require('../../mixins/MuiThemeMixin.jsx'),
     require('../../mixins/CurrentThemeMixin.jsx'),
-    require('../../mixins/CollectionUrlMixin.jsx')
   ],
 
   displayName: 'Showcase Title Bar',

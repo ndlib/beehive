@@ -3,11 +3,9 @@ var mui = require('material-ui');
 var $ = require('jquery');
 var theme = require('../../themes/beehive.jsx');
 
-var CollectionCard = React.createClass({
-  mixins: [
-    require('../../mixins/CollectionUrlMixin.jsx')
-  ],
+const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
+var CollectionCard = React.createClass({
   propTypes: {
     collection: React.PropTypes.object.isRequired,
     cardHeight: React.PropTypes.string.isRequired
@@ -114,13 +112,13 @@ var CollectionCard = React.createClass({
     return (
 
       <mui.Card style={this.style()} >
-        <a href={this.collectionUrl(this.props.collection)}>
+        <a href={CollectionUrl.collectionUrl(this.props.collection)}>
           {this.headerTitle()}
           {this.cardMedia()}
           {this.cardTitle()}
         </a>
         <mui.CardActions style={this.actionButtonsStyle()} >
-          <mui.FlatButton label="Explore" href={this.collectionUrl(this.props.collection)} labelStyle={ this.exploreLabelStyle() } />
+          <mui.FlatButton label="Explore" href={CollectionUrl.collectionUrl(this.props.collection)} labelStyle={ this.exploreLabelStyle() } />
         </mui.CardActions>
       </mui.Card>
 

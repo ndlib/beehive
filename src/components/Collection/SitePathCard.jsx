@@ -2,11 +2,9 @@
 var React = require("react");
 var mui = require('material-ui');
 
-var SitePathCard = React.createClass({
-  mixins: [
-    require('../../mixins/CollectionUrlMixin.jsx')
-  ],
+const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
+var SitePathCard = React.createClass({
   propTypes: {
     siteObject: React.PropTypes.object.isRequired,
     addNextButton: React.PropTypes.bool,
@@ -75,7 +73,7 @@ var SitePathCard = React.createClass({
             primary={true}
             linkButton={true}
             style={this.buttonStyle()}
-            href={this.collectionObjectUrl(this.props.siteObject)}
+            href={CollectionUrl.collectionObjectUrl(this.props.siteObject)}
             disableTouchRipple={true}
           >
             <mui.FontIcon className="material-icons">arrow_forward</mui.FontIcon>
@@ -107,7 +105,7 @@ var SitePathCard = React.createClass({
   render: function() {
     return (
       <mui.Card style={this.style()} >
-        <a href={this.collectionObjectUrl(this.props.siteObject)}>
+        <a href={CollectionUrl.collectionObjectUrl(this.props.siteObject)}>
           {this.headerTitle()}
           {this.cardMedia()}
         </a>

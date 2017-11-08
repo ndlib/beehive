@@ -14,7 +14,6 @@ var listView = {view: "list"};
 var SearchControls = React.createClass({
   mixins: [
     require('../../mixins/CurrentThemeMixin.jsx'),
-    require('../../mixins/CollectionUrlMixin.jsx')
   ],
 
   getInitialState: function() {

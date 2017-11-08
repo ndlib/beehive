@@ -6,9 +6,10 @@ var Types = {
   SUBHEADER: 'SUBHEADER'
 }
 
+const CollectionUrl = require('../modules/CollectionUrl.jsx')
+
 var CollectionLeftNav = React.createClass({
   mixins: [
-    require('../mixins/CollectionUrlMixin.jsx'),
     require('../mixins/CurrentThemeMixin.jsx'),
     require('../mixins/MuiThemeMixin.jsx') ],
 
@@ -62,10 +63,10 @@ var CollectionLeftNav = React.createClass({
 
   dropDownOptions: function() {
     var options = [];
-    var collectionUrl = this.collectionUrl(this.props.collection);
-    var aboutUrl = this.aboutUrl(this.props.collection);
-    var introUrl = this.introUrl(this.props.collection);
-    var browseUrl = this.browseUrl(this.props.collection);
+    var collectionUrl = CollectionUrl.collectionUrl(this.props.collection);
+    var aboutUrl = CollectionUrl.aboutUrl(this.props.collection);
+    var introUrl = CollectionUrl.introUrl(this.props.collection);
+    var browseUrl = CollectionUrl.browseUrl(this.props.collection);
 
     options.push((
       <a href={collectionUrl}>
@@ -99,7 +100,7 @@ var CollectionLeftNav = React.createClass({
     }
 
     this.state.sitePath.forEach(function(siteObject){
-      var url = this.collectionObjectUrl(siteObject);
+      var url = CollectionUrl.collectionObjectUrl(siteObject);
       var name = siteObject.name || siteObject.name_line_1;
       options.push ((
         <a href={url}>

@@ -6,7 +6,6 @@ var SitePathCard = require('../Collection/SitePathCard.jsx');
 var ShowcaseEndingCard = React.createClass({
   displayName: "Showcase Ending",
   mixins: [
-    require('../../mixins/CollectionUrlMixin.jsx'),
     require('../../mixins/CurrentThemeMixin.jsx')
   ],
 

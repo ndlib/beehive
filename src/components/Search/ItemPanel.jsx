@@ -9,15 +9,14 @@ var ItemShow = require('../../display/ItemShow.jsx');
 var ItemActions = require('../../actions/ItemActions.jsx');
 var EventEmitter = require('../../middleware/EventEmitter.js');
 var OpenItemDisplay = require('../../modules/OpenItemDisplay.js');
-var HoneycombURL = require('../../modules/HoneycombURL.js');
 var PageTitle = require('../../modules/PageTitle.js')
 
 const LoadRemote = require('../../modules/LoadRemote.jsx')
+const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
 var ItemPanel = React.createClass({
   mixins: [
     require('../../mixins/CurrentThemeMixin.jsx'),
-    require('../../mixins/CollectionUrlMixin.jsx'),
   ],
 
   displayName: 'Item Panel',
@@ -40,7 +39,7 @@ var ItemPanel = React.createClass({
 
   componentWillReceiveProps: function(newProps){
     if(newProps.currentItem && newProps.currentItem !== this.state.currentItem){
-      var url = HoneycombURL() + '/v1/items/' + newProps.currentItem;
+      var url = CollectionUrl.remoteItem(newProps.currentItem);
       LoadRemote.loadRemoteItem(url);
     } else {
       this.removeCurrentItem();
@@ -51,7 +50,7 @@ var ItemPanel = React.createClass({
     EventEmitter.on("ItemDialogWindow", this.setCurrentItem);
     EventEmitter.on("HideItemDialogWindow", this.removeCurrentItem);
     if(this.props.currentItem) {
-      var url = HoneycombURL() + '/v1/items/' + this.props.currentItem;
+      var url = CollectionUrl.remoteItem(this.props.currentItem);
       LoadRemote.loadRemoteItem(url);
     }
   },

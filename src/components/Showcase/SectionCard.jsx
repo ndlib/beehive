@@ -10,7 +10,6 @@ const LoadRemote = require('../../modules/LoadRemote.jsx')
 
 var SectionCard = React.createClass({
   mixins: [
-    require('../../mixins/CollectionUrlMixin.jsx'),
     require('../../mixins/CurrentThemeMixin.jsx')
   ],
 

@@ -4,9 +4,10 @@ var mui = require('material-ui');
 var ConfigurationActions = require("../../actions/ConfigurationActions.js");
 var Loading = require("../../other/Loading.jsx");
 
+const CollectionUrl = require('../../modules/CollectionUrl.jsx')
+
 var CollectionShow = React.createClass({
   mixins: [
-    require('../../mixins/CollectionUrlMixin.jsx'),
     require('../../mixins/CurrentThemeMixin.jsx')
   ],
 
@@ -29,10 +30,10 @@ var CollectionShow = React.createClass({
   },
 
   startUrl: function() {
-    var url = this.introUrl(this.props.collection)
+    var url = CollectionUrl.introUrl(this.props.collection)
 
     if (!url) {
-      url = this.startSitePathUrl();
+      url = CollectionUrl.startSitePathUrl(this.props.collection);
     }
 
     return url;

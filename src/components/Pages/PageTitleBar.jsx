@@ -5,8 +5,7 @@ var CloseButton = require('../../other/CloseButton.jsx');
 var PageTitleBar = React.createClass({
   mixins: [
     require('../../mixins/MuiThemeMixin.jsx'),
-    require('../../mixins/CurrentThemeMixin.jsx'),
-    require('../../mixins/CollectionUrlMixin.jsx')
+    require('../../mixins/CurrentThemeMixin.jsx')
   ],
 
   propTypes: {

@@ -5,10 +5,10 @@ var mui = require('material-ui');
 var HoneycombImage = require("../other/HoneycombImage.jsx");
 var MediaQuery = require('react-responsive');
 import { Link } from 'react-router';
+const CollectionUrl = require('../modules/CollectionUrl.jsx')
 
 var PreviewLink = React.createClass({
   mixins: [
-    require("../mixins/CollectionUrlMixin.jsx"),
     require("../mixins/MuiThemeMixin.jsx")
   ],
   propTypes: {
@@ -71,7 +71,7 @@ var PreviewLink = React.createClass({
   },
 
   render: function() {
-    var url = this.collectionObjectUrl(this.props.siteObject);
+    var url = CollectionUrl.collectionObjectUrl(this.props.siteObject);
     return (
       <Link to={url}>
       <MediaQuery minWidth={850}>

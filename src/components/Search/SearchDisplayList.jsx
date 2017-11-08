@@ -11,7 +11,6 @@ var SearchSidebar = require('./SearchSidebar.jsx');
 
 var SearchDisplayList = React.createClass({
   mixins: [
-    require('../../mixins/CollectionUrlMixin.jsx'),
     require('../../mixins/MuiThemeMixin.jsx')
   ],
 

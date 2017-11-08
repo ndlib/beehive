@@ -2,9 +2,10 @@
 var React = require("react");
 var mui = require("material-ui");
 
+const CollectionUrl = require('../../modules/CollectionUrl.jsx')
+
 var CollectionHomeButton = React.createClass({
   mixins: [
-    require('../../mixins/CollectionUrlMixin.jsx'),
     require('../../mixins/CurrentThemeMixin.jsx')
   ],
   propTypes: {
@@ -12,7 +13,7 @@ var CollectionHomeButton = React.createClass({
   },
 
   onClick: function() {
-    window.location = this.collectionUrl(this.props.collection);
+    window.location = CollectionUrl.collectionUrl(this.props.collection);
   },
 
   render: function() {

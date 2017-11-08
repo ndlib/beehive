@@ -4,7 +4,7 @@ var React = require('react');
 const PrevNext = require('../modules/PrevNextUtils.jsx')
 
 var NextModal = React.createClass({
-  mixins: [CollectionUrlMixin, CurrentThemeMixin],
+  mixins: [CurrentThemeMixin],
 
   displayName: 'Next Modal Link',
 

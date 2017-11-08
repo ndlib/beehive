@@ -8,10 +8,10 @@ var CollectionLeftNav = require('./CollectionLeftNav.jsx');
 var ConfigurationStore = require('../store/ConfigurationStore.js');
 var ConfigurationActions = require('../actions/ConfigurationActions.js');
 var SearchBox = require('./SearchBox.jsx');
+const CollectionUrl = require('../modules/CollectionUrl.jsx')
 
 var CollectionPageHeader = React.createClass({
   mixins: [
-    require('../mixins/CollectionUrlMixin.jsx'),
     require('../mixins/CurrentThemeMixin.jsx')
   ],
 
@@ -75,9 +75,9 @@ var CollectionPageHeader = React.createClass({
 
   _handleTabs: function (tab) {
     if (tab.props.value == "about") {
-      window.location.href = this.aboutUrl(this.props.collection);
+      window.location.href = CollectionUrl.aboutUrl(this.props.collection);
     } else if (tab.props.value == "search") {
-      window.location.href = this.browseUrl(this.props.collection);
+      window.location.href = CollectionUrl.browseUrl(this.props.collection);
     }
   },
 
@@ -86,7 +86,7 @@ var CollectionPageHeader = React.createClass({
 
     if (pageCode == "search") {
       return "search";
-    } else if (window.location.pathname == this.browseUrl(this.props.collection)) {
+    } else if (window.location.pathname == CollectionUrl.browseUrl(this.props.collection)) {
       return "about";
     }
     return "none";
@@ -168,7 +168,7 @@ var CollectionPageHeader = React.createClass({
   render: function() {
     var title = (
       <a style={{ textDecoration: "none", color: this.getCurrentPallette().alternateTextColor }}
-        href={this.collectionUrl(this.props.collection)}>
+        href={CollectionUrl.collectionUrl(this.props.collection)}>
           <h1 style={this.titleStyle()}>{this.props.collection.name_line_1}</h1>
       </a>
     );
