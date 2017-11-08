@@ -12,7 +12,7 @@ var ConfigurationStore = require("../../store/ConfigurationStore.js");
 var Loading = require("../../other/Loading.jsx");
 var PageTitle = require("../../modules/PageTitle.js")
 
-const BrowserUtils = require('../../shared/BrowserUtils.jsx')
+const BrowserUtils = require('../../modules/BrowserUtils.jsx')
 
 var Showcase = React.createClass({
   mixins: [

@@ -10,7 +10,7 @@ var SideNavButton = require('../../other/SideNavButton.jsx');
 var SectionActions = require('../../actions/SectionActions.jsx');
 var OpenItemDisplay = require('../../modules/OpenItemDisplay.js');
 
-const BrowserUtils = require('../../shared/BrowserUtils.jsx')
+const BrowserUtils = require('../../modules/BrowserUtils.jsx')
 
 var SectionShow = React.createClass({
   mixins: [

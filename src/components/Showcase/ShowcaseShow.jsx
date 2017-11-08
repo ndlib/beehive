@@ -23,7 +23,7 @@ var Scroller = require('../../other/Scroller.jsx');
 var OpenItemDisplay = require('../../modules/OpenItemDisplay.js');
 var CollectionHomeButton  = require('./CollectionHomeButton.jsx');
 
-const BrowserUtils = require('../../shared/BrowserUtils.jsx')
+const BrowserUtils = require('../../modules/BrowserUtils.jsx')
 
 var ShowcaseShow = React.createClass({
   mixins: [
