@@ -9,10 +9,6 @@ var MultimediaCard = require("./MultimediaCard.jsx");
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
 var SectionCard = React.createClass({
-  mixins: [
-    require('../../mixins/CurrentThemeMixin.jsx')
-  ],
-
   propTypes: {
     section: React.PropTypes.object.isRequired,
     height: React.PropTypes.number.isRequired,

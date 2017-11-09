@@ -2,16 +2,17 @@ var React = require("react");
 var mui = require('material-ui');
 
 var SitePathCard = require('../Collection/SitePathCard.jsx');
+const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 
 var ShowcaseEndingCard = React.createClass({
   displayName: "Showcase Ending",
-  mixins: [
-    require('../../mixins/CurrentThemeMixin.jsx')
-  ],
-
   propTypes: {
     height: React.PropTypes.number.isRequired,
     siteObject: React.PropTypes.object.isRequired,
+  },
+
+  contextTypes: {
+    muiTheme: React.PropTypes.object,
   },
 
   style: function() {
@@ -26,7 +27,7 @@ var ShowcaseEndingCard = React.createClass({
       width: "500px",
       overflow: "hidden",
       marginTop: "12vh",
-      backgroundColor: this.getCurrentPallette().showcaseTextCardColor,
+      backgroundColor: CurrentTheme.getCurrentPallette(this.context.muiTheme).showcaseTextCardColor,
     };
   },
 

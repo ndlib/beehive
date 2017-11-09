@@ -2,15 +2,17 @@
 var React = require("react");
 var mui = require("material-ui");
 
-var CloseButton = React.createClass({
-  mixins: [
-    require("../mixins/CurrentThemeMixin.jsx")
-  ],
+const CurrentTheme = require('../modules/CurrentTheme.jsx')
 
+var CloseButton = React.createClass({
   propTypes: {
     alternate: React.PropTypes.bool,
     clickEvent: React.PropTypes.func.isRequired,
     height: React.PropTypes.number
+  },
+
+  contextTypes: {
+    muiTheme: React.PropTypes.object,
   },
 
   getDefaultProps: function() {
@@ -22,9 +24,9 @@ var CloseButton = React.createClass({
 
   color: function() {
     if (this.props.alternate) {
-      return this.getCurrentPallette().alternateTextColor;
+      return CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor;
     } else {
-      return this.getCurrentPallette().textColor;
+      return CurrentTheme.getCurrentPallette(this.context.muiTheme).textColor;
     }
   },
 

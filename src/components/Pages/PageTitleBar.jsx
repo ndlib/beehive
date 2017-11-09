@@ -1,16 +1,20 @@
 var React = require('react');
 var mui = require('material-ui');
 var CloseButton = require('../../other/CloseButton.jsx');
+const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 
 var PageTitleBar = React.createClass({
   mixins: [
     require('../../mixins/MuiThemeMixin.jsx'),
-    require('../../mixins/CurrentThemeMixin.jsx')
   ],
 
   propTypes: {
     title: React.PropTypes.object.isRequired,
     height: React.PropTypes.number
+  },
+
+  contextTypes: {
+    muiTheme: React.PropTypes.object,
   },
 
   getDefaultProps: function() {
@@ -50,7 +54,7 @@ var PageTitleBar = React.createClass({
   titleBarStyle: function () {
     return {
       lineHeight: this.props.height + "px",
-      color: this.getCurrentPallette().alternateTextColor,
+      color: CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor,
     }
   },
 

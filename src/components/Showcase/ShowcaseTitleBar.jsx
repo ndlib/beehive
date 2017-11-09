@@ -2,11 +2,11 @@
 var React = require('react');
 var mui = require('material-ui');
 var CloseButton = require('../../other/CloseButton.jsx');
+const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 
 var ShowcaseTitleBar = React.createClass({
   mixins: [
     require('../../mixins/MuiThemeMixin.jsx'),
-    require('../../mixins/CurrentThemeMixin.jsx'),
   ],
 
   displayName: 'Showcase Title Bar',
@@ -15,6 +15,10 @@ var ShowcaseTitleBar = React.createClass({
     showcase: React.PropTypes.object.isRequired,
     percentFade: React.PropTypes.number,
     height: React.PropTypes.number,
+  },
+
+  contextTypes: {
+    muiTheme: React.PropTypes.object,
   },
 
   getDefaultProps: function() {
@@ -27,7 +31,7 @@ var ShowcaseTitleBar = React.createClass({
   style: function() {
     return {
       opacity: 1 - this.props.percentFade,
-      backgroundColor: this.getCurrentPallette().primary2Color,
+      backgroundColor: CurrentTheme.getCurrentPallette(this.context.muiTheme).primary2Color,
       height: this.props.height + 'px',
       zIndex: '200',
     };
@@ -35,7 +39,7 @@ var ShowcaseTitleBar = React.createClass({
 
   titleBarStyle: function () {
     return {
-      color: this.getCurrentPallette().alternateTextColor,
+      color: CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor,
       lineHeight: this.props.height + "px",
     }
   },

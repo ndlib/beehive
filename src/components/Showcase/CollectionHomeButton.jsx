@@ -5,11 +5,12 @@ var mui = require("material-ui");
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
 var CollectionHomeButton = React.createClass({
-  mixins: [
-    require('../../mixins/CurrentThemeMixin.jsx')
-  ],
   propTypes: {
     collection: React.PropTypes.object,
+  },
+
+  contextTypes: {
+    muiTheme: React.PropTypes.object,
   },
 
   onClick: function() {
@@ -26,7 +27,7 @@ var CollectionHomeButton = React.createClass({
       >
         <mui.FontIcon
           className="material-icons"
-          color={this.getCurrentPallette().alternateTextColor}
+          color={this.context.muiTheme.alternateTextColor}
         >home</mui.FontIcon>
       </mui.FloatingActionButton>
     )

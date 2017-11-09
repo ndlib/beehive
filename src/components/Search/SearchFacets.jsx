@@ -6,10 +6,6 @@ var SearchStore = require('../../store/SearchStore.js');
 var FacetItem = require('./FacetItem.jsx');
 
 var SearchFacets = React.createClass({
-  mixins: [
-    require('../../mixins/CurrentThemeMixin.jsx')
-  ],
-
   values: function(facet) {
     if (facet.values) {
       return (facet.values.map(function(e, index) {

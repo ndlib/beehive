@@ -2,15 +2,18 @@
 var React = require('react');
 
 const PrevNext = require('../modules/PrevNextUtils.jsx')
+const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 
 var NextModal = React.createClass({
-  mixins: [CurrentThemeMixin],
-
   displayName: 'Next Modal Link',
 
   propTypes: {
     url: React.PropTypes.string.isRequired,
     offsetTop: React.PropTypes.number,
+  },
+
+  contextTypes: {
+    muiTheme: React.PropTypes.object,
   },
 
   getDefaultProps: function() {
@@ -26,7 +29,7 @@ var NextModal = React.createClass({
       href="#"
       onClick={PrevNext.clickAction(this.props.url)}
       className="next-button half-circle-button"
-      style={PrevNext.buttonStyles(this.props.offsetTop, this.getCurrentPallette().accent3Color)}
+      style={PrevNext.buttonStyles(this.props.offsetTop, CurrentTheme.getCurrentPallette(this.context.muiTheme).accent3Color)}
     >
       <i className="material-icons">chevron_right</i>
     </a>

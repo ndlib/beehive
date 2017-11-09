@@ -18,7 +18,6 @@ const LoadRemote = require('../../modules/LoadRemote.jsx')
 var Showcase = React.createClass({
   mixins: [
     require("../../mixins/MuiThemeMixin.jsx"),
-    require("../../mixins/CurrentThemeMixin.jsx")
   ],
 
   getInitialState: function() {

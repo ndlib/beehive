@@ -5,6 +5,8 @@ var ColorManipulator = require('material-ui/lib/utils/color-manipulator');
 var SearchStore = require('../store/SearchStore.js');
 var SearchActions = require('../actions/SearchActions.js');
 
+const CurrentTheme = require('../modules/CurrentTheme.jsx')
+
 var Styles = {
   searchTextField: {
     height: '38px',
@@ -23,13 +25,14 @@ var Styles = {
 }
 
 var SearchBox = React.createClass({
-  mixins: [
-    require('../mixins/CurrentThemeMixin.jsx')
-  ],
   propTypes: {
     collection: React.PropTypes.object,
     primary: React.PropTypes.bool,
     useStore: React.PropTypes.bool,
+  },
+
+  contextTypes: {
+    muiTheme: React.PropTypes.object,
   },
 
   getDefaultProps: function() {
@@ -89,7 +92,7 @@ var SearchBox = React.createClass({
 
   inputStyle: function() {
     return ({
-      color: (this.props.primary ? this.getCurrentPallette().alternateTextColor : this.getCurrentPallette().textColor),
+      color: (this.props.primary ? CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor : CurrentTheme.getCurrentPallette(this.context.muiTheme).textColor),
       height: '36px',
     });
   },
@@ -141,7 +144,7 @@ var SearchBox = React.createClass({
           secondary={true}
           disableTouchRipple={true}
         >
-          <mui.FontIcon className="material-icons" style={this.lightIconStyle()}>search</mui.FontIcon>
+          <mui.FontIcon className="material-icons" style={CurrentTheme.lightIconStyle()}>search</mui.FontIcon>
         </mui.RaisedButton>
       </div>
     );

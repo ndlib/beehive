@@ -7,10 +7,10 @@ var Types = {
 }
 
 const CollectionUrl = require('../modules/CollectionUrl.jsx')
+const CurrentTheme = require('../modules/CurrentTheme.jsx')
 
 var CollectionLeftNav = React.createClass({
   mixins: [
-    require('../mixins/CurrentThemeMixin.jsx'),
     require('../mixins/MuiThemeMixin.jsx') ],
 
   propTypes: {
@@ -147,7 +147,7 @@ var CollectionLeftNav = React.createClass({
             style={this.buttonStyle()}
             disableTouchRipple={true}
           >
-            <mui.FontIcon className="material-icons" style={this.lightIconStyle()}>menu</mui.FontIcon>
+            <mui.FontIcon className="material-icons" style={CurrentTheme.lightIconStyle()}>menu</mui.FontIcon>
           </mui.FlatButton>
 
           <mui.LeftNav

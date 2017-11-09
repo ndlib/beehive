@@ -5,12 +5,9 @@ var ConfigurationActions = require("../../actions/ConfigurationActions.js");
 var Loading = require("../../other/Loading.jsx");
 
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
+const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 
 var CollectionShow = React.createClass({
-  mixins: [
-    require('../../mixins/CurrentThemeMixin.jsx')
-  ],
-
   propTypes: {
     collection: React.PropTypes.object.isRequired,
   },
@@ -73,7 +70,7 @@ var CollectionShow = React.createClass({
           titleStyle={{color:'white', fontSize:'34px', lineHeight:'46px'}}
           subtitle={this.props.collection.name_line_2}
           subtitleStyle={{color:'rgba(255,255,255,.8)', fontSize:'18px'}}
-          style={this.pageWidth()}/>
+          style={CurrentTheme.pageWidth()}/>
         );
       }
       return (
@@ -96,7 +93,7 @@ var CollectionShow = React.createClass({
           <mui.Card>
             {this.cardMediaSection()}
           </mui.Card>
-          <mui.CardActions style={this.pageWidth()} className="startButton">
+          <mui.CardActions style={CurrentTheme.pageWidth()} className="startButton">
             {this.startButton()}
           </mui.CardActions>
         </mui.Paper>

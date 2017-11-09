@@ -15,10 +15,6 @@ const LoadRemote = require('../../modules/LoadRemote.jsx')
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
 var ItemPanel = React.createClass({
-  mixins: [
-    require('../../mixins/CurrentThemeMixin.jsx'),
-  ],
-
   displayName: 'Item Panel',
   propTypes: {
     title: React.PropTypes.string,
