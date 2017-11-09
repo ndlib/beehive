@@ -3,11 +3,12 @@ var mui = require('material-ui');
 var CloseButton = require('../../other/CloseButton.jsx');
 const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 
-var PageTitleBar = React.createClass({
-  mixins: [
-    require('../../mixins/MuiThemeMixin.jsx'),
-  ],
+var ThemeManager = require('material-ui/lib/styles/theme-manager');
+var BeehiveTheme = require('../../themes/beehive.jsx');
+var injectTapEventPlugin = require("react-tap-event-plugin");
+injectTapEventPlugin();
 
+var PageTitleBar = React.createClass({
   propTypes: {
     title: React.PropTypes.object.isRequired,
     height: React.PropTypes.number
@@ -15,6 +16,16 @@ var PageTitleBar = React.createClass({
 
   contextTypes: {
     muiTheme: React.PropTypes.object,
+  },
+
+  childContextTypes: {
+    muiTheme: React.PropTypes.object
+  },
+
+  getChildContext() {
+    return {
+      muiTheme: this.state.muiTheme,
+    };
   },
 
   getDefaultProps: function() {
@@ -26,6 +37,7 @@ var PageTitleBar = React.createClass({
   getInitialState: function() {
     return {
       opacity: 1,
+      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
     }
   },
 

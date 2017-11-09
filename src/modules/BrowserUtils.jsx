@@ -1,4 +1,4 @@
-const BrowserMixin = {
+const BrowserUtils = {
   ie: function() {
     // return true if Internet Exploder else false
     var ua = window.navigator.userAgent;
@@ -39,4 +39,4 @@ const BrowserMixin = {
   },
 }
 
-module.exports = BrowserMixin;
+module.exports = BrowserUtils;

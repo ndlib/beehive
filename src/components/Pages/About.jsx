@@ -1,5 +1,7 @@
 var React = require('react');
 var mui = require('material-ui');
+var ThemeManager = require('material-ui/lib/styles/theme-manager');
+var BeehiveTheme = require('../../themes/beehive.jsx');
 
 var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx');
 var PageContent = require('../../layout/PageContent.jsx');
@@ -9,10 +11,6 @@ var PagesShow = require('../Pages/PagesShow.jsx');
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
 var About = React.createClass({
-  mixins: [
-    require("../../mixins/MuiThemeMixin.jsx")
-  ],
-
   propTypes: {
     collection: React.PropTypes.oneOfType([
       React.PropTypes.string,
@@ -20,10 +18,21 @@ var About = React.createClass({
     ]),
   },
 
+  childContextTypes: {
+    muiTheme: React.PropTypes.object
+  },
+
+  getChildContext() {
+    return {
+      muiTheme: this.state.muiTheme,
+    };
+  },
+
   getInitialState: function() {
     return {
       collection: {},
       remoteCollectionLoaded: false,
+      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
     };
   },
 

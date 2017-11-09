@@ -12,14 +12,12 @@ var SearchActions = require('../../actions/SearchActions.js');
 var SearchDisplayList = require('./SearchDisplayList.jsx');
 var ConfigurationActions = require("../../actions/ConfigurationActions.js");
 var ConfigurationStore = require("../../store/ConfigurationStore.js");
+var ThemeManager = require('material-ui/lib/styles/theme-manager');
+var BeehiveTheme = require('../../themes/beehive.jsx');
 
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
 var Search = React.createClass({
-  mixins: [
-    require('../../mixins/MuiThemeMixin.jsx')
-  ],
-
   propTypes: {
     compact: React.PropTypes.bool,
     hits: React.PropTypes.oneOfType([
@@ -41,6 +39,16 @@ var Search = React.createClass({
     ]),
   },
 
+  childContextTypes: {
+    muiTheme: React.PropTypes.object
+  },
+
+  getChildContext() {
+    return {
+      muiTheme: this.state.muiTheme,
+    };
+  },
+
   getDefaultProps: function() {
     return {
       compact: false,
@@ -53,6 +61,7 @@ var Search = React.createClass({
       windowHeight: this.calcHeight(),
       collection: {},
       remoteCollectionLoaded: false,
+      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
     };
   },
 

@@ -3,12 +3,12 @@ var React = require('react');
 var mui = require('material-ui');
 var CloseButton = require('../../other/CloseButton.jsx');
 const CurrentTheme = require('../../modules/CurrentTheme.jsx')
+var ThemeManager = require('material-ui/lib/styles/theme-manager');
+var BeehiveTheme = require('../../themes/beehive.jsx');
+var injectTapEventPlugin = require("react-tap-event-plugin");
+injectTapEventPlugin();
 
 var ShowcaseTitleBar = React.createClass({
-  mixins: [
-    require('../../mixins/MuiThemeMixin.jsx'),
-  ],
-
   displayName: 'Showcase Title Bar',
 
   propTypes: {
@@ -19,6 +19,22 @@ var ShowcaseTitleBar = React.createClass({
 
   contextTypes: {
     muiTheme: React.PropTypes.object,
+  },
+
+  childContextTypes: {
+    muiTheme: React.PropTypes.object
+  },
+
+  getChildContext() {
+    return {
+      muiTheme: this.state.muiTheme,
+    };
+  },
+
+  getInitialState: function() {
+    return {
+      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
+    };
   },
 
   getDefaultProps: function() {

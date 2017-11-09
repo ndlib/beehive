@@ -8,14 +8,21 @@ var SearchStore = require('../../store/SearchStore.js');
 var SearchPagination = require('./SearchPagination.jsx');
 var ItemListItem = require('./ItemListItem.jsx');
 var SearchSidebar = require('./SearchSidebar.jsx');
+var ThemeManager = require('material-ui/lib/styles/theme-manager');
 
 var SearchDisplayList = React.createClass({
-  mixins: [
-    require('../../mixins/MuiThemeMixin.jsx')
-  ],
-
   propTypes: {
     compact: React.PropTypes.bool,
+  },
+
+  childContextTypes: {
+    muiTheme: React.PropTypes.object
+  },
+
+  getChildContext() {
+    return {
+      muiTheme: this.state.muiTheme,
+    };
   },
 
   getDefaultProps: function() {
@@ -28,6 +35,7 @@ var SearchDisplayList = React.createClass({
     return {
       sidebar: false,
       view: SearchStore.view,
+      muiTheme: ThemeManager.getMuiTheme(theme),
     };
   },
 

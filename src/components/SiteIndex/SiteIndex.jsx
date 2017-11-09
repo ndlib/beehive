@@ -1,6 +1,8 @@
 'use strict'
 var React = require('react');
 var mui = require('material-ui');
+var ThemeManager = require('material-ui/lib/styles/theme-manager');
+var BeehiveTheme = require('../../themes/beehive.jsx');
 var SiteIndexHeader = require("./SiteIndexHeader.jsx");
 var BrandBar = require('../../layout/BrandBar.jsx');
 var PageContent = require('../../layout/PageContent.jsx');
@@ -10,10 +12,6 @@ var IndexPageFooter = require('../../layout/IndexPageFooter.jsx');
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
 var SiteIndex = React.createClass({
-  mixins: [
-    require("../../mixins/MuiThemeMixin.jsx")
-  ],
-
   propTypes: {
     collections: React.PropTypes.oneOfType([
       React.PropTypes.string,
@@ -21,10 +19,21 @@ var SiteIndex = React.createClass({
     ]),
   },
 
+  childContextTypes: {
+    muiTheme: React.PropTypes.object
+  },
+
+  getChildContext() {
+    return {
+      muiTheme: this.state.muiTheme,
+    };
+  },
+
   getInitialState: function() {
     return {
       collections: [],
       remoteCollectionLoaded: false,
+      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
     };
   },
 

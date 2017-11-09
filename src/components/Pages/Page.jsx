@@ -1,5 +1,9 @@
 var React = require('react');
 var mui = require('material-ui');
+var ThemeManager = require('material-ui/lib/styles/theme-manager');
+var BeehiveTheme = require('../../themes/beehive.jsx');
+var injectTapEventPlugin = require("react-tap-event-plugin");
+injectTapEventPlugin();
 
 var OverlayPage = require("../../layout/OverlayPage.jsx");
 var ItemShow = require('../../display/ItemShow.jsx');
@@ -19,15 +23,21 @@ var PageTitle = require('../../modules/PageTitle.js')
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
 var Page = React.createClass({
-  mixins: [
-    require("../../mixins/MuiThemeMixin.jsx")
-  ],
-
   propTypes: {
     collection: React.PropTypes.oneOfType([
       React.PropTypes.string,
       React.PropTypes.object,
     ]),
+  },
+
+  childContextTypes: {
+    muiTheme: React.PropTypes.object
+  },
+
+  getChildContext() {
+    return {
+      muiTheme: this.state.muiTheme,
+    };
   },
 
   getInitialState: function() {
@@ -37,6 +47,7 @@ var Page = React.createClass({
       titleSectionPercentVisible: 0,
       collection: {},
       remoteCollectionLoaded: false,
+      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
     };
   },
 

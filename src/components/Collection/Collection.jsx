@@ -1,6 +1,8 @@
 'use strict'
 var React = require('react');
 var mui = require('material-ui');
+var ThemeManager = require('material-ui/lib/styles/theme-manager');
+var BeehiveTheme = require('../../themes/beehive.jsx');
 
 var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx');
 var CollectionShow = require('./CollectionShow.jsx');
@@ -13,10 +15,6 @@ var PageTitle = require('../../modules/PageTitle.js')
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
 var Collection = React.createClass({
-  mixins: [
-    require("../../mixins/MuiThemeMixin.jsx")
-  ],
-
   propTypes: {
     collection: React.PropTypes.oneOfType([
       React.PropTypes.string,
@@ -24,10 +22,21 @@ var Collection = React.createClass({
     ]),
   },
 
+  childContextTypes: {
+    muiTheme: React.PropTypes.object
+  },
+
   getInitialState: function() {
     return {
       collection: {},
       remoteCollectionLoaded: false,
+      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
+    };
+  },
+
+  getChildContext() {
+    return {
+      muiTheme: this.state.muiTheme,
     };
   },
 

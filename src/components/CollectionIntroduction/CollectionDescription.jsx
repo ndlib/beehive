@@ -1,19 +1,34 @@
 var React = require('react');
 var mui = require('material-ui');
+var ThemeManager = require('material-ui/lib/styles/theme-manager');
+var BeehiveTheme = require('../../themes/beehive.jsx');
 
 var SitePathCard = require('../Collection/SitePathCard.jsx');
 var PagesShow = require('../Pages/PagesShow.jsx');
 var PreviewLink = require('../../layout/PreviewLink.jsx')
 
 var CollectionDescription = React.createClass({
-  mixins: [
-    require("../../mixins/MuiThemeMixin.jsx")
-  ],
-
   propTypes: {
     collection: React.PropTypes.object.isRequired,
     height: React.PropTypes.string,
     id: React.PropTypes.string,
+  },
+
+  childContextTypes: {
+    muiTheme: React.PropTypes.object
+  },
+
+
+  getChildContext() {
+    return {
+      muiTheme: this.state.muiTheme,
+    };
+  },
+
+  getInitialState: function() {
+    return {
+      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
+    };
   },
 
   style: function() {

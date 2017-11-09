@@ -5,21 +5,33 @@ var Types = {
   LINK: 'LINK',
   SUBHEADER: 'SUBHEADER'
 }
+var ThemeManager = require('material-ui/lib/styles/theme-manager');
+var BeehiveTheme = require('../themes/beehive.jsx');
+var injectTapEventPlugin = require("react-tap-event-plugin");
+injectTapEventPlugin();
 
 const CollectionUrl = require('../modules/CollectionUrl.jsx')
 const CurrentTheme = require('../modules/CurrentTheme.jsx')
 
 var CollectionLeftNav = React.createClass({
-  mixins: [
-    require('../mixins/MuiThemeMixin.jsx') ],
-
   propTypes: {
     collection: React.PropTypes.object.isRequired,
+  },
+
+  childContextTypes: {
+    muiTheme: React.PropTypes.object
+  },
+
+  getChildContext() {
+    return {
+      muiTheme: this.state.muiTheme,
+    };
   },
 
   getInitialState: function() {
     return {
       sitePath: [],
+      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
     };
   },
 

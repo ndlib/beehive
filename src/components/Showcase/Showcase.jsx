@@ -1,6 +1,8 @@
 'use strict'
 var React = require('react');
 var mui = require('material-ui');
+var ThemeManager = require('material-ui/lib/styles/theme-manager');
+var BeehiveTheme = require('../../themes/beehive.jsx');
 
 var EventEmitter = require('../../middleware/EventEmitter.js');
 var ShowcaseShow = require('./ShowcaseShow.jsx');
@@ -16,9 +18,15 @@ const BrowserUtils = require('../../modules/BrowserUtils.jsx')
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
 var Showcase = React.createClass({
-  mixins: [
-    require("../../mixins/MuiThemeMixin.jsx"),
-  ],
+  childContextTypes: {
+    muiTheme: React.PropTypes.object
+  },
+
+  getChildContext() {
+    return {
+      muiTheme: this.state.muiTheme,
+    };
+  },
 
   getInitialState: function() {
     return {
@@ -26,6 +34,7 @@ var Showcase = React.createClass({
       currentSection: null,
       height: window.innerHeight,
       widht: window.innerWidth,
+      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
     };
   },
 
