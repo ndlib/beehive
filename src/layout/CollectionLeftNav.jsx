@@ -5,20 +5,33 @@ var Types = {
   LINK: 'LINK',
   SUBHEADER: 'SUBHEADER'
 }
+var ThemeManager = require('material-ui/lib/styles/theme-manager');
+var BeehiveTheme = require('../themes/beehive.jsx');
+var injectTapEventPlugin = require("react-tap-event-plugin");
+injectTapEventPlugin();
+
+const CollectionUrl = require('../modules/CollectionUrl.jsx')
+const CurrentTheme = require('../modules/CurrentTheme.jsx')
 
 var CollectionLeftNav = React.createClass({
-  mixins: [
-    require('../mixins/CollectionUrlMixin.jsx'),
-    require('../mixins/CurrentThemeMixin.jsx'),
-    require('../mixins/MuiThemeMixin.jsx') ],
-
   propTypes: {
     collection: React.PropTypes.object.isRequired,
+  },
+
+  childContextTypes: {
+    muiTheme: React.PropTypes.object
+  },
+
+  getChildContext() {
+    return {
+      muiTheme: this.state.muiTheme,
+    };
   },
 
   getInitialState: function() {
     return {
       sitePath: [],
+      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
     };
   },
 
@@ -62,10 +75,10 @@ var CollectionLeftNav = React.createClass({
 
   dropDownOptions: function() {
     var options = [];
-    var collectionUrl = this.collectionUrl(this.props.collection);
-    var aboutUrl = this.aboutUrl(this.props.collection);
-    var introUrl = this.introUrl(this.props.collection);
-    var browseUrl = this.browseUrl(this.props.collection);
+    var collectionUrl = CollectionUrl.collectionUrl(this.props.collection);
+    var aboutUrl = CollectionUrl.aboutUrl(this.props.collection);
+    var introUrl = CollectionUrl.introUrl(this.props.collection);
+    var browseUrl = CollectionUrl.browseUrl(this.props.collection);
 
     options.push((
       <a href={collectionUrl}>
@@ -99,7 +112,7 @@ var CollectionLeftNav = React.createClass({
     }
 
     this.state.sitePath.forEach(function(siteObject){
-      var url = this.collectionObjectUrl(siteObject);
+      var url = CollectionUrl.collectionObjectUrl(siteObject);
       var name = siteObject.name || siteObject.name_line_1;
       options.push ((
         <a href={url}>
@@ -146,7 +159,7 @@ var CollectionLeftNav = React.createClass({
             style={this.buttonStyle()}
             disableTouchRipple={true}
           >
-            <mui.FontIcon className="material-icons" style={this.lightIconStyle()}>menu</mui.FontIcon>
+            <mui.FontIcon className="material-icons" style={CurrentTheme.lightIconStyle()}>menu</mui.FontIcon>
           </mui.FlatButton>
 
           <mui.LeftNav

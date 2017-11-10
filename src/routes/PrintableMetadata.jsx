@@ -1,6 +1,8 @@
 'use strict'
 var React = require('react');
 var mui = require('material-ui');
+var ThemeManager = require('material-ui/lib/styles/theme-manager');
+var BeehiveTheme = require('../themes/beehive.jsx');
 
 var EventEmitter = require('../middleware/EventEmitter.js');
 var HoneycombURL = require('../modules/HoneycombURL.js');
@@ -8,17 +10,30 @@ var Details = require('../display/Details.jsx');
 var ConfigurationActions = require("../actions/ConfigurationActions.js");
 var ConfigurationStore = require("../store/ConfigurationStore.js");
 
+const LoadRemote = require('../modules/LoadRemote.jsx')
+
 var PrintableMetadata = React.createClass({
-  mixins: [
-    require("../mixins/LoadRemoteMixin.jsx"),
-    require("../mixins/MuiThemeMixin.jsx")
-  ],
+  childContextTypes: {
+    muiTheme: React.PropTypes.object
+  },
+
+  getChildContext() {
+    return {
+      muiTheme: this.state.muiTheme,
+    };
+  },
+
+  getInitialState: function() {
+    return {
+      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
+    };
+  },
 
   componentWillMount: function() {
     ConfigurationStore.addChangeListener(this.configurationLoaded);
     EventEmitter.on("ItemDialogWindow", this.setItem);
     var url = HoneycombURL() + '/v1/items/' + this.props.params.itemID;
-    this.loadRemoteItem(url);
+    LoadRemote.loadRemoteItem(url);
   },
 
   setItem: function(item) {
@@ -28,7 +43,7 @@ var PrintableMetadata = React.createClass({
 
     if(item["isPartOf/collection"]) {
       var collectionUrl = item["isPartOf/collection"];
-      this.loadRemoteCollection(collectionUrl);
+      LoadRemote.loadRemoteCollection(collectionUrl, this.setValues.bind(this));
     } else {
       this.setState({ "configurationLoaded": true });
     }

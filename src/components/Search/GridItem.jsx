@@ -3,10 +3,9 @@ var React = require('react');
 var mui = require('material-ui');
 var ItemImage = require('./ItemImage.jsx');
 
+const LoadRemote = require('../../modules/LoadRemote.jsx')
+
 var GridItem = React.createClass({
-  mixins: [
-    require('../../mixins/LoadRemoteMixin.jsx')
-  ],
   propTypes: {
     item: React.PropTypes.object.isRequired,
   },
@@ -38,7 +37,7 @@ var GridItem = React.createClass({
   render: function() {
     return (
       <mui.Card
-        onClick={this.itemOnClick}
+        onClick={LoadRemote.itemOnClick(this.props.item)}
         style={{cursor: 'pointer', position: 'relative'}}
       >
 

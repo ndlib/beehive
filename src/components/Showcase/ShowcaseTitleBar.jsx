@@ -2,20 +2,39 @@
 var React = require('react');
 var mui = require('material-ui');
 var CloseButton = require('../../other/CloseButton.jsx');
+const CurrentTheme = require('../../modules/CurrentTheme.jsx')
+var ThemeManager = require('material-ui/lib/styles/theme-manager');
+var BeehiveTheme = require('../../themes/beehive.jsx');
+var injectTapEventPlugin = require("react-tap-event-plugin");
+injectTapEventPlugin();
 
 var ShowcaseTitleBar = React.createClass({
-  mixins: [
-    require('../../mixins/MuiThemeMixin.jsx'),
-    require('../../mixins/CurrentThemeMixin.jsx'),
-    require('../../mixins/CollectionUrlMixin.jsx')
-  ],
-
   displayName: 'Showcase Title Bar',
 
   propTypes: {
     showcase: React.PropTypes.object.isRequired,
     percentFade: React.PropTypes.number,
     height: React.PropTypes.number,
+  },
+
+  contextTypes: {
+    muiTheme: React.PropTypes.object,
+  },
+
+  childContextTypes: {
+    muiTheme: React.PropTypes.object
+  },
+
+  getChildContext() {
+    return {
+      muiTheme: this.state.muiTheme,
+    };
+  },
+
+  getInitialState: function() {
+    return {
+      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
+    };
   },
 
   getDefaultProps: function() {
@@ -28,7 +47,7 @@ var ShowcaseTitleBar = React.createClass({
   style: function() {
     return {
       opacity: 1 - this.props.percentFade,
-      backgroundColor: this.getCurrentPallette().primary2Color,
+      backgroundColor: CurrentTheme.getCurrentPallette(this.context.muiTheme).primary2Color,
       height: this.props.height + 'px',
       zIndex: '200',
     };
@@ -36,7 +55,7 @@ var ShowcaseTitleBar = React.createClass({
 
   titleBarStyle: function () {
     return {
-      color: this.getCurrentPallette().alternateTextColor,
+      color: CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor,
       lineHeight: this.props.height + "px",
     }
   },

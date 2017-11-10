@@ -1,20 +1,33 @@
 var React = require('react');
 var mui = require('material-ui');
+var ThemeManager = require('material-ui/lib/styles/theme-manager');
+var BeehiveTheme = require('../../themes/beehive.jsx');
 
 var MediaQuery = require('react-responsive');
 
 var PagesShow = React.createClass({
-  mixins: [
-    require("../../mixins/LoadRemoteMixin.jsx"),
-    require("../../mixins/MuiThemeMixin.jsx")
-  ],
-
   propTypes: {
     title: React.PropTypes.string,
     content: React.PropTypes.oneOfType([
       React.PropTypes.string,
       React.PropTypes.object,
     ]).isRequired,
+  },
+
+  childContextTypes: {
+    muiTheme: React.PropTypes.object
+  },
+
+  getChildContext() {
+    return {
+      muiTheme: this.state.muiTheme,
+    };
+  },
+
+  getInitialState: function() {
+    return {
+      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
+    };
   },
 
   headerStyle: function() {

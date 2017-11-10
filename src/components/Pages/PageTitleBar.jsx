@@ -1,17 +1,31 @@
 var React = require('react');
 var mui = require('material-ui');
 var CloseButton = require('../../other/CloseButton.jsx');
+const CurrentTheme = require('../../modules/CurrentTheme.jsx')
+
+var ThemeManager = require('material-ui/lib/styles/theme-manager');
+var BeehiveTheme = require('../../themes/beehive.jsx');
+var injectTapEventPlugin = require("react-tap-event-plugin");
+injectTapEventPlugin();
 
 var PageTitleBar = React.createClass({
-  mixins: [
-    require('../../mixins/MuiThemeMixin.jsx'),
-    require('../../mixins/CurrentThemeMixin.jsx'),
-    require('../../mixins/CollectionUrlMixin.jsx')
-  ],
-
   propTypes: {
     title: React.PropTypes.object.isRequired,
     height: React.PropTypes.number
+  },
+
+  contextTypes: {
+    muiTheme: React.PropTypes.object,
+  },
+
+  childContextTypes: {
+    muiTheme: React.PropTypes.object
+  },
+
+  getChildContext() {
+    return {
+      muiTheme: this.state.muiTheme,
+    };
   },
 
   getDefaultProps: function() {
@@ -23,6 +37,7 @@ var PageTitleBar = React.createClass({
   getInitialState: function() {
     return {
       opacity: 1,
+      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
     }
   },
 
@@ -51,7 +66,7 @@ var PageTitleBar = React.createClass({
   titleBarStyle: function () {
     return {
       lineHeight: this.props.height + "px",
-      color: this.getCurrentPallette().alternateTextColor,
+      color: CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor,
     }
   },
 

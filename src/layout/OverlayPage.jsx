@@ -5,16 +5,19 @@ var CloseButton = require('../other/CloseButton.jsx');
 var SideNavButton = require("../other/SideNavButton.jsx");
 var PageContent = require('../layout/PageContent.jsx');
 
+const CurrentTheme = require('../modules/CurrentTheme.jsx')
+
 var OverlayPage = React.createClass({
-  mixins: [
-    require("../mixins/CurrentThemeMixin.jsx")
-  ],
   propTypes: {
     title: React.PropTypes.string,
     onPrevButtonClick: React.PropTypes.func,
     onNextButtonClick: React.PropTypes.func,
     onCloseButtonClick: React.PropTypes.func,
     height: React.PropTypes.number,
+  },
+
+  contextTypes: {
+    muiTheme: React.PropTypes.object,
   },
 
   styles: function () {
@@ -27,7 +30,7 @@ var OverlayPage = React.createClass({
 
   titleStyle: function () {
     return {
-      color: this.getCurrentPallette().alternateTextColor,
+      color: CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor,
       position: "fixed",
       width: "80%"
     }
@@ -35,7 +38,7 @@ var OverlayPage = React.createClass({
 
   closeButtonStyle: function () {
     return {
-      color: this.getCurrentPallette().alternateTextColor,
+      color: CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor,
       height: "100%",
     }
   },
@@ -45,7 +48,7 @@ var OverlayPage = React.createClass({
       height: this.props.height + "px",
       width: "100%",
       position: "fixed",
-      backgroundColor: this.getCurrentPallette().canvasColor,
+      backgroundColor: CurrentTheme.getCurrentPallette(this.context.muiTheme).canvasColor,
       zIndex: "4",
     }
   },

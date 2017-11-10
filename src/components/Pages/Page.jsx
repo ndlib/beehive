@@ -1,5 +1,9 @@
 var React = require('react');
 var mui = require('material-ui');
+var ThemeManager = require('material-ui/lib/styles/theme-manager');
+var BeehiveTheme = require('../../themes/beehive.jsx');
+var injectTapEventPlugin = require("react-tap-event-plugin");
+injectTapEventPlugin();
 
 var OverlayPage = require("../../layout/OverlayPage.jsx");
 var ItemShow = require('../../display/ItemShow.jsx');
@@ -16,12 +20,9 @@ var ConfigurationActions = require("../../actions/ConfigurationActions.js");
 var ConfigurationStore = require("../../store/ConfigurationStore.js");
 var PageTitle = require('../../modules/PageTitle.js')
 
-var Page = React.createClass({
-  mixins: [
-    require("../../mixins/LoadRemoteMixin.jsx"),
-    require("../../mixins/MuiThemeMixin.jsx")
-  ],
+const LoadRemote = require('../../modules/LoadRemote.jsx')
 
+var Page = React.createClass({
   propTypes: {
     collection: React.PropTypes.oneOfType([
       React.PropTypes.string,
@@ -29,11 +30,24 @@ var Page = React.createClass({
     ]),
   },
 
+  childContextTypes: {
+    muiTheme: React.PropTypes.object
+  },
+
+  getChildContext() {
+    return {
+      muiTheme: this.state.muiTheme,
+    };
+  },
+
   getInitialState: function() {
     return {
       titleHeight: 56,
       currentItem: null,
       titleSectionPercentVisible: 0,
+      collection: {},
+      remoteCollectionLoaded: false,
+      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
     };
   },
 
@@ -44,7 +58,7 @@ var Page = React.createClass({
         collection: this.props.collection,
       });
     } else {
-      this.loadRemoteCollection(this.props.collection);
+      LoadRemote.loadRemoteCollection(this.props.collection, this.setValues.bind(this));
     }
   },
 

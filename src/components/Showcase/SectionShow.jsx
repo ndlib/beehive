@@ -11,19 +11,20 @@ var SectionActions = require('../../actions/SectionActions.jsx');
 var OpenItemDisplay = require('../../modules/OpenItemDisplay.js');
 
 const BrowserUtils = require('../../modules/BrowserUtils.jsx')
+const LoadRemote = require('../../modules/LoadRemote.jsx')
+const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 
 var SectionShow = React.createClass({
-  mixins: [
-    require('../../mixins/CurrentThemeMixin.jsx'),
-    require('../../mixins/LoadRemoteMixin.jsx'),
-  ],
-
   displayName: 'Section Show',
   propTypes: {
     section: React.PropTypes.object,
     previousSection: React.PropTypes.string,
     nextSection: React.PropTypes.string,
     height: React.PropTypes.number,
+  },
+
+  contextTypes: {
+    muiTheme: React.PropTypes.object,
   },
 
   closeDialog: function () {
@@ -40,14 +41,14 @@ var SectionShow = React.createClass({
 
   titleStyle: function () {
     return {
-      color: this.getCurrentPallette().alternateTextColor,
+      color: CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor,
       lineHeight: BrowserUtils.mobile() ? '24px' : '56px',
     }
   },
 
   closeButtonStyle: function () {
     return {
-      color: this.getCurrentPallette().alternateTextColor,
+      color: CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor,
       height: "100%",
     }
   },
@@ -57,7 +58,7 @@ var SectionShow = React.createClass({
       height: this.props.height + "px",
       width: "100%",
       position: "fixed",
-      backgroundColor: this.getCurrentPallette().canvasColor,
+      backgroundColor: CurrentTheme.getCurrentPallette(this.context.muiTheme).canvasColor,
       zIndex: "4",
     }
   },
@@ -109,10 +110,10 @@ var SectionShow = React.createClass({
     OpenItemDisplay(id, 'section');
 
     if(url.indexOf('item') > -1) {
-      this.loadRemoteItem(url);
+      LoadRemote.loadRemoteItem(url);
     }
     else if(url.indexOf('section') > -1) {
-      this.loadRemoteSection(url);
+      LoadRemote.loadRemoteSection(url);
     }
     else {
       console.log('an invalid url was provided', this.props.url);

@@ -2,11 +2,9 @@ var React = require('react');
 var mui = require("material-ui");
 var ColorManipulator = mui.Utils.ColorManipulator;
 
-var SideNavButton = React.createClass({
-  mixins: [
-    require("../mixins/CurrentThemeMixin.jsx")
-  ],
+const CurrentTheme = require('../modules/CurrentTheme.jsx')
 
+var SideNavButton = React.createClass({
   propTypes: {
     onClick: React.PropTypes.func,
     onMouseDown: React.PropTypes.func,
@@ -17,6 +15,10 @@ var SideNavButton = React.createClass({
     onMouseLeave: React.PropTypes.func,
     onTouchStart: React.PropTypes.func,
     buttonOnOverlay: React.PropTypes.bool,
+  },
+
+  contextTypes: {
+    muiTheme: React.PropTypes.object,
   },
 
   getDefaultProps: function() {
@@ -46,7 +48,7 @@ var SideNavButton = React.createClass({
     var styles = {
       top: (this.props.offsetTop - 30) + 'px',
       opacity: hovered ? "1" : "0.7",
-      backgroundColor: hovered ? ColorManipulator.darken(this.getCurrentPallette().accent3Color, .2) : this.getCurrentPallette().accent3Color,
+      backgroundColor: hovered ? ColorManipulator.darken(CurrentTheme.getCurrentPallette(this.context.muiTheme).accent3Color, .2) : CurrentTheme.getCurrentPallette(this.context.muiTheme).accent3Color,
       borderRadius: "50%",
       display: "inline-block",
       margin: "0",
@@ -71,7 +73,7 @@ var SideNavButton = React.createClass({
     var hovered = (this.state.hovered || this.state.isKeyboardFocused);
 
     var styles = {
-      color: hovered ? this.getCurrentPallette().textColor : this.getCurrentPallette().alternateTextColor,
+      color: hovered ? CurrentTheme.getCurrentPallette(this.context.muiTheme).textColor : CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor,
       fontSize: "25px",
       position: "absolute",
       top: "17.5px",

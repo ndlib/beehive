@@ -7,16 +7,12 @@ var SearchSort = require('./SearchSort.jsx');
 var SearchStore = require('../../store/SearchStore.js');
 var ConfigurationStore = require('../../store/ConfigurationStore.js');
 var SearchActions = require('../../actions/SearchActions.js');
+const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 
 var gridView = {view: "grid"};
 var listView = {view: "list"};
 
 var SearchControls = React.createClass({
-  mixins: [
-    require('../../mixins/CurrentThemeMixin.jsx'),
-    require('../../mixins/CollectionUrlMixin.jsx')
-  ],
-
   getInitialState: function() {
     var state = {
       view: SearchStore.view,
@@ -102,7 +98,7 @@ var SearchControls = React.createClass({
               >
                 <mui.FontIcon
                   className="material-icons"
-                  style={this.state.view == 'grid' ? this.lightIconStyle() : this.darkIconStyle()}
+                  style={this.state.view == 'grid' ? CurrentTheme.lightIconStyle() : CurrentTheme.darkIconStyle()}
                 >view_list</mui.FontIcon>
               </mui.RaisedButton>
               <mui.RaisedButton
@@ -113,7 +109,7 @@ var SearchControls = React.createClass({
               >
                 <mui.FontIcon
                   className="material-icons"
-                  style={this.state.view == 'list' ? this.lightIconStyle() : this.darkIconStyle()}
+                  style={this.state.view == 'list' ? CurrentTheme.lightIconStyle() : CurrentTheme.darkIconStyle()}
                 >view_module</mui.FontIcon>
               </mui.RaisedButton>
           </MediaQuery>

@@ -1,10 +1,6 @@
 var React = require("react");
 
 var ItemImage = React.createClass({
-  mixins: [
-    require('../../mixins/CollectionUrlMixin.jsx')
-  ],
-
   propTypes : {
     item: React.PropTypes.object.isRequired,
   },

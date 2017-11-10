@@ -29,10 +29,6 @@ var Styles = {
 };
 
 var Details = React.createClass({
-  mixins: [
-    require('../mixins/CurrentThemeMixin.jsx')
-  ],
-
   propTypes: {
     item: React.PropTypes.object,
     additionalDetails: React.PropTypes.string,

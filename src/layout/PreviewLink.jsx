@@ -1,23 +1,33 @@
 'use strict'
 var React = require("react");
 var mui = require('material-ui');
+var ThemeManager = require('material-ui/lib/styles/theme-manager');
+var BeehiveTheme = require('../themes/beehive.jsx');
 
 var HoneycombImage = require("../other/HoneycombImage.jsx");
 var MediaQuery = require('react-responsive');
 import { Link } from 'react-router';
+const CollectionUrl = require('../modules/CollectionUrl.jsx')
 
 var PreviewLink = React.createClass({
-  mixins: [
-    require("../mixins/CollectionUrlMixin.jsx"),
-    require("../mixins/MuiThemeMixin.jsx")
-  ],
   propTypes: {
     siteObject: React.PropTypes.object,
   },
 
+  childContextTypes: {
+    muiTheme: React.PropTypes.object
+  },
+
+  getChildContext() {
+    return {
+      muiTheme: this.state.muiTheme,
+    };
+  },
+
   getInitialState: function () {
     return {
-      hover: false
+      hover: false,
+      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
     };
   },
 
@@ -71,7 +81,7 @@ var PreviewLink = React.createClass({
   },
 
   render: function() {
-    var url = this.collectionObjectUrl(this.props.siteObject);
+    var url = CollectionUrl.collectionObjectUrl(this.props.siteObject);
     return (
       <Link to={url}>
       <MediaQuery minWidth={850}>

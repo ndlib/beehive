@@ -24,12 +24,10 @@ var OpenItemDisplay = require('../../modules/OpenItemDisplay.js');
 var CollectionHomeButton  = require('./CollectionHomeButton.jsx');
 
 const BrowserUtils = require('../../modules/BrowserUtils.jsx')
+const LoadRemote = require('../../modules/LoadRemote.jsx')
+const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
 var ShowcaseShow = React.createClass({
-  mixins: [
-    require('../../mixins/CollectionUrlMixin.jsx'),
-    require('../../mixins/LoadRemoteMixin.jsx')
-  ],
   propTypes: {
     collection: React.PropTypes.object,
     showcase: React.PropTypes.object,
@@ -132,9 +130,9 @@ var ShowcaseShow = React.createClass({
     var url;
     if(window.location.search != null) {
       id = window.location.search.replace("?section=", "");
-      url = this.remoteUrlBase() + "sections/" + id;
+      url = CollectionUrl.remoteSection(id);
       OpenItemDisplay(id, 'section');
-      this.loadRemoteSection(url);
+      LoadRemote.loadRemoteSection(url);
     }
   },
 

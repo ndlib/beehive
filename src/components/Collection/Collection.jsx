@@ -1,6 +1,8 @@
 'use strict'
 var React = require('react');
 var mui = require('material-ui');
+var ThemeManager = require('material-ui/lib/styles/theme-manager');
+var BeehiveTheme = require('../../themes/beehive.jsx');
 
 var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx');
 var CollectionShow = require('./CollectionShow.jsx');
@@ -9,11 +11,34 @@ var CollectionIntro = require('./CollectionIntro.jsx');
 var CollectionShowSitePath = require('./CollectionShowSitePath.jsx');
 var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx');
 var PageTitle = require('../../modules/PageTitle.js')
+
+const LoadRemote = require('../../modules/LoadRemote.jsx')
+
 var Collection = React.createClass({
-  mixins: [
-    require("../../mixins/LoadRemoteMixin.jsx"),
-    require("../../mixins/MuiThemeMixin.jsx")
-  ],
+  propTypes: {
+    collection: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.object,
+    ]),
+  },
+
+  childContextTypes: {
+    muiTheme: React.PropTypes.object
+  },
+
+  getInitialState: function() {
+    return {
+      collection: {},
+      remoteCollectionLoaded: false,
+      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
+    };
+  },
+
+  getChildContext() {
+    return {
+      muiTheme: this.state.muiTheme,
+    };
+  },
 
   componentDidMount: function() {
     if ('object' == typeof(this.props.collection)) {
@@ -21,8 +46,15 @@ var Collection = React.createClass({
         collection: this.props.collection,
       });
     } else {
-      this.loadRemoteCollection(this.props.collection);
+      LoadRemote.loadRemoteCollection(this.props.collection, this.onLoaded.bind(this));
     }
+  },
+
+  onLoaded: function(result) {
+    this.setState({
+      remoteCollectionLoaded: true,
+      collection: result
+    })
   },
 
   componentWillMount: function(){
