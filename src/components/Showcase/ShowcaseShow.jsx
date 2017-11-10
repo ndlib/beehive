@@ -23,10 +23,11 @@ var Scroller = require('../../other/Scroller.jsx');
 var OpenItemDisplay = require('../../modules/OpenItemDisplay.js');
 var CollectionHomeButton  = require('./CollectionHomeButton.jsx');
 
+const BrowserUtils = require('../../modules/BrowserUtils.jsx')
+
 var ShowcaseShow = React.createClass({
   mixins: [
     require('../../mixins/CollectionUrlMixin.jsx'),
-    require('../../mixins/BrowserMixin.jsx'),
     require('../../mixins/LoadRemoteMixin.jsx')
   ],
   propTypes: {
@@ -44,7 +45,7 @@ var ShowcaseShow = React.createClass({
       currentSection: null,
       width: window.innerWidth,
       height: window.innerHeight,
-      mobile: this.mobile(),
+      mobile: BrowserUtils.mobile(),
     }
   },
 
@@ -60,7 +61,7 @@ var ShowcaseShow = React.createClass({
   initializeScrollbar: function() {
     this.scrollbarInitialized = true;
     this.state.outerElement.perfectScrollbar({useBothWheelAxes: true, suppressScrollY: true });
-    if(this.ie() || this.state.mobile) {
+    if(BrowserUtils.ie() || this.state.mobile) {
       this.state.outerElement.find(".ps-scrollbar-x-rail").hide();
     }
   },
@@ -68,7 +69,7 @@ var ShowcaseShow = React.createClass({
   updateScrollbar: function() {
     if (this.scrollbarInitialized) {
       this.state.outerElement.perfectScrollbar("update");
-      if(this.ie() || this.state.mobile) {
+      if(BrowserUtils.ie() || this.state.mobile) {
         this.state.outerElement.find(".ps-scrollbar-x-rail").hide();
       }
     }
@@ -78,7 +79,7 @@ var ShowcaseShow = React.createClass({
     this.setState({
       width: window.innerWidth,
       height: window.innerHeight,
-      mobile: this.mobile(),
+      mobile: BrowserUtils.mobile(),
     });
   },
 

@@ -1,4 +1,4 @@
-var BrowserMixin = {
+const BrowserMixin = {
   ie: function() {
     // return true if Internet Exploder else false
     var ua = window.navigator.userAgent;
@@ -34,15 +34,6 @@ var BrowserMixin = {
     var android = ua.indexOf('android');
     if(android > -1) {
       return true;
-    }
-    return false;
-  },
-
-  touchSupport: function() {
-    var msTouchEnabled = window.navigator.msMaxTouchPoints;
-    var generalTouchEnabled = "ontouchstart" in document.createElement("div");
-    if (msTouchEnabled || generalTouchEnabled) {
-        return true;
     }
     return false;
   },
