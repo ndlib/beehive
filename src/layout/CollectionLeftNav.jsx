@@ -81,14 +81,14 @@ var CollectionLeftNav = React.createClass({
     var browseUrl = CollectionUrl.browseUrl(this.props.collection);
 
     options.push((
-      <a href={collectionUrl}>
+      <a href={collectionUrl} key='collectionUrlLink'>
         <mui.MenuItem primaryText='Home' key='home' />
       </a>
     ));
 
     if (this.props.collection.enable_browse) {
       options.push((
-        <a href={browseUrl}>
+        <a href={browseUrl} key='browseUrlLink'>
           <mui.MenuItem primaryText='Browse Collection' key='browse' />
         </a>
       ));
@@ -96,7 +96,7 @@ var CollectionLeftNav = React.createClass({
 
     if (this.props.collection.about) {
       options.push((
-        <a href={aboutUrl}>
+        <a href={aboutUrl} key='aboutUrl'>
           <mui.MenuItem primaryText='About' key='about'/>
         </a>
       ));
@@ -105,7 +105,7 @@ var CollectionLeftNav = React.createClass({
 
     if (introUrl) {
       options.push((
-        <a href={introUrl}>
+        <a href={introUrl} key='introUrl'>
           <mui.MenuItem primaryText='Introduction' key='intro'/>
         </a>
       ));
@@ -115,7 +115,7 @@ var CollectionLeftNav = React.createClass({
       var url = CollectionUrl.collectionObjectUrl(siteObject);
       var name = siteObject.name || siteObject.name_line_1;
       options.push ((
-        <a href={url}>
+        <a href={url} key={url}>
           <mui.MenuItem primaryText={name} key={siteObject.id} className="collection-left-nav-item" />
         </a>
       ));

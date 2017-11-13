@@ -206,33 +206,47 @@ class SearchStore extends EventEmitter {
     this.emit("SearchStoreViewChanged");
   }
 
+  searchPath() {
+    return "/" + this._collection.id +
+      "/" + this._collection.slug + "/search"
+  }
+
+  searchQuery(overrides) {
+    let q = {
+      q: this._searchTerm,
+      view: this._view,
+    }
+
+    if(this._facetOption && this._facetOption.length > 0) {
+      for (var i = 0; i < this._facetOption.length; i++) {
+        let current = this._facetOption[i]
+        if(current.name && current.value) {
+          q["facet[" + current.name + "]"] = current.value
+        }
+      }
+    }
+
+    if(this._sortOption) {
+      q["sort"] = this._sortOption
+    }
+
+    if(overrides && overrides.start != "undefined") {
+      q["start"] = overrides.start
+    } else if(this._start) {
+      q["start"] = this._start
+    }
+    return q
+  }
+
   // Overrides can be provided to override the value in the store when creating the uri params.
   // This was primarily created to allow pagination to generate links using the same search, but
   // with other start values.
   searchUri(overrides) {
-    var uri = "/" + this._collection.id +
-      "/" + this._collection.slug +
-      "/search?q=" + this._searchTerm;
-    if(this._facetOption && this._facetOption.length > 0) {
-      for (var i = 0; i < this._facetOption.length; i++) {
-        if(this._facetOption[i].name && this._facetOption[i].value) {
-          uri += "&facet["
-            + this._facetOption[i].name
-            + "]="
-            + this._facetOption[i].value;
-        }
-      }
-    }
-    if(this._sortOption) {
-      uri += "&sort=" + this._sortOption;
-    }
-    if(overrides && overrides.start != "undefined") {
-      uri += "&start=" + overrides.start;
-    } else if(this._start) {
-      uri += "&start=" + this._start;
-    }
-    uri += "&view=" + this._view;
-    return uri;
+    let path = this.searchPath() + '?'
+    let queryObj = this.searchQuery(overrides)
+    let queryString = Object.keys(queryObj).map((key) => `${key}=${queryObj[key]}`).join('&')
+
+    return path + queryString
   }
 
   // Receives actions sent by the AppDispatcher

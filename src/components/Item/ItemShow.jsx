@@ -1,19 +1,19 @@
 'use strict'
 var React = require('react');
 var mui = require('material-ui');
-var CloseButton = require('../other/CloseButton.jsx');
-var SideNavButton = require("../other/SideNavButton.jsx");
-var PageContent = require('../layout/PageContent.jsx');
+var CloseButton = require('../../other/CloseButton.jsx');
+var SideNavButton = require("../../other/SideNavButton.jsx");
+var PageContent = require('../../layout/PageContent.jsx');
+var SearchStore = require('../../store/SearchStore.js');
+var ItemContent = require('./ItemContent.jsx');
 
-const CurrentTheme = require('../modules/CurrentTheme.jsx')
+const CurrentTheme = require('../../modules/CurrentTheme.jsx')
+const CollecitonUrl = require('../../modules/CollectionUrl.jsx')
 
-var OverlayPage = React.createClass({
+var ItemShow = React.createClass({
   propTypes: {
-    title: React.PropTypes.string,
-    onPrevButtonClick: React.PropTypes.func,
-    onNextButtonClick: React.PropTypes.func,
-    onCloseButtonClick: React.PropTypes.func,
     height: React.PropTypes.number,
+    item: React.PropTypes.object.isRequired,
   },
 
   contextTypes: {
@@ -60,29 +60,24 @@ var OverlayPage = React.createClass({
           <mui.ToolbarTitle text={this.props.title}  style={this.titleStyle()} />
         </mui.ToolbarGroup>
         <mui.ToolbarGroup key={1} float="right" style={this.closeButtonStyle()}>
-          {this.closeButton()}
+          <CloseButton alternate={true} />
         </mui.ToolbarGroup>
       </mui.Toolbar>
     )
   },
 
-  closeButton: function() {
-    if(this.props.onCloseButtonClick) {
-      return (<CloseButton clickEvent={this.props.onCloseButtonClick} alternate={true} />);
-    }
-    return "";
-  },
-
   nextButton: function() {
-    if(this.props.onNextButtonClick) {
-      return (<SideNavButton onClick={this.props.onNextButtonClick} rightIcon={true} />);
+    let nextItem = SearchStore.getNextItem(this.props.item)
+    if(nextItem) {
+      return (<SideNavButton href={CollecitonUrl.itemObjectUrl(nextItem)} rightIcon={true} />);
     }
     return "";
   },
 
   prevButton: function() {
-    if(this.props.onPrevButtonClick) {
-      return (<SideNavButton onClick={this.props.onPrevButtonClick} />);
+    let previousItem = SearchStore.getPreviousItem(this.props.item)
+    if(previousItem) {
+      return (<SideNavButton href={CollecitonUrl.itemObjectUrl(previousItem)} />);
     }
     return "";
   },
@@ -94,7 +89,7 @@ var OverlayPage = React.createClass({
           {this.toolbar()}
           {this.prevButton()}
           {this.nextButton()}
-          {this.props.children}
+          <ItemContent item={this.props.item} height={ this.props.height } />
         </mui.Paper>
       </PageContent>
     );
@@ -102,4 +97,4 @@ var OverlayPage = React.createClass({
 });
 
 // each file will export exactly one component
-module.exports = OverlayPage;
+module.exports = ItemShow;

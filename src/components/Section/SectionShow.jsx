@@ -4,32 +4,27 @@ var mui = require('material-ui');
 var CloseButton = require('../../other/CloseButton.jsx');
 var SideNavButton = require("../../other/SideNavButton.jsx");
 
-var ItemShow = require('../../display/ItemShow.jsx');
+var ItemContent = require('../Item/ItemContent.jsx');
 var SectionShowDescription = require('./SectionShowDescription.jsx');
 var SideNavButton = require('../../other/SideNavButton.jsx');
-var SectionActions = require('../../actions/SectionActions.jsx');
-var OpenItemDisplay = require('../../modules/OpenItemDisplay.js');
 
 const BrowserUtils = require('../../modules/BrowserUtils.jsx')
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 const CurrentTheme = require('../../modules/CurrentTheme.jsx')
+const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
 var SectionShow = React.createClass({
   displayName: 'Section Show',
   propTypes: {
     section: React.PropTypes.object,
-    previousSection: React.PropTypes.string,
-    nextSection: React.PropTypes.string,
+    previousSection: React.PropTypes.object,
+    nextSection: React.PropTypes.object,
     height: React.PropTypes.number,
+    collection: React.PropTypes.object,
   },
 
   contextTypes: {
     muiTheme: React.PropTypes.object,
-  },
-
-  closeDialog: function () {
-    SectionActions.hideSectionDialogWindow();
-    history.pushState({}, '', window.location.pathname);
   },
 
   styles: function () {
@@ -71,6 +66,11 @@ var SectionShow = React.createClass({
     }
   },
 
+  closeUrl: function() {
+    var collectionPath = window.location.pathname.match(/(?:\/[^\/]+){2}/);
+    return collectionPath[0]
+  },
+
   toolbar: function() {
     return (
       <mui.Toolbar style={this.styles()} >
@@ -78,7 +78,7 @@ var SectionShow = React.createClass({
           <mui.ToolbarTitle text={this.title()} style={this.titleStyle()} />
         </mui.ToolbarGroup>
         <mui.ToolbarGroup key={1} float="right" style={this.closeButtonStyle()}>
-          <CloseButton clickEvent={this.closeDialog} alternate={true} />
+          <CloseButton alternate={true} />
         </mui.ToolbarGroup>
       </mui.Toolbar>
     )
@@ -86,37 +86,9 @@ var SectionShow = React.createClass({
 
   contentSection: function() {
     if (this.props.section.item) {
-      return (<ItemShow height={this.props.height} item={this.props.section.item} additionalDetails={this.props.section.description}/>)
+      return (<ItemContent height={this.props.height} item={this.props.section.item} additionalDetails={this.props.section.description}/>)
     } else {
       return (<SectionShowDescription height={this.props.height} section={this.props.section} />)
-    }
-  },
-
-  clickNextEvent: function(event) {
-    if(this.props.nextUrl) {
-      this.clickSideNavEvent(event, this.props.nextUrl);
-    }
-  },
-
-  clickPrevEvent: function(event) {
-    if(this.props.previousUrl) {
-      this.clickSideNavEvent(event, this.props.previousUrl);
-    }
-  },
-
-  clickSideNavEvent: function(event, url) {
-    event.preventDefault();
-    var id = url.split("/").pop();
-    OpenItemDisplay(id, 'section');
-
-    if(url.indexOf('item') > -1) {
-      LoadRemote.loadRemoteItem(url);
-    }
-    else if(url.indexOf('section') > -1) {
-      LoadRemote.loadRemoteSection(url);
-    }
-    else {
-      console.log('an invalid url was provided', this.props.url);
     }
   },
 
@@ -126,11 +98,11 @@ var SectionShow = React.createClass({
       offsetTop = this.props.height / 2;
     }
     if (this.props.section) {
-      if(this.props.previousUrl) {
-        prev = (<SideNavButton onClick={this.clickPrevEvent} />);
+      if(this.props.previousSection) {
+        prev = (<SideNavButton href={CollectionUrl.sectionObjectUrl(this.props.previousSection)} />);
       }
-      if(this.props.nextUrl) {
-        next = (<SideNavButton onClick={this.clickNextEvent} rightIcon={true} />);
+      if(this.props.nextSection) {
+        next = (<SideNavButton href={CollectionUrl.sectionObjectUrl(this.props.nextSection)} rightIcon={true} />);
       }
 
       return (

@@ -17,10 +17,8 @@ var EventEmitter = require('../../middleware/EventEmitter.js');
 var ShowcaseTitleBar = require('./ShowcaseTitleBar.jsx');
 var ShowcaseBackground = require('./ShowcaseBackground.jsx');
 var AttentionHelp = require('../../other/AttentionHelp.jsx');
-var SectionShow = require('./SectionShow.jsx');
 var ShowcaseInnerContent = require('./ShowcaseInnerContent.jsx');
 var Scroller = require('../../other/Scroller.jsx');
-var OpenItemDisplay = require('../../modules/OpenItemDisplay.js');
 var CollectionHomeButton  = require('./CollectionHomeButton.jsx');
 
 const BrowserUtils = require('../../modules/BrowserUtils.jsx')
@@ -40,7 +38,6 @@ var ShowcaseShow = React.createClass({
       hasScrolled: false,
       outerElement: null,
       element: null,
-      currentSection: null,
       width: window.innerWidth,
       height: window.innerHeight,
       mobile: BrowserUtils.mobile(),
@@ -91,17 +88,8 @@ var ShowcaseShow = React.createClass({
   },
 
   componentWillUnmount: function() {
-    window.removeEventListener("hashchange", this.checkHash);
     window.removeEventListener('resize', this.handleResize);
     document.body.style.backgroundImage = null;
-  },
-
-  setCurrentSection: function(section) {
-    this.setState({currentSection: section});
-  },
-
-  removeCurrentSection: function () {
-    this.setState({currentSection: null});
   },
 
   styleOuter: function(height) {
@@ -123,17 +111,6 @@ var ShowcaseShow = React.createClass({
 
   componentWillMount: function(){
     document.body.className = document.body.className + " showcase-bg";
-    EventEmitter.on("SectionDialogWindow", this.setCurrentSection);
-    EventEmitter.on("HideSectionDialogWindow", this.removeCurrentSection);
-
-    var id;
-    var url;
-    if(window.location.search != null) {
-      id = window.location.search.replace("?section=", "");
-      url = CollectionUrl.remoteSection(id);
-      OpenItemDisplay(id, 'section');
-      LoadRemote.loadRemoteSection(url);
-    }
   },
 
   onScroll: function() {
@@ -192,28 +169,10 @@ var ShowcaseShow = React.createClass({
       backgroundBlur = maxBackgroundBlur;
     }
 
-
-    // next/previous
-    var prev, next;
-    if(this.state.currentSection){
-      if(this.state.currentSection.previousSection) {
-        prev = this.state.currentSection.previousSection['@id'];
-      }
-      if(this.state.currentSection.nextSection) {
-        next = this.state.currentSection.nextSection['@id'];
-      }
-    }
-
     return (
       <div style={{height: showcaseHeight}}>
         <AttentionHelp start={this.state.startTime} hasScrolled={this.state.hasScrolled} />
         <ShowcaseBackground percentBlur={backgroundBlur} height={this.state.mobile ? this.state.height : this.state.height - scrollPadding} showcase={this.props.showcase} />
-        <SectionShow
-            section={this.state.currentSection}
-            height={this.state.mobile ? window.innerHeight : window.innerHeight - showcaseTitleHeight}
-            previousUrl={prev}
-            nextUrl={next}
-        />
         {titleBar}
         <ReactCSSTransitionGroup
           transitionName="showcase-slide-in"

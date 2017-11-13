@@ -1,4 +1,5 @@
 var React = require('react');
+import { Link } from 'react-router'
 var mui = require("material-ui");
 var ColorManipulator = mui.Utils.ColorManipulator;
 
@@ -6,7 +7,7 @@ const CurrentTheme = require('../modules/CurrentTheme.jsx')
 
 var SideNavButton = React.createClass({
   propTypes: {
-    onClick: React.PropTypes.func,
+    href: React.PropTypes.string,
     onMouseDown: React.PropTypes.func,
     offsetTop: React.PropTypes.number,
     rightIcon: React.PropTypes.bool,
@@ -25,7 +26,7 @@ var SideNavButton = React.createClass({
     return {
       offsetTop: window.innerHeight/2,
       rightIcon: false,
-      onClick: () => {},
+      href: '',
       onMouseDown: () => {},
       onKeyboardFocus: () => {},
       onMouseEnter: () => {},
@@ -92,10 +93,16 @@ var SideNavButton = React.createClass({
     }
   },
 
+  wrap: function(children) {
+    if (this.props.href) {
+      return <Link to={this.props.href}>{children}</Link>
+    }
+    return children
+  },
+
   render: function() {
-    return (
+    return this.wrap(
       <mui.EnhancedButton
-        onClick={this.props.onClick}
         onMouseDown={this.props.onMouseDown}
         style={this.buttonStyles()}
         onKeyboardFocus={this._handleKeyboardFocus}
@@ -106,7 +113,7 @@ var SideNavButton = React.createClass({
         >
         <mui.FontIcon className="material-icons" style={this.iconStyles()} >{this.chevron()}</mui.FontIcon>
       </mui.EnhancedButton>
-    );
+    )
   },
 
   _handleKeyboardFocus(e, isKeyboardFocused) {

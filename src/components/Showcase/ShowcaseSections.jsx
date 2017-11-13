@@ -3,7 +3,7 @@ var React = require("react");
 var mui = require('material-ui');
 
 var ShowcaseEndingCard = require('./ShowcaseEndingCard.jsx');
-var SectionCard = require('./SectionCard.jsx');
+var SectionCard = require('../Section/SectionCard.jsx');
 
 var ShowcaseSections = React.createClass({
 

@@ -70,11 +70,6 @@ var ShowcaseTitleBar = React.createClass({
     };
   },
 
-  clickCloseButton: function() {
-    var url = window.location.pathname.split("/");
-    window.location.href = "/" + url[1] + "/" + url[2];
-  },
-
   render: function() {
     if (this.props.showcase) {
       return (
@@ -83,7 +78,7 @@ var ShowcaseTitleBar = React.createClass({
             <mui.ToolbarTitle text={this.name()} style={this.titleBarStyle()} />
           </mui.ToolbarGroup>
           <mui.ToolbarGroup key={1} float="right" style={this.closeButtonStyle()}>
-            <CloseButton clickEvent={this.clickCloseButton} alternate={true} height={this.props.height}/>
+            <CloseButton alternate={true} height={this.props.height}/>
           </mui.ToolbarGroup>
         </mui.Toolbar>
       );

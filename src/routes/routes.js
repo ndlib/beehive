@@ -8,6 +8,8 @@ import CollectionPage from './CollectionPage.jsx';
 import CustomCollectionPage from './CustomCollectionPage.jsx';
 import CollectionIntroductionPage from './CollectionIntroductionPage.jsx';
 import ShowcasePage from './ShowcasePage.jsx';
+import SectionPage from './SectionPage.jsx';
+import ItemPage from './ItemPage.jsx';
 import SearchPage from './SearchPage.jsx';
 import ErrorPage from './ErrorPage.jsx';
 import AboutPage from './AboutPage.jsx';
@@ -38,7 +40,9 @@ export default function() {
         <Route path=":collectionID/*/intro" component={CollectionIntroductionPage} />
         <Route path=":collectionID/*/about" component={AboutPage} />
         <Route path=":collectionID/*/search" component={SearchPage} />
-        <Route path=":collectionID/*/showcases/:showcaseID/*" component={ShowcasePage} />
+        <Route path=":collectionID/*/items/:itemID" component={ItemPage} />
+        <Route path=":collectionID/*/showcases/:showcaseID/:showcaseSlug" component={ShowcasePage} />
+        <Route path=":collectionID/*/showcases/:showcaseID/*/sections/:sectionID" component={SectionPage} />
         <Route path=":collectionID/*/pages/:pageID/*" component={PagesPage} />
         <Route path=":collectionID/*" component={CollectionPage} />
       </Route>
