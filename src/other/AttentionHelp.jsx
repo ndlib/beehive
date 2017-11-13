@@ -44,7 +44,7 @@ var AttentionHelp = React.createClass({
             message="Scroll left to right to view the showcase."
             autoHideDuration={5000}
             open={this.state.open}
-            onRequestClose={open => this.setState({false})}
+            onRequestClose={() => this.setState({open: false})}
             ref="attentionHelp"
             style={this.style()}
           />
