@@ -79,8 +79,8 @@ var Item = React.createClass({
   },
 
   componentDidMount: function() {
-    LoadRemote.withCallback(this.props.collection, this.collectionLoaded)
-    LoadRemote.withCallback(this.props.item, this.itemLoaded)
+    LoadRemote.withCallback(this.props.collection, this.collectionLoaded.bind(this))
+    LoadRemote.withCallback(this.props.item, this.itemLoaded.bind(this))
     window.addEventListener('resize', this.handleResize, false);
     this.handleResize();
   },
@@ -89,12 +89,12 @@ var Item = React.createClass({
     let itemLoaded = this.state.remoteItemLoaded
     let collectionLoaded = this.state.remoteCollectionLoaded
     if(this.props.item !== nextProps.item) {
-      LoadRemote.withCallback(nextProps.item, this.itemLoaded)
+      LoadRemote.withCallback(nextProps.item, this.itemLoaded.bind(this))
       itemLoaded = false
     }
 
     if (this.props.collection !== nextProps.collection) {
-      LoadRemote.withCallback(nextProps.collection, this.collectionLoaded)
+      LoadRemote.withCallback(nextProps.collection, this.collectionLoaded.bind(this))
       collectionLoaded = false
     }
 

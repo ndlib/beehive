@@ -76,7 +76,7 @@ var Search = React.createClass({
     if ('object' == typeof(this.props.collection)) {
       this.setValues(this.props.collection);
     } else {
-      LoadRemote.loadRemoteCollection(this.props.collection, this.setValues);
+      LoadRemote.loadRemoteCollection(this.props.collection, this.setValues.bind(this));
     }
   },
 

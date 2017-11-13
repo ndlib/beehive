@@ -32,7 +32,7 @@ var PrintableMetadata = React.createClass({
 
   componentWillMount: function() {
     ConfigurationStore.addChangeListener(this.configurationLoaded);
-    LoadRemote.withCallback(CollectionUrl.remoteItem(this.props.params.itemID), this.setItem);
+    LoadRemote.withCallback(CollectionUrl.remoteItem(this.props.params.itemID), this.setItem.bind(this));
   },
 
   componentWillUnmount: function() {

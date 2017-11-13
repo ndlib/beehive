@@ -65,7 +65,7 @@ var Showcase = React.createClass({
     if ('object' == typeof(this.props.collection)) {
       this.setValues(this.props.collection);
     } else {
-      LoadRemote.loadRemoteCollection(this.props.collection, this.setValues)
+      LoadRemote.loadRemoteCollection(this.props.collection, this.setValues.bind(this))
     }
     window.addEventListener('resize', this.handleResize, false);
     this.handleResize();
