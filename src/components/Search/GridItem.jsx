@@ -1,9 +1,10 @@
 'use strict'
 var React = require('react');
+import { Link } from 'react-router'
 var mui = require('material-ui');
 var ItemImage = require('./ItemImage.jsx');
 
-const LoadRemote = require('../../modules/LoadRemote.jsx')
+const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
 var GridItem = React.createClass({
   propTypes: {
@@ -36,14 +37,15 @@ var GridItem = React.createClass({
 
   render: function() {
     return (
-      <mui.Card
-        onClick={LoadRemote.itemOnClick(this.props.item)}
-        style={{cursor: 'pointer', position: 'relative'}}
-      >
+      <Link to={CollectionUrl.itemObjectUrl(this.props.item)}>
+        <mui.Card
+          style={{cursor: 'pointer', position: 'relative'}}
+        >
 
-        { this.cardMedia() }
-        {this.manifestIcon(this.props.item)}
-      </mui.Card>
+          { this.cardMedia() }
+          {this.manifestIcon(this.props.item)}
+        </mui.Card>
+      </Link>
     );
   }
 });

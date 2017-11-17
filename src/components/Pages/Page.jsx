@@ -5,9 +5,6 @@ var BeehiveTheme = require('../../themes/beehive.jsx');
 var injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
 
-var OverlayPage = require("../../layout/OverlayPage.jsx");
-var ItemShow = require('../../display/ItemShow.jsx');
-
 var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx');
 var PageContent = require('../../layout/PageContent.jsx');
 var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx');
@@ -43,7 +40,6 @@ var Page = React.createClass({
   getInitialState: function() {
     return {
       titleHeight: 56,
-      currentItem: null,
       titleSectionPercentVisible: 0,
       collection: {},
       remoteCollectionLoaded: false,
@@ -60,6 +56,10 @@ var Page = React.createClass({
     } else {
       LoadRemote.loadRemoteCollection(this.props.collection, this.setValues.bind(this));
     }
+  },
+
+  componentWillUnmount: function() {
+    ConfigurationStore.removeChangeListener(this.configurationLoaded);
   },
 
   // Callback from loadRemoteCollection
@@ -92,17 +92,6 @@ var Page = React.createClass({
         item.previousItem = array[prevI];
       }
     });
-  },
-
-  closeItem: function () {
-    this.setState({ currentItem: null });
-  },
-
-  contentClicked: function(event) {
-    var item = this.getItemFromEvent(event);
-    if(item) {
-      this.setState({currentItem: item });
-    }
   },
 
   contentMouseOver: function(event) {
@@ -162,30 +151,6 @@ var Page = React.createClass({
     return null;
   },
 
-  renderItem: function() {
-    if(this.state.currentItem) {
-      return(
-        <OverlayPage title={this.state.currentItem.name} onCloseButtonClick={this.closeItem}
-          onNextButtonClick={this.state.currentItem.nextItem ? this.nextButtonClick : null}
-          onPrevButtonClick={this.state.currentItem.previousItem ? this.prevButtonClick : null}>
-          <ItemShow item={this.state.currentItem} height={window.innerHeight - this.state.titleHeight} onClose={this.closeItem} />
-        </OverlayPage>
-      );
-    }
-  },
-
-  nextButtonClick: function() {
-    if(this.state.currentItem.nextItem) {
-      this.setState({currentItem: this.state.currentItem.nextItem});
-    }
-  },
-
-  prevButtonClick: function() {
-    if(this.state.currentItem.previousItem) {
-      this.setState({currentItem: this.state.currentItem.previousItem});
-    }
-  },
-
   pageContent: function() {
     var pageContent = (<div/>);
     if(this.state.collection && this.state.collection.pages) {
@@ -204,7 +169,6 @@ var Page = React.createClass({
       <mui.AppCanvas>
         <CollectionPageHeader collection={this.state.collection} branding={false} />
         <PageTitleBar title={this.state.collection.pages.name} height={this.state.titleHeight} />
-          { this.renderItem() }
           <PageContent onClick={this.contentClicked} onMouseOver={this.contentMouseOver}>
             <PagesShow content={this.pageContent()}>
               { this.nextCard() }

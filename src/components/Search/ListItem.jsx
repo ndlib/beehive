@@ -1,9 +1,10 @@
 'use strict'
 var React = require('react');
+import { Link } from 'react-router'
 var mui = require('material-ui');
 var ItemImage = require('./ItemImage.jsx');
 
-const LoadRemote = require('../../modules/LoadRemote.jsx')
+const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
 var ListItem = React.createClass({
   propTypes: {
@@ -43,18 +44,17 @@ var ListItem = React.createClass({
 
   render: function() {
     return (
-      <div>
+      <Link to={CollectionUrl.itemObjectUrl(this.props.item)}>
         <mui.ListItem
           leftIcon={this.leftIcon()}
           primaryText={this.primaryText()}
           secondaryText={this.secondaryText()}
           secondaryTextLines={2}
-          onClick={LoadRemote.itemOnClick(this.props.item)}
           innerDivStyle={{paddingLeft:'80px', height:'85px'}}
           rightIcon={this.manifestIcon(this.props.item)}
         />
         <mui.Divider  style={{marginLeft: "110px" }} />
-      </div>
+      </Link>
     );
   }
 });

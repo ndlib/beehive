@@ -11,6 +11,7 @@ var ConfigurationActions = require("../actions/ConfigurationActions.js");
 var ConfigurationStore = require("../store/ConfigurationStore.js");
 
 const LoadRemote = require('../modules/LoadRemote.jsx')
+const CollectionUrl = require('../modules/CollectionUrl.jsx')
 
 var PrintableMetadata = React.createClass({
   childContextTypes: {
@@ -31,12 +32,15 @@ var PrintableMetadata = React.createClass({
 
   componentWillMount: function() {
     ConfigurationStore.addChangeListener(this.configurationLoaded);
-    EventEmitter.on("ItemDialogWindow", this.setItem);
-    var url = HoneycombURL() + '/v1/items/' + this.props.params.itemID;
-    LoadRemote.loadRemoteItem(url);
+    LoadRemote.withCallback(CollectionUrl.remoteItem(this.props.params.itemID), this.setItem.bind(this));
   },
 
-  setItem: function(item) {
+  componentWillUnmount: function() {
+    ConfigurationStore.removeChangeListener(this.configurationLoaded);
+  },
+
+  setItem: function(result) {
+    let item = result.items
     this.setState({
       item: item,
     });

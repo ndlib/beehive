@@ -5,7 +5,7 @@ var ThemeManager = require('material-ui/lib/styles/theme-manager');
 var BeehiveTheme = require('../../themes/beehive.jsx');
 
 var EventEmitter = require('../../middleware/EventEmitter.js');
-var ShowcaseShow = require('./ShowcaseShow.jsx');
+var ItemShow = require('./ItemShow.jsx');
 var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx');
 var PageContent = require('../../layout/PageContent.jsx');
 var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx');
@@ -17,7 +17,14 @@ var PageTitle = require("../../modules/PageTitle.js")
 const BrowserUtils = require('../../modules/BrowserUtils.jsx')
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
-var Showcase = React.createClass({
+var showcaseTitleHeight = 56;
+
+var Item = React.createClass({
+  propTypes: {
+    collection: React.PropTypes.string,
+    item: React.PropTypes.string,
+  },
+
   childContextTypes: {
     muiTheme: React.PropTypes.object
   },
@@ -30,9 +37,9 @@ var Showcase = React.createClass({
 
   getInitialState: function() {
     return {
-      showcase: null,
+      collection: null,
+      item: null,
       height: window.innerHeight,
-      widht: window.innerWidth,
       muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
     };
   },
@@ -41,14 +48,19 @@ var Showcase = React.createClass({
     this.setState({ configurationLoaded: true });
   },
 
-  setValues: function(collection) {
+  collectionLoaded: function(collection) {
     ConfigurationActions.load(collection);
     this.setState({
       remoteCollectionLoaded: true,
       collection: collection,
-      showcase: collection.showcases,
-    }, this.handleResize);
-    return true;
+    }, this.handleResize)
+  },
+
+  itemLoaded: function(result) {
+    this.setState({
+      remoteItemLoaded: true,
+      item: result.items,
+    })
   },
 
   componentWillMount: function() {
@@ -61,40 +73,59 @@ var Showcase = React.createClass({
     });
   },
 
+  componentWillUnmount: function() {
+    ConfigurationStore.removeChangeListener(this.configurationLoaded);
+    window.removeEventListener('resize', this.handleResize);
+  },
+
   componentDidMount: function() {
-    if ('object' == typeof(this.props.collection)) {
-      this.setValues(this.props.collection);
-    } else {
-      LoadRemote.loadRemoteCollection(this.props.collection, this.setValues.bind(this))
-    }
+    LoadRemote.withCallback(this.props.collection, this.collectionLoaded.bind(this))
+    LoadRemote.withCallback(this.props.item, this.itemLoaded.bind(this))
     window.addEventListener('resize', this.handleResize, false);
     this.handleResize();
   },
 
-  componentWillUnmount: function() {
-    window.removeEventListener('resize', this.handleResize);
-    ConfigurationStore.removeChangeListener(this.configurationLoaded);
+  componentWillReceiveProps: function(nextProps) {
+    let itemLoaded = this.state.remoteItemLoaded
+    let collectionLoaded = this.state.remoteCollectionLoaded
+    if(this.props.item !== nextProps.item) {
+      LoadRemote.withCallback(nextProps.item, this.itemLoaded.bind(this))
+      itemLoaded = false
+    }
+
+    if (this.props.collection !== nextProps.collection) {
+      LoadRemote.withCallback(nextProps.collection, this.collectionLoaded.bind(this))
+      collectionLoaded = false
+    }
+
+    this.setState({
+      remoteItemLoaded: itemLoaded,
+      remoteCollectionLoaded: collectionLoaded,
+    })
   },
 
   handleResize: function() {
     this.setState({
-      height: window.innerHeight,
-      width: window.innerWidth
+      height: window.innerHeight
     });
   },
 
   render: function() {
-    if(!this.state.remoteCollectionLoaded) {
+    if(!this.state.remoteCollectionLoaded || !this.state.remoteItemLoaded) {
       return null;
     }
-    PageTitle(this.state.showcase.name)
-    var showcaseShow;
-    if (this.state.showcase) {
-      showcaseShow = (
-        <ShowcaseShow collection={this.state.collection} showcase={this.state.showcase} />
+    PageTitle(this.state.item.name)
+    let itemShow
+
+    if (this.state.item) {
+      itemShow = (
+        <ItemShow
+          item={this.state.item}
+          height={this.state.mobile ? window.innerHeight : window.innerHeight - showcaseTitleHeight}
+        />
       );
     } else {
-      showcaseShow = (<Loading />);
+      itemShow = (<Loading />);
     }
     var header;
     if(!BrowserUtils.mobile()){
@@ -105,7 +136,7 @@ var Showcase = React.createClass({
       <div style={{ backgroundColor: 'inherit' }}>
         {header}
         <PageContent fluidLayout={true}>
-          {showcaseShow}
+          {itemShow}
         </PageContent>
         <CollectionPageFooter collection={this.state.collection} />
       </div>
@@ -114,4 +145,4 @@ var Showcase = React.createClass({
 });
 
 // each file will export exactly one component
-module.exports = Showcase;
+module.exports = Item;

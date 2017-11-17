@@ -35,6 +35,10 @@ var CollectionPageHeader = React.createClass({
     }
   },
 
+  componentWillUnmount: function() {
+    ConfigurationStore.removeChangeListener(this.configurationLoaded);
+  },
+
   configurationLoaded: function() {
     this.setState({ configurationLoaded: true });
   },

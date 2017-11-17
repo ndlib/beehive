@@ -2,13 +2,13 @@
 var React = require("react");
 var mui = require('material-ui');
 var MediaQuery = require("react-responsive");
-var Details = require('../display/Details.jsx');
-var OpenseadragonViewer = require('../display/OpenseadragonViewer.jsx');
-var MultimediaViewer = require('../layout/MultimediaViewer.jsx');
-import AddReferral from '../modules/AddReferral.js';
+var Details = require('../../display/Details.jsx');
+var OpenseadragonViewer = require('../../display/OpenseadragonViewer.jsx');
+var MultimediaViewer = require('../../layout/MultimediaViewer.jsx');
+import AddReferral from '../../modules/AddReferral.js';
 
-var ItemShow = React.createClass({
-  displayName: "Item Show",
+var ItemContent = React.createClass({
+  displayName: "ItemContent",
 
   propTypes: {
     item: React.PropTypes.object,
@@ -211,4 +211,4 @@ var ItemShow = React.createClass({
   }
 });
 
-module.exports = ItemShow;
+module.exports = ItemContent;

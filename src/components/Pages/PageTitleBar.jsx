@@ -77,11 +77,6 @@ var PageTitleBar = React.createClass({
     };
   },
 
-  clickCloseButton: function() {
-    var url = window.location.pathname.split("/");
-    window.location.href = "/" + url[1] + "/" + url[2];
-  },
-
   render: function() {
     return (
       <mui.Toolbar id="PageTitleBar" style={this.style()}>
@@ -89,7 +84,7 @@ var PageTitleBar = React.createClass({
           <mui.ToolbarTitle text={this.props.title} style={this.titleBarStyle()} />
         </mui.ToolbarGroup>
         <mui.ToolbarGroup key={1} float="right" style={this.closeButtonStyle()}>
-          <CloseButton clickEvent={this.clickCloseButton} alternate={true} height={this.props.height} />
+          <CloseButton alternate={true} height={this.props.height} />
         </mui.ToolbarGroup>
       </mui.Toolbar>
     );

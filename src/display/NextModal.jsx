@@ -1,6 +1,6 @@
 //app/assets/javascripts/components/NextSection.jsx
 var React = require('react');
-
+import {Link} from 'react-router'
 const PrevNext = require('../modules/PrevNextUtils.jsx')
 const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 
@@ -25,14 +25,13 @@ var NextModal = React.createClass({
   render: function() {
     var id = this.props.id;
     return (
-    <a
-      href="#"
-      onClick={PrevNext.clickAction(this.props.url)}
+    <Link
+      to={this.props.url}
       className="next-button half-circle-button"
       style={PrevNext.buttonStyles(this.props.offsetTop, CurrentTheme.getCurrentPallette(this.context.muiTheme).accent3Color)}
     >
       <i className="material-icons">chevron_right</i>
-    </a>
+    </Link>
     );
   }
 });

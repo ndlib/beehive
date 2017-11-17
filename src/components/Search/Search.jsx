@@ -1,7 +1,6 @@
 'use strict'
 var React = require('react');
 var mui = require('material-ui');
-var ItemPanel = require("./ItemPanel.jsx");
 
 var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx');
 var PageContent = require('../../layout/PageContent.jsx');
@@ -32,7 +31,6 @@ var Search = React.createClass({
     ]),
     start: React.PropTypes.number,
     view: React.PropTypes.string,
-    currentItem: React.PropTypes.string,
     collection: React.PropTypes.oneOfType([
       React.PropTypes.string,
       React.PropTypes.object,
@@ -88,6 +86,8 @@ var Search = React.createClass({
 
   componentWillUnmount: function() {
     window.removeEventListener('resize', this.handleResize);
+    window.removeEventListener("popstate", this.onWindowPopState);
+    ConfigurationStore.removeChangeListener(this.configurationLoaded);
   },
 
   handleResize: function(e) {
@@ -105,16 +105,12 @@ var Search = React.createClass({
       readyToRender: true,
     });
 
-    if(reason == "load") {
-      var currentItem = '';
-      if(this.props.currentItem) {
-        currentItem = '&item=' + this.props.currentItem;
-      }
-      var path = window.location.origin + SearchStore.searchUri() + currentItem;
-      path += "&compact=" + this.props.compact;
-      window.history.replaceState({ store: SearchStore.getQueryParams() }, '', path);
+    // if(reason == "load") {
+    //   var path = window.location.origin + SearchStore.searchUri() + currentItem;
+    //   path += "&compact=" + this.props.compact;
+    //   window.history.replaceState({ store: SearchStore.getQueryParams() }, '', path);
 
-    }
+    // }
   },
 
   configurationLoaded: function(){
@@ -161,7 +157,6 @@ var Search = React.createClass({
     return (
       <mui.AppCanvas>
         { !this.props.compact && <CollectionPageHeader collection={SearchStore.collection} ></CollectionPageHeader> }
-        <ItemPanel height={ this.state.windowHeight } currentItem={this.props.currentItem}/>
         <SearchControls searchStyle={{height:'50px'}}/>
         <PageContent fluidLayout={false}>
           <SearchDisplayList compact={ this.props.compact } />

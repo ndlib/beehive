@@ -5,8 +5,9 @@ var ThemeColors = require('material-ui/lib/styles/colors');
 var TextCard = require("./TextCard.jsx");
 var ImageCard = require("./ImageCard.jsx");
 var MultimediaCard = require("./MultimediaCard.jsx");
+import { Link } from 'react-router'
 
-const LoadRemote = require('../../modules/LoadRemote.jsx')
+const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
 var SectionCard = React.createClass({
   propTypes: {
@@ -81,10 +82,12 @@ var SectionCard = React.createClass({
 
   render: function() {
     return (
-      <mui.Card className="item" style={this.style()} onClick={LoadRemote.sectionOnClick(this.props.section)}>
-        { this.card() }
-        {this.manifestIcon(this.props.section.item)}
-      </mui.Card>
+      <Link to={CollectionUrl.sectionObjectUrl(this.props.section)}>
+        <mui.Card className="item" style={this.style()}>
+          { this.card() }
+          {this.manifestIcon(this.props.section.item)}
+        </mui.Card>
+      </Link>
     );
   }
 });

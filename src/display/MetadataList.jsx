@@ -18,7 +18,15 @@ var MetadataList = React.createClass({
   },
 
   componentWillMount: function(){
-    ConfigurationStore.addChangeListener(this.forceUpdate);
+    ConfigurationStore.addChangeListener(this.configurationLoaded);
+  },
+
+  componentWillUnmount: function() {
+    ConfigurationStore.removeChangeListener(this.configurationLoaded);
+  },
+
+  configurationLoaded: function() {
+    this.setState({ configurationLoaded: true });
   },
 
   orderByConfiguration: function(keys) {
