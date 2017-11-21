@@ -1,8 +1,7 @@
 'use strict'
-var React = require('react');
-var mui = require('material-ui');
-var ThemeManager = require('material-ui/lib/styles/theme-manager');
-var BeehiveTheme = require('../../themes/beehive.jsx');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 
 var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx');
 var CollectionShow = require('./CollectionShow.jsx');
@@ -14,29 +13,22 @@ var PageTitle = require('../../modules/PageTitle.js')
 
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
-var Collection = React.createClass({
+var Collection = createReactClass({
   propTypes: {
-    collection: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.object,
+    collection: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.object,
     ]),
   },
 
   childContextTypes: {
-    muiTheme: React.PropTypes.object
+    muiTheme: PropTypes.object
   },
 
   getInitialState: function() {
     return {
       collection: {},
       remoteCollectionLoaded: false,
-      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
-    };
-  },
-
-  getChildContext() {
-    return {
-      muiTheme: this.state.muiTheme,
     };
   },
 
@@ -46,7 +38,7 @@ var Collection = React.createClass({
         collection: this.props.collection,
       });
     } else {
-      LoadRemote.loadRemoteCollection(this.props.collection, this.onLoaded.bind(this));
+      LoadRemote.loadRemoteCollection(this.props.collection, this.onLoaded);
     }
   },
 
@@ -73,7 +65,7 @@ var Collection = React.createClass({
     }
     PageTitle(this.state.collection.name)
     return (
-      <mui.AppCanvas>
+      <div>
         <div className="collection-show-page">
             <CollectionPageHeader collection={this.state.collection} branding={true} />
             <CollectionShow collection={this.state.collection} />
@@ -83,7 +75,7 @@ var Collection = React.createClass({
             </PageContent>
             <CollectionPageFooter collection={this.state.collection} />
         </div>
-      </mui.AppCanvas>
+      </div>
     );
   }
 });

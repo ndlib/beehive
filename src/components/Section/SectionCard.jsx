@@ -1,18 +1,19 @@
 'use strict'
-var React = require('react');
-var mui = require('material-ui');
-var ThemeColors = require('material-ui/lib/styles/colors');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import mui, { Card } from 'material-ui'
 var TextCard = require("./TextCard.jsx");
 var ImageCard = require("./ImageCard.jsx");
 var MultimediaCard = require("./MultimediaCard.jsx");
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
-var SectionCard = React.createClass({
+var SectionCard = createReactClass({
   propTypes: {
-    section: React.PropTypes.object.isRequired,
-    height: React.PropTypes.number.isRequired,
+    section: PropTypes.object.isRequired,
+    height: PropTypes.number.isRequired,
   },
 
   getInitialState: function() {
@@ -35,6 +36,7 @@ var SectionCard = React.createClass({
       lineHeight: '0px',
       backgroundColor: "rgba(51,51,51,0.95)",
       border: this.sectionType() == "image" ? 'solid 3px #fff' : "none",
+      overflow: 'hidden'
     };
     if (this.sectionType() == "text") {
       styles["maxWidth"] = "33em";
@@ -83,10 +85,10 @@ var SectionCard = React.createClass({
   render: function() {
     return (
       <Link to={CollectionUrl.sectionObjectUrl(this.props.section)}>
-        <mui.Card className="item" style={this.style()}>
+        <Card className="item" style={this.style()}>
           { this.card() }
           {this.manifestIcon(this.props.section.item)}
-        </mui.Card>
+        </Card>
       </Link>
     );
   }

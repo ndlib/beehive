@@ -1,7 +1,9 @@
 'use strict'
 import '../../assets/scripts/perfect-scrollbar.jquery.js';
 
-var React = require("react");
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 var ReactDOM = require('react-dom')
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 var MediaQuery = require('react-responsive');
@@ -25,10 +27,10 @@ const BrowserUtils = require('../../modules/BrowserUtils.jsx')
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
-var ShowcaseShow = React.createClass({
+var ShowcaseShow = createReactClass({
   propTypes: {
-    collection: React.PropTypes.object,
-    showcase: React.PropTypes.object,
+    collection: PropTypes.object,
+    showcase: PropTypes.object,
   },
 
   getInitialState: function() {
@@ -48,7 +50,11 @@ var ShowcaseShow = React.createClass({
     if (!this.scrollbarInitialized) {
       this.initializeScrollbar();
     }
-    if(this.state.hasScrolled != prevState.hasScrolled) {
+    if(this.props !== prevProps) {
+      this.initializeScrollbar();
+      this.state.outerElement[0].scrollLeft = 0
+    }
+    if(this.state.hasScrolled !== prevState.hasScrolled) {
       this.updateScrollbar();
     }
   },
@@ -82,7 +88,7 @@ var ShowcaseShow = React.createClass({
     window.addEventListener('resize', this.handleResize, false);
     this.handleResize();
     this.setState({
-      outerElement: $(this.refs.showcaseOuter),
+      outerElement: $('#showcase-outer'),
       element: $(ReactDOM.findDOMNode(this)),
     });
   },
@@ -100,6 +106,7 @@ var ShowcaseShow = React.createClass({
       whiteSpace: "nowrap",
       boxSizing: "border-box",
       height: height + "px",
+      backgroundColor: 'rgba(0,0,0,0)'
     };
   },
 
@@ -170,7 +177,7 @@ var ShowcaseShow = React.createClass({
     }
 
     return (
-      <div style={{height: showcaseHeight}}>
+      <div style={{height: showcaseHeight, backgroundColor: 'rgba(0,0,0,0)'}}>
         <AttentionHelp start={this.state.startTime} hasScrolled={this.state.hasScrolled} />
         <ShowcaseBackground percentBlur={backgroundBlur} height={this.state.mobile ? this.state.height : this.state.height - scrollPadding} showcase={this.props.showcase} />
         {titleBar}
@@ -179,8 +186,9 @@ var ShowcaseShow = React.createClass({
           transitionAppear={true}
           transitionAppearTimeout={2600}
           transitionEnterTimeout={0}
-          transitionLeaveTimeout={0}>
-          <div id="showcase-outer" ref="showcaseOuter" className="showcase-outer" style={this.styleOuter(showcaseHeight)} onScroll={this.onScroll}>
+          transitionLeaveTimeout={0}
+          style={{backgroundColor: 'rgba(0,0,0,0)'}}>
+          <div id="showcase-outer" className="showcase-outer" style={this.styleOuter(showcaseHeight)} onScroll={this.onScroll}>
             {scroller}
             <ShowcaseInnerContent height={showcaseInnerHeight} showcase={this.props.showcase} />
           </div>

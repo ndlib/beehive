@@ -1,27 +1,19 @@
-var React = require('react');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 
 var mui = require("material-ui");
-var ThemeManager = require('material-ui/lib/styles/theme-manager');
-var BeehiveTheme = require('../../themes/beehive.jsx');
+// var ThemeManager = require('material-ui/lib/styles/theme-manager');
+// var BeehiveTheme = require('../../themes/beehive.jsx');
 
-var CollectionIntro = React.createClass({
+var CollectionIntro = createReactClass({
   propTypes: {
-    collection: React.PropTypes.object.isRequired,
-  },
-
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
-
-  getChildContext() {
-    return {
-      muiTheme: this.state.muiTheme,
-    };
+    collection: PropTypes.object.isRequired,
   },
 
   getInitialState: function() {
     return {
-      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
+      //muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
     };
   },
 

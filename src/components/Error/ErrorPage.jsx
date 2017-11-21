@@ -1,33 +1,16 @@
 'use strict'
-var React = require('react');
-var mui = require('material-ui');
-var ThemeManager = require('material-ui/lib/styles/theme-manager');
-var BeehiveTheme = require('../themes/beehive.jsx');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 
 var PageHeader = require('../../layout/PageHeader.jsx');
 var PageContent = require('../../layout/PageContent.jsx');
 
-var ErrorPage = React.createClass({
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
-
-  getChildContext() {
-    return {
-      muiTheme: this.state.muiTheme,
-    };
-  },
-
-  getInitialState: function() {
-    return {
-      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
-    };
-  },
-
+var ErrorPage = createReactClass({
   render: function() {
     var url = window.location.origin;
     return (
-    <mui.AppCanvas>
+    <div>
       <PageHeader branding={true} />
       <PageContent>
         <div className="row row-fluid">
@@ -44,7 +27,7 @@ var ErrorPage = React.createClass({
             </div>
         </div>
       </PageContent>
-    </mui.AppCanvas>
+    </div>
     );
   }
 

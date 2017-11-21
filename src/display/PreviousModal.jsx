@@ -1,19 +1,21 @@
 //app/assets/javascripts/components/PreviousSection.jsx
-var React = require('react');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 import {Link} from 'react-router'
 const PrevNext = require('../modules/PrevNextUtils.jsx')
 const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 
-var PreviousModal = React.createClass({
+var PreviousModal = createReactClass({
   displayName: 'Previous Modal Link',
 
   propTypes: {
-    url: React.PropTypes.string.isRequired,
-    offsetTop: React.PropTypes.number,
+    url: PropTypes.string.isRequired,
+    offsetTop: PropTypes.number,
   },
 
   contextTypes: {
-    muiTheme: React.PropTypes.object,
+    muiTheme: PropTypes.object,
   },
 
   getDefaultProps: function() {

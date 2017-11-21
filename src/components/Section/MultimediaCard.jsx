@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import mui, { CardMedia, CardTitle, CardText } from 'material-ui';
 import CardCaption from "./CardCaption.jsx";
 
@@ -49,9 +50,9 @@ class MultimediaCard extends Component {
   render() {
     return (
       <div style={style.text()}>
-        <mui.CardMedia className="img">
+        <CardMedia className="img">
           {this.image()}
-        </mui.CardMedia>
+        </CardMedia>
         <CardCaption caption={this.props.section.caption} />
       </div>
      );
@@ -59,7 +60,7 @@ class MultimediaCard extends Component {
 }
 
 MultimediaCard.propTypes = {
-  section: React.PropTypes.object.isRequired,
+  section: PropTypes.object.isRequired,
 }
 
 MultimediaCard.defaultProps = {

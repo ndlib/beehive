@@ -1,22 +1,18 @@
-"use strict"
-var React = require("react");
-var mui = require("material-ui");
-import { Link } from 'react-router'
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import mui, {FlatButton, FontIcon} from 'material-ui'
+import { Link } from 'react-router-dom'
 
 var SearchStore = require('../store/SearchStore.js')
 
-const CurrentTheme = require('../modules/CurrentTheme.jsx')
 const CollectionUrl = require('../modules/CollectionUrl.jsx')
 
-var CloseButton = React.createClass({
+var CloseButton = createReactClass({
   propTypes: {
-    href: React.PropTypes.string,
-    alternate: React.PropTypes.bool,
-    height: React.PropTypes.number
-  },
-
-  contextTypes: {
-    muiTheme: React.PropTypes.object,
+    href: PropTypes.string,
+    alternate: PropTypes.bool,
+    height: PropTypes.number
   },
 
   getDefaultProps: function() {
@@ -28,9 +24,9 @@ var CloseButton = React.createClass({
 
   color: function() {
     if (this.props.alternate) {
-      return CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor;
+      return '#000000';
     } else {
-      return CurrentTheme.getCurrentPallette(this.context.muiTheme).textColor;
+      return '#ffffff';
     }
   },
 
@@ -73,14 +69,15 @@ var CloseButton = React.createClass({
   },
 
   render: function() {
+    return (<div/>)
     return (
       <Link to={this.href()}>
-        <mui.EnhancedButton
+        <FlatButton
           disableTouchRipple={true}
           style={{ height: "100%", padding: 0 }}
         >
-          <mui.FontIcon className="material-icons" color={this.color()} style={this.iconStyle()}>clear</mui.FontIcon>
-        </mui.EnhancedButton>
+          <FontIcon className="material-icons" color={this.color()} style={this.iconStyle()}>clear</FontIcon>
+        </FlatButton>
       </Link>
     );
   },

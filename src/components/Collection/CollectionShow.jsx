@@ -1,15 +1,18 @@
 'use strict'
-var React = require('react');
-var mui = require('material-ui');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import mui, { Card, CardActions, CardMedia, CardTitle, FloatingActionButton, FontIcon, Paper } from 'material-ui'
+import { Link } from 'react-router-dom'
 var ConfigurationActions = require("../../actions/ConfigurationActions.js");
 var Loading = require("../../other/Loading.jsx");
 
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 
-var CollectionShow = React.createClass({
+var CollectionShow = createReactClass({
   propTypes: {
-    collection: React.PropTypes.object.isRequired,
+    collection: PropTypes.object.isRequired,
   },
 
   collectionLoaded: function () {
@@ -48,24 +51,20 @@ var CollectionShow = React.createClass({
 
   startButton: function() {
     if (this.startUrl()) {
-      return (
-        <mui.FloatingActionButton
-          primary={true}
-          linkButton={true}
-          href={this.startUrl()}
-        >
-            <mui.FontIcon className="material-icons">arrow_forward</mui.FontIcon>
-        </mui.FloatingActionButton>
+      return (<Link to={this.startUrl()}>
+        <FloatingActionButton>
+          <FontIcon className="material-icons">arrow_forward</FontIcon>
+        </FloatingActionButton>
+      </Link>
       );
     }
   },
 
   cardMediaSection: function() {
-    console.log(this.props.collection);
     if (this.props.collection.image) {
       var cardTitle = (null);
       if (this.props.collection.display_page_title) {
-        cardTitle = (<mui.CardTitle
+        cardTitle = (<CardTitle
           title={this.props.collection.name_line_1}
           titleStyle={{color:'white', fontSize:'34px', lineHeight:'46px'}}
           subtitle={this.props.collection.name_line_2}
@@ -74,14 +73,14 @@ var CollectionShow = React.createClass({
         );
       }
       return (
-        <mui.CardMedia overlay={cardTitle}>
+        <CardMedia overlay={cardTitle}>
           <img src={this.image()} className="hide"/>
           <div className="cover" style={this.cover()}></div>
-        </mui.CardMedia>
+        </CardMedia>
       );
     } else {
       return (
-        <mui.CardTitle title={this.props.collection.name_line_1} subtitle={this.props.collection.name_line_2} />
+        <CardTitle title={this.props.collection.name_line_1} subtitle={this.props.collection.name_line_2} />
       );
     }
   },
@@ -89,14 +88,14 @@ var CollectionShow = React.createClass({
   render: function() {
     if (this.collectionLoaded()) {
       return (
-        <mui.Paper circle={false} rounded={false} zDepth={0} >
-          <mui.Card>
+        <Paper circle={false} rounded={false} >
+          <Card>
             {this.cardMediaSection()}
-          </mui.Card>
-          <mui.CardActions style={CurrentTheme.pageWidth()} className="startButton">
+          </Card>
+          <CardActions style={CurrentTheme.pageWidth()} className="startButton">
             {this.startButton()}
-          </mui.CardActions>
-        </mui.Paper>
+          </CardActions>
+        </Paper>
       );
     } else {
       return <Loading />;

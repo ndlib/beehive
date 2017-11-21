@@ -1,14 +1,15 @@
 'use strict'
-var React = require('react');
-var mui = require('material-ui');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 
-var Layout = React.createClass({
+var Layout = createReactClass({
   render: function() {
 
     return (
-      <mui.AppCanvas>
+      <div>
         {this.props.children}
-      </mui.AppCanvas>
+      </div>
     );
   }
 });

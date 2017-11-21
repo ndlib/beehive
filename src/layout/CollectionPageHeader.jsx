@@ -1,6 +1,8 @@
 'use strict'
-var React = require('react');
-var mui = require('material-ui');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import mui, { AppBar, Paper, Tab, Tabs } from 'material-ui'
 var MediaQuery = require('react-responsive');
 
 var BrandBar = require('./BrandBar.jsx');
@@ -11,14 +13,14 @@ var SearchBox = require('./SearchBox.jsx');
 const CollectionUrl = require('../modules/CollectionUrl.jsx')
 const CurrentTheme = require('../modules/CurrentTheme.jsx')
 
-var CollectionPageHeader = React.createClass({
+var CollectionPageHeader = createReactClass({
   propTypes: {
-    collection: React.PropTypes.object.isRequired,
-    branding: React.PropTypes.bool,
+    collection: PropTypes.object.isRequired,
+    branding: PropTypes.bool,
   },
 
   contextTypes: {
-    muiTheme: React.PropTypes.object,
+    muiTheme: PropTypes.object,
   },
 
   getInitialState: function() {
@@ -99,7 +101,7 @@ var CollectionPageHeader = React.createClass({
 
   browseTab: function() {
     if (ConfigurationStore.browseEnabled()) {
-      return (<mui.Tab label="Browse Collection" value="search" onActive={this._handleTabs} />);
+      return (<Tab label="Browse Collection" value="search" onActive={this._handleTabs} />);
     } else {
       return "";
     }
@@ -107,7 +109,7 @@ var CollectionPageHeader = React.createClass({
 
   aboutTab: function() {
     if (ConfigurationStore.hasAboutPage()) {
-      return (<mui.Tab label="About" value="about" onActive={this._handleTabs} />);
+      return (<Tab label="About" value="about" onActive={this._handleTabs} />);
     } else {
       return "";
     }
@@ -128,17 +130,17 @@ var CollectionPageHeader = React.createClass({
     var availableTabs = this.availableTabs();
     if (availableTabs.length > 0) {
       return  (
-        <mui.Tabs style={ {float:'right', backgroundColor: "none" } } value={this.activeTab()} tabItemContainerStyle={{backgroundColor: "transparent", width:"auto" }}>
+        <Tabs style={ {float:'right', backgroundColor: "none" } } value={this.activeTab()} tabItemContainerStyle={{backgroundColor: "transparent", width:"auto" }}>
           {
             availableTabs.map(function (tab, index) {
-              return(<mui.Tab key={tab.value} label={tab.label} value={tab.value} onActive={this._handleTabs} style={{color:"white", width:'auto', padding:'0 20px 0 0', fontSize: '16px'}} />);
+              return(<Tab key={tab.value} label={tab.label} value={tab.value} onActive={this._handleTabs} style={{color:"white", width:'auto', padding:'0 20px 0 0', fontSize: '16px'}} />);
             }.bind(this))
           }
-        </mui.Tabs>);
+        </Tabs>);
     }
     return (
-      <mui.Tabs style={ {float:'right', backgroundColor: "none" } } value={this.activeTab()} tabItemContainerStyle={{backgroundColor: "transparent", width:"auto" }}>
-      </mui.Tabs>
+      <Tabs style={ {float:'right', backgroundColor: "none" } } value={this.activeTab()} tabItemContainerStyle={{backgroundColor: "transparent", width:"auto" }}>
+      </Tabs>
     );
   },
 
@@ -155,7 +157,7 @@ var CollectionPageHeader = React.createClass({
     return {
       position: "fixed",
       background: "linear-gradient(to bottom, #5b5b5b 0%,#050505 100%)",
-      height:"45px"
+      height:"65px"
     };
   },
 
@@ -190,8 +192,8 @@ var CollectionPageHeader = React.createClass({
     return (
       <div>
         <MediaQuery maxWidth={650}>
-          <mui.Paper circle={false} rounded={false} zDepth={0} style={this.smallScreenStyle()}>
-          <mui.AppBar
+          <Paper circle={false} rounded={false} style={this.smallScreenStyle()}>
+          <AppBar
             title={title}
             iconElementLeft={<CollectionLeftNav collection={this.props.collection} />}
             iconElementRight={rightNav}
@@ -199,12 +201,12 @@ var CollectionPageHeader = React.createClass({
           />
           <div id="whiteSpacer" style={{ width: "100%", backgroundColor: "white", position: "fixed", top: this.state.themeVariables.height + "px", height: "1px", zIndex: "1000" }} />
           {this.props.children}
-          </mui.Paper>
+          </Paper>
         </MediaQuery>
         <MediaQuery minWidth={650}>
-          <mui.Paper circle={false} rounded={false} zDepth={0} style={this.largeScreenStyle()}>
+          <Paper circle={false} rounded={false} style={this.largeScreenStyle()}>
             <BrandBar />
-            <mui.AppBar
+            <AppBar
               title={title}
               iconElementLeft={<CollectionLeftNav collection={this.props.collection} />}
               iconElementRight={rightNav}
@@ -212,7 +214,7 @@ var CollectionPageHeader = React.createClass({
             />
             <div id="whiteSpacer" style={{ width: "100%", backgroundColor: "white", position: "fixed", top: this.state.themeVariables.height + "px", height: "1px", zIndex: "1000" }} />
             {this.props.children}
-          </mui.Paper>
+          </Paper>
         </MediaQuery>
       </div>
     );

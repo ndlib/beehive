@@ -1,10 +1,7 @@
-var React = require('react');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 var mui = require('material-ui');
-var ThemeManager = require('material-ui/lib/styles/theme-manager');
-var BeehiveTheme = require('../../themes/beehive.jsx');
-var injectTapEventPlugin = require("react-tap-event-plugin");
-injectTapEventPlugin();
-
 var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx');
 var PageContent = require('../../layout/PageContent.jsx');
 var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx');
@@ -19,23 +16,14 @@ var PageTitle = require('../../modules/PageTitle.js')
 
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
-var Page = React.createClass({
+var Page = createReactClass({
   propTypes: {
-    collection: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.object,
+    collection: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.object,
     ]),
   },
 
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
-
-  getChildContext() {
-    return {
-      muiTheme: this.state.muiTheme,
-    };
-  },
 
   getInitialState: function() {
     return {
@@ -43,7 +31,6 @@ var Page = React.createClass({
       titleSectionPercentVisible: 0,
       collection: {},
       remoteCollectionLoaded: false,
-      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
     };
   },
 
@@ -54,7 +41,7 @@ var Page = React.createClass({
         collection: this.props.collection,
       });
     } else {
-      LoadRemote.loadRemoteCollection(this.props.collection, this.setValues.bind(this));
+      LoadRemote.loadRemoteCollection(this.props.collection, this.setValues);
     }
   },
 
@@ -116,9 +103,9 @@ var Page = React.createClass({
     var nextCard = null;
     if(this.state.collection.pages.nextObject) {
       nextCard = [
-        <div style={{ clear: "both" }}>
+        <div style={{ clear: "both" }} key='next'>
           <hr />
-          <MediaQuery minWidth={1000}>
+          <MediaQuery minWidth={1000} key='min-w'>
             <div style={{margin: '0 auto', maxWidth: '500px' }}>
               <SitePathCard
                 headerTitle="Continue to"
@@ -128,7 +115,7 @@ var Page = React.createClass({
               />
             </div>
           </MediaQuery>,
-          <MediaQuery maxWidth={1000}>
+          <MediaQuery maxWidth={1000} key='max-w'>
             <div style={{margin: '0 0', maxWidth: '500px' }}>
               <SitePathCard
                 headerTitle="Continue to"
@@ -146,13 +133,17 @@ var Page = React.createClass({
 
   previewCard: function() {
     if(this.state.collection.pages.nextObject) {
-      return (<PreviewLink siteObject={this.state.collection.pages.nextObject}/>);
+      return (
+        <PreviewLink
+          siteObject={this.state.collection.pages.nextObject}
+          key='prev'
+          />
+        );
     }
     return null;
   },
 
   pageContent: function() {
-    var pageContent = (<div/>);
     if(this.state.collection && this.state.collection.pages) {
       return (this.state.collection.pages.content);
     } else {
@@ -166,7 +157,7 @@ var Page = React.createClass({
     }
     PageTitle(this.state.collection.name)
     return (
-      <mui.AppCanvas>
+      <div>
         <CollectionPageHeader collection={this.state.collection} branding={false} />
         <PageTitleBar title={this.state.collection.pages.name} height={this.state.titleHeight} />
           <PageContent onClick={this.contentClicked} onMouseOver={this.contentMouseOver}>
@@ -176,7 +167,7 @@ var Page = React.createClass({
             </PagesShow>
           </PageContent>
         <CollectionPageFooter collection={this.state.collection} />
-      </mui.AppCanvas>
+      </div>
     )
   }
 });

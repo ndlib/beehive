@@ -1,19 +1,21 @@
 'use strict'
-var React = require('react');
-var mui = require('material-ui');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import mui, { Card, CardTitle, CardMedia } from 'material-ui'
 var MediaQuery = require("react-responsive");
 
-var SiteIndexHeader = React.createClass({
+var SiteIndexHeader = createReactClass({
 
   render: function() {
     return(
       <div>
         <MediaQuery minWidth={650}>
-          <mui.Card  style={{height:'40vh', position:'relative', marginTop:'50px', left:'0', right:'0'}} className="heightFix"  >
-            <mui.CardMedia className="collectionscover"
+          <Card  style={{height:'40vh', position:'relative', marginTop:'50px', left:'0', right:'0'}} className="heightFix"  >
+            <CardMedia className="collectionscover"
               style={{height:'100%'}}
               overlayContentStyle={{background:'transparent', position:'static'}}
-              overlay={<mui.CardTitle
+              overlay={<CardTitle
                 //Some of the styles for the banner display are in the .css file due to nesting complications
                 title="Digital Collections"
                 titleStyle={{
@@ -43,15 +45,15 @@ var SiteIndexHeader = React.createClass({
               />}
               >
               <div className='coverImage'><img src="/images/home.jpg"/></div>
-            </mui.CardMedia>
-          </mui.Card>
+            </CardMedia>
+          </Card>
         </MediaQuery>
         <MediaQuery maxWidth={650}>
-          <mui.Card style={{height:'40vw', position:'relative', left:'0', right:'0'}} className="heightFix">
-            <mui.CardMedia className="collectionscover"
+          <Card style={{height:'40vw', position:'relative', left:'0', right:'0'}} className="heightFix">
+            <CardMedia className="collectionscover"
               style={{height:'100%'}}
               overlayContentStyle={{background:'transparent', position:'static'}}
-              overlay={<mui.CardTitle
+              overlay={<CardTitle
                 //Some of the styles for the banner display are in the .css file due to nesting complications
                 title="Digital Exhibits and Collections"
                 titleStyle={{
@@ -70,8 +72,8 @@ var SiteIndexHeader = React.createClass({
               />}
               >
               <div className='coverImage'><img src="/images/home.jpg"/></div>
-            </mui.CardMedia>
-          </mui.Card>
+            </CardMedia>
+          </Card>
         </MediaQuery>
       </div>
     )

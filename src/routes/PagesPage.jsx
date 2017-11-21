@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 import Page from '../components/Pages/Page.jsx';
 import HoneycombURL from '../modules/HoneycombURL.js'
@@ -11,7 +12,7 @@ class PagesPage extends Component {
       <div>
         <Page
           collection={HoneycombURL() + "/v1/pages/"
-            + this.props.params.pageID}
+            + this.props.match.params.pageID}
         />
         {this.props.children}
       </div>

@@ -1,6 +1,8 @@
 'use strict'
-var React = require('react');
-var mui = require('material-ui');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import mui, { Divider }  from 'material-ui';
 
 var MetadataString = require('./MetadataString.jsx');
 var MetadataDate = require('./MetadataDate.jsx');
@@ -27,11 +29,11 @@ var Styles = {
   }
 };
 
-var MetadataItem = React.createClass({
+var MetadataItem = createReactClass({
   displayName: 'Metadata Item',
 
   propTypes: {
-    metadata: React.PropTypes.object.isRequired,
+    metadata: PropTypes.object.isRequired,
   },
 
   value: function(metadata_field, index) {
@@ -49,7 +51,7 @@ var MetadataItem = React.createClass({
     return (
       <dl>
         <dt style={ Styles.fieldName }>{this.props.metadata.label.toUpperCase()}</dt>
-        <mui.Divider style={ Styles.divider } inset={false} />
+        <Divider style={ Styles.divider } inset={false} />
         <dd style={ Styles.fieldValue }>{this.map_arrays_to_values()}</dd>
       </dl>
     );

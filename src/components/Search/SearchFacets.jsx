@@ -1,11 +1,12 @@
 'use strict'
-var React = require('react');
-var mui = require('material-ui');
-var List = mui.List;
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import { List } from 'material-ui'
 var SearchStore = require('../../store/SearchStore.js');
 var FacetItem = require('./FacetItem.jsx');
 
-var SearchFacets = React.createClass({
+var SearchFacets = createReactClass({
   values: function(facet) {
     if (facet.values) {
       return (facet.values.map(function(e, index) {

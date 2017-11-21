@@ -1,13 +1,15 @@
 'use strict'
-var React = require("react");
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 
 var ShowcaseTitleCard = require('./ShowcaseTitleCard.jsx');
 var ShowcaseSections = require('./ShowcaseSections.jsx');
 
-var ShowcaseInnerContent = React.createClass({
+var ShowcaseInnerContent = createReactClass({
   propTypes: {
-    showcase: React.PropTypes.object,
-    height: React.PropTypes.number.isRequired,
+    showcase: PropTypes.object,
+    height: PropTypes.number.isRequired,
   },
 
   style: function() {
@@ -19,6 +21,7 @@ var ShowcaseInnerContent = React.createClass({
       overflowX: "visible",
       overflowY: "visible",
       paddingTop: "20px",
+      backgroundColor: "rgba(0,0,0,0)"
     };
     return style;
   },

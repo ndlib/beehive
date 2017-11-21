@@ -1,12 +1,14 @@
 'use stirct'
-var React = require('react');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 
 var TitleBar = require('../layout/TitleBar.jsx');
-var PageHeader = React.createClass({
+var PageHeader = createReactClass({
   displayName: 'Page Header',
 
   propTypes: {
-    branding: React.PropTypes.bool,
+    branding: PropTypes.bool,
   },
 
   style: function() {

@@ -1,39 +1,22 @@
 'use strict'
-var React = require('react');
-var mui = require('material-ui');
-var ThemeManager = require('material-ui/lib/styles/theme-manager');
-var BeehiveTheme = require('../themes/beehive.jsx');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 
 var PageHeader = require('../layout/PageHeader.jsx');
 var PageContent = require('../layout/PageContent.jsx');
 var PageTitle = require('../modules/PageTitle.js')
 
-var ErrorPage = React.createClass({
+var ErrorPage = createReactClass({
   componentWillMount() {
     PageTitle("Page Not Found")
-  },
-
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
-
-  getChildContext() {
-    return {
-      muiTheme: this.state.muiTheme,
-    };
-  },
-
-  getInitialState: function() {
-    return {
-      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
-    };
   },
 
   render: function() {
 
     var url = window.location.origin;
     return (
-    <mui.AppCanvas>
+    <div>
       <PageHeader branding={true} />
       <PageContent>
         <div className="row row-fluid">
@@ -50,7 +33,7 @@ var ErrorPage = React.createClass({
             </div>
         </div>
       </PageContent>
-    </mui.AppCanvas>
+    </div>
     );
   }
 

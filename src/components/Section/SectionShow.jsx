@@ -1,6 +1,8 @@
 'use strict'
-var React = require('react');
-var mui = require('material-ui');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import mui, { Paper, Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui'
 var CloseButton = require('../../other/CloseButton.jsx');
 var SideNavButton = require("../../other/SideNavButton.jsx");
 
@@ -13,18 +15,18 @@ const LoadRemote = require('../../modules/LoadRemote.jsx')
 const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
-var SectionShow = React.createClass({
+var SectionShow = createReactClass({
   displayName: 'Section Show',
   propTypes: {
-    section: React.PropTypes.object,
-    previousSection: React.PropTypes.object,
-    nextSection: React.PropTypes.object,
-    height: React.PropTypes.number,
-    collection: React.PropTypes.object,
+    section: PropTypes.object,
+    previousSection: PropTypes.object,
+    nextSection: PropTypes.object,
+    height: PropTypes.number,
+    collection: PropTypes.object,
   },
 
   contextTypes: {
-    muiTheme: React.PropTypes.object,
+    muiTheme: PropTypes.object,
   },
 
   styles: function () {
@@ -45,6 +47,7 @@ var SectionShow = React.createClass({
     return {
       color: CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor,
       height: "100%",
+      float: 'right'
     }
   },
 
@@ -73,14 +76,14 @@ var SectionShow = React.createClass({
 
   toolbar: function() {
     return (
-      <mui.Toolbar style={this.styles()} >
-        <mui.ToolbarGroup key={0} float="left" style={{maxWidth: this.mobile ? '80%': '90%'}}>
-          <mui.ToolbarTitle text={this.title()} style={this.titleStyle()} />
-        </mui.ToolbarGroup>
-        <mui.ToolbarGroup key={1} float="right" style={this.closeButtonStyle()}>
+      <Toolbar style={this.styles()} >
+        <ToolbarGroup key={0} style={{maxWidth: this.mobile ? '80%': '90%', float: 'left'}}>
+          <ToolbarTitle text={this.title()} style={this.titleStyle()} />
+        </ToolbarGroup>
+        <ToolbarGroup key={1} style={this.closeButtonStyle()}>
           <CloseButton alternate={true} />
-        </mui.ToolbarGroup>
-      </mui.Toolbar>
+        </ToolbarGroup>
+      </Toolbar>
     )
   },
 
@@ -106,12 +109,12 @@ var SectionShow = React.createClass({
       }
 
       return (
-        <mui.Paper style={this.pageStyles()}>
+        <Paper style={this.pageStyles()}>
           {this.toolbar()}
           {prev}
           {next}
           {this.contentSection()}
-        </mui.Paper>);
+        </Paper>);
     } else {
       return null;
     }

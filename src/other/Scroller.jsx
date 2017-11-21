@@ -1,9 +1,11 @@
-var React = require("react");
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 var SideNavButton = require("./SideNavButton.jsx");
 
-var Scroller = React.createClass({
+var Scroller = createReactClass({
   propTypes: {
-    target: React.PropTypes.string.isRequired,
+    target: PropTypes.string.isRequired,
   },
 
   getInitialState: function() {

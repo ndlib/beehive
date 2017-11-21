@@ -1,9 +1,10 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 import Collection from '../components/Collection/Collection.jsx';
 import HoneycombURL from '../modules/HoneycombURL.js';
-import { browserHistory } from 'react-router';
+import {withRouter} from "react-router-dom";
 
 class CustomCollectionPage extends Component {
 
@@ -15,18 +16,18 @@ class CustomCollectionPage extends Component {
     $.ajax({
       context: this,
       type: "GET",
-      url: HoneycombURL() + "/v1/collections/custom_slug/" + this.props.params.customSlug,
+      url: HoneycombURL() + "/v1/collections/custom_slug/" + this.props.match.params.customSlug,
       dataType: "json",
       success: function(result) {
         this.setState({
             collectionResult: result
           },
-          browserHistory.push(result["id"] + "/" + result["slug"])
+          this.props.history.push("/" + result["id"] + "/" + result["slug"])
         );
       },
       error: function(request, status, thrownError) {
         console.log("Custom slug access not available " + thrownError);
-        window.location = window.location.origin + '/404';
+        //window.location = window.location.origin + '/404';
       }
     });
   }
@@ -45,4 +46,4 @@ class CustomCollectionPage extends Component {
     }
   }
 }
-export default CustomCollectionPage;
+export default withRouter(CustomCollectionPage);

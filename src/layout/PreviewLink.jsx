@@ -1,33 +1,21 @@
 'use strict'
-var React = require("react");
-var mui = require('material-ui');
-var ThemeManager = require('material-ui/lib/styles/theme-manager');
-var BeehiveTheme = require('../themes/beehive.jsx');
-
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import mui, { Card, CardMedia, CardTitle, FloatingActionButton, FontIcon} from 'material-ui'
+import {Link} from 'react-router-dom'
 var HoneycombImage = require("../other/HoneycombImage.jsx");
 var MediaQuery = require('react-responsive');
-import { Link } from 'react-router';
 const CollectionUrl = require('../modules/CollectionUrl.jsx')
 
-var PreviewLink = React.createClass({
+var PreviewLink = createReactClass({
   propTypes: {
-    siteObject: React.PropTypes.object,
-  },
-
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
-
-  getChildContext() {
-    return {
-      muiTheme: this.state.muiTheme,
-    };
+    siteObject: PropTypes.object,
   },
 
   getInitialState: function () {
     return {
       hover: false,
-      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
     };
   },
 
@@ -64,18 +52,16 @@ var PreviewLink = React.createClass({
   getCard: function(media) {
 
     return (
-        <mui.Card style={this.style(media)} onMouseOver={this.mouseOver} onMouseOut={this.mouseOut} >
-          <mui.CardMedia overlay={<mui.CardTitle title="Continue" />}>
+        <Card style={this.style(media)} onMouseOver={this.mouseOver} onMouseOut={this.mouseOut} >
+          <CardMedia overlay={<CardTitle title="Continue" />}>
             <HoneycombImage image={this.props.siteObject.image} size="small" />
-          </mui.CardMedia>
-          <mui.FloatingActionButton
-            linkButton={false}
+          </CardMedia>
+          <FloatingActionButton
             style={this.buttonStyle()}
-            zDepth={2}
           >
-            <mui.FontIcon style={{ mixBlendMode: "soft-light" }} className="material-icons">arrow_forward</mui.FontIcon>
-          </mui.FloatingActionButton>
-        </mui.Card>
+            <FontIcon style={{ mixBlendMode: "soft-light" }} className="material-icons">arrow_forward</FontIcon>
+          </FloatingActionButton>
+        </Card>
 
     );
   },

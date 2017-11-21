@@ -1,12 +1,12 @@
 'use strict'
-var React = require('react');
-var mui = require('material-ui');
-var SelectField = mui.SelectField;
-var MenuItem = mui.MenuItem;
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import { MenuItem, SelectField } from 'material-ui'
 var SearchActions = require('../../actions/SearchActions.js');
 var SearchStore = require('../../store/SearchStore.js');
 
-var SearchSort = React.createClass({
+var SearchSort = createReactClass({
   getInitialState: function() {
     var state = {
       selectValue: 0,
@@ -70,9 +70,7 @@ var SearchSort = React.createClass({
         <div style={this.sortStyle()}>
           <select
             ref='searchSort'
-            autoWidth={false}
             onChange={this.onChange.bind(this, 'selectValue')}
-            menuItems={SearchStore.sorts}
             defaultValue={SearchStore.sortOption}
             style={this.sortSelectStyle()}
           >

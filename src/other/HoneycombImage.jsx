@@ -1,14 +1,16 @@
 //app/assets/javascripts/components/Image.jsx
-var React = require('react');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 $ = jQuery = require('jquery');
 
-var HoneycombImage = React.createClass({
+var HoneycombImage = createReactClass({
   propTypes: {
-    image: React.PropTypes.object,
-    size: React.PropTypes.string,
-    style: React.PropTypes.object,
-    title: React.PropTypes.string,
-    alt: React.PropTypes.string,
+    image: PropTypes.object,
+    size: PropTypes.string,
+    style: PropTypes.object,
+    title: PropTypes.string,
+    alt: PropTypes.string,
   },
 
   style: function() {

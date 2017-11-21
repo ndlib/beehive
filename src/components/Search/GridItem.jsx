@@ -1,14 +1,16 @@
 'use strict'
-var React = require('react');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 import { Link } from 'react-router'
 var mui = require('material-ui');
 var ItemImage = require('./ItemImage.jsx');
 
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
-var GridItem = React.createClass({
+var GridItem = createReactClass({
   propTypes: {
-    item: React.PropTypes.object.isRequired,
+    item: PropTypes.object.isRequired,
   },
 
   mediaOverlay: function() {
@@ -17,14 +19,14 @@ var GridItem = React.createClass({
         { this.props.item.name }
       </span>
     );
-    return (<mui.CardTitle title={ name }/>);
+    return (<CardTitle title={ name }/>);
   },
 
   cardMedia: function() {
     return (
-      <mui.CardMedia overlay={ this.mediaOverlay() }>
+      <CardMedia overlay={ this.mediaOverlay() }>
         <ItemImage item={ this.props.item } />
-      </mui.CardMedia>
+      </CardMedia>
     );
   },
 
@@ -38,13 +40,13 @@ var GridItem = React.createClass({
   render: function() {
     return (
       <Link to={CollectionUrl.itemObjectUrl(this.props.item)}>
-        <mui.Card
+        <Card
           style={{cursor: 'pointer', position: 'relative'}}
         >
 
           { this.cardMedia() }
           {this.manifestIcon(this.props.item)}
-        </mui.Card>
+        </Card>
       </Link>
     );
   }

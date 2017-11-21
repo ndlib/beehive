@@ -1,14 +1,16 @@
 'use strict'
-var React = require('react');
-import { Link } from 'react-router'
-var mui = require('material-ui');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import { Link } from 'react-router-dom';
+import mui, { Divider, ListItem } from 'material-ui';
 var ItemImage = require('./ItemImage.jsx');
 
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
-var ListItem = React.createClass({
+var MyListItem = createReactClass({
   propTypes: {
-    item: React.PropTypes.object.isRequired,
+    item: PropTypes.object.isRequired,
   },
 
   leftIcon: function() {
@@ -45,7 +47,7 @@ var ListItem = React.createClass({
   render: function() {
     return (
       <Link to={CollectionUrl.itemObjectUrl(this.props.item)}>
-        <mui.ListItem
+        <ListItem
           leftIcon={this.leftIcon()}
           primaryText={this.primaryText()}
           secondaryText={this.secondaryText()}
@@ -53,10 +55,10 @@ var ListItem = React.createClass({
           innerDivStyle={{paddingLeft:'80px', height:'85px'}}
           rightIcon={this.manifestIcon(this.props.item)}
         />
-        <mui.Divider  style={{marginLeft: "110px" }} />
+        <Divider  style={{marginLeft: "110px" }} />
       </Link>
     );
   }
 });
 
-module.exports = ListItem;
+module.exports = MyListItem;

@@ -1,20 +1,23 @@
-var React = require('react');
-var mui = require('material-ui');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import mui, {Paper} from 'material-ui';
+import { Link } from 'react-router-dom'
 
-var IndexPageFooter = React.createClass({
+var IndexPageFooter = createReactClass({
 
   render: function () {
     return (
-      <mui.Paper circle={false} rounded={false} zDepth={0} >
+      <Paper circle={false} rounded={false}>
         <footer>
-          <a href="http://library.nd.edu" className="hesburgh-logo" style={{float: 'left'}}>
+          <Link to="http://library.nd.edu" className="hesburgh-logo" style={{float: 'left'}}>
             Hesburgh Logo
-          </a>
-          <a href="/" className="connecting-logo">
+          </Link>
+          <Link to="/" className="connecting-logo">
             Connecting People to Knowledge
-          </a>
+          </Link>
         </footer>
-      </mui.Paper>
+      </Paper>
     );
   }
 });

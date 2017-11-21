@@ -1,11 +1,13 @@
-var React = require('react');
-var mui = require('material-ui');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import { CardMedia } from 'material-ui'
 var CardCaption = require("./CardCaption.jsx");
 
-var ImageCard = React.createClass({
+var ImageCard = createReactClass({
 
   propTypes: {
-    section: React.PropTypes.object.isRequired,
+    section: PropTypes.object.isRequired,
   },
 
   style: function() {
@@ -17,9 +19,9 @@ var ImageCard = React.createClass({
   render: function() {
     return (
       <div style={this.style()}>
-        <mui.CardMedia className="img">
+        <CardMedia className="img">
           <img style={{width: 'auto' }} src={this.props.section.item.media.thumbnailUrl} />
-        </mui.CardMedia>
+        </CardMedia>
         <CardCaption caption={this.props.section.caption} />
       </div>
     );

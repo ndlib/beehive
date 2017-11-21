@@ -1,20 +1,28 @@
 'use strict'
-var React = require('react');
-var mui = require('material-ui')
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import { GridList } from 'material-ui'
 var MediaQuery = require('react-responsive');
 
 var CollectionCard = require('./CollectionCard.jsx');
 
-var CollectionsList = React.createClass({
+var CollectionsList = createReactClass({
   displayName: 'Collections List',
 
   propTypes: {
-    collections: React.PropTypes.array,
+    collections: PropTypes.array,
   },
 
   collectionNodes: function() {
     return this.reverseCollection().map(function(collection, index) {
-      return (<CollectionCard collection={collection} cardHeight={450} />);
+      return (
+        <CollectionCard
+          collection={collection}
+          key={index}
+          cardHeight='450'
+          />
+      );
     });
   },
 
@@ -29,9 +37,9 @@ var CollectionsList = React.createClass({
 
   gridList: function(cols) {
     return (
-      <mui.GridList cols={cols} cellHeight={'auto'} padding={24}>
+      <GridList cols={cols} cellHeight={'auto'} padding={24}>
         {this.collectionNodes()}
-      </mui.GridList>
+      </GridList>
     );
   },
 

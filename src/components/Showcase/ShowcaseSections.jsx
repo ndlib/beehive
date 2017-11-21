@@ -1,15 +1,17 @@
 'use strict'
-var React = require("react");
-var mui = require('material-ui');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import mui, { Paper } from 'material-ui'
 
 var ShowcaseEndingCard = require('./ShowcaseEndingCard.jsx');
 var SectionCard = require('../Section/SectionCard.jsx');
 
-var ShowcaseSections = React.createClass({
+var ShowcaseSections = createReactClass({
 
   propTypes: {
-    showcase: React.PropTypes.object.isRequired,
-    height: React.PropTypes.number.isRequired,
+    showcase: PropTypes.object.isRequired,
+    height: PropTypes.number.isRequired,
   },
 
   style: function() {
@@ -49,10 +51,10 @@ var ShowcaseSections = React.createClass({
 
   render: function() {
     return (
-      <mui.Paper id="sections-content-inner" className="sections-content-inner" style={this.style()}>
+      <Paper id="sections-content-inner" className="sections-content-inner" style={this.style()}>
         {this.sections()}
         {this.nextShowcase()}
-      </mui.Paper>
+      </Paper>
     );
   }
 });

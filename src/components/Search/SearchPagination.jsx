@@ -1,11 +1,13 @@
 'use strict'
-var React = require('react');
-var mui = require('material-ui');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import { Link } from 'react-router-dom'
 var SearchStore = require('../../store/SearchStore.js');
 
-var SearchPagination = React.createClass({
+var SearchPagination = createReactClass({
   propTypes: {
-    compact: React.PropTypes.bool,
+    compact: PropTypes.bool,
   },
 
   getDefaultProps: function() {
@@ -32,7 +34,7 @@ var SearchPagination = React.createClass({
     else {
       var searchUrl = window.location.origin + SearchStore.searchUri({ start: (i-1)*SearchStore.rowLimit }) + "&compact=" + this.props.compact;
       return(
-        <a href={searchUrl} style={this.paginationButton()}>{i}</a>
+        <Link to={searchUrl} style={this.paginationButton()}>{i}</Link>
       );
     }
   },
@@ -42,7 +44,7 @@ var SearchPagination = React.createClass({
     // if not first page
     if(SearchStore.start != 0) {
       var backLink = window.location.origin + SearchStore.searchUri({ start: 0 }) + "&compact=" + this.props.compact;
-      nodes.push((<a href={backLink}> <i className="material-icons" style={{fontSize: '1em',}}>arrow_back</i> </a>));
+      nodes.push((<Link to={backLink}> <i className="material-icons" style={{fontSize: '1em',}}>arrow_back</i> </Link>));
     }
     var last = Math.floor(SearchStore.found/SearchStore.rowLimit);
     var cappedFirst = Math.max(1, Math.floor(SearchStore.start/SearchStore.rowLimit) - 2);
@@ -60,7 +62,7 @@ var SearchPagination = React.createClass({
     // if not last page
     if(SearchStore.start + SearchStore.rowLimit < SearchStore.found) {
       var forwardLink = window.location.origin + SearchStore.searchUri({ start: SearchStore.rowLimit*(last - 1) }) + "&compact=" + this.props.compact;
-      nodes.push((<a href={forwardLink}> <i className="material-icons" style={{fontSize: '1em'}}>arrow_forward</i> </a>));
+      nodes.push((<Link to={forwardLink}> <i className="material-icons" style={{fontSize: '1em'}}>arrow_forward</i> </Link>));
     }
     return nodes;
   },

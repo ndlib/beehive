@@ -1,23 +1,27 @@
 'use strict'
-var React = require("react");
-var mui = require('material-ui');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import mui, { FlatButton } from 'material-ui';
 var MediaQuery = require("react-responsive");
 var Details = require('../../display/Details.jsx');
 var OpenseadragonViewer = require('../../display/OpenseadragonViewer.jsx');
 var MultimediaViewer = require('../../layout/MultimediaViewer.jsx');
 import AddReferral from '../../modules/AddReferral.js';
 
-var ItemContent = React.createClass({
+var ItemContent = createReactClass({
   displayName: "ItemContent",
 
   propTypes: {
-    item: React.PropTypes.object,
-    additionalDetails: React.PropTypes.string,
-    height: React.PropTypes.number.isRequired,
-    minMediaHeight: React.PropTypes.number, // If splitting the space between media and meta
-                                            // causes the media to go smaller than this, it
-                                            // will switch to full screen media render
-    mediaBottom: React.PropTypes.number,    // Distance from bottom of media to bottom of viewport
+    item: PropTypes.object,
+    additionalDetails: PropTypes.string,
+    height: PropTypes.number.isRequired,
+    minMediaHeight: PropTypes.number,
+    // If splitting the space between media and meta
+    // causes the media to go smaller than this, it
+    // will switch to full screen media render
+    mediaBottom: PropTypes.number,
+    // Distance from bottom of media to bottom of viewport
   },
 
   getDefaultProps: function() {
@@ -108,7 +112,7 @@ var ItemContent = React.createClass({
   toggleZoom: function() {
     return (
       <div style={{ background: "#444" }}>
-        <mui.FlatButton label="Toggle Zoom"
+        <FlatButton label="Toggle Zoom"
                         onClick={ () => { this.setState({ zoom: !this.state.zoom })} }
                         style={{ display: "block", margin: "auto" }}
                         labelStyle={{color: 'white'}}
@@ -125,7 +129,7 @@ var ItemContent = React.createClass({
     if(this.hasManuscript()) {
       return (
         <div style={{ background: "#444" }}>
-          <mui.FlatButton label="View Manuscript"
+          <FlatButton label="View Manuscript"
                           onClick={ (event) => {
                             event.preventDefault()
                             window.open(AddReferral(this.props.item.metadata.manuscript_url.values[0].value));

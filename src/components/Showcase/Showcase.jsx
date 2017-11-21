@@ -1,9 +1,8 @@
 'use strict'
-var React = require('react');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 var mui = require('material-ui');
-var ThemeManager = require('material-ui/lib/styles/theme-manager');
-var BeehiveTheme = require('../../themes/beehive.jsx');
-
 var EventEmitter = require('../../middleware/EventEmitter.js');
 var ShowcaseShow = require('./ShowcaseShow.jsx');
 var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx');
@@ -17,23 +16,13 @@ var PageTitle = require("../../modules/PageTitle.js")
 const BrowserUtils = require('../../modules/BrowserUtils.jsx')
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
-var Showcase = React.createClass({
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
-
-  getChildContext() {
-    return {
-      muiTheme: this.state.muiTheme,
-    };
-  },
+var Showcase = createReactClass({
 
   getInitialState: function() {
     return {
       showcase: null,
       height: window.innerHeight,
       widht: window.innerWidth,
-      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
     };
   },
 
@@ -51,21 +40,11 @@ var Showcase = React.createClass({
     return true;
   },
 
-  componentWillMount: function() {
-    ConfigurationStore.addChangeListener(this.configurationLoaded);
-    var newMuiTheme = this.state.muiTheme;
-    newMuiTheme.paper.backgroundColor = 'inherit';
-
-    this.setState({
-      muiTheme: newMuiTheme,
-    });
-  },
-
   componentDidMount: function() {
     if ('object' == typeof(this.props.collection)) {
       this.setValues(this.props.collection);
     } else {
-      LoadRemote.loadRemoteCollection(this.props.collection, this.setValues.bind(this))
+      LoadRemote.loadRemoteCollection(this.props.collection, this.setValues)
     }
     window.addEventListener('resize', this.handleResize, false);
     this.handleResize();
@@ -74,6 +53,22 @@ var Showcase = React.createClass({
   componentWillUnmount: function() {
     window.removeEventListener('resize', this.handleResize);
     ConfigurationStore.removeChangeListener(this.configurationLoaded);
+  },
+
+  componentWillReceiveProps: function(nextProps) {
+    if(this.props.collection !== nextProps.collection) {
+      if ('object' == typeof(nextProps.collection)) {
+        this.setValues(nextProps.collection);
+      } else {
+        LoadRemote.loadRemoteCollection(nextProps.collection, this.setValues)
+      }
+    }
+  },
+
+  componentDidUpdate: function(prevProps, prevState) {
+    if(this.props !== prevProps) {
+      this.handleResize()
+    }
   },
 
   handleResize: function() {
@@ -100,9 +95,8 @@ var Showcase = React.createClass({
     if(!BrowserUtils.mobile()){
       header = (<CollectionPageHeader collection={this.state.collection} />);
     }
-    // this is a div instead of mui.AppCanvas because of a bug in 12.3 which is fixed in master.
     return (
-      <div style={{ backgroundColor: 'inherit' }}>
+      <div style={{ backgroundColor: "rgba(0,0,0,0)" }}>
         {header}
         <PageContent fluidLayout={true}>
           {showcaseShow}
@@ -113,5 +107,4 @@ var Showcase = React.createClass({
   }
 });
 
-// each file will export exactly one component
 module.exports = Showcase;

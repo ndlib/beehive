@@ -1,8 +1,10 @@
 'use strict'
-var React = require('react');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 var mui = require('material-ui');
-var ThemeManager = require('material-ui/lib/styles/theme-manager');
-var BeehiveTheme = require('../../themes/beehive.jsx');
+// var ThemeManager = require('material-ui/lib/styles/theme-manager');
+// var BeehiveTheme = require('../../themes/beehive.jsx');
 
 var EventEmitter = require('../../middleware/EventEmitter.js');
 var ItemShow = require('./ItemShow.jsx');
@@ -19,20 +21,10 @@ const LoadRemote = require('../../modules/LoadRemote.jsx')
 
 var showcaseTitleHeight = 56;
 
-var Item = React.createClass({
+var Item = createReactClass({
   propTypes: {
-    collection: React.PropTypes.string,
-    item: React.PropTypes.string,
-  },
-
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
-
-  getChildContext() {
-    return {
-      muiTheme: this.state.muiTheme,
-    };
+    collection: PropTypes.string,
+    item: PropTypes.string,
   },
 
   getInitialState: function() {
@@ -40,7 +32,7 @@ var Item = React.createClass({
       collection: null,
       item: null,
       height: window.innerHeight,
-      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
+      //muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
     };
   },
 
@@ -131,7 +123,6 @@ var Item = React.createClass({
     if(!BrowserUtils.mobile()){
       header = (<CollectionPageHeader collection={this.state.collection} />);
     }
-    // this is a div instead of mui.AppCanvas because of a bug in 12.3 which is fixed in master.
     return (
       <div style={{ backgroundColor: 'inherit' }}>
         {header}

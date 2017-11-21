@@ -1,15 +1,17 @@
 'use strict'
-var React = require("react");
-var mui = require('material-ui');
-
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import mui, {Card, CardActions, CardMedia, CardTitle, FloatingActionButton, FontIcon} from 'material-ui'
+import {Link} from 'react-router-dom'
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
-var SitePathCard = React.createClass({
+var SitePathCard = createReactClass({
   propTypes: {
-    siteObject: React.PropTypes.object.isRequired,
-    addNextButton: React.PropTypes.bool,
-    fixedSize: React.PropTypes.bool,
-    headerTitle: React.PropTypes.string,
+    siteObject: PropTypes.object.isRequired,
+    addNextButton: PropTypes.bool,
+    fixedSize: PropTypes.bool,
+    headerTitle: PropTypes.string,
   },
 
   getDefaultProps: function() {
@@ -65,56 +67,53 @@ var SitePathCard = React.createClass({
   nextButton: function() {
     if (this.props.addNextButton) {
       return (
-        <mui.CardActions
+        <CardActions
           style={{position:'absolute', right:'10px', top: this.props.headerTitle != null ? '33px' : '363px'}}
-          zDepth={2}
         >
-          <mui.FloatingActionButton
-            primary={true}
-            linkButton={true}
+          <Link to={CollectionUrl.collectionObjectUrl(this.props.siteObject)}>
+          <FloatingActionButton
             style={this.buttonStyle()}
-            href={CollectionUrl.collectionObjectUrl(this.props.siteObject)}
             disableTouchRipple={true}
           >
-            <mui.FontIcon className="material-icons">arrow_forward</mui.FontIcon>
-          </mui.FloatingActionButton>
-        </mui.CardActions>
+            <FontIcon className="material-icons">arrow_forward</FontIcon>
+          </FloatingActionButton>
+        </Link>
+        </CardActions>
       );
     }
   },
 
   headerTitle: function () {
     if (this.props.headerTitle) {
-      return (<mui.CardTitle title={this.props.headerTitle} rootStyle={{height:'600px'}}/>);
+      return (<CardTitle title={this.props.headerTitle} style={{height:'600px'}}/>);
     }
   },
 
   cardTitle: function() {
-    return (<mui.CardTitle title={this.props.siteObject.name_line_1 || this.props.siteObject.name} subtitle={this.props.siteObject.name_line_2} />);
+    return (<CardTitle title={this.props.siteObject.name_line_1 || this.props.siteObject.name} subtitle={this.props.siteObject.name_line_2} />);
   },
 
   cardMedia: function () {
     return (
-      <mui.CardMedia
+      <CardMedia
         className="collection-site-path-card"
         style={{ backgroundImage:'url("' + this.image() + '")' }}
         overlay={ this.cardTitle() }>
-      </mui.CardMedia>);
+      </CardMedia>);
   },
 
   render: function() {
     return (
-      <mui.Card style={this.style()} >
-        <a href={CollectionUrl.collectionObjectUrl(this.props.siteObject)}>
+      <Card style={this.style()} >
+        <Link to={CollectionUrl.collectionObjectUrl(this.props.siteObject)}>
           {this.headerTitle()}
           {this.cardMedia()}
-        </a>
+        </Link>
         {this.nextButton()}
-      </mui.Card>
+      </Card>
 
     );
   }
 });
 
-// each file will export exactly one component
 module.exports = SitePathCard;

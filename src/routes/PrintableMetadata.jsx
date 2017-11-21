@@ -1,8 +1,8 @@
 'use strict'
-var React = require('react');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 var mui = require('material-ui');
-var ThemeManager = require('material-ui/lib/styles/theme-manager');
-var BeehiveTheme = require('../themes/beehive.jsx');
 
 var EventEmitter = require('../middleware/EventEmitter.js');
 var HoneycombURL = require('../modules/HoneycombURL.js');
@@ -13,26 +13,11 @@ var ConfigurationStore = require("../store/ConfigurationStore.js");
 const LoadRemote = require('../modules/LoadRemote.jsx')
 const CollectionUrl = require('../modules/CollectionUrl.jsx')
 
-var PrintableMetadata = React.createClass({
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
-
-  getChildContext() {
-    return {
-      muiTheme: this.state.muiTheme,
-    };
-  },
-
-  getInitialState: function() {
-    return {
-      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
-    };
-  },
+var PrintableMetadata = createReactClass({
 
   componentWillMount: function() {
     ConfigurationStore.addChangeListener(this.configurationLoaded);
-    LoadRemote.withCallback(CollectionUrl.remoteItem(this.props.params.itemID), this.setItem.bind(this));
+    LoadRemote.withCallback(CollectionUrl.remoteItem(this.props.match.params.itemID), this.setItem.bind(this));
   },
 
   componentWillUnmount: function() {

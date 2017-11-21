@@ -1,21 +1,23 @@
 'use strict'
 import '../assets/scripts/openseadragon.js';
 
-var React = require('react');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 var ReactDOM = require('react-dom');
 
 var navigatorSize = 100;
 
-var OpenseadragonViewer = React.createClass({
+var OpenseadragonViewer = createReactClass({
   propTypes: {
-    image: React.PropTypes.object,
-    containerID: React.PropTypes.string.isRequired,
-    fullPage: React.PropTypes.bool,
-    height: React.PropTypes.number,
-    showNavigator: React.PropTypes.bool,
-    showFullPageControl: React.PropTypes.bool,
-    toolbarTop: React.PropTypes.number,
-    toolbarLeft: React.PropTypes.number,
+    image: PropTypes.object,
+    containerID: PropTypes.string.isRequired,
+    fullPage: PropTypes.bool,
+    height: PropTypes.number,
+    showNavigator: PropTypes.bool,
+    showFullPageControl: PropTypes.bool,
+    toolbarTop: PropTypes.number,
+    toolbarLeft: PropTypes.number,
   },
 
   getDefaultProps: function() {

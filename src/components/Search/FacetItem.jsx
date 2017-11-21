@@ -1,15 +1,15 @@
 'use strict'
-var React = require('react');
-var mui = require('material-ui');
-var ListItem = mui.ListItem;
-var FontIcon = mui.FontIcon;
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import mui, { ListItem, FontIcon } from 'material-ui'
 var SearchStore = require('../../store/SearchStore.js');
 var SearchActions = require('../../actions/SearchActions.js');
-var FacetItem = React.createClass({
+var FacetItem = createReactClass({
 
   propTypes: {
-    field: React.PropTypes.string.isRequired,
-    facet: React.PropTypes.object.isRequired,
+    field: PropTypes.string.isRequired,
+    facet: PropTypes.object.isRequired,
   },
 
   valueOnClick: function(e) {

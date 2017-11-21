@@ -1,7 +1,9 @@
 'use strict'
-var React = require('react');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 
-var TitleBar = React.createClass({
+var TitleBar = createReactClass({
   render: function() {
     var content = this.props.children;
     if (!content) {

@@ -1,7 +1,9 @@
-var React = require('react');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 var MediaQuery = require("react-responsive");
 
-var BrandBar = React.createClass({
+var BrandBar = createReactClass({
 
   render: function() {
     return (

@@ -1,37 +1,25 @@
 'use strict'
-var React = require('react');
-var mui = require('material-ui');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import mui, { Divider, Drawer, FontIcon, FlatButton, MenuItem } from 'material-ui'
+import { Link } from 'react-router-dom'
 var Types = {
   LINK: 'LINK',
   SUBHEADER: 'SUBHEADER'
 }
-var ThemeManager = require('material-ui/lib/styles/theme-manager');
-var BeehiveTheme = require('../themes/beehive.jsx');
-var injectTapEventPlugin = require("react-tap-event-plugin");
-injectTapEventPlugin();
-
 const CollectionUrl = require('../modules/CollectionUrl.jsx')
 const CurrentTheme = require('../modules/CurrentTheme.jsx')
 
-var CollectionLeftNav = React.createClass({
+var CollectionLeftNav = createReactClass({
   propTypes: {
-    collection: React.PropTypes.object.isRequired,
-  },
-
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
-
-  getChildContext() {
-    return {
-      muiTheme: this.state.muiTheme,
-    };
+    collection: PropTypes.object.isRequired,
   },
 
   getInitialState: function() {
     return {
       sitePath: [],
-      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
+      open: false,
     };
   },
 
@@ -81,33 +69,33 @@ var CollectionLeftNav = React.createClass({
     var browseUrl = CollectionUrl.browseUrl(this.props.collection);
 
     options.push((
-      <a href={collectionUrl} key='collectionUrlLink'>
-        <mui.MenuItem primaryText='Home' key='home' />
-      </a>
+      <Link to={collectionUrl} key='collectionUrlLink'>
+        <MenuItem primaryText='Home' key='home' />
+      </Link>
     ));
 
     if (this.props.collection.enable_browse) {
       options.push((
-        <a href={browseUrl} key='browseUrlLink'>
-          <mui.MenuItem primaryText='Browse Collection' key='browse' />
-        </a>
+        <Link to={browseUrl} key='browseUrlLink'>
+          <MenuItem primaryText='Browse Collection' key='browse' />
+        </Link>
       ));
     }
 
     if (this.props.collection.about) {
       options.push((
-        <a href={aboutUrl} key='aboutUrl'>
-          <mui.MenuItem primaryText='About' key='about'/>
-        </a>
+        <Link to={aboutUrl} key='aboutUrl'>
+          <MenuItem primaryText='About' key='about'/>
+        </Link>
       ));
     }
-    options.push((<mui.Divider key="divider"/>));
+    options.push((<Divider key="divider"/>));
 
     if (introUrl) {
       options.push((
-        <a href={introUrl} key='introUrl'>
-          <mui.MenuItem primaryText='Introduction' key='intro'/>
-        </a>
+        <Link to={introUrl} key='introUrl'>
+          <MenuItem primaryText='Introduction' key='intro'/>
+        </Link>
       ));
     }
 
@@ -115,9 +103,9 @@ var CollectionLeftNav = React.createClass({
       var url = CollectionUrl.collectionObjectUrl(siteObject);
       var name = siteObject.name || siteObject.name_line_1;
       options.push ((
-        <a href={url} key={url}>
-          <mui.MenuItem primaryText={name} key={siteObject.id} className="collection-left-nav-item" />
-        </a>
+        <Link to={url} key={url}>
+          <MenuItem primaryText={name} key={siteObject.id} className="collection-left-nav-item" />
+        </Link>
       ));
     }.bind(this));
 
@@ -144,7 +132,7 @@ var CollectionLeftNav = React.createClass({
   },
 
   clickEvent: function () {
-    this.refs.leftNav.toggle();
+    this.setState({open: !this.state.open});
   },
 
   render: function () {
@@ -154,18 +142,20 @@ var CollectionLeftNav = React.createClass({
     else {
       return (
         <div id="CollectionLeftNav" style={{margin:'0', marginLeft: "16px"}}>
-          <mui.FlatButton
+          <FlatButton
             onClick={this.clickEvent}
             style={this.buttonStyle()}
             disableTouchRipple={true}
           >
-            <mui.FontIcon className="material-icons" style={CurrentTheme.lightIconStyle()}>menu</mui.FontIcon>
-          </mui.FlatButton>
+            <FontIcon className="material-icons" style={CurrentTheme.lightIconStyle()}>menu</FontIcon>
+          </FlatButton>
 
-          <mui.LeftNav
-            ref="leftNav"
-            className="leftNav"
+          <Drawer
             docked={false}
+            onRequestChange={(open) => this.setState({open})}
+            open={this.state.open}
+            id="leftNav"
+            className="leftNav"
             children={this.dropDownOptions()}
             style={this.navStyle()} />
         </div>

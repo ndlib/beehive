@@ -1,10 +1,12 @@
 //app/assets/javascripts/components/layout/PageContent.jsx
-var React = require('react');
-var mui = require('material-ui');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import mui, {Paper} from 'material-ui';
 
-var PageContent = React.createClass({
+var PageContent = createReactClass({
   propTypes: {
-    fluidLayout: React.PropTypes.bool,
+    fluidLayout: PropTypes.bool,
   },
 
   getDefaultProps: function () {
@@ -27,15 +29,16 @@ var PageContent = React.createClass({
         padding: '0 8%',
         background: 'none',
         position: 'relative',
+        backgroundColor: 'rgba(0,0,0,0)'
       });
     }
   },
 
   render: function() {
     return (
-      <mui.Paper onClick={this.props.onClick} onMouseOver={this.props.onMouseOver} transitionEnabled={false} circle={false} rounded={false} zDepth={0} style={this.style()} >
+      <Paper onClick={this.props.onClick} onMouseOver={this.props.onMouseOver} transitionEnabled={false} circle={false} rounded={false} style={this.style()} >
         {this.props.children}
-      </mui.Paper>
+      </Paper>
     );
   }
 });

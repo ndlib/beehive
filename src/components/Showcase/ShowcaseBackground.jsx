@@ -1,11 +1,13 @@
 'use strict'
-var React = require('react');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 
-var ShowcaseBackground = React.createClass({
+var ShowcaseBackground = createReactClass({
   propTypes: {
-    showcase: React.PropTypes.object.isRequired,
-    height: React.PropTypes.number.isRequired,
-    percentBlur: React.PropTypes.number,
+    showcase: PropTypes.object.isRequired,
+    height: PropTypes.number.isRequired,
+    percentBlur: PropTypes.number,
   },
 
   getDefaultProps: function() {

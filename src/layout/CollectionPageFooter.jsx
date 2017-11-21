@@ -1,13 +1,16 @@
 //app/assets/javascripts/components/layout/CollectionPageFooter.jsx
-var React = require('react');
-var mui = require('material-ui');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import mui, { Paper } from 'material-ui'
+import { Link } from 'react-router-dom'
 var MediaQuery = require('react-responsive');
 
-var CollectionPageFooter = React.createClass({
+var CollectionPageFooter = createReactClass({
 
   propTypes: {
-    collection: React.PropTypes.object.isRequired,
-    height: React.PropTypes.number
+    collection: PropTypes.object.isRequired,
+    height: PropTypes.number
   },
 
   getDefaultProps: function() {
@@ -17,16 +20,16 @@ var CollectionPageFooter = React.createClass({
   render: function () {
     return (
       <MediaQuery minWidth={650}>
-        <mui.Paper circle={false} rounded={false} zDepth={0} style={{ height: this.props.height + 'px' }}>
+        <Paper circle={false} rounded={false} style={{ height: this.props.height + 'px' }}>
           <footer style={{ height: this.props.height + 'px' }}>
             <a href="http://library.nd.edu" className="hesburgh-logo">
               Hesburgh Logo
             </a>
-            <a href="/" className="dec-logo">
+            <Link to="/" className="dec-logo">
               Dec Logo
-            </a>
+            </Link>
           </footer>
-        </mui.Paper>
+        </Paper>
       </MediaQuery>
     );
   }

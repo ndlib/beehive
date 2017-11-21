@@ -1,6 +1,7 @@
 import "./assets/css/main.scss";
 
 import injectTapEventPlugin from "react-tap-event-plugin";
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 injectTapEventPlugin();
 
 import React from 'react';
@@ -10,8 +11,8 @@ import getRoutes from './routes/routes.js';
 const routes = getRoutes();
 
 ReactDOM.render(
-  <div>
+  <MuiThemeProvider>
     {routes}
-  </div>,
+  </MuiThemeProvider>,
   document.getElementById('content')
 );

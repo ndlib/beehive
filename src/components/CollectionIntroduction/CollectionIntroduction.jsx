@@ -1,8 +1,7 @@
 'use strict'
-var React = require("react");
-var mui = require('material-ui');
-var ThemeManager = require('material-ui/lib/styles/theme-manager');
-var BeehiveTheme = require('../../themes/beehive.jsx');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 
 var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx');
 var PageContent = require('../../layout/PageContent.jsx');
@@ -12,29 +11,18 @@ var PageTitleBar = require('../Pages/PageTitleBar.jsx');
 
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
-var CollectionIntroduction = React.createClass({
+var CollectionIntroduction = createReactClass({
   propTypes: {
-    collection: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.object,
+    collection: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.object,
     ]),
-  },
-
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
-
-  getChildContext() {
-    return {
-      muiTheme: this.state.muiTheme,
-    };
   },
 
   getInitialState: function() {
     return {
       collection: {},
       remoteCollectionLoaded: false,
-      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
     };
   },
 
@@ -60,7 +48,7 @@ var CollectionIntroduction = React.createClass({
       return null;
     }
     return (
-      <mui.AppCanvas>
+      <div>
         <CollectionPageHeader collection={this.state.collection} >
           <PageTitleBar title="Introduction" height={35}/>
         </CollectionPageHeader>
@@ -69,7 +57,7 @@ var CollectionIntroduction = React.createClass({
           <CollectionDescription collection={this.state.collection} />
         </PageContent>
         <CollectionPageFooter collection={this.state.collection} />
-      </mui.AppCanvas>
+      </div>
     );
   }
 });

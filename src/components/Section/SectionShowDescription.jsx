@@ -1,12 +1,14 @@
 'use strict'
-var React = require('react');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 var PageContent = require('../../layout/PageContent.jsx');
 
-var SectionShowDescription = React.createClass({
+var SectionShowDescription = createReactClass({
   displayName: 'Section Show Description',
   propTypes: {
-    section: React.PropTypes.object.isRequired,
-    height: React.PropTypes.number,
+    section: PropTypes.object.isRequired,
+    height: PropTypes.number,
   },
 
   styles: function() {

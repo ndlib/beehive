@@ -1,15 +1,17 @@
 'use strict'
-var React = require('react');
-var mui = require('material-ui');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import mui, {GridList} from 'material-ui'
 var theme = require('../../themes/beehive.jsx');
 var MediaQuery = require('react-responsive');
 
 var SitePathCard = require('./SitePathCard.jsx');
 
-var SitePathCardList = React.createClass({
+var SitePathCardList = createReactClass({
   propTypes: {
-    sitePath: React.PropTypes.array.isRequired,
-    intro: React.PropTypes.element,
+    sitePath: PropTypes.array.isRequired,
+    intro: PropTypes.element,
   },
 
   pathNodes: function() {
@@ -30,9 +32,9 @@ var SitePathCardList = React.createClass({
 
   gridList: function(cols) {
     return (
-      <mui.GridList cols={cols} padding={theme.spacing.desktopGutter} cellHeight="auto">
+      <GridList cols={cols} padding={24} cellHeight="auto">
         {this.allNodes()}
-      </mui.GridList>
+      </GridList>
     );
   },
 

@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 import Section from '../components/Section/Section.jsx';
 import CollectionUrl from '../modules/CollectionUrl.jsx'
@@ -10,9 +11,9 @@ class SectionPage extends Component {
     return (
       <div>
         <Section
-          collection={ CollectionUrl.remoteCollection(this.props.params.collectionID) }
-          showcase={ this.props.params.showcaseID }
-          section={ CollectionUrl.remoteSection(this.props.params.sectionID) }
+          collection={ CollectionUrl.remoteCollection(this.props.match.params.collectionID) }
+          showcase={ this.props.match.params.showcaseID }
+          section={ CollectionUrl.remoteSection(this.props.match.params.sectionID) }
         />
         {this.props.children}
       </div>

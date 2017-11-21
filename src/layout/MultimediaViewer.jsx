@@ -1,5 +1,6 @@
 'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class MultimediaViewer extends Component {
 
@@ -27,10 +28,10 @@ class MultimediaViewer extends Component {
 }
 
 MultimediaViewer.propTypes = {
-  url: React.PropTypes.string.isRequired,
-  autostart: React.PropTypes.bool,
-  width: React.PropTypes.string,
-  height: React.PropTypes.string
+  url: PropTypes.string.isRequired,
+  autostart: PropTypes.bool,
+  width: PropTypes.string,
+  height: PropTypes.string
 }
 
 MultimediaViewer.defaultProps = {

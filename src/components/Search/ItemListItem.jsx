@@ -1,14 +1,16 @@
 'use strict'
-var React = require('react');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 var mui = require('material-ui');
 
 var ListItem = require('./ListItem.jsx');
 var GridItem = require('./GridItem.jsx');
 
-var ItemListItem = React.createClass({
+var ItemListItem = createReactClass({
   propTypes: {
-    item: React.PropTypes.object.isRequired,
-    view: React.PropTypes.string,
+    item: PropTypes.object.isRequired,
+    view: PropTypes.string,
   },
 
   getInitialState: function() {

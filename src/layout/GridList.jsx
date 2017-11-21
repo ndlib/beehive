@@ -1,16 +1,18 @@
 //app/assets/javascripts/components/layout/GridList.jsx
-var React = require('react');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 
 var gridSize = 12;
 
-var GridList = React.createClass({
+var GridList = createReactClass({
   propTypes: {
-    children: React.PropTypes.oneOfType([
-      React.PropTypes.array,
-      React.PropTypes.object,
+    children: PropTypes.oneOfType([
+      PropTypes.array,
+      PropTypes.object,
     ]).isRequired,
-    grids: React.PropTypes.object,
-    className: React.PropTypes.string,
+    grids: PropTypes.object,
+    className: PropTypes.string,
   },
 
   getDefaultProps: function () {

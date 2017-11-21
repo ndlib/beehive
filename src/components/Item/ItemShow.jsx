@@ -1,6 +1,8 @@
 'use strict'
-var React = require('react');
-var mui = require('material-ui');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import mui, {Paper, Toolbar, ToolbarGroup, ToolbarTitle} from 'material-ui';
 var CloseButton = require('../../other/CloseButton.jsx');
 var SideNavButton = require("../../other/SideNavButton.jsx");
 var PageContent = require('../../layout/PageContent.jsx');
@@ -10,15 +12,12 @@ var ItemContent = require('./ItemContent.jsx');
 const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 const CollecitonUrl = require('../../modules/CollectionUrl.jsx')
 
-var ItemShow = React.createClass({
+var ItemShow = createReactClass({
   propTypes: {
-    height: React.PropTypes.number,
-    item: React.PropTypes.object.isRequired,
+    height: PropTypes.number,
+    item: PropTypes.object.isRequired,
   },
 
-  contextTypes: {
-    muiTheme: React.PropTypes.object,
-  },
 
   styles: function () {
     return {
@@ -30,7 +29,7 @@ var ItemShow = React.createClass({
 
   titleStyle: function () {
     return {
-      color: CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor,
+      color: '#ffffff',
       position: "fixed",
       width: "80%"
     }
@@ -38,7 +37,7 @@ var ItemShow = React.createClass({
 
   closeButtonStyle: function () {
     return {
-      color: CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor,
+      color: '#ffffff',
       height: "100%",
     }
   },
@@ -48,21 +47,21 @@ var ItemShow = React.createClass({
       height: this.props.height + "px",
       width: "100%",
       position: "fixed",
-      backgroundColor: CurrentTheme.getCurrentPallette(this.context.muiTheme).canvasColor,
+      backgroundColor: '#ffffff',
       zIndex: "4",
     }
   },
 
   toolbar: function() {
     return (
-      <mui.Toolbar style={this.styles()} >
-        <mui.ToolbarGroup key={0} float="left">
-          <mui.ToolbarTitle text={this.props.title}  style={this.titleStyle()} />
-        </mui.ToolbarGroup>
-        <mui.ToolbarGroup key={1} float="right" style={this.closeButtonStyle()}>
+      <Toolbar style={this.styles()} >
+        <ToolbarGroup key={0} float="left">
+          <ToolbarTitle text={this.props.title}  style={this.titleStyle()} />
+        </ToolbarGroup>
+        <ToolbarGroup key={1} float="right" style={this.closeButtonStyle()}>
           <CloseButton alternate={true} />
-        </mui.ToolbarGroup>
-      </mui.Toolbar>
+        </ToolbarGroup>
+      </Toolbar>
     )
   },
 
@@ -85,12 +84,12 @@ var ItemShow = React.createClass({
   render: function() {
     return (
       <PageContent fluidLayout={true}>
-        <mui.Paper style={this.pageStyles()}>
+        <Paper style={this.pageStyles()}>
           {this.toolbar()}
           {this.prevButton()}
           {this.nextButton()}
           <ItemContent item={this.props.item} height={ this.props.height } />
-        </mui.Paper>
+        </Paper>
       </PageContent>
     );
   }

@@ -1,18 +1,20 @@
-var React = require("react");
-var mui = require('material-ui');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import mui, { Paper } from 'material-ui'
 
 var SitePathCard = require('../Collection/SitePathCard.jsx');
 const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 
-var ShowcaseEndingCard = React.createClass({
+var ShowcaseEndingCard = createReactClass({
   displayName: "Showcase Ending",
   propTypes: {
-    height: React.PropTypes.number.isRequired,
-    siteObject: React.PropTypes.object.isRequired,
+    height: PropTypes.number.isRequired,
+    siteObject: PropTypes.object.isRequired,
   },
 
   contextTypes: {
-    muiTheme: React.PropTypes.object,
+    muiTheme: PropTypes.object,
   },
 
   style: function() {
@@ -33,9 +35,9 @@ var ShowcaseEndingCard = React.createClass({
 
   render: function() {
     return (
-      <mui.Paper style={this.style()} >
+      <Paper style={this.style()} >
         <SitePathCard siteObject={this.props.siteObject} addNextButton={true} headerTitle="Continue to" fixedSize={false}/>
-      </mui.Paper>
+      </Paper>
     );
   }
 

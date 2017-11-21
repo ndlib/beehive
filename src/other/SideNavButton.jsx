@@ -1,25 +1,26 @@
-var React = require('react');
-import { Link } from 'react-router'
-var mui = require("material-ui");
-var ColorManipulator = mui.Utils.ColorManipulator;
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import { Link } from 'react-router-dom'
+import mui, { FlatButton, FontIcon } from 'material-ui'
 
 const CurrentTheme = require('../modules/CurrentTheme.jsx')
 
-var SideNavButton = React.createClass({
+var SideNavButton = createReactClass({
   propTypes: {
-    href: React.PropTypes.string,
-    onMouseDown: React.PropTypes.func,
-    offsetTop: React.PropTypes.number,
-    rightIcon: React.PropTypes.bool,
-    onKeyboardFocus: React.PropTypes.func,
-    onMouseEnter: React.PropTypes.func,
-    onMouseLeave: React.PropTypes.func,
-    onTouchStart: React.PropTypes.func,
-    buttonOnOverlay: React.PropTypes.bool,
+    href: PropTypes.string,
+    onMouseDown: PropTypes.func,
+    offsetTop: PropTypes.number,
+    rightIcon: PropTypes.bool,
+    onKeyboardFocus: PropTypes.func,
+    onMouseEnter: PropTypes.func,
+    onMouseLeave: PropTypes.func,
+    onTouchStart: PropTypes.func,
+    buttonOnOverlay: PropTypes.bool,
   },
 
   contextTypes: {
-    muiTheme: React.PropTypes.object,
+    muiTheme: PropTypes.object,
   },
 
   getDefaultProps: function() {
@@ -49,12 +50,13 @@ var SideNavButton = React.createClass({
     var styles = {
       top: (this.props.offsetTop - 30) + 'px',
       opacity: hovered ? "1" : "0.7",
-      backgroundColor: hovered ? ColorManipulator.darken(CurrentTheme.getCurrentPallette(this.context.muiTheme).accent3Color, .2) : CurrentTheme.getCurrentPallette(this.context.muiTheme).accent3Color,
+      backgroundColor: hovered ? CurrentTheme.getCurrentPallette(this.context.muiTheme).accent3Color : CurrentTheme.getCurrentPallette(this.context.muiTheme).accent3Color,
       borderRadius: "50%",
       display: "inline-block",
       margin: "0",
       marginTop: "29px",
       width: "60px",
+      minWidth: "60px",
       height: "60px",
       textAlign: "center",
       lineHeight: "60px",
@@ -93,16 +95,9 @@ var SideNavButton = React.createClass({
     }
   },
 
-  wrap: function(children) {
-    if (this.props.href) {
-      return <Link to={this.props.href}>{children}</Link>
-    }
-    return children
-  },
-
-  render: function() {
-    return this.wrap(
-      <mui.EnhancedButton
+  content: function () {
+    return (
+      <FlatButton
         onMouseDown={this.props.onMouseDown}
         style={this.buttonStyles()}
         onKeyboardFocus={this._handleKeyboardFocus}
@@ -111,9 +106,16 @@ var SideNavButton = React.createClass({
         onTouchStart={this._handleTouchStart}
         disableTouchRipple={true}
         >
-        <mui.FontIcon className="material-icons" style={this.iconStyles()} >{this.chevron()}</mui.FontIcon>
-      </mui.EnhancedButton>
+        <FontIcon className="material-icons" style={this.iconStyles()} >{this.chevron()}</FontIcon>
+      </FlatButton>
     )
+  },
+
+  render: function() {
+    if (this.props.href) {
+      return (<Link to={this.props.href}>{this.content()}</Link>)
+    }
+    return this.content()
   },
 
   _handleKeyboardFocus(e, isKeyboardFocused) {

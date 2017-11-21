@@ -1,8 +1,7 @@
 'use strict'
-var React = require('react');
-var mui = require('material-ui');
-var ThemeManager = require('material-ui/lib/styles/theme-manager');
-var BeehiveTheme = require('../../themes/beehive.jsx');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 
 var EventEmitter = require('../../middleware/EventEmitter.js');
 var SectionShow = require('./SectionShow.jsx');
@@ -19,20 +18,10 @@ const LoadRemote = require('../../modules/LoadRemote.jsx')
 
 var showcaseTitleHeight = 56;
 
-var Section = React.createClass({
+var Section = createReactClass({
   propTypes: {
-    collection: React.PropTypes.string,
-    section: React.PropTypes.string,
-  },
-
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
-
-  getChildContext() {
-    return {
-      muiTheme: this.state.muiTheme,
-    };
+    collection: PropTypes.string,
+    section: PropTypes.string,
   },
 
   getInitialState: function() {
@@ -40,7 +29,6 @@ var Section = React.createClass({
       collection: null,
       section: null,
       height: window.innerHeight,
-      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
     };
   },
 
@@ -65,17 +53,11 @@ var Section = React.createClass({
 
   componentWillMount: function() {
     ConfigurationStore.addChangeListener(this.configurationLoaded);
-    var newMuiTheme = this.state.muiTheme;
-    newMuiTheme.paper.backgroundColor = 'inherit';
-
-    this.setState({
-      muiTheme: newMuiTheme,
-    });
   },
 
   componentDidMount: function() {
-    LoadRemote.withCallback(this.props.collection, this.collectionLoaded.bind(this))
-    LoadRemote.withCallback(this.props.section, this.sectionLoaded.bind(this))
+    LoadRemote.withCallback(this.props.collection, this.collectionLoaded)
+    LoadRemote.withCallback(this.props.section, this.sectionLoaded)
     window.addEventListener('resize', this.handleResize, false);
     this.handleResize();
   },
@@ -88,12 +70,12 @@ var Section = React.createClass({
     let sectionLoaded = this.state.remoteSectionLoaded
     let collectionLoaded = this.state.remoteCollectionLoaded
     if(this.props.section !== nextProps.section) {
-      LoadRemote.withCallback(nextProps.section, this.sectionLoaded.bind(this))
+      LoadRemote.withCallback(nextProps.section, this.sectionLoaded)
       sectionLoaded = false
     }
 
     if (this.props.collection !== nextProps.collection) {
-      LoadRemote.withCallback(nextProps.collection, this.collectionLoaded.bind(this))
+      LoadRemote.withCallback(nextProps.collection, this.collectionLoaded)
       collectionLoaded = false
     }
 
@@ -133,7 +115,6 @@ var Section = React.createClass({
     if(!BrowserUtils.mobile()){
       header = (<CollectionPageHeader collection={this.state.collection} />);
     }
-    // this is a div instead of mui.AppCanvas because of a bug in 12.3 which is fixed in master.
     return (
       <div style={{ backgroundColor: 'inherit' }}>
         {header}

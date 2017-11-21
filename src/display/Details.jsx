@@ -1,6 +1,8 @@
 'use strict'
-var React = require("react");
-var mui = require("material-ui");
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import { FontIcon, Paper } from 'material-ui'
 
 var MetadataList = require('../display/MetadataList.jsx');
 
@@ -11,7 +13,7 @@ var Styles = {
     margin: "0 auto 60px",
     position: "relative",
     width: "100%",
-    zIndex: 1,
+    zIndex: 0,
   },
   // The details Paper
   details: {
@@ -28,10 +30,10 @@ var Styles = {
   },
 };
 
-var Details = React.createClass({
+var Details = createReactClass({
   propTypes: {
-    item: React.PropTypes.object,
-    additionalDetails: React.PropTypes.string,
+    item: PropTypes.object,
+    additionalDetails: PropTypes.string,
   },
 
   getDefaultProps: function() {
@@ -55,9 +57,9 @@ var Details = React.createClass({
 
   arrowIcon: function() {
     return (
-      <mui.FontIcon className="material-icons" style={{ verticalAlign:'top', margin:'5px 10px 5px 0px' }}>
+      <FontIcon className="material-icons" style={{ verticalAlign:'top', margin:'5px 10px 5px 0px' }}>
         { this.state.showDetails ? "arrow_forward" : "arrow_back" }
-      </mui.FontIcon>
+      </FontIcon>
     );
   },
 
@@ -76,9 +78,9 @@ var Details = React.createClass({
 
   render: function () {
     return (
-      <mui.Paper zDepth={0} style={ Styles.outer }>
+      <Paper style={ Styles.outer }>
         { this.details() }
-      </mui.Paper>
+      </Paper>
     );
   }
 });

@@ -1,11 +1,13 @@
 'use strict'
-var React = require('react');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 
-var MetadataDate = React.createClass({
+var MetadataDate = createReactClass({
   displayName: 'Metadata Date',
 
   propTypes: {
-    metadata_field: React.PropTypes.object.isRequired,
+    metadata_field: PropTypes.object.isRequired,
   },
 
   render: function () {

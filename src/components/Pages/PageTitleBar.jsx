@@ -1,31 +1,14 @@
-var React = require('react');
-var mui = require('material-ui');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import mui, {Toolbar, ToolbarGroup, ToolbarTitle} from 'material-ui'
 var CloseButton = require('../../other/CloseButton.jsx');
 const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 
-var ThemeManager = require('material-ui/lib/styles/theme-manager');
-var BeehiveTheme = require('../../themes/beehive.jsx');
-var injectTapEventPlugin = require("react-tap-event-plugin");
-injectTapEventPlugin();
-
-var PageTitleBar = React.createClass({
+var PageTitleBar = createReactClass({
   propTypes: {
-    title: React.PropTypes.object.isRequired,
-    height: React.PropTypes.number
-  },
-
-  contextTypes: {
-    muiTheme: React.PropTypes.object,
-  },
-
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
-
-  getChildContext() {
-    return {
-      muiTheme: this.state.muiTheme,
-    };
+    title: PropTypes.string.isRequired,
+    height: PropTypes.number
   },
 
   getDefaultProps: function() {
@@ -37,7 +20,6 @@ var PageTitleBar = React.createClass({
   getInitialState: function() {
     return {
       opacity: 1,
-      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
     }
   },
 
@@ -66,7 +48,7 @@ var PageTitleBar = React.createClass({
   titleBarStyle: function () {
     return {
       lineHeight: this.props.height + "px",
-      color: CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor,
+      color: '#fffffff',
     }
   },
 
@@ -74,19 +56,20 @@ var PageTitleBar = React.createClass({
     return {
       marginLeft: 'auto',
       height: "100%",
+      float: "right"
     };
   },
 
   render: function() {
     return (
-      <mui.Toolbar id="PageTitleBar" style={this.style()}>
-        <mui.ToolbarGroup key={0} float="left">
-          <mui.ToolbarTitle text={this.props.title} style={this.titleBarStyle()} />
-        </mui.ToolbarGroup>
-        <mui.ToolbarGroup key={1} float="right" style={this.closeButtonStyle()}>
+      <Toolbar id="PageTitleBar" style={this.style()}>
+        <ToolbarGroup key={0} style={{float:"left"}}>
+          <ToolbarTitle text={this.props.title} style={this.titleBarStyle()} />
+        </ToolbarGroup>
+        <ToolbarGroup key={1} style={this.closeButtonStyle()}>
           <CloseButton alternate={true} height={this.props.height} />
-        </mui.ToolbarGroup>
-      </mui.Toolbar>
+        </ToolbarGroup>
+      </Toolbar>
     );
   }
 });

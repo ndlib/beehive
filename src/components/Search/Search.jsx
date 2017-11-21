@@ -1,7 +1,7 @@
 'use strict'
-var React = require('react');
-var mui = require('material-ui');
-
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx');
 var PageContent = require('../../layout/PageContent.jsx');
 var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx');
@@ -11,40 +11,30 @@ var SearchActions = require('../../actions/SearchActions.js');
 var SearchDisplayList = require('./SearchDisplayList.jsx');
 var ConfigurationActions = require("../../actions/ConfigurationActions.js");
 var ConfigurationStore = require("../../store/ConfigurationStore.js");
-var ThemeManager = require('material-ui/lib/styles/theme-manager');
-var BeehiveTheme = require('../../themes/beehive.jsx');
+// var ThemeManager = require('material-ui/lib/styles/theme-manager');
+// var BeehiveTheme = require('../../themes/beehive.jsx');
 
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
-var Search = React.createClass({
+var Search = createReactClass({
   propTypes: {
-    compact: React.PropTypes.bool,
-    hits: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.array,
+    compact: PropTypes.bool,
+    hits: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.array,
     ]),
-    searchTerm: React.PropTypes.string,
-    sortTerm: React.PropTypes.string,
-    facet: React.PropTypes.oneOfType([
-      React.PropTypes.object,
-      React.PropTypes.array,
+    searchTerm: PropTypes.string,
+    sortTerm: PropTypes.string,
+    facet: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.array,
     ]),
-    start: React.PropTypes.number,
-    view: React.PropTypes.string,
-    collection: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.object,
+    start: PropTypes.number,
+    view: PropTypes.string,
+    collection: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.object,
     ]),
-  },
-
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
-
-  getChildContext() {
-    return {
-      muiTheme: this.state.muiTheme,
-    };
   },
 
   getDefaultProps: function() {
@@ -59,7 +49,7 @@ var Search = React.createClass({
       windowHeight: this.calcHeight(),
       collection: {},
       remoteCollectionLoaded: false,
-      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
+      //muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
     };
   },
 
@@ -76,7 +66,7 @@ var Search = React.createClass({
     if ('object' == typeof(this.props.collection)) {
       this.setValues(this.props.collection);
     } else {
-      LoadRemote.loadRemoteCollection(this.props.collection, this.setValues.bind(this));
+      LoadRemote.loadRemoteCollection(this.props.collection, this.setValues);
     }
   },
 
@@ -155,14 +145,14 @@ var Search = React.createClass({
     }
 
     return (
-      <mui.AppCanvas>
+      <div>
         { !this.props.compact && <CollectionPageHeader collection={SearchStore.collection} ></CollectionPageHeader> }
         <SearchControls searchStyle={{height:'50px'}}/>
         <PageContent fluidLayout={false}>
           <SearchDisplayList compact={ this.props.compact } />
         </PageContent>
         { !this.props.compact && <CollectionPageFooter collection={SearchStore.collection} height={this.props.footerHeight}/> }
-      </mui.AppCanvas>
+      </div>
     );
   }
 });

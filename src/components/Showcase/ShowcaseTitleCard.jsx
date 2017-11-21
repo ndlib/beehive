@@ -1,15 +1,17 @@
 'use strict'
-var React = require("react");
-var mui = require('material-ui');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import { Card, CardText, CardTitle } from 'material-ui'
 var MediaQuery = require("react-responsive");
 var Showdown = require('showdown');
 
 var converter = new Showdown.Converter();
 
-var ShowcaseTitleCard = React.createClass({
+var ShowcaseTitleCard = createReactClass({
   propTypes: {
-    showcase: React.PropTypes.object.isRequired,
-    height: React.PropTypes.number,
+    showcase: PropTypes.object.isRequired,
+    height: PropTypes.number,
   },
 
   outerStyle: function() {
@@ -101,8 +103,8 @@ var ShowcaseTitleCard = React.createClass({
     }
 
     return (
-      <mui.Card style={this.outerStyle()}>
-        <mui.CardTitle
+      <Card style={this.outerStyle()}>
+        <CardTitle
           title={this.props.showcase.name_line_1}
           subtitle={this.props.showcase.name_line_2}
           style={this.headerStyle()}
@@ -110,11 +112,11 @@ var ShowcaseTitleCard = React.createClass({
           subtitleStyle={this.subtitleStyle() }
           />
         <MediaQuery minWidth={650}>
-          <mui.CardText style={this.textStyle()} >
+          <CardText style={this.textStyle()} >
             {description}
-          </mui.CardText>
+          </CardText>
         </MediaQuery>
-      </mui.Card>
+      </Card>
     )
     return (
       <div className="showcase-title-page" style={this.outerStyle()}>

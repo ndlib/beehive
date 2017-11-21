@@ -1,8 +1,7 @@
 'use strict'
-var React = require('react');
-var mui = require('material-ui');
-var ThemeManager = require('material-ui/lib/styles/theme-manager');
-var BeehiveTheme = require('../../themes/beehive.jsx');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 var SiteIndexHeader = require("./SiteIndexHeader.jsx");
 var BrandBar = require('../../layout/BrandBar.jsx');
 var PageContent = require('../../layout/PageContent.jsx');
@@ -11,29 +10,18 @@ var IndexPageFooter = require('../../layout/IndexPageFooter.jsx');
 
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
-var SiteIndex = React.createClass({
+var SiteIndex = createReactClass({
   propTypes: {
-    collections: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.array,
+    collections: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.array,
     ]),
-  },
-
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
-
-  getChildContext() {
-    return {
-      muiTheme: this.state.muiTheme,
-    };
   },
 
   getInitialState: function() {
     return {
       collections: [],
-      remoteCollectionLoaded: false,
-      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
+      remoteCollectionLoaded: false
     };
   },
 
@@ -43,7 +31,7 @@ var SiteIndex = React.createClass({
         collections: this.props.collections,
       });
     } else {
-      LoadRemote.loadRemoteCollection(this.props.collections, this.setValues.bind(this))
+      LoadRemote.loadRemoteCollection(this.props.collections, this.setValues)
     }
   },
 
@@ -72,7 +60,7 @@ var SiteIndex = React.createClass({
     }
 
     return (
-      <mui.AppCanvas>
+      <div>
         <BrandBar/>
         <PageContent fluidLayout={true}>
           <SiteIndexHeader />
@@ -82,7 +70,7 @@ var SiteIndex = React.createClass({
           </PageContent>
         </PageContent>
         <IndexPageFooter />
-      </mui.AppCanvas>
+      </div>
     );
   }
 

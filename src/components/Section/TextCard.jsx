@@ -1,10 +1,12 @@
-var React = require('react');
-var mui = require('material-ui');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import {CardText, CardTitle} from 'material-ui'
 var MoreOverlay = require("./MoreOverlay.jsx");
 
-var TextCard = React.createClass({
+var TextCard = createReactClass({
   propTypes: {
-    section: React.PropTypes.object.isRequired,
+    section: PropTypes.object.isRequired,
   },
 
   getInitialState: function() {
@@ -36,11 +38,12 @@ var TextCard = React.createClass({
   },
 
   showMoreLink: function() {
-    if (this.refs["sectionTextContent"]) {
-      var textContent = this.refs["sectionTextContent"];
+
+    if (document.getElementById(encodeURIComponent(this.props.section.name) + "-text")) {
+      var textContent = document.getElementById(encodeURIComponent(this.props.section.name) + "-text");
       var testHeight = textContent.offsetParent.clientHeight;
-      if (this.refs["sectionTitleContent"]) {
-        testHeight -= this.refs["sectionTitleContent"].offsetParent.clientHeight + 15;
+      if(document.getElementById(encodeURIComponent(this.props.section.name))) {
+        testHeight -= document.getElementById(encodeURIComponent(this.props.section.name)).offsetParent.clientHeight + 15;
       }
 
       return (textContent.clientHeight > testHeight);
@@ -52,18 +55,26 @@ var TextCard = React.createClass({
     if (this.showMoreLink()) {
       return(<MoreOverlay />)
     }
-    return (<div/>);
+    return null;
   },
 
   render: function () {
-    var title = (<div ref="sectionTitleContent">{this.props.section.name}</div>);
+    var title = (
+      <div
+      id={encodeURIComponent(this.props.section.name)}
+      className="sectionTitleContent"
+      >{this.props.section.name}</div>
+    );
     return (
       <div style={this.style()} className="text">
-        <mui.CardTitle title={title} titleStyle={this.titleStyle()} />
-        <mui.CardText style={this.style()}>
-          <div ref="sectionTextContent" dangerouslySetInnerHTML={{__html: this.props.section.description}} />
+        <CardTitle title={title} titleStyle={this.titleStyle()} />
+        <CardText style={this.style()}>
+          <div
+            id={encodeURIComponent(this.props.section.name) + "-text"}
+            className="sectionTextContent"
+            dangerouslySetInnerHTML={{__html: this.props.section.description}} />
           {this.overflowText()}
-        </mui.CardText>
+        </CardText>
       </div>
     );
   },

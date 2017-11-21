@@ -1,12 +1,15 @@
 'use strict'
-var React = require("react");
-var mui = require('material-ui');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import mui, {Card, CardMedia} from 'material-ui'
+import { Link } from 'react-router-dom'
 
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
-var CollectionIntroCard = React.createClass({
+var CollectionIntroCard = createReactClass({
   propTypes: {
-    collection: React.PropTypes.object.isRequired,
+    collection: PropTypes.object.isRequired,
   },
 
   style: function() {
@@ -19,14 +22,14 @@ var CollectionIntroCard = React.createClass({
 
   render: function() {
     return (
-      <a href={CollectionUrl.introUrl(this.props.collection)}>
-        <mui.Card style={this.style()} >
-          <mui.CardMedia
+      <Link to={CollectionUrl.introUrl(this.props.collection)}>
+        <Card style={this.style()} >
+          <CardMedia
             className="collection-site-path-card"
-            overlay={<mui.CardTitle title='Introduction'/>}
+            overlay={<CardTitle title='Introduction'/>}
           />
-        </mui.Card>
-      </a>
+        </Card>
+      </Link>
     );
   }
 });

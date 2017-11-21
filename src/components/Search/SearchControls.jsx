@@ -1,6 +1,8 @@
 'use strict'
-var React = require('react');
-var mui = require('material-ui');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import mui, {FontIcon, Toolbar, ToolbarGroup, RaisedButton} from 'material-ui'
 var MediaQuery = require('react-responsive');
 var SearchBox = require('../../layout/SearchBox.jsx');
 var SearchSort = require('./SearchSort.jsx');
@@ -12,7 +14,7 @@ const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 var gridView = {view: "grid"};
 var listView = {view: "list"};
 
-var SearchControls = React.createClass({
+var SearchControls = createReactClass({
   getInitialState: function() {
     var state = {
       view: SearchStore.view,
@@ -83,38 +85,38 @@ var SearchControls = React.createClass({
   render: function() {
     return (
       <div style={{height: "65px" }}>
-      <mui.Toolbar className="controls" style={this.controlsStyle()}>
-        <mui.ToolbarGroup key={0} float="left">
+      <Toolbar className="controls" style={this.controlsStyle()}>
+        <ToolbarGroup key={0} style={{float: 'left'}}>
           { this.searchBox() }
-        </mui.ToolbarGroup>
-        <mui.ToolbarGroup key={1} float="right">
+        </ToolbarGroup>
+        <ToolbarGroup key={1} style={{float: 'right'}}>
           <MediaQuery minWidth={700}>
             <SearchSort/>
-              <mui.RaisedButton
+              <RaisedButton
                 secondary={this.state.view == 'grid'}
                 onClick={this.setList}
                 style={{zIndex: '0', margin: '15px 0', minWidth: "44px", lineHeight: "36px"}}
                 disableTouchRipple={true}
               >
-                <mui.FontIcon
+                <FontIcon
                   className="material-icons"
                   style={this.state.view == 'grid' ? CurrentTheme.lightIconStyle() : CurrentTheme.darkIconStyle()}
-                >view_list</mui.FontIcon>
-              </mui.RaisedButton>
-              <mui.RaisedButton
+                >view_list</FontIcon>
+              </RaisedButton>
+              <RaisedButton
                 secondary={this.state.view == 'list'}
                 onClick={this.setGrid}
                 style={{zIndex: '0', margin: '15px 0', minWidth: "44px", lineHeight: "36px"}}
                 disableTouchRipple={true}
               >
-                <mui.FontIcon
+                <FontIcon
                   className="material-icons"
                   style={this.state.view == 'list' ? CurrentTheme.lightIconStyle() : CurrentTheme.darkIconStyle()}
-                >view_module</mui.FontIcon>
-              </mui.RaisedButton>
+                >view_module</FontIcon>
+              </RaisedButton>
           </MediaQuery>
-        </mui.ToolbarGroup>
-      </mui.Toolbar>
+        </ToolbarGroup>
+      </Toolbar>
       </div>
     );
 

@@ -1,8 +1,6 @@
-var React = require('react');
-var mui = require('material-ui');
-var ThemeManager = require('material-ui/lib/styles/theme-manager');
-var BeehiveTheme = require('../../themes/beehive.jsx');
-
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx');
 var PageContent = require('../../layout/PageContent.jsx');
 var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx');
@@ -10,29 +8,18 @@ var PagesShow = require('../Pages/PagesShow.jsx');
 
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
-var About = React.createClass({
+var About = createReactClass({
   propTypes: {
-    collection: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.object,
+    collection: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.object,
     ]),
-  },
-
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
-
-  getChildContext() {
-    return {
-      muiTheme: this.state.muiTheme,
-    };
   },
 
   getInitialState: function() {
     return {
       collection: {},
       remoteCollectionLoaded: false,
-      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
     };
   },
 
@@ -42,7 +29,7 @@ var About = React.createClass({
         collection: this.props.collection,
       });
     } else {
-      LoadRemote.loadRemoteCollection(this.props.collection, this.onLoaded.bind(this));
+      LoadRemote.loadRemoteCollection(this.props.collection, this.onLoaded);
     }
   },
 
@@ -66,13 +53,13 @@ var About = React.createClass({
     }
 
     return (
-      <mui.AppCanvas>
+      <div>
         <CollectionPageHeader collection={this.state.collection} branding={true}/>
           <PageContent>
             {pageContent}
           </PageContent>
         <CollectionPageFooter collection={this.state.collection} />
-      </mui.AppCanvas>
+      </div>
     )
   }
 });

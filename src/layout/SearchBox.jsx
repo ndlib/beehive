@@ -1,7 +1,9 @@
 'use strict'
-var React = require('react');
-var mui = require('material-ui');
-var ColorManipulator = require('material-ui/lib/utils/color-manipulator');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import {FontIcon, IconButton, RaisedButton} from 'material-ui'
+
 var SearchStore = require('../store/SearchStore.js');
 var SearchActions = require('../actions/SearchActions.js');
 
@@ -24,15 +26,15 @@ var Styles = {
   },
 }
 
-var SearchBox = React.createClass({
+var SearchBox = createReactClass({
   propTypes: {
-    collection: React.PropTypes.object,
-    primary: React.PropTypes.bool,
-    useStore: React.PropTypes.bool,
+    collection: PropTypes.object,
+    primary: PropTypes.bool,
+    useStore: PropTypes.bool,
   },
 
   contextTypes: {
-    muiTheme: React.PropTypes.object,
+    muiTheme: PropTypes.object,
   },
 
   getDefaultProps: function() {
@@ -100,9 +102,9 @@ var SearchBox = React.createClass({
   clearButton: function() {
     if (SearchStore.searchTerm && this.state.active) {
       return (
-        <mui.IconButton onClick={this.clearClick} style={Styles.clearButton} tooltip="Clear Search">
-          <mui.FontIcon color="gray" className="material-icons">clear</mui.FontIcon>
-        </mui.IconButton>
+        <IconButton onClick={this.clearClick} style={Styles.clearButton} tooltip="Clear Search">
+          <FontIcon color="gray" className="material-icons">clear</FontIcon>
+        </IconButton>
       );
     } else {
       return;
@@ -124,7 +126,6 @@ var SearchBox = React.createClass({
         onChange={this.onChange}
         value={this.state.searchTerm}
         onKeyDown={this.handleKeyDown}
-        inputStyle={this.inputStyle()}
         style={ Styles.searchTextField }
       />);
     } else {
@@ -137,15 +138,15 @@ var SearchBox = React.createClass({
       <div style={{display:'inline-block', margin:'14px 0'}}>
         {this.input()}
         {this.clearButton()}
-        <mui.RaisedButton
+        <RaisedButton
           onClick={this.onClick}
           style={{zIndex: '0', minWidth: 'auto', boxShadow: 'none',  lineHeight: '36px', width: "50px", height: "38px"}}
           primary={false}
           secondary={true}
           disableTouchRipple={true}
         >
-          <mui.FontIcon className="material-icons" style={CurrentTheme.lightIconStyle()}>search</mui.FontIcon>
-        </mui.RaisedButton>
+          <FontIcon className="material-icons" style={CurrentTheme.lightIconStyle()}>search</FontIcon>
+        </RaisedButton>
       </div>
     );
   }

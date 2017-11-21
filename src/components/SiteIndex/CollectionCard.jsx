@@ -1,14 +1,17 @@
-var React = require('react');
-var mui = require('material-ui');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import mui, { Card, CardActions, CardMedia, CardText, CardTitle, FlatButton } from 'material-ui'
+import { Link } from 'react-router-dom'
 var $ = require('jquery');
 var theme = require('../../themes/beehive.jsx');
 
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
-var CollectionCard = React.createClass({
+var CollectionCard = createReactClass({
   propTypes: {
-    collection: React.PropTypes.object.isRequired,
-    cardHeight: React.PropTypes.string.isRequired
+    collection: PropTypes.object.isRequired,
+    cardHeight: PropTypes.string.isRequired
   },
 
   style: function() {
@@ -52,16 +55,16 @@ var CollectionCard = React.createClass({
   description: function() {
     if (this.props.collection.description) {
       return (
-        <mui.CardText style={{height: '100px'}}>
+        <CardText style={{height: '100px'}}>
           {$(this.props.collection.description).text()}
-        </mui.CardText>
+        </CardText>
       );
     }
   },
 
   headerTitle: function () {
     if (this.props.headerTitle) {
-      return (<mui.CardTitle title={this.props.headerTitle} />);
+      return (<CardTitle title={this.props.headerTitle} />);
     }
   },
 
@@ -71,7 +74,7 @@ var CollectionCard = React.createClass({
       overflow: 'hidden',
       textOverflow: 'ellipsis',
     };
-    return (<mui.CardTitle title={this.props.collection.name_line_1}
+    return (<CardTitle title={this.props.collection.name_line_1}
                            titleStyle={titleStyle}
                            subtitle={this.props.collection.name_line_2}
                            subtitleStyle={titleStyle} />);
@@ -80,13 +83,13 @@ var CollectionCard = React.createClass({
   cardMedia: function () {
     //if (this.props.collection.image) {
       return (
-        <mui.CardMedia
+        <CardMedia
           mediaStyle={{background:'url("' + this.image() + '")', paddingBottom:'46.85%', backgroundSize:'cover', backgroundPosition:'top center', height:'100%', width:'100%', overflow: 'hidden' }}
           className="temp"
           style={{ overflow:'hidden'}}>
           <img src={this.image()}  style={this.imageSize()} />
 
-        </mui.CardMedia>);
+        </CardMedia>);
     //} else {
     //  return (this.cardTitle());
     //}
@@ -111,16 +114,16 @@ var CollectionCard = React.createClass({
   render: function() {
     return (
 
-      <mui.Card style={this.style()} >
-        <a href={CollectionUrl.collectionUrl(this.props.collection)}>
+      <Card style={this.style()} >
+        <Link to={CollectionUrl.collectionUrl(this.props.collection)}>
           {this.headerTitle()}
           {this.cardMedia()}
           {this.cardTitle()}
-        </a>
-        <mui.CardActions style={this.actionButtonsStyle()} >
-          <mui.FlatButton label="Explore" href={CollectionUrl.collectionUrl(this.props.collection)} labelStyle={ this.exploreLabelStyle() } />
-        </mui.CardActions>
-      </mui.Card>
+        </Link>
+        <CardActions style={this.actionButtonsStyle()} >
+          <FlatButton label="Explore" href={CollectionUrl.collectionUrl(this.props.collection)} labelStyle={ this.exploreLabelStyle() } />
+        </CardActions>
+      </Card>
 
     );
   }

@@ -1,9 +1,11 @@
 'use strict'
-var React = require('react');
-var mui = require('material-ui');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import mui, { Paper } from 'material-ui'
 var SearchFacets = require('./SearchFacets.jsx');
 
-var SearchSidebar = React.createClass({
+var SearchSidebar = createReactClass({
 
   getInitialState: function () {
     return {
@@ -17,11 +19,11 @@ var SearchSidebar = React.createClass({
 
   render: function() {
     return (
-      <mui.Paper style={{display: this.state.show ? 'block' : 'none', width: "25%", float: "right"}} >
+      <Paper style={{display: this.state.show ? 'block' : 'none', width: "25%", float: "right"}} >
         <h3 style={{paddingLeft:'16px'}}>Filter Results</h3>
         <hr/>
         <SearchFacets/>
-      </mui.Paper>
+      </Paper>
     );
   }
 });

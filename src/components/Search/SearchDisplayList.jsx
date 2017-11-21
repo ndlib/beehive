@@ -1,6 +1,8 @@
 'use strict'
-var React = require('react');
-var mui = require('material-ui');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import mui, { GridList, Paper } from 'material-ui'
 var EventEmitter = require("../../middleware/EventEmitter.js");
 var theme = require('../../themes/beehive.jsx');
 var MediaQuery = require('react-responsive');
@@ -8,23 +10,12 @@ var SearchStore = require('../../store/SearchStore.js');
 var SearchPagination = require('./SearchPagination.jsx');
 var ItemListItem = require('./ItemListItem.jsx');
 var SearchSidebar = require('./SearchSidebar.jsx');
-var ThemeManager = require('material-ui/lib/styles/theme-manager');
+// var ThemeManager = require('material-ui/lib/styles/theme-manager');
 
-var SearchDisplayList = React.createClass({
+var SearchDisplayList = createReactClass({
   propTypes: {
-    compact: React.PropTypes.bool,
+    compact: PropTypes.bool,
   },
-
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
-
-  getChildContext() {
-    return {
-      muiTheme: this.state.muiTheme,
-    };
-  },
-
   getDefaultProps: function() {
     return {
       compact: false,
@@ -35,7 +26,7 @@ var SearchDisplayList = React.createClass({
     return {
       sidebar: false,
       view: SearchStore.view,
-      muiTheme: ThemeManager.getMuiTheme(theme),
+      //muiTheme: ThemeManager.getMuiTheme(theme),
     };
   },
 
@@ -73,27 +64,27 @@ var SearchDisplayList = React.createClass({
       return (
         <div>
           <MediaQuery maxWidth={700}>
-            <mui.GridList cols={1} cellHeight="auto" padding={theme.spacing.desktopGutter}>
+            <GridList cols={1} cellHeight="auto" padding={20}>
               {itemNodes}
-            </mui.GridList>
+            </GridList>
           </MediaQuery>
           <MediaQuery minWidth={700} maxWidth={1500}>
-            <mui.GridList cols={2} cellHeight="auto" padding={theme.spacing.desktopGutter}>
+            <GridList cols={2} cellHeight="auto" padding={20}>
               {itemNodes}
-            </mui.GridList>
+            </GridList>
           </MediaQuery>
           <MediaQuery minWidth={1500}>
-            <mui.GridList cols={3} cellHeight="auto" padding={theme.spacing.desktopGutter}>
+            <GridList cols={3} cellHeight="auto" padding={20}>
               {itemNodes}
-            </mui.GridList>
+            </GridList>
           </MediaQuery>
         </div>
       )
     } else {
       return (
-        <mui.List>
+        <List>
           {itemNodes}
-        </mui.List>
+        </List>
       )
     }
   },
@@ -101,23 +92,23 @@ var SearchDisplayList = React.createClass({
   render: function() {
     return (
       <div>
-        <mui.Paper style={{width: "100%"}} zDepth={0}>
+        <Paper style={{width: "100%"}}>
           <h3>Browse Collection</h3>
-        </mui.Paper>
+        </Paper>
         <MediaQuery maxWidth={700}>
-          <mui.Paper zDepth={0}>
+          <Paper>
             {this.itemList()}
             <SearchPagination />
-          </mui.Paper>
+          </Paper>
         </MediaQuery>
 
         <MediaQuery minWidth={700}>
           <SearchSidebar show={this.state.sidebar} />
 
-          <mui.Paper style={{width: "74%"}} zDepth={0}>
+          <Paper style={{width: "74%"}}>
             {this.itemList()}
             <SearchPagination compact={ this.props.compact } />
-          </mui.Paper>
+          </Paper>
         </MediaQuery>
       </div>
     );

@@ -1,14 +1,16 @@
 'use strict'
-var React = require('react');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 var MetadataItem = require('./MetadataItem.jsx');
-var mui = require('material-ui');
+import { FontIcon } from 'material-ui'
 var ConfigurationStore = require("../store/ConfigurationStore.js");
 
-var MetadataList = React.createClass({
+var MetadataList = createReactClass({
 
   propTypes: {
-    metadata: React.PropTypes.object.isRequired,
-    id: React.PropTypes.string.isRequired,
+    metadata: PropTypes.object.isRequired,
+    id: PropTypes.string.isRequired,
   },
 
   getDefaultProps: function() {
@@ -61,7 +63,7 @@ var MetadataList = React.createClass({
     if(this.props.printable) {
       var url = "/metadata/" + this.props.id;
       return (
-        <a href={url} target="_blank"><mui.FontIcon className="material-icons">print</mui.FontIcon>Printer Friendly View</a>
+        <a href={url} target="_blank"><FontIcon className="material-icons">print</FontIcon>Printer Friendly View</a>
       );
     } else {
       return (<div/>);

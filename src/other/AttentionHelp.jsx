@@ -1,13 +1,14 @@
 "use strict"
-var React = require("react");
-var mui = require("material-ui");
-var Snackbar = mui.Snackbar;
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import { Snackbar } from 'material-ui';
 
-var AttentionHelp = React.createClass({
+var AttentionHelp = createReactClass({
 
   propTypes: {
-    start: React.PropTypes.number.isRequired,
-    hasScrolled: React.PropTypes.bool
+    start: PropTypes.number.isRequired,
+    hasScrolled: PropTypes.bool
   },
 
   getInitialState: function(){

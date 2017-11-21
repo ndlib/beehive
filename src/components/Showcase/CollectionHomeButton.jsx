@@ -1,16 +1,18 @@
 'use strict'
-var React = require("react");
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 var mui = require("material-ui");
 
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
-var CollectionHomeButton = React.createClass({
+var CollectionHomeButton = createReactClass({
   propTypes: {
-    collection: React.PropTypes.object,
+    collection: PropTypes.object,
   },
 
   contextTypes: {
-    muiTheme: React.PropTypes.object,
+    muiTheme: PropTypes.object,
   },
 
   onClick: function() {
@@ -19,17 +21,16 @@ var CollectionHomeButton = React.createClass({
 
   render: function() {
     return (
-      <mui.FloatingActionButton
+      <FloatingActionButton
         onClick={this.onClick}
         disableTouchRipple={true}
         style={{position: 'absolute', bottom: '10px', right: '10px', zIndex: '1000'}}
-        zDepth={3}
       >
-        <mui.FontIcon
+        <FontIcon
           className="material-icons"
           color={this.context.muiTheme.alternateTextColor}
-        >home</mui.FontIcon>
-      </mui.FloatingActionButton>
+        >home</FontIcon>
+      </FloatingActionButton>
     )
   }
 });

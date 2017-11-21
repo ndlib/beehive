@@ -1,35 +1,18 @@
-var React = require('react');
-var mui = require('material-ui');
-var ThemeManager = require('material-ui/lib/styles/theme-manager');
-var BeehiveTheme = require('../../themes/beehive.jsx');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import mui, { Paper } from 'material-ui'
 
 var MediaQuery = require('react-responsive');
 
-var PagesShow = React.createClass({
+var PagesShow = createReactClass({
   propTypes: {
-    title: React.PropTypes.string,
-    content: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.object,
+    title: PropTypes.string,
+    content: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.object,
     ]).isRequired,
   },
-
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
-
-  getChildContext() {
-    return {
-      muiTheme: this.state.muiTheme,
-    };
-  },
-
-  getInitialState: function() {
-    return {
-      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
-    };
-  },
-
   headerStyle: function() {
     return {
       maxWidth: "80%",
@@ -81,24 +64,24 @@ var PagesShow = React.createClass({
       pageName = (<h2 style={this.headerStyle()} >{this.props.title}</h2>);
     }
     return (
-      <mui.Paper className="essay-content" zDepth={this.depth(media)} style={this.paperStyle(media)}>
+      <Paper className="essay-content" style={this.paperStyle(media)}>
         {pageName}
         <div style={this.contentStyle(media)} dangerouslySetInnerHTML={{__html:this.props.content}} />
         {this.props.children}
-      </mui.Paper>
+      </Paper>
     );
   },
 
   render: function() {
     return (
       <div>
-        <MediaQuery minWidth={1400}>
+        <MediaQuery minWidth={1400} key='1'>
           {this.getPaper("wide")}
         </MediaQuery>
-        <MediaQuery minWidth={1000} maxWidth={1400}>
+        <MediaQuery minWidth={1000} maxWidth={1400} key='2'>
           {this.getPaper("medium")}
         </MediaQuery>
-        <MediaQuery maxWidth={1000}>
+        <MediaQuery maxWidth={1000} key='3'>
           {this.getPaper("narrow")}
         </MediaQuery>
       </div>
