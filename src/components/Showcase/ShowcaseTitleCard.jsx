@@ -24,6 +24,7 @@ var ShowcaseTitleCard = createReactClass({
       overflow: 'hidden',
       width: '85vw',
       boxShadow: "none",
+      backgroundColor: 'rgba(0,0,0,0)'
     };
 
     if (this.props.height) {

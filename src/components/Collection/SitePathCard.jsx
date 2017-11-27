@@ -37,7 +37,6 @@ var SitePathCard = createReactClass({
         top: '0',
         left: '0',
         right: '0',
-        bottom: '0',
         margin: 'auto',
         minWidth:'50%',
         minHeight: '50%',
@@ -85,7 +84,7 @@ var SitePathCard = createReactClass({
 
   headerTitle: function () {
     if (this.props.headerTitle) {
-      return (<CardTitle title={this.props.headerTitle} style={{height:'600px'}}/>);
+      return (<CardTitle title={this.props.headerTitle} style={{height:'600px', position: 'absolute' }}/>);
     }
   },
 

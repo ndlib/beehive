@@ -20,6 +20,7 @@ var ShowcaseSections = createReactClass({
       display: "inline-block",
       paddingRight: "175px",
       boxShadow: "none",
+      backgroundColor: 'rgba(0,0,0,0)',
       //lineHeight: this.props.height + "px",
     }
   },

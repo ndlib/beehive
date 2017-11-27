@@ -29,7 +29,7 @@ var ShowcaseBackground = createReactClass({
       backgroundImage: backgroundImage,
       backgroundRepeat: "no-repeat",
       backgroundSize: "cover",
-      zIndex: "-1",
+      zIndex: "0",
     };
   },
 

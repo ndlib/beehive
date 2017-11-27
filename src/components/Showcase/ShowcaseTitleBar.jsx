@@ -32,7 +32,7 @@ var ShowcaseTitleBar = createReactClass({
 
   titleBarStyle: function () {
     return {
-      color: '#000000',
+      color: '#fff',
       lineHeight: this.props.height + "px",
     }
   },
