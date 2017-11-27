@@ -32,7 +32,7 @@ var ShowcaseSections = createReactClass({
         var nodes = [];
 
         nodes.push((
-          <SectionCard section={section} height={this.props.height} />
+          <SectionCard section={section} height={this.props.height} key={index}/>
         ));
         return nodes;
       }.bind(this));
@@ -45,7 +45,7 @@ var ShowcaseSections = createReactClass({
   nextShowcase: function() {
     var nextShowcase;
     if(this.props.showcase.nextObject) {
-      nextShowcase = (<ShowcaseEndingCard height={this.props.height} siteObject={this.props.showcase.nextObject} />);
+      nextShowcase = (<ShowcaseEndingCard height={this.props.height} siteObject={this.props.showcase.nextObject} key="end" />);
     }
     return nextShowcase;
   },

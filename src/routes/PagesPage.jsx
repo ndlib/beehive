@@ -9,7 +9,7 @@ class PagesPage extends Component {
 
   render() {
     return (
-      <div>
+      <div id="page-root">
         <Page
           collection={HoneycombURL() + "/v1/pages/"
             + this.props.match.params.pageID}

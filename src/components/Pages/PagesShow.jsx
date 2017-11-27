@@ -74,7 +74,7 @@ var PagesShow = createReactClass({
 
   render: function() {
     return (
-      <div>
+      <div id="page-show">
         <MediaQuery minWidth={1400} key='1'>
           {this.getPaper("wide")}
         </MediaQuery>
