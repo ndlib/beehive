@@ -47,12 +47,6 @@ var SitePathCard = createReactClass({
     };
   },
 
-  buttonStyle: function() {
-    return {
-      backgroundColor: "#2c5882",
-    }
-  },
-
   image: function () {
     var space = ' ';
     var re = new RegExp(space, 'g');
@@ -71,7 +65,7 @@ var SitePathCard = createReactClass({
         >
           <Link to={CollectionUrl.collectionObjectUrl(this.props.siteObject)}>
           <FloatingActionButton
-            style={this.buttonStyle()}
+            backgroundColor="#2c5882"
             disableTouchRipple={true}
           >
             <FontIcon className="material-icons">arrow_forward</FontIcon>

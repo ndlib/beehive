@@ -69,14 +69,22 @@ var CollectionLeftNav = createReactClass({
     var browseUrl = CollectionUrl.browseUrl(this.props.collection);
 
     options.push((
-      <Link to={collectionUrl} key='collectionUrlLink'>
+      <Link
+        to={collectionUrl}
+        key='collectionUrlLink'
+        onClick={() => {this.setState({open: false})}}
+      >
         <MenuItem primaryText='Home' key='home' />
       </Link>
     ));
 
     if (this.props.collection.enable_browse) {
       options.push((
-        <Link to={browseUrl} key='browseUrlLink'>
+        <Link
+          to={browseUrl}
+          key='browseUrlLink'
+          onClick={() => {this.setState({open: false})}}
+        >
           <MenuItem primaryText='Browse Collection' key='browse' />
         </Link>
       ));
@@ -84,7 +92,11 @@ var CollectionLeftNav = createReactClass({
 
     if (this.props.collection.about) {
       options.push((
-        <Link to={aboutUrl} key='aboutUrl'>
+        <Link
+          to={aboutUrl}
+          key='aboutUrl'
+          onClick={() => {this.setState({open: false})}}
+        >
           <MenuItem primaryText='About' key='about'/>
         </Link>
       ));
@@ -93,7 +105,11 @@ var CollectionLeftNav = createReactClass({
 
     if (introUrl) {
       options.push((
-        <Link to={introUrl} key='introUrl'>
+        <Link
+          to={introUrl}
+          key='introUrl'
+          onClick={() => {this.setState({open: false})}}
+        >
           <MenuItem primaryText='Introduction' key='intro'/>
         </Link>
       ));
@@ -103,8 +119,14 @@ var CollectionLeftNav = createReactClass({
       var url = CollectionUrl.collectionObjectUrl(siteObject);
       var name = siteObject.name || siteObject.name_line_1;
       options.push ((
-        <Link to={url} key={url}>
-          <MenuItem primaryText={name} key={siteObject.id} className="collection-left-nav-item" />
+        <Link
+          to={url}
+          key={siteObject.id}
+          onClick={() => {this.setState({open: false})}}
+        >
+          <MenuItem
+            primaryText={name}
+            className="collection-left-nav-item" />
         </Link>
       ));
     }.bind(this));

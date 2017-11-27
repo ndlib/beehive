@@ -5,7 +5,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 var ReactDOM = require('react-dom')
-var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+var ReactCSSTransitionGroup = require('react-transition-group');
 var MediaQuery = require('react-responsive');
 
 var maxShowcaseHeight = 805;

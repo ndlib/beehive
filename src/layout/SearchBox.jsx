@@ -139,10 +139,9 @@ var SearchBox = createReactClass({
         {this.input()}
         {this.clearButton()}
         <RaisedButton
+          backgroundColor='rgba(0, 0, 0, 0.641176)'
           onClick={this.onClick}
           style={{zIndex: '0', minWidth: 'auto', boxShadow: 'none',  lineHeight: '36px', width: "50px", height: "38px"}}
-          primary={false}
-          secondary={true}
           disableTouchRipple={true}
         >
           <FontIcon className="material-icons" style={CurrentTheme.lightIconStyle()}>search</FontIcon>

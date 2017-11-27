@@ -51,8 +51,11 @@ var CollectionShow = createReactClass({
 
   startButton: function() {
     if (this.startUrl()) {
-      return (<Link to={this.startUrl()}>
-        <FloatingActionButton>
+      return (
+        <Link to={this.startUrl()} style={{position: 'absolute', right: '0', top: '-30px'}}>
+        <FloatingActionButton
+          backgroundColor='#2c5882'
+        >
           <FontIcon className="material-icons">arrow_forward</FontIcon>
         </FloatingActionButton>
       </Link>

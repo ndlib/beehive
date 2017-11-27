@@ -48,7 +48,7 @@ var PageTitleBar = createReactClass({
   titleBarStyle: function () {
     return {
       lineHeight: this.props.height + "px",
-      color: '#fffffff',
+      color: 'white',
     }
   },
 

@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-var mui = require('material-ui');
 var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx');
 var PageContent = require('../../layout/PageContent.jsx');
 var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx');
@@ -47,6 +46,16 @@ var Page = createReactClass({
 
   componentWillUnmount: function() {
     ConfigurationStore.removeChangeListener(this.configurationLoaded);
+  },
+
+  componentWillReceiveProps: function(nextProps) {
+    if(this.props.collection !== nextProps.collection) {
+      if ('object' == typeof(nextProps.collection)) {
+        this.setValues(nextProps.collection);
+      } else {
+        LoadRemote.loadRemoteCollection(nextProps.collection, this.setValues)
+      }
+    }
   },
 
   // Callback from loadRemoteCollection

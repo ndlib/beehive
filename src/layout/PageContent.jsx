@@ -36,7 +36,7 @@ var PageContent = createReactClass({
 
   render: function() {
     return (
-      <Paper onClick={this.props.onClick} onMouseOver={this.props.onMouseOver} transitionEnabled={false} circle={false} rounded={false} style={this.style()} >
+      <Paper onClick={this.props.onClick} onMouseOver={this.props.onMouseOver} transitionEnabled={false} circle={false} rounded={false} zDepth={0} style={this.style()} >
         {this.props.children}
       </Paper>
     );

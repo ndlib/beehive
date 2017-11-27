@@ -21,10 +21,6 @@ var Collection = createReactClass({
     ]),
   },
 
-  childContextTypes: {
-    muiTheme: PropTypes.object
-  },
-
   getInitialState: function() {
     return {
       collection: {},

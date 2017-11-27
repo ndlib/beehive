@@ -33,7 +33,7 @@ var PreviewLink = createReactClass({
       bottom: "60px",
       right: "40px",
       cursor: "pointer",
-      color: "#f5f5f5",
+      color: "#fff",
       opacity: this.state.hover ? "1.0" : "0.3",
       maxWidth: "200px",
     };
@@ -45,7 +45,6 @@ var PreviewLink = createReactClass({
       bottom: "107px",
       right: "40px",
       cursor: "pointer",
-      backgroundColor: "#2c5882",
     }
   },
 
@@ -57,9 +56,10 @@ var PreviewLink = createReactClass({
             <HoneycombImage image={this.props.siteObject.image} size="small" />
           </CardMedia>
           <FloatingActionButton
+            backgroundColor="#2c5882"
             style={this.buttonStyle()}
           >
-            <FontIcon style={{ mixBlendMode: "soft-light" }} className="material-icons">arrow_forward</FontIcon>
+            <FontIcon className="material-icons">arrow_forward</FontIcon>
           </FloatingActionButton>
         </Card>
 
