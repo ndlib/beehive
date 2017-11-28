@@ -5,7 +5,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 var ReactDOM = require('react-dom')
-var ReactCSSTransitionGroup = require('react-transition-group');
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 var MediaQuery = require('react-responsive');
 
 var maxShowcaseHeight = 805;
@@ -181,18 +181,12 @@ var ShowcaseShow = createReactClass({
         <AttentionHelp start={this.state.startTime} hasScrolled={this.state.hasScrolled} />
         <ShowcaseBackground percentBlur={backgroundBlur} height={this.state.mobile ? this.state.height : this.state.height - scrollPadding} showcase={this.props.showcase} />
         {titleBar}
-        <ReactCSSTransitionGroup
-          transitionName="showcase-slide-in"
-          transitionAppear={true}
-          transitionAppearTimeout={2600}
-          transitionEnterTimeout={0}
-          transitionLeaveTimeout={0}
-          style={{backgroundColor: 'rgba(0,0,0,0)'}}>
+        <TransitionGroup className='showcase-slide-in'>
           <div id="showcase-outer" className="showcase-outer" style={this.styleOuter(showcaseHeight)} onScroll={this.onScroll}>
             {scroller}
             <ShowcaseInnerContent height={showcaseInnerHeight} showcase={this.props.showcase} />
           </div>
-        </ReactCSSTransitionGroup>
+        </TransitionGroup>
         {mobileHomeButton}
       </div>
     );
