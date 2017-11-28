@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 
-var TitleBar = require('../layout/TitleBar.jsx');
+var TitleBar = require('../layout/TitleBar.jsx')
 var PageHeader = createReactClass({
   displayName: 'Page Header',
 
@@ -14,15 +14,15 @@ var PageHeader = createReactClass({
   style: function() {
     return {
       width: "100%",
-    };
+    }
   },
 
   render: function() {
-    var titleBar = this.props.children;
+    var titleBar = this.props.children
     if (!titleBar) {
       titleBar = (
         <TitleBar />
-      );
+      )
     }
     return (
       <div id="banner-wrapper">
@@ -32,8 +32,8 @@ var PageHeader = createReactClass({
           </nav>
         </header>
       </div>
-    );
+    )
   }
-});
+})
 
-module.exports = PageHeader;
+module.exports = PageHeader

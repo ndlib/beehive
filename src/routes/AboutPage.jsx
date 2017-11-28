@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import About from '../components/pages/About.jsx';
+import About from '../components/pages/About.jsx'
 import HoneycombURL from '../modules/HoneycombURL.js'
 
 class AboutPage extends Component {
@@ -17,4 +17,4 @@ class AboutPage extends Component {
   }
 }
 
-export default AboutPage;
+export default AboutPage

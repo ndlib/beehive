@@ -10,9 +10,9 @@ var Layout = createReactClass({
       <div>
         {this.props.children}
       </div>
-    );
+    )
   }
-});
+})
 
 // each file will export exactly one component
-module.exports = Layout;
+module.exports = Layout

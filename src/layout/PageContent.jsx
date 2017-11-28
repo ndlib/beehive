@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import mui, {Paper} from 'material-ui';
+import mui, {Paper} from 'material-ui'
 
 var PageContent = createReactClass({
   propTypes: {
@@ -15,22 +15,22 @@ var PageContent = createReactClass({
 
   classes: function () {
     if (this.props.fluidLayout) {
-      return "container-fluid";
+      return "container-fluid"
     } else {
-      return "container";
+      return "container"
     }
   },
 
   style: function() {
     if (this.props.fluidLayout) {
-      return ({});
+      return ({})
     } else {
       return ({
         padding: '0 8%',
         background: 'none',
         position: 'relative',
         backgroundColor: 'rgba(0,0,0,0)'
-      });
+      })
     }
   },
 
@@ -48,9 +48,9 @@ var PageContent = createReactClass({
       >
         {this.props.children}
       </Paper>
-    );
+    )
   }
-});
+})
 
 // each file will export exactly one component
-module.exports = PageContent;
+module.exports = PageContent

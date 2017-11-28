@@ -21,11 +21,11 @@ var NextModal = createReactClass({
   getDefaultProps: function() {
     return {
       offsetTop: window.innerHeight/2,
-    };
+    }
   },
 
   render: function() {
-    var id = this.props.id;
+    var id = this.props.id
     return (
     <Link
       to={this.props.url}
@@ -34,9 +34,9 @@ var NextModal = createReactClass({
     >
       <i className="material-icons">chevron_right</i>
     </Link>
-    );
+    )
   }
-});
+})
 
 // each file will export exactly one component
-module.exports = NextModal;
+module.exports = NextModal

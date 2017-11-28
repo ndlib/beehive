@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import Showcase from '../components/Showcase/Showcase.jsx';
+import Showcase from '../components/Showcase/Showcase.jsx'
 import HoneycombURL from '../modules/HoneycombURL.js'
 
 class ShowcasePage extends Component {
@@ -20,4 +20,4 @@ class ShowcasePage extends Component {
   }
 }
 
-export default ShowcasePage;
+export default ShowcasePage

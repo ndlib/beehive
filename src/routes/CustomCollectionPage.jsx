@@ -2,9 +2,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import Collection from '../components/Collection/Collection.jsx';
-import HoneycombURL from '../modules/HoneycombURL.js';
-import {withRouter} from "react-router-dom";
+import Collection from '../components/Collection/Collection.jsx'
+import HoneycombURL from '../modules/HoneycombURL.js'
+import {withRouter} from "react-router-dom"
 
 class CustomCollectionPage extends Component {
 
@@ -23,13 +23,13 @@ class CustomCollectionPage extends Component {
             collectionResult: result
           },
           this.props.history.push("/" + result["id"] + "/" + result["slug"])
-        );
+        )
       },
       error: function(request, status, thrownError) {
-        console.log("Custom slug access not available " + thrownError);
-        //window.location = window.location.origin + '/404';
+        console.log("Custom slug access not available " + thrownError)
+        //window.location = window.location.origin + '/404'
       }
-    });
+    })
   }
 
   render() {
@@ -46,4 +46,4 @@ class CustomCollectionPage extends Component {
     }
   }
 }
-export default withRouter(CustomCollectionPage);
+export default withRouter(CustomCollectionPage)

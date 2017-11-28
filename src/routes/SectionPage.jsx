@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import Section from '../components/Section/Section.jsx';
+import Section from '../components/Section/Section.jsx'
 import CollectionUrl from '../modules/CollectionUrl.jsx'
 
 class SectionPage extends Component {
@@ -21,4 +21,4 @@ class SectionPage extends Component {
   }
 }
 
-export default SectionPage;
+export default SectionPage

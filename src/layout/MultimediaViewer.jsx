@@ -5,13 +5,13 @@ import PropTypes from 'prop-types'
 class MultimediaViewer extends Component {
 
   constructor(props) {
-    super(props);
+    super(props)
   }
 
   render() {
-    var url = this.props.url;
+    var url = this.props.url
     if(this.props.autostart) {
-      url += '&autostart=' + this.props.autostart;
+      url += '&autostart=' + this.props.autostart
     }
     return (
       <iframe
@@ -23,7 +23,7 @@ class MultimediaViewer extends Component {
           border: 'none',
         }}
       >Your browser does not support iFrames.</iframe>
-    );
+    )
   }
 }
 
@@ -40,4 +40,4 @@ MultimediaViewer.defaultProps = {
   width: '100%',
   height: '100%',
 }
-export default MultimediaViewer;
+export default MultimediaViewer

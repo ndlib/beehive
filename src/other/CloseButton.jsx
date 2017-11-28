@@ -24,14 +24,14 @@ var CloseButton = createReactClass({
 
   color: function() {
     if (this.props.alternate) {
-      return '#000000';
+      return '#000000'
     } else {
-      return '#ffffff';
+      return '#ffffff'
     }
   },
 
   iconStyle: function() {
-    return { border:'solid 1px', verticalAlign: "middle", width: "initial", height: "initial" };
+    return { border:'solid 1px', verticalAlign: "middle", width: "initial", height: "initial" }
   },
 
   // generate what the back location url is
@@ -79,8 +79,8 @@ var CloseButton = createReactClass({
           <FontIcon className="material-icons" color={this.color()} style={this.iconStyle()}>clear</FontIcon>
         </FlatButton>
       </Link>
-    );
+    )
   },
-});
+})
 
-module.exports = CloseButton;
+module.exports = CloseButton

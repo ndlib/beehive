@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { Snackbar } from 'material-ui';
+import { Snackbar } from 'material-ui'
 
 var AttentionHelp = createReactClass({
 
@@ -15,29 +15,29 @@ var AttentionHelp = createReactClass({
     var state = {
       elapsed: false,
       open: true,
-    };
-    return state;
+    }
+    return state
   },
 
   componentDidMount: function() {
-    this.timer = setInterval(this.tick, 9000);
+    this.timer = setInterval(this.tick, 9000)
   },
 
   componentWillUnmount: function() {
-    clearInterval(this.timer);
+    clearInterval(this.timer)
   },
 
   tick: function() {
-    this.setState({elapsed: true});
+    this.setState({elapsed: true})
   },
 
   style: function() {
     return {
-    };
+    }
   },
 
   render: function() {
-    var snackbar = (<div/>);
+    var snackbar = (<div/>)
     if(!this.props.hasScrolled && this.state.elapsed && this.state.open) {
       snackbar = (
         <div id="attentionHelp">
@@ -50,11 +50,11 @@ var AttentionHelp = createReactClass({
             style={this.style()}
           />
         </div>
-      );
+      )
     }
-    return snackbar;
+    return snackbar
 
   }
-});
+})
 
-module.exports = AttentionHelp;
+module.exports = AttentionHelp

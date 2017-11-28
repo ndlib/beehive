@@ -1,9 +1,9 @@
 'use strict'
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Search from '../components/Search//Search.jsx';
-import QueryParm from '../modules/QueryParam.js';
-import FacetQueryParms from '../modules/FacetQueryParams.js';
+import Search from '../components/Search//Search.jsx'
+import QueryParm from '../modules/QueryParam.js'
+import FacetQueryParms from '../modules/FacetQueryParams.js'
 import HoneycombURL from '../modules/HoneycombURL.js'
 
 class SearchPage extends Component {
@@ -28,4 +28,4 @@ class SearchPage extends Component {
   }
 }
 
-export default SearchPage;
+export default SearchPage

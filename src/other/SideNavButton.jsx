@@ -34,7 +34,7 @@ var SideNavButton = createReactClass({
       onMouseLeave: () => {},
       onTouchStart: () => {},
       buttonOnOverlay: false,
-    };
+    }
   },
 
   getInitialState() {
@@ -42,11 +42,11 @@ var SideNavButton = createReactClass({
       hovered: false,
       isKeyboardFocused: false,
       touch: false,
-    };
+    }
   },
 
   buttonStyles: function() {
-    var hovered = (this.state.hovered || this.state.isKeyboardFocused);
+    var hovered = (this.state.hovered || this.state.isKeyboardFocused)
     var styles = {
       top: (this.props.offsetTop - 30) + 'px',
       opacity: hovered ? "1" : "0.7",
@@ -62,18 +62,18 @@ var SideNavButton = createReactClass({
       lineHeight: "60px",
       position: "fixed",
       zIndex: "3",
-    };
+    }
 
     if (this.props.rightIcon) {
-      styles["right"] = "-29px";
+      styles["right"] = "-29px"
     } else {
-      styles["left"] = "-29px";
+      styles["left"] = "-29px"
     }
-    return styles;
+    return styles
   },
 
   iconStyles: function() {
-    var hovered = (this.state.hovered || this.state.isKeyboardFocused);
+    var hovered = (this.state.hovered || this.state.isKeyboardFocused)
 
     var styles = {
       color: hovered ? CurrentTheme.getCurrentPallette(this.context.muiTheme).textColor : CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor,
@@ -82,16 +82,16 @@ var SideNavButton = createReactClass({
       top: "17.5px",
     }
     if (this.props.rightIcon) {
-      styles["left"] = "5px";
+      styles["left"] = "5px"
     }
-    return styles;
+    return styles
   },
 
   chevron: function() {
     if (this.props.rightIcon) {
-      return "chevron_right";
+      return "chevron_right"
     } else {
-      return "chevron_left";
+      return "chevron_left"
     }
   },
 
@@ -119,25 +119,25 @@ var SideNavButton = createReactClass({
   },
 
   _handleKeyboardFocus(e, isKeyboardFocused) {
-    this.setState({isKeyboardFocused: isKeyboardFocused});
-    this.props.onKeyboardFocus(e, isKeyboardFocused);
+    this.setState({isKeyboardFocused: isKeyboardFocused})
+    this.props.onKeyboardFocus(e, isKeyboardFocused)
   },
 
   _handleMouseEnter(e) {
     //Cancel hover styles for touch devices
-    if (!this.state.touch) this.setState({hovered: true});
-    this.props.onMouseEnter(e);
+    if (!this.state.touch) this.setState({hovered: true})
+    this.props.onMouseEnter(e)
   },
 
   _handleMouseLeave(e) {
-    this.setState({hovered: false});
-    this.props.onMouseLeave(e);
+    this.setState({hovered: false})
+    this.props.onMouseLeave(e)
   },
 
   _handleTouchStart(e) {
-    this.setState({touch: true});
-    this.props.onTouchStart(e);
+    this.setState({touch: true})
+    this.props.onTouchStart(e)
   },
-});
+})
 
-module.exports = SideNavButton;
+module.exports = SideNavButton

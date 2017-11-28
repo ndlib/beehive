@@ -21,10 +21,10 @@ var PreviousModal = createReactClass({
   getDefaultProps: function() {
     return {
       offsetTop: window.innerHeight/2,
-    };
+    }
   },
   render: function() {
-    var id = this.props.id;
+    var id = this.props.id
     return (
     <Link
       to={this.props.url}
@@ -33,9 +33,9 @@ var PreviousModal = createReactClass({
     >
       <i className="material-icons">chevron_left</i>
     </Link>
-    );
+    )
   }
-});
+})
 
 // each file will export exactly one component
-module.exports = PreviousModal;
+module.exports = PreviousModal

@@ -10,8 +10,8 @@ class SiteIndexPage extends Component {
   render() {
     return (
       <SiteIndex collections={HoneycombURL() + "/v1/collections/"} />
-    );
+    )
   }
 }
 
-export default SiteIndexPage;
+export default SiteIndexPage

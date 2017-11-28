@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { FontIcon, Paper } from 'material-ui'
 
-var MetadataList = require('../display/MetadataList.jsx');
+var MetadataList = require('../display/MetadataList.jsx')
 
 var Styles = {
   // The outer containing div for this component
@@ -28,7 +28,7 @@ var Styles = {
     width: "100%",
     maxWidth: "60em",
   },
-};
+}
 
 var Details = createReactClass({
   propTypes: {
@@ -46,13 +46,13 @@ var Details = createReactClass({
   getInitialState: function() {
     return {
       showDetails: this.props.showDetails,
-    };
+    }
   },
 
   toggleDetails: function() {
     this.setState({
       showDetails: !this.state.showDetails,
-    });
+    })
   },
 
   arrowIcon: function() {
@@ -60,7 +60,7 @@ var Details = createReactClass({
       <FontIcon className="material-icons" style={{ verticalAlign:'top', margin:'5px 10px 5px 0px' }}>
         { this.state.showDetails ? "arrow_forward" : "arrow_back" }
       </FontIcon>
-    );
+    )
   },
 
   details: function() {
@@ -70,9 +70,9 @@ var Details = createReactClass({
           <div className="additional-details" dangerouslySetInnerHTML={{__html: this.props.additionalDetails}} />
           <MetadataList metadata={this.props.item.metadata} id={this.props.item.id} printable={this.props.printable} />
         </div>
-      );
+      )
     } else {
-      return null;
+      return null
     }
   },
 
@@ -81,8 +81,8 @@ var Details = createReactClass({
       <Paper style={ Styles.outer }>
         { this.details() }
       </Paper>
-    );
+    )
   }
-});
+})
 
-module.exports = Details;
+module.exports = Details

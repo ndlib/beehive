@@ -16,15 +16,15 @@ var DescriptionTeaser = createReactClass({
     return {
       overflow: 'hidden',
       textOverflow: 'ellipsis',
-    };
+    }
   },
 
   render: function() {
-    var trimmedDescription = this.props.description;
+    var trimmedDescription = this.props.description
     return (
       <div className='item-description' dangerouslySetInnerHTML={{__html: trimmedDescription}}  style={this.style()} />
-    );
+    )
   }
-});
+})
 
-module.exports = DescriptionTeaser;
+module.exports = DescriptionTeaser

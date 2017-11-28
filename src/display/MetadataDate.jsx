@@ -11,8 +11,8 @@ var MetadataDate = createReactClass({
   },
 
   render: function () {
-    return (<time dateTime={this.props.metadata_field.iso8601}>{this.props.metadata_field.value}</time>);
+    return (<time dateTime={this.props.metadata_field.iso8601}>{this.props.metadata_field.value}</time>)
   }
-});
+})
 
-module.exports = MetadataDate;
+module.exports = MetadataDate

@@ -1,8 +1,8 @@
-import { isFSA } from 'flux-standard-action';
-import uniqueId from 'lodash/utility/uniqueId';
+import { isFSA } from 'flux-standard-action'
+import uniqueId from 'lodash/utility/uniqueId'
 
 function isPromise(val) {
-  return val && typeof val.then === 'function';
+  return val && typeof val.then === 'function'
 }
 
 export default function promiseMiddleware({ dispatch }) {
@@ -10,11 +10,11 @@ export default function promiseMiddleware({ dispatch }) {
     if (!isFSA(action)) {
       return isPromise(action)
         ? action.then(dispatch)
-        : next(action);
+        : next(action)
     }
 
     if (isPromise(action.payload)) {
-      const sequenceId = uniqueId();
+      const sequenceId = uniqueId()
 
       dispatch({
         ...action,
@@ -23,7 +23,7 @@ export default function promiseMiddleware({ dispatch }) {
           type: 'start',
           id: sequenceId
         }
-      });
+      })
 
       return action.payload.then(
         result => dispatch({
@@ -43,9 +43,9 @@ export default function promiseMiddleware({ dispatch }) {
             id: sequenceId
           }
         })
-      );
+      )
     }
 
-    return next(action);
-  };
+    return next(action)
+  }
 }

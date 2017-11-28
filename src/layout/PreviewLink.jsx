@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import mui, { Card, CardMedia, CardTitle, FloatingActionButton, FontIcon} from 'material-ui'
 import {Link} from 'react-router-dom'
-var HoneycombImage = require("../other/HoneycombImage.jsx");
-var MediaQuery = require('react-responsive');
+var HoneycombImage = require("../other/HoneycombImage.jsx")
+var MediaQuery = require('react-responsive')
 const CollectionUrl = require('../modules/CollectionUrl.jsx')
 
 var PreviewLink = createReactClass({
@@ -16,15 +16,15 @@ var PreviewLink = createReactClass({
   getInitialState: function () {
     return {
       hover: false,
-    };
+    }
   },
 
   mouseOver: function () {
-    this.setState({hover: true});
+    this.setState({hover: true})
   },
 
   mouseOut: function () {
-    this.setState({hover: false});
+    this.setState({hover: false})
   },
 
   style: function(media) {
@@ -36,7 +36,7 @@ var PreviewLink = createReactClass({
       color: "#fff",
       opacity: this.state.hover ? "1.0" : "0.3",
       maxWidth: "200px",
-    };
+    }
   },
 
   buttonStyle: function() {
@@ -63,11 +63,11 @@ var PreviewLink = createReactClass({
           </FloatingActionButton>
         </Card>
 
-    );
+    )
   },
 
   render: function() {
-    var url = CollectionUrl.collectionObjectUrl(this.props.siteObject);
+    var url = CollectionUrl.collectionObjectUrl(this.props.siteObject)
     return (
       <Link to={url}>
       <MediaQuery minWidth={850}>
@@ -79,8 +79,8 @@ var PreviewLink = createReactClass({
         </MediaQuery>
       </MediaQuery>
       </Link>
-    );
+    )
   }
-});
+})
 
-module.exports = PreviewLink;
+module.exports = PreviewLink

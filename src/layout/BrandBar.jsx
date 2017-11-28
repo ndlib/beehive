@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-var MediaQuery = require("react-responsive");
+var MediaQuery = require("react-responsive")
 
 var BrandBar = createReactClass({
 
@@ -21,9 +21,9 @@ var BrandBar = createReactClass({
           </div>
         </div>
       </MediaQuery>
-    );
+    )
   }
 
-});
+})
 
-module.exports = BrandBar;
+module.exports = BrandBar

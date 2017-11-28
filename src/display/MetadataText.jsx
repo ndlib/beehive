@@ -11,8 +11,8 @@ var MetadataText = createReactClass({
   },
 
   render: function () {
-    return (<div>{this.props.metadata_field.value}</div>);
+    return (<div>{this.props.metadata_field.value}</div>)
   }
-});
+})
 
-module.exports = MetadataText;
+module.exports = MetadataText

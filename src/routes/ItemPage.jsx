@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import Item from '../components/Item/Item.jsx';
+import Item from '../components/Item/Item.jsx'
 import CollectionUrl from '../modules/CollectionUrl.jsx'
 
 class ItemPage extends Component {
@@ -20,4 +20,4 @@ class ItemPage extends Component {
   }
 }
 
-export default ItemPage;
+export default ItemPage

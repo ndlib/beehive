@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import mui, {Paper} from 'material-ui';
+import mui, {Paper} from 'material-ui'
 import { Link } from 'react-router-dom'
 
 var IndexPageFooter = createReactClass({
@@ -18,8 +18,8 @@ var IndexPageFooter = createReactClass({
           </Link>
         </footer>
       </Paper>
-    );
+    )
   }
-});
+})
 
-module.exports = IndexPageFooter;
+module.exports = IndexPageFooter

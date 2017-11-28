@@ -20,22 +20,22 @@ var CollectionLeftNav = createReactClass({
     return {
       sitePath: [],
       open: false,
-    };
+    }
   },
 
   componentWillMount: function() {
     if (this.props.collection['site_path']) {
       this.setState({
         sitePath: this.props.collection['site_path']
-      });
+      })
     }
   },
 
   componentDidMount: function() {
     if (this.props.collection['site_path']) {
-      return;
+      return
     }
-    var url = this.props.collection['@id'] + '/site_path';
+    var url = this.props.collection['@id'] + '/site_path'
 
     $.ajax({
       context: this,
@@ -45,28 +45,28 @@ var CollectionLeftNav = createReactClass({
       success: function(result) {
         this.setState({
           sitePath: result.site_path,
-        });
+        })
       },
       error: function(request, status, thrownError) {
         // Should we redirect here? It's probably not necessary since it's not
         // the primary content of the page...
-        //window.location = window.location.origin + '/404';
-        console.log("Error retrieving showcase list " + thrownError);
+        //window.location = window.location.origin + '/404'
+        console.log("Error retrieving showcase list " + thrownError)
       }
-    });
+    })
   },
 
 
   menuItemAction: function(url) {
-    window.location = url;
+    window.location = url
   },
 
   dropDownOptions: function() {
-    var options = [];
-    var collectionUrl = CollectionUrl.collectionUrl(this.props.collection);
-    var aboutUrl = CollectionUrl.aboutUrl(this.props.collection);
-    var introUrl = CollectionUrl.introUrl(this.props.collection);
-    var browseUrl = CollectionUrl.browseUrl(this.props.collection);
+    var options = []
+    var collectionUrl = CollectionUrl.collectionUrl(this.props.collection)
+    var aboutUrl = CollectionUrl.aboutUrl(this.props.collection)
+    var introUrl = CollectionUrl.introUrl(this.props.collection)
+    var browseUrl = CollectionUrl.browseUrl(this.props.collection)
 
     options.push((
       <Link
@@ -76,7 +76,7 @@ var CollectionLeftNav = createReactClass({
       >
         <MenuItem primaryText='Home' key='home' />
       </Link>
-    ));
+    ))
 
     if (this.props.collection.enable_browse) {
       options.push((
@@ -87,7 +87,7 @@ var CollectionLeftNav = createReactClass({
         >
           <MenuItem primaryText='Browse Collection' key='browse' />
         </Link>
-      ));
+      ))
     }
 
     if (this.props.collection.about) {
@@ -99,9 +99,9 @@ var CollectionLeftNav = createReactClass({
         >
           <MenuItem primaryText='About' key='about'/>
         </Link>
-      ));
+      ))
     }
-    options.push((<Divider key="divider"/>));
+    options.push((<Divider key="divider"/>))
 
     if (introUrl) {
       options.push((
@@ -112,12 +112,12 @@ var CollectionLeftNav = createReactClass({
         >
           <MenuItem primaryText='Introduction' key='intro'/>
         </Link>
-      ));
+      ))
     }
 
     this.state.sitePath.forEach(function(siteObject){
-      var url = CollectionUrl.collectionObjectUrl(siteObject);
-      var name = siteObject.name || siteObject.name_line_1;
+      var url = CollectionUrl.collectionObjectUrl(siteObject)
+      var name = siteObject.name || siteObject.name_line_1
       options.push ((
         <Link
           to={url}
@@ -128,10 +128,10 @@ var CollectionLeftNav = createReactClass({
             primaryText={name}
             className="collection-left-nav-item" />
         </Link>
-      ));
-    }.bind(this));
+      ))
+    }.bind(this))
 
-    return options;
+    return options
   },
 
   buttonStyle: function () {
@@ -144,22 +144,22 @@ var CollectionLeftNav = createReactClass({
       backgroundColor: 'rgba(255,255,255,.1)',
       color: 'white',
       zIndex: "5"
-    });
+    })
   },
 
   navStyle: function () {
     return ({
       zIndex: '999999999999999'
-    });
+    })
   },
 
   clickEvent: function () {
-    this.setState({open: !this.state.open});
+    this.setState({open: !this.state.open})
   },
 
   render: function () {
     if(!this.props.collection) {
-      return;
+      return
     }
     else {
       return (
@@ -181,9 +181,9 @@ var CollectionLeftNav = createReactClass({
             children={this.dropDownOptions()}
             style={this.navStyle()} />
         </div>
-      );
+      )
     }
   }
-});
+})
 
-module.exports = CollectionLeftNav;
+module.exports = CollectionLeftNav

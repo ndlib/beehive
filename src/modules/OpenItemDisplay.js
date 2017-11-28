@@ -1,28 +1,28 @@
 module.exports = function(id, string){
   if (id) {
     if(string === undefined) {
-      string = 'item';
+      string = 'item'
     }
-    var path = window.location.pathname;
+    var path = window.location.pathname
 
     if(path.substr(-1) === '/') {
-        path =  path.substr(0, path.length - 1);
+        path =  path.substr(0, path.length - 1)
     }
 
-    var reg = new RegExp('(' + string +')=.*[^&]', 'i');
-    var searchStr = window.location.search;
-    var searchReg = reg.exec(searchStr);
+    var reg = new RegExp('(' + string +')=.*[^&]', 'i')
+    var searchStr = window.location.search
+    var searchReg = reg.exec(searchStr)
 
     if(searchStr.length > 0 && searchReg === null) {
-      searchStr += '&' + string + '=' + id;
+      searchStr += '&' + string + '=' + id
     } else if(searchStr.length > 0 && searchReg !== null) {
-      searchStr = searchStr.replace(reg, string + '=' + id);
+      searchStr = searchStr.replace(reg, string + '=' + id)
     }
     else {
-      searchStr = '?' + string + '=' + id;
+      searchStr = '?' + string + '=' + id
     }
 
-    history.pushState({}, '', path + searchStr);
+    history.pushState({}, '', path + searchStr)
   }
-  return;
-};
+  return
+}

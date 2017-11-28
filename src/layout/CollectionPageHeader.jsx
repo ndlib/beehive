@@ -3,13 +3,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import mui, { AppBar, Paper, Tab, Tabs } from 'material-ui'
-var MediaQuery = require('react-responsive');
+var MediaQuery = require('react-responsive')
 
-var BrandBar = require('./BrandBar.jsx');
-var CollectionLeftNav = require('./CollectionLeftNav.jsx');
-var ConfigurationStore = require('../store/ConfigurationStore.js');
-var ConfigurationActions = require('../actions/ConfigurationActions.js');
-var SearchBox = require('./SearchBox.jsx');
+var BrandBar = require('./BrandBar.jsx')
+var CollectionLeftNav = require('./CollectionLeftNav.jsx')
+var ConfigurationStore = require('../store/ConfigurationStore.js')
+var ConfigurationActions = require('../actions/ConfigurationActions.js')
+var SearchBox = require('./SearchBox.jsx')
 const CollectionUrl = require('../modules/CollectionUrl.jsx')
 const CurrentTheme = require('../modules/CurrentTheme.jsx')
 
@@ -31,30 +31,30 @@ var CollectionPageHeader = createReactClass({
   },
 
   componentDidMount: function() {
-    ConfigurationStore.addChangeListener(this.configurationLoaded);
+    ConfigurationStore.addChangeListener(this.configurationLoaded)
     if (!this.state.configurationLoaded) {
-      ConfigurationActions.load(this.props.collection);
+      ConfigurationActions.load(this.props.collection)
     }
   },
 
   componentWillUnmount: function() {
-    ConfigurationStore.removeChangeListener(this.configurationLoaded);
+    ConfigurationStore.removeChangeListener(this.configurationLoaded)
   },
 
   configurationLoaded: function() {
-    this.setState({ configurationLoaded: true });
+    this.setState({ configurationLoaded: true })
   },
 
   largeScreenStyle: function() {
-    var height = this.state.themeVariables.height + 1;
+    var height = this.state.themeVariables.height + 1
     if(this.props.branding) {
-      height += 50;
+      height += 50
     }
     return ({
       height: height + 'px',
       width: '100%',
       zIndex: "1000",
-    });
+    })
   },
 
   smallScreenStyle: function() {
@@ -62,7 +62,7 @@ var CollectionPageHeader = createReactClass({
       height: this.state.themeVariables.height + 1 + 'px',
       width: '100%',
       zIndex: "1000",
-    });
+    })
   },
 
 
@@ -77,78 +77,78 @@ var CollectionPageHeader = createReactClass({
       fontSize: 24,
       color: this.state.themeVariables.alternateTextColor,
       lineHeight: this.state.themeVariables.height + 'px',
-    };
+    }
   },
 
   _handleTabs: function (tab) {
     if (tab.props.value == "about") {
-      window.location.href = CollectionUrl.aboutUrl(this.props.collection);
+      window.location.href = CollectionUrl.aboutUrl(this.props.collection)
     } else if (tab.props.value == "search") {
-      window.location.href = CollectionUrl.browseUrl(this.props.collection);
+      window.location.href = CollectionUrl.browseUrl(this.props.collection)
     }
   },
 
   activeTab: function() {
-    var pageCode = window.location.pathname.split("/").slice(-1)[0].split("?")[0];
+    var pageCode = window.location.pathname.split("/").slice(-1)[0].split("?")[0]
 
     if (pageCode == "search") {
-      return "search";
+      return "search"
     } else if (window.location.pathname == CollectionUrl.browseUrl(this.props.collection)) {
-      return "about";
+      return "about"
     }
-    return "none";
+    return "none"
   },
 
   browseTab: function() {
     if (ConfigurationStore.browseEnabled()) {
-      return (<Tab label="Browse Collection" value="search" onActive={this._handleTabs} />);
+      return (<Tab label="Browse Collection" value="search" onActive={this._handleTabs} />)
     } else {
-      return "";
+      return ""
     }
   },
 
   aboutTab: function() {
     if (ConfigurationStore.hasAboutPage()) {
-      return (<Tab label="About" value="about" onActive={this._handleTabs} />);
+      return (<Tab label="About" value="about" onActive={this._handleTabs} />)
     } else {
-      return "";
+      return ""
     }
   },
 
   availableTabs: function() {
-    var ret = [];
+    var ret = []
     if (ConfigurationStore.browseEnabled()) {
-      ret.push({label: "Browse Collection", value: "search"});
+      ret.push({label: "Browse Collection", value: "search"})
     }
     if (ConfigurationStore.hasAboutPage()) {
-      ret.push({label: "About", value: "about"});
+      ret.push({label: "About", value: "about"})
     }
-    return ret;
+    return ret
   },
 
   tabs: function() {
-    var availableTabs = this.availableTabs();
+    var availableTabs = this.availableTabs()
     if (availableTabs.length > 0) {
       return  (
         <Tabs style={ {float:'right', backgroundColor: "none" } } value={this.activeTab()} tabItemContainerStyle={{backgroundColor: "transparent", width:"auto" }}>
           {
             availableTabs.map(function (tab, index) {
-              return(<Tab key={tab.value} label={tab.label} value={tab.value} onActive={this._handleTabs} style={{color:"white", width:'auto', padding:'0 20px 0 0', fontSize: '16px'}} />);
+              return(<Tab key={tab.value} label={tab.label} value={tab.value} onActive={this._handleTabs} style={{color:"white", width:'auto', padding:'0 20px 0 0', fontSize: '16px'}} />)
             }.bind(this))
           }
-        </Tabs>);
+        </Tabs>)
     }
     return (
       <Tabs style={ {float:'right', backgroundColor: "none" } } value={this.activeTab()} tabItemContainerStyle={{backgroundColor: "transparent", width:"auto" }}>
       </Tabs>
-    );
+    )
   },
 
   appBarStyle: function() {
-    var style = this.baseScreenStyle();
+    var style = this.baseScreenStyle()
 
     if (this.props.branding) {
-      style["top"] = "50px";
+      style["top"] = "50px"
     }
     return style
   },
@@ -158,7 +158,7 @@ var CollectionPageHeader = createReactClass({
       position: "fixed",
       background: "linear-gradient(to bottom, #5b5b5b 0%,#050505 100%)",
       height:"65px"
-    };
+    }
   },
 
   searchBox: function() {
@@ -167,9 +167,9 @@ var CollectionPageHeader = createReactClass({
         <div style={ {float:'right', marginTop:'-8px' } }>
           <SearchBox collection={this.props.collection} useStore={false}/>
         </div>
-      );
+      )
     }
-    return (<span />);
+    return (<span />)
   },
 
   render: function() {
@@ -178,7 +178,7 @@ var CollectionPageHeader = createReactClass({
         href={CollectionUrl.collectionUrl(this.props.collection)}>
           <h1 style={this.titleStyle()}>{this.props.collection.name_line_1}</h1>
       </a>
-    );
+    )
 
     var rightNav = (
       <div style={{ marginRight: "16px" }}>
@@ -187,7 +187,7 @@ var CollectionPageHeader = createReactClass({
           {this.tabs()}
         </MediaQuery>
       </div>
-    );
+    )
 
     return (
       <div>
@@ -217,9 +217,9 @@ var CollectionPageHeader = createReactClass({
           </Paper>
         </MediaQuery>
       </div>
-    );
+    )
   }
-});
+})
 
 // each file will export exactly one component
-module.exports = CollectionPageHeader;
+module.exports = CollectionPageHeader

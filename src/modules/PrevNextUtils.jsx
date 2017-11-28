@@ -13,14 +13,14 @@ var PrevNext = {
         zIndex: 100,
         backgroundColor: bgColor,
         color: '#fff',
-      };
+      }
     } else {
       return {
         backgroundColor: bgColor,
         color: '#fff',
-      };
+      }
     }
   },
 }
 
-module.exports = PrevNext;
+module.exports = PrevNext

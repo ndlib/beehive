@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import {FontIcon, IconButton, RaisedButton} from 'material-ui'
 
-var SearchStore = require('../store/SearchStore.js');
-var SearchActions = require('../actions/SearchActions.js');
+var SearchStore = require('../store/SearchStore.js')
+var SearchActions = require('../actions/SearchActions.js')
 
 const CurrentTheme = require('../modules/CurrentTheme.jsx')
 
@@ -42,61 +42,61 @@ var SearchBox = createReactClass({
       primary: true,
       active: false,
       useStore: true,
-    };
+    }
   },
 
   getInitialState: function() {
     var state = {
       active: this.props.active,
-    };
-    return state;
+    }
+    return state
   },
 
   onChange: function(e) {
-    this.setTerm(e.target.value);
+    this.setTerm(e.target.value)
   },
 
   onClick: function(e) {
     if (this.state.active && this.state.searchTerm) {
       this.setSearchTerm(this.state.searchTerm)
     } else if (this.state.active) {
-      this.setState({active: false});
+      this.setState({active: false})
     } else {
-      this.setState({active: true});
+      this.setState({active: true})
     }
   },
 
   clearClick: function() {
-    this.setSearchTerm("");
+    this.setSearchTerm("")
   },
 
   setSearchTerm(searchTerm) {
-    this.setTerm(searchTerm);
+    this.setTerm(searchTerm)
 
     if(this.props.useStore) {
-      SearchActions.setSearchTerm(searchTerm);
+      SearchActions.setSearchTerm(searchTerm)
     } else {
       var url = window.location.origin
         + "/" + this.props.collection.id
         + "/" + this.props.collection.slug
-        + "/search?q=" + searchTerm;
-      window.location = url;
+        + "/search?q=" + searchTerm
+      window.location = url
     }
   },
 
   componentDidMount: function() {
-    this.setTerm(SearchStore.searchTerm);
+    this.setTerm(SearchStore.searchTerm)
   },
 
   setTerm: function(term) {
-    this.setState({searchTerm: term});
+    this.setState({searchTerm: term})
   },
 
   inputStyle: function() {
     return ({
       color: (this.props.primary ? CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor : CurrentTheme.getCurrentPallette(this.context.muiTheme).textColor),
       height: '36px',
-    });
+    })
   },
 
   clearButton: function() {
@@ -105,16 +105,16 @@ var SearchBox = createReactClass({
         <IconButton onClick={this.clearClick} style={Styles.clearButton} tooltip="Clear Search">
           <FontIcon color="gray" className="material-icons">clear</FontIcon>
         </IconButton>
-      );
+      )
     } else {
-      return;
+      return
     }
   },
 
   handleKeyDown: function(e) {
-    var ENTER = 13;
+    var ENTER = 13
     if( e.keyCode == ENTER ) {
-        this.onClick(e);
+        this.onClick(e)
     }
   },
 
@@ -127,9 +127,9 @@ var SearchBox = createReactClass({
         value={this.state.searchTerm}
         onKeyDown={this.handleKeyDown}
         style={ Styles.searchTextField }
-      />);
+      />)
     } else {
-      return (<div />);
+      return (<div />)
     }
   },
 
@@ -147,7 +147,7 @@ var SearchBox = createReactClass({
           <FontIcon className="material-icons" style={CurrentTheme.lightIconStyle()}>search</FontIcon>
         </RaisedButton>
       </div>
-    );
+    )
   }
-});
+})
 module.exports = SearchBox

@@ -3,8 +3,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 
-var PageHeader = require('../layout/PageHeader.jsx');
-var PageContent = require('../layout/PageContent.jsx');
+var PageHeader = require('../layout/PageHeader.jsx')
+var PageContent = require('../layout/PageContent.jsx')
 var PageTitle = require('../modules/PageTitle.js')
 
 var ErrorPage = createReactClass({
@@ -14,7 +14,7 @@ var ErrorPage = createReactClass({
 
   render: function() {
 
-    var url = window.location.origin;
+    var url = window.location.origin
     return (
     <div>
       <PageHeader branding={true} />
@@ -34,8 +34,8 @@ var ErrorPage = createReactClass({
         </div>
       </PageContent>
     </div>
-    );
+    )
   }
 
-});
-module.exports = ErrorPage;
+})
+module.exports = ErrorPage

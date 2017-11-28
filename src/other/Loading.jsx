@@ -10,7 +10,7 @@ var Loading = createReactClass({
     return (<CircularProgress mode="indeterminate" size={.5} />)
   }
 
-});
+})
 
 // each file will export exactly one component
-module.exports = Loading;
+module.exports = Loading
