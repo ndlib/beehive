@@ -3,8 +3,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 var mui = require('material-ui');
-// var ThemeManager = require('material-ui/lib/styles/theme-manager');
-// var BeehiveTheme = require('../../themes/beehive.jsx');
 
 var EventEmitter = require('../../middleware/EventEmitter.js');
 var ItemShow = require('./ItemShow.jsx');
@@ -32,7 +30,6 @@ var Item = createReactClass({
       collection: null,
       item: null,
       height: window.innerHeight,
-      //muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
     };
   },
 

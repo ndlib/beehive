@@ -2,8 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 var mui = require('material-ui');
-// var ThemeManager = require('material-ui/lib/styles/theme-manager');
-// var BeehiveTheme = require('../../themes/beehive.jsx');
+
 
 var SitePathCard = require('../Collection/SitePathCard.jsx');
 var PagesShow = require('../Pages/PagesShow.jsx');
@@ -14,12 +13,6 @@ var CollectionDescription = createReactClass({
     collection: PropTypes.object.isRequired,
     height: PropTypes.string,
     id: PropTypes.string,
-  },
-
-  getInitialState: function() {
-    return {
-      //muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
-    };
   },
 
   style: function() {

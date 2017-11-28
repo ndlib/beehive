@@ -11,8 +11,6 @@ var SearchActions = require('../../actions/SearchActions.js');
 var SearchDisplayList = require('./SearchDisplayList.jsx');
 var ConfigurationActions = require("../../actions/ConfigurationActions.js");
 var ConfigurationStore = require("../../store/ConfigurationStore.js");
-// var ThemeManager = require('material-ui/lib/styles/theme-manager');
-// var BeehiveTheme = require('../../themes/beehive.jsx');
 
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
@@ -49,7 +47,6 @@ var Search = createReactClass({
       windowHeight: this.calcHeight(),
       collection: {},
       remoteCollectionLoaded: false,
-      //muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
     };
   },
 

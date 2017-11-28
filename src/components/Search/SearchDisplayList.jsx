@@ -10,7 +10,6 @@ var SearchStore = require('../../store/SearchStore.js');
 var SearchPagination = require('./SearchPagination.jsx');
 var ItemListItem = require('./ItemListItem.jsx');
 var SearchSidebar = require('./SearchSidebar.jsx');
-// var ThemeManager = require('material-ui/lib/styles/theme-manager');
 
 var SearchDisplayList = createReactClass({
   propTypes: {
@@ -26,7 +25,6 @@ var SearchDisplayList = createReactClass({
     return {
       sidebar: false,
       view: SearchStore.view,
-      //muiTheme: ThemeManager.getMuiTheme(theme),
     };
   },
 
