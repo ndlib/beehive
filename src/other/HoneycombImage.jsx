@@ -33,9 +33,9 @@ var HoneycombImage = createReactClass({
   },
 
   altText: function () {
-    var alt_html = this.props.alt
+    var altHtml = this.props.alt
     // text() chokes on plaintext, so to ensure we have html wrap it in a div
-    var str = $('<div>' + alt_html + '</div>').text()
+    var str = $('<div>' + altHtml + '</div>').text()
     // then fix quotes
     return str.replace('"', "'")
   },
@@ -43,7 +43,13 @@ var HoneycombImage = createReactClass({
   render: function () {
     var classString = 'hc-thumbnail-image ' + this.props.size
     return (
-      <img style={this.style()} src={this.imgSrc()} className={classString} title={this.props.title} alt={this.altText()} />
+      <img
+        style={this.style()}
+        src={this.imgSrc()}
+        className={classString}
+        title={this.props.title}
+        alt={this.altText()}
+      />
     )
   },
 })

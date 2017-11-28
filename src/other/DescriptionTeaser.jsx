@@ -7,8 +7,6 @@ var DescriptionTeaser = createReactClass({
 
   propTypes: {
     description: PropTypes.string,
-    showDescription: PropTypes.bool,
-    length: PropTypes.number,
   },
 
   style: function () {

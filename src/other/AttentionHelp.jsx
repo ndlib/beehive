@@ -7,7 +7,6 @@ import { Snackbar } from 'material-ui'
 var AttentionHelp = createReactClass({
 
   propTypes: {
-    start: PropTypes.number.isRequired,
     hasScrolled: PropTypes.bool,
   },
 

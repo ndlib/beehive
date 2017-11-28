@@ -33,6 +33,8 @@ class ConfigurationStore extends StoreEventEmitter {
 
         this.emitChange()
         break
+      default:
+        break
     }
   }
 

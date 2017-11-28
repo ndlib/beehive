@@ -1,15 +1,13 @@
-// app/assets/javascripts/components/layout/CollectionPageFooter.jsx
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import mui, { Paper } from 'material-ui'
+import { Paper } from 'material-ui'
 import { Link } from 'react-router-dom'
 var MediaQuery = require('react-responsive')
 
 var CollectionPageFooter = createReactClass({
 
   propTypes: {
-    collection: PropTypes.object.isRequired,
     height: PropTypes.number,
   },
 

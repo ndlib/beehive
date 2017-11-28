@@ -1,9 +1,5 @@
-
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-
 import SiteIndex from '../components/SiteIndex/SiteIndex.jsx'
-
 import HoneycombURL from '../modules/HoneycombURL.js'
 
 class SiteIndexPage extends Component {
