@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import mui, { GridList, Paper } from 'material-ui'
+import { GridList, Paper } from 'material-ui'
 var EventEmitter = require("../../middleware/EventEmitter.js");
 var theme = require('../../themes/beehive.jsx');
 var MediaQuery = require('react-responsive');

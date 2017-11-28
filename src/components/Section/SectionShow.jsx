@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import mui, { Paper, Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui'
+import { Paper, Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui'
 var CloseButton = require('../../other/CloseButton.jsx');
 var SideNavButton = require("../../other/SideNavButton.jsx");
 

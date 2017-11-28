@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import mui, { Card } from 'material-ui'
+import { Card } from 'material-ui'
 var TextCard = require("./TextCard.jsx");
 var ImageCard = require("./ImageCard.jsx");
 var MultimediaCard = require("./MultimediaCard.jsx");

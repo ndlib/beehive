@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import mui, { CardMedia, CardTitle, CardText } from 'material-ui';
+import { CardMedia, CardTitle, CardText } from 'material-ui';
 import CardCaption from "./CardCaption.jsx";
 
 var style = {

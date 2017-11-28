@@ -3,7 +3,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Link } from 'react-router'
-var mui = require('material-ui');
 var ItemImage = require('./ItemImage.jsx');
 
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')

@@ -2,7 +2,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-var mui = require('material-ui');
 var EventEmitter = require('../../middleware/EventEmitter.js');
 var ShowcaseShow = require('./ShowcaseShow.jsx');
 var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx');

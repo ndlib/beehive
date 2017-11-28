@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import mui, { ListItem, FontIcon } from 'material-ui'
+import { ListItem, FontIcon } from 'material-ui'
 var SearchStore = require('../../store/SearchStore.js');
 var SearchActions = require('../../actions/SearchActions.js');
 var FacetItem = createReactClass({

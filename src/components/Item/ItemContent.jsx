@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import mui, { FlatButton } from 'material-ui';
+import { FlatButton } from 'material-ui';
 var MediaQuery = require("react-responsive");
 var Details = require('../../display/Details.jsx');
 var OpenseadragonViewer = require('../../display/OpenseadragonViewer.jsx');

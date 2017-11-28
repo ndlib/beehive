@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Link } from 'react-router-dom';
-import mui, { Divider, ListItem } from 'material-ui';
+import { Divider, ListItem } from 'material-ui';
 var ItemImage = require('./ItemImage.jsx');
 
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')

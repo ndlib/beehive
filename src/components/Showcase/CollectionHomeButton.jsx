@@ -2,17 +2,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-var mui = require("material-ui");
 
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
 var CollectionHomeButton = createReactClass({
   propTypes: {
     collection: PropTypes.object,
-  },
-
-  contextTypes: {
-    muiTheme: PropTypes.object,
   },
 
   onClick: function() {
@@ -28,7 +23,7 @@ var CollectionHomeButton = createReactClass({
       >
         <FontIcon
           className="material-icons"
-          color={this.context.muiTheme.alternateTextColor}
+          color='white'
         >home</FontIcon>
       </FloatingActionButton>
     )

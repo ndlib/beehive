@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import mui, {Toolbar, ToolbarGroup, ToolbarTitle} from 'material-ui'
+import {Toolbar, ToolbarGroup, ToolbarTitle} from 'material-ui'
 var CloseButton = require('../../other/CloseButton.jsx');
 const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 

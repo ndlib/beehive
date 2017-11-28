@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import mui, { Paper } from 'material-ui'
+import { Paper } from 'material-ui'
 
 var ShowcaseEndingCard = require('./ShowcaseEndingCard.jsx');
 var SectionCard = require('../Section/SectionCard.jsx');

@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import mui, {FontIcon, Toolbar, ToolbarGroup, RaisedButton} from 'material-ui'
+import {FontIcon, Toolbar, ToolbarGroup, RaisedButton} from 'material-ui'
 var MediaQuery = require('react-responsive');
 var SearchBox = require('../../layout/SearchBox.jsx');
 var SearchSort = require('./SearchSort.jsx');

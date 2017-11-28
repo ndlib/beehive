@@ -2,7 +2,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-var mui = require('material-ui');
 
 var CollectionIntroCard = require('./CollectionIntroCard.jsx');
 var SitePathCardList = require('./SitePathCardList.jsx');

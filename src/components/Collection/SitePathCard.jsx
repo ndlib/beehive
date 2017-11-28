@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import mui, {Card, CardActions, CardMedia, CardTitle, FloatingActionButton, FontIcon} from 'material-ui'
+import {Card, CardActions, CardMedia, CardTitle, FloatingActionButton, FontIcon} from 'material-ui'
 import {Link} from 'react-router-dom'
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 

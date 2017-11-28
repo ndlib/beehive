@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import mui, { Card, CardActions, CardMedia, CardTitle, FloatingActionButton, FontIcon, Paper } from 'material-ui'
+import { Card, CardActions, CardMedia, CardTitle, FloatingActionButton, FontIcon, Paper } from 'material-ui'
 import { Link } from 'react-router-dom'
 var ConfigurationActions = require("../../actions/ConfigurationActions.js");
 var Loading = require("../../other/Loading.jsx");

@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import mui, {GridList} from 'material-ui'
+import {GridList} from 'material-ui'
 var theme = require('../../themes/beehive.jsx');
 var MediaQuery = require('react-responsive');
 

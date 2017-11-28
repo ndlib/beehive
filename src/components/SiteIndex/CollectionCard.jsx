@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import mui, { Card, CardActions, CardMedia, CardText, CardTitle, FlatButton } from 'material-ui'
+import { Card, CardActions, CardMedia, CardText, CardTitle, FlatButton } from 'material-ui'
 import { Link } from 'react-router-dom'
 var $ = require('jquery');
 var theme = require('../../themes/beehive.jsx');

@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import mui, { Card, CardTitle, CardMedia } from 'material-ui'
+import { Card, CardTitle, CardMedia } from 'material-ui'
 var MediaQuery = require("react-responsive");
 
 var SiteIndexHeader = createReactClass({
