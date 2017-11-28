@@ -1,9 +1,9 @@
-var AppDispatcher = require("../dispatcher/AppDispatcher.jsx")
-var StoreEventEmitter = require("../middleware/StoreEventEmitter.js")
-var ActionTypes = require("../constants/ConfigurationActionTypes.jsx")
+var AppDispatcher = require('../dispatcher/AppDispatcher.jsx')
+var StoreEventEmitter = require('../middleware/StoreEventEmitter.js')
+var ActionTypes = require('../constants/ConfigurationActionTypes.jsx')
 
 class ConfigurationStore extends StoreEventEmitter {
-  constructor() {
+  constructor () {
     super()
     this._fields = {}
     this._sorts = {}
@@ -12,16 +12,16 @@ class ConfigurationStore extends StoreEventEmitter {
     this._enableSearch = false
     this._enableBrowse = false
 
-    Object.defineProperty(this, "fields", {
-      get: function() { return this._fields }
+    Object.defineProperty(this, 'fields', {
+      get: function () { return this._fields },
     })
 
     AppDispatcher.register(this.receiveAction.bind(this))
   }
 
   // Receives actions sent by the AppDispatcher
-  receiveAction(action) {
-    switch(action.actionType) {
+  receiveAction (action) {
+    switch (action.actionType) {
       case ActionTypes.LOAD_CONFIGURAION:
         this._loaded = true
         this._fields = action.configuration.fields
@@ -36,19 +36,19 @@ class ConfigurationStore extends StoreEventEmitter {
     }
   }
 
-  loaded() {
+  loaded () {
     return this._loaded
   }
 
-  searchEnabled() {
+  searchEnabled () {
     return this._enableSearch
   }
 
-  browseEnabled() {
+  browseEnabled () {
     return this._enableBrowse
   }
 
-  hasAboutPage() {
+  hasAboutPage () {
     return this._hasAboutPage
   }
 }

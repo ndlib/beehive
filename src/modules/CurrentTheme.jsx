@@ -1,8 +1,8 @@
-"use strict"
+
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-var mui = require("material-ui")
+var mui = require('material-ui')
 
 const getCurrentPallette = (muiTheme) => {
   return muiTheme.rawTheme.palette
@@ -34,7 +34,7 @@ const cardHeadersCommon = () => {
 
 const pageWidth = () => {
   return {
-    //maxWidth: '960px',
+    // maxWidth: '960px',
     margin: '0 8%',
   }
 }

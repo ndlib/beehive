@@ -13,38 +13,37 @@ var CollectionDescription = createReactClass({
     id: PropTypes.string,
   },
 
-  style: function() {
+  style: function () {
     return {}
   },
 
-  showNext: function() {
-    if(this.props.collection &&
+  showNext: function () {
+    if (this.props.collection &&
       this.props.collection.site_path &&
-      this.props.collection.site_path.length > 0){
+      this.props.collection.site_path.length > 0) {
       return [
-        <div style={{margin: '0 auto', maxWidth: '500px'}}>
+        <div style={{ margin: '0 auto', maxWidth: '500px' }}>
           <SitePathCard
-            headerTitle="Continue to"
+            headerTitle='Continue to'
             siteObject={this.props.collection.site_path[0]}
-            addNextButton={true}
+            addNextButton
             fixedSize={false}
           />
         </div>,
-        <PreviewLink siteObject={this.props.collection.site_path[0]}/>
+        <PreviewLink siteObject={this.props.collection.site_path[0]} />,
       ]
-    }
-    else {
+    } else {
       return null
     }
   },
 
-  render: function() {
+  render: function () {
     return (
-        <PagesShow content={this.props.collection.description}>
-          {this.showNext()}
-        </PagesShow>
+      <PagesShow content={this.props.collection.description}>
+        {this.showNext()}
+      </PagesShow>
     )
-  }
+  },
 })
 
 module.exports = CollectionDescription

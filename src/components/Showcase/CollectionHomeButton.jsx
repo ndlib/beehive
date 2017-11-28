@@ -10,24 +10,24 @@ var CollectionHomeButton = createReactClass({
     collection: PropTypes.object,
   },
 
-  onClick: function() {
+  onClick: function () {
     window.location = CollectionUrl.collectionUrl(this.props.collection)
   },
 
-  render: function() {
+  render: function () {
     return (
       <FloatingActionButton
         onClick={this.onClick}
-        disableTouchRipple={true}
-        style={{position: 'absolute', bottom: '10px', right: '10px', zIndex: '1000'}}
+        disableTouchRipple
+        style={{ position: 'absolute', bottom: '10px', right: '10px', zIndex: '1000' }}
       >
         <FontIcon
-          className="material-icons"
+          className='material-icons'
           color='white'
         >home</FontIcon>
       </FloatingActionButton>
     )
-  }
+  },
 })
 
 module.exports = CollectionHomeButton

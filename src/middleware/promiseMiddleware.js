@@ -1,11 +1,11 @@
 import { isFSA } from 'flux-standard-action'
 import uniqueId from 'lodash/utility/uniqueId'
 
-function isPromise(val) {
+function isPromise (val) {
   return val && typeof val.then === 'function'
 }
 
-export default function promiseMiddleware({ dispatch }) {
+export default function promiseMiddleware ({ dispatch }) {
   return next => action => {
     if (!isFSA(action)) {
       return isPromise(action)
@@ -21,8 +21,8 @@ export default function promiseMiddleware({ dispatch }) {
         payload: undefined,
         sequence: {
           type: 'start',
-          id: sequenceId
-        }
+          id: sequenceId,
+        },
       })
 
       return action.payload.then(
@@ -31,8 +31,8 @@ export default function promiseMiddleware({ dispatch }) {
           payload: result,
           sequence: {
             type: 'next',
-            id: sequenceId
-          }
+            id: sequenceId,
+          },
         }),
         error => dispatch({
           ...action,
@@ -40,8 +40,8 @@ export default function promiseMiddleware({ dispatch }) {
           error: true,
           sequence: {
             type: 'next',
-            id: sequenceId
-          }
+            id: sequenceId,
+          },
         })
       )
     }

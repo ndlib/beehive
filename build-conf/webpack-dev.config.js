@@ -1,15 +1,15 @@
-var webpack = require("webpack");
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var webpack = require('webpack')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = [
   {
-    name: "browser",
+    name: 'browser',
     entry: {
-        main: './src/main.js'
+      main: './src/main.js',
     },
     output: {
-        path: './public',
-        filename: 'resources/bundle.js'
+      path: './public',
+      filename: 'resources/bundle.js',
     },
     devtool: 'inline-source-map',
     debug: true,
@@ -22,36 +22,36 @@ module.exports = [
           query: {
             cacheDirectory: true,
             presets: ['react', 'es2015', 'stage-0'],
-            plugins: ['transform-runtime', 'add-module-exports']
-          }
+            plugins: ['transform-runtime', 'add-module-exports'],
+          },
         },
         {
           test: /\.(css|scss)$/,
           exclude: /node_modules/,
-          loader: ExtractTextPlugin.extract("style", "css!sass")
+          loader: ExtractTextPlugin.extract('style', 'css!sass'),
         },
         {
           test: /\.(svg|png|jpg|gif)([\?]?.*)$/,
           exclude: /node_modules/,
-          loader: "file-loader?name=/images/[name].[ext]"
+          loader: 'file-loader?name=/images/[name].[ext]',
         },
         {
           test: /\.(eot|woff|woff2|ttf)([\?]?.*)$/,
           exclude: /node_modules/,
-          loader: 'url-loader'
-        }
-      ]
+          loader: 'url-loader',
+        },
+      ],
     },
     plugins: [
-      new ExtractTextPlugin("resources/styles.css"),
+      new ExtractTextPlugin('resources/styles.css'),
       new webpack.DefinePlugin({
-        "process.env": {
-          NODE_ENV: JSON.stringify("development")
-        }
-      })
+        'process.env': {
+          NODE_ENV: JSON.stringify('development'),
+        },
+      }),
     ],
     externals: {
-      "jquery": "jQuery"
-    }
-  }
-];
+      'jquery': 'jQuery',
+    },
+  },
+]

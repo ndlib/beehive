@@ -9,23 +9,23 @@ var SearchSidebar = createReactClass({
 
   getInitialState: function () {
     return {
-      show: true
+      show: true,
     }
   },
 
-  toggleSidebar: function() {
-    this.setState({show: !this.state.show})
+  toggleSidebar: function () {
+    this.setState({ show: !this.state.show })
   },
 
-  render: function() {
+  render: function () {
     return (
-      <Paper style={{display: this.state.show ? 'block' : 'none', width: "25%", float: "right"}} >
-        <h3 style={{paddingLeft:'16px'}}>Filter Results</h3>
-        <hr/>
-        <SearchFacets/>
+      <Paper style={{ display: this.state.show ? 'block' : 'none', width: '25%', float: 'right' }} >
+        <h3 style={{ paddingLeft:'16px' }}>Filter Results</h3>
+        <hr />
+        <SearchFacets />
       </Paper>
     )
-  }
+  },
 })
 
 module.exports = SearchSidebar

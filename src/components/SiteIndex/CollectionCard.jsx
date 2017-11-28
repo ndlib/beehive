@@ -11,51 +11,51 @@ const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 var CollectionCard = createReactClass({
   propTypes: {
     collection: PropTypes.object.isRequired,
-    cardHeight: PropTypes.string.isRequired
+    cardHeight: PropTypes.string.isRequired,
   },
 
-  style: function() {
+  style: function () {
     return {
-      position: "relative",
-      cursor: "pointer",
-      //height: this.props.cardHeight + 'px',
+      position: 'relative',
+      cursor: 'pointer',
+      // height: this.props.cardHeight + 'px',
       maxHeight:'450px',
-      //padding: theme.spacing.desktopGutter,
+      // padding: theme.spacing.desktopGutter,
       height:'100%',
-      paddingBottom:'60px'
+      paddingBottom:'60px',
     }
   },
 
-  imageSize: function() {
+  imageSize: function () {
     return {
-        position: 'absolute',
-        top: '0',
-        left: '0',
-        right: '0',
-        bottom: '0',
-        margin: 'auto',
-        minWidth:'50%',
-        minHeight: '50%',
-        maxWidth: 'initial',
-        maxHeight:'initial',
-        display: 'none'
+      position: 'absolute',
+      top: '0',
+      left: '0',
+      right: '0',
+      bottom: '0',
+      margin: 'auto',
+      minWidth:'50%',
+      minHeight: '50%',
+      maxWidth: 'initial',
+      maxHeight:'initial',
+      display: 'none',
     }
   },
 
-  image: function() {
+  image: function () {
     if (this.props.collection.image) {
       var space = ' '
       var re = new RegExp(space, 'g')
-      return this.props.collection.image["thumbnail/medium"].contentUrl.replace(re, '%20')
+      return this.props.collection.image['thumbnail/medium'].contentUrl.replace(re, '%20')
     } else {
       return '/images/marble.jpg'
     }
   },
 
-  description: function() {
+  description: function () {
     if (this.props.collection.description) {
       return (
-        <CardText style={{height: '100px'}}>
+        <CardText style={{ height: '100px' }}>
           {$(this.props.collection.description).text()}
         </CardText>
       )
@@ -68,37 +68,37 @@ var CollectionCard = createReactClass({
     }
   },
 
-  cardTitle: function() {
+  cardTitle: function () {
     var titleStyle = {
       whiteSpace: 'nowrap',
       overflow: 'hidden',
       textOverflow: 'ellipsis',
     }
     return (<CardTitle title={this.props.collection.name_line_1}
-                           titleStyle={titleStyle}
-                           subtitle={this.props.collection.name_line_2}
-                           subtitleStyle={titleStyle} />)
+      titleStyle={titleStyle}
+      subtitle={this.props.collection.name_line_2}
+      subtitleStyle={titleStyle} />)
   },
 
   cardMedia: function () {
-    //if (this.props.collection.image) {
-      return (
-        <CardMedia
-          mediaStyle={{background:'url("' + this.image() + '")', paddingBottom:'46.85%', backgroundSize:'cover', backgroundPosition:'top center', height:'100%', width:'100%', overflow: 'hidden' }}
-          className="temp"
-          style={{ overflow:'hidden'}}>
-          <img src={this.image()}  style={this.imageSize()} />
+    // if (this.props.collection.image) {
+    return (
+      <CardMedia
+        mediaStyle={{ background:'url("' + this.image() + '")', paddingBottom:'46.85%', backgroundSize:'cover', backgroundPosition:'top center', height:'100%', width:'100%', overflow: 'hidden' }}
+        className='temp'
+        style={{ overflow:'hidden' }}>
+        <img src={this.image()} style={this.imageSize()} />
 
-        </CardMedia>)
-    //} else {
+      </CardMedia>)
+    // } else {
     //  return (this.cardTitle())
-    //}
+    // }
   },
 
-  actionButtonsStyle: function() {
+  actionButtonsStyle: function () {
     return {
-      position: "absolute",
-      //top: (this.props.cardHeight - 60) + 'px',
+      position: 'absolute',
+      // top: (this.props.cardHeight - 60) + 'px',
       bottom:'0',
       width: '100%',
       borderTopColor: 'rgba(0,0,0,0.12)',
@@ -107,11 +107,11 @@ var CollectionCard = createReactClass({
     }
   },
 
-  exploreLabelStyle: function() {
+  exploreLabelStyle: function () {
     return { color: '#d9a91b' }
   },
 
-  render: function() {
+  render: function () {
     return (
 
       <Card style={this.style()} >
@@ -121,12 +121,12 @@ var CollectionCard = createReactClass({
           {this.cardTitle()}
         </Link>
         <CardActions style={this.actionButtonsStyle()} >
-          <FlatButton label="Explore" href={CollectionUrl.collectionUrl(this.props.collection)} labelStyle={ this.exploreLabelStyle() } />
+          <FlatButton label='Explore' href={CollectionUrl.collectionUrl(this.props.collection)} labelStyle={this.exploreLabelStyle()} />
         </CardActions>
       </Card>
 
     )
-  }
+  },
 })
 
 // each file will export exactly one component

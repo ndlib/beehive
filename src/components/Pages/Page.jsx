@@ -9,8 +9,8 @@ var PageTitleBar = require('./PageTitleBar.jsx')
 var SitePathCard = require('../Collection/SitePathCard.jsx')
 var PreviewLink = require('../../layout/PreviewLink.jsx')
 var MediaQuery = require('react-responsive')
-var ConfigurationActions = require("../../actions/ConfigurationActions.js")
-var ConfigurationStore = require("../../store/ConfigurationStore.js")
+var ConfigurationActions = require('../../actions/ConfigurationActions.js')
+var ConfigurationStore = require('../../store/ConfigurationStore.js')
 var PageTitle = require('../../modules/PageTitle.js')
 
 const LoadRemote = require('../../modules/LoadRemote.jsx')
@@ -23,8 +23,7 @@ var Page = createReactClass({
     ]),
   },
 
-
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       titleHeight: 56,
       titleSectionPercentVisible: 0,
@@ -33,9 +32,9 @@ var Page = createReactClass({
     }
   },
 
-  componentDidMount: function() {
+  componentDidMount: function () {
     ConfigurationStore.addChangeListener(this.configurationLoaded)
-    if ('object' == typeof(this.props.collection)) {
+    if (typeof (this.props.collection) === 'object') {
       this.setState({
         collection: this.props.collection,
       })
@@ -44,13 +43,13 @@ var Page = createReactClass({
     }
   },
 
-  componentWillUnmount: function() {
+  componentWillUnmount: function () {
     ConfigurationStore.removeChangeListener(this.configurationLoaded)
   },
 
-  componentWillReceiveProps: function(nextProps) {
-    if(this.props.collection !== nextProps.collection) {
-      if ('object' == typeof(nextProps.collection)) {
+  componentWillReceiveProps: function (nextProps) {
+    if (this.props.collection !== nextProps.collection) {
+      if (typeof (nextProps.collection) === 'object') {
         this.setValues(nextProps.collection)
       } else {
         LoadRemote.loadRemoteCollection(nextProps.collection, this.setValues)
@@ -59,9 +58,9 @@ var Page = createReactClass({
   },
 
   // Callback from loadRemoteCollection
-  setValues: function(result){
+  setValues: function (result) {
     ConfigurationActions.load(result)
-    if(result.pages.items) {
+    if (result.pages.items) {
       this.linkItems(result.pages.items)
     }
     this.setState({
@@ -71,97 +70,97 @@ var Page = createReactClass({
     return true
   },
 
-  configurationLoaded: function(){
+  configurationLoaded: function () {
     this.setState({ configurationLoaded: true })
   },
 
   // Creates doubly linked list from items to make subsequent
   // item navigation operations easier/faster
-  linkItems: function(items) {
-    items.forEach(function(item, i, array) {
+  linkItems: function (items) {
+    items.forEach(function (item, i, array) {
       var nextI = i + 1
       var prevI = i - 1
-      if(nextI < array.length) {
+      if (nextI < array.length) {
         item.nextItem = array[nextI]
       }
-      if(prevI >= 0) {
+      if (prevI >= 0) {
         item.previousItem = array[prevI]
       }
     })
   },
 
-  contentMouseOver: function(event) {
+  contentMouseOver: function (event) {
     var item = this.getItemFromEvent(event)
-    if(item) {
-      event.target.style.cursor = "pointer"
+    if (item) {
+      event.target.style.cursor = 'pointer'
     }
   },
 
-  getItemFromEvent: function(event) {
+  getItemFromEvent: function (event) {
     var item
-    var itemId = event.target.getAttribute("item_id")
-    if(itemId && this.state.collection.pages.items) {
-      item = this.state.collection.pages.items.find(function(e, i, a) {
-        return e["id"] == itemId
+    var itemId = event.target.getAttribute('item_id')
+    if (itemId && this.state.collection.pages.items) {
+      item = this.state.collection.pages.items.find(function (e, i, a) {
+        return e['id'] == itemId
       })
     }
     return item
   },
 
-  nextCard: function() {
+  nextCard: function () {
     var nextCard = null
-    if(this.state.collection.pages.nextObject) {
+    if (this.state.collection.pages.nextObject) {
       nextCard = [
-        <div style={{ clear: "both" }} key='next'>
+        <div style={{ clear: 'both' }} key='next'>
           <hr />
           <MediaQuery minWidth={1000} key='min-w'>
-            <div style={{margin: '0 auto', maxWidth: '500px' }}>
+            <div style={{ margin: '0 auto', maxWidth: '500px' }}>
               <SitePathCard
-                headerTitle="Continue to"
+                headerTitle='Continue to'
                 siteObject={this.state.collection.pages.nextObject}
-                addNextButton={true}
+                addNextButton
                 fixedSize={false}
               />
             </div>
           </MediaQuery>,
           <MediaQuery maxWidth={1000} key='max-w'>
-            <div style={{margin: '0 0', maxWidth: '500px' }}>
+            <div style={{ margin: '0 0', maxWidth: '500px' }}>
               <SitePathCard
-                headerTitle="Continue to"
+                headerTitle='Continue to'
                 siteObject={this.state.collection.pages.nextObject}
-                addNextButton={true}
+                addNextButton
                 fixedSize={false}
               />
             </div>
           </MediaQuery>
-        </div>
+        </div>,
       ]
     }
     return nextCard
   },
 
-  previewCard: function() {
-    if(this.state.collection.pages.nextObject) {
+  previewCard: function () {
+    if (this.state.collection.pages.nextObject) {
       return (
         <PreviewLink
           siteObject={this.state.collection.pages.nextObject}
           key='prev'
-          />
-        )
+        />
+      )
     }
     return null
   },
 
-  pageContent: function() {
-    if(this.state.collection && this.state.collection.pages) {
+  pageContent: function () {
+    if (this.state.collection && this.state.collection.pages) {
       return (this.state.collection.pages.content)
     } else {
-      return (<div/>)
+      return (<div />)
     }
   },
 
-  render: function() {
-    if(!this.state.remoteCollectionLoaded) {
+  render: function () {
+    if (!this.state.remoteCollectionLoaded) {
       return null
     }
     PageTitle(this.state.collection.name)
@@ -169,16 +168,16 @@ var Page = createReactClass({
       <div>
         <CollectionPageHeader collection={this.state.collection} branding={false} />
         <PageTitleBar title={this.state.collection.pages.name} height={this.state.titleHeight} />
-          <PageContent onClick={this.contentClicked} onMouseOver={this.contentMouseOver}>
-            <PagesShow content={this.pageContent()}>
-              { this.nextCard() }
-              { this.previewCard() }
-            </PagesShow>
-          </PageContent>
+        <PageContent onClick={this.contentClicked} onMouseOver={this.contentMouseOver}>
+          <PagesShow content={this.pageContent()}>
+            { this.nextCard() }
+            { this.previewCard() }
+          </PagesShow>
+        </PageContent>
         <CollectionPageFooter collection={this.state.collection} />
       </div>
     )
-  }
+  },
 })
 
 module.exports = Page

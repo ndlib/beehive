@@ -17,22 +17,20 @@ import PrintableMetadata from './PrintableMetadata.jsx'
 var ga = require('react-ga')
 ga.initialize('UA-2118378-44')
 
-function logPageView() {
-
-  if(this.state.location.search === '') {
+function logPageView () {
+  if (this.state.location.search === '') {
     ga.pageview(this.state.location.pathname)
-  }
-  else {
+  } else {
     ga.pageview(this.state.location.pathname + '/' + this.state.location.search)
   }
 }
 
-export default function() {
+export default function () {
   return (
-    <BrowserRouter history={ browserHistory } onUpdate={ logPageView } >
+    <BrowserRouter history={browserHistory} onUpdate={logPageView} >
       <Switch>
-        <Route exact path='/' component={ SiteIndexPage } />
-        <Route exact path='/404' component={ErrorPage}/>
+        <Route exact path='/' component={SiteIndexPage} />
+        <Route exact path='/404' component={ErrorPage} />
         <Route exact path='/metadata/:itemID' component={PrintableMetadata} />
         <Route exact path='/:collectionID/:collectionSlug/intro' component={CollectionIntroductionPage} />
         <Route exact path='/:collectionID/:collectionSlug/about' component={AboutPage} />

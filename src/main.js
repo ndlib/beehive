@@ -1,6 +1,6 @@
-import "./assets/css/main.scss"
+import './assets/css/main.scss'
 
-import injectTapEventPlugin from "react-tap-event-plugin"
+import injectTapEventPlugin from 'react-tap-event-plugin'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 injectTapEventPlugin()
 

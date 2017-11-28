@@ -1,4 +1,4 @@
-"use strict"
+
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
@@ -8,13 +8,13 @@ const withCallback = (url, callback) => {
     type: 'GET',
     url: url,
     dataType: 'json',
-    success: function(result) {
+    success: function (result) {
       callback(result)
     },
-    error: function(request, status, thrownError) {
+    error: function (request, status, thrownError) {
       console.log(url, thrownError)
       window.location = window.location.origin + '/404'
-    }
+    },
   })
 }
 

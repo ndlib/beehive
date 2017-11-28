@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import mui, {Paper} from 'material-ui'
+import mui, { Paper } from 'material-ui'
 import { Link } from 'react-router-dom'
 
 var IndexPageFooter = createReactClass({
@@ -10,16 +10,16 @@ var IndexPageFooter = createReactClass({
     return (
       <Paper circle={false} rounded={false}>
         <footer>
-          <Link to="http://library.nd.edu" className="hesburgh-logo" style={{float: 'left'}}>
+          <Link to='http://library.nd.edu' className='hesburgh-logo' style={{ float: 'left' }}>
             Hesburgh Logo
           </Link>
-          <Link to="/" className="connecting-logo">
+          <Link to='/' className='connecting-logo'>
             Connecting People to Knowledge
           </Link>
         </footer>
       </Paper>
     )
-  }
+  },
 })
 
 module.exports = IndexPageFooter

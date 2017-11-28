@@ -14,25 +14,25 @@ var ShowcaseSections = createReactClass({
     height: PropTypes.number.isRequired,
   },
 
-  style: function() {
+  style: function () {
     return {
-      height: this.props.height + "px",
-      display: "inline-block",
-      paddingRight: "175px",
-      boxShadow: "none",
+      height: this.props.height + 'px',
+      display: 'inline-block',
+      paddingRight: '175px',
+      boxShadow: 'none',
       backgroundColor: 'rgba(0,0,0,0)',
-      //lineHeight: this.props.height + "px",
+      // lineHeight: this.props.height + "px",
     }
   },
 
-  sections: function() {
+  sections: function () {
     var sections = this.props.showcase.sections
-    if(sections) {
-      var sectionNodes = sections.map(function(section, index) {
+    if (sections) {
+      var sectionNodes = sections.map(function (section, index) {
         var nodes = []
 
         nodes.push((
-          <SectionCard section={section} height={this.props.height} key={index}/>
+          <SectionCard section={section} height={this.props.height} key={index} />
         ))
         return nodes
       }.bind(this))
@@ -42,22 +42,22 @@ var ShowcaseSections = createReactClass({
     }
   },
 
-  nextShowcase: function() {
+  nextShowcase: function () {
     var nextShowcase
-    if(this.props.showcase.nextObject) {
-      nextShowcase = (<ShowcaseEndingCard height={this.props.height} siteObject={this.props.showcase.nextObject} key="end" />)
+    if (this.props.showcase.nextObject) {
+      nextShowcase = (<ShowcaseEndingCard height={this.props.height} siteObject={this.props.showcase.nextObject} key='end' />)
     }
     return nextShowcase
   },
 
-  render: function() {
+  render: function () {
     return (
-      <Paper id="sections-content-inner" className="sections-content-inner" style={this.style()}>
+      <Paper id='sections-content-inner' className='sections-content-inner' style={this.style()}>
         {this.sections()}
         {this.nextShowcase()}
       </Paper>
     )
-  }
+  },
 })
 
 // each file will export exactly one component

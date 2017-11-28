@@ -7,50 +7,47 @@ var ItemImage = createReactClass({
     item: PropTypes.object.isRequired,
   },
 
-  imageStyle: function() {
+  imageStyle: function () {
     return {
-      paddingTop: "100%",
-      position: "relative"
+      paddingTop: '100%',
+      position: 'relative',
     }
   },
 
-  holderStyle: function() {
+  holderStyle: function () {
     return {
       top: 0,
       bottom: 0,
       left: 0,
       right: 0,
-      position: "absolute",
+      position: 'absolute',
     }
   },
 
-  backgroundStyle: function() {
+  backgroundStyle: function () {
     return {
-      width: "100%",
-      height: "100%",
-      position: "absolute",
-      objectFit: "cover"
+      width: '100%',
+      height: '100%',
+      position: 'absolute',
+      objectFit: 'cover',
     }
   },
 
-  image: function() {
-    if(this.props.item.thumbnailURL)
-      return this.props.item.thumbnailURL
-    else
-      return "/images/meta-only-item.jpg"
+  image: function () {
+    if (this.props.item.thumbnailURL) { return this.props.item.thumbnailURL } else { return '/images/meta-only-item.jpg' }
   },
 
-  render: function() {
+  render: function () {
     return (
-      <div className="bee-item-image-wrapper">
-        <div className="bee-item-image" style={this.imageStyle()}>
-          <div className="bee-item-holder" style={this.holderStyle()}>
-            <img src={ this.image() } style={this.backgroundStyle()}/>
+      <div className='bee-item-image-wrapper'>
+        <div className='bee-item-image' style={this.imageStyle()}>
+          <div className='bee-item-holder' style={this.holderStyle()}>
+            <img src={this.image()} style={this.backgroundStyle()} />
           </div>
         </div>
       </div>
     )
-  }
+  },
 
 })
 

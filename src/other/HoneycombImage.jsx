@@ -1,4 +1,3 @@
-//app/assets/javascripts/components/Image.jsx
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
@@ -13,7 +12,7 @@ var HoneycombImage = createReactClass({
     alt: PropTypes.string,
   },
 
-  style: function() {
+  style: function () {
     if (this.props.style) {
       return this.props.style
     } else {
@@ -21,7 +20,7 @@ var HoneycombImage = createReactClass({
     }
   },
 
-  imgSrc: function() {
+  imgSrc: function () {
     if (this.props.image) {
       if (this.props.size) {
         return this.props.image['thumbnail/' + this.props.size].contentUrl
@@ -33,20 +32,20 @@ var HoneycombImage = createReactClass({
     }
   },
 
-  altText: function() {
-      var alt_html = this.props.alt
-      // text() chokes on plaintext, so to ensure we have html wrap it in a div
-      var str = $("<div>" + alt_html + "</div>").text()
-      // then fix quotes
-      return str.replace("\"", "'")
+  altText: function () {
+    var alt_html = this.props.alt
+    // text() chokes on plaintext, so to ensure we have html wrap it in a div
+    var str = $('<div>' + alt_html + '</div>').text()
+    // then fix quotes
+    return str.replace('"', "'")
   },
 
-  render: function() {
-    var classString = "hc-thumbnail-image " + this.props.size
+  render: function () {
+    var classString = 'hc-thumbnail-image ' + this.props.size
     return (
-        <img style={this.style()} src={this.imgSrc()} className={classString} title={this.props.title} alt={this.altText()} />
+      <img style={this.style()} src={this.imgSrc()} className={classString} title={this.props.title} alt={this.altText()} />
     )
-  }
+  },
 })
 
 // each file will export exactly one component

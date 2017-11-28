@@ -12,35 +12,35 @@ var GridItem = createReactClass({
     item: PropTypes.object.isRequired,
   },
 
-  mediaOverlay: function() {
+  mediaOverlay: function () {
     var name = (
-      <span style={{fontFamily: 'GPCMed'}}>
+      <span style={{ fontFamily: 'GPCMed' }}>
         { this.props.item.name }
       </span>
     )
-    return (<CardTitle title={ name }/>)
+    return (<CardTitle title={name} />)
   },
 
-  cardMedia: function() {
+  cardMedia: function () {
     return (
-      <CardMedia overlay={ this.mediaOverlay() }>
-        <ItemImage item={ this.props.item } />
+      <CardMedia overlay={this.mediaOverlay()}>
+        <ItemImage item={this.props.item} />
       </CardMedia>
     )
   },
 
-  manifestIcon: function(item) {
-    if(item.metadata && item.metadata.manuscript_url) {
-      return (<img src="/images/pt.icon.drk.png" className="manuscript-icon" alt="Manifest Available" title="Manifest Available" style={{position: 'absolute', right: '0', top: '0', maxWidth: '15%'}}/>)
+  manifestIcon: function (item) {
+    if (item.metadata && item.metadata.manuscript_url) {
+      return (<img src='/images/pt.icon.drk.png' className='manuscript-icon' alt='Manifest Available' title='Manifest Available' style={{ position: 'absolute', right: '0', top: '0', maxWidth: '15%' }} />)
     }
     return null
   },
 
-  render: function() {
+  render: function () {
     return (
       <Link to={CollectionUrl.itemObjectUrl(this.props.item)}>
         <Card
-          style={{cursor: 'pointer', position: 'relative'}}
+          style={{ cursor: 'pointer', position: 'relative' }}
         >
 
           { this.cardMedia() }
@@ -48,7 +48,7 @@ var GridItem = createReactClass({
         </Card>
       </Link>
     )
-  }
+  },
 })
 
 module.exports = GridItem

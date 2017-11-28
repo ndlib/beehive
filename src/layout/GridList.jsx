@@ -1,4 +1,4 @@
-//app/assets/javascripts/components/layout/GridList.jsx
+// app/assets/javascripts/components/layout/GridList.jsx
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
@@ -20,11 +20,11 @@ var GridList = createReactClass({
       grids: {
         lg: 3,
         sm: 2,
-      }
+      },
     }
   },
 
-  childGridNodes: function(node, index, nodeClass) {
+  childGridNodes: function (node, index, nodeClass) {
     var nodes = this.clearfixNodes(index)
     nodes.push((
       <div className={nodeClass} key={index}>
@@ -34,15 +34,15 @@ var GridList = createReactClass({
     return nodes
   },
 
-  clearfixNodes: function(index) {
+  clearfixNodes: function (index) {
     var nodes = []
     if (index > 0) {
       for (var prefix in this.props.grids) {
         var columns = this.props.grids[prefix]
-        var clearClass = "clearfix visible-" + prefix + "-block"
-        if (index%columns == 0) {
-          nodes.push ((
-            <div className={clearClass} key={index + prefix + "clearfix"} />
+        var clearClass = 'clearfix visible-' + prefix + '-block'
+        if (index % columns == 0) {
+          nodes.push((
+            <div className={clearClass} key={index + prefix + 'clearfix'} />
           ))
         }
       }
@@ -50,25 +50,25 @@ var GridList = createReactClass({
     return nodes
   },
 
-  childrenGridNodes: function() {
+  childrenGridNodes: function () {
     var index = 0
     var childrenNodes = []
-    var nodeClass = ""
+    var nodeClass = ''
     for (var prefix in this.props.grids) {
       var columns = this.props.grids[prefix]
-      nodeClass += " col-" + prefix + "-" + (gridSize / columns)
+      nodeClass += ' col-' + prefix + '-' + (gridSize / columns)
     }
-    React.Children.forEach(this.props.children, function(node, index) {
+    React.Children.forEach(this.props.children, function (node, index) {
       childrenNodes.push(this.childGridNodes(node, index, nodeClass))
     }.bind(this))
     return childrenNodes
   },
 
-  render: function() {
+  render: function () {
     var children = this.childrenGridNodes()
-    var className = "row"
+    var className = 'row'
     if (this.props.className) {
-      className += " " + this.props.className
+      className += ' ' + this.props.className
     }
     if (children.length > 0) {
       return (
@@ -76,11 +76,10 @@ var GridList = createReactClass({
           {children}
         </div>
       )
+    } else {
+      return (<span />)
     }
-    else {
-      return (<span/>)
-    }
-  }
+  },
 })
 
 // each file will export exactly one component

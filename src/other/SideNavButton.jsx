@@ -23,9 +23,9 @@ var SideNavButton = createReactClass({
     muiTheme: PropTypes.object,
   },
 
-  getDefaultProps: function() {
+  getDefaultProps: function () {
     return {
-      offsetTop: window.innerHeight/2,
+      offsetTop: window.innerHeight / 2,
       rightIcon: false,
       href: '',
       onMouseDown: () => {},
@@ -37,7 +37,7 @@ var SideNavButton = createReactClass({
     }
   },
 
-  getInitialState() {
+  getInitialState () {
     return {
       hovered: false,
       isKeyboardFocused: false,
@@ -45,53 +45,53 @@ var SideNavButton = createReactClass({
     }
   },
 
-  buttonStyles: function() {
+  buttonStyles: function () {
     var hovered = (this.state.hovered || this.state.isKeyboardFocused)
     var styles = {
       top: (this.props.offsetTop - 30) + 'px',
-      opacity: hovered ? "1" : "0.7",
+      opacity: hovered ? '1' : '0.7',
       backgroundColor: hovered ? CurrentTheme.getCurrentPallette(this.context.muiTheme).accent3Color : CurrentTheme.getCurrentPallette(this.context.muiTheme).accent3Color,
-      borderRadius: "50%",
-      display: "inline-block",
-      margin: "0",
-      marginTop: "29px",
-      width: "60px",
-      minWidth: "60px",
-      height: "60px",
-      textAlign: "center",
-      lineHeight: "60px",
-      position: "fixed",
-      zIndex: "3",
+      borderRadius: '50%',
+      display: 'inline-block',
+      margin: '0',
+      marginTop: '29px',
+      width: '60px',
+      minWidth: '60px',
+      height: '60px',
+      textAlign: 'center',
+      lineHeight: '60px',
+      position: 'fixed',
+      zIndex: '3',
     }
 
     if (this.props.rightIcon) {
-      styles["right"] = "-29px"
+      styles['right'] = '-29px'
     } else {
-      styles["left"] = "-29px"
+      styles['left'] = '-29px'
     }
     return styles
   },
 
-  iconStyles: function() {
+  iconStyles: function () {
     var hovered = (this.state.hovered || this.state.isKeyboardFocused)
 
     var styles = {
       color: hovered ? CurrentTheme.getCurrentPallette(this.context.muiTheme).textColor : CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor,
-      fontSize: "25px",
-      position: "absolute",
-      top: "17.5px",
+      fontSize: '25px',
+      position: 'absolute',
+      top: '17.5px',
     }
     if (this.props.rightIcon) {
-      styles["left"] = "5px"
+      styles['left'] = '5px'
     }
     return styles
   },
 
-  chevron: function() {
+  chevron: function () {
     if (this.props.rightIcon) {
-      return "chevron_right"
+      return 'chevron_right'
     } else {
-      return "chevron_left"
+      return 'chevron_left'
     }
   },
 
@@ -104,38 +104,38 @@ var SideNavButton = createReactClass({
         onMouseLeave={this._handleMouseLeave}
         onMouseEnter={this._handleMouseEnter}
         onTouchStart={this._handleTouchStart}
-        disableTouchRipple={true}
-        >
-        <FontIcon className="material-icons" style={this.iconStyles()} >{this.chevron()}</FontIcon>
+        disableTouchRipple
+      >
+        <FontIcon className='material-icons' style={this.iconStyles()} >{this.chevron()}</FontIcon>
       </FlatButton>
     )
   },
 
-  render: function() {
+  render: function () {
     if (this.props.href) {
       return (<Link to={this.props.href}>{this.content()}</Link>)
     }
     return this.content()
   },
 
-  _handleKeyboardFocus(e, isKeyboardFocused) {
-    this.setState({isKeyboardFocused: isKeyboardFocused})
+  _handleKeyboardFocus (e, isKeyboardFocused) {
+    this.setState({ isKeyboardFocused: isKeyboardFocused })
     this.props.onKeyboardFocus(e, isKeyboardFocused)
   },
 
-  _handleMouseEnter(e) {
-    //Cancel hover styles for touch devices
-    if (!this.state.touch) this.setState({hovered: true})
+  _handleMouseEnter (e) {
+    // Cancel hover styles for touch devices
+    if (!this.state.touch) this.setState({ hovered: true })
     this.props.onMouseEnter(e)
   },
 
-  _handleMouseLeave(e) {
-    this.setState({hovered: false})
+  _handleMouseLeave (e) {
+    this.setState({ hovered: false })
     this.props.onMouseLeave(e)
   },
 
-  _handleTouchStart(e) {
-    this.setState({touch: true})
+  _handleTouchStart (e) {
+    this.setState({ touch: true })
     this.props.onTouchStart(e)
   },
 })

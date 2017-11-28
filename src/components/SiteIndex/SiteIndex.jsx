@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-var SiteIndexHeader = require("./SiteIndexHeader.jsx")
+var SiteIndexHeader = require('./SiteIndexHeader.jsx')
 var BrandBar = require('../../layout/BrandBar.jsx')
 var PageContent = require('../../layout/PageContent.jsx')
 var CollectionsList = require('./CollectionsList.jsx')
@@ -18,15 +18,15 @@ var SiteIndex = createReactClass({
     ]),
   },
 
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       collections: [],
-      remoteCollectionLoaded: false
+      remoteCollectionLoaded: false,
     }
   },
 
-  componentDidMount: function() {
-    if ('object' == typeof(this.props.collections)) {
+  componentDidMount: function () {
+    if (typeof (this.props.collections) === 'object') {
       this.setState({
         collections: this.props.collections,
       })
@@ -35,7 +35,7 @@ var SiteIndex = createReactClass({
     }
   },
 
-  setValues: function(collections) {
+  setValues: function (collections) {
     this.setState({
       remoteCollectionLoaded: true,
       collections: collections,
@@ -43,26 +43,25 @@ var SiteIndex = createReactClass({
     return true
   },
 
-  componentWillMount: function(){
-    document.body.className = document.body.className + " bee-light-theme collections-bg"
+  componentWillMount: function () {
+    document.body.className = document.body.className + ' bee-light-theme collections-bg'
   },
 
-  cardMedia: function() {
-    return(
-      <div>
-      </div>
+  cardMedia: function () {
+    return (
+      <div />
     )
   },
 
-  render: function() {
-    if(!this.state.remoteCollectionLoaded) {
+  render: function () {
+    if (!this.state.remoteCollectionLoaded) {
       return null
     }
 
     return (
       <div>
-        <BrandBar/>
-        <PageContent fluidLayout={true}>
+        <BrandBar />
+        <PageContent fluidLayout>
           <SiteIndexHeader />
           <PageContent fluidLayout={false}>
             <h2>Featured Collections</h2>
@@ -72,7 +71,7 @@ var SiteIndex = createReactClass({
         <IndexPageFooter />
       </div>
     )
-  }
+  },
 
 })
 

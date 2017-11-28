@@ -11,7 +11,7 @@ var CollectionShowSitePath = createReactClass({
     collection: PropTypes.object.isRequired,
   },
 
-  intro: function() {
+  intro: function () {
     if (this.props.collection.description) {
       return (
         <CollectionIntroCard collection={this.props.collection} />
@@ -19,7 +19,7 @@ var CollectionShowSitePath = createReactClass({
     }
   },
 
-  render: function() {
+  render: function () {
     if (this.props.collection.site_path) {
       return (
         <SitePathCardList sitePath={this.props.collection.site_path} intro={this.intro()} />
@@ -29,7 +29,7 @@ var CollectionShowSitePath = createReactClass({
         <div />
       )
     }
-  }
+  },
 })
 
 module.exports = CollectionShowSitePath

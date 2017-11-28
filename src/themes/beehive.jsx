@@ -1,4 +1,3 @@
-'use strict'
 
 module.exports = {
   fontFamily: 'Roboto, sans-serif',
@@ -16,4 +15,4 @@ module.exports = {
     disabledColor: 'rgba(33, 33, 33, 03)',
     showcaseTextCardColor: '#ffffff',
   },
-};
+}

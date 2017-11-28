@@ -1,48 +1,47 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import {CardText, CardTitle} from 'material-ui'
-var MoreOverlay = require("./MoreOverlay.jsx")
+import { CardText, CardTitle } from 'material-ui'
+var MoreOverlay = require('./MoreOverlay.jsx')
 
 var TextCard = createReactClass({
   propTypes: {
     section: PropTypes.object.isRequired,
   },
 
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       showMoreLink: false,
     }
   },
 
-  componentDidMount: function() {
+  componentDidMount: function () {
     if (this.showMoreLink()) {
       this.setState({
-        showMoreLink: true
+        showMoreLink: true,
       })
     }
   },
 
-  titleStyle: function() {
+  titleStyle: function () {
     return {
-      color: "lightgrey",
+      color: 'lightgrey',
     }
   },
 
-  style: function() {
+  style: function () {
     return {
       color:'lightgrey',
       paddingTop:'0',
-      maxWidth: Math.floor(window.innerWidth *0.9) + 'px',
+      maxWidth: Math.floor(window.innerWidth * 0.9) + 'px',
     }
   },
 
-  showMoreLink: function() {
-
-    if (document.getElementById(encodeURIComponent(this.props.section.name) + "-text")) {
-      var textContent = document.getElementById(encodeURIComponent(this.props.section.name) + "-text")
+  showMoreLink: function () {
+    if (document.getElementById(encodeURIComponent(this.props.section.name) + '-text')) {
+      var textContent = document.getElementById(encodeURIComponent(this.props.section.name) + '-text')
       var testHeight = textContent.offsetParent.clientHeight
-      if(document.getElementById(encodeURIComponent(this.props.section.name))) {
+      if (document.getElementById(encodeURIComponent(this.props.section.name))) {
         testHeight -= document.getElementById(encodeURIComponent(this.props.section.name)).offsetParent.clientHeight + 15
       }
 
@@ -51,9 +50,9 @@ var TextCard = createReactClass({
     return false
   },
 
-  overflowText: function() {
+  overflowText: function () {
     if (this.showMoreLink()) {
-      return(<MoreOverlay />)
+      return (<MoreOverlay />)
     }
     return null
   },
@@ -61,18 +60,18 @@ var TextCard = createReactClass({
   render: function () {
     var title = (
       <div
-      id={encodeURIComponent(this.props.section.name)}
-      className="sectionTitleContent"
+        id={encodeURIComponent(this.props.section.name)}
+        className='sectionTitleContent'
       >{this.props.section.name}</div>
     )
     return (
-      <div style={this.style()} className="text">
+      <div style={this.style()} className='text'>
         <CardTitle title={title} titleStyle={this.titleStyle()} />
         <CardText style={this.style()}>
           <div
-            id={encodeURIComponent(this.props.section.name) + "-text"}
-            className="sectionTextContent"
-            dangerouslySetInnerHTML={{__html: this.props.section.description}} />
+            id={encodeURIComponent(this.props.section.name) + '-text'}
+            className='sectionTextContent'
+            dangerouslySetInnerHTML={{ __html: this.props.section.description }} />
           {this.overflowText()}
         </CardText>
       </div>

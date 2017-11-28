@@ -7,29 +7,29 @@ var SearchStore = require('../../store/SearchStore.js')
 var FacetItem = require('./FacetItem.jsx')
 
 var SearchFacets = createReactClass({
-  values: function(facet) {
+  values: function (facet) {
     if (facet.values) {
-      return (facet.values.map(function(e, index) {
+      return (facet.values.map(function (e, index) {
         var selectedValue
-        if(SearchStore.facetOption) {
-          if(facet.field == encodeURIComponent(SearchStore.facetOption.name)) {
+        if (SearchStore.facetOption) {
+          if (facet.field == encodeURIComponent(SearchStore.facetOption.name)) {
             selectedValue = SearchStore.facetOption.value
           }
         }
         return (
           <FacetItem
-            field={ facet.field}
-            facet={ e }
-            key={ e.name }
+            field={facet.field}
+            facet={e}
+            key={e.name}
           />
         )
-      }.bind(this)))
+      }))
     }
     return null
   },
 
-  facets: function(){
-    return SearchStore.facets.map(function(e, index) {
+  facets: function () {
+    return SearchStore.facets.map(function (e, index) {
       return (
         <List
           key={e.name}
@@ -41,13 +41,13 @@ var SearchFacets = createReactClass({
     }.bind(this))
   },
 
-  render: function() {
+  render: function () {
     return (
       <div>
         {this.facets()}
       </div>
     )
-  }
+  },
 })
 
 module.exports = SearchFacets

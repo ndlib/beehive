@@ -1,8 +1,8 @@
-function identity(t) {
+function identity (t) {
   return t
 }
 
-export default function createAction(type, actionCreator, metaCreator) {
+export default function createAction (type, actionCreator, metaCreator) {
   const finalActionCreator = typeof actionCreator === 'function'
     ? actionCreator
     : identity
@@ -10,7 +10,7 @@ export default function createAction(type, actionCreator, metaCreator) {
   return (...args) => {
     const action = {
       type,
-      payload: finalActionCreator(...args)
+      payload: finalActionCreator(...args),
     }
 
     if (typeof metaCreator === 'function') action.meta = metaCreator(...args)

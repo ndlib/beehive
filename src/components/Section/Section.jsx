@@ -8,10 +8,10 @@ var SectionShow = require('./SectionShow.jsx')
 var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
 var PageContent = require('../../layout/PageContent.jsx')
 var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
-var ConfigurationActions = require("../../actions/ConfigurationActions.js")
-var ConfigurationStore = require("../../store/ConfigurationStore.js")
-var Loading = require("../../other/Loading.jsx")
-var PageTitle = require("../../modules/PageTitle.js")
+var ConfigurationActions = require('../../actions/ConfigurationActions.js')
+var ConfigurationStore = require('../../store/ConfigurationStore.js')
+var Loading = require('../../other/Loading.jsx')
+var PageTitle = require('../../modules/PageTitle.js')
 
 const BrowserUtils = require('../../modules/BrowserUtils.jsx')
 const LoadRemote = require('../../modules/LoadRemote.jsx')
@@ -24,7 +24,7 @@ var Section = createReactClass({
     section: PropTypes.string,
   },
 
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       collection: null,
       section: null,
@@ -32,11 +32,11 @@ var Section = createReactClass({
     }
   },
 
-  configurationLoaded: function(){
+  configurationLoaded: function () {
     this.setState({ configurationLoaded: true })
   },
 
-  collectionLoaded: function(collection) {
+  collectionLoaded: function (collection) {
     ConfigurationActions.load(collection)
     this.setState({
       remoteCollectionLoaded: true,
@@ -44,32 +44,32 @@ var Section = createReactClass({
     }, this.handleResize)
   },
 
-  sectionLoaded: function(result) {
+  sectionLoaded: function (result) {
     this.setState({
       remoteSectionLoaded: true,
       section: result.showcases.sections,
     })
   },
 
-  componentWillMount: function() {
+  componentWillMount: function () {
     ConfigurationStore.addChangeListener(this.configurationLoaded)
   },
 
-  componentDidMount: function() {
+  componentDidMount: function () {
     LoadRemote.withCallback(this.props.collection, this.collectionLoaded)
     LoadRemote.withCallback(this.props.section, this.sectionLoaded)
     window.addEventListener('resize', this.handleResize, false)
     this.handleResize()
   },
 
-  componentWillUnmount: function() {
+  componentWillUnmount: function () {
     ConfigurationStore.removeChangeListener(this.configurationLoaded)
   },
 
-  componentWillReceiveProps: function(nextProps) {
+  componentWillReceiveProps: function (nextProps) {
     let sectionLoaded = this.state.remoteSectionLoaded
     let collectionLoaded = this.state.remoteCollectionLoaded
-    if(this.props.section !== nextProps.section) {
+    if (this.props.section !== nextProps.section) {
       LoadRemote.withCallback(nextProps.section, this.sectionLoaded)
       sectionLoaded = false
     }
@@ -85,14 +85,14 @@ var Section = createReactClass({
     })
   },
 
-  handleResize: function() {
+  handleResize: function () {
     this.setState({
-      height: window.innerHeight
+      height: window.innerHeight,
     })
   },
 
-  render: function() {
-    if(!this.state.remoteCollectionLoaded || !this.state.remoteSectionLoaded) {
+  render: function () {
+    if (!this.state.remoteCollectionLoaded || !this.state.remoteSectionLoaded) {
       return null
     }
     PageTitle(this.state.section.name)
@@ -112,19 +112,19 @@ var Section = createReactClass({
       sectionShow = (<Loading />)
     }
     var header
-    if(!BrowserUtils.mobile()){
+    if (!BrowserUtils.mobile()) {
       header = (<CollectionPageHeader collection={this.state.collection} />)
     }
     return (
       <div style={{ backgroundColor: 'inherit' }}>
         {header}
-        <PageContent fluidLayout={true}>
+        <PageContent fluidLayout>
           {sectionShow}
         </PageContent>
         <CollectionPageFooter collection={this.state.collection} />
       </div>
     )
-  }
+  },
 })
 
 // each file will export exactly one component

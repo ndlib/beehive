@@ -1,14 +1,14 @@
 import { isError } from 'flux-standard-action'
 
-function isFunction(val) {
+function isFunction (val) {
   return typeof val === 'function'
 }
 
-function inArray(array, val) {
+function inArray (array, val) {
   return array.indexOf(val) !== -1
 }
 
-function getHandlerKey(action) {
+function getHandlerKey (action) {
   if (isError(action)) return 'throw'
 
   if (action.sequence && inArray(['start', 'return'], action.sequence.type)) {
@@ -18,7 +18,7 @@ function getHandlerKey(action) {
   return 'next'
 }
 
-export default function handleAction(type, reducers) {
+export default function handleAction (type, reducers) {
   return (state, action) => {
     // If action type does not match, return previous state
     if (action.type !== type) return state

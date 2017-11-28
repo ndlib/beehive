@@ -19,7 +19,7 @@ const browseUrl = (collection) => {
 
 const startSitePathUrl = (collection) => {
   var url
-  if(collection.site_path && collection.site_path.length > 0) {
+  if (collection.site_path && collection.site_path.length > 0) {
     url = collectionObjectUrl(collection.site_path[0])
   }
   return url
@@ -31,16 +31,16 @@ const itemUrl = (item) => {
 
 const collectionObjectUrl = (object) => {
   var collectionPath = window.location.pathname.match(/(?:\/[^\/]+){2}/)
-  var typePath = ""
-  switch(object.additionalType){
-    case "https://github.com/ndlib/honeycomb/wiki/Page":
-      typePath = "pages"
+  var typePath = ''
+  switch (object.additionalType) {
+    case 'https://github.com/ndlib/honeycomb/wiki/Page':
+      typePath = 'pages'
       break
-    case "https://github.com/ndlib/honeycomb/wiki/Showcase":
-      typePath = "showcases"
+    case 'https://github.com/ndlib/honeycomb/wiki/Showcase':
+      typePath = 'showcases'
       break
     default:
-      typePath = ""
+      typePath = ''
       break
   }
   var path = collectionPath + '/' + typePath + '/' + encodeURIComponent(object.id) + '/' + encodeURIComponent(object.slug)
@@ -58,15 +58,15 @@ const itemObjectUrl = (object) => {
 }
 
 const collectionUrl = (collection) => {
-  if(collection.external_url) {
-      return collection.external_url
+  if (collection.external_url) {
+    return collection.external_url
   } else {
     return '/' + encodeURIComponent(collection.id) + '/' + encodeURIComponent(collection.slug)
   }
 }
 
 const remoteUrlBase = () => {
-  return HoneycombURL() + "/v1/"
+  return HoneycombURL() + '/v1/'
 }
 
 const remoteCollection = (collectionId) => {

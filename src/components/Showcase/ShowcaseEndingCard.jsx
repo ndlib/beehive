@@ -7,7 +7,7 @@ var SitePathCard = require('../Collection/SitePathCard.jsx')
 const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 
 var ShowcaseEndingCard = createReactClass({
-  displayName: "Showcase Ending",
+  displayName: 'Showcase Ending',
   propTypes: {
     height: PropTypes.number.isRequired,
     siteObject: PropTypes.object.isRequired,
@@ -17,29 +17,29 @@ var ShowcaseEndingCard = createReactClass({
     muiTheme: PropTypes.object,
   },
 
-  style: function() {
+  style: function () {
     return {
-      display: "inline-block",
-      verticalAlign: "middle",
-      position: "relative",
-      marginLeft: "150px",
-      marginRight: "33vw",
-      height: "auto",
-      cursor: "pointer",
-      width: "500px",
-      overflow: "hidden",
-      marginTop: "12vh",
+      display: 'inline-block',
+      verticalAlign: 'middle',
+      position: 'relative',
+      marginLeft: '150px',
+      marginRight: '33vw',
+      height: 'auto',
+      cursor: 'pointer',
+      width: '500px',
+      overflow: 'hidden',
+      marginTop: '12vh',
       backgroundColor: CurrentTheme.getCurrentPallette(this.context.muiTheme).showcaseTextCardColor,
     }
   },
 
-  render: function() {
+  render: function () {
     return (
       <Paper style={this.style()} >
-        <SitePathCard siteObject={this.props.siteObject} addNextButton={true} headerTitle="Continue to" fixedSize={false}/>
+        <SitePathCard siteObject={this.props.siteObject} addNextButton headerTitle='Continue to' fixedSize={false} />
       </Paper>
     )
-  }
+  },
 
 })
 

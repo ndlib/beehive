@@ -21,15 +21,15 @@ var Collection = createReactClass({
     ]),
   },
 
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       collection: {},
       remoteCollectionLoaded: false,
     }
   },
 
-  componentDidMount: function() {
-    if ('object' == typeof(this.props.collection)) {
+  componentDidMount: function () {
+    if (typeof (this.props.collection) === 'object') {
       this.setState({
         collection: this.props.collection,
       })
@@ -38,42 +38,42 @@ var Collection = createReactClass({
     }
   },
 
-  onLoaded: function(result) {
+  onLoaded: function (result) {
     this.setState({
       remoteCollectionLoaded: true,
-      collection: result
+      collection: result,
     })
   },
 
-  componentWillMount: function(){
-    document.body.className = document.body.className + " collection"
+  componentWillMount: function () {
+    document.body.className = document.body.className + ' collection'
   },
 
-  style: function() {
-      return ({
-        marginTop:'-64px',
-      })
+  style: function () {
+    return ({
+      marginTop:'-64px',
+    })
   },
 
-  render: function() {
-    if(!this.state.remoteCollectionLoaded) {
+  render: function () {
+    if (!this.state.remoteCollectionLoaded) {
       return null
     }
     PageTitle(this.state.collection.name)
     return (
       <div>
-        <div className="collection-show-page">
-            <CollectionPageHeader collection={this.state.collection} branding={true} />
-            <CollectionShow collection={this.state.collection} />
-            <PageContent fluidLayout={false}>
-              <CollectionIntro collection={this.state.collection} />
-              <CollectionShowSitePath collection={this.state.collection} />
-            </PageContent>
-            <CollectionPageFooter collection={this.state.collection} />
+        <div className='collection-show-page'>
+          <CollectionPageHeader collection={this.state.collection} branding />
+          <CollectionShow collection={this.state.collection} />
+          <PageContent fluidLayout={false}>
+            <CollectionIntro collection={this.state.collection} />
+            <CollectionShowSitePath collection={this.state.collection} />
+          </PageContent>
+          <CollectionPageFooter collection={this.state.collection} />
         </div>
       </div>
     )
-  }
+  },
 })
 
 // each file will export exactly one component

@@ -1,21 +1,20 @@
-'use strict'
+
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 class MultimediaViewer extends Component {
-
-  constructor(props) {
+  constructor (props) {
     super(props)
   }
 
-  render() {
+  render () {
     var url = this.props.url
-    if(this.props.autostart) {
+    if (this.props.autostart) {
       url += '&autostart=' + this.props.autostart
     }
     return (
       <iframe
-        src={ url }
+        src={url}
         style={{
           width: this.props.width,
           height: this.props.height,
@@ -31,7 +30,7 @@ MultimediaViewer.propTypes = {
   url: PropTypes.string.isRequired,
   autostart: PropTypes.bool,
   width: PropTypes.string,
-  height: PropTypes.string
+  height: PropTypes.string,
 }
 
 MultimediaViewer.defaultProps = {

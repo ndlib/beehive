@@ -19,15 +19,15 @@ var CollectionIntroduction = createReactClass({
     ]),
   },
 
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       collection: {},
       remoteCollectionLoaded: false,
     }
   },
 
-  componentDidMount: function() {
-    if ("object" == typeof(this.props.collection)) {
+  componentDidMount: function () {
+    if (typeof (this.props.collection) === 'object') {
       this.setState({
         collection: this.props.collection,
       })
@@ -36,30 +36,30 @@ var CollectionIntroduction = createReactClass({
     }
   },
 
-  onLoaded: function(result) {
+  onLoaded: function (result) {
     this.setState({
       remoteCollectionLoaded: true,
-      collection: result
+      collection: result,
     })
   },
 
-  render: function() {
-    if(!this.state.remoteCollectionLoaded) {
+  render: function () {
+    if (!this.state.remoteCollectionLoaded) {
       return null
     }
     return (
       <div>
         <CollectionPageHeader collection={this.state.collection} >
-          <PageTitleBar title="Introduction" height={35}/>
+          <PageTitleBar title='Introduction' height={35} />
         </CollectionPageHeader>
-        <div id="TitleSpacer" style={{ height: 35, width: "100%" }} />
+        <div id='TitleSpacer' style={{ height: 35, width: '100%' }} />
         <PageContent>
           <CollectionDescription collection={this.state.collection} />
         </PageContent>
         <CollectionPageFooter collection={this.state.collection} />
       </div>
     )
-  }
+  },
 })
 
 module.exports = CollectionIntroduction

@@ -13,13 +13,13 @@ var CollectionIntro = createReactClass({
     })
   },
 
-  render: function() {
-    if(this.props.collection) {
+  render: function () {
+    if (this.props.collection) {
       return (
-        <div className="essay-content" style={this.style()} dangerouslySetInnerHTML={{__html:this.props.collection.short_description}} />
+        <div className='essay-content' style={this.style()} dangerouslySetInnerHTML={{ __html:this.props.collection.short_description }} />
       )
     }
-  }
+  },
 })
 
 module.exports = CollectionIntro

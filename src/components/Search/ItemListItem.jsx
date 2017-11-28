@@ -12,7 +12,7 @@ var ItemListItem = createReactClass({
     view: PropTypes.string,
   },
 
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       fullItem: {},
       itemLoaded: false,
@@ -20,36 +20,35 @@ var ItemListItem = createReactClass({
     }
   },
 
-  componentWillMount: function() {
+  componentWillMount: function () {
     $.ajax({
       context: this,
       type: 'GET',
       url: this.props.item['@id'],
       dataType: 'json',
-      success: function(result) {
+      success: function (result) {
         this.setState(
           {
             fullItem: result.items,
-            itemLoaded: true
+            itemLoaded: true,
           }
         )
       },
-      error: function(request, status, thrownError) {}
+      error: function (request, status, thrownError) {},
     })
   },
 
-  render: function() {
-    if(this.props.view === 'list'){
+  render: function () {
+    if (this.props.view === 'list') {
       return (
         <ListItem item={this.state.itemLoaded ? Object.assign(this.props.item, this.state.fullItem) : this.props.item} />
       )
-    }
-    else {
+    } else {
       return (
         <GridItem item={this.state.itemLoaded ? Object.assign(this.props.item, this.state.fullItem) : this.props.item} />
       )
     }
-  }
+  },
 })
 
 // each file will export exactly one component

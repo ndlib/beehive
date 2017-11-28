@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Paper, Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui'
 var CloseButton = require('../../other/CloseButton.jsx')
-var SideNavButton = require("../../other/SideNavButton.jsx")
+var SideNavButton = require('../../other/SideNavButton.jsx')
 
 var ItemContent = require('../Item/ItemContent.jsx')
 var SectionShowDescription = require('./SectionShowDescription.jsx')
@@ -31,7 +31,7 @@ var SectionShow = createReactClass({
 
   styles: function () {
     return {
-      backgroundColor: "rgba(51,51,51,1)",
+      backgroundColor: 'rgba(51,51,51,1)',
       overflow: 'hidden',
     }
   },
@@ -46,22 +46,22 @@ var SectionShow = createReactClass({
   closeButtonStyle: function () {
     return {
       color: CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor,
-      height: "100%",
-      float: 'right'
+      height: '100%',
+      float: 'right',
     }
   },
 
-  pageStyles: function() {
+  pageStyles: function () {
     return {
-      height: this.props.height + "px",
-      width: "100%",
-      position: "fixed",
+      height: this.props.height + 'px',
+      width: '100%',
+      position: 'fixed',
       backgroundColor: CurrentTheme.getCurrentPallette(this.context.muiTheme).canvasColor,
-      zIndex: "4",
+      zIndex: '4',
     }
   },
 
-  title: function() {
+  title: function () {
     if (this.props.section.item) {
       return this.props.section.item.name
     } else {
@@ -69,43 +69,43 @@ var SectionShow = createReactClass({
     }
   },
 
-  closeUrl: function() {
+  closeUrl: function () {
     var collectionPath = window.location.pathname.match(/(?:\/[^\/]+){2}/)
     return collectionPath[0]
   },
 
-  toolbar: function() {
+  toolbar: function () {
     return (
       <Toolbar style={this.styles()} >
-        <ToolbarGroup key={0} style={{maxWidth: this.mobile ? '80%': '90%', float: 'left'}}>
+        <ToolbarGroup key={0} style={{ maxWidth: this.mobile ? '80%' : '90%', float: 'left' }}>
           <ToolbarTitle text={this.title()} style={this.titleStyle()} />
         </ToolbarGroup>
         <ToolbarGroup key={1} style={this.closeButtonStyle()}>
-          <CloseButton alternate={true} />
+          <CloseButton alternate />
         </ToolbarGroup>
       </Toolbar>
     )
   },
 
-  contentSection: function() {
+  contentSection: function () {
     if (this.props.section.item) {
-      return (<ItemContent height={this.props.height} item={this.props.section.item} additionalDetails={this.props.section.description}/>)
+      return (<ItemContent height={this.props.height} item={this.props.section.item} additionalDetails={this.props.section.description} />)
     } else {
       return (<SectionShowDescription height={this.props.height} section={this.props.section} />)
     }
   },
 
-  render: function() {
+  render: function () {
     var prev, next, offsetTop
     if (this.props.height) {
       offsetTop = this.props.height / 2
     }
     if (this.props.section) {
-      if(this.props.previousSection) {
+      if (this.props.previousSection) {
         prev = (<SideNavButton href={CollectionUrl.sectionObjectUrl(this.props.previousSection)} />)
       }
-      if(this.props.nextSection) {
-        next = (<SideNavButton href={CollectionUrl.sectionObjectUrl(this.props.nextSection)} rightIcon={true} />)
+      if (this.props.nextSection) {
+        next = (<SideNavButton href={CollectionUrl.sectionObjectUrl(this.props.nextSection)} rightIcon />)
       }
 
       return (
@@ -118,7 +118,7 @@ var SectionShow = createReactClass({
     } else {
       return null
     }
-  }
+  },
 })
 
 // each file will export exactly one component

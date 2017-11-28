@@ -16,15 +16,15 @@ var About = createReactClass({
     ]),
   },
 
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       collection: {},
       remoteCollectionLoaded: false,
     }
   },
 
-  componentDidMount: function() {
-    if ('object' == typeof(this.props.collection)) {
+  componentDidMount: function () {
+    if (typeof (this.props.collection) === 'object') {
       this.setState({
         collection: this.props.collection,
       })
@@ -33,35 +33,35 @@ var About = createReactClass({
     }
   },
 
-  onLoaded: function(result) {
+  onLoaded: function (result) {
     this.setState({
       remoteCollectionLoaded: true,
-      collection: result
+      collection: result,
     })
   },
 
-  render: function() {
-    if(!this.state.remoteCollectionLoaded) {
+  render: function () {
+    if (!this.state.remoteCollectionLoaded) {
       return null
     }
 
     var pageContent = null
-    if(this.state.collection && this.state.collection.about) {
+    if (this.state.collection && this.state.collection.about) {
       pageContent = (
-        <PagesShow title="About" content={this.state.collection.about} />
+        <PagesShow title='About' content={this.state.collection.about} />
       )
     }
 
     return (
       <div>
-        <CollectionPageHeader collection={this.state.collection} branding={true}/>
-          <PageContent>
-            {pageContent}
-          </PageContent>
+        <CollectionPageHeader collection={this.state.collection} branding />
+        <PageContent>
+          {pageContent}
+        </PageContent>
         <CollectionPageFooter collection={this.state.collection} />
       </div>
     )
-  }
+  },
 })
 
 module.exports = About

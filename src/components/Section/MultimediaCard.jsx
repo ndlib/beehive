@@ -2,60 +2,58 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { CardMedia, CardTitle, CardText } from 'material-ui'
-import CardCaption from "./CardCaption.jsx"
+import CardCaption from './CardCaption.jsx'
 
 var style = {
-  title: function() {
+  title: function () {
     return {
-      color: "lightgrey",
+      color: 'lightgrey',
     }
   },
 
-  text: function() {
+  text: function () {
     return {
       color:'lightgrey',
       paddingTop:'0',
-      maxWidth: Math.floor(window.innerWidth *0.9) + 'px',
+      maxWidth: Math.floor(window.innerWidth * 0.9) + 'px',
       textAlign: 'center',
       fontSize: '120px',
-      lineHeight: '120px'
+      lineHeight: '120px',
     }
-  }
+  },
 }
 
 class MultimediaCard extends Component {
-
-  constructor(props) {
+  constructor (props) {
     super(props)
   }
 
-  image() {
-    if(this.props.section.item.multimedia["@type"] === "AudioObject") {
+  image () {
+    if (this.props.section.item.multimedia['@type'] === 'AudioObject') {
       return (
-        <div style={style.text()} className="text">
-          <CardTitle title={ this.props.section.item.multimedia.name } titleStyle={ style.title() } />
+        <div style={style.text()} className='text'>
+          <CardTitle title={this.props.section.item.multimedia.name} titleStyle={style.title()} />
           <CardText>
-            <div><i className="material-icons" style={ style.text() }>library_music</i></div>
+            <div><i className='material-icons' style={style.text()}>library_music</i></div>
           </CardText>
         </div>
 
       )
     } else {
       return (
-        <img style={{width: 'auto' }} src={this.props.section.item.multimedia.thumbnailUrl} />
+        <img style={{ width: 'auto' }} src={this.props.section.item.multimedia.thumbnailUrl} />
       )
     }
-
   }
-  render() {
+  render () {
     return (
       <div style={style.text()}>
-        <CardMedia className="img">
+        <CardMedia className='img'>
           {this.image()}
         </CardMedia>
         <CardCaption caption={this.props.section.caption} />
       </div>
-     )
+    )
   }
 }
 

@@ -14,28 +14,28 @@ var CollectionsList = createReactClass({
     collections: PropTypes.array,
   },
 
-  collectionNodes: function() {
-    return this.reverseCollection().map(function(collection, index) {
+  collectionNodes: function () {
+    return this.reverseCollection().map(function (collection, index) {
       return (
         <CollectionCard
           collection={collection}
           key={index}
           cardHeight='450'
-          />
+        />
       )
     })
   },
 
-  reverseCollection: function() {
-      var temp = []
-      var len = this.props.collections.length
-      for (var i = (len - 1); i !== -1; i--) {
-          temp.push(this.props.collections[i])
-      }
-      return temp
+  reverseCollection: function () {
+    var temp = []
+    var len = this.props.collections.length
+    for (var i = (len - 1); i !== -1; i--) {
+      temp.push(this.props.collections[i])
+    }
+    return temp
   },
 
-  gridList: function(cols) {
+  gridList: function (cols) {
     return (
       <GridList cols={cols} cellHeight={'auto'} padding={24}>
         {this.collectionNodes()}
@@ -43,7 +43,7 @@ var CollectionsList = createReactClass({
     )
   },
 
-  render: function() {
+  render: function () {
     return (
       <div>
         <MediaQuery maxWidth={650}>
@@ -57,7 +57,7 @@ var CollectionsList = createReactClass({
         </MediaQuery>
       </div>
     )
-  }
+  },
 })
 
 module.exports = CollectionsList

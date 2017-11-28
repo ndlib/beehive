@@ -1,38 +1,38 @@
 const BrowserUtils = {
-  ie: function() {
+  ie: function () {
     // return true if Internet Exploder else false
     var ua = window.navigator.userAgent
     var msie = ua.indexOf('MSIE ')
     if (msie > 0) {
-        return true
+      return true
     }
     var trident = ua.indexOf('Trident/')
     if (trident > 0) {
-        return true
+      return true
     }
     var edge = ua.indexOf('Edge/')
     if (edge > 0) {
-       return true
+      return true
     }
     return false
   },
 
-  mobile: function() {
+  mobile: function () {
     var checkWidth = 650
-    if(screen.width <= checkWidth || window.innerWidth <= checkWidth){
+    if (screen.width <= checkWidth || window.innerWidth <= checkWidth) {
       return true
     }
     var ua = window.navigator.userAgent
     var iphone = ua.indexOf('iPhone')
-    if(iphone > 0) {
+    if (iphone > 0) {
       return true
     }
     var ipod = ua.indexOf('iPod')
-    if(ipod > 0) {
+    if (ipod > 0) {
       return true
     }
     var android = ua.indexOf('android')
-    if(android > -1) {
+    if (android > -1) {
       return true
     }
     return false

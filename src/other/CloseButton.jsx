@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import mui, {FlatButton, FontIcon} from 'material-ui'
+import mui, { FlatButton, FontIcon } from 'material-ui'
 import { Link } from 'react-router-dom'
 
 var SearchStore = require('../store/SearchStore.js')
@@ -12,17 +12,17 @@ var CloseButton = createReactClass({
   propTypes: {
     href: PropTypes.string,
     alternate: PropTypes.bool,
-    height: PropTypes.number
+    height: PropTypes.number,
   },
 
-  getDefaultProps: function() {
+  getDefaultProps: function () {
     return {
       alternate: false,
       height: 35,
     }
   },
 
-  color: function() {
+  color: function () {
     if (this.props.alternate) {
       return '#000000'
     } else {
@@ -30,12 +30,12 @@ var CloseButton = createReactClass({
     }
   },
 
-  iconStyle: function() {
-    return { border:'solid 1px', verticalAlign: "middle", width: "initial", height: "initial" }
+  iconStyle: function () {
+    return { border:'solid 1px', verticalAlign: 'middle', width: 'initial', height: 'initial' }
   },
 
   // generate what the back location url is
-  href: function() {
+  href: function () {
     if (this.props.href) {
       return this.props.href
     }
@@ -52,7 +52,7 @@ var CloseButton = createReactClass({
     let stopword
 
     // this should bring us up 1 level. eg section=>showcase showcase=>collection
-    if (current.includes("/items/")) {
+    if (current.includes('/items/')) {
       stopword = 'items'
     } else if (current.includes('/pages/')) {
       stopword = 'pages'
@@ -68,15 +68,15 @@ var CloseButton = createReactClass({
     return re.exec(current)[1]
   },
 
-  render: function() {
-    return (<div/>)
+  render: function () {
+    return (<div />)
     return (
       <Link to={this.href()}>
         <FlatButton
-          disableTouchRipple={true}
-          style={{ height: "100%", padding: 0 }}
+          disableTouchRipple
+          style={{ height: '100%', padding: 0 }}
         >
-          <FontIcon className="material-icons" color={this.color()} style={this.iconStyle()}>clear</FontIcon>
+          <FontIcon className='material-icons' color={this.color()} style={this.iconStyle()}>clear</FontIcon>
         </FlatButton>
       </Link>
     )

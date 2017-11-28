@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { CardMedia } from 'material-ui'
-var CardCaption = require("./CardCaption.jsx")
+var CardCaption = require('./CardCaption.jsx')
 
 var ImageCard = createReactClass({
 
@@ -10,17 +10,17 @@ var ImageCard = createReactClass({
     section: PropTypes.object.isRequired,
   },
 
-  style: function() {
+  style: function () {
     return {
-      position:'relative'
+      position:'relative',
     }
   },
 
-  render: function() {
+  render: function () {
     return (
       <div style={this.style()}>
-        <CardMedia className="img">
-          <img style={{width: 'auto' }} src={this.props.section.item.media.thumbnailUrl} />
+        <CardMedia className='img'>
+          <img style={{ width: 'auto' }} src={this.props.section.item.media.thumbnailUrl} />
         </CardMedia>
         <CardCaption caption={this.props.section.caption} />
       </div>

@@ -1,4 +1,4 @@
-'use strict'
+
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
@@ -15,13 +15,13 @@ var MetadataString = createReactClass({
 
   render: function () {
     if (linkPattern.test(this.props.metadata_field.value)) {
-      var linkStyle = {wordBreak: "break-word",}
+      var linkStyle = { wordBreak: 'break-word' }
       var matches = this.props.metadata_field.value.split(linkPattern)
-      var replacedNodes = matches.map(function(string, index) {
+      var replacedNodes = matches.map(function (string, index) {
         if (linkPattern.test(string)) {
           string = AddReferral(string)
           return (
-            <a href={string} key={index} target="_blank" rel="nofollow" style={linkStyle}>{string}</a>
+            <a href={string} key={index} target='_blank' rel='nofollow' style={linkStyle}>{string}</a>
           )
         } else {
           return (<div key={index}>{string}</div>)
@@ -31,7 +31,7 @@ var MetadataString = createReactClass({
     } else {
       return (<div>{this.props.metadata_field.value}</div>)
     }
-  }
+  },
 })
 
 module.exports = MetadataString

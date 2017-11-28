@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import {Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui'
+import { Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui'
 var CloseButton = require('../../other/CloseButton.jsx')
 const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 
@@ -14,14 +14,14 @@ var ShowcaseTitleBar = createReactClass({
     height: PropTypes.number,
   },
 
-  getDefaultProps: function() {
+  getDefaultProps: function () {
     return {
       percentFade: 0,
       height: 35,
     }
   },
 
-  style: function() {
+  style: function () {
     return {
       opacity: 1 - this.props.percentFade,
       backgroundColor: 'rgba(0, 0, 0, 0.541176)',
@@ -33,7 +33,7 @@ var ShowcaseTitleBar = createReactClass({
   titleBarStyle: function () {
     return {
       color: '#fff',
-      lineHeight: this.props.height + "px",
+      lineHeight: this.props.height + 'px',
     }
   },
 
@@ -41,14 +41,14 @@ var ShowcaseTitleBar = createReactClass({
     return this.props.showcase.name_line_1
   },
 
-  closeButtonStyle: function() {
+  closeButtonStyle: function () {
     return {
       marginLeft: 'auto',
       float: 'right',
     }
   },
 
-  render: function() {
+  render: function () {
     if (this.props.showcase) {
       return (
         <Toolbar style={this.style()}>
@@ -56,14 +56,14 @@ var ShowcaseTitleBar = createReactClass({
             <ToolbarTitle text={this.name()} style={this.titleBarStyle()} />
           </ToolbarGroup>
           <ToolbarGroup key={1} style={this.closeButtonStyle()}>
-            <CloseButton alternate={true} height={this.props.height}/>
+            <CloseButton alternate height={this.props.height} />
           </ToolbarGroup>
         </Toolbar>
       )
     } else {
       return (<div />)
     }
-  }
+  },
 })
 
 // each file will export exactly one component

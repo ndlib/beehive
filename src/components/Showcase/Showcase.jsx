@@ -7,17 +7,17 @@ var ShowcaseShow = require('./ShowcaseShow.jsx')
 var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
 var PageContent = require('../../layout/PageContent.jsx')
 var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
-var ConfigurationActions = require("../../actions/ConfigurationActions.js")
-var ConfigurationStore = require("../../store/ConfigurationStore.js")
-var Loading = require("../../other/Loading.jsx")
-var PageTitle = require("../../modules/PageTitle.js")
+var ConfigurationActions = require('../../actions/ConfigurationActions.js')
+var ConfigurationStore = require('../../store/ConfigurationStore.js')
+var Loading = require('../../other/Loading.jsx')
+var PageTitle = require('../../modules/PageTitle.js')
 
 const BrowserUtils = require('../../modules/BrowserUtils.jsx')
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
 var Showcase = createReactClass({
 
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       showcase: null,
       height: window.innerHeight,
@@ -25,11 +25,11 @@ var Showcase = createReactClass({
     }
   },
 
-  configurationLoaded: function(){
+  configurationLoaded: function () {
     this.setState({ configurationLoaded: true })
   },
 
-  setValues: function(collection) {
+  setValues: function (collection) {
     ConfigurationActions.load(collection)
     this.setState({
       remoteCollectionLoaded: true,
@@ -39,8 +39,8 @@ var Showcase = createReactClass({
     return true
   },
 
-  componentDidMount: function() {
-    if ('object' == typeof(this.props.collection)) {
+  componentDidMount: function () {
+    if (typeof (this.props.collection) === 'object') {
       this.setValues(this.props.collection)
     } else {
       LoadRemote.loadRemoteCollection(this.props.collection, this.setValues)
@@ -49,14 +49,14 @@ var Showcase = createReactClass({
     this.handleResize()
   },
 
-  componentWillUnmount: function() {
+  componentWillUnmount: function () {
     window.removeEventListener('resize', this.handleResize)
     ConfigurationStore.removeChangeListener(this.configurationLoaded)
   },
 
-  componentWillReceiveProps: function(nextProps) {
-    if(this.props.collection !== nextProps.collection) {
-      if ('object' == typeof(nextProps.collection)) {
+  componentWillReceiveProps: function (nextProps) {
+    if (this.props.collection !== nextProps.collection) {
+      if (typeof (nextProps.collection) === 'object') {
         this.setValues(nextProps.collection)
       } else {
         LoadRemote.loadRemoteCollection(nextProps.collection, this.setValues)
@@ -64,21 +64,21 @@ var Showcase = createReactClass({
     }
   },
 
-  componentDidUpdate: function(prevProps, prevState) {
-    if(this.props !== prevProps) {
+  componentDidUpdate: function (prevProps, prevState) {
+    if (this.props !== prevProps) {
       this.handleResize()
     }
   },
 
-  handleResize: function() {
+  handleResize: function () {
     this.setState({
       height: window.innerHeight,
-      width: window.innerWidth
+      width: window.innerWidth,
     })
   },
 
-  render: function() {
-    if(!this.state.remoteCollectionLoaded) {
+  render: function () {
+    if (!this.state.remoteCollectionLoaded) {
       return null
     }
     PageTitle(this.state.showcase.name)
@@ -91,19 +91,19 @@ var Showcase = createReactClass({
       showcaseShow = (<Loading />)
     }
     var header
-    if(!BrowserUtils.mobile()){
+    if (!BrowserUtils.mobile()) {
       header = (<CollectionPageHeader collection={this.state.collection} />)
     }
     return (
-      <div style={{ backgroundColor: "rgba(0,0,0,0)" }}>
+      <div style={{ backgroundColor: 'rgba(0,0,0,0)' }}>
         {header}
-        <PageContent fluidLayout={true}>
+        <PageContent fluidLayout>
           {showcaseShow}
         </PageContent>
         <CollectionPageFooter collection={this.state.collection} />
       </div>
     )
-  }
+  },
 })
 
 module.exports = Showcase

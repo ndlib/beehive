@@ -3,14 +3,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { FlatButton } from 'material-ui'
-var MediaQuery = require("react-responsive")
+var MediaQuery = require('react-responsive')
 var Details = require('../../display/Details.jsx')
 var OpenseadragonViewer = require('../../display/OpenseadragonViewer.jsx')
 var MultimediaViewer = require('../../layout/MultimediaViewer.jsx')
 import AddReferral from '../../modules/AddReferral.js'
 
 var ItemContent = createReactClass({
-  displayName: "ItemContent",
+  displayName: 'ItemContent',
 
   propTypes: {
     item: PropTypes.object,
@@ -24,131 +24,129 @@ var ItemContent = createReactClass({
     // Distance from bottom of media to bottom of viewport
   },
 
-  getDefaultProps: function() {
+  getDefaultProps: function () {
     return {
       minMediaHeight: 300,
-      mediaBottom: 200
+      mediaBottom: 200,
     }
   },
 
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       zoom: false,
     }
   },
 
-  componentWillMount: function() {
+  componentWillMount: function () {
     document.body.classList.toggle('noscroll', true)
   },
 
-  componentWillUnmount: function() {
+  componentWillUnmount: function () {
     document.body.classList.toggle('noscroll', false)
   },
 
-  outerStyles: function() {
+  outerStyles: function () {
     if (this.props.height) {
       return {
         height: this.props.height,
-        position: "relative",
-        overflow: "auto"
+        position: 'relative',
+        overflow: 'auto',
       }
     } else {
       return {}
     }
   },
 
-  zoomStyles: function() {
+  zoomStyles: function () {
     if (this.props.height) {
       return {
-        background: "#444",
+        background: '#444',
         top: 0,
-        width: "100%",
+        width: '100%',
       }
     } else {
       return {}
     }
   },
 
-  imgStyles: function() {
+  imgStyles: function () {
     return {
-      maxWidth: "100%",
-      maxHeight: this.getHeight() - 60 + "px",
-      display: "block",
-      margin: "auto",
+      maxWidth: '100%',
+      maxHeight: this.getHeight() - 60 + 'px',
+      display: 'block',
+      margin: 'auto',
     }
   },
 
-  getHeight: function() {
+  getHeight: function () {
     var height = this.props.height - this.props.mediaBottom
-    if( height < this.props.minMediaHeight ){
+    if (height < this.props.minMediaHeight) {
       height = this.props.height
     }
-    if(this.state.zoom) {
+    if (this.state.zoom) {
       return window.innerHeight
     }
     return height
   },
 
-  multimedia: function() {
+  multimedia: function () {
     var height
-    if(this.props.item.media["@type"] === "AudioObject") {
+    if (this.props.item.media['@type'] === 'AudioObject') {
       height = 40
-    }
-    else  {
+    } else {
       height = this.getHeight()
     }
 
     return (
-      <div className="item-detail-zoom" style={this.zoomStyles()}>
+      <div className='item-detail-zoom' style={this.zoomStyles()}>
         <MultimediaViewer
-          url={ this.props.item.media.embedUrl }
-          autostart={ true }
-          height={ height + "px" }
+          url={this.props.item.media.embedUrl}
+          autostart
+          height={height + 'px'}
         />
       </div>
     )
   },
 
-  toggleZoom: function() {
+  toggleZoom: function () {
     return (
-      <div style={{ background: "#444" }}>
-        <FlatButton label="Toggle Zoom"
-                        onClick={ () => { this.setState({ zoom: !this.state.zoom })} }
-                        style={{ display: "block", margin: "auto" }}
-                        labelStyle={{color: 'white'}}
+      <div style={{ background: '#444' }}>
+        <FlatButton label='Toggle Zoom'
+          onClick={() => { this.setState({ zoom: !this.state.zoom }) }}
+          style={{ display: 'block', margin: 'auto' }}
+          labelStyle={{ color: 'white' }}
         />
       </div>
     )
   },
 
-  hasManuscript: function() {
+  hasManuscript: function () {
     return (this.props.item && this.props.item.metadata && this.props.item.metadata.manuscript_url)
   },
 
   showManuscript: function () {
-    if(this.hasManuscript()) {
+    if (this.hasManuscript()) {
       return (
-        <div style={{ background: "#444" }}>
-          <FlatButton label="View Manuscript"
-                          onClick={ (event) => {
-                            event.preventDefault()
-                            window.open(AddReferral(this.props.item.metadata.manuscript_url.values[0].value))
-                          } }
-                          style={{ display: "block", margin: "auto" }}
-                          labelStyle={{color: 'white'}}
+        <div style={{ background: '#444' }}>
+          <FlatButton label='View Manuscript'
+            onClick={(event) => {
+              event.preventDefault()
+              window.open(AddReferral(this.props.item.metadata.manuscript_url.values[0].value))
+            }}
+            style={{ display: 'block', margin: 'auto' }}
+            labelStyle={{ color: 'white' }}
           />
         </div>
       )
     }
     return null
-
   },
-  image: function() {
+  image: function () {
     var height = this.getHeight()
 
-    if(this.state.zoom) {
+    if (this.state.zoom) {
       return (
-        <div className="item-detail-zoom" style={this.zoomStyles()}>
+        <div className='item-detail-zoom' style={this.zoomStyles()}>
           <MediaQuery minWidth={650}>
             <OpenseadragonViewer
               image={this.props.item.media}
@@ -172,24 +170,24 @@ var ItemContent = createReactClass({
       )
     } else {
       return (
-        <div className="item-detail-zoom" style={ this.zoomStyles() }>
-          <img src={ this.props.item.media.contentUrl } style={ this.imgStyles() } />
+        <div className='item-detail-zoom' style={this.zoomStyles()}>
+          <img src={this.props.item.media.contentUrl} style={this.imgStyles()} />
         </div>
       )
     }
   },
 
-  details: function() {
+  details: function () {
     if (!this.state.zoom) {
-      return (<Details item={this.props.item} additionalDetails={this.props.additionalDetails} showDetails={true} />)
+      return (<Details item={this.props.item} additionalDetails={this.props.additionalDetails} showDetails />)
     }
     return null
   },
 
-  render: function() {
+  render: function () {
     var prevLink, nextLink
-    if (this.props.item && this.props.item.media != null){
-      if(this.props.item.media["@type"] == "ImageObject") {
+    if (this.props.item && this.props.item.media != null) {
+      if (this.props.item.media['@type'] == 'ImageObject') {
         return (
           <div style={this.outerStyles()}>
             { this.image() }
@@ -197,7 +195,7 @@ var ItemContent = createReactClass({
             { this.details() }
           </div>
         )
-      } else if (this.props.item.media["@type"] == "AudioObject" || this.props.item.media["@type"] == "VideoObject") {
+      } else if (this.props.item.media['@type'] == 'AudioObject' || this.props.item.media['@type'] == 'VideoObject') {
         return (
           <div style={this.outerStyles()}>
             { this.multimedia() }
@@ -212,7 +210,7 @@ var ItemContent = createReactClass({
         { this.details() }
       </div>
     )
-  }
+  },
 })
 
 module.exports = ItemContent

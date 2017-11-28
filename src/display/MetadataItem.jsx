@@ -1,8 +1,8 @@
-'use strict'
+
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import mui, { Divider }  from 'material-ui'
+import mui, { Divider } from 'material-ui'
 
 var MetadataString = require('./MetadataString.jsx')
 var MetadataDate = require('./MetadataDate.jsx')
@@ -18,15 +18,15 @@ var fieldTypeMap = {
 
 var Styles = {
   fieldName: {
-    fontSize: "14pt"
+    fontSize: '14pt',
   },
   fieldValue: {
 
   },
   divider: {
-    marginTop: "3px",
-    marginBottom: "8px"
-  }
+    marginTop: '3px',
+    marginBottom: '8px',
+  },
 }
 
 var MetadataItem = createReactClass({
@@ -36,8 +36,8 @@ var MetadataItem = createReactClass({
     metadata: PropTypes.object.isRequired,
   },
 
-  value: function(metadata_field, index) {
-    var MetadataComponent = fieldTypeMap[metadata_field["@type"]]
+  value: function (metadata_field, index) {
+    var MetadataComponent = fieldTypeMap[metadata_field['@type']]
     return (<MetadataComponent key={index} metadata_field={metadata_field} />)
   },
 
@@ -47,15 +47,15 @@ var MetadataItem = createReactClass({
     }, this)
   },
 
-  render: function() {
+  render: function () {
     return (
       <dl>
-        <dt style={ Styles.fieldName }>{this.props.metadata.label.toUpperCase()}</dt>
-        <Divider style={ Styles.divider } inset={false} />
-        <dd style={ Styles.fieldValue }>{this.map_arrays_to_values()}</dd>
+        <dt style={Styles.fieldName}>{this.props.metadata.label.toUpperCase()}</dt>
+        <Divider style={Styles.divider} inset={false} />
+        <dd style={Styles.fieldValue}>{this.map_arrays_to_values()}</dd>
       </dl>
     )
-  }
+  },
 })
 
 module.exports = MetadataItem

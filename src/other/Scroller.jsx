@@ -1,25 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-var SideNavButton = require("./SideNavButton.jsx")
+var SideNavButton = require('./SideNavButton.jsx')
 
 var Scroller = createReactClass({
   propTypes: {
     target: PropTypes.string.isRequired,
   },
 
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       element: null,
     }
   },
 
-  onMouseDown: function(direction, event) {
-    var scrollDelta = Math.ceil(this.state.element.clientWidth * (3/4))
-    $(this.state.element).animate({scrollLeft: (this.state.element.scrollLeft + scrollDelta * direction)}, 500)
+  onMouseDown: function (direction, event) {
+    var scrollDelta = Math.ceil(this.state.element.clientWidth * (3 / 4))
+    $(this.state.element).animate({ scrollLeft: (this.state.element.scrollLeft + scrollDelta * direction) }, 500)
   },
 
-  componentDidMount: function() {
+  componentDidMount: function () {
     this.setState({
       element: $(this.props.target).get(0),
     })
@@ -29,24 +29,24 @@ var Scroller = createReactClass({
     return (this.props.height / 2)
   },
 
-  maxScroll: function() {
+  maxScroll: function () {
     return this.state.element.scrollWidth - this.state.element.clientWidth
   },
 
-  render: function() {
+  render: function () {
     var left
     var right
 
-    if(this.state.element) {
-      if(this.state.element.scrollLeft > 0) {
+    if (this.state.element) {
+      if (this.state.element.scrollLeft > 0) {
         left = (
           <SideNavButton onMouseDown={this.onMouseDown.bind(this, -1)} />
         )
       }
 
-      if(this.state.element.scrollLeft < this.maxScroll() - 10) {
+      if (this.state.element.scrollLeft < this.maxScroll() - 10) {
         right = (
-          <SideNavButton onMouseDown={this.onMouseDown.bind(this, 1)} rightIcon={true} />
+          <SideNavButton onMouseDown={this.onMouseDown.bind(this, 1)} rightIcon />
         )
       }
     }
@@ -56,7 +56,7 @@ var Scroller = createReactClass({
         {right}
       </div>
     )
-  }
+  },
 })
 
 module.exports = Scroller

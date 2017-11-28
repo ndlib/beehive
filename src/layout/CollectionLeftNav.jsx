@@ -1,4 +1,4 @@
-'use strict'
+
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
@@ -6,7 +6,7 @@ import mui, { Divider, Drawer, FontIcon, FlatButton, MenuItem } from 'material-u
 import { Link } from 'react-router-dom'
 var Types = {
   LINK: 'LINK',
-  SUBHEADER: 'SUBHEADER'
+  SUBHEADER: 'SUBHEADER',
 }
 const CollectionUrl = require('../modules/CollectionUrl.jsx')
 const CurrentTheme = require('../modules/CurrentTheme.jsx')
@@ -16,22 +16,22 @@ var CollectionLeftNav = createReactClass({
     collection: PropTypes.object.isRequired,
   },
 
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       sitePath: [],
       open: false,
     }
   },
 
-  componentWillMount: function() {
+  componentWillMount: function () {
     if (this.props.collection['site_path']) {
       this.setState({
-        sitePath: this.props.collection['site_path']
+        sitePath: this.props.collection['site_path'],
       })
     }
   },
 
-  componentDidMount: function() {
+  componentDidMount: function () {
     if (this.props.collection['site_path']) {
       return
     }
@@ -39,29 +39,28 @@ var CollectionLeftNav = createReactClass({
 
     $.ajax({
       context: this,
-      type: "GET",
+      type: 'GET',
       url: url,
-      dataType: "json",
-      success: function(result) {
+      dataType: 'json',
+      success: function (result) {
         this.setState({
           sitePath: result.site_path,
         })
       },
-      error: function(request, status, thrownError) {
+      error: function (request, status, thrownError) {
         // Should we redirect here? It's probably not necessary since it's not
         // the primary content of the page...
-        //window.location = window.location.origin + '/404'
-        console.log("Error retrieving showcase list " + thrownError)
-      }
+        // window.location = window.location.origin + '/404'
+        console.log('Error retrieving showcase list ' + thrownError)
+      },
     })
   },
 
-
-  menuItemAction: function(url) {
+  menuItemAction: function (url) {
     window.location = url
   },
 
-  dropDownOptions: function() {
+  dropDownOptions: function () {
     var options = []
     var collectionUrl = CollectionUrl.collectionUrl(this.props.collection)
     var aboutUrl = CollectionUrl.aboutUrl(this.props.collection)
@@ -72,7 +71,7 @@ var CollectionLeftNav = createReactClass({
       <Link
         to={collectionUrl}
         key='collectionUrlLink'
-        onClick={() => {this.setState({open: false})}}
+        onClick={() => { this.setState({ open: false }) }}
       >
         <MenuItem primaryText='Home' key='home' />
       </Link>
@@ -83,7 +82,7 @@ var CollectionLeftNav = createReactClass({
         <Link
           to={browseUrl}
           key='browseUrlLink'
-          onClick={() => {this.setState({open: false})}}
+          onClick={() => { this.setState({ open: false }) }}
         >
           <MenuItem primaryText='Browse Collection' key='browse' />
         </Link>
@@ -95,38 +94,38 @@ var CollectionLeftNav = createReactClass({
         <Link
           to={aboutUrl}
           key='aboutUrl'
-          onClick={() => {this.setState({open: false})}}
+          onClick={() => { this.setState({ open: false }) }}
         >
-          <MenuItem primaryText='About' key='about'/>
+          <MenuItem primaryText='About' key='about' />
         </Link>
       ))
     }
-    options.push((<Divider key="divider"/>))
+    options.push((<Divider key='divider' />))
 
     if (introUrl) {
       options.push((
         <Link
           to={introUrl}
           key='introUrl'
-          onClick={() => {this.setState({open: false})}}
+          onClick={() => { this.setState({ open: false }) }}
         >
-          <MenuItem primaryText='Introduction' key='intro'/>
+          <MenuItem primaryText='Introduction' key='intro' />
         </Link>
       ))
     }
 
-    this.state.sitePath.forEach(function(siteObject){
+    this.state.sitePath.forEach(function (siteObject) {
       var url = CollectionUrl.collectionObjectUrl(siteObject)
       var name = siteObject.name || siteObject.name_line_1
-      options.push ((
+      options.push((
         <Link
           to={url}
           key={siteObject.id}
-          onClick={() => {this.setState({open: false})}}
+          onClick={() => { this.setState({ open: false }) }}
         >
           <MenuItem
             primaryText={name}
-            className="collection-left-nav-item" />
+            className='collection-left-nav-item' />
         </Link>
       ))
     }.bind(this))
@@ -143,47 +142,46 @@ var CollectionLeftNav = createReactClass({
       minWidth: 'auto',
       backgroundColor: 'rgba(255,255,255,.1)',
       color: 'white',
-      zIndex: "5"
+      zIndex: '5',
     })
   },
 
   navStyle: function () {
     return ({
-      zIndex: '999999999999999'
+      zIndex: '999999999999999',
     })
   },
 
   clickEvent: function () {
-    this.setState({open: !this.state.open})
+    this.setState({ open: !this.state.open })
   },
 
   render: function () {
-    if(!this.props.collection) {
-      return
-    }
-    else {
+    if (!this.props.collection) {
+
+    } else {
       return (
-        <div id="CollectionLeftNav" style={{margin:'0', marginLeft: "16px"}}>
+        <div id='CollectionLeftNav' style={{ margin:'0', marginLeft: '16px' }}>
           <FlatButton
             onClick={this.clickEvent}
             style={this.buttonStyle()}
-            disableTouchRipple={true}
+            disableTouchRipple
           >
-            <FontIcon className="material-icons" style={CurrentTheme.lightIconStyle()}>menu</FontIcon>
+            <FontIcon className='material-icons' style={CurrentTheme.lightIconStyle()}>menu</FontIcon>
           </FlatButton>
 
           <Drawer
             docked={false}
-            onRequestChange={(open) => this.setState({open})}
+            onRequestChange={(open) => this.setState({ open })}
             open={this.state.open}
-            id="leftNav"
-            className="leftNav"
+            id='leftNav'
+            className='leftNav'
             children={this.dropDownOptions()}
             style={this.navStyle()} />
         </div>
       )
     }
-  }
+  },
 })
 
 module.exports = CollectionLeftNav

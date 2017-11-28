@@ -11,26 +11,26 @@ var SectionShowDescription = createReactClass({
     height: PropTypes.number,
   },
 
-  styles: function() {
+  styles: function () {
     if (this.props.height) {
       return {
         height: this.props.height + 'px',
         overflowY: 'scroll',
-        maxWidth: "60em",
-        margin: '0 auto'
+        maxWidth: '60em',
+        margin: '0 auto',
       }
     } else {
       return {}
     }
   },
 
-  render: function() {
+  render: function () {
     return (
       <PageContent>
-        <div ref="sectionContent" style={this.styles()} dangerouslySetInnerHTML={{__html:this.props.section.description}} />
+        <div ref='sectionContent' style={this.styles()} dangerouslySetInnerHTML={{ __html:this.props.section.description }} />
       </PageContent>
     )
-  }
+  },
 
 })
 

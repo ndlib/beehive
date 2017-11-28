@@ -3,9 +3,7 @@ import handleAction from './handleAction'
 import handleActions from './handleActions'
 
 export {
-    createAction,
-    handleAction,
-    handleActions
+  createAction,
+  handleAction,
+  handleActions,
 }
-
-

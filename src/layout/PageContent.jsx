@@ -1,8 +1,8 @@
-//app/assets/javascripts/components/layout/PageContent.jsx
+// app/assets/javascripts/components/layout/PageContent.jsx
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import mui, {Paper} from 'material-ui'
+import mui, { Paper } from 'material-ui'
 
 var PageContent = createReactClass({
   propTypes: {
@@ -10,18 +10,18 @@ var PageContent = createReactClass({
   },
 
   getDefaultProps: function () {
-    return({ fluidLayout: false })
+    return ({ fluidLayout: false })
   },
 
   classes: function () {
     if (this.props.fluidLayout) {
-      return "container-fluid"
+      return 'container-fluid'
     } else {
-      return "container"
+      return 'container'
     }
   },
 
-  style: function() {
+  style: function () {
     if (this.props.fluidLayout) {
       return ({})
     } else {
@@ -29,15 +29,15 @@ var PageContent = createReactClass({
         padding: '0 8%',
         background: 'none',
         position: 'relative',
-        backgroundColor: 'rgba(0,0,0,0)'
+        backgroundColor: 'rgba(0,0,0,0)',
       })
     }
   },
 
-  render: function() {
+  render: function () {
     return (
       <Paper
-        id="page-content"
+        id='page-content'
         onClick={this.props.onClick}
         onMouseOver={this.props.onMouseOver}
         transitionEnabled={false}
@@ -49,7 +49,7 @@ var PageContent = createReactClass({
         {this.props.children}
       </Paper>
     )
-  }
+  },
 })
 
 // each file will export exactly one component

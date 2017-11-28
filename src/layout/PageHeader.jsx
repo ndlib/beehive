@@ -11,13 +11,13 @@ var PageHeader = createReactClass({
     branding: PropTypes.bool,
   },
 
-  style: function() {
+  style: function () {
     return {
-      width: "100%",
+      width: '100%',
     }
   },
 
-  render: function() {
+  render: function () {
     var titleBar = this.props.children
     if (!titleBar) {
       titleBar = (
@@ -25,15 +25,15 @@ var PageHeader = createReactClass({
       )
     }
     return (
-      <div id="banner-wrapper">
-        <header id="banner" role="banner" className="home" style={this.style()} >
-          <nav className="" role="navigation" >
+      <div id='banner-wrapper'>
+        <header id='banner' role='banner' className='home' style={this.style()} >
+          <nav className='' role='navigation' >
             {titleBar}
           </nav>
         </header>
       </div>
     )
-  }
+  },
 })
 
 module.exports = PageHeader
