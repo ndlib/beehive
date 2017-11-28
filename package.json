@@ -10,7 +10,8 @@
     "build": "webpack --config ./build-conf/webpack.config.js --progress --colors",
     "build-pprd": "webpack --config ./build-conf/webpack-pprd.config.js --progress --colors",
     "build-dev": "webpack --config ./build-conf/webpack-dev.config.js --progress --colors",
-    "watch": "webpack --watch --config ./build-conf/webpack-dev.config.js --progress --colors"
+    "watch": "webpack --watch --config ./build-conf/webpack-dev.config.js --progress --colors",
+    "install-linters": "npm install -g eslint-config-react-app babel-eslint eslint eslint-plugin-flowtype eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint-config-standard-react eslint-config-standard eslint-plugin-node eslint-plugin-standard"
   },
   "dependencies": {
     "axios": "0.7.0",
