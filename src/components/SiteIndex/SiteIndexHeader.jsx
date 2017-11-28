@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Card, CardTitle, CardMedia } from 'material-ui'
-var MediaQuery = require("react-responsive");
+var MediaQuery = require("react-responsive")
 
 var SiteIndexHeader = createReactClass({
 
@@ -78,6 +78,6 @@ var SiteIndexHeader = createReactClass({
       </div>
     )
   }
-});
+})
 
-module.exports = SiteIndexHeader;
+module.exports = SiteIndexHeader

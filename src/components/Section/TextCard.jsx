@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import {CardText, CardTitle} from 'material-ui'
-var MoreOverlay = require("./MoreOverlay.jsx");
+var MoreOverlay = require("./MoreOverlay.jsx")
 
 var TextCard = createReactClass({
   propTypes: {
@@ -12,14 +12,14 @@ var TextCard = createReactClass({
   getInitialState: function() {
     return {
       showMoreLink: false,
-    };
+    }
   },
 
   componentDidMount: function() {
     if (this.showMoreLink()) {
       this.setState({
         showMoreLink: true
-      });
+      })
     }
   },
 
@@ -34,28 +34,28 @@ var TextCard = createReactClass({
       color:'lightgrey',
       paddingTop:'0',
       maxWidth: Math.floor(window.innerWidth *0.9) + 'px',
-    };
+    }
   },
 
   showMoreLink: function() {
 
     if (document.getElementById(encodeURIComponent(this.props.section.name) + "-text")) {
-      var textContent = document.getElementById(encodeURIComponent(this.props.section.name) + "-text");
-      var testHeight = textContent.offsetParent.clientHeight;
+      var textContent = document.getElementById(encodeURIComponent(this.props.section.name) + "-text")
+      var testHeight = textContent.offsetParent.clientHeight
       if(document.getElementById(encodeURIComponent(this.props.section.name))) {
-        testHeight -= document.getElementById(encodeURIComponent(this.props.section.name)).offsetParent.clientHeight + 15;
+        testHeight -= document.getElementById(encodeURIComponent(this.props.section.name)).offsetParent.clientHeight + 15
       }
 
-      return (textContent.clientHeight > testHeight);
+      return (textContent.clientHeight > testHeight)
     }
-    return false;
+    return false
   },
 
   overflowText: function() {
     if (this.showMoreLink()) {
       return(<MoreOverlay />)
     }
-    return null;
+    return null
   },
 
   render: function () {
@@ -64,7 +64,7 @@ var TextCard = createReactClass({
       id={encodeURIComponent(this.props.section.name)}
       className="sectionTitleContent"
       >{this.props.section.name}</div>
-    );
+    )
     return (
       <div style={this.style()} className="text">
         <CardTitle title={title} titleStyle={this.titleStyle()} />
@@ -76,9 +76,9 @@ var TextCard = createReactClass({
           {this.overflowText()}
         </CardText>
       </div>
-    );
+    )
   },
-});
+})
 
 // each file will export exactly one component
-module.exports = TextCard;
+module.exports = TextCard

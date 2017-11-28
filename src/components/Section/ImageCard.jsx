@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { CardMedia } from 'material-ui'
-var CardCaption = require("./CardCaption.jsx");
+var CardCaption = require("./CardCaption.jsx")
 
 var ImageCard = createReactClass({
 
@@ -13,7 +13,7 @@ var ImageCard = createReactClass({
   style: function() {
     return {
       position:'relative'
-    };
+    }
   },
 
   render: function() {
@@ -24,9 +24,9 @@ var ImageCard = createReactClass({
         </CardMedia>
         <CardCaption caption={this.props.section.caption} />
       </div>
-    );
+    )
   },
-});
+})
 
 // each file will export exactly one component
-module.exports = ImageCard;
+module.exports = ImageCard

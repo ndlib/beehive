@@ -3,8 +3,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 
-var ListItem = require('./ListItem.jsx');
-var GridItem = require('./GridItem.jsx');
+var ListItem = require('./ListItem.jsx')
+var GridItem = require('./GridItem.jsx')
 
 var ItemListItem = createReactClass({
   propTypes: {
@@ -35,22 +35,22 @@ var ItemListItem = createReactClass({
         )
       },
       error: function(request, status, thrownError) {}
-    });
+    })
   },
 
   render: function() {
     if(this.props.view === 'list'){
       return (
         <ListItem item={this.state.itemLoaded ? Object.assign(this.props.item, this.state.fullItem) : this.props.item} />
-      );
+      )
     }
     else {
       return (
         <GridItem item={this.state.itemLoaded ? Object.assign(this.props.item, this.state.fullItem) : this.props.item} />
-      );
+      )
     }
   }
-});
+})
 
 // each file will export exactly one component
-module.exports = ItemListItem;
+module.exports = ItemListItem

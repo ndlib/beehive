@@ -1,8 +1,8 @@
 
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { CardMedia, CardTitle, CardText } from 'material-ui';
-import CardCaption from "./CardCaption.jsx";
+import { CardMedia, CardTitle, CardText } from 'material-ui'
+import CardCaption from "./CardCaption.jsx"
 
 var style = {
   title: function() {
@@ -19,14 +19,14 @@ var style = {
       textAlign: 'center',
       fontSize: '120px',
       lineHeight: '120px'
-    };
+    }
   }
 }
 
 class MultimediaCard extends Component {
 
   constructor(props) {
-    super(props);
+    super(props)
   }
 
   image() {
@@ -55,7 +55,7 @@ class MultimediaCard extends Component {
         </CardMedia>
         <CardCaption caption={this.props.section.caption} />
       </div>
-     );
+     )
   }
 }
 
@@ -67,4 +67,4 @@ MultimediaCard.defaultProps = {
   section: {},
 }
 
-export default MultimediaCard;
+export default MultimediaCard

@@ -3,17 +3,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { List } from 'material-ui'
-var SearchStore = require('../../store/SearchStore.js');
-var FacetItem = require('./FacetItem.jsx');
+var SearchStore = require('../../store/SearchStore.js')
+var FacetItem = require('./FacetItem.jsx')
 
 var SearchFacets = createReactClass({
   values: function(facet) {
     if (facet.values) {
       return (facet.values.map(function(e, index) {
-        var selectedValue;
+        var selectedValue
         if(SearchStore.facetOption) {
           if(facet.field == encodeURIComponent(SearchStore.facetOption.name)) {
-            selectedValue = SearchStore.facetOption.value;
+            selectedValue = SearchStore.facetOption.value
           }
         }
         return (
@@ -22,10 +22,10 @@ var SearchFacets = createReactClass({
             facet={ e }
             key={ e.name }
           />
-        );
-      }.bind(this)));
+        )
+      }.bind(this)))
     }
-    return null;
+    return null
   },
 
   facets: function(){
@@ -37,8 +37,8 @@ var SearchFacets = createReactClass({
         >
           {this.values(e)}
         </List>
-      );
-    }.bind(this));
+      )
+    }.bind(this))
   },
 
   render: function() {
@@ -46,8 +46,8 @@ var SearchFacets = createReactClass({
       <div>
         {this.facets()}
       </div>
-    );
+    )
   }
-});
+})
 
-module.exports = SearchFacets;
+module.exports = SearchFacets

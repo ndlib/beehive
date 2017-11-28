@@ -3,30 +3,30 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { MenuItem, SelectField } from 'material-ui'
-var SearchActions = require('../../actions/SearchActions.js');
-var SearchStore = require('../../store/SearchStore.js');
+var SearchActions = require('../../actions/SearchActions.js')
+var SearchStore = require('../../store/SearchStore.js')
 
 var SearchSort = createReactClass({
   getInitialState: function() {
     var state = {
       selectValue: 0,
     }
-    return state;
+    return state
   },
 
   onChange: function(prop, e) {
-    this.setSort(e.target.value);
+    this.setSort(e.target.value)
   },
 
   setSort: function(sortOption) {
-    SearchActions.setSort(sortOption);
+    SearchActions.setSort(sortOption)
   },
 
   componentWillMount: function() {
-    var regex = /\S+&sort=/;
-    var sortOption = '';
+    var regex = /\S+&sort=/
+    var sortOption = ''
     if(window.location.search.match(regex)) {
-      sortOption = window.location.search.replace(regex, '').split('&')[0];
+      sortOption = window.location.search.replace(regex, '').split('&')[0]
     }
   },
 
@@ -39,7 +39,7 @@ var SearchSort = createReactClass({
       verticalAlign: 'middle',
       marginLeft: '5px',
       background: 'url(/images/arrowdown.gif) no-repeat 90% 50% #fff'
-    });
+    })
   },
 
   sortSelectStyle: function() {
@@ -53,13 +53,13 @@ var SearchSort = createReactClass({
       backgroundImage: 'none',
       width: '130%',
       color: 'black'
-    });
+    })
   },
 
   sortOptions: function() {
     return SearchStore.sorts.map(function(option) {
-      return(<option key={option.value} value={option.value}>{option.name}</option>);
-    });
+      return(<option key={option.value} value={option.value}>{option.name}</option>)
+    })
   },
 
   render: function() {
@@ -78,11 +78,11 @@ var SearchSort = createReactClass({
           </select>
         </div>
       </div>
-      );
+      )
     }
     else {
-      return null;
+      return null
     }
   }
-});
+})
 module.exports = SearchSort

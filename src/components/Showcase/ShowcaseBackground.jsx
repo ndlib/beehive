@@ -17,9 +17,9 @@ var ShowcaseBackground = createReactClass({
   },
 
   style: function() {
-    var backgroundImage;
+    var backgroundImage
     if (this.props.showcase.image) {
-      backgroundImage = "url(\"" + this.props.showcase.image.contentUrl + "\")";
+      backgroundImage = "url(\"" + this.props.showcase.image.contentUrl + "\")"
     }
     return {
       width: "100%",
@@ -30,7 +30,7 @@ var ShowcaseBackground = createReactClass({
       backgroundRepeat: "no-repeat",
       backgroundSize: "cover",
       zIndex: "0",
-    };
+    }
   },
 
   coverStyle: function() {
@@ -48,8 +48,8 @@ var ShowcaseBackground = createReactClass({
         <div className="showcase-background-cover" style={this.coverStyle()}>
         </div>
       </div>
-    );
+    )
   }
-});
+})
 
-module.exports = ShowcaseBackground;
+module.exports = ShowcaseBackground

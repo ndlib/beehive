@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Paper } from 'material-ui'
 
-var SitePathCard = require('../Collection/SitePathCard.jsx');
+var SitePathCard = require('../Collection/SitePathCard.jsx')
 const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 
 var ShowcaseEndingCard = createReactClass({
@@ -30,7 +30,7 @@ var ShowcaseEndingCard = createReactClass({
       overflow: "hidden",
       marginTop: "12vh",
       backgroundColor: CurrentTheme.getCurrentPallette(this.context.muiTheme).showcaseTextCardColor,
-    };
+    }
   },
 
   render: function() {
@@ -38,9 +38,9 @@ var ShowcaseEndingCard = createReactClass({
       <Paper style={this.style()} >
         <SitePathCard siteObject={this.props.siteObject} addNextButton={true} headerTitle="Continue to" fixedSize={false}/>
       </Paper>
-    );
+    )
   }
 
-});
+})
 
-module.exports = ShowcaseEndingCard;
+module.exports = ShowcaseEndingCard

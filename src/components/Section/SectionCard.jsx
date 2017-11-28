@@ -3,9 +3,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Card } from 'material-ui'
-var TextCard = require("./TextCard.jsx");
-var ImageCard = require("./ImageCard.jsx");
-var MultimediaCard = require("./MultimediaCard.jsx");
+var TextCard = require("./TextCard.jsx")
+var ImageCard = require("./ImageCard.jsx")
+var MultimediaCard = require("./MultimediaCard.jsx")
 import { Link } from 'react-router-dom'
 
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
@@ -37,41 +37,41 @@ var SectionCard = createReactClass({
       backgroundColor: "rgba(51,51,51,0.95)",
       border: this.sectionType() == "image" ? 'solid 3px #fff' : "none",
       overflow: 'hidden'
-    };
+    }
     if (this.sectionType() == "text") {
-      styles["maxWidth"] = "33em";
+      styles["maxWidth"] = "33em"
     }
 
-    return styles;
+    return styles
   },
 
   sectionType: function() {
     if (this.props.section.item) {
       if(this.props.section.item.media){
-        return "image";
+        return "image"
       }
       else if(this.props.section.item.multimedia){
-        return "multimedia";
+        return "multimedia"
       }
     } else {
-      return "text";
+      return "text"
     }
   },
 
   card: function() {
     switch(this.sectionType()) {
       case "image":
-        return (<ImageCard section={this.props.section} />);
-        break;
+        return (<ImageCard section={this.props.section} />)
+        break
       case "text":
-        return (<TextCard section={this.props.section} />);
-        break;
+        return (<TextCard section={this.props.section} />)
+        break
       case "multimedia":
-        return (<MultimediaCard section={this.props.section} />);
-        break;
+        return (<MultimediaCard section={this.props.section} />)
+        break
       default:
-        return (<div/>);
-        break;
+        return (<div/>)
+        break
     }
   },
 
@@ -90,9 +90,9 @@ var SectionCard = createReactClass({
           {this.manifestIcon(this.props.section.item)}
         </Card>
       </Link>
-    );
+    )
   }
-});
+})
 
 // each file will export exactly one component
-module.exports = SectionCard;
+module.exports = SectionCard

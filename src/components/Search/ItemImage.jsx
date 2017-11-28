@@ -11,7 +11,7 @@ var ItemImage = createReactClass({
     return {
       paddingTop: "100%",
       position: "relative"
-    };
+    }
   },
 
   holderStyle: function() {
@@ -21,7 +21,7 @@ var ItemImage = createReactClass({
       left: 0,
       right: 0,
       position: "absolute",
-    };
+    }
   },
 
   backgroundStyle: function() {
@@ -30,14 +30,14 @@ var ItemImage = createReactClass({
       height: "100%",
       position: "absolute",
       objectFit: "cover"
-    };
+    }
   },
 
   image: function() {
     if(this.props.item.thumbnailURL)
-      return this.props.item.thumbnailURL;
+      return this.props.item.thumbnailURL
     else
-      return "/images/meta-only-item.jpg";
+      return "/images/meta-only-item.jpg"
   },
 
   render: function() {
@@ -49,9 +49,9 @@ var ItemImage = createReactClass({
           </div>
         </div>
       </div>
-    );
+    )
   }
 
-});
+})
 
 module.exports = ItemImage

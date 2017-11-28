@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx');
-var PageContent = require('../../layout/PageContent.jsx');
-var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx');
-var PagesShow = require('../Pages/PagesShow.jsx');
+var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
+var PageContent = require('../../layout/PageContent.jsx')
+var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
+var PagesShow = require('../Pages/PagesShow.jsx')
 
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
@@ -20,16 +20,16 @@ var About = createReactClass({
     return {
       collection: {},
       remoteCollectionLoaded: false,
-    };
+    }
   },
 
   componentDidMount: function() {
     if ('object' == typeof(this.props.collection)) {
       this.setState({
         collection: this.props.collection,
-      });
+      })
     } else {
-      LoadRemote.loadRemoteCollection(this.props.collection, this.onLoaded);
+      LoadRemote.loadRemoteCollection(this.props.collection, this.onLoaded)
     }
   },
 
@@ -42,10 +42,10 @@ var About = createReactClass({
 
   render: function() {
     if(!this.state.remoteCollectionLoaded) {
-      return null;
+      return null
     }
 
-    var pageContent = null;
+    var pageContent = null
     if(this.state.collection && this.state.collection.about) {
       pageContent = (
         <PagesShow title="About" content={this.state.collection.about} />
@@ -62,6 +62,6 @@ var About = createReactClass({
       </div>
     )
   }
-});
+})
 
-module.exports = About;
+module.exports = About

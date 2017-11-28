@@ -1,16 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx');
-var PageContent = require('../../layout/PageContent.jsx');
-var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx');
-var PagesShow = require('./PagesShow.jsx');
-var PageTitleBar = require('./PageTitleBar.jsx');
-var SitePathCard = require('../Collection/SitePathCard.jsx');
-var PreviewLink = require('../../layout/PreviewLink.jsx');
-var MediaQuery = require('react-responsive');
-var ConfigurationActions = require("../../actions/ConfigurationActions.js");
-var ConfigurationStore = require("../../store/ConfigurationStore.js");
+var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
+var PageContent = require('../../layout/PageContent.jsx')
+var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
+var PagesShow = require('./PagesShow.jsx')
+var PageTitleBar = require('./PageTitleBar.jsx')
+var SitePathCard = require('../Collection/SitePathCard.jsx')
+var PreviewLink = require('../../layout/PreviewLink.jsx')
+var MediaQuery = require('react-responsive')
+var ConfigurationActions = require("../../actions/ConfigurationActions.js")
+var ConfigurationStore = require("../../store/ConfigurationStore.js")
 var PageTitle = require('../../modules/PageTitle.js')
 
 const LoadRemote = require('../../modules/LoadRemote.jsx')
@@ -30,28 +30,28 @@ var Page = createReactClass({
       titleSectionPercentVisible: 0,
       collection: {},
       remoteCollectionLoaded: false,
-    };
+    }
   },
 
   componentDidMount: function() {
-    ConfigurationStore.addChangeListener(this.configurationLoaded);
+    ConfigurationStore.addChangeListener(this.configurationLoaded)
     if ('object' == typeof(this.props.collection)) {
       this.setState({
         collection: this.props.collection,
-      });
+      })
     } else {
-      LoadRemote.loadRemoteCollection(this.props.collection, this.setValues);
+      LoadRemote.loadRemoteCollection(this.props.collection, this.setValues)
     }
   },
 
   componentWillUnmount: function() {
-    ConfigurationStore.removeChangeListener(this.configurationLoaded);
+    ConfigurationStore.removeChangeListener(this.configurationLoaded)
   },
 
   componentWillReceiveProps: function(nextProps) {
     if(this.props.collection !== nextProps.collection) {
       if ('object' == typeof(nextProps.collection)) {
-        this.setValues(nextProps.collection);
+        this.setValues(nextProps.collection)
       } else {
         LoadRemote.loadRemoteCollection(nextProps.collection, this.setValues)
       }
@@ -60,56 +60,56 @@ var Page = createReactClass({
 
   // Callback from loadRemoteCollection
   setValues: function(result){
-    ConfigurationActions.load(result);
+    ConfigurationActions.load(result)
     if(result.pages.items) {
-      this.linkItems(result.pages.items);
+      this.linkItems(result.pages.items)
     }
     this.setState({
       remoteCollectionLoaded: true,
       collection: result,
-    });
-    return true;
+    })
+    return true
   },
 
   configurationLoaded: function(){
-    this.setState({ configurationLoaded: true });
+    this.setState({ configurationLoaded: true })
   },
 
   // Creates doubly linked list from items to make subsequent
   // item navigation operations easier/faster
   linkItems: function(items) {
     items.forEach(function(item, i, array) {
-      var nextI = i + 1;
-      var prevI = i - 1;
+      var nextI = i + 1
+      var prevI = i - 1
       if(nextI < array.length) {
-        item.nextItem = array[nextI];
+        item.nextItem = array[nextI]
       }
       if(prevI >= 0) {
-        item.previousItem = array[prevI];
+        item.previousItem = array[prevI]
       }
-    });
+    })
   },
 
   contentMouseOver: function(event) {
-    var item = this.getItemFromEvent(event);
+    var item = this.getItemFromEvent(event)
     if(item) {
-      event.target.style.cursor = "pointer";
+      event.target.style.cursor = "pointer"
     }
   },
 
   getItemFromEvent: function(event) {
-    var item;
-    var itemId = event.target.getAttribute("item_id");
+    var item
+    var itemId = event.target.getAttribute("item_id")
     if(itemId && this.state.collection.pages.items) {
       item = this.state.collection.pages.items.find(function(e, i, a) {
-        return e["id"] == itemId;
-      });
+        return e["id"] == itemId
+      })
     }
-    return item;
+    return item
   },
 
   nextCard: function() {
-    var nextCard = null;
+    var nextCard = null
     if(this.state.collection.pages.nextObject) {
       nextCard = [
         <div style={{ clear: "both" }} key='next'>
@@ -135,9 +135,9 @@ var Page = createReactClass({
             </div>
           </MediaQuery>
         </div>
-      ];
+      ]
     }
-    return nextCard;
+    return nextCard
   },
 
   previewCard: function() {
@@ -147,22 +147,22 @@ var Page = createReactClass({
           siteObject={this.state.collection.pages.nextObject}
           key='prev'
           />
-        );
+        )
     }
-    return null;
+    return null
   },
 
   pageContent: function() {
     if(this.state.collection && this.state.collection.pages) {
-      return (this.state.collection.pages.content);
+      return (this.state.collection.pages.content)
     } else {
-      return (<div/>);
+      return (<div/>)
     }
   },
 
   render: function() {
     if(!this.state.remoteCollectionLoaded) {
-      return null;
+      return null
     }
     PageTitle(this.state.collection.name)
     return (
@@ -179,6 +179,6 @@ var Page = createReactClass({
       </div>
     )
   }
-});
+})
 
-module.exports = Page;
+module.exports = Page

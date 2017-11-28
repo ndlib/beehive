@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Card, CardActions, CardMedia, CardText, CardTitle, FlatButton } from 'material-ui'
 import { Link } from 'react-router-dom'
-var $ = require('jquery');
-var theme = require('../../themes/beehive.jsx');
+var $ = require('jquery')
+var theme = require('../../themes/beehive.jsx')
 
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
@@ -23,7 +23,7 @@ var CollectionCard = createReactClass({
       //padding: theme.spacing.desktopGutter,
       height:'100%',
       paddingBottom:'60px'
-    };
+    }
   },
 
   imageSize: function() {
@@ -39,16 +39,16 @@ var CollectionCard = createReactClass({
         maxWidth: 'initial',
         maxHeight:'initial',
         display: 'none'
-    };
+    }
   },
 
   image: function() {
     if (this.props.collection.image) {
-      var space = ' ';
-      var re = new RegExp(space, 'g');
-      return this.props.collection.image["thumbnail/medium"].contentUrl.replace(re, '%20');;
+      var space = ' '
+      var re = new RegExp(space, 'g')
+      return this.props.collection.image["thumbnail/medium"].contentUrl.replace(re, '%20')
     } else {
-      return '/images/marble.jpg';
+      return '/images/marble.jpg'
     }
   },
 
@@ -58,13 +58,13 @@ var CollectionCard = createReactClass({
         <CardText style={{height: '100px'}}>
           {$(this.props.collection.description).text()}
         </CardText>
-      );
+      )
     }
   },
 
   headerTitle: function () {
     if (this.props.headerTitle) {
-      return (<CardTitle title={this.props.headerTitle} />);
+      return (<CardTitle title={this.props.headerTitle} />)
     }
   },
 
@@ -73,11 +73,11 @@ var CollectionCard = createReactClass({
       whiteSpace: 'nowrap',
       overflow: 'hidden',
       textOverflow: 'ellipsis',
-    };
+    }
     return (<CardTitle title={this.props.collection.name_line_1}
                            titleStyle={titleStyle}
                            subtitle={this.props.collection.name_line_2}
-                           subtitleStyle={titleStyle} />);
+                           subtitleStyle={titleStyle} />)
   },
 
   cardMedia: function () {
@@ -89,9 +89,9 @@ var CollectionCard = createReactClass({
           style={{ overflow:'hidden'}}>
           <img src={this.image()}  style={this.imageSize()} />
 
-        </CardMedia>);
+        </CardMedia>)
     //} else {
-    //  return (this.cardTitle());
+    //  return (this.cardTitle())
     //}
   },
 
@@ -104,11 +104,11 @@ var CollectionCard = createReactClass({
       borderTopColor: 'rgba(0,0,0,0.12)',
       borderTopStyle: 'solid',
       borderTopWidth: '1px',
-    };
+    }
   },
 
   exploreLabelStyle: function() {
-    return { color: '#d9a91b' };
+    return { color: '#d9a91b' }
   },
 
   render: function() {
@@ -125,9 +125,9 @@ var CollectionCard = createReactClass({
         </CardActions>
       </Card>
 
-    );
+    )
   }
-});
+})
 
 // each file will export exactly one component
-module.exports = CollectionCard;
+module.exports = CollectionCard

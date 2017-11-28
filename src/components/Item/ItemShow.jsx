@@ -2,12 +2,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import {Paper, Toolbar, ToolbarGroup, ToolbarTitle} from 'material-ui';
-var CloseButton = require('../../other/CloseButton.jsx');
-var SideNavButton = require("../../other/SideNavButton.jsx");
-var PageContent = require('../../layout/PageContent.jsx');
-var SearchStore = require('../../store/SearchStore.js');
-var ItemContent = require('./ItemContent.jsx');
+import {Paper, Toolbar, ToolbarGroup, ToolbarTitle} from 'material-ui'
+var CloseButton = require('../../other/CloseButton.jsx')
+var SideNavButton = require("../../other/SideNavButton.jsx")
+var PageContent = require('../../layout/PageContent.jsx')
+var SearchStore = require('../../store/SearchStore.js')
+var ItemContent = require('./ItemContent.jsx')
 
 const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 const CollecitonUrl = require('../../modules/CollectionUrl.jsx')
@@ -68,17 +68,17 @@ var ItemShow = createReactClass({
   nextButton: function() {
     let nextItem = SearchStore.getNextItem(this.props.item)
     if(nextItem) {
-      return (<SideNavButton href={CollecitonUrl.itemObjectUrl(nextItem)} rightIcon={true} />);
+      return (<SideNavButton href={CollecitonUrl.itemObjectUrl(nextItem)} rightIcon={true} />)
     }
-    return "";
+    return ""
   },
 
   prevButton: function() {
     let previousItem = SearchStore.getPreviousItem(this.props.item)
     if(previousItem) {
-      return (<SideNavButton href={CollecitonUrl.itemObjectUrl(previousItem)} />);
+      return (<SideNavButton href={CollecitonUrl.itemObjectUrl(previousItem)} />)
     }
-    return "";
+    return ""
   },
 
   render: function() {
@@ -91,9 +91,9 @@ var ItemShow = createReactClass({
           <ItemContent item={this.props.item} height={ this.props.height } />
         </Paper>
       </PageContent>
-    );
+    )
   }
-});
+})
 
 // each file will export exactly one component
-module.exports = ItemShow;
+module.exports = ItemShow

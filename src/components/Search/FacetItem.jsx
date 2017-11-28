@@ -3,8 +3,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { ListItem, FontIcon } from 'material-ui'
-var SearchStore = require('../../store/SearchStore.js');
-var SearchActions = require('../../actions/SearchActions.js');
+var SearchStore = require('../../store/SearchStore.js')
+var SearchActions = require('../../actions/SearchActions.js')
 var FacetItem = createReactClass({
 
   propTypes: {
@@ -13,16 +13,16 @@ var FacetItem = createReactClass({
   },
 
   valueOnClick: function(e) {
-    var values = e.currentTarget.getAttribute("value").split("|");
+    var values = e.currentTarget.getAttribute("value").split("|")
     if(SearchStore.facetOption) {
       for(var i = 0; i < SearchStore.facetOption.length; i++) {
         if (SearchStore.facetOption[i].name === values[0] && SearchStore.facetOption[i].value === values[1]) {
-          SearchStore.removeSelectedFacet({ name: values[0], value: values[1] });
+          SearchStore.removeSelectedFacet({ name: values[0], value: values[1] })
           return
         }
       }
     }
-    SearchActions.setSelectedFacet({ name: values[0], value: values[1] });
+    SearchActions.setSelectedFacet({ name: values[0], value: values[1] })
   },
 
 
@@ -30,18 +30,18 @@ var FacetItem = createReactClass({
     if(SearchStore.facetOption) {
       for(var i = 0; i < SearchStore.facetOption.length; i++){
         if(this.props.facet.name === decodeURIComponent(SearchStore.facetOption[i].value)) {
-          return true;
+          return true
         }
       }
     }
-    return false;
+    return false
   },
 
   leftIcon: function() {
     if(this.isSelected()) {
-      return (<FontIcon className="material-icons" style={this.checkBoxStyle()}>check_box</FontIcon>);
+      return (<FontIcon className="material-icons" style={this.checkBoxStyle()}>check_box</FontIcon>)
     } else {
-      return (<FontIcon className="material-icons" style={this.checkBoxStyle()}>check_box_outline_blank</FontIcon>);
+      return (<FontIcon className="material-icons" style={this.checkBoxStyle()}>check_box_outline_blank</FontIcon>)
     }
   },
 
@@ -50,7 +50,7 @@ var FacetItem = createReactClass({
       fontSize: '24px',
       top: '-6px',
       width: '24px'
-    };
+    }
   },
 
   render() {
@@ -65,8 +65,8 @@ var FacetItem = createReactClass({
         className="facet"
         leftIcon={this.leftIcon()}
       />
-     );
+     )
   }
 })
 
-export default FacetItem;
+export default FacetItem

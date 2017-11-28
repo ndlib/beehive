@@ -3,9 +3,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { GridList } from 'material-ui'
-var MediaQuery = require('react-responsive');
+var MediaQuery = require('react-responsive')
 
-var CollectionCard = require('./CollectionCard.jsx');
+var CollectionCard = require('./CollectionCard.jsx')
 
 var CollectionsList = createReactClass({
   displayName: 'Collections List',
@@ -22,17 +22,17 @@ var CollectionsList = createReactClass({
           key={index}
           cardHeight='450'
           />
-      );
-    });
+      )
+    })
   },
 
   reverseCollection: function() {
-      var temp = [];
-      var len = this.props.collections.length;
+      var temp = []
+      var len = this.props.collections.length
       for (var i = (len - 1); i !== -1; i--) {
-          temp.push(this.props.collections[i]);
+          temp.push(this.props.collections[i])
       }
-      return temp;
+      return temp
   },
 
   gridList: function(cols) {
@@ -40,7 +40,7 @@ var CollectionsList = createReactClass({
       <GridList cols={cols} cellHeight={'auto'} padding={24}>
         {this.collectionNodes()}
       </GridList>
-    );
+    )
   },
 
   render: function() {
@@ -56,8 +56,8 @@ var CollectionsList = createReactClass({
           {this.gridList(3)}
         </MediaQuery>
       </div>
-    );
+    )
   }
-});
+})
 
-module.exports = CollectionsList;
+module.exports = CollectionsList

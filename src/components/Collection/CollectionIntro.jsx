@@ -10,16 +10,16 @@ var CollectionIntro = createReactClass({
   style: function () {
     return ({
       margin:'60px 0',
-    });
+    })
   },
 
   render: function() {
     if(this.props.collection) {
       return (
         <div className="essay-content" style={this.style()} dangerouslySetInnerHTML={{__html:this.props.collection.short_description}} />
-      );
+      )
     }
   }
-});
+})
 
-module.exports = CollectionIntro;
+module.exports = CollectionIntro

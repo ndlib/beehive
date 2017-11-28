@@ -3,11 +3,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 
-var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx');
-var PageContent = require('../../layout/PageContent.jsx');
-var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx');
-var CollectionDescription = require('./CollectionDescription.jsx');
-var PageTitleBar = require('../Pages/PageTitleBar.jsx');
+var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
+var PageContent = require('../../layout/PageContent.jsx')
+var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
+var CollectionDescription = require('./CollectionDescription.jsx')
+var PageTitleBar = require('../Pages/PageTitleBar.jsx')
 
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
@@ -23,16 +23,16 @@ var CollectionIntroduction = createReactClass({
     return {
       collection: {},
       remoteCollectionLoaded: false,
-    };
+    }
   },
 
   componentDidMount: function() {
     if ("object" == typeof(this.props.collection)) {
       this.setState({
         collection: this.props.collection,
-      });
+      })
     } else {
-      LoadRemote.loadRemoteCollection(this.props.collection, this.onLoaded.bind(this));
+      LoadRemote.loadRemoteCollection(this.props.collection, this.onLoaded.bind(this))
     }
   },
 
@@ -45,7 +45,7 @@ var CollectionIntroduction = createReactClass({
 
   render: function() {
     if(!this.state.remoteCollectionLoaded) {
-      return null;
+      return null
     }
     return (
       <div>
@@ -58,8 +58,8 @@ var CollectionIntroduction = createReactClass({
         </PageContent>
         <CollectionPageFooter collection={this.state.collection} />
       </div>
-    );
+    )
   }
-});
+})
 
-module.exports = CollectionIntroduction;
+module.exports = CollectionIntroduction

@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Card, CardActions, CardMedia, CardTitle, FloatingActionButton, FontIcon, Paper } from 'material-ui'
 import { Link } from 'react-router-dom'
-var ConfigurationActions = require("../../actions/ConfigurationActions.js");
-var Loading = require("../../other/Loading.jsx");
+var ConfigurationActions = require("../../actions/ConfigurationActions.js")
+var Loading = require("../../other/Loading.jsx")
 
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 const CurrentTheme = require('../../modules/CurrentTheme.jsx')
@@ -17,26 +17,26 @@ var CollectionShow = createReactClass({
 
   collectionLoaded: function () {
     if (this.props.collection.name) {
-      return true;
+      return true
     } else {
-      return false;
+      return false
     }
   },
 
   image: function () {
-    var space = ' ';
-    var re = new RegExp(space, 'g');
-    return this.props.collection.image["thumbnail/medium"].contentUrl.replace(re, '%20');
+    var space = ' '
+    var re = new RegExp(space, 'g')
+    return this.props.collection.image["thumbnail/medium"].contentUrl.replace(re, '%20')
   },
 
   startUrl: function() {
     var url = CollectionUrl.introUrl(this.props.collection)
 
     if (!url) {
-      url = CollectionUrl.startSitePathUrl(this.props.collection);
+      url = CollectionUrl.startSitePathUrl(this.props.collection)
     }
 
-    return url;
+    return url
   },
 
   cover: function() {
@@ -46,7 +46,7 @@ var CollectionShow = createReactClass({
       maxHeight:'450px',
       backgroundImage: 'url("' + this.image() + '")',
       backgroundPosition:'top'
-    });
+    })
   },
 
   startButton: function() {
@@ -59,13 +59,13 @@ var CollectionShow = createReactClass({
           <FontIcon className="material-icons">arrow_forward</FontIcon>
         </FloatingActionButton>
       </Link>
-      );
+      )
     }
   },
 
   cardMediaSection: function() {
     if (this.props.collection.image) {
-      var cardTitle = (null);
+      var cardTitle = (null)
       if (this.props.collection.display_page_title) {
         cardTitle = (<CardTitle
           title={this.props.collection.name_line_1}
@@ -73,18 +73,18 @@ var CollectionShow = createReactClass({
           subtitle={this.props.collection.name_line_2}
           subtitleStyle={{color:'rgba(255,255,255,.8)', fontSize:'18px'}}
           style={CurrentTheme.pageWidth()}/>
-        );
+        )
       }
       return (
         <CardMedia overlay={cardTitle}>
           <img src={this.image()} className="hide"/>
           <div className="cover" style={this.cover()}></div>
         </CardMedia>
-      );
+      )
     } else {
       return (
         <CardTitle title={this.props.collection.name_line_1} subtitle={this.props.collection.name_line_2} />
-      );
+      )
     }
   },
 
@@ -99,11 +99,11 @@ var CollectionShow = createReactClass({
             {this.startButton()}
           </CardActions>
         </Paper>
-      );
+      )
     } else {
-      return <Loading />;
+      return <Loading />
     }
   }
-});
+})
 
-module.exports = CollectionShow;
+module.exports = CollectionShow

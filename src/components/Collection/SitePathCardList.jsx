@@ -3,10 +3,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import {GridList} from 'material-ui'
-var theme = require('../../themes/beehive.jsx');
-var MediaQuery = require('react-responsive');
+var theme = require('../../themes/beehive.jsx')
+var MediaQuery = require('react-responsive')
 
-var SitePathCard = require('./SitePathCard.jsx');
+var SitePathCard = require('./SitePathCard.jsx')
 
 var SitePathCardList = createReactClass({
   propTypes: {
@@ -16,18 +16,18 @@ var SitePathCardList = createReactClass({
 
   pathNodes: function() {
     return this.props.sitePath.map(function(siteObject, index) {
-      return (<SitePathCard siteObject={siteObject} key={index} />);
-    });
+      return (<SitePathCard siteObject={siteObject} key={index} />)
+    })
   },
 
   allNodes: function() {
-    var nodes = [];
+    var nodes = []
     if (this.props.intro) {
       nodes.push(
         <div key="intro">{this.props.intro}</div>
-      );
+      )
     }
-    return nodes.concat(this.pathNodes());
+    return nodes.concat(this.pathNodes())
   },
 
   gridList: function(cols) {
@@ -35,7 +35,7 @@ var SitePathCardList = createReactClass({
       <GridList cols={cols} padding={24} cellHeight="auto">
         {this.allNodes()}
       </GridList>
-    );
+    )
   },
 
   render: function() {
@@ -55,12 +55,12 @@ var SitePathCardList = createReactClass({
             {this.gridList(4)}
           </MediaQuery>
         </div>
-      );
+      )
     }
     else {
-      return (<span/>);
+      return (<span/>)
     }
   }
-});
+})
 
-module.exports = SitePathCardList;
+module.exports = SitePathCardList

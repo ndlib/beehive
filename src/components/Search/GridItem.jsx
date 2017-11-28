@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Link } from 'react-router'
-var ItemImage = require('./ItemImage.jsx');
+var ItemImage = require('./ItemImage.jsx')
 
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
@@ -17,8 +17,8 @@ var GridItem = createReactClass({
       <span style={{fontFamily: 'GPCMed'}}>
         { this.props.item.name }
       </span>
-    );
-    return (<CardTitle title={ name }/>);
+    )
+    return (<CardTitle title={ name }/>)
   },
 
   cardMedia: function() {
@@ -26,7 +26,7 @@ var GridItem = createReactClass({
       <CardMedia overlay={ this.mediaOverlay() }>
         <ItemImage item={ this.props.item } />
       </CardMedia>
-    );
+    )
   },
 
   manifestIcon: function(item) {
@@ -47,8 +47,8 @@ var GridItem = createReactClass({
           {this.manifestIcon(this.props.item)}
         </Card>
       </Link>
-    );
+    )
   }
-});
+})
 
-module.exports = GridItem;
+module.exports = GridItem

@@ -11,7 +11,7 @@ var CollectionHomeButton = createReactClass({
   },
 
   onClick: function() {
-    window.location = CollectionUrl.collectionUrl(this.props.collection);
+    window.location = CollectionUrl.collectionUrl(this.props.collection)
   },
 
   render: function() {
@@ -28,6 +28,6 @@ var CollectionHomeButton = createReactClass({
       </FloatingActionButton>
     )
   }
-});
+})
 
-module.exports = CollectionHomeButton;
+module.exports = CollectionHomeButton

@@ -2,11 +2,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-var SiteIndexHeader = require("./SiteIndexHeader.jsx");
-var BrandBar = require('../../layout/BrandBar.jsx');
-var PageContent = require('../../layout/PageContent.jsx');
-var CollectionsList = require('./CollectionsList.jsx');
-var IndexPageFooter = require('../../layout/IndexPageFooter.jsx');
+var SiteIndexHeader = require("./SiteIndexHeader.jsx")
+var BrandBar = require('../../layout/BrandBar.jsx')
+var PageContent = require('../../layout/PageContent.jsx')
+var CollectionsList = require('./CollectionsList.jsx')
+var IndexPageFooter = require('../../layout/IndexPageFooter.jsx')
 
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
@@ -22,14 +22,14 @@ var SiteIndex = createReactClass({
     return {
       collections: [],
       remoteCollectionLoaded: false
-    };
+    }
   },
 
   componentDidMount: function() {
     if ('object' == typeof(this.props.collections)) {
       this.setState({
         collections: this.props.collections,
-      });
+      })
     } else {
       LoadRemote.loadRemoteCollection(this.props.collections, this.setValues)
     }
@@ -39,24 +39,24 @@ var SiteIndex = createReactClass({
     this.setState({
       remoteCollectionLoaded: true,
       collections: collections,
-    });
-    return true;
+    })
+    return true
   },
 
   componentWillMount: function(){
-    document.body.className = document.body.className + " bee-light-theme collections-bg";
+    document.body.className = document.body.className + " bee-light-theme collections-bg"
   },
 
   cardMedia: function() {
     return(
       <div>
       </div>
-    );
+    )
   },
 
   render: function() {
     if(!this.state.remoteCollectionLoaded) {
-      return null;
+      return null
     }
 
     return (
@@ -71,10 +71,10 @@ var SiteIndex = createReactClass({
         </PageContent>
         <IndexPageFooter />
       </div>
-    );
+    )
   }
 
-});
+})
 
 // each file will export exactly one component
-module.exports = SiteIndex;
+module.exports = SiteIndex

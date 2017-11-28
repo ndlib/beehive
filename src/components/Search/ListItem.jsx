@@ -2,9 +2,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { Link } from 'react-router-dom';
-import { Divider, ListItem } from 'material-ui';
-var ItemImage = require('./ItemImage.jsx');
+import { Link } from 'react-router-dom'
+import { Divider, ListItem } from 'material-ui'
+var ItemImage = require('./ItemImage.jsx')
 
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
@@ -18,7 +18,7 @@ var MyListItem = createReactClass({
       <div style={{top: '4px', left: '16px', padding: "2px", width: '77px', height: '75px', margin: "0 12px" }}>
         <ItemImage item={ this.props.item } />
       </div>
-    );
+    )
   },
 
   primaryText: function() {
@@ -26,7 +26,7 @@ var MyListItem = createReactClass({
       <span style={{marginLeft: '30px', display: 'inline-block'}}>
         {this.props.item.name}
       </span>
-    );
+    )
   },
 
   secondaryText: function() {
@@ -34,7 +34,7 @@ var MyListItem = createReactClass({
       <span style={{ maxWidth: '50em', marginLeft: '30px'}}>
         { this.props.item.description }
       </span>
-    );
+    )
   },
 
   manifestIcon: function(item) {
@@ -57,8 +57,8 @@ var MyListItem = createReactClass({
         />
         <Divider  style={{marginLeft: "110px" }} />
       </Link>
-    );
+    )
   }
-});
+})
 
-module.exports = MyListItem;
+module.exports = MyListItem

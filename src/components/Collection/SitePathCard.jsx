@@ -28,7 +28,7 @@ var SitePathCard = createReactClass({
       cursor: "pointer",
       minHeight: '400px',
       height: this.props.fixedSize ? '400px' : 'auto'
-    };
+    }
   },
 
   imageSize: function() {
@@ -44,16 +44,16 @@ var SitePathCard = createReactClass({
         maxHeight:'initial',
         display: 'none'
 
-    };
+    }
   },
 
   image: function () {
-    var space = ' ';
-    var re = new RegExp(space, 'g');
+    var space = ' '
+    var re = new RegExp(space, 'g')
     if(this.props.siteObject.image && this.props.siteObject.image["thumbnail/medium"]) {
-      return this.props.siteObject.image["thumbnail/medium"].contentUrl.replace(re, '%20');
+      return this.props.siteObject.image["thumbnail/medium"].contentUrl.replace(re, '%20')
     } else {
-      return '/images/intro.jpg';
+      return '/images/intro.jpg'
     }
   },
 
@@ -72,18 +72,18 @@ var SitePathCard = createReactClass({
           </FloatingActionButton>
         </Link>
         </CardActions>
-      );
+      )
     }
   },
 
   headerTitle: function () {
     if (this.props.headerTitle) {
-      return (<CardTitle title={this.props.headerTitle} style={{height:'600px', position: 'absolute' }}/>);
+      return (<CardTitle title={this.props.headerTitle} style={{height:'600px', position: 'absolute' }}/>)
     }
   },
 
   cardTitle: function() {
-    return (<CardTitle title={this.props.siteObject.name_line_1 || this.props.siteObject.name} subtitle={this.props.siteObject.name_line_2} />);
+    return (<CardTitle title={this.props.siteObject.name_line_1 || this.props.siteObject.name} subtitle={this.props.siteObject.name_line_2} />)
   },
 
   cardMedia: function () {
@@ -92,7 +92,7 @@ var SitePathCard = createReactClass({
         className="collection-site-path-card"
         style={{ backgroundImage:'url("' + this.image() + '")' }}
         overlay={ this.cardTitle() }>
-      </CardMedia>);
+      </CardMedia>)
   },
 
   render: function() {
@@ -105,8 +105,8 @@ var SitePathCard = createReactClass({
         {this.nextButton()}
       </Card>
 
-    );
+    )
   }
-});
+})
 
-module.exports = SitePathCard;
+module.exports = SitePathCard

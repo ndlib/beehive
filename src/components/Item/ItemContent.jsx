@@ -2,12 +2,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { FlatButton } from 'material-ui';
-var MediaQuery = require("react-responsive");
-var Details = require('../../display/Details.jsx');
-var OpenseadragonViewer = require('../../display/OpenseadragonViewer.jsx');
-var MultimediaViewer = require('../../layout/MultimediaViewer.jsx');
-import AddReferral from '../../modules/AddReferral.js';
+import { FlatButton } from 'material-ui'
+var MediaQuery = require("react-responsive")
+var Details = require('../../display/Details.jsx')
+var OpenseadragonViewer = require('../../display/OpenseadragonViewer.jsx')
+var MultimediaViewer = require('../../layout/MultimediaViewer.jsx')
+import AddReferral from '../../modules/AddReferral.js'
 
 var ItemContent = createReactClass({
   displayName: "ItemContent",
@@ -38,11 +38,11 @@ var ItemContent = createReactClass({
   },
 
   componentWillMount: function() {
-    document.body.classList.toggle('noscroll', true);
+    document.body.classList.toggle('noscroll', true)
   },
 
   componentWillUnmount: function() {
-    document.body.classList.toggle('noscroll', false);
+    document.body.classList.toggle('noscroll', false)
   },
 
   outerStyles: function() {
@@ -79,23 +79,23 @@ var ItemContent = createReactClass({
   },
 
   getHeight: function() {
-    var height = this.props.height - this.props.mediaBottom;
+    var height = this.props.height - this.props.mediaBottom
     if( height < this.props.minMediaHeight ){
-      height = this.props.height;
+      height = this.props.height
     }
     if(this.state.zoom) {
-      return window.innerHeight;
+      return window.innerHeight
     }
-    return height;
+    return height
   },
 
   multimedia: function() {
-    var height;
+    var height
     if(this.props.item.media["@type"] === "AudioObject") {
-      height = 40;
+      height = 40
     }
     else  {
-      height = this.getHeight();
+      height = this.getHeight()
     }
 
     return (
@@ -106,7 +106,7 @@ var ItemContent = createReactClass({
           height={ height + "px" }
         />
       </div>
-    );
+    )
   },
 
   toggleZoom: function() {
@@ -118,7 +118,7 @@ var ItemContent = createReactClass({
                         labelStyle={{color: 'white'}}
         />
       </div>
-    );
+    )
   },
 
   hasManuscript: function() {
@@ -132,19 +132,19 @@ var ItemContent = createReactClass({
           <FlatButton label="View Manuscript"
                           onClick={ (event) => {
                             event.preventDefault()
-                            window.open(AddReferral(this.props.item.metadata.manuscript_url.values[0].value));
+                            window.open(AddReferral(this.props.item.metadata.manuscript_url.values[0].value))
                           } }
                           style={{ display: "block", margin: "auto" }}
                           labelStyle={{color: 'white'}}
           />
         </div>
-      );
+      )
     }
-    return null;
+    return null
 
   },
   image: function() {
-    var height = this.getHeight();
+    var height = this.getHeight()
 
     if(this.state.zoom) {
       return (
@@ -169,25 +169,25 @@ var ItemContent = createReactClass({
               showNavigator={false} />
           </MediaQuery>
         </div>
-      );
+      )
     } else {
       return (
         <div className="item-detail-zoom" style={ this.zoomStyles() }>
           <img src={ this.props.item.media.contentUrl } style={ this.imgStyles() } />
         </div>
-      );
+      )
     }
   },
 
   details: function() {
     if (!this.state.zoom) {
-      return (<Details item={this.props.item} additionalDetails={this.props.additionalDetails} showDetails={true} />);
+      return (<Details item={this.props.item} additionalDetails={this.props.additionalDetails} showDetails={true} />)
     }
-    return null;
+    return null
   },
 
   render: function() {
-    var prevLink, nextLink;
+    var prevLink, nextLink
     if (this.props.item && this.props.item.media != null){
       if(this.props.item.media["@type"] == "ImageObject") {
         return (
@@ -196,14 +196,14 @@ var ItemContent = createReactClass({
             { this.hasManuscript() ? this.showManuscript() : this.toggleZoom() }
             { this.details() }
           </div>
-        );
+        )
       } else if (this.props.item.media["@type"] == "AudioObject" || this.props.item.media["@type"] == "VideoObject") {
         return (
           <div style={this.outerStyles()}>
             { this.multimedia() }
             { this.details() }
           </div>
-        );
+        )
       }
     }
     return (
@@ -211,8 +211,8 @@ var ItemContent = createReactClass({
         { this.showManuscript() }
         { this.details() }
       </div>
-    );
+    )
   }
-});
+})
 
-module.exports = ItemContent;
+module.exports = ItemContent

@@ -3,20 +3,20 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 
-var EventEmitter = require('../../middleware/EventEmitter.js');
-var SectionShow = require('./SectionShow.jsx');
-var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx');
-var PageContent = require('../../layout/PageContent.jsx');
-var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx');
-var ConfigurationActions = require("../../actions/ConfigurationActions.js");
-var ConfigurationStore = require("../../store/ConfigurationStore.js");
-var Loading = require("../../other/Loading.jsx");
+var EventEmitter = require('../../middleware/EventEmitter.js')
+var SectionShow = require('./SectionShow.jsx')
+var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
+var PageContent = require('../../layout/PageContent.jsx')
+var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
+var ConfigurationActions = require("../../actions/ConfigurationActions.js")
+var ConfigurationStore = require("../../store/ConfigurationStore.js")
+var Loading = require("../../other/Loading.jsx")
 var PageTitle = require("../../modules/PageTitle.js")
 
 const BrowserUtils = require('../../modules/BrowserUtils.jsx')
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
-var showcaseTitleHeight = 56;
+var showcaseTitleHeight = 56
 
 var Section = createReactClass({
   propTypes: {
@@ -29,15 +29,15 @@ var Section = createReactClass({
       collection: null,
       section: null,
       height: window.innerHeight,
-    };
+    }
   },
 
   configurationLoaded: function(){
-    this.setState({ configurationLoaded: true });
+    this.setState({ configurationLoaded: true })
   },
 
   collectionLoaded: function(collection) {
-    ConfigurationActions.load(collection);
+    ConfigurationActions.load(collection)
     this.setState({
       remoteCollectionLoaded: true,
       collection: collection,
@@ -52,18 +52,18 @@ var Section = createReactClass({
   },
 
   componentWillMount: function() {
-    ConfigurationStore.addChangeListener(this.configurationLoaded);
+    ConfigurationStore.addChangeListener(this.configurationLoaded)
   },
 
   componentDidMount: function() {
     LoadRemote.withCallback(this.props.collection, this.collectionLoaded)
     LoadRemote.withCallback(this.props.section, this.sectionLoaded)
-    window.addEventListener('resize', this.handleResize, false);
-    this.handleResize();
+    window.addEventListener('resize', this.handleResize, false)
+    this.handleResize()
   },
 
   componentWillUnmount: function() {
-    ConfigurationStore.removeChangeListener(this.configurationLoaded);
+    ConfigurationStore.removeChangeListener(this.configurationLoaded)
   },
 
   componentWillReceiveProps: function(nextProps) {
@@ -88,12 +88,12 @@ var Section = createReactClass({
   handleResize: function() {
     this.setState({
       height: window.innerHeight
-    });
+    })
   },
 
   render: function() {
     if(!this.state.remoteCollectionLoaded || !this.state.remoteSectionLoaded) {
-      return null;
+      return null
     }
     PageTitle(this.state.section.name)
     let sectionShow
@@ -107,13 +107,13 @@ var Section = createReactClass({
           nextSection={this.state.section.nextSection}
           collection={this.state.collection}
         />
-      );
+      )
     } else {
-      sectionShow = (<Loading />);
+      sectionShow = (<Loading />)
     }
-    var header;
+    var header
     if(!BrowserUtils.mobile()){
-      header = (<CollectionPageHeader collection={this.state.collection} />);
+      header = (<CollectionPageHeader collection={this.state.collection} />)
     }
     return (
       <div style={{ backgroundColor: 'inherit' }}>
@@ -123,9 +123,9 @@ var Section = createReactClass({
         </PageContent>
         <CollectionPageFooter collection={this.state.collection} />
       </div>
-    );
+    )
   }
-});
+})
 
 // each file will export exactly one component
-module.exports = Section;
+module.exports = Section

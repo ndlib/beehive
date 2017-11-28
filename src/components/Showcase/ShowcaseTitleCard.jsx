@@ -3,10 +3,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Card, CardText, CardTitle } from 'material-ui'
-var MediaQuery = require("react-responsive");
-var Showdown = require('showdown');
+var MediaQuery = require("react-responsive")
+var Showdown = require('showdown')
 
-var converter = new Showdown.Converter();
+var converter = new Showdown.Converter()
 
 var ShowcaseTitleCard = createReactClass({
   propTypes: {
@@ -25,19 +25,19 @@ var ShowcaseTitleCard = createReactClass({
       width: '85vw',
       boxShadow: "none",
       backgroundColor: 'rgba(0,0,0,0)'
-    };
-
-    if (this.props.height) {
-      style['height'] = this.props.height + "px";
     }
 
-    return style;
+    if (this.props.height) {
+      style['height'] = this.props.height + "px"
+    }
+
+    return style
   },
 
   headerStyle: function() {
-    var marginTop;
+    var marginTop
     if (this.props.height) {
-      var marginTop = Math.round(this.props.height * 0.15) + "px";
+      var marginTop = Math.round(this.props.height * 0.15) + "px"
     }
     return {
       marginTop: marginTop,
@@ -56,7 +56,7 @@ var ShowcaseTitleCard = createReactClass({
       fontSize: "4vw",
       paddingBottom: "10px",
       lineHeight:'4.1vw'
-    };
+    }
   },
 
   subtitleStyle: function() {
@@ -64,7 +64,7 @@ var ShowcaseTitleCard = createReactClass({
       color: "#fff",
       fontSize: "3vw",
       lineHeight:"3.1vw"
-    };
+    }
   },
 
   textStyle: function() {
@@ -78,29 +78,29 @@ var ShowcaseTitleCard = createReactClass({
   },
 
   names: function() {
-    var names = [];
+    var names = []
     names.push(
       <h2 className="showcase-name-1" key={1}>{this.props.showcase.name_line_1}</h2>
-    );
+    )
     if (this.props.showcase.name_line_2) {
       names.push(
         <br key="br" />
-      );
+      )
       names.push(
         <h3 className="showcase-name-2" key={2}>{this.props.showcase.name_line_2}</h3>
-      );
+      )
     }
-    return names;
+    return names
   },
 
   editTitle: function() {
-    window.location = this.props.showcase.editUrl;
+    window.location = this.props.showcase.editUrl
   },
 
   render: function() {
-    var description;
+    var description
     if (this.props.showcase.description) {
-      description = this.props.showcase.description.toString();
+      description = this.props.showcase.description.toString()
     }
 
     return (
@@ -135,8 +135,8 @@ var ShowcaseTitleCard = createReactClass({
           </div>
         </div>
       </div>
-    );
+    )
   }
-});
+})
 
-module.exports = ShowcaseTitleCard;
+module.exports = ShowcaseTitleCard

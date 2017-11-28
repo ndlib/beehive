@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import {Toolbar, ToolbarGroup, ToolbarTitle} from 'material-ui'
-var CloseButton = require('../../other/CloseButton.jsx');
+var CloseButton = require('../../other/CloseButton.jsx')
 const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 
 var PageTitleBar = createReactClass({
@@ -14,7 +14,7 @@ var PageTitleBar = createReactClass({
   getDefaultProps: function() {
     return {
       height: 35,
-    };
+    }
   },
 
   getInitialState: function() {
@@ -24,7 +24,7 @@ var PageTitleBar = createReactClass({
   },
 
   componentDidMount: function() {
-    //window.onscroll = this.onScroll;
+    //window.onscroll = this.onScroll
   },
 
   style: function() {
@@ -33,16 +33,16 @@ var PageTitleBar = createReactClass({
       opacity: this.state.opacity,
       backgroundColor: "rgba(51,51,51,1)",
       zIndex: '1',
-    };
+    }
   },
 
   onScroll: function(event) {
-    var element = event.target.scrollingElement;
-    var a = element.scrollTop / element.scrollHeight;
-    var percentVisible = Math.log2(1 + a * 10.0);
+    var element = event.target.scrollingElement
+    var a = element.scrollTop / element.scrollHeight
+    var percentVisible = Math.log2(1 + a * 10.0)
     this.setState({
       opacity: percentVisible,
-    });
+    })
   },
 
   titleBarStyle: function () {
@@ -57,7 +57,7 @@ var PageTitleBar = createReactClass({
       marginLeft: 'auto',
       height: "100%",
       float: "right"
-    };
+    }
   },
 
   render: function() {
@@ -70,9 +70,9 @@ var PageTitleBar = createReactClass({
           <CloseButton alternate={true} height={this.props.height} />
         </ToolbarGroup>
       </Toolbar>
-    );
+    )
   }
-});
+})
 
 // each file will export exactly one component
-module.exports = PageTitleBar;
+module.exports = PageTitleBar

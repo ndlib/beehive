@@ -3,13 +3,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { GridList, Paper } from 'material-ui'
-var EventEmitter = require("../../middleware/EventEmitter.js");
-var theme = require('../../themes/beehive.jsx');
-var MediaQuery = require('react-responsive');
-var SearchStore = require('../../store/SearchStore.js');
-var SearchPagination = require('./SearchPagination.jsx');
-var ItemListItem = require('./ItemListItem.jsx');
-var SearchSidebar = require('./SearchSidebar.jsx');
+var EventEmitter = require("../../middleware/EventEmitter.js")
+var theme = require('../../themes/beehive.jsx')
+var MediaQuery = require('react-responsive')
+var SearchStore = require('../../store/SearchStore.js')
+var SearchPagination = require('./SearchPagination.jsx')
+var ItemListItem = require('./ItemListItem.jsx')
+var SearchSidebar = require('./SearchSidebar.jsx')
 
 var SearchDisplayList = createReactClass({
   propTypes: {
@@ -25,27 +25,27 @@ var SearchDisplayList = createReactClass({
     return {
       sidebar: false,
       view: SearchStore.view,
-    };
+    }
   },
 
   componentDidMount: function() {
     if(SearchStore.sorts || SearchStore.facets) {
-      this.setState({sidebar: true});
+      this.setState({sidebar: true})
     }
   },
 
   componentWillMount: function() {
     // View changes don't change the top level query, so we have to listen
     // for those changes in order to force a rerender
-    SearchStore.on("SearchStoreViewChanged", this.storeViewChanged);
+    SearchStore.on("SearchStoreViewChanged", this.storeViewChanged)
   },
 
   storeViewChanged: function() {
-    this.setState({ view: SearchStore.view });
+    this.setState({ view: SearchStore.view })
   },
 
   itemList: function() {
-    var view = this.state.view;
+    var view = this.state.view
     var itemNodes = SearchStore.items.map(function(item, index) {
       return (
         <ItemListItem
@@ -53,10 +53,10 @@ var SearchDisplayList = createReactClass({
           view={view}
           key={item["@id"]}
         />
-      );
-    });
+      )
+    })
     if(itemNodes.length === 0) {
-      itemNodes = (<div style={{color:'rgba(0, 0, 0, 0.870588)', fontStyle:'italic', textAlign:'center'}}>No matching results could be found.</div>);
+      itemNodes = (<div style={{color:'rgba(0, 0, 0, 0.870588)', fontStyle:'italic', textAlign:'center'}}>No matching results could be found.</div>)
     }
     if (view == 'grid') {
       return (
@@ -109,8 +109,8 @@ var SearchDisplayList = createReactClass({
           </Paper>
         </MediaQuery>
       </div>
-    );
+    )
   },
-});
+})
 
-module.exports = SearchDisplayList;
+module.exports = SearchDisplayList

@@ -17,7 +17,7 @@ var CollectionIntroCard = createReactClass({
       position: "relative",
       cursor: "pointer",
       height: "400px",
-    };
+    }
   },
 
   render: function() {
@@ -30,8 +30,8 @@ var CollectionIntroCard = createReactClass({
           />
         </Card>
       </Link>
-    );
+    )
   }
-});
+})
 
-module.exports = CollectionIntroCard;
+module.exports = CollectionIntroCard

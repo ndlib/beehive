@@ -3,18 +3,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Paper } from 'material-ui'
-var SearchFacets = require('./SearchFacets.jsx');
+var SearchFacets = require('./SearchFacets.jsx')
 
 var SearchSidebar = createReactClass({
 
   getInitialState: function () {
     return {
       show: true
-    };
+    }
   },
 
   toggleSidebar: function() {
-    this.setState({show: !this.state.show});
+    this.setState({show: !this.state.show})
   },
 
   render: function() {
@@ -24,8 +24,8 @@ var SearchSidebar = createReactClass({
         <hr/>
         <SearchFacets/>
       </Paper>
-    );
+    )
   }
-});
+})
 
-module.exports = SearchSidebar;
+module.exports = SearchSidebar

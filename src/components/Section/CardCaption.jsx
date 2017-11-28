@@ -31,11 +31,11 @@ var CardCaption = createReactClass({
     if (this.props.caption) {
       return (<CardText style={this.style()} className="caption">
         <div dangerouslySetInnerHTML={{__html: this.props.caption}} style={this.innerStyle()}/>
-      </CardText>);
+      </CardText>)
     }
-    return (<div/>);
+    return (<div/>)
   },
-});
+})
 
 // each file will export exactly one component
-module.exports = CardCaption;
+module.exports = CardCaption

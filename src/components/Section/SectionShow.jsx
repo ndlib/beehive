@@ -3,12 +3,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Paper, Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui'
-var CloseButton = require('../../other/CloseButton.jsx');
-var SideNavButton = require("../../other/SideNavButton.jsx");
+var CloseButton = require('../../other/CloseButton.jsx')
+var SideNavButton = require("../../other/SideNavButton.jsx")
 
-var ItemContent = require('../Item/ItemContent.jsx');
-var SectionShowDescription = require('./SectionShowDescription.jsx');
-var SideNavButton = require('../../other/SideNavButton.jsx');
+var ItemContent = require('../Item/ItemContent.jsx')
+var SectionShowDescription = require('./SectionShowDescription.jsx')
+var SideNavButton = require('../../other/SideNavButton.jsx')
 
 const BrowserUtils = require('../../modules/BrowserUtils.jsx')
 const LoadRemote = require('../../modules/LoadRemote.jsx')
@@ -63,14 +63,14 @@ var SectionShow = createReactClass({
 
   title: function() {
     if (this.props.section.item) {
-      return this.props.section.item.name;
+      return this.props.section.item.name
     } else {
-      return this.props.section.name;
+      return this.props.section.name
     }
   },
 
   closeUrl: function() {
-    var collectionPath = window.location.pathname.match(/(?:\/[^\/]+){2}/);
+    var collectionPath = window.location.pathname.match(/(?:\/[^\/]+){2}/)
     return collectionPath[0]
   },
 
@@ -96,16 +96,16 @@ var SectionShow = createReactClass({
   },
 
   render: function() {
-    var prev, next, offsetTop;
+    var prev, next, offsetTop
     if (this.props.height) {
-      offsetTop = this.props.height / 2;
+      offsetTop = this.props.height / 2
     }
     if (this.props.section) {
       if(this.props.previousSection) {
-        prev = (<SideNavButton href={CollectionUrl.sectionObjectUrl(this.props.previousSection)} />);
+        prev = (<SideNavButton href={CollectionUrl.sectionObjectUrl(this.props.previousSection)} />)
       }
       if(this.props.nextSection) {
-        next = (<SideNavButton href={CollectionUrl.sectionObjectUrl(this.props.nextSection)} rightIcon={true} />);
+        next = (<SideNavButton href={CollectionUrl.sectionObjectUrl(this.props.nextSection)} rightIcon={true} />)
       }
 
       return (
@@ -114,12 +114,12 @@ var SectionShow = createReactClass({
           {prev}
           {next}
           {this.contentSection()}
-        </Paper>);
+        </Paper>)
     } else {
-      return null;
+      return null
     }
   }
-});
+})
 
 // each file will export exactly one component
-module.exports = SectionShow;
+module.exports = SectionShow

@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 
-var SitePathCard = require('../Collection/SitePathCard.jsx');
-var PagesShow = require('../Pages/PagesShow.jsx');
+var SitePathCard = require('../Collection/SitePathCard.jsx')
+var PagesShow = require('../Pages/PagesShow.jsx')
 var PreviewLink = require('../../layout/PreviewLink.jsx')
 
 var CollectionDescription = createReactClass({
@@ -14,7 +14,7 @@ var CollectionDescription = createReactClass({
   },
 
   style: function() {
-    return {};
+    return {}
   },
 
   showNext: function() {
@@ -31,10 +31,10 @@ var CollectionDescription = createReactClass({
           />
         </div>,
         <PreviewLink siteObject={this.props.collection.site_path[0]}/>
-      ];
+      ]
     }
     else {
-      return null;
+      return null
     }
   },
 
@@ -43,8 +43,8 @@ var CollectionDescription = createReactClass({
         <PagesShow content={this.props.collection.description}>
           {this.showNext()}
         </PagesShow>
-    );
+    )
   }
-});
+})
 
-module.exports = CollectionDescription;
+module.exports = CollectionDescription

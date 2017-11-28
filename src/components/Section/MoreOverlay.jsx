@@ -17,12 +17,12 @@ var MoreOverlay = createReactClass({
       textAlign: 'center',
       background: "linear-gradient(to bottom, rgba(0,0,0,0.4) 0%,rgba(0,0,0,1) 55%,rgba(0,0,0,1) 100%)",
 
-    };
+    }
   },
 
   render: function() {
     return(<div style={this.style()}>MORE</div>)
   },
-});
+})
 
-module.exports = MoreOverlay;
+module.exports = MoreOverlay
