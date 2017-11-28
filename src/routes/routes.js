@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 import { browserHistory, Switch, Route } from 'react-router'
 import { BrowserRouter } from 'react-router-dom';

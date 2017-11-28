@@ -1,4 +1,4 @@
-'use strict'
+
 import '../../assets/scripts/perfect-scrollbar.jquery.js';
 
 import React from 'react'
