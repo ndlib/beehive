@@ -113,7 +113,7 @@ var SearchBox = createReactClass({
 
   handleKeyDown: function (e) {
     var ENTER = 13
-    if (e.keyCode == ENTER) {
+    if (e.keyCode === ENTER) {
       this.onClick(e)
     }
   },

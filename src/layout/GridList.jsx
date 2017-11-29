@@ -40,7 +40,7 @@ var GridList = createReactClass({
       for (var prefix in this.props.grids) {
         var columns = this.props.grids[prefix]
         var clearClass = 'clearfix visible-' + prefix + '-block'
-        if (index % columns == 0) {
+        if (index % columns === 0) {
           nodes.push((
             <div className={clearClass} key={index + prefix + 'clearfix'} />
           ))

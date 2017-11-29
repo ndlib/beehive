@@ -92,7 +92,7 @@ var Search = createReactClass({
       readyToRender: true,
     })
 
-    // if(reason == "load") {
+    // if(reason === "load") {
     //   var path = window.location.origin + SearchStore.searchUri() + currentItem
     //   path += "&compact=" + this.props.compact
     //   window.history.replaceState({ store: SearchStore.getQueryParams() }, '', path)

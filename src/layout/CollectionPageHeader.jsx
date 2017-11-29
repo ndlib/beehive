@@ -80,9 +80,9 @@ var CollectionPageHeader = createReactClass({
   },
 
   _handleTabs: function (tab) {
-    if (tab.props.value == 'about') {
+    if (tab.props.value === 'about') {
       window.location.href = CollectionUrl.aboutUrl(this.props.collection)
-    } else if (tab.props.value == 'search') {
+    } else if (tab.props.value === 'search') {
       window.location.href = CollectionUrl.browseUrl(this.props.collection)
     }
   },
@@ -90,9 +90,9 @@ var CollectionPageHeader = createReactClass({
   activeTab: function () {
     var pageCode = window.location.pathname.split('/').slice(-1)[0].split('?')[0]
 
-    if (pageCode == 'search') {
+    if (pageCode === 'search') {
       return 'search'
-    } else if (window.location.pathname == CollectionUrl.browseUrl(this.props.collection)) {
+    } else if (window.location.pathname === CollectionUrl.browseUrl(this.props.collection)) {
       return 'about'
     }
     return 'none'

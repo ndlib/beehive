@@ -12,7 +12,7 @@ var SearchFacets = createReactClass({
       return (facet.values.map(function (e, index) {
         var selectedValue
         if (SearchStore.facetOption) {
-          if (facet.field == encodeURIComponent(SearchStore.facetOption.name)) {
+          if (facet.field === encodeURIComponent(SearchStore.facetOption.name)) {
             selectedValue = SearchStore.facetOption.value
           }
         }

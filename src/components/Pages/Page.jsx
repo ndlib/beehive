@@ -101,7 +101,7 @@ var Page = createReactClass({
     var itemId = event.target.getAttribute('item_id')
     if (itemId && this.state.collection.pages.items) {
       item = this.state.collection.pages.items.find(function (e, i, a) {
-        return e['id'] == itemId
+        return e['id'] === itemId
       })
     }
     return item

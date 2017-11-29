@@ -145,8 +145,8 @@ class SearchStore extends EventEmitter {
     // if it has the same name and same value, we don't want to add it so
     // set addFacet to false
     for (var i = 0; i < this._facetOption.length; i++) {
-      if (this._facetOption[i].name == facet.name) {
-        if (this._facetOption[i].value == encodeURIComponent(facet.value)) {
+      if (this._facetOption[i].name === facet.name) {
+        if (this._facetOption[i].value === encodeURIComponent(facet.value)) {
           addFacet = false
         }
         this._facetOption.splice(i, 1)
@@ -275,7 +275,7 @@ class SearchStore extends EventEmitter {
 
   getNextItem (item) {
     for (var i = 0; i < this._items.length; ++i) {
-      if (this._items[i]['@id'] == item['@id']) {
+      if (this._items[i]['@id'] === item['@id']) {
         var nextI = (i + 1)
         if (nextI > this._items.length - 1) {
           return null
@@ -289,7 +289,7 @@ class SearchStore extends EventEmitter {
 
   getPreviousItem (item) {
     for (var i = 0; i < this._items.length; ++i) {
-      if (this._items[i]['@id'] == item['@id']) {
+      if (this._items[i]['@id'] === item['@id']) {
         var prevI = i - 1
         if (prevI < 0) {
           return null

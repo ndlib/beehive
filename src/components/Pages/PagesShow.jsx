@@ -27,7 +27,7 @@ var PagesShow = createReactClass({
       maxWidth: '32.5em', // Should put it between 70-75 characters at 1em (16px)
       margin: '0 auto 60px',
     }
-    if (media == 'narrow') {
+    if (media === 'narrow') {
       style.margin = '0 0'
     }
     return style
@@ -52,7 +52,7 @@ var PagesShow = createReactClass({
   },
 
   depth: function (media) {
-    if (media == 'wide') {
+    if (media === 'wide') {
       return 1
     }
     return 0

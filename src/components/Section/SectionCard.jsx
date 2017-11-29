@@ -35,10 +35,10 @@ var SectionCard = createReactClass({
       cursor: 'pointer',
       lineHeight: '0px',
       backgroundColor: 'rgba(51,51,51,0.95)',
-      border: this.sectionType() == 'image' ? 'solid 3px #fff' : 'none',
+      border: this.sectionType() === 'image' ? 'solid 3px #fff' : 'none',
       overflow: 'hidden',
     }
-    if (this.sectionType() == 'text') {
+    if (this.sectionType() === 'text') {
       styles['maxWidth'] = '33em'
     }
 

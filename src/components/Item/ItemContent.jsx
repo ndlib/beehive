@@ -187,7 +187,7 @@ var ItemContent = createReactClass({
   render: function () {
     var prevLink, nextLink
     if (this.props.item && this.props.item.media != null) {
-      if (this.props.item.media['@type'] == 'ImageObject') {
+      if (this.props.item.media['@type'] === 'ImageObject') {
         return (
           <div style={this.outerStyles()}>
             { this.image() }
@@ -195,7 +195,7 @@ var ItemContent = createReactClass({
             { this.details() }
           </div>
         )
-      } else if (this.props.item.media['@type'] == 'AudioObject' || this.props.item.media['@type'] == 'VideoObject') {
+      } else if (this.props.item.media['@type'] === 'AudioObject' || this.props.item.media['@type'] === 'VideoObject') {
         return (
           <div style={this.outerStyles()}>
             { this.multimedia() }
