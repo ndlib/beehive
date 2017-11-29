@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { AppBar, Paper, Tab, Tabs } from 'material-ui'
+import { AppBar, Paper } from 'material-ui'
 import { Link } from 'react-router-dom'
 var MediaQuery = require('react-responsive')
 var BrandBar = require('./BrandBar.jsx')
@@ -140,9 +140,7 @@ var CollectionPageHeader = createReactClass({
           }
         </div>)
     }
-    return (
-      <Tabs style={{ float:'right', backgroundColor: 'none' }} value={this.activeTab()} tabItemContainerStyle={{ backgroundColor: 'transparent', width:'auto' }} />
-    )
+    return null
   },
 
   appBarStyle: function () {
