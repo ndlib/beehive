@@ -41,11 +41,13 @@ var ItemListItem = createReactClass({
   render: function () {
     if (this.props.view === 'list') {
       return (
-        <ListItem item={this.state.itemLoaded ? Object.assign(this.props.item, this.state.fullItem) : this.props.item} />
+        <ListItem
+          item={this.state.itemLoaded ? Object.assign(this.props.item, this.state.fullItem) : this.props.item} />
       )
     } else {
       return (
-        <GridItem item={this.state.itemLoaded ? Object.assign(this.props.item, this.state.fullItem) : this.props.item} />
+        <GridItem
+          item={this.state.itemLoaded ? Object.assign(this.props.item, this.state.fullItem) : this.props.item} />
       )
     }
   },

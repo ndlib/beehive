@@ -20,6 +20,7 @@ var SearchControls = createReactClass({
 
   controlsStyle: function () {
     return {
+      backgroundColor: 'rgba(0,0,0, 0.541176)',
       position: 'fixed',
       minHeight: '65px',
       zIndex: '2',
@@ -81,7 +82,10 @@ var SearchControls = createReactClass({
   render: function () {
     return (
       <div style={{ height: '65px', width: '100%' }}>
-        <Toolbar className='controls' style={this.controlsStyle()}>
+        <Toolbar
+          className='controls'
+          style={this.controlsStyle()}
+        >
           <ToolbarGroup key={0} style={{ float: 'left' }}>
             { this.searchBox() }
           </ToolbarGroup>

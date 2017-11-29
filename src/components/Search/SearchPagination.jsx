@@ -28,12 +28,12 @@ var SearchPagination = createReactClass({
   pageLink: function (i) {
     if (SearchStore.start === (i - 1) * SearchStore.rowLimit) {
       return (
-        <span style={this.paginationButton()}>{i}</span>
+        <span style={this.paginationButton()} key={i}>{i}</span>
       )
     } else {
       var searchUrl = window.location.origin + SearchStore.searchUri({ start: (i - 1) * SearchStore.rowLimit }) + '&compact=' + this.props.compact
       return (
-        <Link to={searchUrl} style={this.paginationButton()}>{i}</Link>
+        <Link to={searchUrl} style={this.paginationButton()} key={i}>{i}</Link>
       )
     }
   },
@@ -43,7 +43,7 @@ var SearchPagination = createReactClass({
     // if not first page
     if (SearchStore.start != 0) {
       var backLink = window.location.origin + SearchStore.searchUri({ start: 0 }) + '&compact=' + this.props.compact
-      nodes.push((<Link to={backLink}> <i className='material-icons' style={{ fontSize: '1em' }}>arrow_back</i> </Link>))
+      nodes.push((<Link to={backLink} key='back'> <i className='material-icons' style={{ fontSize: '1em' }}>arrow_back</i> </Link>))
     }
     var last = Math.floor(SearchStore.found / SearchStore.rowLimit)
     var cappedFirst = Math.max(1, Math.floor(SearchStore.start / SearchStore.rowLimit) - 2)
@@ -60,7 +60,7 @@ var SearchPagination = createReactClass({
     // if not last page
     if (SearchStore.start + SearchStore.rowLimit < SearchStore.found) {
       var forwardLink = window.location.origin + SearchStore.searchUri({ start: SearchStore.rowLimit * (last - 1) }) + '&compact=' + this.props.compact
-      nodes.push((<Link to={forwardLink}> <i className='material-icons' style={{ fontSize: '1em' }}>arrow_forward</i> </Link>))
+      nodes.push((<Link to={forwardLink} key='next'> <i className='material-icons' style={{ fontSize: '1em' }}>arrow_forward</i> </Link>))
     }
     return nodes
   },

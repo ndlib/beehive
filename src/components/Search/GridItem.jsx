@@ -1,8 +1,8 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
+import { Card, CardTitle, CardMedia } from 'material-ui'
 var ItemImage = require('./ItemImage.jsx')
 
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
