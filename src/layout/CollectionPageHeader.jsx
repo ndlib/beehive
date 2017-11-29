@@ -1,10 +1,9 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { AppBar, Paper, Tab, Tabs } from 'material-ui'
+import { Link } from 'react-router-dom'
 var MediaQuery = require('react-responsive')
-
 var BrandBar = require('./BrandBar.jsx')
 var CollectionLeftNav = require('./CollectionLeftNav.jsx')
 var ConfigurationStore = require('../store/ConfigurationStore.js')
@@ -80,10 +79,10 @@ var CollectionPageHeader = createReactClass({
   },
 
   _handleTabs: function (tab) {
-    if (tab.props.value === 'about') {
-      window.location.href = CollectionUrl.aboutUrl(this.props.collection)
-    } else if (tab.props.value === 'search') {
-      window.location.href = CollectionUrl.browseUrl(this.props.collection)
+    if (tab.value === 'about') {
+      return CollectionUrl.aboutUrl(this.props.collection)
+    } else if (tab.value === 'search') {
+      return CollectionUrl.browseUrl(this.props.collection)
     }
   },
 
@@ -96,22 +95,6 @@ var CollectionPageHeader = createReactClass({
       return 'about'
     }
     return 'none'
-  },
-
-  browseTab: function () {
-    if (ConfigurationStore.browseEnabled()) {
-      return (<Tab label='Browse Collection' value='search' onActive={this._handleTabs} />)
-    } else {
-      return ''
-    }
-  },
-
-  aboutTab: function () {
-    if (ConfigurationStore.hasAboutPage()) {
-      return (<Tab label='About' value='about' onActive={this._handleTabs} />)
-    } else {
-      return ''
-    }
   },
 
   availableTabs: function () {
@@ -129,23 +112,33 @@ var CollectionPageHeader = createReactClass({
     var availableTabs = this.availableTabs()
     if (availableTabs.length > 0) {
       return (
-        <Tabs style={{ float:'right', backgroundColor: 'none' }} value={this.activeTab()} tabItemContainerStyle={{ backgroundColor: 'transparent', width:'auto' }}>
+        <div
+          style={{ float:'right', backgroundColor: 'none' }}
+          value={this.activeTab()}>
           {
             availableTabs.map(function (tab, index) {
-              return (<Tab
-                key={tab.value}
-                label={tab.label}
-                value={tab.value}
-                onActive={this._handleTabs}
-                style={{
-                  color:'white',
-                  textTransform: 'none',
-                  width:'auto',
-                  padding:'0 20px 0 0',
-                  fontSize: '16px' }} />)
+              return (
+                <Link
+                  to={this._handleTabs(tab)}
+                  key={index}
+                >
+                  <button
+                    label={tab.label}
+                    value={tab.value}
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      color:'white',
+                      textTransform: 'none',
+                      width:'auto',
+                      lineHeight: '50px',
+                      padding:'0 20px 0 0',
+                      fontSize: '16px' }}
+                  >{tab.label}</button>
+                </Link>)
             }.bind(this))
           }
-        </Tabs>)
+        </div>)
     }
     return (
       <Tabs style={{ float:'right', backgroundColor: 'none' }} value={this.activeTab()} tabItemContainerStyle={{ backgroundColor: 'transparent', width:'auto' }} />
