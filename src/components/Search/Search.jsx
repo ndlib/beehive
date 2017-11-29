@@ -77,7 +77,7 @@ var Search = createReactClass({
     ConfigurationStore.removeChangeListener(this.configurationLoaded)
   },
 
-  handleResize: function (e) {
+  handleResize: function () {
     this.setState({
       windowHeight: this.calcHeight(),
     })
@@ -121,7 +121,7 @@ var Search = createReactClass({
   facetObject: function () {
     var facets
     if (this.props.facet) {
-      facets = new Array()
+      facets = []
       for (var i = 0; i < this.props.facet.length; i++) {
         var facetKey = Object.keys(this.props.facet[i])[0]
         var facetValue = Object.keys(this.props.facet[i])[1]

@@ -1,6 +1,5 @@
 
 import React from 'react'
-import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { FontIcon, Toolbar, ToolbarGroup, RaisedButton } from 'material-ui'
 var MediaQuery = require('react-responsive')
@@ -10,9 +9,6 @@ var SearchStore = require('../../store/SearchStore.js')
 var ConfigurationStore = require('../../store/ConfigurationStore.js')
 var SearchActions = require('../../actions/SearchActions.js')
 const CurrentTheme = require('../../modules/CurrentTheme.jsx')
-
-var gridView = { view: 'grid' }
-var listView = { view: 'list' }
 
 var SearchControls = createReactClass({
   getInitialState: function () {
@@ -27,13 +23,14 @@ var SearchControls = createReactClass({
       position: 'fixed',
       minHeight: '65px',
       zIndex: '2',
+      width: '100%',
     }
   },
 
   toggleView: function () {
-    if (this.state.view == 'grid') {
+    if (this.state.view === 'grid') {
       this.setList()
-    } else if (this.state.view == 'list') {
+    } else if (this.state.view === 'list') {
       this.setGrid()
     }
   },
@@ -47,7 +44,7 @@ var SearchControls = createReactClass({
   },
 
   checkView: function (view) {
-    if (view == 'list' || view == 'grid') {
+    if (view === 'list' || view === 'grid') {
       return true
     }
     return false
@@ -83,7 +80,7 @@ var SearchControls = createReactClass({
 
   render: function () {
     return (
-      <div style={{ height: '65px' }}>
+      <div style={{ height: '65px', width: '100%' }}>
         <Toolbar className='controls' style={this.controlsStyle()}>
           <ToolbarGroup key={0} style={{ float: 'left' }}>
             { this.searchBox() }
@@ -92,25 +89,25 @@ var SearchControls = createReactClass({
             <MediaQuery minWidth={700}>
               <SearchSort />
               <RaisedButton
-                secondary={this.state.view == 'grid'}
+                backgroundColor={this.state.view === 'grid' ? 'rgba(0, 0, 0, 0.64)' : 'white'}
                 onClick={this.setList}
                 style={{ zIndex: '0', margin: '15px 0', minWidth: '44px', lineHeight: '36px' }}
                 disableTouchRipple
               >
                 <FontIcon
                   className='material-icons'
-                  style={this.state.view == 'grid' ? CurrentTheme.lightIconStyle() : CurrentTheme.darkIconStyle()}
+                  style={this.state.view === 'grid' ? CurrentTheme.lightIconStyle() : CurrentTheme.darkIconStyle()}
                 >view_list</FontIcon>
               </RaisedButton>
               <RaisedButton
-                secondary={this.state.view == 'list'}
+                backgroundColor={this.state.view === 'list' ? 'rgba(0, 0, 0, 0.64)' : 'white'}
                 onClick={this.setGrid}
                 style={{ zIndex: '0', margin: '15px 0', minWidth: '44px', lineHeight: '36px' }}
                 disableTouchRipple
               >
                 <FontIcon
                   className='material-icons'
-                  style={this.state.view == 'list' ? CurrentTheme.lightIconStyle() : CurrentTheme.darkIconStyle()}
+                  style={this.state.view === 'list' ? CurrentTheme.lightIconStyle() : CurrentTheme.darkIconStyle()}
                 >view_module</FontIcon>
               </RaisedButton>
             </MediaQuery>

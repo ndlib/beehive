@@ -2,9 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { GridList, Paper } from 'material-ui'
-var EventEmitter = require('../../middleware/EventEmitter.js')
-var theme = require('../../themes/beehive.jsx')
+import { GridList, List, Paper } from 'material-ui'
 var MediaQuery = require('react-responsive')
 var SearchStore = require('../../store/SearchStore.js')
 var SearchPagination = require('./SearchPagination.jsx')
@@ -46,7 +44,7 @@ var SearchDisplayList = createReactClass({
 
   itemList: function () {
     var view = this.state.view
-    var itemNodes = SearchStore.items.map(function (item, index) {
+    var itemNodes = SearchStore.items.map(function (item) {
       return (
         <ItemListItem
           item={item}
@@ -56,9 +54,11 @@ var SearchDisplayList = createReactClass({
       )
     })
     if (itemNodes.length === 0) {
-      itemNodes = (<div style={{ color:'rgba(0, 0, 0, 0.870588)', fontStyle:'italic', textAlign:'center' }}>No matching results could be found.</div>)
+      itemNodes = (<div
+        style={{ color:'rgba(0, 0, 0, 0.870588)', fontStyle:'italic', textAlign:'center' }}
+      >No matching results could be found.</div>)
     }
-    if (view == 'grid') {
+    if (view === 'grid') {
       return (
         <div>
           <MediaQuery maxWidth={700}>
@@ -90,11 +90,11 @@ var SearchDisplayList = createReactClass({
   render: function () {
     return (
       <div>
-        <Paper style={{ width: '100%' }}>
+        <Paper style={{ width: '100%' }} zDepth={0}>
           <h3>Browse Collection</h3>
         </Paper>
         <MediaQuery maxWidth={700}>
-          <Paper>
+          <Paper zDepth={0}>
             {this.itemList()}
             <SearchPagination />
           </Paper>
@@ -103,7 +103,7 @@ var SearchDisplayList = createReactClass({
         <MediaQuery minWidth={700}>
           <SearchSidebar show={this.state.sidebar} />
 
-          <Paper style={{ width: '74%' }}>
+          <Paper style={{ width: '74%' }} zDepth={0}>
             {this.itemList()}
             <SearchPagination compact={this.props.compact} />
           </Paper>
