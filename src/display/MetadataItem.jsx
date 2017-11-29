@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import mui, { Divider } from 'material-ui'
+import { Divider } from 'material-ui'
 
 var MetadataString = require('./MetadataString.jsx')
 var MetadataDate = require('./MetadataDate.jsx')

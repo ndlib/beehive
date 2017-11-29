@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import mui, { AppBar, Paper, Tab, Tabs } from 'material-ui'
+import { AppBar, Paper, Tab, Tabs } from 'material-ui'
 var MediaQuery = require('react-responsive')
 
 var BrandBar = require('./BrandBar.jsx')
@@ -132,7 +132,17 @@ var CollectionPageHeader = createReactClass({
         <Tabs style={{ float:'right', backgroundColor: 'none' }} value={this.activeTab()} tabItemContainerStyle={{ backgroundColor: 'transparent', width:'auto' }}>
           {
             availableTabs.map(function (tab, index) {
-              return (<Tab key={tab.value} label={tab.label} value={tab.value} onActive={this._handleTabs} style={{ color:'white', width:'auto', padding:'0 20px 0 0', fontSize: '16px' }} />)
+              return (<Tab
+                key={tab.value}
+                label={tab.label}
+                value={tab.value}
+                onActive={this._handleTabs}
+                style={{
+                  color:'white',
+                  textTransform: 'none',
+                  width:'auto',
+                  padding:'0 20px 0 0',
+                  fontSize: '16px' }} />)
             }.bind(this))
           }
         </Tabs>)

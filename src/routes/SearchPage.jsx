@@ -15,7 +15,7 @@ class SearchPage extends Component {
           searchTerm={QueryParm('q')}
           sortTerm={QueryParm('sort')}
           facet={FacetQueryParms()}
-          start={QueryParm('start')}
+          start={parseInt(QueryParm('start'))}
           view={QueryParm('view')}
           currentItem={QueryParm('item')}
           compact={QueryParm('compact') === 'true'}

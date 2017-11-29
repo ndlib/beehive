@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import mui, { Card, CardMedia, CardTitle, FloatingActionButton, FontIcon } from 'material-ui'
+import { Card, CardMedia, CardTitle, FloatingActionButton, FontIcon } from 'material-ui'
 import { Link } from 'react-router-dom'
 var HoneycombImage = require('../other/HoneycombImage.jsx')
 var MediaQuery = require('react-responsive')

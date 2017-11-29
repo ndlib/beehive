@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import mui, { Divider, Drawer, FontIcon, FlatButton, MenuItem } from 'material-ui'
+import { Divider, Drawer, FontIcon, FlatButton, MenuItem } from 'material-ui'
 import { Link } from 'react-router-dom'
 var Types = {
   LINK: 'LINK',

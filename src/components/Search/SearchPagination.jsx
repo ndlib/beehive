@@ -31,7 +31,7 @@ var SearchPagination = createReactClass({
         <span style={this.paginationButton()} key={i}>{i}</span>
       )
     } else {
-      var searchUrl = window.location.origin + SearchStore.searchUri({ start: (i - 1) * SearchStore.rowLimit }) + '&compact=' + this.props.compact
+      var searchUrl = SearchStore.searchUri({ start: (i - 1) * SearchStore.rowLimit }) + '&compact=' + this.props.compact
       return (
         <Link to={searchUrl} style={this.paginationButton()} key={i}>{i}</Link>
       )
@@ -42,7 +42,7 @@ var SearchPagination = createReactClass({
     var nodes = []
     // if not first page
     if (SearchStore.start != 0) {
-      var backLink = window.location.origin + SearchStore.searchUri({ start: 0 }) + '&compact=' + this.props.compact
+      var backLink = SearchStore.searchUri({ start: 0 }) + '&compact=' + this.props.compact
       nodes.push((<Link to={backLink} key='back'> <i className='material-icons' style={{ fontSize: '1em' }}>arrow_back</i> </Link>))
     }
     var last = Math.floor(SearchStore.found / SearchStore.rowLimit)
@@ -59,7 +59,7 @@ var SearchPagination = createReactClass({
 
     // if not last page
     if (SearchStore.start + SearchStore.rowLimit < SearchStore.found) {
-      var forwardLink = window.location.origin + SearchStore.searchUri({ start: SearchStore.rowLimit * (last - 1) }) + '&compact=' + this.props.compact
+      var forwardLink = SearchStore.searchUri({ start: SearchStore.rowLimit * (last - 1) }) + '&compact=' + this.props.compact
       nodes.push((<Link to={forwardLink} key='next'> <i className='material-icons' style={{ fontSize: '1em' }}>arrow_forward</i> </Link>))
     }
     return nodes
