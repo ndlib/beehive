@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import PropTypes from 'prop-types'
 import Section from '../components/Section/Section.jsx'
 import CollectionUrl from '../modules/CollectionUrl.jsx'
 
@@ -17,5 +17,13 @@ class SectionPage extends Component {
     )
   }
 }
-
+SectionPage.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      collectionID: PropTypes.string,
+      showcaseID: PropTypes.string,
+      sectionID: PropTypes.string,
+    }),
+  }),
+}
 export default SectionPage

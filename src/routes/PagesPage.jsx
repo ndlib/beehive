@@ -1,6 +1,5 @@
-
 import React, { Component } from 'react'
-
+import PropTypes from 'prop-types'
 import Page from '../components/Pages/Page.jsx'
 import HoneycombURL from '../modules/HoneycombURL.js'
 
@@ -17,5 +16,11 @@ class PagesPage extends Component {
     )
   }
 }
-
+PagesPage.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      pageID: PropTypes.string,
+    }),
+  }),
+}
 export default PagesPage

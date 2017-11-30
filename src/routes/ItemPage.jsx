@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import PropTypes from 'prop-types'
 import Item from '../components/Item/Item.jsx'
 import CollectionUrl from '../modules/CollectionUrl.jsx'
 
@@ -16,5 +16,12 @@ class ItemPage extends Component {
     )
   }
 }
-
+ItemPage.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      collectionID: PropTypes.string,
+      itemID: PropTypes.string,
+    }),
+  }),
+}
 export default ItemPage

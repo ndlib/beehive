@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import Collection from '../components/Collection/Collection.jsx'
 import HoneycombURL from '../modules/HoneycombURL.js'
 import { withRouter } from 'react-router-dom'
@@ -42,5 +43,12 @@ class CustomCollectionPage extends Component {
       )
     }
   }
+}
+CustomCollectionPage.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      customSlug: PropTypes.string,
+    }),
+  }),
 }
 export default withRouter(CustomCollectionPage)

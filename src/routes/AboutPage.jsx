@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import About from '../components/pages/About.jsx'
 import HoneycombURL from '../modules/HoneycombURL.js'
 
@@ -11,6 +12,13 @@ class AboutPage extends Component {
       />
     )
   }
+}
+AboutPage.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      collectionID: PropTypes.string,
+    }),
+  }),
 }
 
 export default AboutPage

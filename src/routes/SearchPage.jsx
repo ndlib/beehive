@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import Search from '../components/Search//Search.jsx'
 import QueryParm from '../modules/QueryParam.js'
 import FacetQueryParms from '../modules/FacetQueryParams.js'
@@ -25,5 +26,11 @@ class SearchPage extends Component {
     )
   }
 }
-
+SearchPage.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      collectionID: PropTypes.string,
+    }),
+  }),
+}
 export default SearchPage
