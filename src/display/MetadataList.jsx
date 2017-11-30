@@ -9,6 +9,7 @@ const MetadataList = createReactClass({
   propTypes: {
     metadata: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
+    printable: PropTypes.bool,
   },
 
   getDefaultProps: function () {
