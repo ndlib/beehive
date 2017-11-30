@@ -1,11 +1,6 @@
 
 import React from 'react'
-import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-var mui = require('material-ui')
-
-var EventEmitter = require('../middleware/EventEmitter.js')
-var HoneycombURL = require('../modules/HoneycombURL.js')
 var Details = require('../display/Details.jsx')
 var ConfigurationActions = require('../actions/ConfigurationActions.js')
 var ConfigurationStore = require('../store/ConfigurationStore.js')

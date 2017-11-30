@@ -1,9 +1,3 @@
-
-import React from 'react'
-import PropTypes from 'prop-types'
-import createReactClass from 'create-react-class'
-var mui = require('material-ui')
-
 const getCurrentPallette = (muiTheme) => {
   return muiTheme.rawTheme.palette
 }

@@ -1,5 +1,4 @@
 var HoneycombURL = require('../modules/HoneycombURL.js')
-const SearchStore = require('../store/SearchStore.js')
 
 const introUrl = (collection) => {
   var url
@@ -43,7 +42,10 @@ const collectionObjectUrl = (object) => {
       typePath = ''
       break
   }
-  var path = collectionPath + '/' + typePath + '/' + encodeURIComponent(object.id) + '/' + encodeURIComponent(object.slug)
+  var path = collectionPath +
+    '/' + typePath +
+    '/' + encodeURIComponent(object.id) +
+    '/' + encodeURIComponent(object.slug)
   return path
 }
 

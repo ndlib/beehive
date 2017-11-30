@@ -1,6 +1,4 @@
-
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 
 import Collection from '../components/Collection/Collection.jsx'
 import HoneycombURL from '../modules/HoneycombURL.js'

@@ -173,7 +173,10 @@ var CollectionPageHeader = createReactClass({
 
   render: function () {
     var title = (
-      <a style={{ textDecoration: 'none', color: CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor }}
+      <a style={{
+        textDecoration: 'none',
+        color: CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor,
+      }}
         href={CollectionUrl.collectionUrl(this.props.collection)}>
         <h1 style={this.titleStyle()}>{this.props.collection.name_line_1}</h1>
       </a>
@@ -198,7 +201,16 @@ var CollectionPageHeader = createReactClass({
               iconElementRight={rightNav}
               style={this.baseScreenStyle()}
             />
-            <div id='whiteSpacer' style={{ width: '100%', backgroundColor: 'white', position: 'fixed', top: this.state.themeVariables.height + 'px', height: '1px', zIndex: '1000' }} />
+            <div
+              id='whiteSpacer'
+              style={{
+                width: '100%',
+                backgroundColor: 'white',
+                position: 'fixed',
+                top: this.state.themeVariables.height + 'px',
+                height: '1px',
+                zIndex: '1000',
+              }} />
             {this.props.children}
           </Paper>
         </MediaQuery>
@@ -211,7 +223,16 @@ var CollectionPageHeader = createReactClass({
               iconElementRight={rightNav}
               style={this.appBarStyle()}
             />
-            <div id='whiteSpacer' style={{ width: '100%', backgroundColor: 'white', position: 'fixed', top: this.state.themeVariables.height + 'px', height: '1px', zIndex: '1000' }} />
+            <div
+              id='whiteSpacer'
+              style={{
+                width: '100%',
+                backgroundColor: 'white',
+                position: 'fixed',
+                top: this.state.themeVariables.height + 'px',
+                height: '1px',
+                zIndex: '1000',
+              }} />
             {this.props.children}
           </Paper>
         </MediaQuery>
