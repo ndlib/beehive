@@ -48,12 +48,6 @@ const Item = createReactClass({
 
   componentWillMount: function () {
     ConfigurationStore.addChangeListener(this.configurationLoaded)
-    let newMuiTheme = this.state.muiTheme
-    newMuiTheme.paper.backgroundColor = 'inherit'
-
-    this.setState({
-      muiTheme: newMuiTheme,
-    })
   },
 
   componentWillUnmount: function () {
@@ -62,8 +56,8 @@ const Item = createReactClass({
   },
 
   componentDidMount: function () {
-    LoadRemote.withCallback(this.props.collection, this.collectionLoaded.bind(this))
-    LoadRemote.withCallback(this.props.item, this.itemLoaded.bind(this))
+    LoadRemote.withCallback(this.props.collection, this.collectionLoaded)
+    LoadRemote.withCallback(this.props.item, this.itemLoaded)
     window.addEventListener('resize', this.handleResize, false)
     this.handleResize()
   },
