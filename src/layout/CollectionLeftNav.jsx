@@ -60,6 +60,11 @@ var CollectionLeftNav = createReactClass({
     window.location = url
   },
 
+  closeAndSrollTop: function () {
+    this.setState({ open: false })
+    document.documentElement.scrollTop = 0
+  },
+
   dropDownOptions: function () {
     var options = []
     var collectionUrl = CollectionUrl.collectionUrl(this.props.collection)
@@ -71,7 +76,7 @@ var CollectionLeftNav = createReactClass({
       <Link
         to={collectionUrl}
         key='collectionUrlLink'
-        onClick={() => { this.setState({ open: false }) }}
+        onClick={() => { this.closeAndScrollTop }}
       >
         <MenuItem primaryText='Home' key='home' />
       </Link>
@@ -82,7 +87,7 @@ var CollectionLeftNav = createReactClass({
         <Link
           to={browseUrl}
           key='browseUrlLink'
-          onClick={() => { this.setState({ open: false }) }}
+          onClick={() => { this.closeAndScrollTop }}
         >
           <MenuItem primaryText='Browse Collection' key='browse' />
         </Link>
@@ -94,7 +99,7 @@ var CollectionLeftNav = createReactClass({
         <Link
           to={aboutUrl}
           key='aboutUrl'
-          onClick={() => { this.setState({ open: false }) }}
+          onClick={() => { }}
         >
           <MenuItem primaryText='About' key='about' />
         </Link>
@@ -107,7 +112,7 @@ var CollectionLeftNav = createReactClass({
         <Link
           to={introUrl}
           key='introUrl'
-          onClick={() => { this.setState({ open: false }) }}
+          onClick={() => { this.closeAndScrollTop }}
         >
           <MenuItem primaryText='Introduction' key='intro' />
         </Link>
@@ -121,7 +126,7 @@ var CollectionLeftNav = createReactClass({
         <Link
           to={url}
           key={siteObject.id}
-          onClick={() => { this.setState({ open: false }) }}
+          onClick={() => { this.closeAndScrollTop }}
         >
           <MenuItem
             primaryText={name}

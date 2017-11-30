@@ -25,6 +25,10 @@ var SearchPagination = createReactClass({
     }
   },
 
+  scrollToTop: function () {
+    document.documentElement.scrollTop = 0
+  },
+
   pageLink: function (i) {
     if (SearchStore.start === (i - 1) * SearchStore.rowLimit) {
       return (
@@ -33,7 +37,12 @@ var SearchPagination = createReactClass({
     } else {
       var searchUrl = SearchStore.searchUri({ start: (i - 1) * SearchStore.rowLimit }) + '&compact=' + this.props.compact
       return (
-        <Link to={searchUrl} style={this.paginationButton()} key={i}>{i}</Link>
+        <Link
+          to={searchUrl}
+          style={this.paginationButton()}
+          key={i}
+          onClick={this.scrollToTop}
+        >{i}</Link>
       )
     }
   },
@@ -43,7 +52,11 @@ var SearchPagination = createReactClass({
     // if not first page
     if (SearchStore.start != 0) {
       var backLink = SearchStore.searchUri({ start: 0 }) + '&compact=' + this.props.compact
-      nodes.push((<Link to={backLink} key='back'> <i className='material-icons' style={{ fontSize: '1em' }}>arrow_back</i> </Link>))
+      nodes.push((<Link
+        to={backLink}
+        key='back'
+        onClick={this.scrollToTop}
+      > <i className='material-icons' style={{ fontSize: '1em' }}>arrow_back</i> </Link>))
     }
     var last = Math.floor(SearchStore.found / SearchStore.rowLimit)
     var cappedFirst = Math.max(1, Math.floor(SearchStore.start / SearchStore.rowLimit) - 2)
@@ -59,8 +72,15 @@ var SearchPagination = createReactClass({
 
     // if not last page
     if (SearchStore.start + SearchStore.rowLimit < SearchStore.found) {
-      var forwardLink = SearchStore.searchUri({ start: SearchStore.rowLimit * (last - 1) }) + '&compact=' + this.props.compact
-      nodes.push((<Link to={forwardLink} key='next'> <i className='material-icons' style={{ fontSize: '1em' }}>arrow_forward</i> </Link>))
+      var forwardLink = SearchStore.searchUri({
+        start: SearchStore.rowLimit * (last - 1) }) +
+        '&compact=' + this.props.compact
+      nodes.push((
+        <Link
+          to={forwardLink}
+          key='next'
+          onClick={this.scrollToTop}
+        > <i className='material-icons' style={{ fontSize: '1em' }}>arrow_forward</i> </Link>))
     }
     return nodes
   },

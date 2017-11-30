@@ -65,10 +65,17 @@ var PreviewLink = createReactClass({
     )
   },
 
+  scrollToTop: function () {
+    document.documentElement.scrollTop = 0
+  },
+
   render: function () {
     var url = CollectionUrl.collectionObjectUrl(this.props.siteObject)
     return (
-      <Link to={url}>
+      <Link
+        to={url}
+        onClick={this.scrollToTop}
+      >
         <MediaQuery minWidth={850}>
           <MediaQuery minWidth={1500}>
             { this.getCard('wide') }
