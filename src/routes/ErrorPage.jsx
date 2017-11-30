@@ -1,17 +1,16 @@
 import React from 'react'
 import createReactClass from 'create-react-class'
+const PageHeader = require('../layout/PageHeader.jsx')
+const PageContent = require('../layout/PageContent.jsx')
+const PageTitle = require('../modules/PageTitle.js')
 
-var PageHeader = require('../layout/PageHeader.jsx')
-var PageContent = require('../layout/PageContent.jsx')
-var PageTitle = require('../modules/PageTitle.js')
-
-var ErrorPage = createReactClass({
+const ErrorPage = createReactClass({
   componentWillMount () {
     PageTitle('Page Not Found')
   },
 
   render: function () {
-    var url = window.location.origin
+    const url = window.location.origin
     return (
       <div>
         <PageHeader branding />

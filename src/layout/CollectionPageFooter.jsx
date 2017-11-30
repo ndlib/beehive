@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Paper } from 'material-ui'
 import { Link } from 'react-router-dom'
-var MediaQuery = require('react-responsive')
+const MediaQuery = require('react-responsive')
 
-var CollectionPageFooter = createReactClass({
+const CollectionPageFooter = createReactClass({
 
   propTypes: {
     height: PropTypes.number,

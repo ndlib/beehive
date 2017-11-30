@@ -1,9 +1,7 @@
-
 import React from 'react'
-import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 
-var Layout = createReactClass({
+const Layout = createReactClass({
   render: function () {
     return (
       <div>
@@ -13,5 +11,4 @@ var Layout = createReactClass({
   },
 })
 
-// each file will export exactly one component
 module.exports = Layout

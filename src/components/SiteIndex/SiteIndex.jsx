@@ -1,16 +1,14 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-var SiteIndexHeader = require('./SiteIndexHeader.jsx')
-var BrandBar = require('../../layout/BrandBar.jsx')
-var PageContent = require('../../layout/PageContent.jsx')
-var CollectionsList = require('./CollectionsList.jsx')
-var IndexPageFooter = require('../../layout/IndexPageFooter.jsx')
-
+const SiteIndexHeader = require('./SiteIndexHeader.jsx')
+const BrandBar = require('../../layout/BrandBar.jsx')
+const PageContent = require('../../layout/PageContent.jsx')
+const CollectionsList = require('./CollectionsList.jsx')
+const IndexPageFooter = require('../../layout/IndexPageFooter.jsx')
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
-var SiteIndex = createReactClass({
+const SiteIndex = createReactClass({
   propTypes: {
     collections: PropTypes.oneOfType([
       PropTypes.string,
@@ -75,5 +73,4 @@ var SiteIndex = createReactClass({
 
 })
 
-// each file will export exactly one component
 module.exports = SiteIndex

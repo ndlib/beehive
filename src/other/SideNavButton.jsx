@@ -6,7 +6,7 @@ import { FlatButton, FontIcon } from 'material-ui'
 
 const CurrentTheme = require('../modules/CurrentTheme.jsx')
 
-var SideNavButton = createReactClass({
+const SideNavButton = createReactClass({
   propTypes: {
     href: PropTypes.string,
     onMouseDown: PropTypes.func,
@@ -46,8 +46,8 @@ var SideNavButton = createReactClass({
   },
 
   buttonStyles: function () {
-    var hovered = (this.state.hovered || this.state.isKeyboardFocused)
-    var styles = {
+    const hovered = (this.state.hovered || this.state.isKeyboardFocused)
+    let styles = {
       top: (this.props.offsetTop - 30) + 'px',
       opacity: hovered ? '1' : '0.7',
       backgroundColor: hovered ? CurrentTheme.getCurrentPallette(this.context.muiTheme).accent3Color : CurrentTheme.getCurrentPallette(this.context.muiTheme).accent3Color,
@@ -73,9 +73,9 @@ var SideNavButton = createReactClass({
   },
 
   iconStyles: function () {
-    var hovered = (this.state.hovered || this.state.isKeyboardFocused)
+    const hovered = (this.state.hovered || this.state.isKeyboardFocused)
 
-    var styles = {
+    let styles = {
       color: hovered ? CurrentTheme.getCurrentPallette(this.context.muiTheme).textColor : CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor,
       fontSize: '25px',
       position: 'absolute',

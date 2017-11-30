@@ -1,17 +1,21 @@
-
 import React from 'react'
-import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Card, CardTitle, CardMedia } from 'material-ui'
-var MediaQuery = require('react-responsive')
+const MediaQuery = require('react-responsive')
 
-var SiteIndexHeader = createReactClass({
-
+const SiteIndexHeader = createReactClass({
   render: function () {
     return (
       <div>
         <MediaQuery minWidth={650}>
-          <Card style={{ height:'40vh', position:'relative', marginTop:'50px', left:'0', right:'0' }} className='heightFix' >
+          <Card
+            style={{
+              height:'40vh',
+              position:'relative',
+              marginTop:'50px',
+              left:'0',
+              right:'0' }}
+            className='heightFix' >
             <CardMedia className='collectionscover'
               style={{ height:'100%' }}
               overlayContentStyle={{ background:'transparent', position:'static' }}
@@ -20,7 +24,7 @@ var SiteIndexHeader = createReactClass({
                 title='Digital Collections'
                 titleStyle={{
                   height:'0',
-                  backgroundImage: 'url(' + '/images/dec.logo.svg' + ')',
+                  backgroundImage: 'url(/images/dec.logo.svg)',
                   backgroundSize:'cover',
                   backgroundRepeat:'none',
                   overflow:'hidden',
@@ -33,7 +37,7 @@ var SiteIndexHeader = createReactClass({
                 subtitle='Powered by HoneyComb'
                 subtitleStyle={{
                   height:'0',
-                  backgroundImage: 'url(' + '/images/powered.png' + ')',
+                  backgroundImage: 'url(/images/powered.png)',
                   backgroundSize:'cover',
                   overflow:'hidden',
                   position:'absolute',
@@ -58,7 +62,7 @@ var SiteIndexHeader = createReactClass({
                 title='Digital Exhibits and Collections'
                 titleStyle={{
                   height:'0',
-                  backgroundImage: 'url(' + '/images/dec.logo.svg' + ')',
+                  backgroundImage: 'url(/images/dec.logo.svg)',
                   backgroundSize:'cover',
                   backgroundRepeat:'none',
                   overflow:'hidden',

@@ -1,9 +1,7 @@
-
 import React from 'react'
-import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 
-var MoreOverlay = createReactClass({
+const MoreOverlay = createReactClass({
 
   style: function () {
     return {

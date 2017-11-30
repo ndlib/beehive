@@ -1,14 +1,12 @@
-
 import React from 'react'
 import createReactClass from 'create-react-class'
-var Details = require('../display/Details.jsx')
-var ConfigurationActions = require('../actions/ConfigurationActions.js')
-var ConfigurationStore = require('../store/ConfigurationStore.js')
-
+const Details = require('../display/Details.jsx')
+const ConfigurationActions = require('../actions/ConfigurationActions.js')
+const ConfigurationStore = require('../store/ConfigurationStore.js')
 const LoadRemote = require('../modules/LoadRemote.jsx')
 const CollectionUrl = require('../modules/CollectionUrl.jsx')
 
-var PrintableMetadata = createReactClass({
+const PrintableMetadata = createReactClass({
 
   componentWillMount: function () {
     ConfigurationStore.addChangeListener(this.configurationLoaded)
@@ -26,7 +24,7 @@ var PrintableMetadata = createReactClass({
     })
 
     if (item['isPartOf/collection']) {
-      var collectionUrl = item['isPartOf/collection']
+      const collectionUrl = item['isPartOf/collection']
       LoadRemote.loadRemoteCollection(collectionUrl, this.setValues.bind(this))
     } else {
       this.setState({ 'configurationLoaded': true })

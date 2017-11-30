@@ -1,14 +1,13 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Card, CardMedia, CardTitle, FloatingActionButton, FontIcon } from 'material-ui'
 import { Link } from 'react-router-dom'
-var HoneycombImage = require('../other/HoneycombImage.jsx')
-var MediaQuery = require('react-responsive')
+const HoneycombImage = require('../other/HoneycombImage.jsx')
+const MediaQuery = require('react-responsive')
 const CollectionUrl = require('../modules/CollectionUrl.jsx')
 
-var PreviewLink = createReactClass({
+const PreviewLink = createReactClass({
   propTypes: {
     siteObject: PropTypes.object,
   },
@@ -27,7 +26,7 @@ var PreviewLink = createReactClass({
     this.setState({ hover: false })
   },
 
-  style: function (media) {
+  style: function () {
     return {
       position: 'fixed',
       bottom: '60px',
@@ -70,7 +69,7 @@ var PreviewLink = createReactClass({
   },
 
   render: function () {
-    var url = CollectionUrl.collectionObjectUrl(this.props.siteObject)
+    const url = CollectionUrl.collectionObjectUrl(this.props.siteObject)
     return (
       <Link
         to={url}

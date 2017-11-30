@@ -1,16 +1,14 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Card, CardActions, CardMedia, CardTitle, FloatingActionButton, FontIcon, Paper } from 'material-ui'
 import { Link } from 'react-router-dom'
-var ConfigurationActions = require('../../actions/ConfigurationActions.js')
-var Loading = require('../../other/Loading.jsx')
+const Loading = require('../../other/Loading.jsx')
 
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 
-var CollectionShow = createReactClass({
+const CollectionShow = createReactClass({
   propTypes: {
     collection: PropTypes.object.isRequired,
   },
@@ -24,13 +22,13 @@ var CollectionShow = createReactClass({
   },
 
   image: function () {
-    var space = ' '
-    var re = new RegExp(space, 'g')
+    const space = ' '
+    const re = new RegExp(space, 'g')
     return this.props.collection.image['thumbnail/medium'].contentUrl.replace(re, '%20')
   },
 
   startUrl: function () {
-    var url = CollectionUrl.introUrl(this.props.collection)
+    let url = CollectionUrl.introUrl(this.props.collection)
 
     if (!url) {
       url = CollectionUrl.startSitePathUrl(this.props.collection)
@@ -65,7 +63,7 @@ var CollectionShow = createReactClass({
 
   cardMediaSection: function () {
     if (this.props.collection.image) {
-      var cardTitle = (null)
+      let cardTitle = (null)
       if (this.props.collection.display_page_title) {
         cardTitle = (<CardTitle
           title={this.props.collection.name_line_1}

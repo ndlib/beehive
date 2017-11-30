@@ -1,6 +1,6 @@
-var keyMirror = require('keymirror')
+const keyMirror = require('keymirror')
 
-var SearchActionTypes = keyMirror({
+const SearchActionTypes = keyMirror({
   SEARCH_LOAD_RESULTS: null,
   SEARCH_RELOAD_RESULTS: null,
   SEARCH_SET_SORT: null,

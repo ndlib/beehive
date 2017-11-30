@@ -14,7 +14,7 @@ import AboutPage from './AboutPage.jsx'
 import PagesPage from './PagesPage.jsx'
 import PrintableMetadata from './PrintableMetadata.jsx'
 
-var ga = require('react-ga')
+const ga = require('react-ga')
 ga.initialize('UA-2118378-44')
 
 function logPageView () {

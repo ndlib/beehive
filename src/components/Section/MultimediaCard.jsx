@@ -1,10 +1,9 @@
-
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { CardMedia, CardTitle, CardText } from 'material-ui'
 import CardCaption from './CardCaption.jsx'
 
-var style = {
+const style = {
   title: function () {
     return {
       color: 'lightgrey',
@@ -24,10 +23,6 @@ var style = {
 }
 
 class MultimediaCard extends Component {
-  constructor (props) {
-    super(props)
-  }
-
   image () {
     if (this.props.section.item.multimedia['@type'] === 'AudioObject') {
       return (
@@ -41,7 +36,10 @@ class MultimediaCard extends Component {
       )
     } else {
       return (
-        <img style={{ width: 'auto' }} src={this.props.section.item.multimedia.thumbnailUrl} />
+        <img
+          style={{ width: 'auto' }}
+          src={this.props.section.item.multimedia.thumbnailUrl}
+        />
       )
     }
   }

@@ -1,14 +1,11 @@
-
 import React from 'react'
-import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
+const PageHeader = require('../../layout/PageHeader.jsx')
+const PageContent = require('../../layout/PageContent.jsx')
 
-var PageHeader = require('../../layout/PageHeader.jsx')
-var PageContent = require('../../layout/PageContent.jsx')
-
-var ErrorPage = createReactClass({
+const ErrorPage = createReactClass({
   render: function () {
-    var url = window.location.origin
+    const url = window.location.origin
     return (
       <div>
         <PageHeader branding />

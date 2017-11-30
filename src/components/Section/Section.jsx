@@ -1,24 +1,19 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-
-var EventEmitter = require('../../middleware/EventEmitter.js')
-var SectionShow = require('./SectionShow.jsx')
-var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
-var PageContent = require('../../layout/PageContent.jsx')
-var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
-var ConfigurationActions = require('../../actions/ConfigurationActions.js')
-var ConfigurationStore = require('../../store/ConfigurationStore.js')
-var Loading = require('../../other/Loading.jsx')
-var PageTitle = require('../../modules/PageTitle.js')
-
+const SectionShow = require('./SectionShow.jsx')
+const CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
+const PageContent = require('../../layout/PageContent.jsx')
+const CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
+const ConfigurationActions = require('../../actions/ConfigurationActions.js')
+const ConfigurationStore = require('../../store/ConfigurationStore.js')
+const Loading = require('../../other/Loading.jsx')
+const PageTitle = require('../../modules/PageTitle.js')
 const BrowserUtils = require('../../modules/BrowserUtils.jsx')
 const LoadRemote = require('../../modules/LoadRemote.jsx')
+const showcaseTitleHeight = 56
 
-var showcaseTitleHeight = 56
-
-var Section = createReactClass({
+const Section = createReactClass({
   propTypes: {
     collection: PropTypes.string,
     section: PropTypes.string,
@@ -111,7 +106,7 @@ var Section = createReactClass({
     } else {
       sectionShow = (<Loading />)
     }
-    var header
+    let header
     if (!BrowserUtils.mobile()) {
       header = (<CollectionPageHeader collection={this.state.collection} />)
     }
@@ -127,5 +122,4 @@ var Section = createReactClass({
   },
 })
 
-// each file will export exactly one component
 module.exports = Section

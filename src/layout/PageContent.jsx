@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Paper } from 'material-ui'
 
-var PageContent = createReactClass({
+const PageContent = createReactClass({
   propTypes: {
     fluidLayout: PropTypes.bool,
   },

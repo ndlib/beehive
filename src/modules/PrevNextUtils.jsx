@@ -1,4 +1,4 @@
-var PrevNext = {
+const PrevNext = {
   buttonStyles: function (offsetTop, bgColor) {
     if (offsetTop) {
       return {

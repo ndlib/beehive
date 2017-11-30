@@ -4,14 +4,14 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Snackbar } from 'material-ui'
 
-var AttentionHelp = createReactClass({
+const AttentionHelp = createReactClass({
 
   propTypes: {
     hasScrolled: PropTypes.bool,
   },
 
   getInitialState: function () {
-    var state = {
+    const state = {
       elapsed: false,
       open: true,
     }
@@ -36,7 +36,7 @@ var AttentionHelp = createReactClass({
   },
 
   render: function () {
-    var snackbar = (<div />)
+    let snackbar = (<div />)
     if (!this.props.hasScrolled && this.state.elapsed && this.state.open) {
       snackbar = (
         <div id='attentionHelp'>

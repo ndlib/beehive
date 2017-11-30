@@ -2,19 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Card, CardText, CardTitle } from 'material-ui'
-var MediaQuery = require('react-responsive')
-var Showdown = require('showdown')
+const MediaQuery = require('react-responsive')
 
-var converter = new Showdown.Converter()
-
-var ShowcaseTitleCard = createReactClass({
+const ShowcaseTitleCard = createReactClass({
   propTypes: {
     showcase: PropTypes.object.isRequired,
     height: PropTypes.number,
   },
 
   outerStyle: function () {
-    var style = {
+    let style = {
       display: 'inline-block',
       verticalAlign: 'top',
       position: 'relative',
@@ -34,9 +31,9 @@ var ShowcaseTitleCard = createReactClass({
   },
 
   headerStyle: function () {
-    var marginTop
+    let marginTop
     if (this.props.height) {
-      var marginTop = Math.round(this.props.height * 0.15) + 'px'
+      marginTop = Math.round(this.props.height * 0.15) + 'px'
     }
     return {
       marginTop: marginTop,
@@ -77,7 +74,7 @@ var ShowcaseTitleCard = createReactClass({
   },
 
   names: function () {
-    var names = []
+    let names = []
     names.push(
       <h2 className='showcase-name-1' key={1}>{this.props.showcase.name_line_1}</h2>
     )
@@ -97,7 +94,7 @@ var ShowcaseTitleCard = createReactClass({
   },
 
   render: function () {
-    var description
+    let description
     if (this.props.showcase.description) {
       description = this.props.showcase.description.toString()
     }
@@ -117,23 +114,6 @@ var ShowcaseTitleCard = createReactClass({
           </CardText>
         </MediaQuery>
       </Card>
-    )
-    return (
-      <div className='showcase-title-page' style={this.outerStyle()}>
-        <div className='showcase-title-page-inner'>
-          <div className='showcase-title-container' style={this.headerStyle()}>
-            {this.names()}
-          </div>
-          <br />
-          <div className='showcase-title-description-container'>
-            <div className='showcase-title-description'>{description}</div>
-          </div>
-          <div className='showcase-controlls'>
-            <img src='/images/touch.svg' className='touch' alt='Swipe Left or Right' title='Swipe Left or Right' />
-            <img src='/images/scroll.svg' className='scroll' alt='Scroll with the Mouse Wheel' title='Scroll with the Mouse Wheel' />
-          </div>
-        </div>
-      </div>
     )
   },
 })

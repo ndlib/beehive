@@ -3,12 +3,10 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Card, CardActions, CardMedia, CardText, CardTitle, FlatButton } from 'material-ui'
 import { Link } from 'react-router-dom'
-var $ = require('jquery')
-var theme = require('../../themes/beehive.jsx')
-
+const $ = require('jquery')
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
-var CollectionCard = createReactClass({
+const CollectionCard = createReactClass({
   propTypes: {
     collection: PropTypes.object.isRequired,
     cardHeight: PropTypes.string.isRequired,
@@ -44,8 +42,8 @@ var CollectionCard = createReactClass({
 
   image: function () {
     if (this.props.collection.image) {
-      var space = ' '
-      var re = new RegExp(space, 'g')
+      const space = ' '
+      const re = new RegExp(space, 'g')
       return this.props.collection.image['thumbnail/medium'].contentUrl.replace(re, '%20')
     } else {
       return '/images/marble.jpg'
@@ -69,7 +67,7 @@ var CollectionCard = createReactClass({
   },
 
   cardTitle: function () {
-    var titleStyle = {
+    const titleStyle = {
       whiteSpace: 'nowrap',
       overflow: 'hidden',
       textOverflow: 'ellipsis',
@@ -81,18 +79,22 @@ var CollectionCard = createReactClass({
   },
 
   cardMedia: function () {
-    // if (this.props.collection.image) {
     return (
       <CardMedia
-        mediaStyle={{ background:'url("' + this.image() + '")', paddingBottom:'46.85%', backgroundSize:'cover', backgroundPosition:'top center', height:'100%', width:'100%', overflow: 'hidden' }}
+        mediaStyle={{
+          background:'url("' + this.image() + '")',
+          paddingBottom:'46.85%',
+          backgroundSize:'cover',
+          backgroundPosition:'top center',
+          height:'100%',
+          width:'100%',
+          overflow:
+          'hidden',
+        }}
         className='temp'
         style={{ overflow:'hidden' }}>
         <img src={this.image()} style={this.imageSize()} />
-
       </CardMedia>)
-    // } else {
-    //  return (this.cardTitle())
-    // }
   },
 
   actionButtonsStyle: function () {
@@ -121,7 +123,10 @@ var CollectionCard = createReactClass({
           {this.cardTitle()}
         </Link>
         <CardActions style={this.actionButtonsStyle()} >
-          <FlatButton label='Explore' href={CollectionUrl.collectionUrl(this.props.collection)} labelStyle={this.exploreLabelStyle()} />
+          <FlatButton
+            label='Explore'
+            href={CollectionUrl.collectionUrl(this.props.collection)}
+            labelStyle={this.exploreLabelStyle()} />
         </CardActions>
       </Card>
 

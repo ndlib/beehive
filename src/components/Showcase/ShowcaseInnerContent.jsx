@@ -1,19 +1,17 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
+const ShowcaseTitleCard = require('./ShowcaseTitleCard.jsx')
+const ShowcaseSections = require('./ShowcaseSections.jsx')
 
-var ShowcaseTitleCard = require('./ShowcaseTitleCard.jsx')
-var ShowcaseSections = require('./ShowcaseSections.jsx')
-
-var ShowcaseInnerContent = createReactClass({
+const ShowcaseInnerContent = createReactClass({
   propTypes: {
     showcase: PropTypes.object,
     height: PropTypes.number.isRequired,
   },
 
   style: function () {
-    var style = {
+    const style = {
       position: 'absolute',
       height: this.props.height + 'px',
       top: 0,

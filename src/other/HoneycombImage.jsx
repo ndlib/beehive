@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-$ = jQuery = require('jquery')
+const $ = require('jquery')
 
-var HoneycombImage = createReactClass({
+const HoneycombImage = createReactClass({
   propTypes: {
     image: PropTypes.object,
     size: PropTypes.string,
@@ -33,15 +33,15 @@ var HoneycombImage = createReactClass({
   },
 
   altText: function () {
-    var altHtml = this.props.alt
+    const altHtml = this.props.alt
     // text() chokes on plaintext, so to ensure we have html wrap it in a div
-    var str = $('<div>' + altHtml + '</div>').text()
+    const str = $('<div>' + altHtml + '</div>').text()
     // then fix quotes
     return str.replace('"', "'")
   },
 
   render: function () {
-    var classString = 'hc-thumbnail-image ' + this.props.size
+    const classString = 'hc-thumbnail-image ' + this.props.size
     return (
       <img
         style={this.style()}
@@ -54,5 +54,4 @@ var HoneycombImage = createReactClass({
   },
 })
 
-// each file will export exactly one component
 module.exports = HoneycombImage

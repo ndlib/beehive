@@ -3,16 +3,16 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { AppBar, Paper } from 'material-ui'
 import { Link } from 'react-router-dom'
-var MediaQuery = require('react-responsive')
-var BrandBar = require('./BrandBar.jsx')
-var CollectionLeftNav = require('./CollectionLeftNav.jsx')
-var ConfigurationStore = require('../store/ConfigurationStore.js')
-var ConfigurationActions = require('../actions/ConfigurationActions.js')
-var SearchBox = require('./SearchBox.jsx')
+const MediaQuery = require('react-responsive')
+const BrandBar = require('./BrandBar.jsx')
+const CollectionLeftNav = require('./CollectionLeftNav.jsx')
+const ConfigurationStore = require('../store/ConfigurationStore.js')
+const ConfigurationActions = require('../actions/ConfigurationActions.js')
+const SearchBox = require('./SearchBox.jsx')
 const CollectionUrl = require('../modules/CollectionUrl.jsx')
 const CurrentTheme = require('../modules/CurrentTheme.jsx')
 
-var CollectionPageHeader = createReactClass({
+const CollectionPageHeader = createReactClass({
   propTypes: {
     collection: PropTypes.object.isRequired,
     branding: PropTypes.bool,
@@ -45,7 +45,7 @@ var CollectionPageHeader = createReactClass({
   },
 
   largeScreenStyle: function () {
-    var height = this.state.themeVariables.height + 1
+    let height = this.state.themeVariables.height + 1
     if (this.props.branding) {
       height += 50
     }
@@ -87,7 +87,7 @@ var CollectionPageHeader = createReactClass({
   },
 
   activeTab: function () {
-    var pageCode = window.location.pathname.split('/').slice(-1)[0].split('?')[0]
+    const pageCode = window.location.pathname.split('/').slice(-1)[0].split('?')[0]
 
     if (pageCode === 'search') {
       return 'search'
@@ -98,7 +98,7 @@ var CollectionPageHeader = createReactClass({
   },
 
   availableTabs: function () {
-    var ret = []
+    let ret = []
     if (ConfigurationStore.browseEnabled()) {
       ret.push({ label: 'Browse Collection', value: 'search' })
     }
@@ -109,7 +109,7 @@ var CollectionPageHeader = createReactClass({
   },
 
   tabs: function () {
-    var availableTabs = this.availableTabs()
+    const availableTabs = this.availableTabs()
     if (availableTabs.length > 0) {
       return (
         <div
@@ -144,7 +144,7 @@ var CollectionPageHeader = createReactClass({
   },
 
   appBarStyle: function () {
-    var style = this.baseScreenStyle()
+    let style = this.baseScreenStyle()
 
     if (this.props.branding) {
       style['top'] = '50px'
@@ -172,17 +172,18 @@ var CollectionPageHeader = createReactClass({
   },
 
   render: function () {
-    var title = (
-      <a style={{
-        textDecoration: 'none',
-        color: CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor,
-      }}
+    const title = (
+      <a
+        style={{
+          textDecoration: 'none',
+          color: CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor,
+        }}
         href={CollectionUrl.collectionUrl(this.props.collection)}>
         <h1 style={this.titleStyle()}>{this.props.collection.name_line_1}</h1>
       </a>
     )
 
-    var rightNav = (
+    const rightNav = (
       <div style={{ marginRight: '16px' }}>
         {this.searchBox()}
         <MediaQuery minWidth={650}>
@@ -241,5 +242,4 @@ var CollectionPageHeader = createReactClass({
   },
 })
 
-// each file will export exactly one component
 module.exports = CollectionPageHeader

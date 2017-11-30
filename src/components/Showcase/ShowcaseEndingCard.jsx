@@ -2,11 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Paper } from 'material-ui'
-
-var SitePathCard = require('../Collection/SitePathCard.jsx')
+const SitePathCard = require('../Collection/SitePathCard.jsx')
 const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 
-var ShowcaseEndingCard = createReactClass({
+const ShowcaseEndingCard = createReactClass({
   displayName: 'Showcase Ending',
   propTypes: {
     height: PropTypes.number.isRequired,

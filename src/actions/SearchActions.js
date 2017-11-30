@@ -1,6 +1,5 @@
-
-var AppDispatcher = require('../dispatcher/AppDispatcher.jsx')
-var SearchActionTypes = require('../constants/SearchActionTypes.jsx')
+const AppDispatcher = require('../dispatcher/AppDispatcher.jsx')
+const SearchActionTypes = require('../constants/SearchActionTypes.jsx')
 
 class SearchActions {
   // Init
@@ -53,4 +52,3 @@ class SearchActions {
   }
 }
 module.exports = new SearchActions()
-// export default SearchActions

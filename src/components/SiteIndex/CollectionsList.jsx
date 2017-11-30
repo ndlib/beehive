@@ -1,13 +1,12 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { GridList } from 'material-ui'
-var MediaQuery = require('react-responsive')
+const MediaQuery = require('react-responsive')
 
-var CollectionCard = require('./CollectionCard.jsx')
+const CollectionCard = require('./CollectionCard.jsx')
 
-var CollectionsList = createReactClass({
+const CollectionsList = createReactClass({
   displayName: 'Collections List',
 
   propTypes: {
@@ -27,9 +26,9 @@ var CollectionsList = createReactClass({
   },
 
   reverseCollection: function () {
-    var temp = []
-    var len = this.props.collections.length
-    for (var i = (len - 1); i !== -1; i--) {
+    let temp = []
+    const len = this.props.collections.length
+    for (let i = (len - 1); i !== -1; i--) {
       temp.push(this.props.collections[i])
     }
     return temp

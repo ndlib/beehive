@@ -1,7 +1,7 @@
-var HoneycombURL = require('../modules/HoneycombURL.js')
+const HoneycombURL = require('../modules/HoneycombURL.js')
 
 const introUrl = (collection) => {
-  var url
+  let url
   if (collection.description) {
     url = collectionUrl(collection) + '/intro'
   }
@@ -17,7 +17,7 @@ const browseUrl = (collection) => {
 }
 
 const startSitePathUrl = (collection) => {
-  var url
+  let url
   if (collection.site_path && collection.site_path.length > 0) {
     url = collectionObjectUrl(collection.site_path[0])
   }
@@ -29,8 +29,8 @@ const itemUrl = (item) => {
 }
 
 const collectionObjectUrl = (object) => {
-  var collectionPath = window.location.pathname.match(/(?:\/[^\/]+){2}/)
-  var typePath = ''
+  const collectionPath = window.location.pathname.match(/(?:\/[^\/]+){2}/)
+  let typePath = ''
   switch (object.additionalType) {
     case 'https://github.com/ndlib/honeycomb/wiki/Page':
       typePath = 'pages'
@@ -42,7 +42,7 @@ const collectionObjectUrl = (object) => {
       typePath = ''
       break
   }
-  var path = collectionPath +
+  const path = collectionPath +
     '/' + typePath +
     '/' + encodeURIComponent(object.id) +
     '/' + encodeURIComponent(object.slug)
@@ -50,12 +50,12 @@ const collectionObjectUrl = (object) => {
 }
 
 const sectionObjectUrl = (object) => {
-  var collectionPath = window.location.pathname.match(/(?:\/[^\/]+){5}/)
+  const collectionPath = window.location.pathname.match(/(?:\/[^\/]+){5}/)
   return collectionPath + '/sections/' + encodeURIComponent(object.id)
 }
 
 const itemObjectUrl = (object) => {
-  var collectionPath = window.location.pathname.match(/(?:\/[^\/]+){2}/)
+  const collectionPath = window.location.pathname.match(/(?:\/[^\/]+){2}/)
   return collectionPath + '/items/' + encodeURIComponent(object.id)
 }
 

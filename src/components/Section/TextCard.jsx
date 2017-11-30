@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { CardText, CardTitle } from 'material-ui'
-var MoreOverlay = require('./MoreOverlay.jsx')
+const MoreOverlay = require('./MoreOverlay.jsx')
 
-var TextCard = createReactClass({
+const TextCard = createReactClass({
   propTypes: {
     section: PropTypes.object.isRequired,
   },
@@ -39,12 +39,13 @@ var TextCard = createReactClass({
 
   showMoreLink: function () {
     if (document.getElementById(encodeURIComponent(this.props.section.name) + '-text')) {
-      var textContent = document.getElementById(encodeURIComponent(this.props.section.name) + '-text')
-      var testHeight = textContent.offsetParent.clientHeight
+      const textContent = document.getElementById(encodeURIComponent(this.props.section.name) + '-text')
+      let testHeight = textContent.offsetParent.clientHeight
       if (document.getElementById(encodeURIComponent(this.props.section.name))) {
-        testHeight -= document.getElementById(encodeURIComponent(this.props.section.name)).offsetParent.clientHeight + 15
+        testHeight -= document.getElementById(
+          encodeURIComponent(this.props.section.name)
+        ).offsetParent.clientHeight + 15
       }
-
       return (textContent.clientHeight > testHeight)
     }
     return false
@@ -58,7 +59,7 @@ var TextCard = createReactClass({
   },
 
   render: function () {
-    var title = (
+    const title = (
       <div
         id={encodeURIComponent(this.props.section.name)}
         className='sectionTitleContent'
@@ -79,5 +80,4 @@ var TextCard = createReactClass({
   },
 })
 
-// each file will export exactly one component
 module.exports = TextCard

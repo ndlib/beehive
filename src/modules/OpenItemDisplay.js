@@ -3,15 +3,15 @@ module.exports = function (id, string) {
     if (string === undefined) {
       string = 'item'
     }
-    var path = window.location.pathname
+    let path = window.location.pathname
 
     if (path.substr(-1) === '/') {
       path = path.substr(0, path.length - 1)
     }
 
-    var reg = new RegExp('(' + string + ')=.*[^&]', 'i')
-    var searchStr = window.location.search
-    var searchReg = reg.exec(searchStr)
+    const reg = new RegExp('(' + string + ')=.*[^&]', 'i')
+    let searchStr = window.location.search
+    const searchReg = reg.exec(searchStr)
 
     if (searchStr.length > 0 && searchReg === null) {
       searchStr += '&' + string + '=' + id

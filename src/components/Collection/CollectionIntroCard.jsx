@@ -1,13 +1,11 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { Card, CardMedia } from 'material-ui'
+import { Card, CardMedia, CardTitle } from 'material-ui'
 import { Link } from 'react-router-dom'
-
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
-var CollectionIntroCard = createReactClass({
+const CollectionIntroCard = createReactClass({
   propTypes: {
     collection: PropTypes.object.isRequired,
   },

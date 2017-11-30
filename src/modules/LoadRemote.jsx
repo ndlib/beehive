@@ -1,3 +1,4 @@
+const $ = require('jquery')
 const withCallback = (url, callback) => {
   $.ajax({
     type: 'GET',

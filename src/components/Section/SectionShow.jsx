@@ -1,21 +1,16 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Paper, Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui'
-var CloseButton = require('../../other/CloseButton.jsx')
-var SideNavButton = require('../../other/SideNavButton.jsx')
-
-var ItemContent = require('../Item/ItemContent.jsx')
-var SectionShowDescription = require('./SectionShowDescription.jsx')
-var SideNavButton = require('../../other/SideNavButton.jsx')
-
+const CloseButton = require('../../other/CloseButton.jsx')
+const SideNavButton = require('../../other/SideNavButton.jsx')
+const ItemContent = require('../Item/ItemContent.jsx')
+const SectionShowDescription = require('./SectionShowDescription.jsx')
 const BrowserUtils = require('../../modules/BrowserUtils.jsx')
-const LoadRemote = require('../../modules/LoadRemote.jsx')
 const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
-var SectionShow = createReactClass({
+const SectionShow = createReactClass({
   displayName: 'Section Show',
   propTypes: {
     section: PropTypes.object,
@@ -70,7 +65,7 @@ var SectionShow = createReactClass({
   },
 
   closeUrl: function () {
-    var collectionPath = window.location.pathname.match(/(?:\/[^\/]+){2}/)
+    const collectionPath = window.location.pathname.match(/(?:\/[^\/]+){2}/)
     return collectionPath[0]
   },
 
@@ -89,14 +84,21 @@ var SectionShow = createReactClass({
 
   contentSection: function () {
     if (this.props.section.item) {
-      return (<ItemContent height={this.props.height} item={this.props.section.item} additionalDetails={this.props.section.description} />)
+      return (<ItemContent
+        height={this.props.height}
+        item={this.props.section.item}
+        additionalDetails={this.props.section.description}
+      />)
     } else {
-      return (<SectionShowDescription height={this.props.height} section={this.props.section} />)
+      return (<SectionShowDescription
+        height={this.props.height}
+        section={this.props.section}
+      />)
     }
   },
 
   render: function () {
-    var prev, next, offsetTop
+    let prev, next, offsetTop
     if (this.props.height) {
       offsetTop = this.props.height / 2
     }
@@ -121,5 +123,4 @@ var SectionShow = createReactClass({
   },
 })
 
-// each file will export exactly one component
 module.exports = SectionShow

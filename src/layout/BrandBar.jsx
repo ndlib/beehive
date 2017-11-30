@@ -1,9 +1,8 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-var MediaQuery = require('react-responsive')
+const MediaQuery = require('react-responsive')
 
-var BrandBar = createReactClass({
+const BrandBar = createReactClass({
 
   render: function () {
     return (

@@ -1,15 +1,14 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { FlatButton } from 'material-ui'
-var MediaQuery = require('react-responsive')
-var Details = require('../../display/Details.jsx')
-var OpenseadragonViewer = require('../../display/OpenseadragonViewer.jsx')
-var MultimediaViewer = require('../../layout/MultimediaViewer.jsx')
 import AddReferral from '../../modules/AddReferral.js'
+const MediaQuery = require('react-responsive')
+const Details = require('../../display/Details.jsx')
+const OpenseadragonViewer = require('../../display/OpenseadragonViewer.jsx')
+const MultimediaViewer = require('../../layout/MultimediaViewer.jsx')
 
-var ItemContent = createReactClass({
+const ItemContent = createReactClass({
   displayName: 'ItemContent',
 
   propTypes: {
@@ -79,7 +78,7 @@ var ItemContent = createReactClass({
   },
 
   getHeight: function () {
-    var height = this.props.height - this.props.mediaBottom
+    let height = this.props.height - this.props.mediaBottom
     if (height < this.props.minMediaHeight) {
       height = this.props.height
     }
@@ -90,7 +89,7 @@ var ItemContent = createReactClass({
   },
 
   multimedia: function () {
-    var height
+    let height
     if (this.props.item.media['@type'] === 'AudioObject') {
       height = 40
     } else {
@@ -142,7 +141,7 @@ var ItemContent = createReactClass({
     return null
   },
   image: function () {
-    var height = this.getHeight()
+    const height = this.getHeight()
 
     if (this.state.zoom) {
       return (
@@ -185,7 +184,6 @@ var ItemContent = createReactClass({
   },
 
   render: function () {
-    var prevLink, nextLink
     if (this.props.item && this.props.item.media != null) {
       if (this.props.item.media['@type'] === 'ImageObject') {
         return (

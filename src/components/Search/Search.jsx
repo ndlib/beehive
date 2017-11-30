@@ -1,20 +1,18 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
-var PageContent = require('../../layout/PageContent.jsx')
-var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
-var SearchControls = require('./SearchControls.jsx')
-var SearchStore = require('../../store/SearchStore.js')
-var SearchActions = require('../../actions/SearchActions.js')
-var SearchDisplayList = require('./SearchDisplayList.jsx')
-var ConfigurationActions = require('../../actions/ConfigurationActions.js')
-var ConfigurationStore = require('../../store/ConfigurationStore.js')
-
+const CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
+const PageContent = require('../../layout/PageContent.jsx')
+const CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
+const SearchControls = require('./SearchControls.jsx')
+const SearchStore = require('../../store/SearchStore.js')
+const SearchActions = require('../../actions/SearchActions.js')
+const SearchDisplayList = require('./SearchDisplayList.jsx')
+const ConfigurationActions = require('../../actions/ConfigurationActions.js')
+const ConfigurationStore = require('../../store/ConfigurationStore.js')
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
-var Search = createReactClass({
+const Search = createReactClass({
   propTypes: {
     compact: PropTypes.bool,
     hits: PropTypes.oneOfType([
@@ -93,7 +91,7 @@ var Search = createReactClass({
     })
 
     // if(reason === "load") {
-    //   var path = window.location.origin + SearchStore.searchUri() + currentItem
+    //   let path = window.location.origin + SearchStore.searchUri() + currentItem
     //   path += "&compact=" + this.props.compact
     //   window.history.replaceState({ store: SearchStore.getQueryParams() }, '', path)
 
@@ -107,7 +105,14 @@ var Search = createReactClass({
   // Callback from loadremotecollection when remote collection is loaded
   setValues: function (collection) {
     ConfigurationActions.load(collection)
-    SearchActions.loadSearchResults(collection, this.props.hits, this.props.searchTerm, this.facetObject(), this.props.sortTerm, this.props.start, this.props.view)
+    SearchActions.loadSearchResults(
+      collection,
+      this.props.hits,
+      this.props.searchTerm,
+      this.facetObject(),
+      this.props.sortTerm,
+      this.props.start,
+      this.props.view)
     return true
   },
 
@@ -119,12 +124,12 @@ var Search = createReactClass({
 
   // Translates the facet option given in props to the structure the SearchStore expects.
   facetObject: function () {
-    var facets
+    let facets
     if (this.props.facet) {
       facets = []
-      for (var i = 0; i < this.props.facet.length; i++) {
-        var facetKey = Object.keys(this.props.facet[i])[0]
-        var facetValue = Object.keys(this.props.facet[i])[1]
+      for (let i = 0; i < this.props.facet.length; i++) {
+        const facetKey = Object.keys(this.props.facet[i])[0]
+        const facetValue = Object.keys(this.props.facet[i])[1]
         facets.push({
           name: this.props.facet[i][facetKey],
           value: this.props.facet[i][facetValue],

@@ -1,6 +1,6 @@
-var AppDispatcher = require('../dispatcher/AppDispatcher.jsx')
-var StoreEventEmitter = require('../middleware/StoreEventEmitter.js')
-var ActionTypes = require('../constants/ConfigurationActionTypes.jsx')
+const AppDispatcher = require('../dispatcher/AppDispatcher.jsx')
+const StoreEventEmitter = require('../middleware/StoreEventEmitter.js')
+const ActionTypes = require('../constants/ConfigurationActionTypes.jsx')
 
 class ConfigurationStore extends StoreEventEmitter {
   constructor () {

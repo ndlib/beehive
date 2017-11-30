@@ -3,17 +3,16 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Link } from 'react-router-dom'
 import { Card, CardTitle, CardMedia } from 'material-ui'
-var ItemImage = require('./ItemImage.jsx')
-
+const ItemImage = require('./ItemImage.jsx')
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
-var GridItem = createReactClass({
+const GridItem = createReactClass({
   propTypes: {
     item: PropTypes.object.isRequired,
   },
 
   mediaOverlay: function () {
-    var name = (
+    const name = (
       <span style={{ fontFamily: 'GPCMed' }}>
         { this.props.item.name }
       </span>
@@ -31,7 +30,13 @@ var GridItem = createReactClass({
 
   manifestIcon: function (item) {
     if (item.metadata && item.metadata.manuscript_url) {
-      return (<img src='/images/pt.icon.drk.png' className='manuscript-icon' alt='Manifest Available' title='Manifest Available' style={{ position: 'absolute', right: '0', top: '0', maxWidth: '15%' }} />)
+      return (<img
+        src='/images/pt.icon.drk.png'
+        className='manuscript-icon'
+        alt='Manifest Available'
+        title='Manifest Available'
+        style={{ position: 'absolute', right: '0', top: '0', maxWidth: '15%',
+        }} />)
     }
     return null
   },
@@ -42,7 +47,6 @@ var GridItem = createReactClass({
         <Card
           style={{ cursor: 'pointer', position: 'relative' }}
         >
-
           { this.cardMedia() }
           {this.manifestIcon(this.props.item)}
         </Card>

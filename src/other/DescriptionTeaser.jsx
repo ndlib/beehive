@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 
-var DescriptionTeaser = createReactClass({
+const DescriptionTeaser = createReactClass({
   displayName: 'Teaser Text',
 
   propTypes: {
@@ -17,9 +17,11 @@ var DescriptionTeaser = createReactClass({
   },
 
   render: function () {
-    var trimmedDescription = this.props.description
     return (
-      <div className='item-description' dangerouslySetInnerHTML={{ __html: trimmedDescription }} style={this.style()} />
+      <div
+        className='item-description'
+        dangerouslySetInnerHTML={{ __html: this.props.description }}
+        style={this.style()} />
     )
   },
 })

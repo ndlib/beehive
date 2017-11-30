@@ -2,10 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Paper } from 'material-ui'
+const MediaQuery = require('react-responsive')
 
-var MediaQuery = require('react-responsive')
-
-var PagesShow = createReactClass({
+const PagesShow = createReactClass({
   propTypes: {
     title: PropTypes.string,
     content: PropTypes.oneOfType([
@@ -22,7 +21,7 @@ var PagesShow = createReactClass({
   },
 
   contentStyle: function (media) {
-    var style = {
+    let style = {
       fontSize: '16px',
       maxWidth: '32.5em', // Should put it between 70-75 characters at 1em (16px)
       margin: '0 auto 60px',
@@ -35,6 +34,7 @@ var PagesShow = createReactClass({
 
   paperStyle: function (media) {
     switch (media) {
+      default:
       case 'wide':
       case 'medium':
         return {
@@ -59,7 +59,7 @@ var PagesShow = createReactClass({
   },
 
   getPaper: function (media) {
-    var pageName
+    let pageName
     if (this.props.title) {
       pageName = (<h2 style={this.headerStyle()} >{this.props.title}</h2>)
     }

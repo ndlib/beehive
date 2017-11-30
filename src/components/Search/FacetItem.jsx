@@ -1,11 +1,11 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { ListItem, FontIcon } from 'material-ui'
-var SearchStore = require('../../store/SearchStore.js')
-var SearchActions = require('../../actions/SearchActions.js')
-var FacetItem = createReactClass({
+const SearchStore = require('../../store/SearchStore.js')
+const SearchActions = require('../../actions/SearchActions.js')
+
+const FacetItem = createReactClass({
 
   propTypes: {
     field: PropTypes.string.isRequired,
@@ -13,9 +13,9 @@ var FacetItem = createReactClass({
   },
 
   valueOnClick: function (e) {
-    var values = e.currentTarget.getAttribute('value').split('|')
+    const values = e.currentTarget.getAttribute('value').split('|')
     if (SearchStore.facetOption) {
-      for (var i = 0; i < SearchStore.facetOption.length; i++) {
+      for (let i = 0; i < SearchStore.facetOption.length; i++) {
         if (SearchStore.facetOption[i].name === values[0] && SearchStore.facetOption[i].value === values[1]) {
           SearchStore.removeSelectedFacet({ name: values[0], value: values[1] })
           return
@@ -27,7 +27,7 @@ var FacetItem = createReactClass({
 
   isSelected: function () {
     if (SearchStore.facetOption) {
-      for (var i = 0; i < SearchStore.facetOption.length; i++) {
+      for (let i = 0; i < SearchStore.facetOption.length; i++) {
         if (this.props.facet.name === decodeURIComponent(SearchStore.facetOption[i].value)) {
           return true
         }
@@ -56,7 +56,12 @@ var FacetItem = createReactClass({
     return (
       <ListItem
         key={this.props.facet.name}
-        primaryText={<span style={{ marginLeft:'30px', display: 'inline-block', maxWidth: 'calc(100% - 60px)' }}>{this.props.facet.name}</span>}
+        primaryText={<span
+          style={{
+            marginLeft:'30px',
+            display: 'inline-block',
+            maxWidth: 'calc(100% - 60px)',
+          }}>{this.props.facet.name}</span>}
         secondaryText={'(' + this.props.facet.count + ')'}
         value={this.props.field + '|' + this.props.facet.name}
         onClick={this.valueOnClick}

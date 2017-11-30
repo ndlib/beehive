@@ -6,7 +6,7 @@ import { Link } from 'react-router'
 const PrevNext = require('../modules/PrevNextUtils.jsx')
 const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 
-var PreviousModal = createReactClass({
+const PreviousModal = createReactClass({
   displayName: 'Previous Modal Link',
 
   propTypes: {
@@ -24,7 +24,7 @@ var PreviousModal = createReactClass({
     }
   },
   render: function () {
-    var id = this.props.id
+    const id = this.props.id
     return (
       <Link
         to={this.props.url}

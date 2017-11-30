@@ -1,49 +1,44 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Divider } from 'material-ui'
+const MetadataString = require('./MetadataString.jsx')
+const MetadataDate = require('./MetadataDate.jsx')
+const MetadataHTML = require('./MetadataHTML.jsx')
+const MetadataText = require('./MetadataText.jsx')
 
-var MetadataString = require('./MetadataString.jsx')
-var MetadataDate = require('./MetadataDate.jsx')
-var MetadataHTML = require('./MetadataHTML.jsx')
-var MetadataText = require('./MetadataText.jsx')
-
-var fieldTypeMap = {
+const fieldTypeMap = {
   MetadataString: MetadataString,
   MetadataDate: MetadataDate,
   MetadataHTML: MetadataHTML,
   MetadataText: MetadataText,
 }
 
-var Styles = {
+const Styles = {
   fieldName: {
     fontSize: '14pt',
   },
-  fieldValue: {
-
-  },
+  fieldValue: {},
   divider: {
     marginTop: '3px',
     marginBottom: '8px',
   },
 }
 
-var MetadataItem = createReactClass({
+const MetadataItem = createReactClass({
   displayName: 'Metadata Item',
-
   propTypes: {
     metadata: PropTypes.object.isRequired,
   },
 
-  value: function (metadata_field, index) {
-    var MetadataComponent = fieldTypeMap[metadata_field['@type']]
-    return (<MetadataComponent key={index} metadata_field={metadata_field} />)
+  value: function (metadataField, index) {
+    const MetadataComponent = fieldTypeMap[metadataField['@type']]
+    return (<MetadataComponent key={index} metadataField={metadataField} />)
   },
 
   map_arrays_to_values: function () {
-    return this.props.metadata.values.map(function (metadata_field, index) {
-      return this.value(metadata_field, index)
+    return this.props.metadata.values.map(function (metadataField, index) {
+      return this.value(metadataField, index)
     }, this)
   },
 

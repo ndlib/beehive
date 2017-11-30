@@ -1,14 +1,12 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Link } from 'react-router-dom'
 import { Divider, ListItem } from 'material-ui'
-var ItemImage = require('./ItemImage.jsx')
-
+const ItemImage = require('./ItemImage.jsx')
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
-var MyListItem = createReactClass({
+const MyListItem = createReactClass({
   propTypes: {
     item: PropTypes.object.isRequired,
   },
@@ -39,7 +37,12 @@ var MyListItem = createReactClass({
 
   manifestIcon: function (item) {
     if (item.metadata && item.metadata.manuscript_url) {
-      return (<img src='/images/pt.icon.drk.png' className='manuscript-icon' alt='Manifest Available' title='Manifest Available' />)
+      return (<img
+        src='/images/pt.icon.drk.png'
+        className='manuscript-icon'
+        alt='Manifest Available'
+        title='Manifest Available'
+      />)
     }
     return null
   },

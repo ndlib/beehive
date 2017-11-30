@@ -1,9 +1,8 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 
-var ShowcaseBackground = createReactClass({
+const ShowcaseBackground = createReactClass({
   propTypes: {
     showcase: PropTypes.object.isRequired,
     height: PropTypes.number.isRequired,
@@ -17,7 +16,7 @@ var ShowcaseBackground = createReactClass({
   },
 
   style: function () {
-    var backgroundImage
+    let backgroundImage
     if (this.props.showcase.image) {
       backgroundImage = 'url("' + this.props.showcase.image.contentUrl + '")'
     }

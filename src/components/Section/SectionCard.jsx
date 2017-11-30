@@ -1,16 +1,14 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Card } from 'material-ui'
-var TextCard = require('./TextCard.jsx')
-var ImageCard = require('./ImageCard.jsx')
-var MultimediaCard = require('./MultimediaCard.jsx')
 import { Link } from 'react-router-dom'
-
+const TextCard = require('./TextCard.jsx')
+const ImageCard = require('./ImageCard.jsx')
+const MultimediaCard = require('./MultimediaCard.jsx')
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
-var SectionCard = createReactClass({
+const SectionCard = createReactClass({
   propTypes: {
     section: PropTypes.object.isRequired,
     height: PropTypes.number.isRequired,
@@ -25,7 +23,7 @@ var SectionCard = createReactClass({
   },
 
   style: function () {
-    var styles = {
+    let styles = {
       display: 'inline-block',
       verticalAlign: 'top',
       position: 'relative',
@@ -61,22 +59,24 @@ var SectionCard = createReactClass({
     switch (this.sectionType()) {
       case 'image':
         return (<ImageCard section={this.props.section} />)
-        break
       case 'text':
         return (<TextCard section={this.props.section} />)
-        break
       case 'multimedia':
         return (<MultimediaCard section={this.props.section} />)
-        break
       default:
         return (<div />)
-        break
     }
   },
 
   manifestIcon: function (item) {
     if (item && item.metadata && item.metadata.manuscript_url) {
-      return (<img src='/images/pt.icon.drk.png' className='manuscript-icon' alt='Manifest Available' title='Manifest Available' style={{ position: 'absolute', right: '0', top: '0', maxWidth: '10%', height: 'auto' }} />)
+      return (<img
+        src='/images/pt.icon.drk.png'
+        className='manuscript-icon'
+        alt='Manifest Available'
+        title='Manifest Available'
+        style={{ position: 'absolute', right: '0', top: '0', maxWidth: '10%', height: 'auto',
+        }} />)
     }
     return null
   },
@@ -93,5 +93,4 @@ var SectionCard = createReactClass({
   },
 })
 
-// each file will export exactly one component
 module.exports = SectionCard

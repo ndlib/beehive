@@ -1,12 +1,11 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
+const ListItem = require('./ListItem.jsx')
+const GridItem = require('./GridItem.jsx')
+const $ = require('jquery')
 
-var ListItem = require('./ListItem.jsx')
-var GridItem = require('./GridItem.jsx')
-
-var ItemListItem = createReactClass({
+const ItemListItem = createReactClass({
   propTypes: {
     item: PropTypes.object.isRequired,
     view: PropTypes.string,
@@ -16,7 +15,6 @@ var ItemListItem = createReactClass({
     return {
       fullItem: {},
       itemLoaded: false,
-
     }
   },
 
@@ -34,7 +32,9 @@ var ItemListItem = createReactClass({
           }
         )
       },
-      error: function (request, status, thrownError) {},
+      error: function (request, status, thrownError) {
+        console.log(thrownError)
+      },
     })
   },
 
@@ -53,5 +53,4 @@ var ItemListItem = createReactClass({
   },
 })
 
-// each file will export exactly one component
 module.exports = ItemListItem

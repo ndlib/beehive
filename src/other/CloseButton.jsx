@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { FlatButton, FontIcon } from 'material-ui'
 import { Link } from 'react-router-dom'
-var SearchStore = require('../store/SearchStore.js')
+const SearchStore = require('../store/SearchStore.js')
 
-var CloseButton = createReactClass({
+const CloseButton = createReactClass({
   propTypes: {
     href: PropTypes.string,
     alternate: PropTypes.bool,

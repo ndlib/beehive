@@ -1,15 +1,14 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { GridList, List, Paper } from 'material-ui'
-var MediaQuery = require('react-responsive')
-var SearchStore = require('../../store/SearchStore.js')
-var SearchPagination = require('./SearchPagination.jsx')
-var ItemListItem = require('./ItemListItem.jsx')
-var SearchSidebar = require('./SearchSidebar.jsx')
+const MediaQuery = require('react-responsive')
+const SearchStore = require('../../store/SearchStore.js')
+const SearchPagination = require('./SearchPagination.jsx')
+const ItemListItem = require('./ItemListItem.jsx')
+const SearchSidebar = require('./SearchSidebar.jsx')
 
-var SearchDisplayList = createReactClass({
+const SearchDisplayList = createReactClass({
   propTypes: {
     compact: PropTypes.bool,
   },
@@ -43,8 +42,8 @@ var SearchDisplayList = createReactClass({
   },
 
   itemList: function () {
-    var view = this.state.view
-    var itemNodes = SearchStore.items.map(function (item) {
+    const view = this.state.view
+    let itemNodes = SearchStore.items.map(function (item) {
       return (
         <ItemListItem
           item={item}

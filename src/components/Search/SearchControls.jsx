@@ -1,18 +1,17 @@
-
 import React from 'react'
 import createReactClass from 'create-react-class'
 import { FontIcon, Toolbar, ToolbarGroup, RaisedButton } from 'material-ui'
-var MediaQuery = require('react-responsive')
-var SearchBox = require('../../layout/SearchBox.jsx')
-var SearchSort = require('./SearchSort.jsx')
-var SearchStore = require('../../store/SearchStore.js')
-var ConfigurationStore = require('../../store/ConfigurationStore.js')
-var SearchActions = require('../../actions/SearchActions.js')
+const MediaQuery = require('react-responsive')
+const SearchBox = require('../../layout/SearchBox.jsx')
+const SearchSort = require('./SearchSort.jsx')
+const SearchStore = require('../../store/SearchStore.js')
+const ConfigurationStore = require('../../store/ConfigurationStore.js')
+const SearchActions = require('../../actions/SearchActions.js')
 const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 
-var SearchControls = createReactClass({
+const SearchControls = createReactClass({
   getInitialState: function () {
-    var state = {
+    const state = {
       view: SearchStore.view,
     }
     return state
@@ -67,7 +66,7 @@ var SearchControls = createReactClass({
 
   storeViewChanged: function () {
     this.setState({ view: SearchStore.view })
-    var url = window.location.origin + SearchStore.searchUri()
+    const url = window.location.origin + SearchStore.searchUri()
     window.history.pushState({ store: SearchStore.getQueryParams() }, '', url)
   },
 

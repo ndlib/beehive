@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 
-var ItemImage = createReactClass({
+const ItemImage = createReactClass({
   propTypes : {
     item: PropTypes.object.isRequired,
   },
@@ -34,7 +34,11 @@ var ItemImage = createReactClass({
   },
 
   image: function () {
-    if (this.props.item.thumbnailURL) { return this.props.item.thumbnailURL } else { return '/images/meta-only-item.jpg' }
+    if (this.props.item.thumbnailURL) {
+      return this.props.item.thumbnailURL
+    } else {
+      return '/images/meta-only-item.jpg'
+    }
   },
 
   render: function () {

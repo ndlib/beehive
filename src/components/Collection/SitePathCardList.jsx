@@ -1,14 +1,11 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { GridList } from 'material-ui'
-var theme = require('../../themes/beehive.jsx')
-var MediaQuery = require('react-responsive')
+const MediaQuery = require('react-responsive')
+const SitePathCard = require('./SitePathCard.jsx')
 
-var SitePathCard = require('./SitePathCard.jsx')
-
-var SitePathCardList = createReactClass({
+const SitePathCardList = createReactClass({
   propTypes: {
     sitePath: PropTypes.array.isRequired,
     intro: PropTypes.element,
@@ -21,7 +18,7 @@ var SitePathCardList = createReactClass({
   },
 
   allNodes: function () {
-    var nodes = []
+    let nodes = []
     if (this.props.intro) {
       nodes.push(
         <div key='intro'>{this.props.intro}</div>

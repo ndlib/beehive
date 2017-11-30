@@ -1,4 +1,3 @@
-// app/assets/javascripts/components/NextSection.jsx
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
@@ -6,7 +5,7 @@ import { Link } from 'react-router'
 const PrevNext = require('../modules/PrevNextUtils.jsx')
 const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 
-var NextModal = createReactClass({
+const NextModal = createReactClass({
   displayName: 'Next Modal Link',
 
   propTypes: {
@@ -25,7 +24,6 @@ var NextModal = createReactClass({
   },
 
   render: function () {
-    var id = this.props.id
     return (
       <Link
         to={this.props.url}
@@ -38,5 +36,4 @@ var NextModal = createReactClass({
   },
 })
 
-// each file will export exactly one component
 module.exports = NextModal

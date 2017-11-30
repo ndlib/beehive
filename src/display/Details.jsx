@@ -1,12 +1,11 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { FontIcon, Paper } from 'material-ui'
 
-var MetadataList = require('../display/MetadataList.jsx')
+const MetadataList = require('../display/MetadataList.jsx')
 
-var Styles = {
+const Styles = {
   // The outer containing div for this component
   outer: {
     boxShadow: '0 -5px 5px -5px rgba(0, 0, 0, 0.16), 0 -5px 5px -5px rgba(0, 0, 0, 0.23)',
@@ -30,7 +29,7 @@ var Styles = {
   },
 }
 
-var Details = createReactClass({
+const Details = createReactClass({
   propTypes: {
     item: PropTypes.object,
     additionalDetails: PropTypes.string,
@@ -66,9 +65,16 @@ var Details = createReactClass({
   details: function () {
     if (this.state.showDetails) {
       return (
-        <div className='item-details' style={Styles.details}>
-          <div className='additional-details' dangerouslySetInnerHTML={{ __html: this.props.additionalDetails }} />
-          <MetadataList metadata={this.props.item.metadata} id={this.props.item.id} printable={this.props.printable} />
+        <div
+          className='item-details'
+          style={Styles.details}>
+          <div
+            className='additional-details'
+            dangerouslySetInnerHTML={{ __html: this.props.additionalDetails }} />
+          <MetadataList
+            metadata={this.props.item.metadata}
+            id={this.props.item.id}
+            printable={this.props.printable} />
         </div>
       )
     } else {

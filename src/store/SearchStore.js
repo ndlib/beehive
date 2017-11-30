@@ -6,9 +6,10 @@
 // the store will emit a single SearchStoreChanged event, regardless of why it changed.
 // If a property changes that does not change the results, it will emit an individual
 // event specific to that change, such as SearchStoreSelectedItemChanged.
-var AppDispatcher = require('../dispatcher/AppDispatcher.jsx')
-var EventEmitter = require('events').EventEmitter
-var SearchActionTypes = require('../constants/SearchActionTypes.jsx')
+const AppDispatcher = require('../dispatcher/AppDispatcher.jsx')
+const EventEmitter = require('events').EventEmitter
+const SearchActionTypes = require('../constants/SearchActionTypes.jsx')
+const $ = require('jquery')
 
 class SearchStore extends EventEmitter {
   constructor () {
@@ -89,9 +90,9 @@ class SearchStore extends EventEmitter {
   executeQuery (reason) {
     reason = typeof reason !== 'undefined' ? reason : 'load'
 
-    var url = this._baseApiUrl + '?q=' + this._searchTerm
+    let url = this._baseApiUrl + '?q=' + this._searchTerm
     if (this._facetOption !== undefined && this._facetOption !== null) {
-      for (var i = 0; i < this._facetOption.length; i++) {
+      for (let i = 0; i < this._facetOption.length; i++) {
         if (this._facetOption[i].name && this._facetOption[i].value) {
           url += '&facets[' +
             this._facetOption[i].name +
@@ -139,12 +140,12 @@ class SearchStore extends EventEmitter {
       this._facetOption = []
     }
     // should we add the facet, start by assuming yes we should
-    var addFacet = true
+    let addFacet = true
     // look for a facet with the same name
     // if it is found, delete it
     // if it has the same name and same value, we don't want to add it so
     // set addFacet to false
-    for (var i = 0; i < this._facetOption.length; i++) {
+    for (let i = 0; i < this._facetOption.length; i++) {
       if (this._facetOption[i].name === facet.name) {
         if (this._facetOption[i].value === encodeURIComponent(facet.value)) {
           addFacet = false
@@ -161,7 +162,7 @@ class SearchStore extends EventEmitter {
   }
 
   removeSelectedFacet (facet) {
-    for (var i = 0; i < this._facetOption.length; i++) {
+    for (let i = 0; i < this._facetOption.length; i++) {
       if (this._facetOption[i].name === facet.name) {
         if (this._facetOption[i].value === facet.value) {
           this._facetOption.splice(i, 1)
@@ -180,7 +181,7 @@ class SearchStore extends EventEmitter {
   }
 
   mapHitToItem (hit) {
-    var item = {}
+    let item = {}
     item['@id'] = hit['@id']
     item.name = hit.name
     item.description = hit.description
@@ -216,7 +217,7 @@ class SearchStore extends EventEmitter {
     }
 
     if (this._facetOption && this._facetOption.length > 0) {
-      for (var i = 0; i < this._facetOption.length; i++) {
+      for (let i = 0; i < this._facetOption.length; i++) {
         let current = this._facetOption[i]
         if (current.name && current.value) {
           q['facet[' + current.name + ']'] = current.value
@@ -274,9 +275,9 @@ class SearchStore extends EventEmitter {
   }
 
   getNextItem (item) {
-    for (var i = 0; i < this._items.length; ++i) {
+    for (let i = 0; i < this._items.length; ++i) {
       if (this._items[i]['@id'] === item['@id']) {
-        var nextI = (i + 1)
+        const nextI = (i + 1)
         if (nextI > this._items.length - 1) {
           return null
         } else {
@@ -288,9 +289,9 @@ class SearchStore extends EventEmitter {
   }
 
   getPreviousItem (item) {
-    for (var i = 0; i < this._items.length; ++i) {
+    for (let i = 0; i < this._items.length; ++i) {
       if (this._items[i]['@id'] === item['@id']) {
-        var prevI = i - 1
+        const prevI = i - 1
         if (prevI < 0) {
           return null
         } else {

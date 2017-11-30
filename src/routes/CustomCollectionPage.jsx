@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Collection from '../components/Collection/Collection.jsx'
 import HoneycombURL from '../modules/HoneycombURL.js'
 import { withRouter } from 'react-router-dom'
+const $ = require('jquery')
 
 class CustomCollectionPage extends Component {
   state = {

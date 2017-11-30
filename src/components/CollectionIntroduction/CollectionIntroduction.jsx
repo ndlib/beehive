@@ -1,17 +1,14 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-
-var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
-var PageContent = require('../../layout/PageContent.jsx')
-var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
-var CollectionDescription = require('./CollectionDescription.jsx')
-var PageTitleBar = require('../Pages/PageTitleBar.jsx')
-
+const CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
+const PageContent = require('../../layout/PageContent.jsx')
+const CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
+const CollectionDescription = require('./CollectionDescription.jsx')
+const PageTitleBar = require('../Pages/PageTitleBar.jsx')
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
-var CollectionIntroduction = createReactClass({
+const CollectionIntroduction = createReactClass({
   propTypes: {
     collection: PropTypes.oneOfType([
       PropTypes.string,

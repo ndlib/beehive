@@ -1,12 +1,11 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui'
-var CloseButton = require('../../other/CloseButton.jsx')
+const CloseButton = require('../../other/CloseButton.jsx')
 const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 
-var ShowcaseTitleBar = createReactClass({
+const ShowcaseTitleBar = createReactClass({
 
   propTypes: {
     showcase: PropTypes.object.isRequired,
@@ -66,5 +65,4 @@ var ShowcaseTitleBar = createReactClass({
   },
 })
 
-// each file will export exactly one component
 module.exports = ShowcaseTitleBar

@@ -1,16 +1,14 @@
-
 import React from 'react'
-import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { List } from 'material-ui'
-var SearchStore = require('../../store/SearchStore.js')
-var FacetItem = require('./FacetItem.jsx')
+const SearchStore = require('../../store/SearchStore.js')
+const FacetItem = require('./FacetItem.jsx')
 
-var SearchFacets = createReactClass({
+const SearchFacets = createReactClass({
   values: function (facet) {
     if (facet.values) {
       return (facet.values.map(function (e, index) {
-        var selectedValue
+        let selectedValue
         if (SearchStore.facetOption) {
           if (facet.field === encodeURIComponent(SearchStore.facetOption.name)) {
             selectedValue = SearchStore.facetOption.value
@@ -20,7 +18,7 @@ var SearchFacets = createReactClass({
           <FacetItem
             field={facet.field}
             facet={e}
-            key={e.name}
+            key={index}
           />
         )
       }))
@@ -32,7 +30,7 @@ var SearchFacets = createReactClass({
     return SearchStore.facets.map(function (e, index) {
       return (
         <List
-          key={e.name}
+          key={index}
           subheader={e.name}
         >
           {this.values(e)}

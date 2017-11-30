@@ -1,4 +1,3 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
@@ -6,7 +5,7 @@ import { Card, CardActions, CardMedia, CardTitle, FloatingActionButton, FontIcon
 import { Link } from 'react-router-dom'
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
-var SitePathCard = createReactClass({
+const SitePathCard = createReactClass({
   propTypes: {
     siteObject: PropTypes.object.isRequired,
     addNextButton: PropTypes.bool,
@@ -48,8 +47,8 @@ var SitePathCard = createReactClass({
   },
 
   image: function () {
-    var space = ' '
-    var re = new RegExp(space, 'g')
+    const space = ' '
+    const re = new RegExp(space, 'g')
     if (this.props.siteObject.image && this.props.siteObject.image['thumbnail/medium']) {
       return this.props.siteObject.image['thumbnail/medium'].contentUrl.replace(re, '%20')
     } else {
@@ -83,7 +82,9 @@ var SitePathCard = createReactClass({
   },
 
   cardTitle: function () {
-    return (<CardTitle title={this.props.siteObject.name_line_1 || this.props.siteObject.name} subtitle={this.props.siteObject.name_line_2} />)
+    return (<CardTitle
+      title={this.props.siteObject.name_line_1 || this.props.siteObject.name}
+      subtitle={this.props.siteObject.name_line_2} />)
   },
 
   cardMedia: function () {

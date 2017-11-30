@@ -1,10 +1,9 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-var PageContent = require('../../layout/PageContent.jsx')
+const PageContent = require('../../layout/PageContent.jsx')
 
-var SectionShowDescription = createReactClass({
+const SectionShowDescription = createReactClass({
   displayName: 'Section Show Description',
   propTypes: {
     section: PropTypes.object.isRequired,
@@ -27,7 +26,11 @@ var SectionShowDescription = createReactClass({
   render: function () {
     return (
       <PageContent>
-        <div ref='sectionContent' style={this.styles()} dangerouslySetInnerHTML={{ __html:this.props.section.description }} />
+        <div
+          ref='sectionContent'
+          style={this.styles()}
+          dangerouslySetInnerHTML={{ __html:this.props.section.description }}
+        />
       </PageContent>
     )
   },

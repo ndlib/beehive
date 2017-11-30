@@ -1,14 +1,12 @@
-
 import '../assets/scripts/openseadragon.js'
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-var ReactDOM = require('react-dom')
+const ReactDOM = require('react-dom')
+const navigatorSize = 100
+const $ = require('jquery')
 
-var navigatorSize = 100
-
-var OpenseadragonViewer = createReactClass({
+const OpenseadragonViewer = createReactClass({
   propTypes: {
     image: PropTypes.object,
     containerID: PropTypes.string.isRequired,
@@ -48,7 +46,7 @@ var OpenseadragonViewer = createReactClass({
       this.fullPageOff()
     }
 
-    if (nextProps.image != this.props.image) {
+    if (nextProps.image !== this.props.image) {
       this.setState({ image: nextProps.image }, function () {
         this.state.viewer.close()
         this.openImage(this.state.viewer, nextProps.image)
@@ -58,11 +56,15 @@ var OpenseadragonViewer = createReactClass({
   },
 
   openImage: function (viewer, image) {
-    var sourceImage = this.dziSource(image)
+    let sourceImage = this.dziSource(image)
     if (/^http:\/\/localhost/.test(image.contentUrl)) {
       sourceImage = this.legacySource(image)
     }
-    viewer.viewport.defaultZoomLevel = this.defaultZoom(parseInt(image.width), parseInt(image.height), window.innerWidth, this.props.height)
+    viewer.viewport.defaultZoomLevel = this.defaultZoom(
+      parseInt(image.width, 10),
+      parseInt(image.height, 10),
+      window.innerWidth,
+      this.props.height)
     viewer.open(sourceImage)
   },
 
@@ -89,14 +91,14 @@ var OpenseadragonViewer = createReactClass({
   },
 
   buildViewer: function (image) {
-    var options
+    let options
     if (/^http:\/\/localhost/.test(image.contentUrl)) {
       options = this.legacyOptions(image)
     } else {
       options = this.dziOptions(image)
     }
-    var viewer = OpenSeadragon(options)
-    var escapeHandler = function (event) {
+    const viewer = OpenSeadragon(options)
+    const escapeHandler = function (event) {
       if (event.keyCode === 27) {
         this.fullPageOff()
       }
@@ -116,23 +118,27 @@ var OpenseadragonViewer = createReactClass({
   // the viewport to fit the image within the bounds (the default behavior). If the
   // image is smaller than the viewport, returns a zoom that will render the image's native size.
   defaultZoom: function (imageWidth, imageHeight, viewportWidth, viewportHeight) {
-    var widthRatio = imageWidth / viewportWidth
-    var heightRatio = imageHeight / viewportHeight
+    const widthRatio = imageWidth / viewportWidth
+    const heightRatio = imageHeight / viewportHeight
     return Math.max(widthRatio, heightRatio) >= 1.0 ? 0 : widthRatio
   },
 
   baseOptions: function () {
-    var toolbarDiv = 'toolbar-' + this.props.containerID
-    var zoomInID = 'zoom-in-' + this.props.containerID
-    var zoomOutID = 'zoom-out-' + this.props.containerID
-    var homeID = 'home-' + this.props.containerID
-    var fullID = 'full-page-' + this.props.containerID
-    var leftID = 'left-' + this.props.containerID
-    var rightID = 'right-' + this.props.containerID
+    const toolbarDiv = 'toolbar-' + this.props.containerID
+    const zoomInID = 'zoom-in-' + this.props.containerID
+    const zoomOutID = 'zoom-out-' + this.props.containerID
+    const homeID = 'home-' + this.props.containerID
+    const fullID = 'full-page-' + this.props.containerID
+    const leftID = 'left-' + this.props.containerID
+    const rightID = 'right-' + this.props.containerID
 
     OpenSeadragon.setString('Tooltips.Home', 'Reset image')
 
-    var zoom = this.defaultZoom(parseInt(this.props.image.width), parseInt(this.props.image.height), window.innerWidth, this.props.height)
+    const zoom = this.defaultZoom(
+      parseInt(this.props.image.width, 10),
+      parseInt(this.props.image.height, 10),
+      window.innerWidth,
+      this.props.height)
 
     return {
       id: this.props.containerID,
@@ -171,7 +177,7 @@ var OpenseadragonViewer = createReactClass({
   },
 
   dziOptions: function (image) {
-    var options
+    let options
     options = this.baseOptions()
     options.tileSources = this.dziSource
     return options
@@ -182,7 +188,7 @@ var OpenseadragonViewer = createReactClass({
   },
 
   legacyOptions: function (image) {
-    var options
+    let options
     options = this.baseOptions()
     options.tileSources = this.legacySource(image)
     return options
@@ -195,15 +201,15 @@ var OpenseadragonViewer = createReactClass({
       levels: [
         {
           url: image.contentUrl,
-          height: parseInt(image.height),
-          width: parseInt(image.width),
+          height: parseInt(image.height, 10),
+          width: parseInt(image.width, 10),
         },
       ],
     }
   },
 
   style: function () {
-    var height = this.props.height
+    let height = this.props.height
     if (this.props.showNavigator) {
       height -= 10
     }
@@ -215,7 +221,7 @@ var OpenseadragonViewer = createReactClass({
   },
 
   toolbarStyle: function () {
-    var top = this.props.toolbarTop
+    let top = this.props.toolbarTop
     if (this.props.showNavigator) {
       top += navigatorSize + 10
     }
@@ -228,22 +234,22 @@ var OpenseadragonViewer = createReactClass({
 
   renderButtons: function () {
     if (this.props.showNavigator) {
-      var zoomInID = 'zoom-in-' + this.props.containerID
-      var zoomOutID = 'zoom-out-' + this.props.containerID
-      var homeID = 'home-' + this.props.containerID
-      var fullID = 'full-page-' + this.props.containerID
-      var leftID = 'left-' + this.props.containerID
-      var rightID = 'right-' + this.props.containerID
+      const zoomInID = 'zoom-in-' + this.props.containerID
+      const zoomOutID = 'zoom-out-' + this.props.containerID
+      const homeID = 'home-' + this.props.containerID
+      const fullID = 'full-page-' + this.props.containerID
+      const leftID = 'left-' + this.props.containerID
+      const rightID = 'right-' + this.props.containerID
 
-      var nodes = [
-        <a id={zoomInID} href='#zoom-in'><i className='material-icons'>zoom_in</i></a>,
-        <a id={zoomOutID} href='#zoom-out'><i className='material-icons'>zoom_out</i></a>,
-        <a id={leftID} href='#rotate-left'><i className='material-icons'>rotate_left</i></a>,
-        <a id={rightID} href='#rotate-right'><i className='material-icons'>rotate_right</i></a>,
-        <a id={homeID} href='#home'><i className='material-icons'>refresh</i></a>,
+      let nodes = [
+        <a id={zoomInID} href='#zoom-in' key='zi'><i className='material-icons'>zoom_in</i></a>,
+        <a id={zoomOutID} href='#zoom-out' key='zo'><i className='material-icons'>zoom_out</i></a>,
+        <a id={leftID} href='#rotate-left' key='lid'><i className='material-icons'>rotate_left</i></a>,
+        <a id={rightID} href='#rotate-right' key='rid'><i className='material-icons'>rotate_right</i></a>,
+        <a id={homeID} href='#home' key='hid'><i className='material-icons'>refresh</i></a>,
       ]
       if (this.props.showFullPageControl) {
-        nodes.push(<a id={fullID} href='#full-page'><i className='material-icons'>fullscreen</i></a>)
+        nodes.push(<a id={fullID} href='#full-page' key='fid'><i className='material-icons'>fullscreen</i></a>)
       }
       return nodes
     }
@@ -251,7 +257,7 @@ var OpenseadragonViewer = createReactClass({
   },
 
   render: function () {
-    var toolbarID = 'toolbar-' + this.props.containerID
+    const toolbarID = 'toolbar-' + this.props.containerID
 
     return (
       <div className='hc-openseadragon-viewer' id={this.props.containerID} style={this.style()}>

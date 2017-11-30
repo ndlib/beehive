@@ -2,13 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { FontIcon, IconButton, RaisedButton } from 'material-ui'
-
-var SearchStore = require('../store/SearchStore.js')
-var SearchActions = require('../actions/SearchActions.js')
-
+const SearchStore = require('../store/SearchStore.js')
+const SearchActions = require('../actions/SearchActions.js')
 const CurrentTheme = require('../modules/CurrentTheme.jsx')
 
-var Styles = {
+const Styles = {
   searchTextField: {
     height: '38px',
     width: '500px',
@@ -25,7 +23,7 @@ var Styles = {
   },
 }
 
-var SearchBox = createReactClass({
+const SearchBox = createReactClass({
   propTypes: {
     collection: PropTypes.object,
     primary: PropTypes.bool,
@@ -45,7 +43,7 @@ var SearchBox = createReactClass({
   },
 
   getInitialState: function () {
-    var state = {
+    const state = {
       active: this.props.active,
     }
     return state
@@ -75,7 +73,7 @@ var SearchBox = createReactClass({
     if (this.props.useStore) {
       SearchActions.setSearchTerm(searchTerm)
     } else {
-      var url = window.location.origin +
+      const url = window.location.origin +
         '/' + this.props.collection.id +
         '/' + this.props.collection.slug +
         '/search?q=' + searchTerm
@@ -111,7 +109,7 @@ var SearchBox = createReactClass({
   },
 
   handleKeyDown: function (e) {
-    var ENTER = 13
+    const ENTER = 13
     if (e.keyCode === ENTER) {
       this.onClick(e)
     }
@@ -156,4 +154,5 @@ var SearchBox = createReactClass({
     )
   },
 })
+
 module.exports = SearchBox

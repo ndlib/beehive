@@ -1,13 +1,11 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Paper } from 'material-ui'
+const ShowcaseEndingCard = require('./ShowcaseEndingCard.jsx')
+const SectionCard = require('../Section/SectionCard.jsx')
 
-var ShowcaseEndingCard = require('./ShowcaseEndingCard.jsx')
-var SectionCard = require('../Section/SectionCard.jsx')
-
-var ShowcaseSections = createReactClass({
+const ShowcaseSections = createReactClass({
 
   propTypes: {
     showcase: PropTypes.object.isRequired,
@@ -26,10 +24,10 @@ var ShowcaseSections = createReactClass({
   },
 
   sections: function () {
-    var sections = this.props.showcase.sections
+    const sections = this.props.showcase.sections
     if (sections) {
-      var sectionNodes = sections.map(function (section, index) {
-        var nodes = []
+      const sectionNodes = sections.map(function (section, index) {
+        let nodes = []
 
         nodes.push((
           <SectionCard section={section} height={this.props.height} key={index} />
@@ -43,9 +41,14 @@ var ShowcaseSections = createReactClass({
   },
 
   nextShowcase: function () {
-    var nextShowcase
+    let nextShowcase
     if (this.props.showcase.nextObject) {
-      nextShowcase = (<ShowcaseEndingCard height={this.props.height} siteObject={this.props.showcase.nextObject} key='end' />)
+      nextShowcase = (
+        <ShowcaseEndingCard
+          height={this.props.height}
+          siteObject={this.props.showcase.nextObject}
+          key='end'
+        />)
     }
     return nextShowcase
   },
@@ -60,5 +63,4 @@ var ShowcaseSections = createReactClass({
   },
 })
 
-// each file will export exactly one component
 module.exports = ShowcaseSections

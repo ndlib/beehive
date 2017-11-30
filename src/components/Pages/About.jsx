@@ -1,14 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
-var PageContent = require('../../layout/PageContent.jsx')
-var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
-var PagesShow = require('../Pages/PagesShow.jsx')
-
+const CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
+const PageContent = require('../../layout/PageContent.jsx')
+const CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
+const PagesShow = require('../Pages/PagesShow.jsx')
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
-var About = createReactClass({
+const About = createReactClass({
   propTypes: {
     collection: PropTypes.oneOfType([
       PropTypes.string,
@@ -45,7 +44,7 @@ var About = createReactClass({
       return null
     }
 
-    var pageContent = null
+    let pageContent = null
     if (this.state.collection && this.state.collection.about) {
       pageContent = (
         <PagesShow title='About' content={this.state.collection.about} />

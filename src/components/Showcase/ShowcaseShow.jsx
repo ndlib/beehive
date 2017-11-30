@@ -1,33 +1,24 @@
-
 import '../../assets/scripts/perfect-scrollbar.jquery.js'
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-var ReactDOM = require('react-dom')
-import { CSSTransition, TransitionGroup } from 'react-transition-group'
-var MediaQuery = require('react-responsive')
-
-var maxShowcaseHeight = 805
-var showcaseTitleHeight = 56
-var scrollPadding = 80
-var titleSectionWidthPercent = 0.85
-var minBackgroundBlur = 0.3
-var maxBackgroundBlur = 0.8
-
-var EventEmitter = require('../../middleware/EventEmitter.js')
-var ShowcaseTitleBar = require('./ShowcaseTitleBar.jsx')
-var ShowcaseBackground = require('./ShowcaseBackground.jsx')
-var AttentionHelp = require('../../other/AttentionHelp.jsx')
-var ShowcaseInnerContent = require('./ShowcaseInnerContent.jsx')
-var Scroller = require('../../other/Scroller.jsx')
-var CollectionHomeButton = require('./CollectionHomeButton.jsx')
-
+import { TransitionGroup } from 'react-transition-group'
+const ReactDOM = require('react-dom')
+const maxShowcaseHeight = 805
+const showcaseTitleHeight = 56
+const scrollPadding = 80
+const titleSectionWidthPercent = 0.85
+const minBackgroundBlur = 0.3
+const maxBackgroundBlur = 0.8
+const ShowcaseTitleBar = require('./ShowcaseTitleBar.jsx')
+const ShowcaseBackground = require('./ShowcaseBackground.jsx')
+const AttentionHelp = require('../../other/AttentionHelp.jsx')
+const ShowcaseInnerContent = require('./ShowcaseInnerContent.jsx')
+const Scroller = require('../../other/Scroller.jsx')
+const CollectionHomeButton = require('./CollectionHomeButton.jsx')
 const BrowserUtils = require('../../modules/BrowserUtils.jsx')
-const LoadRemote = require('../../modules/LoadRemote.jsx')
-const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
-var ShowcaseShow = createReactClass({
+const ShowcaseShow = createReactClass({
   propTypes: {
     collection: PropTypes.object,
     showcase: PropTypes.object,
@@ -124,15 +115,15 @@ var ShowcaseShow = createReactClass({
     if (!this.state.hasScrolled) {
       this.setState({ hasScrolled: true })
     }
-    var scrollLeft = this.state.outerElement.get(0).scrollLeft
-    var titleWidth = this.state.element.width() * titleSectionWidthPercent
-    var percentVisible = 1 - scrollLeft / titleWidth
+    const scrollLeft = this.state.outerElement.get(0).scrollLeft
+    const titleWidth = this.state.element.width() * titleSectionWidthPercent
+    let percentVisible = 1 - scrollLeft / titleWidth
     if (percentVisible < 0) {
       percentVisible = 0
     } else {
       percentVisible = Math.round(percentVisible * 100) / 100
     }
-    if (percentVisible != this.state.titleSectionPercentVisible) {
+    if (percentVisible !== this.state.titleSectionPercentVisible) {
       this.setState({
         titleSectionPercentVisible: percentVisible,
       })
@@ -140,14 +131,14 @@ var ShowcaseShow = createReactClass({
   },
 
   render: function () {
-    var showcaseHeight = this.state.height - showcaseTitleHeight
+    let showcaseHeight = this.state.height - showcaseTitleHeight
     if (showcaseHeight > maxShowcaseHeight) {
       showcaseHeight = maxShowcaseHeight
     }
-    var showcaseInnerHeight = showcaseHeight - scrollPadding
+    let showcaseInnerHeight = showcaseHeight - scrollPadding
 
-    var scroller = (<Scroller target='#showcase-outer' height={showcaseHeight} />)
-    var titleBar = (
+    let scroller = (<Scroller target='#showcase-outer' height={showcaseHeight} />)
+    let titleBar = (
       <ShowcaseTitleBar
         percentFade={this.state.titleSectionPercentVisible}
         height={showcaseTitleHeight}
@@ -156,7 +147,7 @@ var ShowcaseShow = createReactClass({
     )
 
     // overwrite some stuff for iOS. TODO: Android
-    var mobileHomeButton
+    let mobileHomeButton
     if (this.state.mobile) {
       showcaseHeight = this.state.height * 0.95
       showcaseInnerHeight = Math.floor(showcaseHeight * 0.95)
@@ -169,7 +160,7 @@ var ShowcaseShow = createReactClass({
     }
 
     // background stuff
-    var backgroundBlur = 1 - this.state.titleSectionPercentVisible
+    let backgroundBlur = 1 - this.state.titleSectionPercentVisible
     if (backgroundBlur < minBackgroundBlur) {
       backgroundBlur = minBackgroundBlur
     } else if (backgroundBlur > maxBackgroundBlur) {
@@ -178,13 +169,26 @@ var ShowcaseShow = createReactClass({
 
     return (
       <div style={{ height: showcaseHeight, backgroundColor: 'rgba(0,0,0,0)' }}>
-        <AttentionHelp start={this.state.startTime} hasScrolled={this.state.hasScrolled} />
-        <ShowcaseBackground percentBlur={backgroundBlur} height={this.state.mobile ? this.state.height : this.state.height - scrollPadding} showcase={this.props.showcase} />
+        <AttentionHelp
+          start={this.state.startTime}
+          hasScrolled={this.state.hasScrolled} />
+        <ShowcaseBackground
+          percentBlur={backgroundBlur}
+          height={this.state.mobile ? this.state.height : this.state.height - scrollPadding}
+          showcase={this.props.showcase} />
         {titleBar}
-        <TransitionGroup className='showcase-slide-in'>
-          <div id='showcase-outer' className='showcase-outer' style={this.styleOuter(showcaseHeight)} onScroll={this.onScroll}>
+        <TransitionGroup
+          className='showcase-slide-in'>
+          <div
+            id='showcase-outer'
+            className='showcase-outer'
+            style={this.styleOuter(showcaseHeight)}
+            onScroll={this.onScroll}
+          >
             {scroller}
-            <ShowcaseInnerContent height={showcaseInnerHeight} showcase={this.props.showcase} />
+            <ShowcaseInnerContent
+              height={showcaseInnerHeight}
+              showcase={this.props.showcase} />
           </div>
         </TransitionGroup>
         {mobileHomeButton}

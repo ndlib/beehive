@@ -1,19 +1,15 @@
-
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 class MultimediaViewer extends Component {
-  constructor (props) {
-    super(props)
-  }
-
   render () {
-    var url = this.props.url
+    let url = this.props.url
     if (this.props.autostart) {
       url += '&autostart=' + this.props.autostart
     }
     return (
       <iframe
+        title='Multimedia Viewer'
         src={url}
         style={{
           width: this.props.width,

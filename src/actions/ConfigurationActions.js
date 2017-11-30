@@ -1,11 +1,11 @@
-
 import AppDispatcher from '../dispatcher/AppDispatcher.jsx'
 import ActionTypes from '../constants/ConfigurationActionTypes.jsx'
 import EventEmitter from '../middleware/EventEmitter.js'
+const $ = require('jquery')
 
 class ConfigurationActions {
   load (collection) {
-    var configURL = collection['hasPart/metadataConfiguration']
+    const configURL = collection['hasPart/metadataConfiguration']
 
     $.ajax({
       context: this,

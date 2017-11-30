@@ -1,17 +1,13 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Divider, Drawer, FontIcon, FlatButton, MenuItem } from 'material-ui'
 import { Link } from 'react-router-dom'
-var Types = {
-  LINK: 'LINK',
-  SUBHEADER: 'SUBHEADER',
-}
 const CollectionUrl = require('../modules/CollectionUrl.jsx')
 const CurrentTheme = require('../modules/CurrentTheme.jsx')
+const $ = require('jquery')
 
-var CollectionLeftNav = createReactClass({
+const CollectionLeftNav = createReactClass({
   propTypes: {
     collection: PropTypes.object.isRequired,
   },
@@ -35,7 +31,7 @@ var CollectionLeftNav = createReactClass({
     if (this.props.collection['site_path']) {
       return
     }
-    var url = this.props.collection['@id'] + '/site_path'
+    const url = this.props.collection['@id'] + '/site_path'
 
     $.ajax({
       context: this,
@@ -66,17 +62,17 @@ var CollectionLeftNav = createReactClass({
   },
 
   dropDownOptions: function () {
-    var options = []
-    var collectionUrl = CollectionUrl.collectionUrl(this.props.collection)
-    var aboutUrl = CollectionUrl.aboutUrl(this.props.collection)
-    var introUrl = CollectionUrl.introUrl(this.props.collection)
-    var browseUrl = CollectionUrl.browseUrl(this.props.collection)
+    let options = []
+    const collectionUrl = CollectionUrl.collectionUrl(this.props.collection)
+    const aboutUrl = CollectionUrl.aboutUrl(this.props.collection)
+    const introUrl = CollectionUrl.introUrl(this.props.collection)
+    const browseUrl = CollectionUrl.browseUrl(this.props.collection)
 
     options.push((
       <Link
         to={collectionUrl}
         key='collectionUrlLink'
-        onClick={() => { this.closeAndScrollTop }}
+        onClick={this.closeAndScrollTop}
       >
         <MenuItem primaryText='Home' key='home' />
       </Link>
@@ -87,7 +83,7 @@ var CollectionLeftNav = createReactClass({
         <Link
           to={browseUrl}
           key='browseUrlLink'
-          onClick={() => { this.closeAndScrollTop }}
+          onClick={this.closeAndScrollTop}
         >
           <MenuItem primaryText='Browse Collection' key='browse' />
         </Link>
@@ -112,7 +108,7 @@ var CollectionLeftNav = createReactClass({
         <Link
           to={introUrl}
           key='introUrl'
-          onClick={() => { this.closeAndScrollTop }}
+          onClick={this.closeAndScrollTop}
         >
           <MenuItem primaryText='Introduction' key='intro' />
         </Link>
@@ -120,13 +116,13 @@ var CollectionLeftNav = createReactClass({
     }
 
     this.state.sitePath.forEach(function (siteObject) {
-      var url = CollectionUrl.collectionObjectUrl(siteObject)
-      var name = siteObject.name || siteObject.name_line_1
+      const url = CollectionUrl.collectionObjectUrl(siteObject)
+      const name = siteObject.name || siteObject.name_line_1
       options.push((
         <Link
           to={url}
           key={siteObject.id}
-          onClick={() => { this.closeAndScrollTop }}
+          onClick={this.closeAndScrollTop}
         >
           <MenuItem
             primaryText={name}

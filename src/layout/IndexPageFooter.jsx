@@ -3,7 +3,7 @@ import createReactClass from 'create-react-class'
 import { Paper } from 'material-ui'
 import { Link } from 'react-router-dom'
 
-var IndexPageFooter = createReactClass({
+const IndexPageFooter = createReactClass({
 
   render: function () {
     return (

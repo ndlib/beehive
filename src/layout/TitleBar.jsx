@@ -1,14 +1,15 @@
-
 import React from 'react'
-import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 
-var TitleBar = createReactClass({
+const TitleBar = createReactClass({
   render: function () {
-    var content = this.props.children
+    let content = this.props.children
     if (!content) {
       content = (
-        <a className='navbar-brand' href='/'><i className='glyphicon glyphicon-home' /> Digital Exhibits <i>and</i> Collections</a>
+        <a
+          className='navbar-brand'
+          href='/'
+        ><i className='glyphicon glyphicon-home' /> Digital Exhibits <i>and</i> Collections</a>
       )
     }
 
@@ -16,5 +17,4 @@ var TitleBar = createReactClass({
   },
 })
 
-// each file will export exactly one component
 module.exports = TitleBar

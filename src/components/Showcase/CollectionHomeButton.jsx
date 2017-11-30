@@ -1,11 +1,10 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-
+import { FloatingActionButton, FontIcon } from 'material-ui'
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
-var CollectionHomeButton = createReactClass({
+const CollectionHomeButton = createReactClass({
   propTypes: {
     collection: PropTypes.object,
   },

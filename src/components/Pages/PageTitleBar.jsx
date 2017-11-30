@@ -2,10 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui'
-var CloseButton = require('../../other/CloseButton.jsx')
-const CurrentTheme = require('../../modules/CurrentTheme.jsx')
+const CloseButton = require('../../other/CloseButton.jsx')
 
-var PageTitleBar = createReactClass({
+const PageTitleBar = createReactClass({
   propTypes: {
     title: PropTypes.string.isRequired,
     height: PropTypes.number,
@@ -23,10 +22,6 @@ var PageTitleBar = createReactClass({
     }
   },
 
-  componentDidMount: function () {
-    // window.onscroll = this.onScroll
-  },
-
   style: function () {
     return {
       height: this.props.height + 'px',
@@ -37,9 +32,9 @@ var PageTitleBar = createReactClass({
   },
 
   onScroll: function (event) {
-    var element = event.target.scrollingElement
-    var a = element.scrollTop / element.scrollHeight
-    var percentVisible = Math.log2(1 + a * 10.0)
+    const element = event.target.scrollingElement
+    const a = element.scrollTop / element.scrollHeight
+    const percentVisible = Math.log2(1 + a * 10.0)
     this.setState({
       opacity: percentVisible,
     })
@@ -74,5 +69,4 @@ var PageTitleBar = createReactClass({
   },
 })
 
-// each file will export exactly one component
 module.exports = PageTitleBar

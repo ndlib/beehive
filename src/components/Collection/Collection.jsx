@@ -1,19 +1,18 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 
-var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
-var CollectionShow = require('./CollectionShow.jsx')
-var PageContent = require('../../layout/PageContent.jsx')
-var CollectionIntro = require('./CollectionIntro.jsx')
-var CollectionShowSitePath = require('./CollectionShowSitePath.jsx')
-var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
-var PageTitle = require('../../modules/PageTitle.js')
+const CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
+const CollectionShow = require('./CollectionShow.jsx')
+const PageContent = require('../../layout/PageContent.jsx')
+const CollectionIntro = require('./CollectionIntro.jsx')
+const CollectionShowSitePath = require('./CollectionShowSitePath.jsx')
+const CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
+const PageTitle = require('../../modules/PageTitle.js')
 
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
-var Collection = createReactClass({
+const Collection = createReactClass({
   propTypes: {
     collection: PropTypes.oneOfType([
       PropTypes.string,
@@ -76,5 +75,4 @@ var Collection = createReactClass({
   },
 })
 
-// each file will export exactly one component
 module.exports = Collection

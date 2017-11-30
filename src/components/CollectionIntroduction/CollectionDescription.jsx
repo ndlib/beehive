@@ -1,12 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
+const SitePathCard = require('../Collection/SitePathCard.jsx')
+const PagesShow = require('../Pages/PagesShow.jsx')
+const PreviewLink = require('../../layout/PreviewLink.jsx')
 
-var SitePathCard = require('../Collection/SitePathCard.jsx')
-var PagesShow = require('../Pages/PagesShow.jsx')
-var PreviewLink = require('../../layout/PreviewLink.jsx')
-
-var CollectionDescription = createReactClass({
+const CollectionDescription = createReactClass({
   propTypes: {
     collection: PropTypes.object.isRequired,
     height: PropTypes.string,

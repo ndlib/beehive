@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { CardText } from 'material-ui'
 
-var CardCaption = createReactClass({
+const CardCaption = createReactClass({
   propTypes: {
     caption: PropTypes.string,
   },
@@ -37,5 +37,4 @@ var CardCaption = createReactClass({
   },
 })
 
-// each file will export exactly one component
 module.exports = CardCaption

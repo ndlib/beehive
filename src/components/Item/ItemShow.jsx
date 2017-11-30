@@ -1,18 +1,15 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Paper, Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui'
-var CloseButton = require('../../other/CloseButton.jsx')
-var SideNavButton = require('../../other/SideNavButton.jsx')
-var PageContent = require('../../layout/PageContent.jsx')
-var SearchStore = require('../../store/SearchStore.js')
-var ItemContent = require('./ItemContent.jsx')
-
-const CurrentTheme = require('../../modules/CurrentTheme.jsx')
+const CloseButton = require('../../other/CloseButton.jsx')
+const SideNavButton = require('../../other/SideNavButton.jsx')
+const PageContent = require('../../layout/PageContent.jsx')
+const SearchStore = require('../../store/SearchStore.js')
+const ItemContent = require('./ItemContent.jsx')
 const CollecitonUrl = require('../../modules/CollectionUrl.jsx')
 
-var ItemShow = createReactClass({
+const ItemShow = createReactClass({
   propTypes: {
     height: PropTypes.number,
     item: PropTypes.object.isRequired,
@@ -94,5 +91,4 @@ var ItemShow = createReactClass({
   },
 })
 
-// each file will export exactly one component
 module.exports = ItemShow

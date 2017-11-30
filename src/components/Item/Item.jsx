@@ -1,24 +1,19 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-
-var EventEmitter = require('../../middleware/EventEmitter.js')
-var ItemShow = require('./ItemShow.jsx')
-var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
-var PageContent = require('../../layout/PageContent.jsx')
-var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
-var ConfigurationActions = require('../../actions/ConfigurationActions.js')
-var ConfigurationStore = require('../../store/ConfigurationStore.js')
-var Loading = require('../../other/Loading.jsx')
-var PageTitle = require('../../modules/PageTitle.js')
-
+const ItemShow = require('./ItemShow.jsx')
+const CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
+const PageContent = require('../../layout/PageContent.jsx')
+const CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
+const ConfigurationActions = require('../../actions/ConfigurationActions.js')
+const ConfigurationStore = require('../../store/ConfigurationStore.js')
+const Loading = require('../../other/Loading.jsx')
+const PageTitle = require('../../modules/PageTitle.js')
 const BrowserUtils = require('../../modules/BrowserUtils.jsx')
 const LoadRemote = require('../../modules/LoadRemote.jsx')
+const showcaseTitleHeight = 56
 
-var showcaseTitleHeight = 56
-
-var Item = createReactClass({
+const Item = createReactClass({
   propTypes: {
     collection: PropTypes.string,
     item: PropTypes.string,
@@ -53,7 +48,7 @@ var Item = createReactClass({
 
   componentWillMount: function () {
     ConfigurationStore.addChangeListener(this.configurationLoaded)
-    var newMuiTheme = this.state.muiTheme
+    let newMuiTheme = this.state.muiTheme
     newMuiTheme.paper.backgroundColor = 'inherit'
 
     this.setState({
@@ -115,7 +110,7 @@ var Item = createReactClass({
     } else {
       itemShow = (<Loading />)
     }
-    var header
+    let header
     if (!BrowserUtils.mobile()) {
       header = (<CollectionPageHeader collection={this.state.collection} />)
     }
@@ -131,5 +126,4 @@ var Item = createReactClass({
   },
 })
 
-// each file will export exactly one component
 module.exports = Item

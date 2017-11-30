@@ -1,8 +1,7 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-var TitleBar = require('../layout/TitleBar.jsx')
-var PageHeader = createReactClass({
+const TitleBar = require('../layout/TitleBar.jsx')
+const PageHeader = createReactClass({
   displayName: 'Page Header',
 
   style: function () {
@@ -12,7 +11,7 @@ var PageHeader = createReactClass({
   },
 
   render: function () {
-    var titleBar = this.props.children
+    let titleBar = this.props.children
     if (!titleBar) {
       titleBar = (
         <TitleBar />

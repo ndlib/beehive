@@ -1,21 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
-var PageContent = require('../../layout/PageContent.jsx')
-var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
-var PagesShow = require('./PagesShow.jsx')
-var PageTitleBar = require('./PageTitleBar.jsx')
-var SitePathCard = require('../Collection/SitePathCard.jsx')
-var PreviewLink = require('../../layout/PreviewLink.jsx')
-var MediaQuery = require('react-responsive')
-var ConfigurationActions = require('../../actions/ConfigurationActions.js')
-var ConfigurationStore = require('../../store/ConfigurationStore.js')
-var PageTitle = require('../../modules/PageTitle.js')
-
+const CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
+const PageContent = require('../../layout/PageContent.jsx')
+const CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
+const PagesShow = require('./PagesShow.jsx')
+const PageTitleBar = require('./PageTitleBar.jsx')
+const SitePathCard = require('../Collection/SitePathCard.jsx')
+const PreviewLink = require('../../layout/PreviewLink.jsx')
+const MediaQuery = require('react-responsive')
+const ConfigurationActions = require('../../actions/ConfigurationActions.js')
+const ConfigurationStore = require('../../store/ConfigurationStore.js')
+const PageTitle = require('../../modules/PageTitle.js')
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
-var Page = createReactClass({
+const Page = createReactClass({
   propTypes: {
     collection: PropTypes.oneOfType([
       PropTypes.string,
@@ -78,8 +77,8 @@ var Page = createReactClass({
   // item navigation operations easier/faster
   linkItems: function (items) {
     items.forEach(function (item, i, array) {
-      var nextI = i + 1
-      var prevI = i - 1
+      const nextI = i + 1
+      const prevI = i - 1
       if (nextI < array.length) {
         item.nextItem = array[nextI]
       }
@@ -90,15 +89,15 @@ var Page = createReactClass({
   },
 
   contentMouseOver: function (event) {
-    var item = this.getItemFromEvent(event)
+    const item = this.getItemFromEvent(event)
     if (item) {
       event.target.style.cursor = 'pointer'
     }
   },
 
   getItemFromEvent: function (event) {
-    var item
-    var itemId = event.target.getAttribute('item_id')
+    let item
+    const itemId = event.target.getAttribute('item_id')
     if (itemId && this.state.collection.pages.items) {
       item = this.state.collection.pages.items.find(function (e, i, a) {
         return e['id'] === itemId
@@ -108,7 +107,7 @@ var Page = createReactClass({
   },
 
   nextCard: function () {
-    var nextCard = null
+    let nextCard = null
     if (this.state.collection.pages.nextObject) {
       nextCard = [
         <div style={{ clear: 'both' }} key='next'>

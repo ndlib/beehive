@@ -1,14 +1,13 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { MenuItem, SelectField } from 'material-ui'
-var SearchActions = require('../../actions/SearchActions.js')
-var SearchStore = require('../../store/SearchStore.js')
+const SearchActions = require('../../actions/SearchActions.js')
+const SearchStore = require('../../store/SearchStore.js')
 
-var SearchSort = createReactClass({
+const SearchSort = createReactClass({
   getInitialState: function () {
-    var state = {
+    const state = {
       selectValue: 0,
     }
     return state
@@ -22,9 +21,10 @@ var SearchSort = createReactClass({
     SearchActions.setSort(sortOption)
   },
 
+  // This does not appear to be used
   componentWillMount: function () {
-    var regex = /\S+&sort=/
-    var sortOption = ''
+    const regex = /\S+&sort=/
+    let sortOption = ''
     if (window.location.search.match(regex)) {
       sortOption = window.location.search.replace(regex, '').split('&')[0]
     }

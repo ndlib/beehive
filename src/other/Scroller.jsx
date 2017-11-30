@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-var SideNavButton = require('./SideNavButton.jsx')
+const SideNavButton = require('./SideNavButton.jsx')
+const $ = require('jquery')
 
-var Scroller = createReactClass({
+const Scroller = createReactClass({
   propTypes: {
     target: PropTypes.string.isRequired,
   },
@@ -15,7 +16,7 @@ var Scroller = createReactClass({
   },
 
   onMouseDown: function (direction, event) {
-    var scrollDelta = Math.ceil(this.state.element.clientWidth * (3 / 4))
+    const scrollDelta = Math.ceil(this.state.element.clientWidth * (3 / 4))
     $(this.state.element).animate({ scrollLeft: (this.state.element.scrollLeft + scrollDelta * direction) }, 500)
   },
 
@@ -34,8 +35,8 @@ var Scroller = createReactClass({
   },
 
   render: function () {
-    var left
-    var right
+    let left
+    let right
 
     if (this.state.element) {
       if (this.state.element.scrollLeft > 0) {

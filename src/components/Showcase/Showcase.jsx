@@ -1,21 +1,17 @@
-
 import React from 'react'
-import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-var EventEmitter = require('../../middleware/EventEmitter.js')
-var ShowcaseShow = require('./ShowcaseShow.jsx')
-var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
-var PageContent = require('../../layout/PageContent.jsx')
-var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
-var ConfigurationActions = require('../../actions/ConfigurationActions.js')
-var ConfigurationStore = require('../../store/ConfigurationStore.js')
-var Loading = require('../../other/Loading.jsx')
-var PageTitle = require('../../modules/PageTitle.js')
-
+const ShowcaseShow = require('./ShowcaseShow.jsx')
+const CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
+const PageContent = require('../../layout/PageContent.jsx')
+const CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
+const ConfigurationActions = require('../../actions/ConfigurationActions.js')
+const ConfigurationStore = require('../../store/ConfigurationStore.js')
+const Loading = require('../../other/Loading.jsx')
+const PageTitle = require('../../modules/PageTitle.js')
 const BrowserUtils = require('../../modules/BrowserUtils.jsx')
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
-var Showcase = createReactClass({
+const Showcase = createReactClass({
 
   getInitialState: function () {
     return {
@@ -82,7 +78,7 @@ var Showcase = createReactClass({
       return null
     }
     PageTitle(this.state.showcase.name)
-    var showcaseShow
+    let showcaseShow
     if (this.state.showcase) {
       showcaseShow = (
         <ShowcaseShow collection={this.state.collection} showcase={this.state.showcase} />
@@ -90,7 +86,7 @@ var Showcase = createReactClass({
     } else {
       showcaseShow = (<Loading />)
     }
-    var header
+    let header
     if (!BrowserUtils.mobile()) {
       header = (<CollectionPageHeader collection={this.state.collection} />)
     }
