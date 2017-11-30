@@ -29,18 +29,42 @@ export default function () {
   return (
     <BrowserRouter history={browserHistory} onUpdate={logPageView} >
       <Switch>
-        <Route exact path='/' component={SiteIndexPage} />
-        <Route exact path='/404' component={ErrorPage} />
-        <Route exact path='/metadata/:itemID' component={PrintableMetadata} />
-        <Route exact path='/:collectionID/:collectionSlug/intro' component={CollectionIntroductionPage} />
-        <Route exact path='/:collectionID/:collectionSlug/about' component={AboutPage} />
-        <Route exact path='/:collectionID/:collectionSlug/search' component={SearchPage} />
-        <Route exact path='/:collectionID/:collectionSlug/items/:itemID' component={ItemPage} />
-        <Route exact path='/:collectionID/:collectionSlug/showcases/:showcaseID/:showcaseSlug' component={ShowcasePage} />
-        <Route exact path='/:collectionID/:collectionSlug/showcases/:showcaseID/:showcaseSlug/sections/:sectionID' component={SectionPage} />
-        <Route exact path='/:collectionID/:collectionSlug/pages/:pageID/:pageSlug' component={PagesPage} />
-        <Route exact path='/:collectionID/:collectionSlug' component={CollectionPage} />
-        <Route exact path='/:customSlug' component={CustomCollectionPage} />
+        <Route
+          exact path='/'
+          component={SiteIndexPage} />
+        <Route
+          exact path='/404'
+          component={ErrorPage} />
+        <Route
+          exact path='/metadata/:itemID'
+          component={PrintableMetadata} />
+        <Route
+          exact path='/:collectionID/:collectionSlug/intro'
+          component={CollectionIntroductionPage} />
+        <Route
+          exact path='/:collectionID/:collectionSlug/about'
+          component={AboutPage} />
+        <Route
+          exact path='/:collectionID/:collectionSlug/search'
+          component={SearchPage} />
+        <Route
+          exact path='/:collectionID/:collectionSlug/items/:itemID'
+          component={ItemPage} />
+        <Route
+          exact path='/:collectionID/:collectionSlug/showcases/:showcaseID/:showcaseSlug'
+          component={ShowcasePage} />
+        <Route
+          exact path='/:collectionID/:collectionSlug/showcases/:showcaseID/:showcaseSlug/sections/:sectionID'
+          component={SectionPage} />
+        <Route
+          exact path='/:collectionID/:collectionSlug/pages/:pageID/:pageSlug'
+          component={PagesPage} />
+        <Route
+          exact path='/:collectionID/:collectionSlug'
+          component={CollectionPage} />
+        <Route
+          exact path='/:customSlug'
+          component={CustomCollectionPage} />
       </Switch>
     </BrowserRouter>
   )
