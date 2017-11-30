@@ -7,6 +7,7 @@ const $ = require('jquery')
 const Scroller = createReactClass({
   propTypes: {
     target: PropTypes.string.isRequired,
+    height: PropTypes.number,
   },
 
   getInitialState: function () {
@@ -15,9 +16,18 @@ const Scroller = createReactClass({
     }
   },
 
-  onMouseDown: function (direction, event) {
+  onMouseDown: function (direction) {
     const scrollDelta = Math.ceil(this.state.element.clientWidth * (3 / 4))
-    $(this.state.element).animate({ scrollLeft: (this.state.element.scrollLeft + scrollDelta * direction) }, 500)
+    $(this.state.element).animate({
+      scrollLeft: (this.state.element.scrollLeft + scrollDelta * direction) }, 500)
+  },
+
+  scrollLeft: function () {
+    this.onMouseDown(-1)
+  },
+
+  scrollRight: function () {
+    this.onMouseDown(1)
   },
 
   componentDidMount: function () {
@@ -41,13 +51,13 @@ const Scroller = createReactClass({
     if (this.state.element) {
       if (this.state.element.scrollLeft > 0) {
         left = (
-          <SideNavButton onMouseDown={this.onMouseDown.bind(this, -1)} />
+          <SideNavButton onMouseDown={this.scrollLeft} />
         )
       }
 
       if (this.state.element.scrollLeft < this.maxScroll() - 10) {
         right = (
-          <SideNavButton onMouseDown={this.onMouseDown.bind(this, 1)} rightIcon />
+          <SideNavButton onMouseDown={this.scrollRight} rightIcon />
         )
       }
     }

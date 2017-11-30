@@ -229,7 +229,7 @@ class SearchStore extends EventEmitter {
       q['sort'] = this._sortOption
     }
 
-    if (overrides && overrides.start != 'undefined') {
+    if (overrides && overrides.start !== 'undefined') {
       q['start'] = overrides.start
     } else if (this._start) {
       q['start'] = this._start

@@ -7,7 +7,6 @@ const SideNavButton = require('../../other/SideNavButton.jsx')
 const ItemContent = require('../Item/ItemContent.jsx')
 const SectionShowDescription = require('./SectionShowDescription.jsx')
 const BrowserUtils = require('../../modules/BrowserUtils.jsx')
-const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
 const SectionShow = createReactClass({
@@ -17,7 +16,6 @@ const SectionShow = createReactClass({
     previousSection: PropTypes.object,
     nextSection: PropTypes.object,
     height: PropTypes.number,
-    collection: PropTypes.object,
   },
 
   contextTypes: {
@@ -33,14 +31,14 @@ const SectionShow = createReactClass({
 
   titleStyle: function () {
     return {
-      color: CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor,
+      color: '#ffffff',
       lineHeight: BrowserUtils.mobile() ? '24px' : '56px',
     }
   },
 
   closeButtonStyle: function () {
     return {
-      color: CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor,
+      color: '#ffffff',
       height: '100%',
       float: 'right',
     }
@@ -51,7 +49,7 @@ const SectionShow = createReactClass({
       height: this.props.height + 'px',
       width: '100%',
       position: 'fixed',
-      backgroundColor: CurrentTheme.getCurrentPallette(this.context.muiTheme).canvasColor,
+      backgroundColor: '#ffffff',
       zIndex: '4',
     }
   },

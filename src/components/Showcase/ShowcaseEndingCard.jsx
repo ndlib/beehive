@@ -3,12 +3,10 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Paper } from 'material-ui'
 const SitePathCard = require('../Collection/SitePathCard.jsx')
-const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 
 const ShowcaseEndingCard = createReactClass({
   displayName: 'Showcase Ending',
   propTypes: {
-    height: PropTypes.number.isRequired,
     siteObject: PropTypes.object.isRequired,
   },
 
@@ -28,7 +26,7 @@ const ShowcaseEndingCard = createReactClass({
       width: '500px',
       overflow: 'hidden',
       marginTop: '12vh',
-      backgroundColor: CurrentTheme.getCurrentPallette(this.context.muiTheme).showcaseTextCardColor,
+      backgroundColor: '#ffffff',
     }
   },
 

@@ -4,8 +4,6 @@ import createReactClass from 'create-react-class'
 import { Link } from 'react-router-dom'
 import { FlatButton, FontIcon } from 'material-ui'
 
-const CurrentTheme = require('../modules/CurrentTheme.jsx')
-
 const SideNavButton = createReactClass({
   propTypes: {
     href: PropTypes.string,
@@ -16,7 +14,6 @@ const SideNavButton = createReactClass({
     onMouseEnter: PropTypes.func,
     onMouseLeave: PropTypes.func,
     onTouchStart: PropTypes.func,
-    buttonOnOverlay: PropTypes.bool,
   },
 
   contextTypes: {
@@ -50,7 +47,7 @@ const SideNavButton = createReactClass({
     let styles = {
       top: (this.props.offsetTop - 30) + 'px',
       opacity: hovered ? '1' : '0.7',
-      backgroundColor: hovered ? CurrentTheme.getCurrentPallette(this.context.muiTheme).accent3Color : CurrentTheme.getCurrentPallette(this.context.muiTheme).accent3Color,
+      backgroundColor: '#E0E0E0',
       borderRadius: '50%',
       display: 'inline-block',
       margin: '0',
@@ -76,7 +73,7 @@ const SideNavButton = createReactClass({
     const hovered = (this.state.hovered || this.state.isKeyboardFocused)
 
     let styles = {
-      color: hovered ? CurrentTheme.getCurrentPallette(this.context.muiTheme).textColor : CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor,
+      color: hovered ? '#212121' : '#ffffff',
       fontSize: '25px',
       position: 'absolute',
       top: '17.5px',

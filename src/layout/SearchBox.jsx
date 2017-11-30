@@ -28,6 +28,7 @@ const SearchBox = createReactClass({
     collection: PropTypes.object,
     primary: PropTypes.bool,
     useStore: PropTypes.bool,
+    active: PropTypes.bool,
   },
 
   contextTypes: {
@@ -91,7 +92,7 @@ const SearchBox = createReactClass({
 
   inputStyle: function () {
     return ({
-      color: (this.props.primary ? CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor : CurrentTheme.getCurrentPallette(this.context.muiTheme).textColor),
+      color: (this.props.primary ? '#ffffff' : '#212121'),
       height: '36px',
     })
   },

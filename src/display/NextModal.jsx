@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Link } from 'react-router'
 const PrevNext = require('../modules/PrevNextUtils.jsx')
-const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 
 const NextModal = createReactClass({
   displayName: 'Next Modal Link',
@@ -28,7 +27,7 @@ const NextModal = createReactClass({
       <Link
         to={this.props.url}
         className='next-button half-circle-button'
-        style={PrevNext.buttonStyles(this.props.offsetTop, CurrentTheme.getCurrentPallette(this.context.muiTheme).accent3Color)}
+        style={PrevNext.buttonStyles(this.props.offsetTop, '#E0E0E0')}
       >
         <i className='material-icons'>chevron_right</i>
       </Link>

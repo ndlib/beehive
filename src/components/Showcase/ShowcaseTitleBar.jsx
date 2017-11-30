@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui'
 const CloseButton = require('../../other/CloseButton.jsx')
-const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 
 const ShowcaseTitleBar = createReactClass({
 

@@ -7,6 +7,8 @@ import { Paper } from 'material-ui'
 const PageContent = createReactClass({
   propTypes: {
     fluidLayout: PropTypes.bool,
+    onClick: PropTypes.func,
+    onMouseOver: PropTypes.func,
   },
 
   getDefaultProps: function () {
