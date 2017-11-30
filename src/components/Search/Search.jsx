@@ -31,6 +31,7 @@ const Search = createReactClass({
       PropTypes.string,
       PropTypes.object,
     ]),
+    footerHeight: PropTypes.number,
   },
 
   getDefaultProps: function () {
@@ -45,6 +46,7 @@ const Search = createReactClass({
       windowHeight: this.calcHeight(),
       collection: {},
       remoteCollectionLoaded: false,
+      readyToRender: false,
     }
   },
 
@@ -52,7 +54,7 @@ const Search = createReactClass({
     ConfigurationStore.addChangeListener(this.configurationLoaded)
     SearchStore.on('SearchStoreChanged', this.searchStoreChanged)
     SearchStore.on('SearchStoreQueryFailed',
-      function (result) {
+      () => {
         window.location = window.location.origin + '/404'
       }
     )
@@ -75,6 +77,17 @@ const Search = createReactClass({
     ConfigurationStore.removeChangeListener(this.configurationLoaded)
   },
 
+  componentWillReceiveProps: function (nextProps) {
+    if (this.props !== nextProps) {
+      if (typeof (nextProps.collection) === 'object') {
+        this.setValues(nextProps.collection)
+      } else {
+        LoadRemote.loadRemoteCollection(nextProps.collection, this.setValues)
+      }
+      this.searchStoreChanged()
+    }
+  },
+
   handleResize: function () {
     this.setState({
       windowHeight: this.calcHeight(),
@@ -85,17 +98,10 @@ const Search = createReactClass({
     return window.innerHeight - (this.props.compact ? 0 : this.props.footerHeight)
   },
 
-  searchStoreChanged: function (reason) {
+  searchStoreChanged: function () {
     this.setState({
       readyToRender: true,
     })
-
-    // if(reason === "load") {
-    //   let path = window.location.origin + SearchStore.searchUri() + currentItem
-    //   path += "&compact=" + this.props.compact
-    //   window.history.replaceState({ store: SearchStore.getQueryParams() }, '', path)
-
-    // }
   },
 
   configurationLoaded: function () {
@@ -109,7 +115,7 @@ const Search = createReactClass({
       collection,
       this.props.hits,
       this.props.searchTerm,
-      this.facetObject(),
+      this.facetObject(this.props),
       this.props.sortTerm,
       this.props.start,
       this.props.view)
@@ -123,16 +129,16 @@ const Search = createReactClass({
   },
 
   // Translates the facet option given in props to the structure the SearchStore expects.
-  facetObject: function () {
+  facetObject: function (props) {
     let facets
-    if (this.props.facet) {
+    if (props.facet) {
       facets = []
-      for (let i = 0; i < this.props.facet.length; i++) {
-        const facetKey = Object.keys(this.props.facet[i])[0]
-        const facetValue = Object.keys(this.props.facet[i])[1]
+      for (let i = 0; i < props.facet.length; i++) {
+        const facetKey = Object.keys(props.facet[i])[0]
+        const facetValue = Object.keys(props.facet[i])[1]
         facets.push({
-          name: this.props.facet[i][facetKey],
-          value: this.props.facet[i][facetValue],
+          name: props.facet[i][facetKey],
+          value: props.facet[i][facetValue],
         })
       }
     }
@@ -153,7 +159,9 @@ const Search = createReactClass({
         <PageContent fluidLayout={false}>
           <SearchDisplayList compact={this.props.compact} />
         </PageContent>
-        { !this.props.compact && <CollectionPageFooter collection={SearchStore.collection} height={this.props.footerHeight} /> }
+        { !this.props.compact && <CollectionPageFooter
+          collection={SearchStore.collection}
+          height={this.props.footerHeight} /> }
       </div>
     )
   },
