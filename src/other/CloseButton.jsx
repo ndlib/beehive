@@ -19,9 +19,9 @@ const CloseButton = createReactClass({
 
   color: function () {
     if (this.props.alternate) {
-      return '#000000'
-    } else {
       return '#ffffff'
+    } else {
+      return '#000000'
     }
   },
 
@@ -64,7 +64,6 @@ const CloseButton = createReactClass({
   },
 
   render: function () {
-    return (<div />)
     return (
       <Link to={this.href()}>
         <FlatButton
