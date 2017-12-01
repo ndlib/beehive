@@ -41,12 +41,14 @@ const PagesShow = createReactClass({
           width: '70%',
           margin: '0 auto',
           padding: '2rem',
+          overflow: 'hidden',
         }
       case 'narrow':
         return {
           width: '100%',
           margin: '0 0',
           padding: '2rem',
+          overflow: 'hidden',
         }
     }
   },

@@ -10,6 +10,7 @@ const CollectionIntro = createReactClass({
   style: function () {
     return ({
       margin:'60px 0',
+      overflow: 'hidden',
     })
   },
 
