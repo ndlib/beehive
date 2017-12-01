@@ -1,117 +1,105 @@
-'use strict'
-var React = require('react');
-var mui = require('material-ui');
-var ThemeManager = require('material-ui/lib/styles/theme-manager');
-var BeehiveTheme = require('../../themes/beehive.jsx');
-
-var EventEmitter = require('../../middleware/EventEmitter.js');
-var ShowcaseShow = require('./ShowcaseShow.jsx');
-var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx');
-var PageContent = require('../../layout/PageContent.jsx');
-var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx');
-var ConfigurationActions = require("../../actions/ConfigurationActions.js");
-var ConfigurationStore = require("../../store/ConfigurationStore.js");
-var Loading = require("../../other/Loading.jsx");
-var PageTitle = require("../../modules/PageTitle.js")
-
+import React from 'react'
+import createReactClass from 'create-react-class'
+const ShowcaseShow = require('./ShowcaseShow.jsx')
+const CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
+const PageContent = require('../../layout/PageContent.jsx')
+const CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
+const ConfigurationActions = require('../../actions/ConfigurationActions.js')
+const ConfigurationStore = require('../../store/ConfigurationStore.js')
+const Loading = require('../../other/Loading.jsx')
+const PageTitle = require('../../modules/PageTitle.js')
 const BrowserUtils = require('../../modules/BrowserUtils.jsx')
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
-var Showcase = React.createClass({
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
+const Showcase = createReactClass({
 
-  getChildContext() {
-    return {
-      muiTheme: this.state.muiTheme,
-    };
-  },
-
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       showcase: null,
       height: window.innerHeight,
       widht: window.innerWidth,
-      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
-    };
+    }
   },
 
-  configurationLoaded: function(){
-    this.setState({ configurationLoaded: true });
+  configurationLoaded: function () {
+    this.setState({ configurationLoaded: true })
   },
 
-  setValues: function(collection) {
-    ConfigurationActions.load(collection);
+  setValues: function (collection) {
+    ConfigurationActions.load(collection)
     this.setState({
       remoteCollectionLoaded: true,
       collection: collection,
       showcase: collection.showcases,
-    }, this.handleResize);
-    return true;
+    }, this.handleResize)
+    return true
   },
 
-  componentWillMount: function() {
-    ConfigurationStore.addChangeListener(this.configurationLoaded);
-    var newMuiTheme = this.state.muiTheme;
-    newMuiTheme.paper.backgroundColor = 'inherit';
-
-    this.setState({
-      muiTheme: newMuiTheme,
-    });
-  },
-
-  componentDidMount: function() {
-    if ('object' == typeof(this.props.collection)) {
-      this.setValues(this.props.collection);
+  componentDidMount: function () {
+    if (typeof (this.props.collection) === 'object') {
+      this.setValues(this.props.collection)
     } else {
-      LoadRemote.loadRemoteCollection(this.props.collection, this.setValues.bind(this))
+      LoadRemote.loadRemoteCollection(this.props.collection, this.setValues)
     }
-    window.addEventListener('resize', this.handleResize, false);
-    this.handleResize();
+    window.addEventListener('resize', this.handleResize, false)
+    this.handleResize()
   },
 
-  componentWillUnmount: function() {
-    window.removeEventListener('resize', this.handleResize);
-    ConfigurationStore.removeChangeListener(this.configurationLoaded);
+  componentWillUnmount: function () {
+    window.removeEventListener('resize', this.handleResize)
+    ConfigurationStore.removeChangeListener(this.configurationLoaded)
   },
 
-  handleResize: function() {
+  componentWillReceiveProps: function (nextProps) {
+    if (this.props.collection !== nextProps.collection) {
+      if (typeof (nextProps.collection) === 'object') {
+        this.setValues(nextProps.collection)
+      } else {
+        LoadRemote.loadRemoteCollection(nextProps.collection, this.setValues)
+      }
+    }
+  },
+
+  componentDidUpdate: function (prevProps, prevState) {
+    if (this.props !== prevProps) {
+      this.handleResize()
+    }
+  },
+
+  handleResize: function () {
     this.setState({
       height: window.innerHeight,
-      width: window.innerWidth
-    });
+      width: window.innerWidth,
+    })
   },
 
-  render: function() {
-    if(!this.state.remoteCollectionLoaded) {
-      return null;
+  render: function () {
+    if (!this.state.remoteCollectionLoaded) {
+      return null
     }
     PageTitle(this.state.showcase.name)
-    var showcaseShow;
+    let showcaseShow
     if (this.state.showcase) {
       showcaseShow = (
         <ShowcaseShow collection={this.state.collection} showcase={this.state.showcase} />
-      );
+      )
     } else {
-      showcaseShow = (<Loading />);
+      showcaseShow = (<Loading />)
     }
-    var header;
-    if(!BrowserUtils.mobile()){
-      header = (<CollectionPageHeader collection={this.state.collection} />);
+    let header
+    if (!BrowserUtils.mobile()) {
+      header = (<CollectionPageHeader collection={this.state.collection} />)
     }
-    // this is a div instead of mui.AppCanvas because of a bug in 12.3 which is fixed in master.
     return (
-      <div style={{ backgroundColor: 'inherit' }}>
+      <div style={{ backgroundColor: 'rgba(0,0,0,0)' }}>
         {header}
-        <PageContent fluidLayout={true}>
+        <PageContent fluidLayout>
           {showcaseShow}
         </PageContent>
         <CollectionPageFooter collection={this.state.collection} />
       </div>
-    );
-  }
-});
+    )
+  },
+})
 
-// each file will export exactly one component
-module.exports = Showcase;
+module.exports = Showcase

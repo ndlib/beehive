@@ -1,61 +1,66 @@
-'use strict'
-var React = require("react");
-var mui = require('material-ui');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import { Paper } from 'material-ui'
+const ShowcaseEndingCard = require('./ShowcaseEndingCard.jsx')
+const SectionCard = require('../Section/SectionCard.jsx')
 
-var ShowcaseEndingCard = require('./ShowcaseEndingCard.jsx');
-var SectionCard = require('../Section/SectionCard.jsx');
-
-var ShowcaseSections = React.createClass({
+const ShowcaseSections = createReactClass({
 
   propTypes: {
-    showcase: React.PropTypes.object.isRequired,
-    height: React.PropTypes.number.isRequired,
+    showcase: PropTypes.object.isRequired,
+    height: PropTypes.number.isRequired,
   },
 
-  style: function() {
+  style: function () {
     return {
-      height: this.props.height + "px",
-      display: "inline-block",
-      paddingRight: "175px",
-      boxShadow: "none",
-      //lineHeight: this.props.height + "px",
+      height: this.props.height + 'px',
+      display: 'inline-block',
+      paddingRight: '175px',
+      boxShadow: 'none',
+      backgroundColor: 'rgba(0,0,0,0)',
+      // lineHeight: this.props.height + "px",
     }
   },
 
-  sections: function() {
-    var sections = this.props.showcase.sections;
-    if(sections) {
-      var sectionNodes = sections.map(function(section, index) {
-        var nodes = [];
+  sections: function () {
+    const sections = this.props.showcase.sections
+    if (sections) {
+      const sectionNodes = sections.map(function (section, index) {
+        let nodes = []
 
         nodes.push((
-          <SectionCard section={section} height={this.props.height} />
-        ));
-        return nodes;
-      }.bind(this));
-      return sectionNodes;
+          <SectionCard section={section} height={this.props.height} key={index} />
+        ))
+        return nodes
+      }.bind(this))
+      return sectionNodes
     } else {
-      return null;
+      return null
     }
   },
 
-  nextShowcase: function() {
-    var nextShowcase;
-    if(this.props.showcase.nextObject) {
-      nextShowcase = (<ShowcaseEndingCard height={this.props.height} siteObject={this.props.showcase.nextObject} />);
+  nextShowcase: function () {
+    let nextShowcase
+    if (this.props.showcase.nextObject) {
+      nextShowcase = (
+        <ShowcaseEndingCard
+          height={this.props.height}
+          siteObject={this.props.showcase.nextObject}
+          key='end'
+        />)
     }
-    return nextShowcase;
+    return nextShowcase
   },
 
-  render: function() {
+  render: function () {
     return (
-      <mui.Paper id="sections-content-inner" className="sections-content-inner" style={this.style()}>
+      <Paper id='sections-content-inner' className='sections-content-inner' style={this.style()}>
         {this.sections()}
         {this.nextShowcase()}
-      </mui.Paper>
-    );
-  }
-});
+      </Paper>
+    )
+  },
+})
 
-// each file will export exactly one component
-module.exports = ShowcaseSections;
+module.exports = ShowcaseSections

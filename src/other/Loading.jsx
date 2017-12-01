@@ -1,14 +1,13 @@
-//app/assets/javascripts/components/Loading.jsx
-var React = require('react');
-var mui = require('material-ui');
+import React from 'react'
+import createReactClass from 'create-react-class'
+import { CircularProgress } from 'material-ui'
 
-var Loading = React.createClass({
+const Loading = createReactClass({
 
-  render: function() {
-    return (<mui.CircularProgress mode="indeterminate" size={.5} />)
-  }
+  render: function () {
+    return (<CircularProgress mode='indeterminate' size={0.5} />)
+  },
 
-});
+})
 
-// each file will export exactly one component
-module.exports = Loading;
+module.exports = Loading

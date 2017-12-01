@@ -1,42 +1,42 @@
 const BrowserUtils = {
-  ie: function() {
+  ie: function () {
     // return true if Internet Exploder else false
-    var ua = window.navigator.userAgent;
-    var msie = ua.indexOf('MSIE ');
+    const ua = window.navigator.userAgent
+    const msie = ua.indexOf('MSIE ')
     if (msie > 0) {
-        return true;
+      return true
     }
-    var trident = ua.indexOf('Trident/');
+    const trident = ua.indexOf('Trident/')
     if (trident > 0) {
-        return true;
+      return true
     }
-    var edge = ua.indexOf('Edge/');
+    const edge = ua.indexOf('Edge/')
     if (edge > 0) {
-       return true;
+      return true
     }
-    return false;
+    return false
   },
 
-  mobile: function() {
-    var checkWidth = 650;
-    if(screen.width <= checkWidth || window.innerWidth <= checkWidth){
-      return true;
+  mobile: function () {
+    const checkWidth = 650
+    if (screen.width <= checkWidth || window.innerWidth <= checkWidth) {
+      return true
     }
-    var ua = window.navigator.userAgent;
-    var iphone = ua.indexOf('iPhone');
-    if(iphone > 0) {
-      return true;
+    const ua = window.navigator.userAgent
+    const iphone = ua.indexOf('iPhone')
+    if (iphone > 0) {
+      return true
     }
-    var ipod = ua.indexOf('iPod');
-    if(ipod > 0) {
-      return true;
+    const ipod = ua.indexOf('iPod')
+    if (ipod > 0) {
+      return true
     }
-    var android = ua.indexOf('android');
-    if(android > -1) {
-      return true;
+    const android = ua.indexOf('android')
+    if (android > -1) {
+      return true
     }
-    return false;
+    return false
   },
 }
 
-module.exports = BrowserUtils;
+module.exports = BrowserUtils

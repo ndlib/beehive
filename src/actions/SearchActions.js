@@ -1,10 +1,9 @@
-"use strict"
-var AppDispatcher = require("../dispatcher/AppDispatcher.jsx");
-var SearchActionTypes = require("../constants/SearchActionTypes.jsx");
+const AppDispatcher = require('../dispatcher/AppDispatcher.jsx')
+const SearchActionTypes = require('../constants/SearchActionTypes.jsx')
 
 class SearchActions {
   // Init
-  loadSearchResults(collection, baseApiUrl, searchTerm, facetOption, sortOption, start, view) {
+  loadSearchResults (collection, baseApiUrl, searchTerm, facetOption, sortOption, start, view) {
     AppDispatcher.dispatch({
       actionType: SearchActionTypes.SEARCH_LOAD_RESULTS,
       collection: collection,
@@ -13,44 +12,43 @@ class SearchActions {
       facetOption: facetOption,
       sortOption: sortOption,
       start: start,
-      view: view
-    });
+      view: view,
+    })
   }
 
-  reloadSearchResults(data) {
+  reloadSearchResults (data) {
     AppDispatcher.dispatch({
       actionType: SearchActionTypes.SEARCH_RELOAD_RESULTS,
-      data: data
-    });
+      data: data,
+    })
   }
 
-  setSearchTerm(term) {
+  setSearchTerm (term) {
     AppDispatcher.dispatch({
       actionType: SearchActionTypes.SEARCH_SET_TERM,
-      term: term
-    });
+      term: term,
+    })
   }
 
-  setSelectedFacet(facet) {
+  setSelectedFacet (facet) {
     AppDispatcher.dispatch({
       actionType: SearchActionTypes.SEARCH_SET_SELECTED_FACET,
-      facet: facet
-    });
+      facet: facet,
+    })
   }
 
-  setSort(sort) {
+  setSort (sort) {
     AppDispatcher.dispatch({
       actionType: SearchActionTypes.SEARCH_SET_SORT,
-      sort: sort
-    });
+      sort: sort,
+    })
   }
 
-  setView(view) {
+  setView (view) {
     AppDispatcher.dispatch({
       actionType: SearchActionTypes.SEARCH_SET_VIEW,
-      view: view
-    });
+      view: view,
+    })
   }
 }
-module.exports = new SearchActions();
-//export default SearchActions;
+module.exports = new SearchActions()

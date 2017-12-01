@@ -1,58 +1,37 @@
-'use strict'
-var React = require('react');
-var mui = require('material-ui');
-var ThemeManager = require('material-ui/lib/styles/theme-manager');
-var BeehiveTheme = require('../themes/beehive.jsx');
+import React from 'react'
+import createReactClass from 'create-react-class'
+const PageHeader = require('../layout/PageHeader.jsx')
+const PageContent = require('../layout/PageContent.jsx')
+const PageTitle = require('../modules/PageTitle.js')
 
-var PageHeader = require('../layout/PageHeader.jsx');
-var PageContent = require('../layout/PageContent.jsx');
-var PageTitle = require('../modules/PageTitle.js')
-
-var ErrorPage = React.createClass({
-  componentWillMount() {
-    PageTitle("Page Not Found")
+const ErrorPage = createReactClass({
+  componentWillMount () {
+    PageTitle('Page Not Found')
   },
 
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
-
-  getChildContext() {
-    return {
-      muiTheme: this.state.muiTheme,
-    };
-  },
-
-  getInitialState: function() {
-    return {
-      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
-    };
-  },
-
-  render: function() {
-
-    var url = window.location.origin;
+  render: function () {
+    const url = window.location.origin
     return (
-    <mui.AppCanvas>
-      <PageHeader branding={true} />
-      <PageContent>
-        <div className="row row-fluid">
-            <div className="col-lg-12 bee-page-content">
-              <div className="row">
-                <div className="col-sm-12">
-                  <div className="errorframe">
-                  <h1>Oops!</h1>
-                  <p>There doesn't appear to be anything here at the moment.</p>
-                  <p><a href={url}>Try the Digital Exhibits and Collections homepage.</a></p>
+      <div>
+        <PageHeader branding />
+        <PageContent>
+          <div className='row row-fluid'>
+            <div className='col-lg-12 bee-page-content'>
+              <div className='row'>
+                <div className='col-sm-12'>
+                  <div className='errorframe'>
+                    <h1>Oops!</h1>
+                    <p>There doesn't appear to be anything here at the moment.</p>
+                    <p><a href={url}>Try the Digital Exhibits and Collections homepage.</a></p>
                   </div>
                 </div>
               </div>
             </div>
-        </div>
-      </PageContent>
-    </mui.AppCanvas>
-    );
-  }
+          </div>
+        </PageContent>
+      </div>
+    )
+  },
 
-});
-module.exports = ErrorPage;
+})
+module.exports = ErrorPage

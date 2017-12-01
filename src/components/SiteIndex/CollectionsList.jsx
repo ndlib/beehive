@@ -1,41 +1,48 @@
-'use strict'
-var React = require('react');
-var mui = require('material-ui')
-var MediaQuery = require('react-responsive');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import { GridList } from 'material-ui'
+const MediaQuery = require('react-responsive')
 
-var CollectionCard = require('./CollectionCard.jsx');
+const CollectionCard = require('./CollectionCard.jsx')
 
-var CollectionsList = React.createClass({
+const CollectionsList = createReactClass({
   displayName: 'Collections List',
 
   propTypes: {
-    collections: React.PropTypes.array,
+    collections: PropTypes.array,
   },
 
-  collectionNodes: function() {
-    return this.reverseCollection().map(function(collection, index) {
-      return (<CollectionCard collection={collection} cardHeight={450} />);
-    });
+  collectionNodes: function () {
+    return this.reverseCollection().map(function (collection, index) {
+      return (
+        <CollectionCard
+          collection={collection}
+          key={index}
+          cardHeight='450'
+        />
+      )
+    })
   },
 
-  reverseCollection: function() {
-      var temp = [];
-      var len = this.props.collections.length;
-      for (var i = (len - 1); i !== -1; i--) {
-          temp.push(this.props.collections[i]);
-      }
-      return temp;
+  reverseCollection: function () {
+    let temp = []
+    const len = this.props.collections.length
+    for (let i = (len - 1); i !== -1; i--) {
+      temp.push(this.props.collections[i])
+    }
+    return temp
   },
 
-  gridList: function(cols) {
+  gridList: function (cols) {
     return (
-      <mui.GridList cols={cols} cellHeight={'auto'} padding={24}>
+      <GridList cols={cols} cellHeight={'auto'} padding={24}>
         {this.collectionNodes()}
-      </mui.GridList>
-    );
+      </GridList>
+    )
   },
 
-  render: function() {
+  render: function () {
     return (
       <div>
         <MediaQuery maxWidth={650}>
@@ -48,8 +55,8 @@ var CollectionsList = React.createClass({
           {this.gridList(3)}
         </MediaQuery>
       </div>
-    );
-  }
-});
+    )
+  },
+})
 
-module.exports = CollectionsList;
+module.exports = CollectionsList

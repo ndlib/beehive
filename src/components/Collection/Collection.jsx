@@ -1,92 +1,78 @@
-'use strict'
-var React = require('react');
-var mui = require('material-ui');
-var ThemeManager = require('material-ui/lib/styles/theme-manager');
-var BeehiveTheme = require('../../themes/beehive.jsx');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 
-var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx');
-var CollectionShow = require('./CollectionShow.jsx');
-var PageContent = require('../../layout/PageContent.jsx');
-var CollectionIntro = require('./CollectionIntro.jsx');
-var CollectionShowSitePath = require('./CollectionShowSitePath.jsx');
-var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx');
-var PageTitle = require('../../modules/PageTitle.js')
+const CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
+const CollectionShow = require('./CollectionShow.jsx')
+const PageContent = require('../../layout/PageContent.jsx')
+const CollectionIntro = require('./CollectionIntro.jsx')
+const CollectionShowSitePath = require('./CollectionShowSitePath.jsx')
+const CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
+const PageTitle = require('../../modules/PageTitle.js')
 
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
-var Collection = React.createClass({
+const Collection = createReactClass({
   propTypes: {
-    collection: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.object,
+    collection: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.object,
     ]),
   },
 
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
-
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       collection: {},
       remoteCollectionLoaded: false,
-      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
-    };
-  },
-
-  getChildContext() {
-    return {
-      muiTheme: this.state.muiTheme,
-    };
-  },
-
-  componentDidMount: function() {
-    if ('object' == typeof(this.props.collection)) {
-      this.setState({
-        collection: this.props.collection,
-      });
-    } else {
-      LoadRemote.loadRemoteCollection(this.props.collection, this.onLoaded.bind(this));
     }
   },
 
-  onLoaded: function(result) {
+  componentDidMount: function () {
+    if (typeof (this.props.collection) === 'object') {
+      this.setState({
+        collection: this.props.collection,
+      })
+    } else {
+      LoadRemote.loadRemoteCollection(this.props.collection, this.onLoaded)
+    }
+  },
+
+  onLoaded: function (result) {
     this.setState({
       remoteCollectionLoaded: true,
-      collection: result
+      collection: result,
     })
   },
 
-  componentWillMount: function(){
-    document.body.className = document.body.className + " collection";
+  componentWillMount: function () {
+    document.body.className = document.body.className + ' collection'
   },
 
-  style: function() {
-      return ({
-        marginTop:'-64px',
-      });
+  style: function () {
+    return ({
+      marginTop:'-64px',
+    })
   },
 
-  render: function() {
-    if(!this.state.remoteCollectionLoaded) {
-      return null;
+  render: function () {
+    if (!this.state.remoteCollectionLoaded) {
+      return null
     }
     PageTitle(this.state.collection.name)
     return (
-      <mui.AppCanvas>
-        <div className="collection-show-page">
-            <CollectionPageHeader collection={this.state.collection} branding={true} />
-            <CollectionShow collection={this.state.collection} />
-            <PageContent fluidLayout={false}>
-              <CollectionIntro collection={this.state.collection} />
-              <CollectionShowSitePath collection={this.state.collection} />
-            </PageContent>
-            <CollectionPageFooter collection={this.state.collection} />
+      <div>
+        <div className='collection-show-page'>
+          <CollectionPageHeader collection={this.state.collection} branding />
+          <CollectionShow collection={this.state.collection} />
+          <PageContent fluidLayout={false}>
+            <CollectionIntro collection={this.state.collection} />
+            <CollectionShowSitePath collection={this.state.collection} />
+          </PageContent>
+          <CollectionPageFooter collection={this.state.collection} />
         </div>
-      </mui.AppCanvas>
-    );
-  }
-});
+      </div>
+    )
+  },
+})
 
-// each file will export exactly one component
-module.exports = Collection;
+module.exports = Collection

@@ -1,127 +1,137 @@
-'use strict'
-var React = require('react');
-var mui = require('material-ui');
-var Types = {
-  LINK: 'LINK',
-  SUBHEADER: 'SUBHEADER'
-}
-var ThemeManager = require('material-ui/lib/styles/theme-manager');
-var BeehiveTheme = require('../themes/beehive.jsx');
-var injectTapEventPlugin = require("react-tap-event-plugin");
-injectTapEventPlugin();
-
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import { Divider, Drawer, FontIcon, FlatButton, MenuItem } from 'material-ui'
+import { Link } from 'react-router-dom'
 const CollectionUrl = require('../modules/CollectionUrl.jsx')
 const CurrentTheme = require('../modules/CurrentTheme.jsx')
+const $ = require('jquery')
 
-var CollectionLeftNav = React.createClass({
+const CollectionLeftNav = createReactClass({
   propTypes: {
-    collection: React.PropTypes.object.isRequired,
+    collection: PropTypes.object.isRequired,
   },
 
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
-
-  getChildContext() {
-    return {
-      muiTheme: this.state.muiTheme,
-    };
-  },
-
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       sitePath: [],
-      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
-    };
+      open: false,
+    }
   },
 
-  componentWillMount: function() {
+  componentWillMount: function () {
     if (this.props.collection['site_path']) {
       this.setState({
-        sitePath: this.props.collection['site_path']
-      });
+        sitePath: this.props.collection['site_path'],
+      })
     }
   },
 
-  componentDidMount: function() {
+  componentDidMount: function () {
     if (this.props.collection['site_path']) {
-      return;
+      return
     }
-    var url = this.props.collection['@id'] + '/site_path';
+    const url = this.props.collection['@id'] + '/site_path'
 
     $.ajax({
       context: this,
-      type: "GET",
+      type: 'GET',
       url: url,
-      dataType: "json",
-      success: function(result) {
+      dataType: 'json',
+      success: function (result) {
         this.setState({
           sitePath: result.site_path,
-        });
+        })
       },
-      error: function(request, status, thrownError) {
+      error: function (request, status, thrownError) {
         // Should we redirect here? It's probably not necessary since it's not
         // the primary content of the page...
-        //window.location = window.location.origin + '/404';
-        console.log("Error retrieving showcase list " + thrownError);
-      }
-    });
+        // window.location = window.location.origin + '/404'
+        console.log('Error retrieving showcase list ' + thrownError)
+      },
+    })
   },
 
-
-  menuItemAction: function(url) {
-    window.location = url;
+  menuItemAction: function (url) {
+    window.location = url
   },
 
-  dropDownOptions: function() {
-    var options = [];
-    var collectionUrl = CollectionUrl.collectionUrl(this.props.collection);
-    var aboutUrl = CollectionUrl.aboutUrl(this.props.collection);
-    var introUrl = CollectionUrl.introUrl(this.props.collection);
-    var browseUrl = CollectionUrl.browseUrl(this.props.collection);
+  closeAndSrollTop: function () {
+    this.setState({ open: false })
+    document.documentElement.scrollTop = 0
+  },
+
+  dropDownOptions: function () {
+    let options = []
+    const collectionUrl = CollectionUrl.collectionUrl(this.props.collection)
+    const aboutUrl = CollectionUrl.aboutUrl(this.props.collection)
+    const introUrl = CollectionUrl.introUrl(this.props.collection)
+    const browseUrl = CollectionUrl.browseUrl(this.props.collection)
 
     options.push((
-      <a href={collectionUrl} key='collectionUrlLink'>
-        <mui.MenuItem primaryText='Home' key='home' />
-      </a>
-    ));
+      <Link
+        to={collectionUrl}
+        key='collectionUrlLink'
+        onClick={this.closeAndScrollTop}
+      >
+        <MenuItem primaryText='Home' key='home' />
+      </Link>
+    ))
 
     if (this.props.collection.enable_browse) {
       options.push((
-        <a href={browseUrl} key='browseUrlLink'>
-          <mui.MenuItem primaryText='Browse Collection' key='browse' />
-        </a>
-      ));
+        <Link
+          to={browseUrl}
+          key='browseUrlLink'
+          onClick={this.closeAndScrollTop}
+        >
+          <MenuItem primaryText='Browse Collection' key='browse' />
+        </Link>
+      ))
     }
 
     if (this.props.collection.about) {
       options.push((
-        <a href={aboutUrl} key='aboutUrl'>
-          <mui.MenuItem primaryText='About' key='about'/>
-        </a>
-      ));
+        <Link
+          to={aboutUrl}
+          key='aboutUrl'
+          onClick={() => { }}
+        >
+          <MenuItem primaryText='About' key='about' />
+        </Link>
+      ))
     }
-    options.push((<mui.Divider key="divider"/>));
+    options.push((<Divider key='divider' />))
 
     if (introUrl) {
       options.push((
-        <a href={introUrl} key='introUrl'>
-          <mui.MenuItem primaryText='Introduction' key='intro'/>
-        </a>
-      ));
+        <Link
+          to={introUrl}
+          key='introUrl'
+          onClick={this.closeAndScrollTop}
+        >
+          <MenuItem primaryText='Introduction' key='intro' />
+        </Link>
+      ))
     }
 
-    this.state.sitePath.forEach(function(siteObject){
-      var url = CollectionUrl.collectionObjectUrl(siteObject);
-      var name = siteObject.name || siteObject.name_line_1;
-      options.push ((
-        <a href={url} key={url}>
-          <mui.MenuItem primaryText={name} key={siteObject.id} className="collection-left-nav-item" />
-        </a>
-      ));
-    }.bind(this));
+    this.state.sitePath.forEach(function (siteObject) {
+      const url = CollectionUrl.collectionObjectUrl(siteObject)
+      const name = siteObject.name || siteObject.name_line_1
+      options.push((
+        <Link
+          to={url}
+          key={siteObject.id}
+          onClick={this.closeAndScrollTop}
+        >
+          <MenuItem
+            primaryText={name}
+            className='collection-left-nav-item' />
+        </Link>
+      ))
+    }.bind(this))
 
-    return options;
+    return options
   },
 
   buttonStyle: function () {
@@ -133,45 +143,46 @@ var CollectionLeftNav = React.createClass({
       minWidth: 'auto',
       backgroundColor: 'rgba(255,255,255,.1)',
       color: 'white',
-      zIndex: "5"
-    });
+      zIndex: '5',
+    })
   },
 
   navStyle: function () {
     return ({
-      zIndex: '999999999999999'
-    });
+      zIndex: '999999999999999',
+    })
   },
 
   clickEvent: function () {
-    this.refs.leftNav.toggle();
+    this.setState({ open: !this.state.open })
   },
 
   render: function () {
-    if(!this.props.collection) {
-      return;
-    }
-    else {
+    if (!this.props.collection) {
+
+    } else {
       return (
-        <div id="CollectionLeftNav" style={{margin:'0', marginLeft: "16px"}}>
-          <mui.FlatButton
+        <div id='CollectionLeftNav' style={{ margin:'0', marginLeft: '16px' }}>
+          <FlatButton
             onClick={this.clickEvent}
             style={this.buttonStyle()}
-            disableTouchRipple={true}
+            disableTouchRipple
           >
-            <mui.FontIcon className="material-icons" style={CurrentTheme.lightIconStyle()}>menu</mui.FontIcon>
-          </mui.FlatButton>
+            <FontIcon className='material-icons' style={CurrentTheme.lightIconStyle()}>menu</FontIcon>
+          </FlatButton>
 
-          <mui.LeftNav
-            ref="leftNav"
-            className="leftNav"
+          <Drawer
             docked={false}
+            onRequestChange={(open) => this.setState({ open })}
+            open={this.state.open}
+            id='leftNav'
+            className='leftNav'
             children={this.dropDownOptions()}
             style={this.navStyle()} />
         </div>
-      );
+      )
     }
-  }
-});
+  },
+})
 
-module.exports = CollectionLeftNav;
+module.exports = CollectionLeftNav

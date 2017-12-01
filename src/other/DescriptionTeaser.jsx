@@ -1,28 +1,29 @@
-//app/assets/javascripts/components/DescriptionTeaser.jsx
-var React = require('react');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 
-var DescriptionTeaser = React.createClass({
-  displayName: "Teaser Text",
+const DescriptionTeaser = createReactClass({
+  displayName: 'Teaser Text',
 
   propTypes: {
-    description: React.PropTypes.string,
-    showDescription: React.PropTypes.bool,
-    length: React.PropTypes.number,
+    description: PropTypes.string,
   },
 
-  style: function() {
+  style: function () {
     return {
       overflow: 'hidden',
       textOverflow: 'ellipsis',
-    };
+    }
   },
 
-  render: function() {
-    var trimmedDescription = this.props.description;
+  render: function () {
     return (
-      <div className='item-description' dangerouslySetInnerHTML={{__html: trimmedDescription}}  style={this.style()} />
-    );
-  }
-});
+      <div
+        className='item-description'
+        dangerouslySetInnerHTML={{ __html: this.props.description }}
+        style={this.style()} />
+    )
+  },
+})
 
-module.exports = DescriptionTeaser;
+module.exports = DescriptionTeaser

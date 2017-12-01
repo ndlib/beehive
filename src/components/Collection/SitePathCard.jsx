@@ -1,18 +1,19 @@
-'use strict'
-var React = require("react");
-var mui = require('material-ui');
-
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import { Card, CardActions, CardMedia, CardTitle, FloatingActionButton, FontIcon } from 'material-ui'
+import { Link } from 'react-router-dom'
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
-var SitePathCard = React.createClass({
+const SitePathCard = createReactClass({
   propTypes: {
-    siteObject: React.PropTypes.object.isRequired,
-    addNextButton: React.PropTypes.bool,
-    fixedSize: React.PropTypes.bool,
-    headerTitle: React.PropTypes.string,
+    siteObject: PropTypes.object.isRequired,
+    addNextButton: PropTypes.bool,
+    fixedSize: PropTypes.bool,
+    headerTitle: PropTypes.string,
   },
 
-  getDefaultProps: function() {
+  getDefaultProps: function () {
     return {
       addNextButton: false,
       headerTitle: null,
@@ -20,101 +21,92 @@ var SitePathCard = React.createClass({
     }
   },
 
-  style: function() {
+  style: function () {
     return {
-      position: "relative",
-      cursor: "pointer",
+      position: 'relative',
+      cursor: 'pointer',
       minHeight: '400px',
-      height: this.props.fixedSize ? '400px' : 'auto'
-    };
+      height: this.props.fixedSize ? '400px' : 'auto',
+    }
   },
 
-  imageSize: function() {
+  imageSize: function () {
     return {
-        position: 'absolute',
-        top: '0',
-        left: '0',
-        right: '0',
-        bottom: '0',
-        margin: 'auto',
-        minWidth:'50%',
-        minHeight: '50%',
-        maxWidth: 'initial',
-        maxHeight:'initial',
-        display: 'none'
+      position: 'absolute',
+      top: '0',
+      left: '0',
+      right: '0',
+      margin: 'auto',
+      minWidth:'50%',
+      minHeight: '50%',
+      maxWidth: 'initial',
+      maxHeight:'initial',
+      display: 'none',
 
-    };
-  },
-
-  buttonStyle: function() {
-    return {
-      backgroundColor: "#2c5882",
     }
   },
 
   image: function () {
-    var space = ' ';
-    var re = new RegExp(space, 'g');
-    if(this.props.siteObject.image && this.props.siteObject.image["thumbnail/medium"]) {
-      return this.props.siteObject.image["thumbnail/medium"].contentUrl.replace(re, '%20');
+    const space = ' '
+    const re = new RegExp(space, 'g')
+    if (this.props.siteObject.image && this.props.siteObject.image['thumbnail/medium']) {
+      return this.props.siteObject.image['thumbnail/medium'].contentUrl.replace(re, '%20')
     } else {
-      return '/images/intro.jpg';
+      return '/images/intro.jpg'
     }
   },
 
-  nextButton: function() {
+  nextButton: function () {
     if (this.props.addNextButton) {
       return (
-        <mui.CardActions
-          style={{position:'absolute', right:'10px', top: this.props.headerTitle != null ? '33px' : '363px'}}
-          zDepth={2}
+        <CardActions
+          style={{ position:'absolute', right:'10px', top: this.props.headerTitle != null ? '33px' : '363px' }}
         >
-          <mui.FloatingActionButton
-            primary={true}
-            linkButton={true}
-            style={this.buttonStyle()}
-            href={CollectionUrl.collectionObjectUrl(this.props.siteObject)}
-            disableTouchRipple={true}
-          >
-            <mui.FontIcon className="material-icons">arrow_forward</mui.FontIcon>
-          </mui.FloatingActionButton>
-        </mui.CardActions>
-      );
+          <Link to={CollectionUrl.collectionObjectUrl(this.props.siteObject)}>
+            <FloatingActionButton
+              backgroundColor='#2c5882'
+              disableTouchRipple
+            >
+              <FontIcon className='material-icons'>arrow_forward</FontIcon>
+            </FloatingActionButton>
+          </Link>
+        </CardActions>
+      )
     }
   },
 
   headerTitle: function () {
     if (this.props.headerTitle) {
-      return (<mui.CardTitle title={this.props.headerTitle} rootStyle={{height:'600px'}}/>);
+      return (<CardTitle title={this.props.headerTitle} style={{ height:'600px', position: 'absolute' }} />)
     }
   },
 
-  cardTitle: function() {
-    return (<mui.CardTitle title={this.props.siteObject.name_line_1 || this.props.siteObject.name} subtitle={this.props.siteObject.name_line_2} />);
+  cardTitle: function () {
+    return (<CardTitle
+      title={this.props.siteObject.name_line_1 || this.props.siteObject.name}
+      subtitle={this.props.siteObject.name_line_2} />)
   },
 
   cardMedia: function () {
     return (
-      <mui.CardMedia
-        className="collection-site-path-card"
+      <CardMedia
+        className='collection-site-path-card'
         style={{ backgroundImage:'url("' + this.image() + '")' }}
-        overlay={ this.cardTitle() }>
-      </mui.CardMedia>);
+        overlay={this.cardTitle()} />)
   },
 
-  render: function() {
+  render: function () {
     return (
-      <mui.Card style={this.style()} >
-        <a href={CollectionUrl.collectionObjectUrl(this.props.siteObject)}>
+      <Card style={this.style()} >
+        <Link to={CollectionUrl.collectionObjectUrl(this.props.siteObject)}>
           {this.headerTitle()}
           {this.cardMedia()}
-        </a>
+        </Link>
         {this.nextButton()}
-      </mui.Card>
+      </Card>
 
-    );
-  }
-});
+    )
+  },
+})
 
-// each file will export exactly one component
-module.exports = SitePathCard;
+module.exports = SitePathCard

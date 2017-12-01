@@ -1,59 +1,58 @@
-"use strict"
-var React = require("react");
-var mui = require("material-ui");
-var Snackbar = mui.Snackbar;
 
-var AttentionHelp = React.createClass({
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import { Snackbar } from 'material-ui'
+
+const AttentionHelp = createReactClass({
 
   propTypes: {
-    start: React.PropTypes.number.isRequired,
-    hasScrolled: React.PropTypes.bool
+    hasScrolled: PropTypes.bool,
   },
 
-  getInitialState: function(){
-    var state = {
+  getInitialState: function () {
+    const state = {
       elapsed: false,
       open: true,
-    };
-    return state;
+    }
+    return state
   },
 
-  componentDidMount: function() {
-    this.timer = setInterval(this.tick, 9000);
+  componentDidMount: function () {
+    this.timer = setInterval(this.tick, 9000)
   },
 
-  componentWillUnmount: function() {
-    clearInterval(this.timer);
+  componentWillUnmount: function () {
+    clearInterval(this.timer)
   },
 
-  tick: function() {
-    this.setState({elapsed: true});
+  tick: function () {
+    this.setState({ elapsed: true })
   },
 
-  style: function() {
+  style: function () {
     return {
-    };
+    }
   },
 
-  render: function() {
-    var snackbar = (<div/>);
-    if(!this.props.hasScrolled && this.state.elapsed && this.state.open) {
+  render: function () {
+    let snackbar = (<div />)
+    if (!this.props.hasScrolled && this.state.elapsed && this.state.open) {
       snackbar = (
-        <div id="attentionHelp">
+        <div id='attentionHelp'>
           <Snackbar
-            message="Scroll left to right to view the showcase."
+            message='Scroll left to right to view the showcase.'
             autoHideDuration={5000}
             open={this.state.open}
-            onRequestClose={() => this.setState({open: false})}
-            ref="attentionHelp"
+            onRequestClose={() => this.setState({ open: false })}
+            ref='attentionHelp'
             style={this.style()}
           />
         </div>
-      );
+      )
     }
-    return snackbar;
+    return snackbar
+  },
+})
 
-  }
-});
-
-module.exports = AttentionHelp;
+module.exports = AttentionHelp

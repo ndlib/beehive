@@ -1,77 +1,62 @@
-'use strict'
-var React = require("react");
-var mui = require('material-ui');
-var ThemeManager = require('material-ui/lib/styles/theme-manager');
-var BeehiveTheme = require('../../themes/beehive.jsx');
-
-var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx');
-var PageContent = require('../../layout/PageContent.jsx');
-var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx');
-var CollectionDescription = require('./CollectionDescription.jsx');
-var PageTitleBar = require('../Pages/PageTitleBar.jsx');
-
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+const CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
+const PageContent = require('../../layout/PageContent.jsx')
+const CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
+const CollectionDescription = require('./CollectionDescription.jsx')
+const PageTitleBar = require('../Pages/PageTitleBar.jsx')
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
-var CollectionIntroduction = React.createClass({
+const CollectionIntroduction = createReactClass({
   propTypes: {
-    collection: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.object,
+    collection: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.object,
     ]),
   },
 
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
-
-  getChildContext() {
-    return {
-      muiTheme: this.state.muiTheme,
-    };
-  },
-
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       collection: {},
       remoteCollectionLoaded: false,
-      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
-    };
-  },
-
-  componentDidMount: function() {
-    if ("object" == typeof(this.props.collection)) {
-      this.setState({
-        collection: this.props.collection,
-      });
-    } else {
-      LoadRemote.loadRemoteCollection(this.props.collection, this.onLoaded.bind(this));
     }
   },
 
-  onLoaded: function(result) {
+  componentDidMount: function () {
+    if (typeof (this.props.collection) === 'object') {
+      this.setState({
+        collection: this.props.collection,
+      })
+    } else {
+      LoadRemote.loadRemoteCollection(this.props.collection, this.onLoaded.bind(this))
+    }
+  },
+
+  onLoaded: function (result) {
     this.setState({
       remoteCollectionLoaded: true,
-      collection: result
+      collection: result,
     })
   },
 
-  render: function() {
-    if(!this.state.remoteCollectionLoaded) {
-      return null;
+  render: function () {
+    if (!this.state.remoteCollectionLoaded) {
+      return null
     }
     return (
-      <mui.AppCanvas>
+      <div>
         <CollectionPageHeader collection={this.state.collection} >
-          <PageTitleBar title="Introduction" height={35}/>
+          <PageTitleBar title='Introduction' height={35} />
         </CollectionPageHeader>
-        <div id="TitleSpacer" style={{ height: 35, width: "100%" }} />
+        <div id='TitleSpacer' style={{ height: 35, width: '100%' }} />
         <PageContent>
           <CollectionDescription collection={this.state.collection} />
         </PageContent>
         <CollectionPageFooter collection={this.state.collection} />
-      </mui.AppCanvas>
-    );
-  }
-});
+      </div>
+    )
+  },
+})
 
-module.exports = CollectionIntroduction;
+module.exports = CollectionIntroduction

@@ -1,29 +1,29 @@
-'use strict'
-var React = require('react');
-var mui = require('material-ui');
-var SearchFacets = require('./SearchFacets.jsx');
+import React from 'react'
+import createReactClass from 'create-react-class'
+import { Paper } from 'material-ui'
+const SearchFacets = require('./SearchFacets.jsx')
 
-var SearchSidebar = React.createClass({
+const SearchSidebar = createReactClass({
 
   getInitialState: function () {
     return {
-      show: true
-    };
+      show: true,
+    }
   },
 
-  toggleSidebar: function() {
-    this.setState({show: !this.state.show});
+  toggleSidebar: function () {
+    this.setState({ show: !this.state.show })
   },
 
-  render: function() {
+  render: function () {
     return (
-      <mui.Paper style={{display: this.state.show ? 'block' : 'none', width: "25%", float: "right"}} >
-        <h3 style={{paddingLeft:'16px'}}>Filter Results</h3>
-        <hr/>
-        <SearchFacets/>
-      </mui.Paper>
-    );
-  }
-});
+      <Paper style={{ display: this.state.show ? 'block' : 'none', width: '25%', float: 'right' }} >
+        <h3 style={{ paddingLeft:'16px' }}>Filter Results</h3>
+        <hr />
+        <SearchFacets />
+      </Paper>
+    )
+  },
+})
 
-module.exports = SearchSidebar;
+module.exports = SearchSidebar

@@ -1,45 +1,36 @@
-"use strict"
-var React = require("react");
-var mui = require("material-ui");
-import { Link } from 'react-router'
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import { FlatButton, FontIcon } from 'material-ui'
+import { Link } from 'react-router-dom'
+const SearchStore = require('../store/SearchStore.js')
 
-var SearchStore = require('../store/SearchStore.js')
-
-const CurrentTheme = require('../modules/CurrentTheme.jsx')
-const CollectionUrl = require('../modules/CollectionUrl.jsx')
-
-var CloseButton = React.createClass({
+const CloseButton = createReactClass({
   propTypes: {
-    href: React.PropTypes.string,
-    alternate: React.PropTypes.bool,
-    height: React.PropTypes.number
+    href: PropTypes.string,
+    alternate: PropTypes.bool,
   },
 
-  contextTypes: {
-    muiTheme: React.PropTypes.object,
-  },
-
-  getDefaultProps: function() {
+  getDefaultProps: function () {
     return {
       alternate: false,
-      height: 35,
     }
   },
 
-  color: function() {
+  color: function () {
     if (this.props.alternate) {
-      return CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor;
+      return '#000000'
     } else {
-      return CurrentTheme.getCurrentPallette(this.context.muiTheme).textColor;
+      return '#ffffff'
     }
   },
 
-  iconStyle: function() {
-    return { border:'solid 1px', verticalAlign: "middle", width: "initial", height: "initial" };
+  iconStyle: function () {
+    return { border:'solid 1px', verticalAlign: 'middle', width: 'initial', height: 'initial' }
   },
 
   // generate what the back location url is
-  href: function() {
+  href: function () {
     if (this.props.href) {
       return this.props.href
     }
@@ -56,7 +47,7 @@ var CloseButton = React.createClass({
     let stopword
 
     // this should bring us up 1 level. eg section=>showcase showcase=>collection
-    if (current.includes("/items/")) {
+    if (current.includes('/items/')) {
       stopword = 'items'
     } else if (current.includes('/pages/')) {
       stopword = 'pages'
@@ -72,18 +63,19 @@ var CloseButton = React.createClass({
     return re.exec(current)[1]
   },
 
-  render: function() {
+  render: function () {
+    return (<div />)
     return (
       <Link to={this.href()}>
-        <mui.EnhancedButton
-          disableTouchRipple={true}
-          style={{ height: "100%", padding: 0 }}
+        <FlatButton
+          disableTouchRipple
+          style={{ height: '100%', padding: 0 }}
         >
-          <mui.FontIcon className="material-icons" color={this.color()} style={this.iconStyle()}>clear</mui.FontIcon>
-        </mui.EnhancedButton>
+          <FontIcon className='material-icons' color={this.color()} style={this.iconStyle()}>clear</FontIcon>
+        </FlatButton>
       </Link>
-    );
+    )
   },
-});
+})
 
-module.exports = CloseButton;
+module.exports = CloseButton

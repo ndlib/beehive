@@ -1,9 +1,9 @@
-'use strict'
-var React = require('react');
+import React from 'react'
+import createReactClass from 'create-react-class'
 
-var MoreOverlay = React.createClass({
+const MoreOverlay = createReactClass({
 
-  style: function() {
+  style: function () {
     return {
       position: 'absolute',
       bottom: '0',
@@ -13,14 +13,14 @@ var MoreOverlay = React.createClass({
       lineHeight: '60px',
       width: '100%',
       textAlign: 'center',
-      background: "linear-gradient(to bottom, rgba(0,0,0,0.4) 0%,rgba(0,0,0,1) 55%,rgba(0,0,0,1) 100%)",
+      background: 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%,rgba(0,0,0,1) 55%,rgba(0,0,0,1) 100%)',
 
-    };
+    }
   },
 
-  render: function() {
-    return(<div style={this.style()}>MORE</div>)
+  render: function () {
+    return (<div style={this.style()}>MORE</div>)
   },
-});
+})
 
-module.exports = MoreOverlay;
+module.exports = MoreOverlay

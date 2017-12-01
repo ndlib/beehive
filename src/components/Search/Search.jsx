@@ -1,170 +1,170 @@
-'use strict'
-var React = require('react');
-var mui = require('material-ui');
-
-var CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx');
-var PageContent = require('../../layout/PageContent.jsx');
-var CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx');
-var SearchControls = require('./SearchControls.jsx');
-var SearchStore = require('../../store/SearchStore.js');
-var SearchActions = require('../../actions/SearchActions.js');
-var SearchDisplayList = require('./SearchDisplayList.jsx');
-var ConfigurationActions = require("../../actions/ConfigurationActions.js");
-var ConfigurationStore = require("../../store/ConfigurationStore.js");
-var ThemeManager = require('material-ui/lib/styles/theme-manager');
-var BeehiveTheme = require('../../themes/beehive.jsx');
-
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+const CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
+const PageContent = require('../../layout/PageContent.jsx')
+const CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
+const SearchControls = require('./SearchControls.jsx')
+const SearchStore = require('../../store/SearchStore.js')
+const SearchActions = require('../../actions/SearchActions.js')
+const SearchDisplayList = require('./SearchDisplayList.jsx')
+const ConfigurationActions = require('../../actions/ConfigurationActions.js')
+const ConfigurationStore = require('../../store/ConfigurationStore.js')
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
-var Search = React.createClass({
+const Search = createReactClass({
   propTypes: {
-    compact: React.PropTypes.bool,
-    hits: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.array,
+    compact: PropTypes.bool,
+    hits: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.array,
     ]),
-    searchTerm: React.PropTypes.string,
-    sortTerm: React.PropTypes.string,
-    facet: React.PropTypes.oneOfType([
-      React.PropTypes.object,
-      React.PropTypes.array,
+    searchTerm: PropTypes.string,
+    sortTerm: PropTypes.string,
+    facet: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.array,
     ]),
-    start: React.PropTypes.number,
-    view: React.PropTypes.string,
-    collection: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.object,
+    start: PropTypes.number,
+    view: PropTypes.string,
+    collection: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.object,
     ]),
+    footerHeight: PropTypes.number,
   },
 
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
-
-  getChildContext() {
-    return {
-      muiTheme: this.state.muiTheme,
-    };
-  },
-
-  getDefaultProps: function() {
+  getDefaultProps: function () {
     return {
       compact: false,
-      footerHeight: 50
+      footerHeight: 50,
     }
   },
 
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       windowHeight: this.calcHeight(),
       collection: {},
       remoteCollectionLoaded: false,
-      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
-    };
-  },
-
-  componentWillMount: function() {
-    ConfigurationStore.addChangeListener(this.configurationLoaded);
-    SearchStore.on("SearchStoreChanged", this.searchStoreChanged);
-    SearchStore.on("SearchStoreQueryFailed",
-      function(result) {
-        window.location = window.location.origin + '/404'
-      }
-    );
-    window.addEventListener("popstate", this.onWindowPopState);
-
-    if ('object' == typeof(this.props.collection)) {
-      this.setValues(this.props.collection);
-    } else {
-      LoadRemote.loadRemoteCollection(this.props.collection, this.setValues.bind(this));
+      readyToRender: false,
     }
   },
 
-  componentDidMount: function() {
-    window.addEventListener('resize', this.handleResize);
+  componentWillMount: function () {
+    ConfigurationStore.addChangeListener(this.configurationLoaded)
+    SearchStore.on('SearchStoreChanged', this.searchStoreChanged)
+    SearchStore.on('SearchStoreQueryFailed',
+      () => {
+        window.location = window.location.origin + '/404'
+      }
+    )
+    window.addEventListener('popstate', this.onWindowPopState)
+
+    if (typeof (this.props.collection) === 'object') {
+      this.setValues(this.props.collection)
+    } else {
+      LoadRemote.loadRemoteCollection(this.props.collection, this.setValues)
+    }
   },
 
-  componentWillUnmount: function() {
-    window.removeEventListener('resize', this.handleResize);
-    window.removeEventListener("popstate", this.onWindowPopState);
-    ConfigurationStore.removeChangeListener(this.configurationLoaded);
+  componentDidMount: function () {
+    window.addEventListener('resize', this.handleResize)
   },
 
-  handleResize: function(e) {
+  componentWillUnmount: function () {
+    window.removeEventListener('resize', this.handleResize)
+    window.removeEventListener('popstate', this.onWindowPopState)
+    ConfigurationStore.removeChangeListener(this.configurationLoaded)
+  },
+
+  componentWillReceiveProps: function (nextProps) {
+    if (this.props !== nextProps) {
+      if (typeof (nextProps.collection) === 'object') {
+        this.setValues(nextProps.collection)
+      } else {
+        LoadRemote.loadRemoteCollection(nextProps.collection, this.setValues)
+      }
+      this.searchStoreChanged()
+    }
+  },
+
+  handleResize: function () {
     this.setState({
-      windowHeight: this.calcHeight()
-    });
+      windowHeight: this.calcHeight(),
+    })
   },
 
-  calcHeight: function() {
-    return window.innerHeight - (this.props.compact ? 0: this.props.footerHeight);
+  calcHeight: function () {
+    return window.innerHeight - (this.props.compact ? 0 : this.props.footerHeight)
   },
 
-  searchStoreChanged: function(reason) {
+  searchStoreChanged: function () {
     this.setState({
       readyToRender: true,
-    });
-
-    // if(reason == "load") {
-    //   var path = window.location.origin + SearchStore.searchUri() + currentItem;
-    //   path += "&compact=" + this.props.compact;
-    //   window.history.replaceState({ store: SearchStore.getQueryParams() }, '', path);
-
-    // }
+    })
   },
 
-  configurationLoaded: function(){
-    this.setState({ configurationLoaded: true });
+  configurationLoaded: function () {
+    this.setState({ configurationLoaded: true })
   },
 
   // Callback from loadremotecollection when remote collection is loaded
-  setValues: function(collection) {
-    ConfigurationActions.load(collection);
-    SearchActions.loadSearchResults(collection, this.props.hits, this.props.searchTerm, this.facetObject(), this.props.sortTerm, this.props.start, this.props.view);
-    return true;
+  setValues: function (collection) {
+    ConfigurationActions.load(collection)
+    SearchActions.loadSearchResults(
+      collection,
+      this.props.hits,
+      this.props.searchTerm,
+      this.facetObject(this.props),
+      this.props.sortTerm,
+      this.props.start,
+      this.props.view)
+    return true
   },
 
-  onWindowPopState: function(event) {
-    if(event.state.store){
-      SearchActions.reloadSearchResults(event.state.store);
+  onWindowPopState: function (event) {
+    if (event.state.store) {
+      SearchActions.reloadSearchResults(event.state.store)
     }
   },
 
   // Translates the facet option given in props to the structure the SearchStore expects.
-  facetObject: function() {
-    var facets;
-    if(this.props.facet) {
-      facets = new Array()
-      for(var i = 0; i < this.props.facet.length; i++){
-        var facetKey = Object.keys(this.props.facet[i])[0];
-        var facetValue = Object.keys(this.props.facet[i])[1];
+  facetObject: function (props) {
+    let facets
+    if (props.facet) {
+      facets = []
+      for (let i = 0; i < props.facet.length; i++) {
+        const facetKey = Object.keys(props.facet[i])[0]
+        const facetValue = Object.keys(props.facet[i])[1]
         facets.push({
-          name: this.props.facet[i][facetKey],
-          value: this.props.facet[i][facetValue]
-        });
+          name: props.facet[i][facetKey],
+          value: props.facet[i][facetValue],
+        })
       }
     }
-    return facets;
+    return facets
   },
 
-  render: function() {
+  render: function () {
     // All children of this object expect the collection and all data to be loaded into the SearchStore.
     // This will prevent mounting them until ready.
-    if(!this.state.readyToRender) {
-      return null;
+    if (!this.state.readyToRender) {
+      return null
     }
 
     return (
-      <mui.AppCanvas>
-        { !this.props.compact && <CollectionPageHeader collection={SearchStore.collection} ></CollectionPageHeader> }
-        <SearchControls searchStyle={{height:'50px'}}/>
+      <div>
+        { !this.props.compact && <CollectionPageHeader collection={SearchStore.collection} /> }
+        <SearchControls searchStyle={{ height:'50px' }} />
         <PageContent fluidLayout={false}>
-          <SearchDisplayList compact={ this.props.compact } />
+          <SearchDisplayList compact={this.props.compact} />
         </PageContent>
-        { !this.props.compact && <CollectionPageFooter collection={SearchStore.collection} height={this.props.footerHeight}/> }
-      </mui.AppCanvas>
-    );
-  }
-});
+        { !this.props.compact && <CollectionPageFooter
+          collection={SearchStore.collection}
+          height={this.props.footerHeight} /> }
+      </div>
+    )
+  },
+})
 
-module.exports = Search;
+module.exports = Search

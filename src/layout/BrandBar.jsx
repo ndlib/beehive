@@ -1,27 +1,28 @@
-var React = require('react');
-var MediaQuery = require("react-responsive");
+import React from 'react'
+import createReactClass from 'create-react-class'
+const MediaQuery = require('react-responsive')
 
-var BrandBar = React.createClass({
+const BrandBar = createReactClass({
 
-  render: function() {
+  render: function () {
     return (
       <MediaQuery minWidth={650}>
-        <div className="brand-bar">
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-sm-6">
-                <a href="http://www.nd.edu">University <i>of</i> Notre Dame</a>
+        <div className='brand-bar'>
+          <div className='container-fluid'>
+            <div className='row'>
+              <div className='col-sm-6'>
+                <a href='http://www.nd.edu'>University <i>of</i> Notre Dame</a>
               </div>
-              <div className="col-sm-6">
-                <a className="pull-right" href="http://library.nd.edu">Hesburgh Libraries</a>
+              <div className='col-sm-6'>
+                <a className='pull-right' href='http://library.nd.edu'>Hesburgh Libraries</a>
               </div>
             </div>
           </div>
         </div>
       </MediaQuery>
-    );
-  }
+    )
+  },
 
-});
+})
 
-module.exports = BrandBar;
+module.exports = BrandBar

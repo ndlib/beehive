@@ -1,16 +1,13 @@
-'use strict'
-import React, { Component, PropTypes } from 'react';
-
+import React, { Component } from 'react'
 import SiteIndex from '../components/SiteIndex/SiteIndex.jsx'
-
 import HoneycombURL from '../modules/HoneycombURL.js'
 
 class SiteIndexPage extends Component {
-  render() {
+  render () {
     return (
-      <SiteIndex collections={HoneycombURL() + "/v1/collections/"} />
-    );
+      <SiteIndex collections={HoneycombURL() + '/v1/collections/'} />
+    )
   }
 }
 
-export default SiteIndexPage;
+export default SiteIndexPage

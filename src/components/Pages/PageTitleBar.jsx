@@ -1,95 +1,72 @@
-var React = require('react');
-var mui = require('material-ui');
-var CloseButton = require('../../other/CloseButton.jsx');
-const CurrentTheme = require('../../modules/CurrentTheme.jsx')
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import { Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui'
+const CloseButton = require('../../other/CloseButton.jsx')
 
-var ThemeManager = require('material-ui/lib/styles/theme-manager');
-var BeehiveTheme = require('../../themes/beehive.jsx');
-var injectTapEventPlugin = require("react-tap-event-plugin");
-injectTapEventPlugin();
-
-var PageTitleBar = React.createClass({
+const PageTitleBar = createReactClass({
   propTypes: {
-    title: React.PropTypes.object.isRequired,
-    height: React.PropTypes.number
+    title: PropTypes.string.isRequired,
+    height: PropTypes.number,
   },
 
-  contextTypes: {
-    muiTheme: React.PropTypes.object,
-  },
-
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
-
-  getChildContext() {
-    return {
-      muiTheme: this.state.muiTheme,
-    };
-  },
-
-  getDefaultProps: function() {
+  getDefaultProps: function () {
     return {
       height: 35,
-    };
-  },
-
-  getInitialState: function() {
-    return {
-      opacity: 1,
-      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
     }
   },
 
-  componentDidMount: function() {
-    //window.onscroll = this.onScroll;
-  },
-
-  style: function() {
+  getInitialState: function () {
     return {
-      height: this.props.height + "px",
-      opacity: this.state.opacity,
-      backgroundColor: "rgba(51,51,51,1)",
-      zIndex: '1',
-    };
+      opacity: 1,
+    }
   },
 
-  onScroll: function(event) {
-    var element = event.target.scrollingElement;
-    var a = element.scrollTop / element.scrollHeight;
-    var percentVisible = Math.log2(1 + a * 10.0);
+  style: function () {
+    return {
+      height: this.props.height + 'px',
+      opacity: this.state.opacity,
+      backgroundColor: 'rgba(51,51,51,1)',
+      zIndex: '1',
+    }
+  },
+
+  onScroll: function (event) {
+    const element = event.target.scrollingElement
+    const a = element.scrollTop / element.scrollHeight
+    const percentVisible = Math.log2(1 + a * 10.0)
     this.setState({
       opacity: percentVisible,
-    });
+    })
   },
 
   titleBarStyle: function () {
     return {
-      lineHeight: this.props.height + "px",
-      color: CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor,
+      lineHeight: this.props.height + 'px',
+      color: 'white',
     }
   },
 
-  closeButtonStyle: function() {
+  closeButtonStyle: function () {
     return {
       marginLeft: 'auto',
-      height: "100%",
-    };
+      height: '100%',
+      float: 'right',
+    }
   },
 
-  render: function() {
+  render: function () {
     return (
-      <mui.Toolbar id="PageTitleBar" style={this.style()}>
-        <mui.ToolbarGroup key={0} float="left">
-          <mui.ToolbarTitle text={this.props.title} style={this.titleBarStyle()} />
-        </mui.ToolbarGroup>
-        <mui.ToolbarGroup key={1} float="right" style={this.closeButtonStyle()}>
-          <CloseButton alternate={true} height={this.props.height} />
-        </mui.ToolbarGroup>
-      </mui.Toolbar>
-    );
-  }
-});
+      <Toolbar id='PageTitleBar' style={this.style()}>
+        <ToolbarGroup key={0} style={{ float:'left' }}>
+          <ToolbarTitle text={this.props.title} style={this.titleBarStyle()} />
+        </ToolbarGroup>
+        <ToolbarGroup key={1} style={this.closeButtonStyle()}>
+          <CloseButton alternate height={this.props.height} />
+        </ToolbarGroup>
+      </Toolbar>
+    )
+  },
+})
 
-// each file will export exactly one component
-module.exports = PageTitleBar;
+module.exports = PageTitleBar

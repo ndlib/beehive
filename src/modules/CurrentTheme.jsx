@@ -1,9 +1,5 @@
-"use strict"
-var React = require('react');
-var mui = require("material-ui");
-
 const getCurrentPallette = (muiTheme) => {
-  return muiTheme.rawTheme.palette;
+  return muiTheme.rawTheme.palette
 }
 
 // Reusable styles
@@ -13,7 +9,7 @@ const lightIconStyle = () => {
     fontSize: '18px',
     verticalAlign: 'text-bottom',
     minWidth: '26px',
-  };
+  }
 }
 
 const darkIconStyle = () => {
@@ -21,20 +17,20 @@ const darkIconStyle = () => {
     fontSize: '18px',
     verticalAlign: 'text-bottom',
     minWidth: '26px',
-  };
+  }
 }
 
 const cardHeadersCommon = () => {
   return {
     fontFamily: 'GPCMed',
-  };
+  }
 }
 
 const pageWidth = () => {
   return {
-    //maxWidth: '960px',
+    // maxWidth: '960px',
     margin: '0 8%',
-  };
+  }
 }
 
 module.exports = {
@@ -43,4 +39,4 @@ module.exports = {
   darkIconStyle,
   cardHeadersCommon,
   pageWidth,
-};
+}

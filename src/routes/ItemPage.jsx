@@ -1,22 +1,27 @@
-'use strict'
-import React, { Component, PropTypes } from 'react';
-
-import Item from '../components/Item/Item.jsx';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import Item from '../components/Item/Item.jsx'
 import CollectionUrl from '../modules/CollectionUrl.jsx'
 
 class ItemPage extends Component {
-
-  render() {
+  render () {
     return (
       <div>
         <Item
-          item={ CollectionUrl.remoteItem(this.props.params.itemID) }
-          collection={ CollectionUrl.remoteCollection(this.props.params.collectionID) }
+          item={CollectionUrl.remoteItem(this.props.match.params.itemID)}
+          collection={CollectionUrl.remoteCollection(this.props.match.params.collectionID)}
         />
         {this.props.children}
       </div>
     )
   }
 }
-
-export default ItemPage;
+ItemPage.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      collectionID: PropTypes.string,
+      itemID: PropTypes.string,
+    }),
+  }),
+}
+export default ItemPage

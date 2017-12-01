@@ -1,52 +1,45 @@
-'use strict'
-var React = require('react');
-var mui = require('material-ui');
-var List = mui.List;
-var SearchStore = require('../../store/SearchStore.js');
-var FacetItem = require('./FacetItem.jsx');
+import React from 'react'
+import createReactClass from 'create-react-class'
+import { List } from 'material-ui'
+const SearchStore = require('../../store/SearchStore.js')
+const FacetItem = require('./FacetItem.jsx')
 
-var SearchFacets = React.createClass({
-  values: function(facet) {
+const SearchFacets = createReactClass({
+  values: function (facet) {
     if (facet.values) {
-      return (facet.values.map(function(e, index) {
-        var selectedValue;
-        if(SearchStore.facetOption) {
-          if(facet.field == encodeURIComponent(SearchStore.facetOption.name)) {
-            selectedValue = SearchStore.facetOption.value;
-          }
-        }
+      return (facet.values.map(function (e, index) {
         return (
           <FacetItem
-            field={ facet.field}
-            facet={ e }
-            key={ e.name }
+            field={facet.field}
+            facet={e}
+            key={index}
           />
-        );
-      }.bind(this)));
+        )
+      }))
     }
-    return null;
+    return null
   },
 
-  facets: function(){
-    return SearchStore.facets.map(function(e, index) {
+  facets: function () {
+    return SearchStore.facets.map(function (e, index) {
       return (
         <List
-          key={e.name}
+          key={index}
           subheader={e.name}
         >
           {this.values(e)}
         </List>
-      );
-    }.bind(this));
+      )
+    }.bind(this))
   },
 
-  render: function() {
+  render: function () {
     return (
       <div>
         {this.facets()}
       </div>
-    );
-  }
-});
+    )
+  },
+})
 
-module.exports = SearchFacets;
+module.exports = SearchFacets

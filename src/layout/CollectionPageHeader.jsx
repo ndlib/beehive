@@ -1,68 +1,67 @@
-'use strict'
-var React = require('react');
-var mui = require('material-ui');
-var MediaQuery = require('react-responsive');
-
-var BrandBar = require('./BrandBar.jsx');
-var CollectionLeftNav = require('./CollectionLeftNav.jsx');
-var ConfigurationStore = require('../store/ConfigurationStore.js');
-var ConfigurationActions = require('../actions/ConfigurationActions.js');
-var SearchBox = require('./SearchBox.jsx');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import { AppBar, Paper } from 'material-ui'
+import { Link } from 'react-router-dom'
+const MediaQuery = require('react-responsive')
+const BrandBar = require('./BrandBar.jsx')
+const CollectionLeftNav = require('./CollectionLeftNav.jsx')
+const ConfigurationStore = require('../store/ConfigurationStore.js')
+const ConfigurationActions = require('../actions/ConfigurationActions.js')
+const SearchBox = require('./SearchBox.jsx')
 const CollectionUrl = require('../modules/CollectionUrl.jsx')
-const CurrentTheme = require('../modules/CurrentTheme.jsx')
 
-var CollectionPageHeader = React.createClass({
+const CollectionPageHeader = createReactClass({
   propTypes: {
-    collection: React.PropTypes.object.isRequired,
-    branding: React.PropTypes.bool,
+    collection: PropTypes.object.isRequired,
+    branding: PropTypes.bool,
   },
 
   contextTypes: {
-    muiTheme: React.PropTypes.object,
+    muiTheme: PropTypes.object,
   },
 
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       themeVariables: this.context.muiTheme.appBar,
       configurationLoaded: ConfigurationStore.loaded(),
     }
   },
 
-  componentDidMount: function() {
-    ConfigurationStore.addChangeListener(this.configurationLoaded);
+  componentDidMount: function () {
+    ConfigurationStore.addChangeListener(this.configurationLoaded)
     if (!this.state.configurationLoaded) {
-      ConfigurationActions.load(this.props.collection);
+      ConfigurationActions.load(this.props.collection)
     }
   },
 
-  componentWillUnmount: function() {
-    ConfigurationStore.removeChangeListener(this.configurationLoaded);
+  componentWillUnmount: function () {
+    ConfigurationStore.removeChangeListener(this.configurationLoaded)
   },
 
-  configurationLoaded: function() {
-    this.setState({ configurationLoaded: true });
+  configurationLoaded: function () {
+    this.setState({ configurationLoaded: true })
   },
 
-  largeScreenStyle: function() {
-    var height = this.state.themeVariables.height + 1;
-    if(this.props.branding) {
-      height += 50;
+  largeScreenStyle: function () {
+    let height = this.state.themeVariables.height + 1
+    if (this.props.branding) {
+      height += 50
     }
     return ({
       height: height + 'px',
       width: '100%',
-      zIndex: "1000",
-    });
+      zIndex: '1000',
+    })
   },
 
-  smallScreenStyle: function() {
+  smallScreenStyle: function () {
     return ({
       height: this.state.themeVariables.height + 1 + 'px',
       width: '100%',
-      zIndex: "1000",
-    });
+      zIndex: '1000',
+    })
   },
-
 
   titleStyle: function () {
     return {
@@ -75,149 +74,171 @@ var CollectionPageHeader = React.createClass({
       fontSize: 24,
       color: this.state.themeVariables.alternateTextColor,
       lineHeight: this.state.themeVariables.height + 'px',
-    };
+    }
   },
 
   _handleTabs: function (tab) {
-    if (tab.props.value == "about") {
-      window.location.href = CollectionUrl.aboutUrl(this.props.collection);
-    } else if (tab.props.value == "search") {
-      window.location.href = CollectionUrl.browseUrl(this.props.collection);
+    if (tab.value === 'about') {
+      return CollectionUrl.aboutUrl(this.props.collection)
+    } else if (tab.value === 'search') {
+      return CollectionUrl.browseUrl(this.props.collection)
     }
   },
 
-  activeTab: function() {
-    var pageCode = window.location.pathname.split("/").slice(-1)[0].split("?")[0];
+  activeTab: function () {
+    const pageCode = window.location.pathname.split('/').slice(-1)[0].split('?')[0]
 
-    if (pageCode == "search") {
-      return "search";
-    } else if (window.location.pathname == CollectionUrl.browseUrl(this.props.collection)) {
-      return "about";
+    if (pageCode === 'search') {
+      return 'search'
+    } else if (window.location.pathname === CollectionUrl.browseUrl(this.props.collection)) {
+      return 'about'
     }
-    return "none";
+    return 'none'
   },
 
-  browseTab: function() {
+  availableTabs: function () {
+    let ret = []
     if (ConfigurationStore.browseEnabled()) {
-      return (<mui.Tab label="Browse Collection" value="search" onActive={this._handleTabs} />);
-    } else {
-      return "";
-    }
-  },
-
-  aboutTab: function() {
-    if (ConfigurationStore.hasAboutPage()) {
-      return (<mui.Tab label="About" value="about" onActive={this._handleTabs} />);
-    } else {
-      return "";
-    }
-  },
-
-  availableTabs: function() {
-    var ret = [];
-    if (ConfigurationStore.browseEnabled()) {
-      ret.push({label: "Browse Collection", value: "search"});
+      ret.push({ label: 'Browse Collection', value: 'search' })
     }
     if (ConfigurationStore.hasAboutPage()) {
-      ret.push({label: "About", value: "about"});
+      ret.push({ label: 'About', value: 'about' })
     }
-    return ret;
+    return ret
   },
 
-  tabs: function() {
-    var availableTabs = this.availableTabs();
+  tabs: function () {
+    const availableTabs = this.availableTabs()
     if (availableTabs.length > 0) {
-      return  (
-        <mui.Tabs style={ {float:'right', backgroundColor: "none" } } value={this.activeTab()} tabItemContainerStyle={{backgroundColor: "transparent", width:"auto" }}>
+      return (
+        <div
+          style={{ float:'right', backgroundColor: 'none' }}
+          value={this.activeTab()}>
           {
             availableTabs.map(function (tab, index) {
-              return(<mui.Tab key={tab.value} label={tab.label} value={tab.value} onActive={this._handleTabs} style={{color:"white", width:'auto', padding:'0 20px 0 0', fontSize: '16px'}} />);
+              return (
+                <Link
+                  to={this._handleTabs(tab)}
+                  key={index}
+                >
+                  <button
+                    label={tab.label}
+                    value={tab.value}
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      color:'white',
+                      textTransform: 'none',
+                      width:'auto',
+                      lineHeight: '50px',
+                      padding:'0 20px 0 0',
+                      fontSize: '16px' }}
+                  >{tab.label}</button>
+                </Link>)
             }.bind(this))
           }
-        </mui.Tabs>);
+        </div>)
     }
-    return (
-      <mui.Tabs style={ {float:'right', backgroundColor: "none" } } value={this.activeTab()} tabItemContainerStyle={{backgroundColor: "transparent", width:"auto" }}>
-      </mui.Tabs>
-    );
+    return null
   },
 
-  appBarStyle: function() {
-    var style = this.baseScreenStyle();
+  appBarStyle: function () {
+    let style = this.baseScreenStyle()
 
     if (this.props.branding) {
-      style["top"] = "50px";
+      style['top'] = '50px'
     }
     return style
   },
 
-  baseScreenStyle: function() {
+  baseScreenStyle: function () {
     return {
-      position: "fixed",
-      background: "linear-gradient(to bottom, #5b5b5b 0%,#050505 100%)",
-      height:"45px"
-    };
+      position: 'fixed',
+      background: 'linear-gradient(to bottom, #5b5b5b 0%,#050505 100%)',
+      height:'65px',
+    }
   },
 
-  searchBox: function() {
+  searchBox: function () {
     if (ConfigurationStore.searchEnabled()) {
       return (
-        <div style={ {float:'right', marginTop:'-8px' } }>
-          <SearchBox collection={this.props.collection} useStore={false}/>
+        <div style={{ float:'right', marginTop:'-8px' }}>
+          <SearchBox collection={this.props.collection} useStore={false} />
         </div>
-      );
+      )
     }
-    return (<span />);
+    return (<span />)
   },
 
-  render: function() {
-    var title = (
-      <a style={{ textDecoration: "none", color: CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor }}
+  render: function () {
+    const title = (
+      <a
+        style={{
+          textDecoration: 'none',
+          color: '#ffffff',
+        }}
         href={CollectionUrl.collectionUrl(this.props.collection)}>
-          <h1 style={this.titleStyle()}>{this.props.collection.name_line_1}</h1>
+        <h1 style={this.titleStyle()}>{this.props.collection.name_line_1}</h1>
       </a>
-    );
+    )
 
-    var rightNav = (
-      <div style={{ marginRight: "16px" }}>
+    const rightNav = (
+      <div style={{ marginRight: '16px' }}>
         {this.searchBox()}
         <MediaQuery minWidth={650}>
           {this.tabs()}
         </MediaQuery>
       </div>
-    );
+    )
 
     return (
       <div>
         <MediaQuery maxWidth={650}>
-          <mui.Paper circle={false} rounded={false} zDepth={0} style={this.smallScreenStyle()}>
-          <mui.AppBar
-            title={title}
-            iconElementLeft={<CollectionLeftNav collection={this.props.collection} />}
-            iconElementRight={rightNav}
-            style={this.baseScreenStyle()}
-          />
-          <div id="whiteSpacer" style={{ width: "100%", backgroundColor: "white", position: "fixed", top: this.state.themeVariables.height + "px", height: "1px", zIndex: "1000" }} />
-          {this.props.children}
-          </mui.Paper>
+          <Paper circle={false} rounded={false} style={this.smallScreenStyle()}>
+            <AppBar
+              title={title}
+              iconElementLeft={<CollectionLeftNav collection={this.props.collection} />}
+              iconElementRight={rightNav}
+              style={this.baseScreenStyle()}
+            />
+            <div
+              id='whiteSpacer'
+              style={{
+                width: '100%',
+                backgroundColor: 'white',
+                position: 'fixed',
+                top: this.state.themeVariables.height + 'px',
+                height: '1px',
+                zIndex: '1000',
+              }} />
+            {this.props.children}
+          </Paper>
         </MediaQuery>
         <MediaQuery minWidth={650}>
-          <mui.Paper circle={false} rounded={false} zDepth={0} style={this.largeScreenStyle()}>
+          <Paper circle={false} rounded={false} style={this.largeScreenStyle()}>
             <BrandBar />
-            <mui.AppBar
+            <AppBar
               title={title}
               iconElementLeft={<CollectionLeftNav collection={this.props.collection} />}
               iconElementRight={rightNav}
               style={this.appBarStyle()}
             />
-            <div id="whiteSpacer" style={{ width: "100%", backgroundColor: "white", position: "fixed", top: this.state.themeVariables.height + "px", height: "1px", zIndex: "1000" }} />
+            <div
+              id='whiteSpacer'
+              style={{
+                width: '100%',
+                backgroundColor: 'white',
+                position: 'fixed',
+                top: this.state.themeVariables.height + 'px',
+                height: '1px',
+                zIndex: '1000',
+              }} />
             {this.props.children}
-          </mui.Paper>
+          </Paper>
         </MediaQuery>
       </div>
-    );
-  }
-});
+    )
+  },
+})
 
-// each file will export exactly one component
-module.exports = CollectionPageHeader;
+module.exports = CollectionPageHeader

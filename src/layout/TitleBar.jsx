@@ -1,18 +1,20 @@
-'use strict'
-var React = require('react');
+import React from 'react'
+import createReactClass from 'create-react-class'
 
-var TitleBar = React.createClass({
-  render: function() {
-    var content = this.props.children;
+const TitleBar = createReactClass({
+  render: function () {
+    let content = this.props.children
     if (!content) {
       content = (
-        <a className="navbar-brand" href="/"><i className="glyphicon glyphicon-home"></i> Digital Exhibits <i>and</i> Collections</a>
-      );
+        <a
+          className='navbar-brand'
+          href='/'
+        ><i className='glyphicon glyphicon-home' /> Digital Exhibits <i>and</i> Collections</a>
+      )
     }
 
-    return null;
-  }
-});
+    return null
+  },
+})
 
-// each file will export exactly one component
-module.exports = TitleBar;
+module.exports = TitleBar

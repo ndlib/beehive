@@ -1,39 +1,39 @@
-//app/assets/javascripts/components/PreviousSection.jsx
-var React = require('react');
-import {Link} from 'react-router'
+// app/assets/javascripts/components/PreviousSection.jsx
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import { Link } from 'react-router'
 const PrevNext = require('../modules/PrevNextUtils.jsx')
-const CurrentTheme = require('../../modules/CurrentTheme.jsx')
 
-var PreviousModal = React.createClass({
+const PreviousModal = createReactClass({
   displayName: 'Previous Modal Link',
 
   propTypes: {
-    url: React.PropTypes.string.isRequired,
-    offsetTop: React.PropTypes.number,
+    url: PropTypes.string.isRequired,
+    offsetTop: PropTypes.number,
   },
 
   contextTypes: {
-    muiTheme: React.PropTypes.object,
+    muiTheme: PropTypes.object,
   },
 
-  getDefaultProps: function() {
+  getDefaultProps: function () {
     return {
-      offsetTop: window.innerHeight/2,
-    };
+      offsetTop: window.innerHeight / 2,
+    }
   },
-  render: function() {
-    var id = this.props.id;
+  render: function () {
     return (
-    <Link
-      to={this.props.url}
-      className="prev-button half-circle-button"
-      style={PrevNext.buttonStyles(this.props.offsetTop, CurrentTheme.getCurrentPallette(this.context.muiTheme).accent3Color)}
-    >
-      <i className="material-icons">chevron_left</i>
-    </Link>
-    );
-  }
-});
+      <Link
+        to={this.props.url}
+        className='prev-button half-circle-button'
+        style={PrevNext.buttonStyles(this.props.offsetTop, '#E0E0E0')}
+      >
+        <i className='material-icons'>chevron_left</i>
+      </Link>
+    )
+  },
+})
 
 // each file will export exactly one component
-module.exports = PreviousModal;
+module.exports = PreviousModal

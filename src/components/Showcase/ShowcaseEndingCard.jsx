@@ -1,44 +1,43 @@
-var React = require("react");
-var mui = require('material-ui');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import { Paper } from 'material-ui'
+const SitePathCard = require('../Collection/SitePathCard.jsx')
 
-var SitePathCard = require('../Collection/SitePathCard.jsx');
-const CurrentTheme = require('../../modules/CurrentTheme.jsx')
-
-var ShowcaseEndingCard = React.createClass({
-  displayName: "Showcase Ending",
+const ShowcaseEndingCard = createReactClass({
+  displayName: 'Showcase Ending',
   propTypes: {
-    height: React.PropTypes.number.isRequired,
-    siteObject: React.PropTypes.object.isRequired,
+    siteObject: PropTypes.object.isRequired,
   },
 
   contextTypes: {
-    muiTheme: React.PropTypes.object,
+    muiTheme: PropTypes.object,
   },
 
-  style: function() {
+  style: function () {
     return {
-      display: "inline-block",
-      verticalAlign: "middle",
-      position: "relative",
-      marginLeft: "150px",
-      marginRight: "33vw",
-      height: "auto",
-      cursor: "pointer",
-      width: "500px",
-      overflow: "hidden",
-      marginTop: "12vh",
-      backgroundColor: CurrentTheme.getCurrentPallette(this.context.muiTheme).showcaseTextCardColor,
-    };
+      display: 'inline-block',
+      verticalAlign: 'middle',
+      position: 'relative',
+      marginLeft: '150px',
+      marginRight: '33vw',
+      height: 'auto',
+      cursor: 'pointer',
+      width: '500px',
+      overflow: 'hidden',
+      marginTop: '12vh',
+      backgroundColor: '#ffffff',
+    }
   },
 
-  render: function() {
+  render: function () {
     return (
-      <mui.Paper style={this.style()} >
-        <SitePathCard siteObject={this.props.siteObject} addNextButton={true} headerTitle="Continue to" fixedSize={false}/>
-      </mui.Paper>
-    );
-  }
+      <Paper style={this.style()} >
+        <SitePathCard siteObject={this.props.siteObject} addNextButton headerTitle='Continue to' fixedSize={false} />
+      </Paper>
+    )
+  },
 
-});
+})
 
-module.exports = ShowcaseEndingCard;
+module.exports = ShowcaseEndingCard

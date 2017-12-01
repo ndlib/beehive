@@ -1,20 +1,16 @@
-'use strict'
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class MultimediaViewer extends Component {
-
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    var url = this.props.url;
-    if(this.props.autostart) {
-      url += '&autostart=' + this.props.autostart;
+  render () {
+    let url = this.props.url
+    if (this.props.autostart) {
+      url += '&autostart=' + this.props.autostart
     }
     return (
       <iframe
-        src={ url }
+        title='Multimedia Viewer'
+        src={url}
         style={{
           width: this.props.width,
           height: this.props.height,
@@ -22,15 +18,15 @@ class MultimediaViewer extends Component {
           border: 'none',
         }}
       >Your browser does not support iFrames.</iframe>
-    );
+    )
   }
 }
 
 MultimediaViewer.propTypes = {
-  url: React.PropTypes.string.isRequired,
-  autostart: React.PropTypes.bool,
-  width: React.PropTypes.string,
-  height: React.PropTypes.string
+  url: PropTypes.string.isRequired,
+  autostart: PropTypes.bool,
+  width: PropTypes.string,
+  height: PropTypes.string,
 }
 
 MultimediaViewer.defaultProps = {
@@ -39,4 +35,4 @@ MultimediaViewer.defaultProps = {
   width: '100%',
   height: '100%',
 }
-export default MultimediaViewer;
+export default MultimediaViewer

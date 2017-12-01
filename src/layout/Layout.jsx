@@ -1,17 +1,14 @@
-'use strict'
-var React = require('react');
-var mui = require('material-ui');
+import React from 'react'
+import createReactClass from 'create-react-class'
 
-var Layout = React.createClass({
-  render: function() {
-
+const Layout = createReactClass({
+  render: function () {
     return (
-      <mui.AppCanvas>
+      <div>
         {this.props.children}
-      </mui.AppCanvas>
-    );
-  }
-});
+      </div>
+    )
+  },
+})
 
-// each file will export exactly one component
-module.exports = Layout;
+module.exports = Layout

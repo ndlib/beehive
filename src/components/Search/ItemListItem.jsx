@@ -1,55 +1,56 @@
-'use strict'
-var React = require('react');
-var mui = require('material-ui');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+const ListItem = require('./ListItem.jsx')
+const GridItem = require('./GridItem.jsx')
+const $ = require('jquery')
 
-var ListItem = require('./ListItem.jsx');
-var GridItem = require('./GridItem.jsx');
-
-var ItemListItem = React.createClass({
+const ItemListItem = createReactClass({
   propTypes: {
-    item: React.PropTypes.object.isRequired,
-    view: React.PropTypes.string,
+    item: PropTypes.object.isRequired,
+    view: PropTypes.string,
   },
 
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       fullItem: {},
       itemLoaded: false,
-
     }
   },
 
-  componentWillMount: function() {
+  componentWillMount: function () {
     $.ajax({
       context: this,
       type: 'GET',
       url: this.props.item['@id'],
       dataType: 'json',
-      success: function(result) {
+      success: function (result) {
         this.setState(
           {
             fullItem: result.items,
-            itemLoaded: true
+            itemLoaded: true,
           }
         )
       },
-      error: function(request, status, thrownError) {}
-    });
+      error: function (request, status, thrownError) {
+        console.log(thrownError)
+      },
+    })
   },
 
-  render: function() {
-    if(this.props.view === 'list'){
+  render: function () {
+    if (this.props.view === 'list') {
       return (
-        <ListItem item={this.state.itemLoaded ? Object.assign(this.props.item, this.state.fullItem) : this.props.item} />
-      );
-    }
-    else {
+        <ListItem
+          item={this.state.itemLoaded ? Object.assign(this.props.item, this.state.fullItem) : this.props.item} />
+      )
+    } else {
       return (
-        <GridItem item={this.state.itemLoaded ? Object.assign(this.props.item, this.state.fullItem) : this.props.item} />
-      );
+        <GridItem
+          item={this.state.itemLoaded ? Object.assign(this.props.item, this.state.fullItem) : this.props.item} />
+      )
     }
-  }
-});
+  },
+})
 
-// each file will export exactly one component
-module.exports = ItemListItem;
+module.exports = ItemListItem

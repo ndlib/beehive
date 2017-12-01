@@ -1,8 +1,8 @@
-var keyMirror = require('keymirror');
+const keyMirror = require('keymirror')
 
-var SectionActionTypes = keyMirror({
+const SectionActionTypes = keyMirror({
   SECTION_SET_SECTION: null,
-  SECTION_SHOW_WINDOW: false
-});
+  SECTION_SHOW_WINDOW: false,
+})
 
-module.exports = SectionActionTypes;
+module.exports = SectionActionTypes

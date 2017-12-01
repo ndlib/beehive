@@ -1,7 +1,7 @@
-var keyMirror = require('keymirror');
+const keyMirror = require('keymirror')
 
-var ConfigurationActionTypes = keyMirror({
+const ConfigurationActionTypes = keyMirror({
   LOAD_CONFIGURAION: null,
-});
+})
 
-module.exports = ConfigurationActionTypes;
+module.exports = ConfigurationActionTypes

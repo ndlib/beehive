@@ -1,92 +1,67 @@
-//app/assets/javascripts/components/ShowcaseTitleBar.jsx
-var React = require('react');
-var mui = require('material-ui');
-var CloseButton = require('../../other/CloseButton.jsx');
-const CurrentTheme = require('../../modules/CurrentTheme.jsx')
-var ThemeManager = require('material-ui/lib/styles/theme-manager');
-var BeehiveTheme = require('../../themes/beehive.jsx');
-var injectTapEventPlugin = require("react-tap-event-plugin");
-injectTapEventPlugin();
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import { Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui'
+const CloseButton = require('../../other/CloseButton.jsx')
 
-var ShowcaseTitleBar = React.createClass({
-  displayName: 'Showcase Title Bar',
+const ShowcaseTitleBar = createReactClass({
 
   propTypes: {
-    showcase: React.PropTypes.object.isRequired,
-    percentFade: React.PropTypes.number,
-    height: React.PropTypes.number,
+    showcase: PropTypes.object.isRequired,
+    percentFade: PropTypes.number,
+    height: PropTypes.number,
   },
 
-  contextTypes: {
-    muiTheme: React.PropTypes.object,
-  },
-
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
-
-  getChildContext() {
-    return {
-      muiTheme: this.state.muiTheme,
-    };
-  },
-
-  getInitialState: function() {
-    return {
-      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
-    };
-  },
-
-  getDefaultProps: function() {
+  getDefaultProps: function () {
     return {
       percentFade: 0,
       height: 35,
     }
   },
 
-  style: function() {
+  style: function () {
     return {
       opacity: 1 - this.props.percentFade,
-      backgroundColor: CurrentTheme.getCurrentPallette(this.context.muiTheme).primary2Color,
+      backgroundColor: 'rgba(0, 0, 0, 0.541176)',
       height: this.props.height + 'px',
       zIndex: '200',
-    };
+    }
   },
 
   titleBarStyle: function () {
     return {
-      color: CurrentTheme.getCurrentPallette(this.context.muiTheme).alternateTextColor,
-      lineHeight: this.props.height + "px",
+      color: '#fff',
+      lineHeight: this.props.height + 'px',
     }
   },
 
   name: function () {
-    return this.props.showcase.name_line_1;
+    return this.props.showcase.name_line_1
   },
 
-  closeButtonStyle: function() {
+  closeButtonStyle: function () {
     return {
       marginLeft: 'auto',
-    };
+      float: 'right',
+    }
   },
 
-  render: function() {
+  render: function () {
     if (this.props.showcase) {
       return (
-        <mui.Toolbar style={this.style()}>
-          <mui.ToolbarGroup key={0} float="left">
-            <mui.ToolbarTitle text={this.name()} style={this.titleBarStyle()} />
-          </mui.ToolbarGroup>
-          <mui.ToolbarGroup key={1} float="right" style={this.closeButtonStyle()}>
-            <CloseButton alternate={true} height={this.props.height}/>
-          </mui.ToolbarGroup>
-        </mui.Toolbar>
-      );
+        <Toolbar style={this.style()}>
+          <ToolbarGroup key={0}>
+            <ToolbarTitle text={this.name()} style={this.titleBarStyle()} />
+          </ToolbarGroup>
+          <ToolbarGroup key={1} style={this.closeButtonStyle()}>
+            <CloseButton alternate height={this.props.height} />
+          </ToolbarGroup>
+        </Toolbar>
+      )
     } else {
       return (<div />)
     }
-  }
-});
+  },
+})
 
-// each file will export exactly one component
-module.exports = ShowcaseTitleBar;
+module.exports = ShowcaseTitleBar

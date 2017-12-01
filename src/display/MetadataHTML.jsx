@@ -1,16 +1,17 @@
-'use strict'
-var React = require('react');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 
-var MetadataHTML = React.createClass({
+const MetadataHTML = createReactClass({
   displayName: 'Metadata HTML',
 
   propTypes: {
-    metadata_field: React.PropTypes.object.isRequired,
+    metadataField: PropTypes.object.isRequired,
   },
 
   render: function () {
-    return (<div dangerouslySetInnerHTML={{__html: this.props.metadata_field.value}} />);
-  }
-});
+    return (<div dangerouslySetInnerHTML={{ __html: this.props.metadataField.value }} />)
+  },
+})
 
-module.exports = MetadataHTML;
+module.exports = MetadataHTML

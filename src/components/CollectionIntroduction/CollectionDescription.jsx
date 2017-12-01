@@ -1,68 +1,48 @@
-var React = require('react');
-var mui = require('material-ui');
-var ThemeManager = require('material-ui/lib/styles/theme-manager');
-var BeehiveTheme = require('../../themes/beehive.jsx');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+const SitePathCard = require('../Collection/SitePathCard.jsx')
+const PagesShow = require('../Pages/PagesShow.jsx')
+const PreviewLink = require('../../layout/PreviewLink.jsx')
 
-var SitePathCard = require('../Collection/SitePathCard.jsx');
-var PagesShow = require('../Pages/PagesShow.jsx');
-var PreviewLink = require('../../layout/PreviewLink.jsx')
-
-var CollectionDescription = React.createClass({
+const CollectionDescription = createReactClass({
   propTypes: {
-    collection: React.PropTypes.object.isRequired,
-    height: React.PropTypes.string,
-    id: React.PropTypes.string,
+    collection: PropTypes.object.isRequired,
+    height: PropTypes.string,
+    id: PropTypes.string,
   },
 
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
+  style: function () {
+    return {}
   },
 
-
-  getChildContext() {
-    return {
-      muiTheme: this.state.muiTheme,
-    };
-  },
-
-  getInitialState: function() {
-    return {
-      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
-    };
-  },
-
-  style: function() {
-    return {};
-  },
-
-  showNext: function() {
-    if(this.props.collection &&
+  showNext: function () {
+    if (this.props.collection &&
       this.props.collection.site_path &&
-      this.props.collection.site_path.length > 0){
+      this.props.collection.site_path.length > 0) {
       return [
-        <div style={{margin: '0 auto', maxWidth: '500px'}}>
+        <div style={{ margin: '0 auto', maxWidth: '500px' }}>
           <SitePathCard
-            headerTitle="Continue to"
+            headerTitle='Continue to'
             siteObject={this.props.collection.site_path[0]}
-            addNextButton={true}
+            addNextButton
             fixedSize={false}
           />
         </div>,
-        <PreviewLink siteObject={this.props.collection.site_path[0]}/>
-      ];
-    }
-    else {
-      return null;
+        <PreviewLink siteObject={this.props.collection.site_path[0]} />,
+      ]
+    } else {
+      return null
     }
   },
 
-  render: function() {
+  render: function () {
     return (
-        <PagesShow content={this.props.collection.description}>
-          {this.showNext()}
-        </PagesShow>
-    );
-  }
-});
+      <PagesShow content={this.props.collection.description}>
+        {this.showNext()}
+      </PagesShow>
+    )
+  },
+})
 
-module.exports = CollectionDescription;
+module.exports = CollectionDescription

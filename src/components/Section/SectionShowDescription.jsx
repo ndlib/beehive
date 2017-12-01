@@ -1,35 +1,40 @@
-'use strict'
-var React = require('react');
-var PageContent = require('../../layout/PageContent.jsx');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+const PageContent = require('../../layout/PageContent.jsx')
 
-var SectionShowDescription = React.createClass({
+const SectionShowDescription = createReactClass({
   displayName: 'Section Show Description',
   propTypes: {
-    section: React.PropTypes.object.isRequired,
-    height: React.PropTypes.number,
+    section: PropTypes.object.isRequired,
+    height: PropTypes.number,
   },
 
-  styles: function() {
+  styles: function () {
     if (this.props.height) {
       return {
         height: this.props.height + 'px',
         overflowY: 'scroll',
-        maxWidth: "60em",
-        margin: '0 auto'
-      };
+        maxWidth: '60em',
+        margin: '0 auto',
+      }
     } else {
-      return {};
+      return {}
     }
   },
 
-  render: function() {
+  render: function () {
     return (
       <PageContent>
-        <div ref="sectionContent" style={this.styles()} dangerouslySetInnerHTML={{__html:this.props.section.description}} />
+        <div
+          ref='sectionContent'
+          style={this.styles()}
+          dangerouslySetInnerHTML={{ __html:this.props.section.description }}
+        />
       </PageContent>
-    );
-  }
+    )
+  },
 
-});
+})
 
-module.exports = SectionShowDescription;
+module.exports = SectionShowDescription

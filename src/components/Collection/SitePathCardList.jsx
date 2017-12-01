@@ -1,42 +1,41 @@
-'use strict'
-var React = require('react');
-var mui = require('material-ui');
-var theme = require('../../themes/beehive.jsx');
-var MediaQuery = require('react-responsive');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import { GridList } from 'material-ui'
+const MediaQuery = require('react-responsive')
+const SitePathCard = require('./SitePathCard.jsx')
 
-var SitePathCard = require('./SitePathCard.jsx');
-
-var SitePathCardList = React.createClass({
+const SitePathCardList = createReactClass({
   propTypes: {
-    sitePath: React.PropTypes.array.isRequired,
-    intro: React.PropTypes.element,
+    sitePath: PropTypes.array.isRequired,
+    intro: PropTypes.element,
   },
 
-  pathNodes: function() {
-    return this.props.sitePath.map(function(siteObject, index) {
-      return (<SitePathCard siteObject={siteObject} key={index} />);
-    });
+  pathNodes: function () {
+    return this.props.sitePath.map(function (siteObject, index) {
+      return (<SitePathCard siteObject={siteObject} key={index} />)
+    })
   },
 
-  allNodes: function() {
-    var nodes = [];
+  allNodes: function () {
+    let nodes = []
     if (this.props.intro) {
       nodes.push(
-        <div key="intro">{this.props.intro}</div>
-      );
+        <div key='intro'>{this.props.intro}</div>
+      )
     }
-    return nodes.concat(this.pathNodes());
+    return nodes.concat(this.pathNodes())
   },
 
-  gridList: function(cols) {
+  gridList: function (cols) {
     return (
-      <mui.GridList cols={cols} padding={theme.spacing.desktopGutter} cellHeight="auto">
+      <GridList cols={cols} padding={24} cellHeight='auto'>
         {this.allNodes()}
-      </mui.GridList>
-    );
+      </GridList>
+    )
   },
 
-  render: function() {
+  render: function () {
     if (this.props.sitePath.length > 0 || this.props.intro) {
       return (
         <div>
@@ -53,12 +52,11 @@ var SitePathCardList = React.createClass({
             {this.gridList(4)}
           </MediaQuery>
         </div>
-      );
+      )
+    } else {
+      return (<span />)
     }
-    else {
-      return (<span/>);
-    }
-  }
-});
+  },
+})
 
-module.exports = SitePathCardList;
+module.exports = SitePathCardList

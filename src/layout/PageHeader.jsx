@@ -1,37 +1,32 @@
-'use stirct'
-var React = require('react');
-
-var TitleBar = require('../layout/TitleBar.jsx');
-var PageHeader = React.createClass({
+import React from 'react'
+import createReactClass from 'create-react-class'
+const TitleBar = require('../layout/TitleBar.jsx')
+const PageHeader = createReactClass({
   displayName: 'Page Header',
 
-  propTypes: {
-    branding: React.PropTypes.bool,
-  },
-
-  style: function() {
+  style: function () {
     return {
-      width: "100%",
-    };
+      width: '100%',
+    }
   },
 
-  render: function() {
-    var titleBar = this.props.children;
+  render: function () {
+    let titleBar = this.props.children
     if (!titleBar) {
       titleBar = (
         <TitleBar />
-      );
+      )
     }
     return (
-      <div id="banner-wrapper">
-        <header id="banner" role="banner" className="home" style={this.style()} >
-          <nav className="" role="navigation" >
+      <div id='banner-wrapper'>
+        <header id='banner' role='banner' className='home' style={this.style()} >
+          <nav className=''>
             {titleBar}
           </nav>
         </header>
       </div>
-    );
-  }
-});
+    )
+  },
+})
 
-module.exports = PageHeader;
+module.exports = PageHeader

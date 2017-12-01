@@ -1,37 +1,32 @@
-'use strict'
-var React = require("react");
-var mui = require("material-ui");
-
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+import { FloatingActionButton, FontIcon } from 'material-ui'
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
-var CollectionHomeButton = React.createClass({
+const CollectionHomeButton = createReactClass({
   propTypes: {
-    collection: React.PropTypes.object,
+    collection: PropTypes.object,
   },
 
-  contextTypes: {
-    muiTheme: React.PropTypes.object,
+  onClick: function () {
+    window.location = CollectionUrl.collectionUrl(this.props.collection)
   },
 
-  onClick: function() {
-    window.location = CollectionUrl.collectionUrl(this.props.collection);
-  },
-
-  render: function() {
+  render: function () {
     return (
-      <mui.FloatingActionButton
+      <FloatingActionButton
         onClick={this.onClick}
-        disableTouchRipple={true}
-        style={{position: 'absolute', bottom: '10px', right: '10px', zIndex: '1000'}}
-        zDepth={3}
+        disableTouchRipple
+        style={{ position: 'absolute', bottom: '10px', right: '10px', zIndex: '1000' }}
       >
-        <mui.FontIcon
-          className="material-icons"
-          color={this.context.muiTheme.alternateTextColor}
-        >home</mui.FontIcon>
-      </mui.FloatingActionButton>
+        <FontIcon
+          className='material-icons'
+          color='white'
+        >home</FontIcon>
+      </FloatingActionButton>
     )
-  }
-});
+  },
+})
 
-module.exports = CollectionHomeButton;
+module.exports = CollectionHomeButton

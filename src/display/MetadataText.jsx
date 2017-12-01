@@ -1,16 +1,17 @@
-'use strict'
-var React = require('react');
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
 
-var MetadataText = React.createClass({
+const MetadataText = createReactClass({
   displayName: 'Metadata Text',
 
   propTypes: {
-    metadata_field: React.PropTypes.object.isRequired,
+    metadataField: PropTypes.object.isRequired,
   },
 
   render: function () {
-    return (<div>{this.props.metadata_field.value}</div>);
-  }
-});
+    return (<div>{this.props.metadataField.value}</div>)
+  },
+})
 
-module.exports = MetadataText;
+module.exports = MetadataText

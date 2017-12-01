@@ -1,80 +1,65 @@
-'use strict'
-var React = require('react');
-var mui = require('material-ui');
-var ThemeManager = require('material-ui/lib/styles/theme-manager');
-var BeehiveTheme = require('../../themes/beehive.jsx');
-var SiteIndexHeader = require("./SiteIndexHeader.jsx");
-var BrandBar = require('../../layout/BrandBar.jsx');
-var PageContent = require('../../layout/PageContent.jsx');
-var CollectionsList = require('./CollectionsList.jsx');
-var IndexPageFooter = require('../../layout/IndexPageFooter.jsx');
-
+import React from 'react'
+import PropTypes from 'prop-types'
+import createReactClass from 'create-react-class'
+const SiteIndexHeader = require('./SiteIndexHeader.jsx')
+const BrandBar = require('../../layout/BrandBar.jsx')
+const PageContent = require('../../layout/PageContent.jsx')
+const CollectionsList = require('./CollectionsList.jsx')
+const IndexPageFooter = require('../../layout/IndexPageFooter.jsx')
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
-var SiteIndex = React.createClass({
+const SiteIndex = createReactClass({
   propTypes: {
-    collections: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.array,
+    collections: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.array,
     ]),
   },
 
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
-
-  getChildContext() {
-    return {
-      muiTheme: this.state.muiTheme,
-    };
-  },
-
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       collections: [],
       remoteCollectionLoaded: false,
-      muiTheme: ThemeManager.getMuiTheme(BeehiveTheme),
-    };
-  },
-
-  componentDidMount: function() {
-    if ('object' == typeof(this.props.collections)) {
-      this.setState({
-        collections: this.props.collections,
-      });
-    } else {
-      LoadRemote.loadRemoteCollection(this.props.collections, this.setValues.bind(this))
     }
   },
 
-  setValues: function(collections) {
+  componentDidMount: function () {
+    if (typeof (this.props.collections) === 'object') {
+      this.setState({
+        collections: this.props.collections,
+      })
+    } else {
+      LoadRemote.loadRemoteCollection(this.props.collections, this.setValues)
+    }
+  },
+
+  setValues: function (collections) {
     this.setState({
       remoteCollectionLoaded: true,
       collections: collections,
-    });
-    return true;
+    })
+    return true
   },
 
-  componentWillMount: function(){
-    document.body.className = document.body.className + " bee-light-theme collections-bg";
+  componentWillMount: function () {
+    document.body.className = document.body.className + ' bee-light-theme collections-bg'
   },
 
-  cardMedia: function() {
-    return(
-      <div>
-      </div>
-    );
+  cardMedia: function () {
+    return (
+      <div />
+    )
   },
 
-  render: function() {
-    if(!this.state.remoteCollectionLoaded) {
-      return null;
+  render: function () {
+    if (!this.state.remoteCollectionLoaded) {
+      return null
     }
 
     return (
-      <mui.AppCanvas>
-        <BrandBar/>
-        <PageContent fluidLayout={true}>
+      <div>
+        <BrandBar />
+        <PageContent fluidLayout>
           <SiteIndexHeader />
           <PageContent fluidLayout={false}>
             <h2>Featured Collections</h2>
@@ -82,11 +67,10 @@ var SiteIndex = React.createClass({
           </PageContent>
         </PageContent>
         <IndexPageFooter />
-      </mui.AppCanvas>
-    );
-  }
+      </div>
+    )
+  },
 
-});
+})
 
-// each file will export exactly one component
-module.exports = SiteIndex;
+module.exports = SiteIndex
