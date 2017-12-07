@@ -77,7 +77,14 @@ const SitePathCard = createReactClass({
 
   headerTitle: function () {
     if (this.props.headerTitle) {
-      return (<CardTitle title={this.props.headerTitle} style={{ height:'600px', position: 'absolute' }} />)
+      return (<CardTitle
+        title={this.props.headerTitle}
+        style={{
+          backgroundColor: 'white',
+          position: 'absolute',
+          width:'100%',
+          zIndex: '1',
+        }} />)
     }
   },
 
