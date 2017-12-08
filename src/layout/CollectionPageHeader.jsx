@@ -30,9 +30,7 @@ const CollectionPageHeader = createReactClass({
 
   componentDidMount: function () {
     ConfigurationStore.addChangeListener(this.configurationLoaded)
-    if (!this.state.configurationLoaded) {
-      ConfigurationActions.load(this.props.collection)
-    }
+    ConfigurationActions.load(this.props.collection)
   },
 
   componentWillUnmount: function () {
@@ -108,7 +106,6 @@ const CollectionPageHeader = createReactClass({
   },
 
   tabs: function () {
-    ConfigurationActions.load(this.props.collection)
     const availableTabs = this.availableTabs()
     if (availableTabs.length > 0) {
       return (
