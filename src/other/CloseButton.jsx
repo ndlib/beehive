@@ -36,20 +36,20 @@ const CloseButton = createReactClass({
     }
 
     // go back to the search page if we have search information in the store
-    if (SearchStore.collection) {
-      let searchQuery = SearchStore.searchQuery()
-      let queryString = '?'
-      for (let key in searchQuery) {
-        queryString += `${key}=${searchQuery[key]}&`
-      }
-      return `${SearchStore.searchPath()}${queryString}`
-    }
 
     let current = window.location.pathname
     let stopword
 
     // this should bring us up 1 level. eg section=>showcase showcase=>collection
     if (current.includes('/items/')) {
+      if (SearchStore.collection) {
+        let searchQuery = SearchStore.searchQuery()
+        let queryString = '?'
+        for (let key in searchQuery) {
+          queryString += `${key}=${searchQuery[key]}&`
+        }
+        return `${SearchStore.searchPath()}${queryString}`
+      }
       stopword = 'items'
     } else if (current.includes('/pages/')) {
       stopword = 'pages'
