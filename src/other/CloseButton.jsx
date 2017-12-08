@@ -37,10 +37,12 @@ const CloseButton = createReactClass({
 
     // go back to the search page if we have search information in the store
     if (SearchStore.collection) {
-      return {
-        pathname: SearchStore.searchPath(),
-        query: SearchStore.searchQuery(),
+      let searchQuery = SearchStore.searchQuery()
+      let queryString = '?'
+      for (let key in searchQuery) {
+        queryString += `${key}=${searchQuery[key]}&`
       }
+      return `${SearchStore.searchPath()}${queryString}`
     }
 
     let current = window.location.pathname
