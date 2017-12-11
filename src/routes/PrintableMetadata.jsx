@@ -7,10 +7,16 @@ const LoadRemote = require('../modules/LoadRemote.jsx')
 const CollectionUrl = require('../modules/CollectionUrl.jsx')
 
 const PrintableMetadata = createReactClass({
+  getInitialState: function () {
+    return {
+      item: null,
+      configurationLoaded: false,
+    }
+  },
 
   componentWillMount: function () {
     ConfigurationStore.addChangeListener(this.configurationLoaded)
-    LoadRemote.withCallback(CollectionUrl.remoteItem(this.props.match.params.itemID), this.setItem.bind(this))
+    LoadRemote.withCallback(CollectionUrl.remoteItem(this.props.match.params.itemID), this.setItem)
   },
 
   componentWillUnmount: function () {
@@ -25,7 +31,7 @@ const PrintableMetadata = createReactClass({
 
     if (item['isPartOf/collection']) {
       const collectionUrl = item['isPartOf/collection']
-      LoadRemote.loadRemoteCollection(collectionUrl, this.setValues.bind(this))
+      LoadRemote.loadRemoteCollection(collectionUrl, this.setValues)
     } else {
       this.setState({ 'configurationLoaded': true })
     }
@@ -40,6 +46,7 @@ const PrintableMetadata = createReactClass({
   },
 
   render: function () {
+    console.log(this.state)
     if (this.state.item && this.state.configurationLoaded) {
       return (
         <Details item={this.state.item} showDetails printable={false} />
