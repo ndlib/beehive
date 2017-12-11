@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Card } from 'material-ui'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 const TextCard = require('./TextCard.jsx')
 const ImageCard = require('./ImageCard.jsx')
 const MultimediaCard = require('./MultimediaCard.jsx')
@@ -81,16 +81,25 @@ const SectionCard = createReactClass({
     return null
   },
 
+  pushUrl: function (e) {
+    if (e.target.tagName.toLowerCase() !== 'a') {
+      e.preventDefault()
+      const path = CollectionUrl.sectionObjectUrl(this.props.section)
+      this.props.history.push(path)
+    }
+  },
+
   render: function () {
     return (
-      <Link to={CollectionUrl.sectionObjectUrl(this.props.section)}>
-        <Card className='item' style={this.style()}>
+      <div style={{ display: 'inline' }}>
+        <Link to={CollectionUrl.sectionObjectUrl(this.props.section)} />
+        <Card className='item' style={this.style()} onClick={this.pushUrl}>
           { this.card() }
           {this.manifestIcon(this.props.section.item)}
         </Card>
-      </Link>
+      </div>
     )
   },
 })
 
-module.exports = SectionCard
+module.exports = withRouter(SectionCard)
