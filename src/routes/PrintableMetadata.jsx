@@ -46,7 +46,6 @@ const PrintableMetadata = createReactClass({
   },
 
   render: function () {
-    console.log(this.state)
     if (this.state.item && this.state.configurationLoaded) {
       return (
         <Details item={this.state.item} showDetails printable={false} />
