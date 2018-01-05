@@ -6,8 +6,11 @@ import { withRouter } from 'react-router-dom'
 const $ = require('jquery')
 
 class CustomCollectionPage extends Component {
-  state = {
-    collectionResult: undefined,
+  constructor (props) {
+    super(props)
+    this.state = {
+      collectionResult: undefined,
+    }
   }
 
   componentWillMount () {
