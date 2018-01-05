@@ -1,11 +1,12 @@
 var webpack = require('webpack')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
-
+var BabelPlugin = require('babel-webpack-plugin')
+require('babel-polyfill')
 module.exports = [
   {
     name: 'browser',
     entry: {
-      main: './src/main.js',
+      main: ['babel-polyfill', './src/main.js'],
     },
     output: {
       path: './public',
@@ -18,11 +19,16 @@ module.exports = [
           exclude: /node_modules/,
           loader: 'babel',
           query: {
-            cacheDirectory: true,
+            cacheDirectory: false,
             presets: ['react', 'es2015', 'stage-0'],
-            plugins: ['transform-runtime', 'add-module-exports'],
+            plugins: [
+              'transform-runtime',
+              'add-module-exports',
+
+            ],
           },
         },
+
         {
           test: /\.(css|scss)$/,
           exclude: /node_modules/,
@@ -47,6 +53,26 @@ module.exports = [
         compress: {
           warnings: false,
         },
+      }),
+      new BabelPlugin({
+        test: /\.(js|jsx)$/,
+        presets: [
+          [
+            'env',
+            {
+              loose: true,
+              modules: false,
+              targets: {
+                browsers: [
+                  '>1%',
+                ],
+              },
+              useBuiltIns: true,
+            },
+          ],
+        ],
+        sourceMaps: false,
+        compact: false,
       }),
       new webpack.DefinePlugin({
         'process.env': {
