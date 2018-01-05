@@ -48,6 +48,12 @@ module.exports = [
     },
     plugins: [
       new ExtractTextPlugin('resources/styles.css'),
+      new webpack.optimize.DedupePlugin(),
+      new webpack.optimize.UglifyJsPlugin({
+        compress: {
+          warnings: false,
+        },
+      }),
       new BabelPlugin({
         test: /\.(js|jsx)$/,
         presets: [
