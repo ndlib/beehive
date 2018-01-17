@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
+import JSONLD from '../JSONLD.jsx'
 const SiteIndexHeader = require('./SiteIndexHeader.jsx')
 const BrandBar = require('../../layout/BrandBar.jsx')
 const PageContent = require('../../layout/PageContent.jsx')
@@ -55,7 +56,25 @@ const SiteIndex = createReactClass({
     if (!this.state.remoteCollectionLoaded) {
       return null
     }
-
+    const data = {
+      '@context': 'http://schema.org',
+      '@type': 'WebSite',
+      'url': 'https://collections.library.nd.edu/',
+      'name': 'Digital Exhibits and Collections',
+      'author': {
+        '@type': 'Organization',
+        'name': 'Hesburgh Library - University of Notre Dame',
+      },
+      'description': 'Featured digital exhibits and collections.',
+      'publisher': {
+        '@type': 'Organization',
+        'name': 'University of Notre Dame',
+        'logo': {
+          '@type': 'ImageObject',
+          'url': 'https://onmessage.nd.edu/assets/185044/fullsize/1_university_mark.jpg',
+        },
+      },
+    }
     return (
       <div>
         <BrandBar />
@@ -67,6 +86,7 @@ const SiteIndex = createReactClass({
           </PageContent>
         </PageContent>
         <IndexPageFooter />
+        <JSONLD data={data} />
       </div>
     )
   },

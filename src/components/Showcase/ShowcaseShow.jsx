@@ -3,6 +3,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { TransitionGroup } from 'react-transition-group'
+import JSONLD from '../JSONLD.jsx'
+import RemoveMarkup from '../../modules/RemoveMarkup'
 const ReactDOM = require('react-dom')
 const maxShowcaseHeight = 805
 const showcaseTitleHeight = 56
@@ -166,7 +168,44 @@ const ShowcaseShow = createReactClass({
     } else if (backgroundBlur > maxBackgroundBlur) {
       backgroundBlur = maxBackgroundBlur
     }
+    const collection = this.props.collection
+    const showcase = this.props.showcase
 
+    let articleBody = ''
+    for (let i = 0; i < showcase.sections.length; i++) {
+      articleBody += RemoveMarkup(showcase.sections[i].description)
+    }
+    const dataUrl = `https://collections.library.nd.edu/${collection.id}/${collection.slug}/showcases/${showcase.id}/${showcase.slug}`
+    const data = {
+      '@context': 'http://schema.org',
+      '@type': 'Article',
+      'mainEntityOfPage': {
+        '@type': 'WebPage',
+        '@id': dataUrl,
+      },
+      'headline': showcase.name,
+      'alternativeHeadline': showcase.name_line_1,
+      'image': showcase.image.contentUrl,
+      'genre': 'academic library collection',
+      'keywords': 'notre dame special collections digital exhibits library',
+      'author': {
+        '@type': 'Organization',
+        'name': 'Hesburgh Library - University of Notre Dame',
+      },
+      'publisher': {
+        '@type': 'Organization',
+        'name': 'University of Notre Dame',
+        'logo': {
+          '@type': 'ImageObject',
+          'url': 'https://onmessage.nd.edu/assets/185044/fullsize/1_university_mark.jpg',
+        },
+      },
+      'url': dataUrl,
+      'datePublished': showcase.last_updated,
+      'dateModified': showcase.last_updated,
+      'description': showcase.description,
+      'articleBody': articleBody,
+    }
     return (
       <div style={{ height: showcaseHeight, backgroundColor: 'rgba(0,0,0,0)' }}>
         <AttentionHelp
@@ -175,7 +214,7 @@ const ShowcaseShow = createReactClass({
         <ShowcaseBackground
           percentBlur={backgroundBlur}
           height={this.state.mobile ? this.state.height : this.state.height - scrollPadding}
-          showcase={this.props.showcase} />
+          showcase={showcase} />
         {titleBar}
         <TransitionGroup
           className='showcase-slide-in'>
@@ -188,10 +227,11 @@ const ShowcaseShow = createReactClass({
             {scroller}
             <ShowcaseInnerContent
               height={showcaseInnerHeight}
-              showcase={this.props.showcase} />
+              showcase={showcase} />
           </div>
         </TransitionGroup>
         {mobileHomeButton}
+        <JSONLD data={data} />
       </div>
     )
   },
