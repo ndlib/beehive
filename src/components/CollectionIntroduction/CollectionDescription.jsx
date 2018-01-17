@@ -38,7 +38,10 @@ const CollectionDescription = createReactClass({
 
   render: function () {
     return (
-      <PagesShow content={this.props.collection.description}>
+      <PagesShow
+        content={this.props.collection.description}
+        collection={this.props.collection}
+      >
         {this.showNext()}
       </PagesShow>
     )
