@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Paper, Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui'
 import JSONLD from '../JSONLD.jsx'
-import RemoveMarkup from '../../modules/RemoveMarkup'
 const CloseButton = require('../../other/CloseButton.jsx')
 const SideNavButton = require('../../other/SideNavButton.jsx')
 const PageContent = require('../../layout/PageContent.jsx')
