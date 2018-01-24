@@ -90,7 +90,7 @@ const About = createReactClass({
       <div>
         <CollectionPageHeader collection={collection} branding />
         <PageContent>
-          {pageContent}i
+          {pageContent}
         </PageContent>
         <CollectionPageFooter collection={collection} />
         <JSONLD data={data} />
