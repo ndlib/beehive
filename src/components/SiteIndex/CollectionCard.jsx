@@ -113,15 +113,30 @@ const CollectionCard = createReactClass({
     return { color: '#d9a91b' }
   },
 
+  collectionLink: function () {
+    if (this.props.collection.external_url) {
+      return (
+        <a href={CollectionUrl.collectionUrl(this.props.collection)}>
+          {this.headerTitle()}
+          {this.cardMedia()}
+          {this.cardTitle()}
+        </a>
+      )
+    }
+    return (
+      <Link to={CollectionUrl.collectionUrl(this.props.collection)}>
+        {this.headerTitle()}
+        {this.cardMedia()}
+        {this.cardTitle()}
+      </Link>
+    )
+  },
+
   render: function () {
     return (
 
       <Card style={this.style()} >
-        <Link to={CollectionUrl.collectionUrl(this.props.collection)}>
-          {this.headerTitle()}
-          {this.cardMedia()}
-          {this.cardTitle()}
-        </Link>
+        {this.collectionLink()}
         <CardActions style={this.actionButtonsStyle()} >
           <FlatButton
             label='Explore'
