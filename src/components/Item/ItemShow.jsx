@@ -82,8 +82,6 @@ const ItemShow = createReactClass({
   render: function () {
     const collection = this.props.collection
     const item = this.props.item
-    console.log(collection)
-    console.log(item)
     let articleBody = ''
     for (let property in item.metadata) {
       const dataProp = item.metadata[property]
