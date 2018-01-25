@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
+import JSONLD from '../JSONLD.jsx'
+import RemoveMarkup from '../../modules/RemoveMarkup'
 const CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
 const PageContent = require('../../layout/PageContent.jsx')
 const CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
@@ -162,18 +164,51 @@ const Page = createReactClass({
     if (!this.state.remoteCollectionLoaded) {
       return null
     }
-    PageTitle(this.state.collection.name)
+    const collection = this.state.collection
+    PageTitle(collection.name)
+
+    const dataUrl = `https://collections.library.nd.edu/${collection.id}/${collection.slug}/${collection.pages.id}/${collection.pages.slug}`
+    const data = {
+      '@context': 'http://schema.org',
+      '@type': 'Article',
+      'mainEntityOfPage': {
+        '@type': 'WebPage',
+        '@id': dataUrl,
+      },
+      'headline': `About ${collection.pages.name}`,
+      'image': collection.pages.image.contentUrl,
+      'genre': 'academic library collection',
+      'keywords': 'notre dame special collections digital exhibits library',
+      'author': {
+        '@type': 'Organization',
+        'name': 'Hesburgh Library - University of Notre Dame',
+      },
+      'publisher': {
+        '@type': 'Organization',
+        'name': 'University of Notre Dame',
+        'logo': {
+          '@type': 'ImageObject',
+          'url': 'https://onmessage.nd.edu/assets/185044/fullsize/1_university_mark.jpg',
+        },
+      },
+      'url': dataUrl,
+      'datePublished': collection.pages.last_updated,
+      'dateModified': collection.pages.last_updated,
+      'description': RemoveMarkup(this.pageContent()),
+      'articleBody': RemoveMarkup(this.pageContent()),
+    }
     return (
       <div>
-        <CollectionPageHeader collection={this.state.collection} branding={false} />
-        <PageTitleBar title={this.state.collection.pages.name} height={this.state.titleHeight} />
+        <CollectionPageHeader collection={collection} branding={false} />
+        <PageTitleBar title={collection.pages.name} height={this.state.titleHeight} />
         <PageContent onClick={this.contentClicked} onMouseOver={this.contentMouseOver}>
           <PagesShow content={this.pageContent()}>
             { this.nextCard() }
             { this.previewCard() }
           </PagesShow>
         </PageContent>
-        <CollectionPageFooter collection={this.state.collection} />
+        <CollectionPageFooter collection={collection} />
+        <JSONLD data={data} />
       </div>
     )
   },

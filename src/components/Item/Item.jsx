@@ -97,6 +97,7 @@ const Item = createReactClass({
     if (this.state.item) {
       itemShow = (
         <ItemShow
+          collection={this.state.collection}
           item={this.state.item}
           height={this.state.mobile ? window.innerHeight : window.innerHeight - showcaseTitleHeight}
         />
