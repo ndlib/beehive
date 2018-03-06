@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { createBrowserHistory } from 'history'
+import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 
 import ReactGA from 'react-ga'
@@ -43,4 +43,13 @@ class Analytics extends Component {
   }
 }
 
+Analytics.propTypes = {
+  children: PropTypes.element.isRequired,
+  history: PropTypes.shape({
+    location: PropTypes.shape({
+      pathname: PropTypes.string,
+      search: PropTypes.string,
+    }),
+  }),
+}
 export default withRouter(Analytics)
