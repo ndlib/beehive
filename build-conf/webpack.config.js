@@ -72,7 +72,8 @@ module.exports = [
           ],
         ],
         sourceMaps: false,
-        compact: false,
+        compact: true,
+        minified: true,
       }),
       new webpack.DefinePlugin({
         'process.env': {
