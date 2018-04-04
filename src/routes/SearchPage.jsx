@@ -13,7 +13,7 @@ class SearchPage extends Component {
           collection={HoneycombURL() + '/v1/collections/' +
             this.props.match.params.collectionID}
           hits={HoneycombURL() + '/v1/collections/' + this.props.match.params.collectionID + '/search'}
-          searchTerm={QueryParm('q')}
+          searchTerm={QueryParm('q') || ''}
           sortTerm={QueryParm('sort')}
           facet={FacetQueryParms()}
           start={parseInt(QueryParm('start'), 10)}
