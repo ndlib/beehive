@@ -167,6 +167,11 @@ const Page = createReactClass({
     const collection = this.state.collection
     PageTitle(collection.name)
 
+    let image = ''
+    if (collection.pages.image && collection.pages.image.contentUrl) {
+      image = collection.pages.image.contentUrl
+    }
+
     const dataUrl = `https://collections.library.nd.edu/${collection.id}/${collection.slug}/${collection.pages.id}/${collection.pages.slug}`
     const data = {
       '@context': 'http://schema.org',
@@ -176,7 +181,7 @@ const Page = createReactClass({
         '@id': dataUrl,
       },
       'headline': `About ${collection.pages.name}`,
-      'image': collection.pages.image.contentUrl,
+      'image': image,
       'genre': 'academic library collection',
       'keywords': 'notre dame special collections digital exhibits library',
       'author': {
