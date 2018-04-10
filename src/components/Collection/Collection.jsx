@@ -10,7 +10,8 @@ const CollectionIntro = require('./CollectionIntro.jsx')
 const CollectionShowSitePath = require('./CollectionShowSitePath.jsx')
 const CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
 const PageTitle = require('../../modules/PageTitle.js')
-
+const ConfigurationStore = require('../../store/ConfigurationStore.js')
+const ConfigurationActions = require('../../actions/ConfigurationActions.js')
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
 const Collection = createReactClass({
@@ -25,6 +26,7 @@ const Collection = createReactClass({
     return {
       collection: {},
       remoteCollectionLoaded: false,
+      configurationLoaded: ConfigurationStore.loaded(),
     }
   },
 
@@ -36,6 +38,16 @@ const Collection = createReactClass({
     } else {
       LoadRemote.loadRemoteCollection(this.props.collection, this.onLoaded)
     }
+    ConfigurationStore.addChangeListener(this.configurationLoaded)
+    ConfigurationActions.load(this.props.collection)
+  },
+
+  componentWillUnmount: function () {
+    ConfigurationStore.removeChangeListener(this.configurationLoaded)
+  },
+
+  configurationLoaded: function () {
+    this.setState({ configurationLoaded: true })
   },
 
   onLoaded: function (result) {
@@ -61,11 +73,11 @@ const Collection = createReactClass({
       return null
     }
     PageTitle(collection.name)
-
-    const data = {
+    const url = `https://collections.library.nd.edu/${collection.id}/${collection.slug}`
+    let data = {
       '@context': 'http://schema.org',
       '@type': 'WebSite',
-      'url': `https://collections.library.nd.edu/${collection.id}/${collection.slug}`,
+      'url': url,
       'name': collection.name,
       'author': {
         '@type': 'Organization',
@@ -81,6 +93,16 @@ const Collection = createReactClass({
         },
       },
     }
+    if (ConfigurationStore.browseEnabled()) {
+      data = Object.assign(data, {
+        'potentialAction': {
+          '@type': 'SearchAction',
+          'target': `${url}/search?q={search_term_string}`,
+          'query-input': 'required name=search_term_string',
+        },
+      })
+    }
+
     return (
       <div>
         <div className='collection-show-page'>
