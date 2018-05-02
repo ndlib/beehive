@@ -64,7 +64,6 @@ const About = createReactClass({
       },
       'headline': `About ${collection.name_line_1}`,
       'alternativeHeadline': 'About',
-      'image': collection.image.contentUrl,
       'genre': 'academic library collection',
       'keywords': 'notre dame special collections digital exhibits library',
       'author': {
