@@ -17,6 +17,9 @@ class MultimediaViewer extends Component {
           overflow: 'hidden',
           border: 'none',
         }}
+        allowFullScreen='true'
+        webkitallowfullscreen='true'
+        mozallowfullscreen='true'
       >Your browser does not support iFrames.</iframe>
     )
   }
