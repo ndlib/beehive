@@ -100,7 +100,7 @@ const ItemContent = createReactClass({
       <div className='item-detail-zoom' style={this.zoomStyles()}>
         <MultimediaViewer
           url={this.props.item.media.embedUrl}
-          autostart
+          autostart={false}
           height={height + 'px'}
         />
       </div>

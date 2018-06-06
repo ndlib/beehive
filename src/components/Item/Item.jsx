@@ -115,7 +115,7 @@ const Item = createReactClass({
         <PageContent fluidLayout>
           {itemShow}
         </PageContent>
-        <CollectionPageFooter collection={this.state.collection} />
+        <CollectionPageFooter />
       </div>
     )
   },

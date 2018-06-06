@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /metadata/
 
 Sitemap: https://collections.library.nd.edu/sitemap.xml
