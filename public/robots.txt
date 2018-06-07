@@ -2,4 +2,35 @@ User-agent: *
 Allow: /
 Disallow: /metadata/
 
+Disallow: /b60347d2a1/
+Disallow: /d303d3fcc0/
+Disallow: /a51a9b6532/
+Disallow: /7eff2d10c7/
+Disallow: /9c4ff66da4/
+Disallow: /931667144f/
+Disallow: /19368aa3af/
+Disallow: /6403b02d66/
+Disallow: /812376c99b/
+Disallow: /0b99a23711/
+Disallow: /7791561223/
+Disallow: /a62a0754b8/
+Disallow: /a0866036a2/
+Disallow: /9e41dc43aa/
+Disallow: /d5c19b1292/
+Disallow: /9514c3826f/
+Disallow: /344c950787/
+Disallow: /b18c4efca0/
+Disallow: /a295fe5b57/
+Disallow: /abc8691f3c/
+Disallow: /0988d05cd2/
+Disallow: /humanrights/
+Disallow: /vatican/
+Disallow: /fe79ae5410/
+Disallow: /f218f7e0a0/
+Disallow: /ecb6a2f482/
+Disallow: /3f40ec57bb/
+Disallow: /0e6993ba6f/
+Disallow: /0caa2a525b/
+Disallow: /fb6dbda0a8/
+
 Sitemap: https://collections.library.nd.edu/sitemap.xml
