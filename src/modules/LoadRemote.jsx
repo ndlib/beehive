@@ -9,7 +9,11 @@ const withCallback = (url, callback) => {
     },
     error: function (request, status, thrownError) {
       console.log(url, thrownError)
-      window.location = window.location.origin + '/404'
+      if (window.location.hostname !== 'localhost') {
+        window.location = window.location.origin + '/404'
+      } else {
+        alert('404 Redirect prevented')
+      }
     },
   })
 }

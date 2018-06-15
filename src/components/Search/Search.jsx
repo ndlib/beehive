@@ -55,7 +55,11 @@ const Search = createReactClass({
     SearchStore.on('SearchStoreChanged', this.searchStoreChanged)
     SearchStore.on('SearchStoreQueryFailed',
       () => {
-        window.location = window.location.origin + '/404'
+        if (window.location.hostname !== 'localhost') {
+          window.location = window.location.origin + '/404'
+        } else {
+          alert('404 Redirect prevented')
+        }
       }
     )
     window.addEventListener('popstate', this.onWindowPopState)
