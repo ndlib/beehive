@@ -1028,17 +1028,19 @@ div.dataTables_filter {
 
 .essay-content {
   figure {
-    float: left;
     height: auto;
     margin: 0 10px 10px 0;
-    width: 15.5em;
+    width: calc(15.5em - 20px);
+    display: inline-block;
+    vertical-align: top;
   }
 
   figure a {
     float: left;
     height: auto;
     margin: 0 10px 10px 0;
-    width: 15.5em;
+    width: inherit;
+
   }
 
   figcaption {
