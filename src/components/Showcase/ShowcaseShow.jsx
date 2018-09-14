@@ -176,6 +176,14 @@ const ShowcaseShow = createReactClass({
       articleBody += RemoveMarkup(showcase.sections[i].description)
     }
     const dataUrl = `https://collections.library.nd.edu/${collection.id}/${collection.slug}/showcases/${showcase.id}/${showcase.slug}`
+
+    let showcaseSafeImage
+    if (showcase.image) {
+      showcaseSafeImage = showcase.image.contentUrl
+    } else {
+      showcaseSafeImage = 'https://collections.library.nd.edu/images/intro.jpg'
+    }
+
     const data = {
       '@context': 'http://schema.org',
       '@type': 'Article',
@@ -185,7 +193,7 @@ const ShowcaseShow = createReactClass({
       },
       'headline': showcase.name,
       'alternativeHeadline': showcase.name_line_1,
-      'image': showcase.image.contentUrl,
+      'image': showcaseSafeImage,
       'genre': 'academic library collection',
       'keywords': 'notre dame special collections digital exhibits library',
       'author': {

@@ -24,7 +24,7 @@ class SearchStore extends EventEmitter {
     this._facets = null // List of facet options available for this collection
     this._sorts = null // List of sort options available for this collection
     this._count = 0 // The count of items returned by the current query (<= found since items returned is a subset).
-    this._rowLimit = 12 // The maximum number of items that a query will return.
+    this._rowLimit = 120 // The maximum number of items that a query will return.
 
     // User selections that affect the data
     this._facetOption = null
