@@ -1,9 +1,9 @@
 #!/bin/bash
 BUCKET=collections.library.nd.edu
 RELEASE=`git fetch --tags;git show remotes/origin/master:current_release`
-TAG=`git describe --exact-match --tags HEAD`
+#TAG=`git describe --exact-match --tags HEAD`
 REVISION=`git rev-parse HEAD`
-PROFILE=`libnd-wse-admin`
+PROFILE=libnd-wse-admin
 
 #if [ "${TAG}" != "${RELEASE}" ]; then
 #  echo "\033[0;31mYou must be on tag ${RELEASE} to deploy to production.\033[0m"
