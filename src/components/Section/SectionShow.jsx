@@ -69,7 +69,7 @@ const SectionShow = createReactClass({
 
   toolbar: function () {
     return (
-      <Toolbar id='PageTitleBar' style={this.styles()} >
+      <Toolbar className='title-bar' style={this.styles()} >
         <ToolbarGroup key={0} style={{ maxWidth: this.mobile ? '80%' : '90%', float: 'left' }}>
           <h2><ToolbarTitle text={this.title()} style={this.titleStyle()} /></h2>
         </ToolbarGroup>

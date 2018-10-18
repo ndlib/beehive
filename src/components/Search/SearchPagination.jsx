@@ -30,7 +30,7 @@ const SearchPagination = createReactClass({
     } else {
       const searchUrl = SearchStore.searchUri({ start: startIndex }) +
       '&compact=' + this.props.compact
-      const linkTitle = `${SearchStore.collection.name_line_1} | Items: ${startIndex+1}-${endIndex+1}`
+      const linkTitle = `${SearchStore.collection.name_line_1} | Items: ${startIndex + 1}-${endIndex + 1}`
 
       return (
         <Link
@@ -48,7 +48,8 @@ const SearchPagination = createReactClass({
     let nodes = []
     // if not first page
     if (SearchStore.start !== 0) {
-      const backLink = SearchStore.searchUri({ start: Math.max(0, SearchStore.start - SearchStore.rowLimit) }) + '&compact=' + this.props.compact
+      const startNum = Math.max(0, SearchStore.start - SearchStore.rowLimit)
+      const backLink = SearchStore.searchUri({ start: startNum }) + '&compact=' + this.props.compact
       nodes.push((<Link
         to={backLink}
         key='back'
@@ -101,7 +102,7 @@ const SearchPagination = createReactClass({
                 display:'inline-block',
                 verticalAlign:'top',
               }}>Showing {startHuman} - {endHuman} of {SearchStore.found}</span>
-              {this.pageLinks()}
+            {this.pageLinks()}
           </nav>
         </div>
       </div>

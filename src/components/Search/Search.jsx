@@ -158,8 +158,9 @@ const Search = createReactClass({
     }
 
     let pageNum = 1
-    if (this.props.start > 0)
+    if (this.props.start > 0) {
       pageNum = Math.floor(this.props.start / SearchStore.rowLimit) + 1
+    }
 
     PageTitle(SearchStore.collection.name_line_1 + ' - Page ' + pageNum)
     return (

@@ -62,7 +62,9 @@ const MetadataList = createReactClass({
     if (this.props.printable) {
       const url = '/metadata/' + this.props.id
       return (
-        <a href={url} target='_blank' rel='nofollow'><FontIcon className='material-icons'>print</FontIcon>Printer Friendly View</a>
+        <a href={url} target='_blank' rel='nofollow'>
+          <FontIcon className='material-icons'>print</FontIcon>Printer Friendly View
+        </a>
       )
     } else {
       return (<div />)

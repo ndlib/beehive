@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui'
 const CloseButton = require('../../other/CloseButton.jsx')
-const BrowserUtils = require('../../modules/BrowserUtils.jsx')
 
 const ShowcaseTitleBar = createReactClass({
 
@@ -50,7 +49,7 @@ const ShowcaseTitleBar = createReactClass({
   render: function () {
     if (this.props.showcase) {
       return (
-        <Toolbar id='PageTitleBar' style={this.style()}>
+        <Toolbar className='title-bar' style={this.style()}>
           <ToolbarGroup key={0} style={{ maxWidth: this.mobile ? '80%' : '90%', float: 'left' }}>
             <h2><ToolbarTitle text={this.name()} style={this.titleBarStyle()} /></h2>
           </ToolbarGroup>

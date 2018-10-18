@@ -57,7 +57,7 @@ const PageTitleBar = createReactClass({
 
   render: function () {
     return (
-      <Toolbar id='PageTitleBar' style={this.style()}>
+      <Toolbar id='PageTitleBar' className='title-bar' style={this.style()}>
         <ToolbarGroup key={0} style={{ float:'left' }}>
           <h2><ToolbarTitle text={this.props.title} style={this.titleBarStyle()} /></h2>
         </ToolbarGroup>

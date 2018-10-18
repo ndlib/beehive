@@ -270,10 +270,11 @@ $blockquote-gray: #777;
 }
 
 .pagination-link {
-  display: inline-block;
   border: solid 1px;
-  padding: 0px 5px;
-  margin: 0px 2px 2px 0px;
+  display: inline-block;
+  margin-top: 2px;
+  margin-right: 2px;
+  padding: 0 5px;
   vertical-align: top;
 }
 
@@ -294,9 +295,9 @@ $blockquote-gray: #777;
 
 .list-item h3 {
   font-size: 1em;
-  margin: 0px 0px 0px 30px;
+  margin: 0 0 30px;
 }
 
-#PageTitleBar h2 {
+.title-bar h2 {
   margin: 0;
 }
