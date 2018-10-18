@@ -46,6 +46,7 @@ const SearchBox = createReactClass({
   getInitialState: function () {
     const state = {
       active: this.props.active,
+      lastSearched: '',
     }
     return state
   },
@@ -55,10 +56,12 @@ const SearchBox = createReactClass({
   },
 
   onClick: function (e) {
-    if (this.state.active && this.state.searchTerm) {
-      this.setSearchTerm(this.state.searchTerm)
-    } else if (this.state.active) {
-      this.setState({ active: false })
+    if (this.state.active) {
+      if (this.state.searchTerm !== this.state.lastSearched)
+        this.setSearchTerm(this.state.searchTerm)
+
+      if (!this.state.searchTerm)
+        this.setState({ active: false })
     } else {
       this.setState({ active: true })
     }
@@ -70,6 +73,7 @@ const SearchBox = createReactClass({
 
   setSearchTerm (searchTerm) {
     this.setTerm(searchTerm)
+    this.setState({ lastSearched: searchTerm })
 
     if (this.props.useStore) {
       SearchActions.setSearchTerm(searchTerm)
@@ -84,6 +88,7 @@ const SearchBox = createReactClass({
 
   componentDidMount: function () {
     this.setTerm(SearchStore.searchTerm)
+    this.setState({ lastSearched: SearchStore.searchTerm })
   },
 
   setTerm: function (term) {

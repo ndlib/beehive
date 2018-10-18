@@ -11,6 +11,7 @@ const SearchDisplayList = require('./SearchDisplayList.jsx')
 const ConfigurationActions = require('../../actions/ConfigurationActions.js')
 const ConfigurationStore = require('../../store/ConfigurationStore.js')
 const LoadRemote = require('../../modules/LoadRemote.jsx')
+const PageTitle = require('../../modules/PageTitle.js')
 
 const Search = createReactClass({
   propTypes: {
@@ -156,6 +157,11 @@ const Search = createReactClass({
       return null
     }
 
+    let pageNum = 1
+    if (this.props.start > 0)
+      pageNum = Math.floor(this.props.start / SearchStore.rowLimit) + 1
+
+    PageTitle(SearchStore.collection.name_line_1 + ' - Page ' + pageNum)
     return (
       <div>
         { !this.props.compact && <CollectionPageHeader collection={SearchStore.collection} /> }

@@ -262,9 +262,19 @@ $blockquote-gray: #777;
 }
 
 .pagination {
+  display: block;
+
   span {
     white-space: normal;
   }
+}
+
+.pagination-link {
+  display: inline-block;
+  border: solid 1px;
+  padding: 0px 5px;
+  margin: 0px 2px 2px 0px;
+  vertical-align: top;
 }
 
 .facet {
@@ -280,4 +290,13 @@ $blockquote-gray: #777;
 
 .caption a, .caption a:focus, .caption a:hover {
   color: #d9a91b;
+}
+
+.list-item h3 {
+  font-size: 1em;
+  margin: 0px 0px 0px 30px;
+}
+
+#PageTitleBar h2 {
+  margin: 0;
 }

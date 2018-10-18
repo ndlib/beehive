@@ -15,34 +15,30 @@ const SearchPagination = createReactClass({
     }
   },
 
-  paginationButton: function () {
-    return {
-      border:'solid 1px',
-      padding:'3px 5px',
-      marginRight:'2px',
-      verticalAlign:'top',
-    }
-  },
-
   scrollToTop: function () {
     document.documentElement.scrollTop = 0
   },
 
   pageLink: function (i) {
-    if (SearchStore.start === (i - 1) * SearchStore.rowLimit) {
+    const startIndex = (i - 1) * SearchStore.rowLimit
+    const endIndex = Math.min(startIndex + SearchStore.rowLimit, SearchStore.found) - 1
+
+    if (SearchStore.start === startIndex) {
       return (
-        <span style={this.paginationButton()} key={i}>{i}</span>
+        <span className='pagination-link' key={i}>{i}</span>
       )
     } else {
-      const searchUrl = SearchStore.searchUri({ start: (i - 1) * SearchStore.rowLimit }) +
+      const searchUrl = SearchStore.searchUri({ start: startIndex }) +
       '&compact=' + this.props.compact
+      const linkTitle = `${SearchStore.collection.name_line_1} | Items: ${startIndex+1}-${endIndex+1}`
 
       return (
         <Link
           to={searchUrl}
-          style={this.paginationButton()}
+          className='pagination-link'
           key={i}
           onClick={this.scrollToTop}
+          title={linkTitle}
         >{i}</Link>
       )
     }
@@ -52,16 +48,17 @@ const SearchPagination = createReactClass({
     let nodes = []
     // if not first page
     if (SearchStore.start !== 0) {
-      const backLink = SearchStore.searchUri({ start: 0 }) + '&compact=' + this.props.compact
+      const backLink = SearchStore.searchUri({ start: Math.max(0, SearchStore.start - SearchStore.rowLimit) }) + '&compact=' + this.props.compact
       nodes.push((<Link
         to={backLink}
         key='back'
+        rel='prev'
         onClick={this.scrollToTop}
       > <i className='material-icons' style={{ fontSize: '1em' }}>arrow_back</i> </Link>))
     }
     let last = Math.floor(SearchStore.found / SearchStore.rowLimit)
-    const cappedFirst = Math.max(1, Math.floor(SearchStore.start / SearchStore.rowLimit) - 2)
-    const cappedLast = Math.min(Math.floor(SearchStore.start / SearchStore.rowLimit) + 4, last + 1)
+    const cappedFirst = 1
+    const cappedLast = last + 1
     if (SearchStore.found > SearchStore.rowLimit) {
       if (SearchStore.found % SearchStore.rowLimit !== 0) {
         last += 1
@@ -74,12 +71,13 @@ const SearchPagination = createReactClass({
     // if not last page
     if (SearchStore.start + SearchStore.rowLimit < SearchStore.found) {
       const forwardLink = SearchStore.searchUri({
-        start: SearchStore.rowLimit * (last - 1) }) +
+        start: SearchStore.start + SearchStore.rowLimit }) +
         '&compact=' + this.props.compact
       nodes.push((
         <Link
           to={forwardLink}
           key='next'
+          rel='next'
           onClick={this.scrollToTop}
         > <i className='material-icons' style={{ fontSize: '1em' }}>arrow_forward</i> </Link>))
     }
@@ -90,20 +88,21 @@ const SearchPagination = createReactClass({
     // people think of the first record as 1, not 0.
     // Am I not a people?
     // No, you are not.
-    const startHuman = SearchStore.start + 1
+    const startHuman = SearchStore.found > 0 ? SearchStore.start + 1 : 0
     const endHuman = Math.min(SearchStore.start + SearchStore.rowLimit, SearchStore.found)
+
     return (
-      <div style={{ margin: '2em 0 4em' }}>
+      <div style={{ margin: '2em 0' }}>
         <div style={{ color:'rgba(0, 0, 0, 0.870588)', textAlign: 'right' }}>
-          <div className='pagination'>
+          <nav className='pagination'>
             <span
               style={{
                 marginRight:'15px',
                 display:'inline-block',
                 verticalAlign:'top',
               }}>Showing {startHuman} - {endHuman} of {SearchStore.found}</span>
-            {this.pageLinks()}
-          </div>
+              {this.pageLinks()}
+          </nav>
         </div>
       </div>
     )
