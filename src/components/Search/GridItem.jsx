@@ -43,7 +43,7 @@ const GridItem = createReactClass({
 
   render: function () {
     return (
-      <Link to={CollectionUrl.itemObjectUrl(this.props.item)}>
+      <Link to={CollectionUrl.itemObjectUrl(this.props.item)} title={this.props.item.name}>
         <Card
           style={{ cursor: 'pointer', position: 'relative' }}
         >

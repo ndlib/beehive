@@ -50,7 +50,7 @@ const MyListItem = createReactClass({
 
   render: function () {
     return (
-      <Link to={CollectionUrl.itemObjectUrl(this.props.item)}>
+      <Link to={CollectionUrl.itemObjectUrl(this.props.item)} title={this.props.item.name}>
         <ListItem
           className='list-item'
           leftIcon={this.leftIcon()}
