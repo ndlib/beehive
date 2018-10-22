@@ -56,7 +56,8 @@ const sectionObjectUrl = (object) => {
 
 const itemObjectUrl = (object) => {
   const collectionPath = window.location.pathname.match(/(?:\/[^\/]+){2}/)
-  return collectionPath + '/items/' + encodeURIComponent(object.id)
+  const itemId = object.id ? encodeURIComponent(object.id) : object['@id'].substr(object['@id'].lastIndexOf('/') + 1)
+  return collectionPath + '/items/' + itemId
 }
 
 const collectionUrl = (collection) => {

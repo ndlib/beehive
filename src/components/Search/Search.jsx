@@ -80,6 +80,7 @@ const Search = createReactClass({
     window.removeEventListener('resize', this.handleResize)
     window.removeEventListener('popstate', this.onWindowPopState)
     ConfigurationStore.removeChangeListener(this.configurationLoaded)
+    SearchActions.setSearchTerm('')
   },
 
   componentWillReceiveProps: function (nextProps) {

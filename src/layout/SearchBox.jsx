@@ -59,9 +59,7 @@ const SearchBox = createReactClass({
     if (this.state.active) {
       if (this.state.searchTerm !== this.state.lastSearched) {
         this.setSearchTerm(this.state.searchTerm)
-      }
-
-      if (!this.state.searchTerm) {
+      } else if (!this.state.searchTerm) {
         this.setState({ active: false })
       }
     } else {

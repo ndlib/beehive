@@ -19,6 +19,9 @@ const ItemListItem = createReactClass({
   },
 
   componentWillMount: function () {
+    // Removed because this is SLOW, since it gets called for every item on the results page. As a side-effect, we
+    // cannot display the "manuscript available" icon until honeycomb and/or beehive is refactored.
+    /*
     $.ajax({
       context: this,
       type: 'GET',
@@ -36,6 +39,7 @@ const ItemListItem = createReactClass({
         console.log(thrownError)
       },
     })
+    */
   },
 
   render: function () {
