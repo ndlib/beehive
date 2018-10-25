@@ -100,6 +100,7 @@ const Item = createReactClass({
           collection={this.state.collection}
           item={this.state.item}
           height={this.state.mobile ? window.innerHeight : window.innerHeight - showcaseTitleHeight}
+          title={this.state.item.name}
         />
       )
     } else {

@@ -109,7 +109,7 @@ const CollectionPageHeader = createReactClass({
     const availableTabs = this.availableTabs()
     if (availableTabs.length > 0) {
       return (
-        <div
+        <nav
           style={{ float:'right', backgroundColor: 'none' }}
           value={this.activeTab()}>
           {
@@ -135,7 +135,7 @@ const CollectionPageHeader = createReactClass({
                 </Link>)
             }.bind(this))
           }
-        </div>)
+        </nav>)
     }
     return null
   },

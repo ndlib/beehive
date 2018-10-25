@@ -65,12 +65,12 @@ const SearchDisplayList = createReactClass({
               {itemNodes}
             </GridList>
           </MediaQuery>
-          <MediaQuery minWidth={700} maxWidth={1500}>
+          <MediaQuery minWidth={700} maxWidth={1280}>
             <GridList cols={2} cellHeight='auto' padding={20}>
               {itemNodes}
             </GridList>
           </MediaQuery>
-          <MediaQuery minWidth={1500}>
+          <MediaQuery minWidth={1280}>
             <GridList cols={3} cellHeight='auto' padding={20}>
               {itemNodes}
             </GridList>
@@ -90,10 +90,11 @@ const SearchDisplayList = createReactClass({
     return (
       <div>
         <Paper style={{ width: '100%' }} zDepth={0}>
-          <h3>Browse Collection</h3>
+          <h2>Browse Collection</h2>
         </Paper>
         <MediaQuery maxWidth={700}>
           <Paper zDepth={0}>
+            <SearchPagination />
             {this.itemList()}
             <SearchPagination />
           </Paper>
@@ -103,6 +104,7 @@ const SearchDisplayList = createReactClass({
           <SearchSidebar show={this.state.sidebar} />
 
           <Paper style={{ width: '74%' }} zDepth={0}>
+            <SearchPagination compact={this.props.compact} />
             {this.itemList()}
             <SearchPagination compact={this.props.compact} />
           </Paper>

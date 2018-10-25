@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Link } from 'react-router-dom'
 import { Divider, ListItem } from 'material-ui'
+import RemoveMarkup from '../../modules/RemoveMarkup'
 const ItemImage = require('./ItemImage.jsx')
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
@@ -21,16 +22,16 @@ const MyListItem = createReactClass({
 
   primaryText: function () {
     return (
-      <span style={{ marginLeft: '30px', display: 'inline-block' }}>
-        {this.props.item.name}
-      </span>
+      <h3 style={{ marginLeft: '30px', display: 'inline-block' }}>
+        { RemoveMarkup(this.props.item.name) }
+      </h3>
     )
   },
 
   secondaryText: function () {
     return (
       <span style={{ maxWidth: '50em', marginLeft: '30px' }}>
-        { this.props.item.description }
+        { RemoveMarkup(this.props.item.description) }
       </span>
     )
   },
@@ -49,8 +50,9 @@ const MyListItem = createReactClass({
 
   render: function () {
     return (
-      <Link to={CollectionUrl.itemObjectUrl(this.props.item)}>
+      <Link to={CollectionUrl.itemObjectUrl(this.props.item)} title={this.props.item.name}>
         <ListItem
+          className='list-item'
           leftIcon={this.leftIcon()}
           primaryText={this.primaryText()}
           secondaryText={this.secondaryText()}

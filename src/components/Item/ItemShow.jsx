@@ -8,6 +8,7 @@ const SideNavButton = require('../../other/SideNavButton.jsx')
 const PageContent = require('../../layout/PageContent.jsx')
 const SearchStore = require('../../store/SearchStore.js')
 const ItemContent = require('./ItemContent.jsx')
+const BrowserUtils = require('../../modules/BrowserUtils.jsx')
 const CollecitonUrl = require('../../modules/CollectionUrl.jsx')
 
 const ItemShow = createReactClass({
@@ -28,8 +29,7 @@ const ItemShow = createReactClass({
   titleStyle: function () {
     return {
       color: '#ffffff',
-      position: 'fixed',
-      width: '80%',
+      lineHeight: BrowserUtils.mobile() ? '24px' : '56px',
     }
   },
 
@@ -37,6 +37,7 @@ const ItemShow = createReactClass({
     return {
       color: '#ffffff',
       height: '100%',
+      float: 'right',
     }
   },
 
@@ -52,11 +53,11 @@ const ItemShow = createReactClass({
 
   toolbar: function () {
     return (
-      <Toolbar style={this.styles()} >
-        <ToolbarGroup key={0} float='left'>
-          <ToolbarTitle text={this.props.title} style={this.titleStyle()} />
+      <Toolbar className='title-bar' style={this.styles()} >
+        <ToolbarGroup key={0} style={{ maxWidth: this.mobile ? '80%' : '90%', float: 'left' }}>
+          <h2><ToolbarTitle text={this.props.title} style={this.titleStyle()} /></h2>
         </ToolbarGroup>
-        <ToolbarGroup key={1} float='right' style={this.closeButtonStyle()}>
+        <ToolbarGroup key={1} style={this.closeButtonStyle()}>
           <CloseButton alternate />
         </ToolbarGroup>
       </Toolbar>

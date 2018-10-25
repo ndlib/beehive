@@ -60,7 +60,7 @@ const FacetItem = createReactClass({
           style={{
             marginLeft:'30px',
             display: 'inline-block',
-            maxWidth: 'calc(100% - 60px)',
+            maxWidth: 'calc(100% - 75px)',
           }}>{this.props.facet.name}</span>}
         secondaryText={'(' + this.props.facet.count + ')'}
         value={this.props.field + '|' + this.props.facet.name}
