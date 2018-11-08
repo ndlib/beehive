@@ -39,7 +39,9 @@ const PrintableMetadata = createReactClass({
   },
 
   setValues: function (result) {
-    this.state.collection = result
+    this.setState({
+      collection: result,
+    })
     ConfigurationActions.load(result)
   },
 
@@ -53,7 +55,7 @@ const PrintableMetadata = createReactClass({
       return (
         <div>
           <Helmet>
-            <link rel="canonical" href={url} />
+            <link rel='canonical' href={url} />
           </Helmet>
           <Details item={this.state.item} showDetails printable={false} />
         </div>
