@@ -20,7 +20,7 @@ const CollectionPageFooter = createReactClass({
       <MediaQuery minWidth={650}>
         <Paper circle={false} rounded={false} style={{ height: this.props.height + 'px' }}>
           <footer style={{ height: this.props.height + 'px' }}>
-            <a href='http://library.nd.edu' className='hesburgh-logo'>
+            <a href='http://library.nd.edu' className='hesburgh-logo' rel='nofollow'>
               Hesburgh Logo
             </a>
             <Link to='/' className='dec-logo'>

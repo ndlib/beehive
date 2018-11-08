@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /metadata/
 
 Disallow: /b60347d2a1/
 Disallow: /d303d3fcc0/
@@ -33,4 +32,4 @@ Disallow: /0e6993ba6f/
 Disallow: /0caa2a525b/
 Disallow: /fb6dbda0a8/
 
-Sitemap: https://collections.library.nd.edu/sitemap.xml
+Sitemap: https://collections.library.nd.edu/sitemap/sitemap-index.xml

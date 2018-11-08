@@ -11,10 +11,10 @@ const BrandBar = createReactClass({
           <div className='container-fluid'>
             <div className='row'>
               <div className='col-sm-6'>
-                <a href='https://www.nd.edu'>University <i>of</i> Notre Dame</a>
+                <a href='https://www.nd.edu' rel='nofollow'>University <i>of</i> Notre Dame</a>
               </div>
               <div className='col-sm-6'>
-                <a className='pull-right' href='https://library.nd.edu'>Hesburgh Libraries</a>
+                <a className='pull-right' href='https://library.nd.edu' rel='nofollow'>Hesburgh Libraries</a>
               </div>
             </div>
           </div>

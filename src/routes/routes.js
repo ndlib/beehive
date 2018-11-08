@@ -1,5 +1,5 @@
 import React from 'react'
-import { browserHistory, Switch, Route } from 'react-router'
+import { browserHistory, Switch, Route, Redirect } from 'react-router'
 import { BrowserRouter } from 'react-router-dom'
 import SiteIndexPage from './SiteIndexPage.jsx'
 import CollectionPage from './CollectionPage.jsx'
