@@ -72,7 +72,7 @@ class SearchStore extends EventEmitter {
     this._facetOption = params.facetOption
     this._sortOption = params.sortOption
     this._start = params.start
-    this._view = params.view ? params.view : 'grid'
+    this._view = params.view ? params.view : 'list'
   }
 
   getQueryParams () {

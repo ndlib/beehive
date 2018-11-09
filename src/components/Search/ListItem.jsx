@@ -15,7 +15,7 @@ const MyListItem = createReactClass({
   leftIcon: function () {
     return (
       <div style={{ top: '4px', left: '16px', padding: '2px', width: '77px', height: '75px', margin: '0 12px' }}>
-        <ItemImage item={this.props.item} />
+        <ItemImage item={this.props.item} size='small' />
       </div>
     )
   },

@@ -5,6 +5,7 @@ import createReactClass from 'create-react-class'
 const ItemImage = createReactClass({
   propTypes : {
     item: PropTypes.object.isRequired,
+    size: PropTypes.string,
   },
 
   imageStyle: function () {
@@ -35,7 +36,11 @@ const ItemImage = createReactClass({
 
   image: function () {
     if (this.props.item.thumbnailURL) {
-      return this.props.item.thumbnailURL
+      if (this.props.size) {
+        return this.props.item.thumbnailURL.replace('/medium/', `/${this.props.size}/`)
+      } else {
+        return this.props.item.thumbnailURL
+      }
     } else {
       return '/images/meta-only-item.jpg'
     }
