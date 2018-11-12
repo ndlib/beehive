@@ -46,7 +46,7 @@ const ItemImage = createReactClass({
     }
   },
 
-  altText: function() {
+  altText: function () {
     let out = this.props.item.name
     if (this.props.item.description) {
       out += ` - ${this.props.item.description}`
