@@ -46,12 +46,20 @@ const ItemImage = createReactClass({
     }
   },
 
+  altText: function() {
+    let out = this.props.item.name
+    if (this.props.item.description) {
+      out += ` - ${this.props.item.description}`
+    }
+    return out
+  },
+
   render: function () {
     return (
       <div className='bee-item-image-wrapper'>
         <div className='bee-item-image' style={this.imageStyle()}>
           <div className='bee-item-holder' style={this.holderStyle()}>
-            <img src={this.image()} style={this.backgroundStyle()} />
+            <img src={this.image()} style={this.backgroundStyle()} title={this.altText()} alt={this.altText()} />
           </div>
         </div>
       </div>

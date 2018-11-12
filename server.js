@@ -13,9 +13,9 @@ app.use(compression())
 
 // Routes for real application with React-Router
 
-app.use('/resources', express.static(path.join(__dirname, 'public/resources')), {maxAge: '7d'})
-app.use('/vendor', express.static(path.join(__dirname, 'public/vendor')), {maxAge: '30d'})
-app.use('/images', express.static(path.join(__dirname, 'public/images')), {maxAge: '30d'})
+app.use('/resources', express.static(path.join(__dirname, 'public/resources'), { maxAge: '7d' }))
+app.use('/vendor', express.static(path.join(__dirname, 'public/vendor'), { maxAge: '30d' }))
+app.use('/images', express.static(path.join(__dirname, 'public/images'), { maxAge: '30d' }))
 app.use('/sitemap', express.static(path.join(__dirname, 'public/sitemap')))
 app.use('/sitemap.xml', express.static(path.join(__dirname, 'public/sitemap/sitemap-index.xml')))
 app.use(rewrite('/*', '/index.html'))
