@@ -5,6 +5,7 @@ import createReactClass from 'create-react-class'
 const ItemImage = createReactClass({
   propTypes : {
     item: PropTypes.object.isRequired,
+    size: PropTypes.string,
   },
 
   imageStyle: function () {
@@ -35,10 +36,22 @@ const ItemImage = createReactClass({
 
   image: function () {
     if (this.props.item.thumbnailURL) {
-      return this.props.item.thumbnailURL
+      if (this.props.size) {
+        return this.props.item.thumbnailURL.replace('/medium/', `/${this.props.size}/`)
+      } else {
+        return this.props.item.thumbnailURL
+      }
     } else {
       return '/images/meta-only-item.jpg'
     }
+  },
+
+  altText: function () {
+    let out = this.props.item.name
+    if (this.props.item.description) {
+      out += ` - ${this.props.item.description}`
+    }
+    return out
   },
 
   render: function () {
@@ -46,7 +59,7 @@ const ItemImage = createReactClass({
       <div className='bee-item-image-wrapper'>
         <div className='bee-item-image' style={this.imageStyle()}>
           <div className='bee-item-holder' style={this.holderStyle()}>
-            <img src={this.image()} style={this.backgroundStyle()} />
+            <img src={this.image()} style={this.backgroundStyle()} title={this.altText()} alt={this.altText()} />
           </div>
         </div>
       </div>

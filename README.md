@@ -7,3 +7,16 @@
 
 Beehive provides an attractive frontend display for the collections and exhibits created and managed by [Honeycomb](https://github.com/ndlib/honeycomb).
 It is created and managed by WSE at Hesburgh Libraries.
+
+### Installation ###
+1. `yarn install`
+
+### Usage ###
+1. `yarn start`
+2. `yarn watch`
+
+### Deployment - UA/Prep ###
+* `aws-vault exec libnd ./deploy-pprd.sh`
+
+### Deployment - Production ###
+* `aws-vault exec libnd ./deploy-prod.sh`

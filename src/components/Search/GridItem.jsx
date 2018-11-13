@@ -23,7 +23,7 @@ const GridItem = createReactClass({
   cardMedia: function () {
     return (
       <CardMedia overlay={this.mediaOverlay()}>
-        <ItemImage item={this.props.item} />
+        <ItemImage item={this.props.item} size='medium' />
       </CardMedia>
     )
   },

@@ -1,5 +1,6 @@
 import React from 'react'
 import createReactClass from 'create-react-class'
+import { Helmet } from 'react-helmet'
 const Details = require('../display/Details.jsx')
 const ConfigurationActions = require('../actions/ConfigurationActions.js')
 const ConfigurationStore = require('../store/ConfigurationStore.js')
@@ -38,6 +39,9 @@ const PrintableMetadata = createReactClass({
   },
 
   setValues: function (result) {
+    this.setState({
+      collection: result,
+    })
     ConfigurationActions.load(result)
   },
 
@@ -47,8 +51,14 @@ const PrintableMetadata = createReactClass({
 
   render: function () {
     if (this.state.item && this.state.configurationLoaded) {
+      const url = `${window.location.origin}/${this.state.collection.id}/${this.state.collection.slug}/items/${this.state.item.id}`
       return (
-        <Details item={this.state.item} showDetails printable={false} />
+        <div>
+          <Helmet>
+            <link rel='canonical' href={url} />
+          </Helmet>
+          <Details item={this.state.item} showDetails printable={false} />
+        </div>
       )
     } else {
       return (<div />)
