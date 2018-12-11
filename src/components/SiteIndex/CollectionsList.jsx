@@ -48,10 +48,10 @@ const CollectionsList = createReactClass({
         <MediaQuery maxWidth={650}>
           {this.gridList(1)}
         </MediaQuery>
-        <MediaQuery minWidth={650} maxWidth={1724}>
+        <MediaQuery minWidth={651} maxWidth={1724}>
           {this.gridList(2)}
         </MediaQuery>
-        <MediaQuery minWidth={1724}>
+        <MediaQuery minWidth={1725}>
           {this.gridList(3)}
         </MediaQuery>
       </div>
