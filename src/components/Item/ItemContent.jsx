@@ -146,7 +146,7 @@ const ItemContent = createReactClass({
     if (this.state.zoom) {
       return (
         <div className='item-detail-zoom' style={this.zoomStyles()}>
-          <MediaQuery minWidth={650}>
+          <MediaQuery minWidth={651}>
             <OpenseadragonViewer
               image={this.props.item.media}
               containerID={this.props.item.id}

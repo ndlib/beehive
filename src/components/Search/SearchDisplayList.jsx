@@ -60,12 +60,12 @@ const SearchDisplayList = createReactClass({
     if (view === 'grid') {
       return (
         <div>
-          <MediaQuery maxWidth={700}>
+          <MediaQuery maxWidth={699}>
             <GridList cols={1} cellHeight='auto' padding={20}>
               {itemNodes}
             </GridList>
           </MediaQuery>
-          <MediaQuery minWidth={700} maxWidth={1280}>
+          <MediaQuery minWidth={700} maxWidth={1279}>
             <GridList cols={2} cellHeight='auto' padding={20}>
               {itemNodes}
             </GridList>

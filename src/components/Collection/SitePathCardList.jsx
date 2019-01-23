@@ -45,7 +45,7 @@ const SitePathCardList = createReactClass({
           <MediaQuery minWidth={651} maxWidth={1224}>
             {this.gridList(2)}
           </MediaQuery>
-          <MediaQuery minWidth={1224} maxWidth={1724}>
+          <MediaQuery minWidth={1225} maxWidth={1724}>
             {this.gridList(3)}
           </MediaQuery>
           <MediaQuery minWidth={1725}>

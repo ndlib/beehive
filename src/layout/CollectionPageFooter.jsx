@@ -17,7 +17,7 @@ const CollectionPageFooter = createReactClass({
 
   render: function () {
     return (
-      <MediaQuery minWidth={650}>
+      <MediaQuery minWidth={651}>
         <Paper circle={false} rounded={false} style={{ height: this.props.height + 'px' }}>
           <footer style={{ height: this.props.height + 'px' }}>
             <a href='http://library.nd.edu' className='hesburgh-logo' rel='nofollow'>

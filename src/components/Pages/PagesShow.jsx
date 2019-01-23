@@ -77,10 +77,10 @@ const PagesShow = createReactClass({
   render: function () {
     return (
       <div id='page-show'>
-        <MediaQuery minWidth={1400} key='1'>
+        <MediaQuery minWidth={1401} key='1'>
           {this.getPaper('wide')}
         </MediaQuery>
-        <MediaQuery minWidth={1000} maxWidth={1400} key='2'>
+        <MediaQuery minWidth={1001} maxWidth={1400} key='2'>
           {this.getPaper('medium')}
         </MediaQuery>
         <MediaQuery maxWidth={1000} key='3'>

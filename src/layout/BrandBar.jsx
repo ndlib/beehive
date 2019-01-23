@@ -6,7 +6,7 @@ const BrandBar = createReactClass({
 
   render: function () {
     return (
-      <MediaQuery minWidth={650}>
+      <MediaQuery minWidth={651}>
         <div className='brand-bar'>
           <div className='container-fluid'>
             <div className='row'>

@@ -108,7 +108,7 @@ const ShowcaseTitleCard = createReactClass({
           titleStyle={this.titleStyle()}
           subtitleStyle={this.subtitleStyle()}
         />
-        <MediaQuery minWidth={650}>
+      <MediaQuery minWidth={651}>
           <CardText style={this.textStyle()} >
             {description}
           </CardText>

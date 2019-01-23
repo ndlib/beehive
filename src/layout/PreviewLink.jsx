@@ -75,8 +75,8 @@ const PreviewLink = createReactClass({
         to={url}
         onClick={this.scrollToTop}
       >
-        <MediaQuery minWidth={850}>
-          <MediaQuery minWidth={1500}>
+        <MediaQuery minWidth={851}>
+          <MediaQuery minWidth={1501}>
             { this.getCard('wide') }
           </MediaQuery>
           <MediaQuery maxWidth={1500}>

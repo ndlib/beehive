@@ -7,7 +7,7 @@ const SiteIndexHeader = createReactClass({
   render: function () {
     return (
       <div>
-        <MediaQuery minWidth={650}>
+        <MediaQuery minWidth={651}>
           <Card
             style={{
               height:'40vh',

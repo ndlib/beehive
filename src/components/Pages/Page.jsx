@@ -114,7 +114,7 @@ const Page = createReactClass({
       nextCard = [
         <div style={{ clear: 'both' }} key='next'>
           <hr />
-          <MediaQuery minWidth={1000} key='min-w'>
+          <MediaQuery minWidth={1001} key='min-w'>
             <div style={{ margin: '0 auto', maxWidth: '500px' }}>
               <SitePathCard
                 headerTitle='Continue to'

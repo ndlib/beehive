@@ -183,7 +183,7 @@ const CollectionPageHeader = createReactClass({
     const rightNav = (
       <div style={{ marginRight: '16px' }}>
         {this.searchBox()}
-        <MediaQuery minWidth={650}>
+        <MediaQuery minWidth={651}>
           {this.tabs()}
         </MediaQuery>
       </div>
@@ -212,7 +212,7 @@ const CollectionPageHeader = createReactClass({
             {this.props.children}
           </Paper>
         </MediaQuery>
-        <MediaQuery minWidth={650}>
+        <MediaQuery minWidth={651}>
           <Paper circle={false} rounded={false} style={this.largeScreenStyle()}>
             <BrandBar />
             <AppBar
