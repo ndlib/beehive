@@ -7,8 +7,8 @@ import JSONLD from '../JSONLD.jsx'
 import RemoveMarkup from '../../modules/RemoveMarkup'
 const ReactDOM = require('react-dom')
 const maxShowcaseHeight = 805
-const showcaseTitleHeight = 56
-const scrollPadding = 80
+const showcaseTitleHeight = 65
+const scrollPadding = 65
 const titleSectionWidthPercent = 0.85
 const minBackgroundBlur = 0.3
 const maxBackgroundBlur = 0.8

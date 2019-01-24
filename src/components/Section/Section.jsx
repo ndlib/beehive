@@ -11,7 +11,7 @@ const Loading = require('../../other/Loading.jsx')
 const PageTitle = require('../../modules/PageTitle.js')
 const BrowserUtils = require('../../modules/BrowserUtils.jsx')
 const LoadRemote = require('../../modules/LoadRemote.jsx')
-const showcaseTitleHeight = 56
+const showcaseTitleHeight = 65
 
 const Section = createReactClass({
   propTypes: {
@@ -97,7 +97,7 @@ const Section = createReactClass({
       sectionShow = (
         <SectionShow
           section={this.state.section}
-          height={this.state.mobile ? window.innerHeight : window.innerHeight - showcaseTitleHeight}
+          height={BrowserUtils.mobile() ? window.innerHeight : (window.innerHeight - showcaseTitleHeight)}
           previousSection={this.state.section.previousSection}
           nextSection={this.state.section.nextSection}
           collection={this.state.collection}

@@ -13,6 +13,7 @@ const SectionShowDescription = createReactClass({
   styles: function () {
     if (this.props.height) {
       return {
+        paddingTop: '15px',
         height: this.props.height + 'px',
         overflowY: 'scroll',
         maxWidth: '60em',

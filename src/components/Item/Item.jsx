@@ -11,7 +11,7 @@ const Loading = require('../../other/Loading.jsx')
 const PageTitle = require('../../modules/PageTitle.js')
 const BrowserUtils = require('../../modules/BrowserUtils.jsx')
 const LoadRemote = require('../../modules/LoadRemote.jsx')
-const showcaseTitleHeight = 56
+const showcaseTitleHeight = 65
 
 const Item = createReactClass({
   propTypes: {
@@ -99,7 +99,7 @@ const Item = createReactClass({
         <ItemShow
           collection={this.state.collection}
           item={this.state.item}
-          height={this.state.mobile ? window.innerHeight : window.innerHeight - showcaseTitleHeight}
+          height={BrowserUtils.mobile() ? window.innerHeight : (window.innerHeight - showcaseTitleHeight)}
           title={this.state.item.name}
         />
       )

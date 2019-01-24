@@ -8,6 +8,7 @@ const ItemContent = require('../Item/ItemContent.jsx')
 const SectionShowDescription = require('./SectionShowDescription.jsx')
 const BrowserUtils = require('../../modules/BrowserUtils.jsx')
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
+const sectionTitleHeight = 56
 
 const SectionShow = createReactClass({
   displayName: 'Section Show',
@@ -83,13 +84,13 @@ const SectionShow = createReactClass({
   contentSection: function () {
     if (this.props.section.item) {
       return (<ItemContent
-        height={this.props.height}
+        height={this.props.height - sectionTitleHeight}
         item={this.props.section.item}
         additionalDetails={this.props.section.description}
       />)
     } else {
       return (<SectionShowDescription
-        height={this.props.height}
+        height={this.props.height - sectionTitleHeight}
         section={this.props.section}
       />)
     }

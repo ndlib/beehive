@@ -29,7 +29,7 @@ const ItemShow = createReactClass({
   titleStyle: function () {
     return {
       color: '#ffffff',
-      lineHeight: BrowserUtils.mobile() ? '24px' : '56px',
+      lineHeight: '56px',
     }
   },
 
