@@ -91,7 +91,7 @@ const Item = createReactClass({
     if (!this.state.remoteCollectionLoaded || !this.state.remoteItemLoaded) {
       return null
     }
-    PageTitle(this.state.item.name)
+    PageTitle(this.state.item.name + ' | ' + this.state.collection.name_line_1)
     let itemShow
 
     if (this.state.item) {

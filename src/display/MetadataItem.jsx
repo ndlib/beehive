@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Divider } from 'material-ui'
+import { Helmet } from 'react-helmet'
 const MetadataString = require('./MetadataString.jsx')
 const MetadataDate = require('./MetadataDate.jsx')
 const MetadataHTML = require('./MetadataHTML.jsx')
@@ -31,6 +32,23 @@ const MetadataItem = createReactClass({
     metadata: PropTypes.object.isRequired,
   },
 
+  metaTag: function () {
+    // Add a meta tag to the <head> explicitly to help SEO with identifying text blurb to show users
+    if (this.props.metadata.label.toLowerCase() === 'description') {
+      let valArr = []
+      this.props.metadata.values.map(function (metadataField) {
+        valArr.push(metadataField.value)
+      }, this)
+
+      return (
+        <Helmet>
+          <meta name='description' content={valArr.join(' ')} />
+        </Helmet>
+      )
+    }
+    return null
+  },
+
   value: function (metadataField, index) {
     const MetadataComponent = fieldTypeMap[metadataField['@type']]
     return (<MetadataComponent key={index} metadataField={metadataField} />)
@@ -48,6 +66,7 @@ const MetadataItem = createReactClass({
         <dt style={Styles.fieldName}>{this.props.metadata.label.toUpperCase()}</dt>
         <Divider style={Styles.divider} inset={false} />
         <dd style={Styles.fieldValue}>{this.map_arrays_to_values()}</dd>
+        {this.metaTag()}
       </dl>
     )
   },

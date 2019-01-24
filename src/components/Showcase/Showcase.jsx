@@ -77,7 +77,7 @@ const Showcase = createReactClass({
     if (!this.state.remoteCollectionLoaded) {
       return null
     }
-    PageTitle(this.state.showcase.name)
+    PageTitle(this.state.collection.name_line_1 + ' - ' + this.state.showcase.name_line_1)
     let showcaseShow
     if (this.state.showcase) {
       showcaseShow = (

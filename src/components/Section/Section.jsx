@@ -90,7 +90,7 @@ const Section = createReactClass({
     if (!this.state.remoteCollectionLoaded || !this.state.remoteSectionLoaded) {
       return null
     }
-    PageTitle(this.state.section.name)
+    PageTitle(this.state.collection.name_line_1 + ' - ' + this.state.section.name)
     let sectionShow
 
     if (this.state.section) {

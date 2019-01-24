@@ -72,7 +72,7 @@ const Collection = createReactClass({
     if (!this.state.remoteCollectionLoaded) {
       return null
     }
-    PageTitle(collection.name)
+    PageTitle(collection.name_line_1)
     const url = `https://collections.library.nd.edu/${collection.id}/${collection.slug}`
     let data = {
       '@context': 'http://schema.org',

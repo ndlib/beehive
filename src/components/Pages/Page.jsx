@@ -165,7 +165,7 @@ const Page = createReactClass({
       return null
     }
     const collection = this.state.collection
-    PageTitle(collection.name)
+    PageTitle(collection.name_line_1 + ' - ' + collection.pages.name)
 
     let image = ''
     if (collection.pages.image && collection.pages.image.contentUrl) {

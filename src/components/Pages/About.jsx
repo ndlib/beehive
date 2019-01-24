@@ -8,6 +8,7 @@ const PageContent = require('../../layout/PageContent.jsx')
 const CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
 const PagesShow = require('../Pages/PagesShow.jsx')
 const LoadRemote = require('../../modules/LoadRemote.jsx')
+const PageTitle = require('../../modules/PageTitle.js')
 
 const About = createReactClass({
   propTypes: {
@@ -46,6 +47,7 @@ const About = createReactClass({
     if (!this.state.remoteCollectionLoaded) {
       return null
     }
+    PageTitle(collection.name_line_1 + ' - About')
 
     let pageContent = null
     if (collection && collection.about) {
