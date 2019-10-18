@@ -26,7 +26,7 @@ const SearchDisplayList = createReactClass({
   },
 
   componentDidMount: function () {
-    if (SearchStore.sorts || SearchStore.facets) {
+    if (SearchStore.facets || SearchStore.facets.length < 1) {
       this.setState({ sidebar: true })
     }
   },

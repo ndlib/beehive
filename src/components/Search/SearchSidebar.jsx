@@ -7,7 +7,7 @@ const SearchSidebar = createReactClass({
 
   getInitialState: function () {
     return {
-      show: true,
+      show: this.props.show,
     }
   },
 

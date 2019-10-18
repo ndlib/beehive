@@ -49,9 +49,17 @@ const MetadataList = createReactClass({
     })
   },
 
+  // filter out 'hidden' fields
+  filterHidden: function (keys, metadata) {
+    return keys.filter(function (key) {
+      return metadata[key].hidden !== true
+    })
+  },
+
   metadataNodes: function () {
     let keys = Object.keys(this.props.metadata)
     keys = this.filteredMetaKeys(keys)
+    keys = this.filterHidden(keys, this.props.metadata)
     keys = this.orderByConfiguration(keys)
     return keys.map(function (key) {
       return (<MetadataItem key={key} metadata={this.props.metadata[key]} />)

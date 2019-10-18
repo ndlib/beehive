@@ -6,5 +6,6 @@ module.exports = function () {
     return 'https://honeycombpprd-vm.library.nd.edu'
   } else {
     return 'https://localhost:3017'
+    // return 'https://honeycomb.library.nd.edu'
   }
 }
