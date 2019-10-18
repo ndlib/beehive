@@ -5,7 +5,7 @@ module.exports = function () {
   } else if (process.env.NODE_ENV === 'preproduction') {
     return 'https://honeycombpprd-vm.library.nd.edu'
   } else {
-    // return 'https://localhost:3017'
-    return 'https://honeycomb.library.nd.edu'
+    return 'https://localhost:3017'
+    // return 'https://honeycomb.library.nd.edu'
   }
 }
