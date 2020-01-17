@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import createReactClass from 'create-react-class'
 import { FontIcon, Toolbar, ToolbarGroup, RaisedButton } from 'material-ui'
 const MediaQuery = require('react-responsive')
@@ -8,6 +9,7 @@ const SearchStore = require('../../store/SearchStore.js')
 const ConfigurationStore = require('../../store/ConfigurationStore.js')
 const SearchActions = require('../../actions/SearchActions.js')
 const CurrentTheme = require('../../modules/CurrentTheme.jsx')
+const SearchHelp = require('./SearchHelp.jsx')
 
 const SearchControls = createReactClass({
   getInitialState: function () {
@@ -87,6 +89,7 @@ const SearchControls = createReactClass({
         >
           <ToolbarGroup key={0} style={{ float: 'left' }}>
             { this.searchBox() }
+            <SearchHelp />
           </ToolbarGroup>
           <ToolbarGroup key={1} style={{ float: 'right' }}>
             <MediaQuery minWidth={700}>
