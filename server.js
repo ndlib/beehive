@@ -5,6 +5,7 @@ var rewrite = require('express-urlrewrite')
 var compression = require('compression')
 var bodyParser = require('body-parser')
 var app = express()
+var https = require('https')
 
 app.set('port', (process.env.PORT || 3018))
 
@@ -23,6 +24,10 @@ app.use('/', express.static(path.join(__dirname, 'public')))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.listen(app.get('port'), function () {
-  console.log('Server started: http://localhost:' + app.get('port') + '/')
+https.createServer({
+  key: fs.readFileSync('server.key'),
+  cert: fs.readFileSync('server.cert')
+}, app)
+.listen(app.get('port'), function () {
+  console.log('Server started: https://localhost:' + app.get('port') + '/')
 })

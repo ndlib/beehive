@@ -302,3 +302,70 @@ $blockquote-gray: #777;
 .title-bar h2 {
   margin: 0;
 }
+
+.searchHelp .linkButton {
+  background: none;
+  border: none;
+  text-transform: none;
+  color: white;
+  line-height: 50px;
+  font-size: 16px;
+  padding: 0 20px 0 4px;
+  width: auto;
+}
+.searchHelp .linkButton:hover {
+  text-decoration: underline;
+}
+
+.examples {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  margin-bottom: 2em;
+}
+.examples > *:not(:last-child) {
+  margin-right: 0.75em;
+}
+
+.searchExample {
+  flex-basis: 40em;
+  display: flex;
+  background: #282c34;
+  padding: 0;
+  overflow-x: auto;
+  margin-bottom: 0.75em;
+}
+
+.searchExample code {
+  color: #abb2bf;
+  vertical-align: top;
+}
+
+.searchExample .leftSide {
+  border-right: 1px solid gray;
+}
+.searchExample .rightSide {
+  border-left: 1px solid gray;
+}
+.searchExample .leftSide,
+.searchExample .rightSide {
+  flex-basis: 50%;
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 0.5em;
+}
+
+.searchExample .leftSide::before {
+  content: 'Search';
+}
+.searchExample .rightSide::before {
+  content: 'Results';
+}
+.searchExample .leftSide::before,
+.searchExample .rightSide::before {
+  display: block;
+  border-bottom: 2px solid gray;
+  color: white;
+  margin-left: 0;
+  margin-bottom: 0.5em;
+}
