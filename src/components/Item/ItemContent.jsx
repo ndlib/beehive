@@ -90,9 +90,7 @@ const ItemContent = createReactClass({
 
   multimedia: function () {
     let height
-    if (this.props.item.media['@type'] === 'AudioObject') {
-      height = 40
-    } else {
+    if (this.props.item.media['@type'] !== 'AudioObject') {
       height = this.getHeight()
     }
 
