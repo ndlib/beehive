@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Paper } from 'material-ui'
-const MediaQuery = require('react-responsive')
+import MediaQuery from 'react-responsive'
 
 const PagesShow = createReactClass({
   propTypes: {

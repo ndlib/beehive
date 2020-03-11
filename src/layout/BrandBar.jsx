@@ -1,6 +1,6 @@
 import React from 'react'
 import createReactClass from 'create-react-class'
-const MediaQuery = require('react-responsive')
+import MediaQuery from 'react-responsive'
 
 const BrandBar = createReactClass({
 

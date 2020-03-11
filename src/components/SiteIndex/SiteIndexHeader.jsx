@@ -1,7 +1,7 @@
 import React from 'react'
 import createReactClass from 'create-react-class'
 import { Card, CardTitle, CardMedia } from 'material-ui'
-const MediaQuery = require('react-responsive')
+import MediaQuery from 'react-responsive'
 
 const SiteIndexHeader = createReactClass({
   render: function () {
@@ -84,4 +84,4 @@ const SiteIndexHeader = createReactClass({
   },
 })
 
-module.exports = SiteIndexHeader
+export default SiteIndexHeader

@@ -2,7 +2,6 @@ import '../../assets/scripts/perfect-scrollbar.jquery.js'
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { TransitionGroup } from 'react-transition-group'
 import JSONLD from '../JSONLD.jsx'
 import RemoveMarkup from '../../modules/RemoveMarkup'
 const ReactDOM = require('react-dom')
@@ -224,8 +223,7 @@ const ShowcaseShow = createReactClass({
           height={this.state.mobile ? this.state.height : this.state.height - scrollPadding}
           showcase={showcase} />
         {titleBar}
-        <TransitionGroup
-          className='showcase-slide-in'>
+        <div className='showcase-slide-in'>
           <div
             id='showcase-outer'
             className='showcase-outer'
@@ -237,7 +235,7 @@ const ShowcaseShow = createReactClass({
               height={showcaseInnerHeight}
               showcase={showcase} />
           </div>
-        </TransitionGroup>
+        </div>
         {mobileHomeButton}
         <JSONLD data={data} />
       </div>

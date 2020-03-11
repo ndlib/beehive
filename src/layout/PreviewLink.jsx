@@ -4,7 +4,7 @@ import createReactClass from 'create-react-class'
 import { Card, CardMedia, CardTitle, FloatingActionButton, FontIcon } from 'material-ui'
 import { Link } from 'react-router-dom'
 const HoneycombImage = require('../other/HoneycombImage.jsx')
-const MediaQuery = require('react-responsive')
+import MediaQuery from 'react-responsive'
 const CollectionUrl = require('../modules/CollectionUrl.jsx')
 
 const PreviewLink = createReactClass({

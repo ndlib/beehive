@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Paper } from 'material-ui'
 import { Link } from 'react-router-dom'
-const MediaQuery = require('react-responsive')
+import MediaQuery from 'react-responsive'
 
 const CollectionPageFooter = createReactClass({
 

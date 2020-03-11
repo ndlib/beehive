@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { FlatButton } from 'material-ui'
 import AddReferral from '../../modules/AddReferral.js'
-const MediaQuery = require('react-responsive')
+import MediaQuery from 'react-responsive'
 const Details = require('../../display/Details.jsx')
 const OpenseadragonViewer = require('../../display/OpenseadragonViewer.jsx')
 const MultimediaViewer = require('../../layout/MultimediaViewer.jsx')

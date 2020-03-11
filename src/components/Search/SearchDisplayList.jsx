@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { GridList, List, Paper } from 'material-ui'
-const MediaQuery = require('react-responsive')
+import MediaQuery from 'react-responsive'
 const SearchStore = require('../../store/SearchStore.js')
 const SearchPagination = require('./SearchPagination.jsx')
 const ItemListItem = require('./ItemListItem.jsx')

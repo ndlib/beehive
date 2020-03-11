@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { AppBar, Paper } from 'material-ui'
 import { Link } from 'react-router-dom'
-const MediaQuery = require('react-responsive')
+import MediaQuery from 'react-responsive'
 const BrandBar = require('./BrandBar.jsx')
 const CollectionLeftNav = require('./CollectionLeftNav.jsx')
 const ConfigurationStore = require('../store/ConfigurationStore.js')

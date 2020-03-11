@@ -10,7 +10,7 @@ const PagesShow = require('./PagesShow.jsx')
 const PageTitleBar = require('./PageTitleBar.jsx')
 const SitePathCard = require('../Collection/SitePathCard.jsx')
 const PreviewLink = require('../../layout/PreviewLink.jsx')
-const MediaQuery = require('react-responsive')
+import MediaQuery from 'react-responsive'
 const ConfigurationActions = require('../../actions/ConfigurationActions.js')
 const ConfigurationStore = require('../../store/ConfigurationStore.js')
 const PageTitle = require('../../modules/PageTitle.js')

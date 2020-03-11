@@ -2,12 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import JSONLD from '../JSONLD.jsx'
-const SiteIndexHeader = require('./SiteIndexHeader.jsx')
-const BrandBar = require('../../layout/BrandBar.jsx')
-const PageContent = require('../../layout/PageContent.jsx')
-const CollectionsList = require('./CollectionsList.jsx')
-const IndexPageFooter = require('../../layout/IndexPageFooter.jsx')
-const LoadRemote = require('../../modules/LoadRemote.jsx')
+import SiteIndexHeader from './SiteIndexHeader.jsx'
+import BrandBar from '../../layout/BrandBar.jsx'
+import PageContent from '../../layout/PageContent.jsx'
+import CollectionsList from './CollectionsList.jsx'
+import IndexPageFooter from '../../layout/IndexPageFooter.jsx'
+import LoadRemote from '../../modules/LoadRemote.jsx'
 
 const SiteIndex = createReactClass({
   propTypes: {
@@ -93,4 +93,4 @@ const SiteIndex = createReactClass({
 
 })
 
-module.exports = SiteIndex
+export default SiteIndex

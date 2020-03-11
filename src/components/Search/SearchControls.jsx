@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import createReactClass from 'create-react-class'
 import { FontIcon, Toolbar, ToolbarGroup, RaisedButton } from 'material-ui'
-const MediaQuery = require('react-responsive')
+import MediaQuery from 'react-responsive'
 const SearchBox = require('../../layout/SearchBox.jsx')
 const SearchSort = require('./SearchSort.jsx')
 const SearchStore = require('../../store/SearchStore.js')
