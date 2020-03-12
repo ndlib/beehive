@@ -98,4 +98,4 @@ const About = createReactClass({
   },
 })
 
-module.exports = About
+export default About

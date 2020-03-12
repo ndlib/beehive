@@ -1,4 +1,4 @@
-module.exports = function () {
+export default function () {
   if (process.env.NODE_ENV === 'production') {
     return 'https://dave.library.nd.edu'
   } else if (process.env.NODE_ENV === 'preproduction') {

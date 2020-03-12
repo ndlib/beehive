@@ -1,4 +1,4 @@
-module.exports = function (id, string) {
+export default function (id, string) {
   if (id) {
     if (string === undefined) {
       string = 'item'

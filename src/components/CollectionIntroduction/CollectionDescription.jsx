@@ -48,4 +48,4 @@ const CollectionDescription = createReactClass({
   },
 })
 
-module.exports = CollectionDescription
+export default CollectionDescription

@@ -25,4 +25,4 @@ const BrandBar = createReactClass({
 
 })
 
-module.exports = BrandBar
+export default BrandBar

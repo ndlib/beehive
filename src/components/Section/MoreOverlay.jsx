@@ -23,4 +23,4 @@ const MoreOverlay = createReactClass({
   },
 })
 
-module.exports = MoreOverlay
+export default MoreOverlay

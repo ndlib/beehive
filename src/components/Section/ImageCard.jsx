@@ -31,4 +31,4 @@ const ImageCard = createReactClass({
   },
 })
 
-module.exports = ImageCard
+export default ImageCard

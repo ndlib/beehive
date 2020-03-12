@@ -40,6 +40,8 @@
     "react/jsx-handler-names"     : 0,
     "react-hooks/rules-of-hooks"  : "error",
     "semi"                        : [2, "never"],
+    "space-in-parens"             : ["error", "never"],
+    "space-before-function-paren" : 0,
     "jsx-a11y/href-no-hash"       : "off"
   }
 }

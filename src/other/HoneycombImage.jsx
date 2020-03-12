@@ -54,4 +54,4 @@ const HoneycombImage = createReactClass({
   },
 })
 
-module.exports = HoneycombImage
+export default HoneycombImage

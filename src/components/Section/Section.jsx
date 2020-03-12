@@ -122,4 +122,4 @@ const Section = createReactClass({
   },
 })
 
-module.exports = Section
+export default Section

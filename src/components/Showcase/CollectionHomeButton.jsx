@@ -30,4 +30,4 @@ const CollectionHomeButton = createReactClass({
   },
 })
 
-module.exports = CollectionHomeButton
+export default CollectionHomeButton

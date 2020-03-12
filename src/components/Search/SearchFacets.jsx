@@ -41,4 +41,4 @@ const SearchFacets = createReactClass({
   },
 })
 
-module.exports = SearchFacets
+export default SearchFacets

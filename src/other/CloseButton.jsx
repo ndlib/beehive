@@ -79,4 +79,4 @@ const CloseButton = createReactClass({
   },
 })
 
-module.exports = CloseButton
+export default CloseButton

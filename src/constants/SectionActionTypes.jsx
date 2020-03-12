@@ -5,4 +5,4 @@ const SectionActionTypes = keyMirror({
   SECTION_SHOW_WINDOW: false,
 })
 
-module.exports = SectionActionTypes
+export default SectionActionTypes

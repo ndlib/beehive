@@ -102,4 +102,4 @@ const Showcase = createReactClass({
   },
 })
 
-module.exports = Showcase
+export default Showcase

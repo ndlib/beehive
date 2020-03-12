@@ -33,4 +33,4 @@ const MetadataString = createReactClass({
   },
 })
 
-module.exports = MetadataString
+export default MetadataString

@@ -247,4 +247,4 @@ const ShowcaseShow = createReactClass({
   },
 })
 
-module.exports = ShowcaseShow
+export default ShowcaseShow

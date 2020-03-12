@@ -137,4 +137,4 @@ const SideNavButton = createReactClass({
   },
 })
 
-module.exports = SideNavButton
+export default SideNavButton

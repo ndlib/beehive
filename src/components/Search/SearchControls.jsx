@@ -126,4 +126,4 @@ const SearchControls = createReactClass({
   },
 })
 
-module.exports = SearchControls
+export default SearchControls

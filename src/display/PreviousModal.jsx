@@ -36,4 +36,4 @@ const PreviousModal = createReactClass({
 })
 
 // each file will export exactly one component
-module.exports = PreviousModal
+export default PreviousModal

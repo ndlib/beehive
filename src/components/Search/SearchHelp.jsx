@@ -204,4 +204,4 @@ const SearchHelp = createReactClass({
   },
 })
 
-module.exports = SearchHelp
+export default SearchHelp

@@ -18,4 +18,4 @@ const TitleBar = createReactClass({
   },
 })
 
-module.exports = TitleBar
+export default TitleBar

@@ -219,4 +219,4 @@ const Page = createReactClass({
   },
 })
 
-module.exports = Page
+export default Page

@@ -5,4 +5,4 @@ const ItemActionTypes = keyMirror({
   ITEM_SHOW_WINDOW: false,
 })
 
-module.exports = ItemActionTypes
+export default ItemActionTypes

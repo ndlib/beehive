@@ -94,4 +94,4 @@ const Details = createReactClass({
   },
 })
 
-module.exports = Details
+export default Details

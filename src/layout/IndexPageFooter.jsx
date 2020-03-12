@@ -21,4 +21,4 @@ const IndexPageFooter = createReactClass({
   },
 })
 
-module.exports = IndexPageFooter
+export default IndexPageFooter

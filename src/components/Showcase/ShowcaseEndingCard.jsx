@@ -40,4 +40,4 @@ const ShowcaseEndingCard = createReactClass({
 
 })
 
-module.exports = ShowcaseEndingCard
+export default ShowcaseEndingCard

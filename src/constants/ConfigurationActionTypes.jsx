@@ -4,4 +4,4 @@ const ConfigurationActionTypes = keyMirror({
   LOAD_CONFIGURAION: null,
 })
 
-module.exports = ConfigurationActionTypes
+export default ConfigurationActionTypes

@@ -63,4 +63,4 @@ const ShowcaseSections = createReactClass({
   },
 })
 
-module.exports = ShowcaseSections
+export default ShowcaseSections

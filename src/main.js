@@ -1,3 +1,5 @@
+import 'core-js/stable'
+import 'regenerator-runtime/runtime'
 import './assets/css/main.scss'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import React from 'react'

@@ -245,4 +245,4 @@ const CollectionPageHeader = createReactClass({
   },
 })
 
-module.exports = CollectionPageHeader
+export default CollectionPageHeader

@@ -187,4 +187,4 @@ const CollectionLeftNav = createReactClass({
   },
 })
 
-module.exports = CollectionLeftNav
+export default CollectionLeftNav

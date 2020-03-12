@@ -179,4 +179,4 @@ const Search = createReactClass({
   },
 })
 
-module.exports = Search
+export default Search

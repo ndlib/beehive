@@ -154,4 +154,4 @@ const CollectionCard = createReactClass({
 })
 
 // each file will export exactly one component
-module.exports = CollectionCard
+export default CollectionCard

@@ -57,4 +57,4 @@ const GridItem = createReactClass({
   },
 })
 
-module.exports = GridItem
+export default GridItem

@@ -33,4 +33,4 @@ const CollectionPageFooter = createReactClass({
   },
 })
 
-module.exports = CollectionPageFooter
+export default CollectionPageFooter

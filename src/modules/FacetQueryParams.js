@@ -1,4 +1,4 @@
-module.exports = function (url) {
+export default function (url) {
   let href = url || window.location.href
   const facets = []
   const reg = new RegExp('(facet\\[.*?\\]=[^&#]*)', 'i')

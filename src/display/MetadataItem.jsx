@@ -53,4 +53,4 @@ const MetadataItem = createReactClass({
   },
 })
 
-module.exports = MetadataItem
+export default MetadataItem

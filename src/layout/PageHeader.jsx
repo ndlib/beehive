@@ -29,4 +29,4 @@ const PageHeader = createReactClass({
   },
 })
 
-module.exports = PageHeader
+export default PageHeader

@@ -59,4 +59,4 @@ const CollectionsList = createReactClass({
   },
 })
 
-module.exports = CollectionsList
+export default CollectionsList

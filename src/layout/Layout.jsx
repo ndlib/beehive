@@ -11,4 +11,4 @@ const Layout = createReactClass({
   },
 })
 
-module.exports = Layout
+export default Layout

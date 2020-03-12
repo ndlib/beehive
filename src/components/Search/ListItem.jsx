@@ -68,4 +68,4 @@ const MyListItem = createReactClass({
   },
 })
 
-module.exports = MyListItem
+export default MyListItem

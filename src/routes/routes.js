@@ -1,5 +1,5 @@
 import React from 'react'
-import { browserHistory, Switch, Route } from 'react-router'
+import { Switch, Route } from 'react-router'
 import { BrowserRouter } from 'react-router-dom'
 import SiteIndexPage from './SiteIndexPage.jsx'
 import CollectionPage from './CollectionPage.jsx'
@@ -16,7 +16,7 @@ import PrintableMetadata from './PrintableMetadata.jsx'
 
 export default function () {
   return (
-    <BrowserRouter history={browserHistory}>
+    <BrowserRouter>
       <Switch>
         <Route
           exact path='/'

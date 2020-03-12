@@ -69,4 +69,4 @@ const Scroller = createReactClass({
   },
 })
 
-module.exports = Scroller
+export default Scroller

@@ -268,4 +268,4 @@ const OpenseadragonViewer = createReactClass({
   },
 })
 
-module.exports = OpenseadragonViewer
+export default OpenseadragonViewer

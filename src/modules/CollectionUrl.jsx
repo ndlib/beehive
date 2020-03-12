@@ -88,7 +88,7 @@ const remoteSection = (section) => {
   return remoteUrlBase() + 'sections/' + section
 }
 
-module.exports = {
+export default {
   introUrl,
   aboutUrl,
   browseUrl,

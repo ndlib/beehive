@@ -28,4 +28,4 @@ class ConfigurationActions {
   }
 }
 
-module.exports = new ConfigurationActions()
+export default new ConfigurationActions()

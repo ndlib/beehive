@@ -106,4 +106,4 @@ const CollectionShow = createReactClass({
   },
 })
 
-module.exports = CollectionShow
+export default CollectionShow

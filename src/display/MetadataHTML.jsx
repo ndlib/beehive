@@ -14,4 +14,4 @@ const MetadataHTML = createReactClass({
   },
 })
 
-module.exports = MetadataHTML
+export default MetadataHTML

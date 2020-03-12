@@ -14,4 +14,4 @@ const MetadataDate = createReactClass({
   },
 })
 
-module.exports = MetadataDate
+export default MetadataDate

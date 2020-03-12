@@ -22,7 +22,7 @@ const loadRemoteCollection = (url, callback) => {
   withCallback(url, callback)
 }
 
-module.exports = {
+export default {
   withCallback,
   loadRemoteCollection,
 }

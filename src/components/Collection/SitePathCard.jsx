@@ -123,4 +123,4 @@ const SitePathCard = createReactClass({
   },
 })
 
-module.exports = SitePathCard
+export default SitePathCard

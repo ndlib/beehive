@@ -88,4 +88,4 @@ const PreviewLink = createReactClass({
   },
 })
 
-module.exports = PreviewLink
+export default PreviewLink

@@ -27,4 +27,4 @@ const CollectionIntro = createReactClass({
   },
 })
 
-module.exports = CollectionIntro
+export default CollectionIntro

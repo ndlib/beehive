@@ -59,4 +59,4 @@ const ItemListItem = createReactClass({
   },
 })
 
-module.exports = ItemListItem
+export default ItemListItem

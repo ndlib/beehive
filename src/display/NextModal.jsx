@@ -35,4 +35,4 @@ const NextModal = createReactClass({
   },
 })
 
-module.exports = NextModal
+export default NextModal

@@ -16,4 +16,4 @@ const PrevNext = {
   },
 }
 
-module.exports = PrevNext
+export default PrevNext

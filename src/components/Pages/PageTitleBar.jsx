@@ -69,4 +69,4 @@ const PageTitleBar = createReactClass({
   },
 })
 
-module.exports = PageTitleBar
+export default PageTitleBar

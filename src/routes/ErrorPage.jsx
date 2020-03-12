@@ -34,4 +34,4 @@ const ErrorPage = createReactClass({
   },
 
 })
-module.exports = ErrorPage
+export default ErrorPage

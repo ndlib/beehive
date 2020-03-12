@@ -50,4 +50,4 @@ const ShowcaseBackground = createReactClass({
   },
 })
 
-module.exports = ShowcaseBackground
+export default ShowcaseBackground

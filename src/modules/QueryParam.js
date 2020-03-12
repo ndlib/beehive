@@ -1,4 +1,4 @@
-module.exports = function (field, url) {
+export default function (field, url) {
   const href = url || window.location.href
   const reg = new RegExp('[?&]' + field + '=([^&#]*)', 'i')
   const string = reg.exec(href)

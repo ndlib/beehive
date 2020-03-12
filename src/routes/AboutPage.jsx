@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import About from '../components/pages/About.jsx'
+import About from '../components/Pages/About.jsx'
 import HoneycombURL from '../modules/HoneycombURL.js'
 
 class AboutPage extends Component {

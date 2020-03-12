@@ -359,4 +359,4 @@ class SearchStore extends EventEmitter {
   }
 }
 
-module.exports = new SearchStore()
+export default new SearchStore()

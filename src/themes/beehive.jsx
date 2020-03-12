@@ -1,5 +1,5 @@
 
-module.exports = {
+export default {
   fontFamily: 'Roboto, sans-serif',
   palette: {
     primary1Color: 'rgba(0, 0, 0, 0.641176)',

@@ -32,4 +32,4 @@ const CollectionIntroCard = createReactClass({
   },
 })
 
-module.exports = CollectionIntroCard
+export default CollectionIntroCard

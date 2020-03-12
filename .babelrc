@@ -1,20 +1,22 @@
 {
   "presets": [
-    "react",
-    "stage-0",
     [
-      "env",
+      "@babel/preset-env",
       {
-        "loose": true,
-        "modules": false,
-        "targets": {
-          "browsers": [
-            ">1%"
-          ]
-        },
-        "useBuiltIns": true
+        "useBuiltIns": "entry",
+        "corejs": 3
+      }
+    ],
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "corejs": 3,
+        "useESModules": true,
+        "version": "^7.8.3"
       }
     ]
-  ],
-  "plugins": ["transform-runtime", "add-module-exports"]
+  ]
 }

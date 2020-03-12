@@ -55,4 +55,4 @@ const AttentionHelp = createReactClass({
   },
 })
 
-module.exports = AttentionHelp
+export default AttentionHelp

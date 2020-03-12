@@ -55,4 +55,4 @@ const PageContent = createReactClass({
 })
 
 // each file will export exactly one component
-module.exports = PageContent
+export default PageContent

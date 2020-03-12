@@ -163,4 +163,4 @@ const SearchBox = createReactClass({
   },
 })
 
-module.exports = SearchBox
+export default SearchBox

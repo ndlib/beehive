@@ -122,4 +122,4 @@ const Item = createReactClass({
   },
 })
 
-module.exports = Item
+export default Item

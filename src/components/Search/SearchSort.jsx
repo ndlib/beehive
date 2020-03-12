@@ -86,4 +86,4 @@ const SearchSort = createReactClass({
     }
   },
 })
-module.exports = SearchSort
+export default SearchSort

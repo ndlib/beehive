@@ -33,7 +33,7 @@ const pageWidth = () => {
   }
 }
 
-module.exports = {
+export default {
   getCurrentPallette,
   lightIconStyle,
   darkIconStyle,

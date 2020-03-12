@@ -57,4 +57,4 @@ class ConfigurationStore extends StoreEventEmitter {
   }
 }
 
-module.exports = new ConfigurationStore()
+export default new ConfigurationStore()

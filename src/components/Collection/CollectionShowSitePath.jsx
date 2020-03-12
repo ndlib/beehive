@@ -31,4 +31,4 @@ const CollectionShowSitePath = createReactClass({
   },
 })
 
-module.exports = CollectionShowSitePath
+export default CollectionShowSitePath

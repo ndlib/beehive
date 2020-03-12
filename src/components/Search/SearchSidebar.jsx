@@ -15,4 +15,4 @@ const SearchSidebar = createReactClass({
   },
 })
 
-module.exports = SearchSidebar
+export default SearchSidebar

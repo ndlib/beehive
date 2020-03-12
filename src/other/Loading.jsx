@@ -10,4 +10,4 @@ const Loading = createReactClass({
 
 })
 
-module.exports = Loading
+export default Loading

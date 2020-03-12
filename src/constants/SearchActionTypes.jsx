@@ -9,4 +9,4 @@ const SearchActionTypes = keyMirror({
   SEARCH_SET_VIEW: null,
 })
 
-module.exports = SearchActionTypes
+export default SearchActionTypes

@@ -51,4 +51,4 @@ class SearchActions {
     })
   }
 }
-module.exports = new SearchActions()
+export default new SearchActions()

@@ -122,4 +122,4 @@ const SectionShow = createReactClass({
   },
 })
 
-module.exports = SectionShow
+export default SectionShow

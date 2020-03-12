@@ -117,4 +117,4 @@ const SearchPagination = createReactClass({
   },
 })
 
-module.exports = SearchPagination
+export default SearchPagination

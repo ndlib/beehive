@@ -39,4 +39,4 @@ const CardCaption = createReactClass({
   },
 })
 
-module.exports = CardCaption
+export default CardCaption

@@ -68,4 +68,4 @@ const ItemImage = createReactClass({
 
 })
 
-module.exports = ItemImage
+export default ItemImage

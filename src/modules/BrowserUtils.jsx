@@ -40,4 +40,4 @@ const BrowserUtils = {
   },
 }
 
-module.exports = BrowserUtils
+export default BrowserUtils

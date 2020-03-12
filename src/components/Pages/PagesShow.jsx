@@ -91,4 +91,4 @@ const PagesShow = createReactClass({
   },
 })
 
-module.exports = PagesShow
+export default PagesShow

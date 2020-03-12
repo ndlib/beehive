@@ -42,4 +42,4 @@ const ShowcaseInnerContent = createReactClass({
   },
 })
 
-module.exports = ShowcaseInnerContent
+export default ShowcaseInnerContent

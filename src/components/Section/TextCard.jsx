@@ -82,4 +82,4 @@ const TextCard = createReactClass({
   },
 })
 
-module.exports = TextCard
+export default TextCard

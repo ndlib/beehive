@@ -215,4 +215,4 @@ const ItemContent = createReactClass({
   },
 })
 
-module.exports = ItemContent
+export default ItemContent

@@ -132,4 +132,4 @@ const ItemShow = createReactClass({
   },
 })
 
-module.exports = ItemShow
+export default ItemShow

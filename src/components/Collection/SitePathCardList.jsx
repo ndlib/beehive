@@ -59,4 +59,4 @@ const SitePathCardList = createReactClass({
   },
 })
 
-module.exports = SitePathCardList
+export default SitePathCardList

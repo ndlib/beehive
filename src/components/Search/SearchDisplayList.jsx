@@ -116,4 +116,4 @@ const SearchDisplayList = createReactClass({
   },
 })
 
-module.exports = SearchDisplayList
+export default SearchDisplayList

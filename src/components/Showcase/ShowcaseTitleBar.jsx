@@ -64,4 +64,4 @@ const ShowcaseTitleBar = createReactClass({
   },
 })
 
-module.exports = ShowcaseTitleBar
+export default ShowcaseTitleBar

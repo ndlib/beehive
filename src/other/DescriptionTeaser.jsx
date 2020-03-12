@@ -27,4 +27,4 @@ const DescriptionTeaser = createReactClass({
   },
 })
 
-module.exports = DescriptionTeaser
+export default DescriptionTeaser

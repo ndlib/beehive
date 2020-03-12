@@ -16,4 +16,4 @@ class StoreEventEmitter extends EventEmitter {
   }
 }
 
-module.exports = StoreEventEmitter
+export default StoreEventEmitter

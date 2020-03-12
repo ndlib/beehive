@@ -118,4 +118,4 @@ const ShowcaseTitleCard = createReactClass({
   },
 })
 
-module.exports = ShowcaseTitleCard
+export default ShowcaseTitleCard

@@ -107,4 +107,4 @@ const SectionCard = createReactClass({
   },
 })
 
-module.exports = withRouter(SectionCard)
+export default withRouter(SectionCard)

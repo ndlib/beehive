@@ -93,4 +93,4 @@ const MetadataList = createReactClass({
   },
 })
 
-module.exports = MetadataList
+export default MetadataList

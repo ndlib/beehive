@@ -14,4 +14,4 @@ const MetadataText = createReactClass({
   },
 })
 
-module.exports = MetadataText
+export default MetadataText

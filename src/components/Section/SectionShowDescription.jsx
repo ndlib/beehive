@@ -37,4 +37,4 @@ const SectionShowDescription = createReactClass({
 
 })
 
-module.exports = SectionShowDescription
+export default SectionShowDescription
