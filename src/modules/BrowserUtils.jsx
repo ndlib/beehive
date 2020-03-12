@@ -19,6 +19,7 @@ const BrowserUtils = {
 
   mobile: function () {
     const checkWidth = 650
+    // eslint-disable-next-line no-restricted-globals
     if (screen.width <= checkWidth || window.innerWidth <= checkWidth) {
       return true
     }

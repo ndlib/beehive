@@ -65,12 +65,14 @@ const CollectionShow = createReactClass({
     if (this.props.collection.image) {
       let cardTitle = (null)
       if (this.props.collection.display_page_title) {
-        cardTitle = (<CardTitle
-          title={this.props.collection.name_line_1}
-          titleStyle={{ color:'white', fontSize:'34px', lineHeight:'46px' }}
-          subtitle={this.props.collection.name_line_2}
-          subtitleStyle={{ color:'rgba(255,255,255,.8)', fontSize:'18px' }}
-          style={CurrentTheme.pageWidth()} />
+        cardTitle = (
+          <CardTitle
+            title={this.props.collection.name_line_1}
+            titleStyle={{ color:'white', fontSize:'34px', lineHeight:'46px' }}
+            subtitle={this.props.collection.name_line_2}
+            subtitleStyle={{ color:'rgba(255,255,255,.8)', fontSize:'18px' }}
+            style={CurrentTheme.pageWidth()}
+          />
         )
       }
       return (
@@ -89,7 +91,7 @@ const CollectionShow = createReactClass({
   render: function () {
     if (this.collectionLoaded()) {
       return (
-        <Paper circle={false} rounded={false} >
+        <Paper circle={false} rounded={false}>
           <Card>
             {this.cardMediaSection()}
           </Card>

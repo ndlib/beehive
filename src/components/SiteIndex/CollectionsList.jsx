@@ -26,7 +26,7 @@ const CollectionsList = createReactClass({
   },
 
   reverseCollection: function () {
-    let temp = []
+    const temp = []
     const len = this.props.collections.length
     for (let i = (len - 1); i !== -1; i--) {
       temp.push(this.props.collections[i])
@@ -36,7 +36,7 @@ const CollectionsList = createReactClass({
 
   gridList: function (cols) {
     return (
-      <GridList cols={cols} cellHeight={'auto'} padding={24}>
+      <GridList cols={cols} cellHeight='auto' padding={24}>
         {this.collectionNodes()}
       </GridList>
     )

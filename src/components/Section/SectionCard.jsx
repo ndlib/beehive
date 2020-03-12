@@ -12,6 +12,9 @@ const SectionCard = createReactClass({
   propTypes: {
     section: PropTypes.object.isRequired,
     height: PropTypes.number.isRequired,
+    history: PropTypes.shape({
+      push: PropTypes.func.isRequired,
+    }).isRequired,
   },
 
   getInitialState: function () {
@@ -23,7 +26,7 @@ const SectionCard = createReactClass({
   },
 
   style: function () {
-    let styles = {
+    const styles = {
       display: 'inline-block',
       verticalAlign: 'top',
       position: 'relative',
@@ -37,7 +40,7 @@ const SectionCard = createReactClass({
       overflow: 'hidden',
     }
     if (this.sectionType() === 'text') {
-      styles['maxWidth'] = '33em'
+      styles.maxWidth = '33em'
     }
 
     return styles
@@ -70,13 +73,15 @@ const SectionCard = createReactClass({
 
   manifestIcon: function (item) {
     if (item && item.metadata && item.metadata.manuscript_url) {
-      return (<img
-        src='/images/pt.icon.drk.png'
-        className='manuscript-icon'
-        alt='Manifest Available'
-        title='Manifest Available'
-        style={{ position: 'absolute', right: '0', top: '0', maxWidth: '10%', height: 'auto',
-        }} />)
+      return (
+        <img
+          src='/images/pt.icon.drk.png'
+          className='manuscript-icon'
+          alt='Manifest Available'
+          title='Manifest Available'
+          style={{ position: 'absolute', right: '0', top: '0', maxWidth: '10%', height: 'auto' }}
+        />
+      )
     }
     return null
   },
@@ -94,7 +99,7 @@ const SectionCard = createReactClass({
       <div style={{ display: 'inline' }}>
         <Link to={CollectionUrl.sectionObjectUrl(this.props.section)} />
         <Card className='item' style={this.style()} onClick={this.pushUrl}>
-          { this.card() }
+          {this.card()}
           {this.manifestIcon(this.props.section.item)}
         </Card>
       </div>

@@ -23,7 +23,8 @@ const CollectionHomeButton = createReactClass({
         <FontIcon
           className='material-icons'
           color='white'
-        >home</FontIcon>
+        >home
+        </FontIcon>
       </FloatingActionButton>
     )
   },

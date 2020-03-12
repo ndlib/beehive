@@ -23,7 +23,7 @@ class CustomCollectionPage extends Component {
         this.setState({
           collectionResult: result,
         },
-        this.props.history.push('/' + result['id'] + '/' + result['slug'])
+        this.props.history.push('/' + result.id + '/' + result.slug),
         )
       },
       error: function (request, status, thrownError) {

@@ -21,7 +21,7 @@ const CollectionIntroCard = createReactClass({
   render: function () {
     return (
       <Link to={CollectionUrl.introUrl(this.props.collection)}>
-        <Card style={this.style()} >
+        <Card style={this.style()}>
           <CardMedia
             className='collection-site-path-card'
             overlay={<CardTitle title='Introduction' />}

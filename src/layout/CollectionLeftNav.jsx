@@ -20,15 +20,15 @@ const CollectionLeftNav = createReactClass({
   },
 
   componentWillMount: function () {
-    if (this.props.collection['site_path']) {
+    if (this.props.collection.site_path) {
       this.setState({
-        sitePath: this.props.collection['site_path'],
+        sitePath: this.props.collection.site_path,
       })
     }
   },
 
   componentDidMount: function () {
-    if (this.props.collection['site_path']) {
+    if (this.props.collection.site_path) {
       return
     }
     const url = this.props.collection['@id'] + '/site_path'
@@ -62,7 +62,7 @@ const CollectionLeftNav = createReactClass({
   },
 
   dropDownOptions: function () {
-    let options = []
+    const options = []
     const collectionUrl = CollectionUrl.collectionUrl(this.props.collection)
     const aboutUrl = CollectionUrl.aboutUrl(this.props.collection)
     const introUrl = CollectionUrl.introUrl(this.props.collection)
@@ -126,7 +126,8 @@ const CollectionLeftNav = createReactClass({
         >
           <MenuItem
             primaryText={name}
-            className='collection-left-nav-item' />
+            className='collection-left-nav-item'
+          />
         </Link>
       ))
     }.bind(this))
@@ -178,7 +179,8 @@ const CollectionLeftNav = createReactClass({
             id='leftNav'
             className='leftNav'
             children={this.dropDownOptions()}
-            style={this.navStyle()} />
+            style={this.navStyle()}
+          />
         </div>
       )
     }

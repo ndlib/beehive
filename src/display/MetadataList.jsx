@@ -85,9 +85,9 @@ const MetadataList = createReactClass({
         <h3>Metadata</h3>
         <br />
         <div style={{ marginLeft: '40px' }}>
-          { this.metadataNodes() }
+          {this.metadataNodes()}
         </div>
-        { this.printable() }
+        {this.printable()}
       </div>
     )
   },

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Card, CardMedia, CardTitle, FloatingActionButton, FontIcon } from 'material-ui'
 import { Link } from 'react-router-dom'
-const HoneycombImage = require('../other/HoneycombImage.jsx')
 import MediaQuery from 'react-responsive'
+const HoneycombImage = require('../other/HoneycombImage.jsx')
 const CollectionUrl = require('../modules/CollectionUrl.jsx')
 
 const PreviewLink = createReactClass({
@@ -49,7 +49,7 @@ const PreviewLink = createReactClass({
 
   getCard: function (media) {
     return (
-      <Card style={this.style(media)} onMouseOver={this.mouseOver} onMouseOut={this.mouseOut} >
+      <Card style={this.style(media)} onMouseOver={this.mouseOver} onMouseOut={this.mouseOut}>
         <CardMedia overlay={<CardTitle title='Continue' />}>
           <HoneycombImage image={this.props.siteObject.image} size='small' />
         </CardMedia>
@@ -77,10 +77,10 @@ const PreviewLink = createReactClass({
       >
         <MediaQuery minWidth={850}>
           <MediaQuery minWidth={1500}>
-            { this.getCard('wide') }
+            {this.getCard('wide')}
           </MediaQuery>
           <MediaQuery maxWidth={1500}>
-            { this.getCard('narrow') }
+            {this.getCard('narrow')}
           </MediaQuery>
         </MediaQuery>
       </Link>

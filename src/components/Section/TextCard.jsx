@@ -43,7 +43,7 @@ const TextCard = createReactClass({
       let testHeight = textContent.offsetParent.clientHeight
       if (document.getElementById(encodeURIComponent(this.props.section.name))) {
         testHeight -= document.getElementById(
-          encodeURIComponent(this.props.section.name)
+          encodeURIComponent(this.props.section.name),
         ).offsetParent.clientHeight + 15
       }
       return (textContent.clientHeight > testHeight)
@@ -63,7 +63,8 @@ const TextCard = createReactClass({
       <div
         id={encodeURIComponent(this.props.section.name)}
         className='sectionTitleContent'
-      >{this.props.section.name}</div>
+      >{this.props.section.name}
+      </div>
     )
     return (
       <div style={this.style()} className='text'>
@@ -72,7 +73,8 @@ const TextCard = createReactClass({
           <div
             id={encodeURIComponent(this.props.section.name) + '-text'}
             className='sectionTextContent'
-            dangerouslySetInnerHTML={{ __html: this.props.section.description }} />
+            dangerouslySetInnerHTML={{ __html: this.props.section.description }}
+          />
           {this.overflowText()}
         </CardText>
       </div>

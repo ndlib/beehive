@@ -34,7 +34,7 @@ const ShowcaseInnerContent = createReactClass({
 
   render: function () {
     return (
-      <div className='showcase-inner' style={this.style()} >
+      <div className='showcase-inner' style={this.style()}>
         <ShowcaseTitleCard height={this.props.height} showcase={this.props.showcase} />
         <ShowcaseSections height={this.props.height} showcase={this.props.showcase} />
       </div>

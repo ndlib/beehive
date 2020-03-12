@@ -1,28 +1,27 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { FontIcon, Dialog, FlatButton } from 'material-ui'
 import createReactClass from 'create-react-class'
 
 const SearchHelp = createReactClass({
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       open: false,
     }
   },
 
-  handleOpen: function() {
+  handleOpen: function () {
     this.setState({
       open: true,
     })
   },
 
-  handleClose: function() {
+  handleClose: function () {
     this.setState({
       open: false,
     })
   },
 
-  iconStyle: function() {
+  iconStyle: function () {
     return {
       fontSize: '24px',
       top: '5px',
@@ -31,7 +30,7 @@ const SearchHelp = createReactClass({
     }
   },
 
-  render: function() {
+  render: function () {
     return (
       <div className='searchHelp'>
         <button
@@ -44,10 +43,10 @@ const SearchHelp = createReactClass({
           Search Help
         </button>
         <Dialog
-          title="Search Help"
-          actions={[
-            <FlatButton label="Close" primary={true} onClick={this.handleClose} />,
-          ]}
+          title='Search Help'
+          actions={
+            <FlatButton label='Close' primary onClick={this.handleClose} />
+          }
           modal={false}
           open={this.state.open}
           onRequestClose={this.handleClose}
@@ -191,7 +190,13 @@ const SearchHelp = createReactClass({
           <h4>More Info</h4>
           <span>
             For a more in-depth explanation of everything that is supported, see&nbsp;
-            <Link to='https://lucene.apache.org/core/2_9_4/queryparsersyntax.html'>the official lucene query syntax</Link>.
+            <a
+              href='https://lucene.apache.org/core/2_9_4/queryparsersyntax.html'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              the official lucene query syntax
+            </a>.
           </span>
         </Dialog>
       </div>

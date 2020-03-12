@@ -1,11 +1,11 @@
-var fs = require('fs-extra')
-var path = require('path')
-var express = require('express')
-var rewrite = require('express-urlrewrite')
-var compression = require('compression')
-var bodyParser = require('body-parser')
-var app = express()
-var https = require('https')
+const fs = require('fs-extra')
+const path = require('path')
+const express = require('express')
+const rewrite = require('express-urlrewrite')
+const compression = require('compression')
+const bodyParser = require('body-parser')
+const app = express()
+const https = require('https')
 
 app.set('port', (process.env.PORT || 3018))
 
@@ -26,8 +26,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 https.createServer({
   key: fs.readFileSync('server.key'),
-  cert: fs.readFileSync('server.cert')
+  cert: fs.readFileSync('server.cert'),
 }, app)
-.listen(app.get('port'), function () {
-  console.log('Server started: https://localhost:' + app.get('port') + '/')
-})
+  .listen(app.get('port'), function () {
+    console.log('Server started: https://localhost:' + app.get('port') + '/')
+  })

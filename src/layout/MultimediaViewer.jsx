@@ -20,7 +20,8 @@ class MultimediaViewer extends Component {
         allowFullScreen='true'
         webkitallowfullscreen='true'
         mozallowfullscreen='true'
-      >Your browser does not support iFrames.</iframe>
+      >Your browser does not support iFrames.
+      </iframe>
     )
   }
 }

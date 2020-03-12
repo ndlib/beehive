@@ -46,12 +46,14 @@ const ItemListItem = createReactClass({
     if (this.props.view === 'list') {
       return (
         <ListItem
-          item={this.state.itemLoaded ? Object.assign(this.props.item, this.state.fullItem) : this.props.item} />
+          item={this.state.itemLoaded ? Object.assign(this.props.item, this.state.fullItem) : this.props.item}
+        />
       )
     } else {
       return (
         <GridItem
-          item={this.state.itemLoaded ? Object.assign(this.props.item, this.state.fullItem) : this.props.item} />
+          item={this.state.itemLoaded ? Object.assign(this.props.item, this.state.fullItem) : this.props.item}
+        />
       )
     }
   },

@@ -42,7 +42,7 @@ export default function promiseMiddleware ({ dispatch }) {
             type: 'next',
             id: sequenceId,
           },
-        })
+        }),
       )
     }
 

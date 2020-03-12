@@ -77,27 +77,27 @@ const Collection = createReactClass({
     let data = {
       '@context': 'http://schema.org',
       '@type': 'WebSite',
-      'url': url,
-      'name': collection.name,
-      'author': {
+      url: url,
+      name: collection.name,
+      author: {
         '@type': 'Organization',
-        'name': 'Hesburgh Library - University of Notre Dame',
+        name: 'Hesburgh Library - University of Notre Dame',
       },
-      'description': RemoveMarkup(collection.short_description),
-      'publisher': {
+      description: RemoveMarkup(collection.short_description),
+      publisher: {
         '@type': 'Organization',
-        'name': 'University of Notre Dame',
-        'logo': {
+        name: 'University of Notre Dame',
+        logo: {
           '@type': 'ImageObject',
-          'url': 'https://onmessage.nd.edu/assets/185044/fullsize/1_university_mark.jpg',
+          url: 'https://onmessage.nd.edu/assets/185044/fullsize/1_university_mark.jpg',
         },
       },
     }
     if (ConfigurationStore.browseEnabled()) {
       data = Object.assign(data, {
-        'potentialAction': {
+        potentialAction: {
           '@type': 'SearchAction',
-          'target': `${url}/search?q={search_term_string}`,
+          target: `${url}/search?q={search_term_string}`,
           'query-input': 'required name=search_term_string',
         },
       })

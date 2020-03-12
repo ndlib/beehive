@@ -9,14 +9,13 @@ const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 const CollectionCard = createReactClass({
   propTypes: {
     collection: PropTypes.object.isRequired,
-    cardHeight: PropTypes.string.isRequired,
+    headerTitle: PropTypes.string,
   },
 
   style: function () {
     return {
       position: 'relative',
       cursor: 'pointer',
-      // height: this.props.cardHeight + 'px',
       maxHeight:'450px',
       // padding: theme.spacing.desktopGutter,
       height:'100%',
@@ -72,10 +71,14 @@ const CollectionCard = createReactClass({
       overflow: 'hidden',
       textOverflow: 'ellipsis',
     }
-    return (<CardTitle title={this.props.collection.name_line_1}
-      titleStyle={titleStyle}
-      subtitle={this.props.collection.name_line_2}
-      subtitleStyle={titleStyle} />)
+    return (
+      <CardTitle
+        title={this.props.collection.name_line_1}
+        titleStyle={titleStyle}
+        subtitle={this.props.collection.name_line_2}
+        subtitleStyle={titleStyle}
+      />
+    )
   },
 
   cardMedia: function () {
@@ -92,7 +95,8 @@ const CollectionCard = createReactClass({
           'hidden',
         }}
         className='temp'
-        style={{ overflow:'hidden' }}>
+        style={{ overflow:'hidden' }}
+      >
         <img src={this.image()} style={this.imageSize()} />
       </CardMedia>)
   },
@@ -100,7 +104,6 @@ const CollectionCard = createReactClass({
   actionButtonsStyle: function () {
     return {
       position: 'absolute',
-      // top: (this.props.cardHeight - 60) + 'px',
       bottom:'0',
       width: '100%',
       borderTopColor: 'rgba(0,0,0,0.12)',
@@ -135,13 +138,14 @@ const CollectionCard = createReactClass({
   render: function () {
     return (
 
-      <Card style={this.style()} >
+      <Card style={this.style()}>
         {this.collectionLink()}
-        <CardActions style={this.actionButtonsStyle()} >
+        <CardActions style={this.actionButtonsStyle()}>
           <FlatButton
             label='Explore'
             href={CollectionUrl.collectionUrl(this.props.collection)}
-            labelStyle={this.exploreLabelStyle()} />
+            labelStyle={this.exploreLabelStyle()}
+          />
         </CardActions>
       </Card>
 

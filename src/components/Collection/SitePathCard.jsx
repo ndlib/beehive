@@ -77,21 +77,27 @@ const SitePathCard = createReactClass({
 
   headerTitle: function () {
     if (this.props.headerTitle) {
-      return (<CardTitle
-        title={this.props.headerTitle}
-        style={{
-          backgroundColor: 'white',
-          position: 'absolute',
-          width:'100%',
-          zIndex: '1',
-        }} />)
+      return (
+        <CardTitle
+          title={this.props.headerTitle}
+          style={{
+            backgroundColor: 'white',
+            position: 'absolute',
+            width:'100%',
+            zIndex: '1',
+          }}
+        />
+      )
     }
   },
 
   cardTitle: function () {
-    return (<CardTitle
-      title={this.props.siteObject.name_line_1 || this.props.siteObject.name}
-      subtitle={this.props.siteObject.name_line_2} />)
+    return (
+      <CardTitle
+        title={this.props.siteObject.name_line_1 || this.props.siteObject.name}
+        subtitle={this.props.siteObject.name_line_2}
+      />
+    )
   },
 
   cardMedia: function () {
@@ -99,19 +105,20 @@ const SitePathCard = createReactClass({
       <CardMedia
         className='collection-site-path-card'
         style={{ backgroundImage:'url("' + this.image() + '")' }}
-        overlay={this.cardTitle()} />)
+        overlay={this.cardTitle()}
+      />
+    )
   },
 
   render: function () {
     return (
-      <Card style={this.style()} >
+      <Card style={this.style()}>
         <Link to={CollectionUrl.collectionObjectUrl(this.props.siteObject)}>
           {this.headerTitle()}
           {this.cardMedia()}
         </Link>
         {this.nextButton()}
       </Card>
-
     )
   },
 })

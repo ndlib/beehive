@@ -22,7 +22,7 @@ const Search = createReactClass({
     ]),
     searchTerm: PropTypes.string,
     sortTerm: PropTypes.string,
-    facet: PropTypes.oneOfType([
+    facet: PropTypes.oneOfType([ // eslint-disable-line react/no-unused-prop-types
       PropTypes.object,
       PropTypes.array,
     ]),
@@ -61,7 +61,7 @@ const Search = createReactClass({
         } else {
           alert('404 Redirect prevented')
         }
-      }
+      },
     )
     window.addEventListener('popstate', this.onWindowPopState)
 
@@ -166,14 +166,14 @@ const Search = createReactClass({
     PageTitle(SearchStore.collection.name_line_1 + ' - Page ' + pageNum)
     return (
       <div>
-        { !this.props.compact && <CollectionPageHeader collection={SearchStore.collection} /> }
+        {!this.props.compact && <CollectionPageHeader collection={SearchStore.collection} />}
         <SearchControls searchStyle={{ height:'50px' }} />
         <PageContent fluidLayout={false}>
           <SearchDisplayList compact={this.props.compact} />
         </PageContent>
-        { !this.props.compact && <CollectionPageFooter
-          collection={SearchStore.collection}
-          height={this.props.footerHeight} /> }
+        {!this.props.compact && (
+          <CollectionPageFooter collection={SearchStore.collection} height={this.props.footerHeight} />
+        )}
       </div>
     )
   },

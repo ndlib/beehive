@@ -46,7 +46,7 @@ const CollectionIntroduction = createReactClass({
     }
     return (
       <div>
-        <CollectionPageHeader collection={this.state.collection} >
+        <CollectionPageHeader collection={this.state.collection}>
           <PageTitleBar title='Introduction' height={35} />
         </CollectionPageHeader>
         <div id='TitleSpacer' style={{ height: 35, width: '100%' }} />

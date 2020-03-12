@@ -108,8 +108,11 @@ const ItemContent = createReactClass({
   toggleZoom: function () {
     return (
       <div style={{ background: '#444' }}>
-        <FlatButton label='Toggle Zoom'
-          onClick={() => { this.setState({ zoom: !this.state.zoom }) }}
+        <FlatButton
+          label='Toggle Zoom'
+          onClick={() => {
+            this.setState({ zoom: !this.state.zoom })
+          }}
           style={{ display: 'block', margin: 'auto' }}
           labelStyle={{ color: 'white' }}
         />
@@ -125,7 +128,8 @@ const ItemContent = createReactClass({
     if (this.hasManuscript()) {
       return (
         <div style={{ background: '#444' }}>
-          <FlatButton label='View Manuscript'
+          <FlatButton
+            label='View Manuscript'
             onClick={(event) => {
               event.preventDefault()
               window.open(AddReferral(this.props.item.metadata.manuscript_url.values[0].value))
@@ -151,7 +155,8 @@ const ItemContent = createReactClass({
               height={height - 145}
               toolbarTop={60}
               toolbarLeft={40}
-              showFullPageControl={false} />
+              showFullPageControl={false}
+            />
           </MediaQuery>
           <MediaQuery maxWidth={650}>
             <OpenseadragonViewer
@@ -161,7 +166,8 @@ const ItemContent = createReactClass({
               toolbarTop={60}
               toolbarLeft={40}
               showFullPageControl={false}
-              showNavigator={false} />
+              showNavigator={false}
+            />
           </MediaQuery>
         </div>
       )
@@ -186,24 +192,24 @@ const ItemContent = createReactClass({
       if (this.props.item.media['@type'] === 'ImageObject') {
         return (
           <div style={this.outerStyles()}>
-            { this.image() }
-            { this.hasManuscript() ? this.showManuscript() : this.toggleZoom() }
-            { this.details() }
+            {this.image()}
+            {this.hasManuscript() ? this.showManuscript() : this.toggleZoom()}
+            {this.details()}
           </div>
         )
       } else if (this.props.item.media['@type'] === 'AudioObject' || this.props.item.media['@type'] === 'VideoObject') {
         return (
           <div style={this.outerStyles()}>
-            { this.multimedia() }
-            { this.details() }
+            {this.multimedia()}
+            {this.details()}
           </div>
         )
       }
     }
     return (
       <div style={this.outerStyles()}>
-        { this.showManuscript() }
-        { this.details() }
+        {this.showManuscript()}
+        {this.details()}
       </div>
     )
   },

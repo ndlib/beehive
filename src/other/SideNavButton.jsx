@@ -44,7 +44,7 @@ const SideNavButton = createReactClass({
 
   buttonStyles: function () {
     const hovered = (this.state.hovered || this.state.isKeyboardFocused)
-    let styles = {
+    const styles = {
       top: (this.props.offsetTop - 30) + 'px',
       opacity: hovered ? '1' : '0.7',
       backgroundColor: '#E0E0E0',
@@ -62,9 +62,9 @@ const SideNavButton = createReactClass({
     }
 
     if (this.props.rightIcon) {
-      styles['right'] = '-29px'
+      styles.right = '-29px'
     } else {
-      styles['left'] = '-29px'
+      styles.left = '-29px'
     }
     return styles
   },
@@ -72,14 +72,14 @@ const SideNavButton = createReactClass({
   iconStyles: function () {
     const hovered = (this.state.hovered || this.state.isKeyboardFocused)
 
-    let styles = {
+    const styles = {
       color: hovered ? '#212121' : '#ffffff',
       fontSize: '25px',
       position: 'absolute',
       top: '17.5px',
     }
     if (this.props.rightIcon) {
-      styles['left'] = '5px'
+      styles.left = '5px'
     }
     return styles
   },
@@ -97,13 +97,13 @@ const SideNavButton = createReactClass({
       <FlatButton
         onMouseDown={this.props.onMouseDown}
         style={this.buttonStyles()}
-        onKeyboardFocus={this._handleKeyboardFocus}
-        onMouseLeave={this._handleMouseLeave}
-        onMouseEnter={this._handleMouseEnter}
-        onTouchStart={this._handleTouchStart}
+        onKeyboardFocus={this.handleKeyboardFocus}
+        onMouseLeave={this.handleMouseLeave}
+        onMouseEnter={this.handleMouseEnter}
+        onTouchStart={this.handleTouchStart}
         disableTouchRipple
       >
-        <FontIcon className='material-icons' style={this.iconStyles()} >{this.chevron()}</FontIcon>
+        <FontIcon className='material-icons' style={this.iconStyles()}>{this.chevron()}</FontIcon>
       </FlatButton>
     )
   },
@@ -115,23 +115,23 @@ const SideNavButton = createReactClass({
     return this.content()
   },
 
-  _handleKeyboardFocus (e, isKeyboardFocused) {
+  handleKeyboardFocus (e, isKeyboardFocused) {
     this.setState({ isKeyboardFocused: isKeyboardFocused })
     this.props.onKeyboardFocus(e, isKeyboardFocused)
   },
 
-  _handleMouseEnter (e) {
+  handleMouseEnter (e) {
     // Cancel hover styles for touch devices
     if (!this.state.touch) this.setState({ hovered: true })
     this.props.onMouseEnter(e)
   },
 
-  _handleMouseLeave (e) {
+  handleMouseLeave (e) {
     this.setState({ hovered: false })
     this.props.onMouseLeave(e)
   },
 
-  _handleTouchStart (e) {
+  handleTouchStart (e) {
     this.setState({ touch: true })
     this.props.onTouchStart(e)
   },

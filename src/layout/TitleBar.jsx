@@ -9,7 +9,8 @@ const TitleBar = createReactClass({
         <a
           className='navbar-brand'
           href='/'
-        ><i className='glyphicon glyphicon-home' /> Digital Exhibits <i>and</i> Collections</a>
+        ><i className='glyphicon glyphicon-home' /> Digital Exhibits <i>and</i> Collections
+        </a>
       )
     }
 

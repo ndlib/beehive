@@ -43,6 +43,7 @@ class MultimediaCard extends Component {
       )
     }
   }
+
   render () {
     return (
       <div style={style.text()}>

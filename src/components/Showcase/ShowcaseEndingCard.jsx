@@ -32,7 +32,7 @@ const ShowcaseEndingCard = createReactClass({
 
   render: function () {
     return (
-      <Paper style={this.style()} >
+      <Paper style={this.style()}>
         <SitePathCard siteObject={this.props.siteObject} addNextButton headerTitle='Continue to' fixedSize={false} />
       </Paper>
     )

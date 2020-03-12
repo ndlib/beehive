@@ -1,6 +1,6 @@
 module.exports = function (url) {
   let href = url || window.location.href
-  let facets = []
+  const facets = []
   const reg = new RegExp('(facet\\[.*?\\]=[^&#]*)', 'i')
   let facetReg = reg.exec(href)
   while (facetReg !== null) {

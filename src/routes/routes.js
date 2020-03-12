@@ -20,40 +20,52 @@ export default function () {
       <Switch>
         <Route
           exact path='/'
-          component={SiteIndexPage} />
+          component={SiteIndexPage}
+        />
         <Route
           exact path='/404'
-          component={ErrorPage} />
+          component={ErrorPage}
+        />
         <Route
           exact path='/metadata/:itemID'
-          component={PrintableMetadata} />
+          component={PrintableMetadata}
+        />
         <Route
           exact path='/:collectionID/:collectionSlug/intro'
-          component={CollectionIntroductionPage} />
+          component={CollectionIntroductionPage}
+        />
         <Route
           exact path='/:collectionID/:collectionSlug/about'
-          component={AboutPage} />
+          component={AboutPage}
+        />
         <Route
           exact path='/:collectionID/:collectionSlug/search'
-          component={SearchPage} />
+          component={SearchPage}
+        />
         <Route
           exact path='/:collectionID/:collectionSlug/items/:itemID'
-          component={ItemPage} />
+          component={ItemPage}
+        />
         <Route
           exact path='/:collectionID/:collectionSlug/showcases/:showcaseID/:showcaseSlug'
-          component={ShowcasePage} />
+          component={ShowcasePage}
+        />
         <Route
           exact path='/:collectionID/:collectionSlug/showcases/:showcaseID/:showcaseSlug/sections/:sectionID'
-          component={SectionPage} />
+          component={SectionPage}
+        />
         <Route
           exact path='/:collectionID/:collectionSlug/pages/:pageID/:pageSlug'
-          component={PagesPage} />
+          component={PagesPage}
+        />
         <Route
           exact path='/:collectionID/:collectionSlug'
-          component={CollectionPage} />
+          component={CollectionPage}
+        />
         <Route
           exact path='/:customSlug'
-          component={CustomCollectionPage} />
+          component={CustomCollectionPage}
+        />
       </Switch>
     </BrowserRouter>
   )

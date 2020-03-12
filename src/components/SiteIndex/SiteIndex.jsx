@@ -59,19 +59,19 @@ const SiteIndex = createReactClass({
     const data = {
       '@context': 'http://schema.org',
       '@type': 'WebSite',
-      'url': 'https://collections.library.nd.edu/',
-      'name': 'Digital Exhibits and Collections',
-      'author': {
+      url: 'https://collections.library.nd.edu/',
+      name: 'Digital Exhibits and Collections',
+      author: {
         '@type': 'Organization',
-        'name': 'Hesburgh Library - University of Notre Dame',
+        name: 'Hesburgh Library - University of Notre Dame',
       },
-      'description': 'Featured digital exhibits and collections.',
-      'publisher': {
+      description: 'Featured digital exhibits and collections.',
+      publisher: {
         '@type': 'Organization',
-        'name': 'University of Notre Dame',
-        'logo': {
+        name: 'University of Notre Dame',
+        logo: {
           '@type': 'ImageObject',
-          'url': 'https://onmessage.nd.edu/assets/185044/fullsize/1_university_mark.jpg',
+          url: 'https://onmessage.nd.edu/assets/185044/fullsize/1_university_mark.jpg',
         },
       },
     }

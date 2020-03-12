@@ -29,9 +29,11 @@ const CardCaption = createReactClass({
 
   render: function () {
     if (this.props.caption) {
-      return (<CardText style={this.style()} className='caption'>
-        <div dangerouslySetInnerHTML={{ __html: this.props.caption }} style={this.innerStyle()} />
-      </CardText>)
+      return (
+        <CardText style={this.style()} className='caption'>
+          <div dangerouslySetInnerHTML={{ __html: this.props.caption }} style={this.innerStyle()} />
+        </CardText>
+      )
     }
     return (<div />)
   },

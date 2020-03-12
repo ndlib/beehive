@@ -53,7 +53,7 @@ const ItemShow = createReactClass({
 
   toolbar: function () {
     return (
-      <Toolbar className='title-bar' style={this.styles()} >
+      <Toolbar className='title-bar' style={this.styles()}>
         <ToolbarGroup key={0} style={{ maxWidth: this.mobile ? '80%' : '90%', float: 'left' }}>
           <h2><ToolbarTitle text={this.props.title} style={this.titleStyle()} /></h2>
         </ToolbarGroup>
@@ -65,7 +65,7 @@ const ItemShow = createReactClass({
   },
 
   nextButton: function () {
-    let nextItem = SearchStore.getNextItem(this.props.item)
+    const nextItem = SearchStore.getNextItem(this.props.item)
     if (nextItem) {
       return (<SideNavButton href={CollecitonUrl.itemObjectUrl(nextItem)} rightIcon />)
     }
@@ -73,7 +73,7 @@ const ItemShow = createReactClass({
   },
 
   prevButton: function () {
-    let previousItem = SearchStore.getPreviousItem(this.props.item)
+    const previousItem = SearchStore.getPreviousItem(this.props.item)
     if (previousItem) {
       return (<SideNavButton href={CollecitonUrl.itemObjectUrl(previousItem)} />)
     }
@@ -84,7 +84,7 @@ const ItemShow = createReactClass({
     const collection = this.props.collection
     const item = this.props.item
     let articleBody = ''
-    for (let property in item.metadata) {
+    for (const property in item.metadata) {
       const dataProp = item.metadata[property]
       articleBody += `${dataProp.label}:${dataProp.values[0].value}\n`
     }
@@ -92,31 +92,31 @@ const ItemShow = createReactClass({
     const data = {
       '@context': 'http://schema.org',
       '@type': 'Article',
-      'mainEntityOfPage': {
+      mainEntityOfPage: {
         '@type': 'WebPage',
         '@id': dataUrl,
       },
-      'headline': item.name,
-      'image': item.media.contentUrl,
-      'genre': 'academic library collection',
-      'keywords': 'notre dame special collections digital exhibits library',
-      'author': {
+      headline: item.name,
+      image: item.media.contentUrl,
+      genre: 'academic library collection',
+      keywords: 'notre dame special collections digital exhibits library',
+      author: {
         '@type': 'Organization',
-        'name': 'Hesburgh Library - University of Notre Dame',
+        name: 'Hesburgh Library - University of Notre Dame',
       },
-      'publisher': {
+      publisher: {
         '@type': 'Organization',
-        'name': 'University of Notre Dame',
-        'logo': {
+        name: 'University of Notre Dame',
+        logo: {
           '@type': 'ImageObject',
-          'url': 'https://onmessage.nd.edu/assets/185044/fullsize/1_university_mark.jpg',
+          url: 'https://onmessage.nd.edu/assets/185044/fullsize/1_university_mark.jpg',
         },
       },
-      'url': dataUrl,
-      'datePublished': item.last_updated,
-      'dateModified': item.last_updated,
-      'description': item.description,
-      'articleBody': articleBody,
+      url: dataUrl,
+      datePublished: item.last_updated,
+      dateModified: item.last_updated,
+      description: item.description,
+      articleBody: articleBody,
     }
     return (
       <PageContent fluidLayout>

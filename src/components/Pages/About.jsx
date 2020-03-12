@@ -58,31 +58,31 @@ const About = createReactClass({
     const data = {
       '@context': 'http://schema.org',
       '@type': 'Article',
-      'mainEntityOfPage': {
+      mainEntityOfPage: {
         '@type': 'WebPage',
         '@id': dataUrl,
       },
-      'headline': `About ${collection.name_line_1}`,
-      'alternativeHeadline': 'About',
-      'genre': 'academic library collection',
-      'keywords': 'notre dame special collections digital exhibits library',
-      'author': {
+      headline: `About ${collection.name_line_1}`,
+      alternativeHeadline: 'About',
+      genre: 'academic library collection',
+      keywords: 'notre dame special collections digital exhibits library',
+      author: {
         '@type': 'Organization',
-        'name': 'Hesburgh Library - University of Notre Dame',
+        name: 'Hesburgh Library - University of Notre Dame',
       },
-      'publisher': {
+      publisher: {
         '@type': 'Organization',
-        'name': 'University of Notre Dame',
-        'logo': {
+        name: 'University of Notre Dame',
+        logo: {
           '@type': 'ImageObject',
-          'url': 'https://onmessage.nd.edu/assets/185044/fullsize/1_university_mark.jpg',
+          url: 'https://onmessage.nd.edu/assets/185044/fullsize/1_university_mark.jpg',
         },
       },
-      'url': dataUrl,
-      'datePublished': collection.last_updated,
-      'dateModified': collection.last_updated,
-      'description': RemoveMarkup(collection.about),
-      'articleBody': RemoveMarkup(collection.about),
+      url: dataUrl,
+      datePublished: collection.last_updated,
+      dateModified: collection.last_updated,
+      description: RemoveMarkup(collection.about),
+      articleBody: RemoveMarkup(collection.about),
     }
 
     return (

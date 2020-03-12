@@ -88,7 +88,7 @@ const SearchControls = createReactClass({
           style={this.controlsStyle()}
         >
           <ToolbarGroup key={0} style={{ float: 'left' }}>
-            { this.searchBox() }
+            {this.searchBox()}
             <SearchHelp />
           </ToolbarGroup>
           <ToolbarGroup key={1} style={{ float: 'right' }}>
@@ -103,7 +103,8 @@ const SearchControls = createReactClass({
                 <FontIcon
                   className='material-icons'
                   style={this.state.view === 'grid' ? CurrentTheme.lightIconStyle() : CurrentTheme.darkIconStyle()}
-                >view_list</FontIcon>
+                >view_list
+                </FontIcon>
               </RaisedButton>
               <RaisedButton
                 backgroundColor={this.state.view === 'list' ? 'rgba(0, 0, 0, 0.64)' : 'white'}
@@ -114,7 +115,8 @@ const SearchControls = createReactClass({
                 <FontIcon
                   className='material-icons'
                   style={this.state.view === 'list' ? CurrentTheme.lightIconStyle() : CurrentTheme.darkIconStyle()}
-                >view_module</FontIcon>
+                >view_module
+                </FontIcon>
               </RaisedButton>
             </MediaQuery>
           </ToolbarGroup>

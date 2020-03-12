@@ -27,7 +27,7 @@ const ShowcaseSections = createReactClass({
     const sections = this.props.showcase.sections
     if (sections) {
       const sectionNodes = sections.map(function (section, index) {
-        let nodes = []
+        const nodes = []
 
         nodes.push((
           <SectionCard section={section} height={this.props.height} key={index} />

@@ -19,7 +19,7 @@ const PageHeader = createReactClass({
     }
     return (
       <div id='banner-wrapper'>
-        <header id='banner' role='banner' className='home' style={this.style()} >
+        <header id='banner' role='banner' className='home' style={this.style()}>
           <nav className=''>
             {titleBar}
           </nav>

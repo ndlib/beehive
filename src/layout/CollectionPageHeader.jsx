@@ -75,7 +75,7 @@ const CollectionPageHeader = createReactClass({
     }
   },
 
-  _handleTabs: function (tab) {
+  handleTabs: function (tab) {
     if (tab.value === 'about') {
       return CollectionUrl.aboutUrl(this.props.collection)
     } else if (tab.value === 'search') {
@@ -95,7 +95,7 @@ const CollectionPageHeader = createReactClass({
   },
 
   availableTabs: function () {
-    let ret = []
+    const ret = []
     if (ConfigurationStore.browseEnabled()) {
       ret.push({ label: 'Browse Collection', value: 'search' })
     }
@@ -111,12 +111,13 @@ const CollectionPageHeader = createReactClass({
       return (
         <nav
           style={{ float:'right', backgroundColor: 'none' }}
-          value={this.activeTab()}>
+          value={this.activeTab()}
+        >
           {
             availableTabs.map(function (tab, index) {
               return (
                 <Link
-                  to={this._handleTabs(tab)}
+                  to={this.handleTabs(tab)}
                   key={index}
                 >
                   <button
@@ -130,8 +131,10 @@ const CollectionPageHeader = createReactClass({
                       width:'auto',
                       lineHeight: '50px',
                       padding:'0 20px 0 0',
-                      fontSize: '16px' }}
-                  >{tab.label}</button>
+                      fontSize: '16px',
+                    }}
+                  >{tab.label}
+                  </button>
                 </Link>)
             }.bind(this))
           }
@@ -141,10 +144,10 @@ const CollectionPageHeader = createReactClass({
   },
 
   appBarStyle: function () {
-    let style = this.baseScreenStyle()
+    const style = this.baseScreenStyle()
 
     if (this.props.branding) {
-      style['top'] = '50px'
+      style.top = '50px'
     }
     return style
   },
@@ -175,7 +178,8 @@ const CollectionPageHeader = createReactClass({
           textDecoration: 'none',
           color: '#ffffff',
         }}
-        href={CollectionUrl.collectionUrl(this.props.collection)}>
+        href={CollectionUrl.collectionUrl(this.props.collection)}
+      >
         <h1 style={this.titleStyle()}>{this.props.collection.name_line_1}</h1>
       </a>
     )
@@ -208,7 +212,8 @@ const CollectionPageHeader = createReactClass({
                 top: this.state.themeVariables.height + 'px',
                 height: '1px',
                 zIndex: '1000',
-              }} />
+              }}
+            />
             {this.props.children}
           </Paper>
         </MediaQuery>
@@ -230,7 +235,8 @@ const CollectionPageHeader = createReactClass({
                 top: this.state.themeVariables.height + 'px',
                 height: '1px',
                 zIndex: '1000',
-              }} />
+              }}
+            />
             {this.props.children}
           </Paper>
         </MediaQuery>

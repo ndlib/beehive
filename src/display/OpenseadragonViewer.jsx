@@ -39,7 +39,7 @@ const OpenseadragonViewer = createReactClass({
     this.buildViewer(this.props.image)
   },
 
-  shouldComponentUpdate: function (nextProps, nextState) {
+  shouldComponentUpdate: function (nextProps) {
     if (nextProps.fullPage) {
       this.fullPageOn()
     } else {
@@ -97,7 +97,7 @@ const OpenseadragonViewer = createReactClass({
     } else {
       options = this.dziOptions(image)
     }
-    const viewer = OpenSeadragon(options)
+    const viewer = OpenSeadragon(options) // eslint-disable-line no-undef
     const escapeHandler = function (event) {
       if (event.keyCode === 27) {
         this.fullPageOff()
@@ -132,7 +132,7 @@ const OpenseadragonViewer = createReactClass({
     const leftID = 'left-' + this.props.containerID
     const rightID = 'right-' + this.props.containerID
 
-    OpenSeadragon.setString('Tooltips.Home', 'Reset image')
+    OpenSeadragon.setString('Tooltips.Home', 'Reset image') // eslint-disable-line no-undef
 
     const zoom = this.defaultZoom(
       parseInt(this.props.image.width, 10),
@@ -176,15 +176,14 @@ const OpenseadragonViewer = createReactClass({
     }
   },
 
-  dziOptions: function (image) {
-    let options
-    options = this.baseOptions()
+  dziOptions: function () {
+    const options = this.baseOptions()
     options.tileSources = this.dziSource
     return options
   },
 
   dziSource: function (image) {
-    return image['thumbnail/dzi']['contentUrl']
+    return image['thumbnail/dzi'].contentUrl
   },
 
   legacyOptions: function (image) {
@@ -241,7 +240,7 @@ const OpenseadragonViewer = createReactClass({
       const leftID = 'left-' + this.props.containerID
       const rightID = 'right-' + this.props.containerID
 
-      let nodes = [
+      const nodes = [
         <a id={zoomInID} href='#zoom-in' key='zi' rel='nofollow'><i className='material-icons'>zoom_in</i></a>,
         <a id={zoomOutID} href='#zoom-out' key='zo' rel='nofollow'><i className='material-icons'>zoom_out</i></a>,
         <a id={leftID} href='#rotate-left' key='lid' rel='nofollow'><i className='material-icons'>rotate_left</i></a>,
@@ -262,7 +261,7 @@ const OpenseadragonViewer = createReactClass({
     return (
       <div className='hc-openseadragon-viewer' id={this.props.containerID} style={this.style()}>
         <div id={toolbarID} className='os-toolbar' style={this.toolbarStyle()}>
-          { this.renderButtons() }
+          {this.renderButtons()}
         </div>
       </div>
     )

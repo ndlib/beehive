@@ -23,7 +23,7 @@ const MyListItem = createReactClass({
   primaryText: function () {
     return (
       <h3 style={{ marginLeft: '30px', display: 'inline-block' }}>
-        { RemoveMarkup(this.props.item.name) }
+        {RemoveMarkup(this.props.item.name)}
       </h3>
     )
   },
@@ -31,19 +31,21 @@ const MyListItem = createReactClass({
   secondaryText: function () {
     return (
       <span style={{ maxWidth: '50em', marginLeft: '30px' }}>
-        { RemoveMarkup(this.props.item.description) }
+        {RemoveMarkup(this.props.item.description)}
       </span>
     )
   },
 
   manifestIcon: function (item) {
     if (item.metadata && item.metadata.manuscript_url) {
-      return (<img
-        src='/images/pt.icon.drk.png'
-        className='manuscript-icon'
-        alt='Manifest Available'
-        title='Manifest Available'
-      />)
+      return (
+        <img
+          src='/images/pt.icon.drk.png'
+          className='manuscript-icon'
+          alt='Manifest Available'
+          title='Manifest Available'
+        />
+      )
     }
     return null
   },

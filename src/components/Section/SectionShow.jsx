@@ -63,13 +63,13 @@ const SectionShow = createReactClass({
   },
 
   closeUrl: function () {
-    const collectionPath = window.location.pathname.match(/(?:\/[^\/]+){2}/)
+    const collectionPath = window.location.pathname.match(/(?:\/[^\/]+){2}/) // eslint-disable-line no-useless-escape
     return collectionPath[0]
   },
 
   toolbar: function () {
     return (
-      <Toolbar className='title-bar' style={this.styles()} >
+      <Toolbar className='title-bar' style={this.styles()}>
         <ToolbarGroup key={0} style={{ maxWidth: this.mobile ? '80%' : '90%', float: 'left' }}>
           <h2><ToolbarTitle text={this.title()} style={this.titleStyle()} /></h2>
         </ToolbarGroup>
@@ -82,24 +82,25 @@ const SectionShow = createReactClass({
 
   contentSection: function () {
     if (this.props.section.item) {
-      return (<ItemContent
-        height={this.props.height}
-        item={this.props.section.item}
-        additionalDetails={this.props.section.description}
-      />)
+      return (
+        <ItemContent
+          height={this.props.height}
+          item={this.props.section.item}
+          additionalDetails={this.props.section.description}
+        />
+      )
     } else {
-      return (<SectionShowDescription
-        height={this.props.height}
-        section={this.props.section}
-      />)
+      return (
+        <SectionShowDescription
+          height={this.props.height}
+          section={this.props.section}
+        />
+      )
     }
   },
 
   render: function () {
-    let prev, next, offsetTop
-    if (this.props.height) {
-      offsetTop = this.props.height / 2
-    }
+    let prev, next
     if (this.props.section) {
       if (this.props.previousSection) {
         prev = (<SideNavButton href={CollectionUrl.sectionObjectUrl(this.props.previousSection)} />)

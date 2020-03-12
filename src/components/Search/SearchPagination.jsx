@@ -39,23 +39,28 @@ const SearchPagination = createReactClass({
           key={i}
           onClick={this.scrollToTop}
           title={linkTitle}
-        >{i}</Link>
+        >{i}
+        </Link>
       )
     }
   },
 
   pageLinks: function () {
-    let nodes = []
+    const nodes = []
     // if not first page
     if (SearchStore.start !== 0) {
       const startNum = Math.max(0, SearchStore.start - SearchStore.rowLimit)
       const backLink = SearchStore.searchUri({ start: startNum }) + '&compact=' + this.props.compact
-      nodes.push((<Link
-        to={backLink}
-        key='back'
-        rel='prev'
-        onClick={this.scrollToTop}
-      > <i className='material-icons' style={{ fontSize: '1em' }}>arrow_back</i> </Link>))
+      nodes.push((
+        <Link
+          to={backLink}
+          key='back'
+          rel='prev'
+          onClick={this.scrollToTop}
+        >
+          <i className='material-icons' style={{ fontSize: '1em' }}>arrow_back</i>
+        </Link>
+      ))
     }
     let last = Math.floor(SearchStore.found / SearchStore.rowLimit)
     const cappedFirst = 1
@@ -71,8 +76,7 @@ const SearchPagination = createReactClass({
 
     // if not last page
     if (SearchStore.start + SearchStore.rowLimit < SearchStore.found) {
-      const forwardLink = SearchStore.searchUri({
-        start: SearchStore.start + SearchStore.rowLimit }) +
+      const forwardLink = SearchStore.searchUri({ start: SearchStore.start + SearchStore.rowLimit }) +
         '&compact=' + this.props.compact
       nodes.push((
         <Link
@@ -80,7 +84,8 @@ const SearchPagination = createReactClass({
           key='next'
           rel='next'
           onClick={this.scrollToTop}
-        > <i className='material-icons' style={{ fontSize: '1em' }}>arrow_forward</i> </Link>))
+        > <i className='material-icons' style={{ fontSize: '1em' }}>arrow_forward</i>
+        </Link>))
     }
     return nodes
   },
@@ -101,7 +106,9 @@ const SearchPagination = createReactClass({
                 marginRight:'15px',
                 display:'inline-block',
                 verticalAlign:'top',
-              }}>Showing {startHuman} - {endHuman} of {SearchStore.found}</span>
+              }}
+            >Showing {startHuman} - {endHuman} of {SearchStore.found}
+            </span>
             {this.pageLinks()}
           </nav>
         </div>

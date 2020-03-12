@@ -123,14 +123,16 @@ const SearchBox = createReactClass({
 
   input: function () {
     if (this.state.active) {
-      return (<input
-        placeholder='search'
-        ref='searchBox'
-        onChange={this.onChange}
-        value={this.state.searchTerm}
-        onKeyDown={this.handleKeyDown}
-        style={Styles.searchTextField}
-      />)
+      return (
+        <input
+          placeholder='search'
+          ref='searchBox'
+          onChange={this.onChange}
+          value={this.state.searchTerm}
+          onKeyDown={this.handleKeyDown}
+          style={Styles.searchTextField}
+        />
+      )
     } else {
       return (<div />)
     }

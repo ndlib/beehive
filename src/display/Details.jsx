@@ -57,7 +57,7 @@ const Details = createReactClass({
   arrowIcon: function () {
     return (
       <FontIcon className='material-icons' style={{ verticalAlign:'top', margin:'5px 10px 5px 0px' }}>
-        { this.state.showDetails ? 'arrow_forward' : 'arrow_back' }
+        {this.state.showDetails ? 'arrow_forward' : 'arrow_back'}
       </FontIcon>
     )
   },
@@ -67,14 +67,17 @@ const Details = createReactClass({
       return (
         <div
           className='item-details'
-          style={Styles.details}>
+          style={Styles.details}
+        >
           <div
             className='additional-details'
-            dangerouslySetInnerHTML={{ __html: this.props.additionalDetails }} />
+            dangerouslySetInnerHTML={{ __html: this.props.additionalDetails }}
+          />
           <MetadataList
             metadata={this.props.item.metadata}
             id={this.props.item.id}
-            printable={this.props.printable} />
+            printable={this.props.printable}
+          />
         </div>
       )
     } else {
@@ -85,7 +88,7 @@ const Details = createReactClass({
   render: function () {
     return (
       <Paper style={Styles.outer}>
-        { this.details() }
+        {this.details()}
       </Paper>
     )
   },

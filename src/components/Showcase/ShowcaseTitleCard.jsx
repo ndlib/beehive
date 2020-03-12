@@ -11,7 +11,7 @@ const ShowcaseTitleCard = createReactClass({
   },
 
   outerStyle: function () {
-    let style = {
+    const style = {
       display: 'inline-block',
       verticalAlign: 'top',
       position: 'relative',
@@ -24,7 +24,7 @@ const ShowcaseTitleCard = createReactClass({
     }
 
     if (this.props.height) {
-      style['height'] = this.props.height + 'px'
+      style.height = this.props.height + 'px'
     }
 
     return style
@@ -74,16 +74,16 @@ const ShowcaseTitleCard = createReactClass({
   },
 
   names: function () {
-    let names = []
+    const names = []
     names.push(
-      <h2 className='showcase-name-1' key={1}>{this.props.showcase.name_line_1}</h2>
+      <h2 className='showcase-name-1' key={1}>{this.props.showcase.name_line_1}</h2>,
     )
     if (this.props.showcase.name_line_2) {
       names.push(
-        <br key='br' />
+        <br key='br' />,
       )
       names.push(
-        <h3 className='showcase-name-2' key={2}>{this.props.showcase.name_line_2}</h3>
+        <h3 className='showcase-name-2' key={2}>{this.props.showcase.name_line_2}</h3>,
       )
     }
     return names
@@ -109,7 +109,7 @@ const ShowcaseTitleCard = createReactClass({
           subtitleStyle={this.subtitleStyle()}
         />
         <MediaQuery minWidth={650}>
-          <CardText style={this.textStyle()} >
+          <CardText style={this.textStyle()}>
             {description}
           </CardText>
         </MediaQuery>

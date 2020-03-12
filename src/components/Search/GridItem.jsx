@@ -14,7 +14,7 @@ const GridItem = createReactClass({
   mediaOverlay: function () {
     const name = (
       <span style={{ fontFamily: 'GPCMed' }}>
-        { this.props.item.name }
+        {this.props.item.name}
       </span>
     )
     return (<CardTitle title={name} />)
@@ -30,13 +30,15 @@ const GridItem = createReactClass({
 
   manifestIcon: function (item) {
     if (item.metadata && item.metadata.manuscript_url) {
-      return (<img
-        src='/images/pt.icon.drk.png'
-        className='manuscript-icon'
-        alt='Manifest Available'
-        title='Manifest Available'
-        style={{ position: 'absolute', right: '0', top: '0', maxWidth: '15%',
-        }} />)
+      return (
+        <img
+          src='/images/pt.icon.drk.png'
+          className='manuscript-icon'
+          alt='Manifest Available'
+          title='Manifest Available'
+          style={{ position: 'absolute', right: '0', top: '0', maxWidth: '15%' }}
+        />
+      )
     }
     return null
   },
@@ -47,7 +49,7 @@ const GridItem = createReactClass({
         <Card
           style={{ cursor: 'pointer', position: 'relative' }}
         >
-          { this.cardMedia() }
+          {this.cardMedia()}
           {this.manifestIcon(this.props.item)}
         </Card>
       </Link>

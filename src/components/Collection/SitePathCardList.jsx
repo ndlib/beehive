@@ -18,10 +18,10 @@ const SitePathCardList = createReactClass({
   },
 
   allNodes: function () {
-    let nodes = []
+    const nodes = []
     if (this.props.intro) {
       nodes.push(
-        <div key='intro'>{this.props.intro}</div>
+        <div key='intro'>{this.props.intro}</div>,
       )
     }
     return nodes.concat(this.pathNodes())

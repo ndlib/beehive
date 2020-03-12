@@ -53,9 +53,11 @@ const SearchDisplayList = createReactClass({
       )
     })
     if (itemNodes.length === 0) {
-      itemNodes = (<div
-        style={{ color:'rgba(0, 0, 0, 0.870588)', fontStyle:'italic', textAlign:'center' }}
-      >No matching results could be found.</div>)
+      itemNodes = (
+        <div style={{ color:'rgba(0, 0, 0, 0.870588)', fontStyle:'italic', textAlign:'center' }}>
+          No matching results could be found.
+        </div>
+      )
     }
     if (view === 'grid') {
       return (

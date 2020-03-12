@@ -21,6 +21,7 @@ module.exports = function (id, string) {
       searchStr = '?' + string + '=' + id
     }
 
+    // eslint-disable-next-line no-restricted-globals
     history.pushState({}, '', path + searchStr)
   }
 }

@@ -66,11 +66,13 @@ const SearchSort = createReactClass({
     if (SearchStore.sorts.length > 0) {
       return (
         <div style={{ float: 'left', padding: '10px', paddingTop: '15px', color: 'white', fontSize: '16px' }}>
-        Sort By:
+          Sort By:
           <div style={this.sortStyle()}>
             <select
               ref='searchSort'
-              onChange={this.onChange.bind(this, 'selectValue')}
+              onChange={() => {
+                this.onChange('selectValue')
+              }}
               defaultValue={SearchStore.sortOption}
               style={this.sortSelectStyle()}
             >

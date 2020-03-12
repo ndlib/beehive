@@ -18,8 +18,7 @@ const Scroller = createReactClass({
 
   onMouseDown: function (direction) {
     const scrollDelta = Math.ceil(this.state.element.clientWidth * (3 / 4))
-    $(this.state.element).animate({
-      scrollLeft: (this.state.element.scrollLeft + scrollDelta * direction) }, 500)
+    $(this.state.element).animate({ scrollLeft: (this.state.element.scrollLeft + scrollDelta * direction) }, 500)
   },
 
   scrollLeft: function () {

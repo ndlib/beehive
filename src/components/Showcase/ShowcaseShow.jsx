@@ -18,6 +18,7 @@ const ShowcaseInnerContent = require('./ShowcaseInnerContent.jsx')
 const Scroller = require('../../other/Scroller.jsx')
 const CollectionHomeButton = require('./CollectionHomeButton.jsx')
 const BrowserUtils = require('../../modules/BrowserUtils.jsx')
+const $ = require('jquery')
 
 const ShowcaseShow = createReactClass({
   propTypes: {
@@ -186,42 +187,44 @@ const ShowcaseShow = createReactClass({
     const data = {
       '@context': 'http://schema.org',
       '@type': 'Article',
-      'mainEntityOfPage': {
+      mainEntityOfPage: {
         '@type': 'WebPage',
         '@id': dataUrl,
       },
-      'headline': showcase.name,
-      'alternativeHeadline': showcase.name_line_1,
-      'image': showcaseSafeImage,
-      'genre': 'academic library collection',
-      'keywords': 'notre dame special collections digital exhibits library',
-      'author': {
+      headline: showcase.name,
+      alternativeHeadline: showcase.name_line_1,
+      image: showcaseSafeImage,
+      genre: 'academic library collection',
+      keywords: 'notre dame special collections digital exhibits library',
+      author: {
         '@type': 'Organization',
-        'name': 'Hesburgh Library - University of Notre Dame',
+        name: 'Hesburgh Library - University of Notre Dame',
       },
-      'publisher': {
+      publisher: {
         '@type': 'Organization',
-        'name': 'University of Notre Dame',
-        'logo': {
+        name: 'University of Notre Dame',
+        logo: {
           '@type': 'ImageObject',
-          'url': 'https://onmessage.nd.edu/assets/185044/fullsize/1_university_mark.jpg',
+          url: 'https://onmessage.nd.edu/assets/185044/fullsize/1_university_mark.jpg',
         },
       },
-      'url': dataUrl,
-      'datePublished': showcase.last_updated,
-      'dateModified': showcase.last_updated,
-      'description': showcase.description,
-      'articleBody': articleBody,
+      url: dataUrl,
+      datePublished: showcase.last_updated,
+      dateModified: showcase.last_updated,
+      description: showcase.description,
+      articleBody: articleBody,
     }
     return (
       <div style={{ height: showcaseHeight, backgroundColor: 'rgba(0,0,0,0)' }}>
         <AttentionHelp
           start={this.state.startTime}
-          hasScrolled={this.state.hasScrolled} />
+          hasScrolled={this.state.hasScrolled}
+        />
         <ShowcaseBackground
           percentBlur={backgroundBlur}
           height={this.state.mobile ? this.state.height : this.state.height - scrollPadding}
-          showcase={showcase} />
+          showcase={showcase}
+        />
         {titleBar}
         <div className='showcase-slide-in'>
           <div
@@ -233,7 +236,8 @@ const ShowcaseShow = createReactClass({
             {scroller}
             <ShowcaseInnerContent
               height={showcaseInnerHeight}
-              showcase={showcase} />
+              showcase={showcase}
+            />
           </div>
         </div>
         {mobileHomeButton}

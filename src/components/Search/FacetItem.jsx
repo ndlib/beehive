@@ -56,12 +56,17 @@ const FacetItem = createReactClass({
     return (
       <ListItem
         key={this.props.facet.name}
-        primaryText={<span
-          style={{
-            marginLeft:'30px',
-            display: 'inline-block',
-            maxWidth: 'calc(100% - 75px)',
-          }}>{this.props.facet.name}</span>}
+        primaryText={
+          <span
+            style={{
+              marginLeft:'30px',
+              display: 'inline-block',
+              maxWidth: 'calc(100% - 75px)',
+            }}
+          >
+            {this.props.facet.name}
+          </span>
+        }
         secondaryText={'(' + this.props.facet.count + ')'}
         value={this.props.field + '|' + this.props.facet.name}
         onClick={this.valueOnClick}

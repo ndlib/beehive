@@ -21,7 +21,8 @@ const DescriptionTeaser = createReactClass({
       <div
         className='item-description'
         dangerouslySetInnerHTML={{ __html: this.props.description }}
-        style={this.style()} />
+        style={this.style()}
+      />
     )
   },
 })

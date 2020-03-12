@@ -9,5 +9,5 @@ ReactDOM.render(
   <MuiThemeProvider>
     {routes}
   </MuiThemeProvider>,
-  document.getElementById('content')
+  document.getElementById('content'),
 )

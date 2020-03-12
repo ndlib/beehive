@@ -6,7 +6,7 @@ import initialState from './initialState.js'
 
 const createStoreWithMiddleware = applyMiddleware(
   myMiddleware,
-  promiseMiddleware
+  promiseMiddleware,
 )(createStore)
 
 export default function initStore () {

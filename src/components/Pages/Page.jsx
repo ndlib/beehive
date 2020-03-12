@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import JSONLD from '../JSONLD.jsx'
 import RemoveMarkup from '../../modules/RemoveMarkup'
+import MediaQuery from 'react-responsive'
 const CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
 const PageContent = require('../../layout/PageContent.jsx')
 const CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
@@ -10,7 +11,6 @@ const PagesShow = require('./PagesShow.jsx')
 const PageTitleBar = require('./PageTitleBar.jsx')
 const SitePathCard = require('../Collection/SitePathCard.jsx')
 const PreviewLink = require('../../layout/PreviewLink.jsx')
-import MediaQuery from 'react-responsive'
 const ConfigurationActions = require('../../actions/ConfigurationActions.js')
 const ConfigurationStore = require('../../store/ConfigurationStore.js')
 const PageTitle = require('../../modules/PageTitle.js')
@@ -102,7 +102,7 @@ const Page = createReactClass({
     const itemId = event.target.getAttribute('item_id')
     if (itemId && this.state.collection.pages.items) {
       item = this.state.collection.pages.items.find(function (e, i, a) {
-        return e['id'] === itemId
+        return e.id === itemId
       })
     }
     return item
@@ -176,31 +176,31 @@ const Page = createReactClass({
     const data = {
       '@context': 'http://schema.org',
       '@type': 'Article',
-      'mainEntityOfPage': {
+      mainEntityOfPage: {
         '@type': 'WebPage',
         '@id': dataUrl,
       },
-      'headline': `About ${collection.pages.name}`,
-      'image': image,
-      'genre': 'academic library collection',
-      'keywords': 'notre dame special collections digital exhibits library',
-      'author': {
+      headline: `About ${collection.pages.name}`,
+      image: image,
+      genre: 'academic library collection',
+      keywords: 'notre dame special collections digital exhibits library',
+      author: {
         '@type': 'Organization',
-        'name': 'Hesburgh Library - University of Notre Dame',
+        name: 'Hesburgh Library - University of Notre Dame',
       },
-      'publisher': {
+      publisher: {
         '@type': 'Organization',
-        'name': 'University of Notre Dame',
-        'logo': {
+        name: 'University of Notre Dame',
+        logo: {
           '@type': 'ImageObject',
-          'url': 'https://onmessage.nd.edu/assets/185044/fullsize/1_university_mark.jpg',
+          url: 'https://onmessage.nd.edu/assets/185044/fullsize/1_university_mark.jpg',
         },
       },
-      'url': dataUrl,
-      'datePublished': collection.pages.last_updated,
-      'dateModified': collection.pages.last_updated,
-      'description': RemoveMarkup(this.pageContent()),
-      'articleBody': RemoveMarkup(this.pageContent()),
+      url: dataUrl,
+      datePublished: collection.pages.last_updated,
+      dateModified: collection.pages.last_updated,
+      description: RemoveMarkup(this.pageContent()),
+      articleBody: RemoveMarkup(this.pageContent()),
     }
     return (
       <div>
@@ -208,8 +208,8 @@ const Page = createReactClass({
         <PageTitleBar title={collection.pages.name} height={this.state.titleHeight} />
         <PageContent onClick={this.contentClicked} onMouseOver={this.contentMouseOver}>
           <PagesShow content={this.pageContent()}>
-            { this.nextCard() }
-            { this.previewCard() }
+            {this.nextCard()}
+            {this.previewCard()}
           </PagesShow>
         </PageContent>
         <CollectionPageFooter collection={collection} />

@@ -25,7 +25,7 @@ const PrintableMetadata = createReactClass({
   },
 
   setItem: function (result) {
-    let item = result.items
+    const item = result.items
     this.setState({
       item: item,
     })
@@ -34,7 +34,7 @@ const PrintableMetadata = createReactClass({
       const collectionUrl = item['isPartOf/collection']
       LoadRemote.loadRemoteCollection(collectionUrl, this.setValues)
     } else {
-      this.setState({ 'configurationLoaded': true })
+      this.setState({ configurationLoaded: true })
     }
   },
 
