@@ -7,7 +7,5 @@ export default function handleActions (handlers, defaultState) {
     return result
   }, [])
 
-  return typeof defaultState !== 'undefined'
-    ? (state = defaultState, action = null) => reduceReducers(...reducers)(state, action)
-    : reduceReducers(...reducers)
+  return typeof reduceReducers(defaultState, ...reducers)
 }

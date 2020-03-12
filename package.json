@@ -16,15 +16,14 @@
   "dependencies": {
     "babel-runtime": "^6.3.26",
     "body-parser": "1.14.1",
-    "compression": "^1.7.3",
+    "compression": "^1.7.4",
     "create-react-class": "^15.6.3",
     "express": "4.13.3",
     "express-urlrewrite": "1.2.0",
-    "flux": "^2.1.1",
-    "flux-standard-action": "0.6.0",
-    "isomorphic-fetch": "2.2.0",
+    "flux": "^3.1.3",
+    "flux-standard-action": "^2.1.1",
+    "isomorphic-fetch": "^2.2.1",
     "keymirror": "^0.1.1",
-    "lodash": "^4.17.11",
     "material-design-icons": "^2.1.3",
     "material-ui": "0.19.2",
     "prop-types": "^15.7.2",
@@ -33,8 +32,9 @@
     "react-helmet": "^5.2.1",
     "react-responsive": "^8.0.3",
     "react-router-dom": "^5.1.2",
-    "reduce-reducers": "0.1.1",
-    "redux": "3.0.4"
+    "reduce-reducers": "^1.0.4",
+    "redux": "^4.0.5",
+    "uuid": "^7.0.2"
   },
   "devDependencies": {
     "babel-core": "6.26.0",
