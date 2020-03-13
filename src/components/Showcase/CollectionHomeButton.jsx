@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { FloatingActionButton, FontIcon } from 'material-ui'
+import { IconButton } from '@material-ui/core'
+import HomeIcon from '@material-ui/icons/Home'
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
 const CollectionHomeButton = createReactClass({
@@ -15,17 +16,13 @@ const CollectionHomeButton = createReactClass({
 
   render: function () {
     return (
-      <FloatingActionButton
+      <IconButton
         onClick={this.onClick}
-        disableTouchRipple
+        disableRipple
         style={{ position: 'absolute', bottom: '10px', right: '10px', zIndex: '1000' }}
       >
-        <FontIcon
-          className='material-icons'
-          color='white'
-        >home
-        </FontIcon>
-      </FloatingActionButton>
+        <HomeIcon className='material-icons' />
+      </IconButton>
     )
   },
 })

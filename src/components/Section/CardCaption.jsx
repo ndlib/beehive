@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { CardText } from 'material-ui'
+import { CardContent } from '@material-ui/core'
 
 const CardCaption = createReactClass({
   propTypes: {
@@ -30,9 +30,9 @@ const CardCaption = createReactClass({
   render: function () {
     if (this.props.caption) {
       return (
-        <CardText style={this.style()} className='caption'>
+        <CardContent style={this.style()} className='caption'>
           <div dangerouslySetInnerHTML={{ __html: this.props.caption }} style={this.innerStyle()} />
-        </CardText>
+        </CardContent>
       )
     }
     return (<div />)

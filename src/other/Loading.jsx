@@ -1,6 +1,6 @@
 import React from 'react'
 import createReactClass from 'create-react-class'
-import { CircularProgress } from 'material-ui'
+import { CircularProgress } from '@material-ui/core'
 
 const Loading = createReactClass({
 

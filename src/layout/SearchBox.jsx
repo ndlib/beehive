@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { FontIcon, IconButton, RaisedButton } from 'material-ui'
+import { IconButton, Button } from '@material-ui/core'
+import ClearIcon from '@material-ui/icons/Clear'
+import SearchIcon from '@material-ui/icons/Search'
 const SearchStore = require('../store/SearchStore.js')
 const SearchActions = require('../actions/SearchActions.js')
 const CurrentTheme = require('../modules/CurrentTheme.jsx')
@@ -106,7 +108,7 @@ const SearchBox = createReactClass({
     if (SearchStore.searchTerm && this.state.active) {
       return (
         <IconButton onClick={this.clearClick} style={Styles.clearButton} tooltip='Clear Search'>
-          <FontIcon color='gray' className='material-icons'>clear</FontIcon>
+          <ClearIcon className='material-icons' style={{ color: 'gray' }} />
         </IconButton>
       )
     } else {
@@ -143,7 +145,8 @@ const SearchBox = createReactClass({
       <div style={{ display:'inline-block', margin:'14px 0' }}>
         {this.input()}
         {this.clearButton()}
-        <RaisedButton
+        <Button
+          variant='contained'
           backgroundColor='rgba(0, 0, 0, 0.641176)'
           onClick={this.onClick}
           style={{
@@ -154,10 +157,10 @@ const SearchBox = createReactClass({
             width: '50px',
             height: '38px',
           }}
-          disableTouchRipple
+          disableRipple
         >
-          <FontIcon className='material-icons' style={CurrentTheme.lightIconStyle()}>search</FontIcon>
-        </RaisedButton>
+          <SearchIcon className='material-icons' style={CurrentTheme.lightIconStyle()} />
+        </Button>
       </div>
     )
   },

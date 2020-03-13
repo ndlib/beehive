@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { Snackbar } from 'material-ui'
+import { Snackbar } from '@material-ui/core'
 
 const AttentionHelp = createReactClass({
 

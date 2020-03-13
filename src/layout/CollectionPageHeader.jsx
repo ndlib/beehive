@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { AppBar, Paper } from 'material-ui'
+import { AppBar, Paper } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import MediaQuery from 'react-responsive'
 const BrandBar = require('./BrandBar.jsx')

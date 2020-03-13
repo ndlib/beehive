@@ -1,5 +1,6 @@
 import React from 'react'
-import { FontIcon, Dialog, FlatButton } from 'material-ui'
+import { Dialog, Button } from '@material-ui/core'
+import HelpIcon from '@material-ui/icons/Help'
 import createReactClass from 'create-react-class'
 
 const SearchHelp = createReactClass({
@@ -39,13 +40,13 @@ const SearchHelp = createReactClass({
           title='Click for search help'
           className='linkButton'
         >
-          <FontIcon className='material-icons' style={this.iconStyle()} alt='help'>help</FontIcon>
+          <HelpIcon className='material-icons' style={this.iconStyle()} alt='help' />
           Search Help
         </button>
         <Dialog
           title='Search Help'
           actions={
-            <FlatButton label='Close' primary onClick={this.handleClose} />
+            <Button color='primary' onClick={this.handleClose}>Close</Button>
           }
           modal={false}
           open={this.state.open}

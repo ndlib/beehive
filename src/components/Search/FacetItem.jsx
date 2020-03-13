@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { ListItem, FontIcon } from 'material-ui'
+import { ListItem } from '@material-ui/core'
+import CheckBoxIcon from '@material-ui/icons/CheckBox'
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank'
 const SearchStore = require('../../store/SearchStore.js')
 const SearchActions = require('../../actions/SearchActions.js')
 
@@ -38,9 +40,9 @@ const FacetItem = createReactClass({
 
   leftIcon: function () {
     if (this.isSelected()) {
-      return (<FontIcon className='material-icons' style={this.checkBoxStyle()}>check_box</FontIcon>)
+      return (<CheckBoxIcon className='material-icons' style={this.checkBoxStyle()} />)
     } else {
-      return (<FontIcon className='material-icons' style={this.checkBoxStyle()}>check_box_outline_blank</FontIcon>)
+      return (<CheckBoxOutlineBlankIcon className='material-icons' style={this.checkBoxStyle()} />)
     }
   },
 

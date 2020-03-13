@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { FlatButton, FontIcon } from 'material-ui'
+import { Button } from '@material-ui/core'
+import ClearIcon from '@material-ui/icons/Clear'
 import { Link } from 'react-router-dom'
 const SearchStore = require('../store/SearchStore.js')
 
@@ -26,7 +27,7 @@ const CloseButton = createReactClass({
   },
 
   iconStyle: function () {
-    return { border:'solid 1px', verticalAlign: 'middle', width: 'initial', height: 'initial' }
+    return { border:'solid 1px', verticalAlign: 'middle', width: 'initial', height: 'initial', color: this.color() }
   },
 
   // generate what the back location url is
@@ -68,12 +69,12 @@ const CloseButton = createReactClass({
   render: function () {
     return (
       <Link to={this.href()}>
-        <FlatButton
-          disableTouchRipple
+        <Button
+          disableRipple
           style={{ height: '100%', padding: 0 }}
         >
-          <FontIcon className='material-icons' color={this.color()} style={this.iconStyle()}>clear</FontIcon>
-        </FlatButton>
+          <ClearIcon className='material-icons' style={this.iconStyle()} />
+        </Button>
       </Link>
     )
   },

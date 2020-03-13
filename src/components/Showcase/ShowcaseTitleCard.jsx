@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { Card, CardText, CardTitle } from 'material-ui'
+import { Card, CardContent, CardHeader } from '@material-ui/core'
 import MediaQuery from 'react-responsive'
 
 const ShowcaseTitleCard = createReactClass({
@@ -101,7 +101,7 @@ const ShowcaseTitleCard = createReactClass({
 
     return (
       <Card style={this.outerStyle()}>
-        <CardTitle
+        <CardHeader
           title={this.props.showcase.name_line_1}
           subtitle={this.props.showcase.name_line_2}
           style={this.headerStyle()}
@@ -109,9 +109,9 @@ const ShowcaseTitleCard = createReactClass({
           subtitleStyle={this.subtitleStyle()}
         />
         <MediaQuery minWidth={650}>
-          <CardText style={this.textStyle()}>
+          <CardContent style={this.textStyle()}>
             {description}
-          </CardText>
+          </CardContent>
         </MediaQuery>
       </Card>
     )

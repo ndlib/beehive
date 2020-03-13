@@ -1,6 +1,6 @@
 import React from 'react'
 import createReactClass from 'create-react-class'
-import { Card, CardTitle, CardMedia } from 'material-ui'
+import { Card, CardHeader, CardMedia } from '@material-ui/core'
 import MediaQuery from 'react-responsive'
 
 const SiteIndexHeader = createReactClass({
@@ -23,7 +23,7 @@ const SiteIndexHeader = createReactClass({
               style={{ height:'100%' }}
               overlayContentStyle={{ background:'transparent', position:'static' }}
               overlay={
-                <CardTitle
+                <CardHeader
                   // Some of the styles for the banner display are in the .css file due to nesting complications
                   title='Digital Collections'
                   titleStyle={{
@@ -64,7 +64,7 @@ const SiteIndexHeader = createReactClass({
               style={{ height:'100%' }}
               overlayContentStyle={{ background:'transparent', position:'static' }}
               overlay={
-                <CardTitle
+                <CardHeader
                   // Some of the styles for the banner display are in the .css file due to nesting complications
                   title='Digital Exhibits and Collections'
                   titleStyle={{

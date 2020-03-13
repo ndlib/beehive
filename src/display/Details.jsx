@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { FontIcon, Paper } from 'material-ui'
+import { Paper } from '@material-ui/core'
+import ArrowBackIcon from '@material-ui/icons/ArrowBack'
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 
 const MetadataList = require('../display/MetadataList.jsx')
 
@@ -33,6 +35,8 @@ const Details = createReactClass({
   propTypes: {
     item: PropTypes.object,
     additionalDetails: PropTypes.string,
+    showDetails: PropTypes.bool,
+    printable: PropTypes.bool,
   },
 
   getDefaultProps: function () {
@@ -55,10 +59,10 @@ const Details = createReactClass({
   },
 
   arrowIcon: function () {
-    return (
-      <FontIcon className='material-icons' style={{ verticalAlign:'top', margin:'5px 10px 5px 0px' }}>
-        {this.state.showDetails ? 'arrow_forward' : 'arrow_back'}
-      </FontIcon>
+    return this.state.showDetails ? (
+      <ArrowForwardIcon className='material-icons' style={{ verticalAlign:'top', margin:'5px 10px 5px 0px' }} />
+    ) : (
+      <ArrowBackIcon className='material-icons' style={{ verticalAlign:'top', margin:'5px 10px 5px 0px' }} />
     )
   },
 

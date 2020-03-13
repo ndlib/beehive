@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { Card } from 'material-ui'
+import { Card } from '@material-ui/core'
 import { Link, withRouter } from 'react-router-dom'
 const TextCard = require('./TextCard.jsx')
 const ImageCard = require('./ImageCard.jsx')

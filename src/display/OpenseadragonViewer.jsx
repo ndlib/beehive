@@ -2,6 +2,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
+import ZoomInIcon from '@material-ui/icons/ZoomIn'
+import ZoomOutIcon from '@material-ui/icons/ZoomOut'
+import RotateLeftIcon from '@material-ui/icons/RotateLeft'
+import RotateRightIcon from '@material-ui/icons/RotateRight'
+import RefreshIcon from '@material-ui/icons/Refresh'
+import FullscreenIcon from '@material-ui/icons/Fullscreen'
 const ReactDOM = require('react-dom')
 const navigatorSize = 100
 const $ = require('jquery')
@@ -241,14 +247,16 @@ const OpenseadragonViewer = createReactClass({
       const rightID = 'right-' + this.props.containerID
 
       const nodes = [
-        <a id={zoomInID} href='#zoom-in' key='zi' rel='nofollow'><i className='material-icons'>zoom_in</i></a>,
-        <a id={zoomOutID} href='#zoom-out' key='zo' rel='nofollow'><i className='material-icons'>zoom_out</i></a>,
-        <a id={leftID} href='#rotate-left' key='lid' rel='nofollow'><i className='material-icons'>rotate_left</i></a>,
-        <a id={rightID} href='#rotate-right' key='rid' rel='nofollow'><i className='material-icons'>rotate_right</i></a>,
-        <a id={homeID} href='#home' key='hid' rel='nofollow'><i className='material-icons'>refresh</i></a>,
+        <a id={zoomInID} href='#zoom-in' key='zi' rel='nofollow'><ZoomInIcon className='material-icons' /></a>,
+        <a id={zoomOutID} href='#zoom-out' key='zo' rel='nofollow'><ZoomOutIcon className='material-icons' /></a>,
+        <a id={leftID} href='#rotate-left' key='lid' rel='nofollow'><RotateLeftIcon className='material-icons' /></a>,
+        <a id={rightID} href='#rotate-right' key='rid' rel='nofollow'><RotateRightIcon className='material-icons' /></a>,
+        <a id={homeID} href='#home' key='hid' rel='nofollow'><RefreshIcon className='material-icons' /></a>,
       ]
       if (this.props.showFullPageControl) {
-        nodes.push(<a id={fullID} href='#full-page' key='fid' rel='nofollow'><i className='material-icons'>fullscreen</i></a>)
+        nodes.push(
+          <a id={fullID} href='#full-page' key='fid' rel='nofollow'><FullscreenIcon className='material-icons' /></a>,
+        )
       }
       return nodes
     }

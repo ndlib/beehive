@@ -1,7 +1,7 @@
 import React from 'react'
 import createReactClass from 'create-react-class'
-import { List } from 'material-ui'
-import Subheader from 'material-ui/Subheader'
+import { List } from '@material-ui/core'
+import ListSubheader from '@material-ui/core/ListSubheader'
 const SearchStore = require('../../store/SearchStore.js')
 const FacetItem = require('./FacetItem.jsx')
 
@@ -25,7 +25,7 @@ const SearchFacets = createReactClass({
     return SearchStore.facets.map(function (e, index) {
       return (
         <List key={index}>
-          <Subheader>{e.name}</Subheader>
+          <ListSubheader>{e.name}</ListSubheader>
           {this.values(e)}
         </List>
       )

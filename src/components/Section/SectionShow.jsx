@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { Paper, Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui'
+import { Paper, Toolbar, Typography } from '@material-ui/core'
 const CloseButton = require('../../other/CloseButton.jsx')
 const SideNavButton = require('../../other/SideNavButton.jsx')
 const ItemContent = require('../Item/ItemContent.jsx')
@@ -70,12 +70,12 @@ const SectionShow = createReactClass({
   toolbar: function () {
     return (
       <Toolbar className='title-bar' style={this.styles()}>
-        <ToolbarGroup key={0} style={{ maxWidth: this.mobile ? '80%' : '90%', float: 'left' }}>
-          <h2><ToolbarTitle text={this.title()} style={this.titleStyle()} /></h2>
-        </ToolbarGroup>
-        <ToolbarGroup key={1} style={this.closeButtonStyle()}>
+        <div style={{ maxWidth: this.mobile ? '80%' : '90%', float: 'left' }}>
+          <Typography variant='h2' style={this.titleStyle()}>{this.title()}</Typography>
+        </div>
+        <div style={this.closeButtonStyle()}>
           <CloseButton alternate />
-        </ToolbarGroup>
+        </div>
       </Toolbar>
     )
   },

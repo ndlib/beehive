@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { Card, CardActions, CardMedia, CardText, CardTitle, FlatButton } from 'material-ui'
+import { Card, CardActions, CardMedia, CardContent, CardHeader, Button } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 const $ = require('jquery')
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
@@ -52,27 +52,27 @@ const CollectionCard = createReactClass({
   description: function () {
     if (this.props.collection.description) {
       return (
-        <CardText style={{ height: '100px' }}>
+        <CardContent style={{ height: '100px' }}>
           {$(this.props.collection.description).text()}
-        </CardText>
+        </CardContent>
       )
     }
   },
 
   headerTitle: function () {
     if (this.props.headerTitle) {
-      return (<CardTitle title={this.props.headerTitle} />)
+      return (<CardHeader title={this.props.headerTitle} />)
     }
   },
 
-  cardTitle: function () {
+  CardHeader: function () {
     const titleStyle = {
       whiteSpace: 'nowrap',
       overflow: 'hidden',
       textOverflow: 'ellipsis',
     }
     return (
-      <CardTitle
+      <CardHeader
         title={this.props.collection.name_line_1}
         titleStyle={titleStyle}
         subtitle={this.props.collection.name_line_2}
@@ -122,7 +122,7 @@ const CollectionCard = createReactClass({
         <a href={CollectionUrl.collectionUrl(this.props.collection)}>
           {this.headerTitle()}
           {this.cardMedia()}
-          {this.cardTitle()}
+          {this.CardHeader()}
         </a>
       )
     }
@@ -130,7 +130,7 @@ const CollectionCard = createReactClass({
       <Link to={CollectionUrl.collectionUrl(this.props.collection)}>
         {this.headerTitle()}
         {this.cardMedia()}
-        {this.cardTitle()}
+        {this.CardHeader()}
       </Link>
     )
   },
@@ -141,11 +141,12 @@ const CollectionCard = createReactClass({
       <Card style={this.style()}>
         {this.collectionLink()}
         <CardActions style={this.actionButtonsStyle()}>
-          <FlatButton
-            label='Explore'
+          <Button
             href={CollectionUrl.collectionUrl(this.props.collection)}
-            labelStyle={this.exploreLabelStyle()}
-          />
+            style={this.exploreLabelStyle()}
+          >
+            Explore
+          </Button>
         </CardActions>
       </Card>
 

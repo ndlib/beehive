@@ -2,7 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Link } from 'react-router-dom'
-import { FlatButton, FontIcon } from 'material-ui'
+import { Button } from '@material-ui/core'
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
+import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 
 const SideNavButton = createReactClass({
   propTypes: {
@@ -94,17 +96,21 @@ const SideNavButton = createReactClass({
 
   content: function () {
     return (
-      <FlatButton
+      <Button
         onMouseDown={this.props.onMouseDown}
         style={this.buttonStyles()}
         onKeyboardFocus={this.handleKeyboardFocus}
         onMouseLeave={this.handleMouseLeave}
         onMouseEnter={this.handleMouseEnter}
         onTouchStart={this.handleTouchStart}
-        disableTouchRipple
+        disableRipple
       >
-        <FontIcon className='material-icons' style={this.iconStyles()}>{this.chevron()}</FontIcon>
-      </FlatButton>
+        {this.props.rightIcon ? (
+          <ChevronRightIcon className='material-icons' style={this.iconStyles()} />
+        ) : (
+          <ChevronLeftIcon className='material-icons' style={this.iconStyles()} />
+        )}
+      </Button>
     )
   },
 

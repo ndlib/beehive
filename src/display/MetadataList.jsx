@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { FontIcon } from 'material-ui'
+import PrintIcon from '@material-ui/icons/Print'
 const MetadataItem = require('./MetadataItem.jsx')
 const ConfigurationStore = require('../store/ConfigurationStore.js')
 
@@ -70,8 +70,8 @@ const MetadataList = createReactClass({
     if (this.props.printable) {
       const url = '/metadata/' + this.props.id
       return (
-        <a href={url} target='_blank' rel='nofollow'>
-          <FontIcon className='material-icons'>print</FontIcon>Printer Friendly View
+        <a href={url} target='_blank' rel='noopener noreferrer nofollow'>
+          <PrintIcon className='material-icons' />Printer Friendly View
         </a>
       )
     } else {

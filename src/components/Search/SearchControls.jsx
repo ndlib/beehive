@@ -1,7 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import createReactClass from 'create-react-class'
-import { FontIcon, Toolbar, ToolbarGroup, RaisedButton } from 'material-ui'
+import { Toolbar, Button } from '@material-ui/core'
+import ViewListIcon from '@material-ui/icons/ViewList'
+import ViewModuleIcon from '@material-ui/icons/ViewModule'
 import MediaQuery from 'react-responsive'
 const SearchBox = require('../../layout/SearchBox.jsx')
 const SearchSort = require('./SearchSort.jsx')
@@ -87,39 +88,39 @@ const SearchControls = createReactClass({
           className='controls'
           style={this.controlsStyle()}
         >
-          <ToolbarGroup key={0} style={{ float: 'left' }}>
+          <div style={{ float: 'left' }}>
             {this.searchBox()}
             <SearchHelp />
-          </ToolbarGroup>
-          <ToolbarGroup key={1} style={{ float: 'right' }}>
+          </div>
+          <div style={{ float: 'right' }}>
             <MediaQuery minWidth={700}>
               <SearchSort />
-              <RaisedButton
+              <Button
+                variant='contained'
                 backgroundColor={this.state.view === 'grid' ? 'rgba(0, 0, 0, 0.64)' : 'white'}
                 onClick={this.setList}
                 style={{ zIndex: '0', margin: '15px 0', minWidth: '44px', lineHeight: '36px' }}
-                disableTouchRipple
+                disableRipple
               >
-                <FontIcon
+                <ViewListIcon
                   className='material-icons'
                   style={this.state.view === 'grid' ? CurrentTheme.lightIconStyle() : CurrentTheme.darkIconStyle()}
-                >view_list
-                </FontIcon>
-              </RaisedButton>
-              <RaisedButton
+                />
+              </Button>
+              <Button
+                variant='contained'
                 backgroundColor={this.state.view === 'list' ? 'rgba(0, 0, 0, 0.64)' : 'white'}
                 onClick={this.setGrid}
                 style={{ zIndex: '0', margin: '15px 0', minWidth: '44px', lineHeight: '36px' }}
-                disableTouchRipple
+                disableRipple
               >
-                <FontIcon
+                <ViewModuleIcon
                   className='material-icons'
                   style={this.state.view === 'list' ? CurrentTheme.lightIconStyle() : CurrentTheme.darkIconStyle()}
-                >view_module
-                </FontIcon>
-              </RaisedButton>
+                />
+              </Button>
             </MediaQuery>
-          </ToolbarGroup>
+          </div>
         </Toolbar>
       </div>
     )

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { Card, CardMedia, CardTitle } from 'material-ui'
+import { Card, CardMedia, CardHeader } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
@@ -24,7 +24,7 @@ const CollectionIntroCard = createReactClass({
         <Card style={this.style()}>
           <CardMedia
             className='collection-site-path-card'
-            overlay={<CardTitle title='Introduction' />}
+            overlay={<CardHeader title='Introduction' />}
           />
         </Card>
       </Link>

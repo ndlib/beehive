@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { CardMedia, CardTitle, CardText } from 'material-ui'
+import { CardMedia, CardHeader, CardContent } from '@material-ui/core'
+import LibraryMusicIcon from '@material-ui/icons/LibraryMusic'
 import CardCaption from './CardCaption.jsx'
 
 const style = {
@@ -27,10 +28,10 @@ class MultimediaCard extends Component {
     if (this.props.section.item.multimedia['@type'] === 'AudioObject') {
       return (
         <div style={style.text()} className='text'>
-          <CardTitle title={this.props.section.item.multimedia.name} titleStyle={style.title()} />
-          <CardText>
-            <div><i className='material-icons' style={style.text()}>library_music</i></div>
-          </CardText>
+          <CardHeader title={this.props.section.item.multimedia.name} titleStyle={style.title()} />
+          <CardContent>
+            <LibraryMusicIcon className='material-icons' style={style.text()} />
+          </CardContent>
         </div>
 
       )

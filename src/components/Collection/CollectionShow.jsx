@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { Card, CardActions, CardMedia, CardTitle, FloatingActionButton, FontIcon, Paper } from 'material-ui'
+import { Card, CardActions, CardMedia, CardHeader, IconButton, Paper } from '@material-ui/core'
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import { Link } from 'react-router-dom'
 const Loading = require('../../other/Loading.jsx')
 
@@ -51,11 +52,11 @@ const CollectionShow = createReactClass({
     if (this.startUrl()) {
       return (
         <Link to={this.startUrl()} style={{ position: 'absolute', right: '0', top: '-30px' }}>
-          <FloatingActionButton
+          <IconButton
             backgroundColor='#2c5882'
           >
-            <FontIcon className='material-icons'>arrow_forward</FontIcon>
-          </FloatingActionButton>
+            <ArrowForwardIcon className='material-icons' />
+          </IconButton>
         </Link>
       )
     }
@@ -63,10 +64,10 @@ const CollectionShow = createReactClass({
 
   cardMediaSection: function () {
     if (this.props.collection.image) {
-      let cardTitle = (null)
+      let CardHeader = (null)
       if (this.props.collection.display_page_title) {
-        cardTitle = (
-          <CardTitle
+        CardHeader = (
+          <CardHeader
             title={this.props.collection.name_line_1}
             titleStyle={{ color:'white', fontSize:'34px', lineHeight:'46px' }}
             subtitle={this.props.collection.name_line_2}
@@ -76,14 +77,14 @@ const CollectionShow = createReactClass({
         )
       }
       return (
-        <CardMedia overlay={cardTitle}>
+        <CardMedia overlay={CardHeader}>
           <img src={this.image()} className='hide' />
           <div className='cover' style={this.cover()} />
         </CardMedia>
       )
     } else {
       return (
-        <CardTitle title={this.props.collection.name_line_1} subtitle={this.props.collection.name_line_2} />
+        <CardHeader title={this.props.collection.name_line_1} subtitle={this.props.collection.name_line_2} />
       )
     }
   },

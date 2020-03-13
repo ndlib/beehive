@@ -1,6 +1,6 @@
 import React from 'react'
 import createReactClass from 'create-react-class'
-import { Paper } from 'material-ui'
+import { Paper } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
 const IndexPageFooter = createReactClass({

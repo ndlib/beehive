@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Link } from 'react-router-dom'
-import { Divider, ListItem } from 'material-ui'
+import { Divider, ListItem } from '@material-ui/core'
 import RemoveMarkup from '../../modules/RemoveMarkup'
 const ItemImage = require('./ItemImage.jsx')
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')

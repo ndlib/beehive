@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { Paper, Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui'
+import { Paper, Toolbar, Typography } from '@material-ui/core'
 import JSONLD from '../JSONLD.jsx'
 const CloseButton = require('../../other/CloseButton.jsx')
 const SideNavButton = require('../../other/SideNavButton.jsx')
@@ -16,6 +16,7 @@ const ItemShow = createReactClass({
     height: PropTypes.number,
     item: PropTypes.object.isRequired,
     collection: PropTypes.object.isRequired,
+    title: PropTypes.string.isRequired,
   },
 
   styles: function () {
@@ -54,12 +55,12 @@ const ItemShow = createReactClass({
   toolbar: function () {
     return (
       <Toolbar className='title-bar' style={this.styles()}>
-        <ToolbarGroup key={0} style={{ maxWidth: this.mobile ? '80%' : '90%', float: 'left' }}>
-          <h2><ToolbarTitle text={this.props.title} style={this.titleStyle()} /></h2>
-        </ToolbarGroup>
-        <ToolbarGroup key={1} style={this.closeButtonStyle()}>
+        <div style={{ maxWidth: this.mobile ? '80%' : '90%', float: 'left' }}>
+          <Typography variant='h2' style={this.titleStyle()}>{this.props.title}</Typography>
+        </div>
+        <div style={this.closeButtonStyle()}>
           <CloseButton alternate />
-        </ToolbarGroup>
+        </div>
       </Toolbar>
     )
   },

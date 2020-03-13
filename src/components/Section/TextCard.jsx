@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { CardText, CardTitle } from 'material-ui'
+import { CardContent, CardHeader } from '@material-ui/core'
 const MoreOverlay = require('./MoreOverlay.jsx')
 
 const TextCard = createReactClass({
@@ -68,15 +68,15 @@ const TextCard = createReactClass({
     )
     return (
       <div style={this.style()} className='text'>
-        <CardTitle title={title} titleStyle={this.titleStyle()} />
-        <CardText style={this.style()}>
+        <CardHeader title={title} titleStyle={this.titleStyle()} />
+        <CardContent style={this.style()}>
           <div
             id={encodeURIComponent(this.props.section.name) + '-text'}
             className='sectionTextContent'
             dangerouslySetInnerHTML={{ __html: this.props.section.description }}
           />
           {this.overflowText()}
-        </CardText>
+        </CardContent>
       </div>
     )
   },

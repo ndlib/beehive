@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Link } from 'react-router-dom'
-import { Card, CardTitle, CardMedia } from 'material-ui'
+import { Card, CardHeader, CardMedia } from '@material-ui/core'
 const ItemImage = require('./ItemImage.jsx')
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
@@ -17,7 +17,7 @@ const GridItem = createReactClass({
         {this.props.item.name}
       </span>
     )
-    return (<CardTitle title={name} />)
+    return (<CardHeader title={name} />)
   },
 
   cardMedia: function () {

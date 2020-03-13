@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { FlatButton } from 'material-ui'
+import { Button } from '@material-ui/core'
 import AddReferral from '../../modules/AddReferral.js'
 import MediaQuery from 'react-responsive'
 const Details = require('../../display/Details.jsx')
@@ -108,14 +108,14 @@ const ItemContent = createReactClass({
   toggleZoom: function () {
     return (
       <div style={{ background: '#444' }}>
-        <FlatButton
-          label='Toggle Zoom'
+        <Button
           onClick={() => {
             this.setState({ zoom: !this.state.zoom })
           }}
           style={{ display: 'block', margin: 'auto' }}
-          labelStyle={{ color: 'white' }}
-        />
+        >
+          Toggle Zoom
+        </Button>
       </div>
     )
   },
@@ -128,15 +128,15 @@ const ItemContent = createReactClass({
     if (this.hasManuscript()) {
       return (
         <div style={{ background: '#444' }}>
-          <FlatButton
-            label='View Manuscript'
+          <Button
             onClick={(event) => {
               event.preventDefault()
               window.open(AddReferral(this.props.item.metadata.manuscript_url.values[0].value))
             }}
             style={{ display: 'block', margin: 'auto' }}
-            labelStyle={{ color: 'white' }}
-          />
+          >
+            View Manuscript
+          </Button>
         </div>
       )
     }

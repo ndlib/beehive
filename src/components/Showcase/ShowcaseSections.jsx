@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { Paper } from 'material-ui'
+import { Paper } from '@material-ui/core'
 const ShowcaseEndingCard = require('./ShowcaseEndingCard.jsx')
 const SectionCard = require('../Section/SectionCard.jsx')
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { MenuItem, SelectField } from 'material-ui'
+import { MenuItem, SelectField } from '@material-ui/core'
 const SearchActions = require('../../actions/SearchActions.js')
 const SearchStore = require('../../store/SearchStore.js')
 

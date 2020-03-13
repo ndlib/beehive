@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Link } from 'react-router'
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 const PrevNext = require('../modules/PrevNextUtils.jsx')
 
 const PreviousModal = createReactClass({
@@ -29,7 +30,7 @@ const PreviousModal = createReactClass({
         className='prev-button half-circle-button'
         style={PrevNext.buttonStyles(this.props.offsetTop, '#E0E0E0')}
       >
-        <i className='material-icons'>chevron_left</i>
+        <ChevronLeftIcon className='material-icons' />
       </Link>
     )
   },

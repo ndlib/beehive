@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { Divider, Drawer, FontIcon, FlatButton, MenuItem } from 'material-ui'
+import { Divider, Drawer, Button, MenuItem } from '@material-ui/core'
+import MenuIcon from '@material-ui/icons/Menu'
 import { Link } from 'react-router-dom'
 const CollectionUrl = require('../modules/CollectionUrl.jsx')
 const CurrentTheme = require('../modules/CurrentTheme.jsx')
@@ -164,13 +165,13 @@ const CollectionLeftNav = createReactClass({
     } else {
       return (
         <div id='CollectionLeftNav' style={{ margin:'0', marginLeft: '16px' }}>
-          <FlatButton
+          <Button
             onClick={this.clickEvent}
             style={this.buttonStyle()}
-            disableTouchRipple
+            disableRipple
           >
-            <FontIcon className='material-icons' style={CurrentTheme.lightIconStyle()}>menu</FontIcon>
-          </FlatButton>
+            <MenuIcon className='material-icons' style={CurrentTheme.lightIconStyle()} />
+          </Button>
 
           <Drawer
             docked={false}

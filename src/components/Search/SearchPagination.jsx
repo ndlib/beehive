@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Link } from 'react-router-dom'
+import ArrowBackIcon from '@material-ui/icons/ArrowBack'
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 const SearchStore = require('../../store/SearchStore.js')
 
 const SearchPagination = createReactClass({
@@ -58,7 +60,7 @@ const SearchPagination = createReactClass({
           rel='prev'
           onClick={this.scrollToTop}
         >
-          <i className='material-icons' style={{ fontSize: '1em' }}>arrow_back</i>
+          <ArrowBackIcon className='material-icons' style={{ fontSize: '1em' }} />
         </Link>
       ))
     }
@@ -84,8 +86,10 @@ const SearchPagination = createReactClass({
           key='next'
           rel='next'
           onClick={this.scrollToTop}
-        > <i className='material-icons' style={{ fontSize: '1em' }}>arrow_forward</i>
-        </Link>))
+        >
+          <ArrowForwardIcon className='material-icons' style={{ fontSize: '1em' }} />
+        </Link>
+      ))
     }
     return nodes
   },

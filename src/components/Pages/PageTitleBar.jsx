@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui'
+import { Toolbar, Typography } from '@material-ui/core'
 const CloseButton = require('../../other/CloseButton.jsx')
 
 const PageTitleBar = createReactClass({
@@ -58,12 +58,12 @@ const PageTitleBar = createReactClass({
   render: function () {
     return (
       <Toolbar id='PageTitleBar' className='title-bar' style={this.style()}>
-        <ToolbarGroup key={0} style={{ float:'left' }}>
-          <h2><ToolbarTitle text={this.props.title} style={this.titleBarStyle()} /></h2>
-        </ToolbarGroup>
-        <ToolbarGroup key={1} style={this.closeButtonStyle()}>
+        <div style={{ float:'left' }}>
+          <Typography variant='h2' style={this.titleBarStyle()}>{this.props.title}</Typography>
+        </div>
+        <div style={this.closeButtonStyle()}>
           <CloseButton alternate height={this.props.height} />
-        </ToolbarGroup>
+        </div>
       </Toolbar>
     )
   },

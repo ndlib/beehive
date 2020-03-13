@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { Card, CardActions, CardMedia, CardTitle, FloatingActionButton, FontIcon } from 'material-ui'
+import { Card, CardActions, CardMedia, CardHeader, IconButton } from '@material-ui/core'
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import { Link } from 'react-router-dom'
 const CollectionUrl = require('../../modules/CollectionUrl.jsx')
 
@@ -63,12 +64,12 @@ const SitePathCard = createReactClass({
           style={{ position:'absolute', right:'10px', top: this.props.headerTitle != null ? '33px' : '363px' }}
         >
           <Link to={CollectionUrl.collectionObjectUrl(this.props.siteObject)}>
-            <FloatingActionButton
+            <IconButton
               backgroundColor='#2c5882'
-              disableTouchRipple
+              disableRipple
             >
-              <FontIcon className='material-icons'>arrow_forward</FontIcon>
-            </FloatingActionButton>
+              <ArrowForwardIcon className='material-icons' />
+            </IconButton>
           </Link>
         </CardActions>
       )
@@ -78,7 +79,7 @@ const SitePathCard = createReactClass({
   headerTitle: function () {
     if (this.props.headerTitle) {
       return (
-        <CardTitle
+        <CardHeader
           title={this.props.headerTitle}
           style={{
             backgroundColor: 'white',
@@ -91,9 +92,9 @@ const SitePathCard = createReactClass({
     }
   },
 
-  cardTitle: function () {
+  CardHeader: function () {
     return (
-      <CardTitle
+      <CardHeader
         title={this.props.siteObject.name_line_1 || this.props.siteObject.name}
         subtitle={this.props.siteObject.name_line_2}
       />
@@ -105,7 +106,7 @@ const SitePathCard = createReactClass({
       <CardMedia
         className='collection-site-path-card'
         style={{ backgroundImage:'url("' + this.image() + '")' }}
-        overlay={this.cardTitle()}
+        overlay={this.CardHeader()}
       />
     )
   },

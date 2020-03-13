@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { Card, CardMedia, CardTitle, FloatingActionButton, FontIcon } from 'material-ui'
+import { Card, CardMedia, CardHeader, IconButton } from '@material-ui/core'
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import { Link } from 'react-router-dom'
 import MediaQuery from 'react-responsive'
 const HoneycombImage = require('../other/HoneycombImage.jsx')
@@ -50,15 +51,15 @@ const PreviewLink = createReactClass({
   getCard: function (media) {
     return (
       <Card style={this.style(media)} onMouseOver={this.mouseOver} onMouseOut={this.mouseOut}>
-        <CardMedia overlay={<CardTitle title='Continue' />}>
+        <CardMedia overlay={<CardHeader title='Continue' />}>
           <HoneycombImage image={this.props.siteObject.image} size='small' />
         </CardMedia>
-        <FloatingActionButton
+        <IconButton
           backgroundColor='#2c5882'
           style={this.buttonStyle()}
         >
-          <FontIcon className='material-icons'>arrow_forward</FontIcon>
-        </FloatingActionButton>
+          <ArrowForwardIcon className='material-icons' />
+        </IconButton>
       </Card>
 
     )
