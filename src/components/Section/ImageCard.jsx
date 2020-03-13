@@ -23,6 +23,7 @@ const ImageCard = createReactClass({
           <img
             style={{ width: 'auto' }}
             src={this.props.section.item.media.thumbnailUrl}
+            alt=''
           />
         </CardMedia>
         <CardCaption caption={this.props.section.caption} />

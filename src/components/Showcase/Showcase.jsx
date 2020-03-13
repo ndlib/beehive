@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 const ShowcaseShow = require('./ShowcaseShow.jsx')
 const CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
@@ -12,6 +13,9 @@ const BrowserUtils = require('../../modules/BrowserUtils.jsx')
 const LoadRemote = require('../../modules/LoadRemote.jsx')
 
 const Showcase = createReactClass({
+  propTypes: {
+    collection: PropTypes.any,
+  },
 
   getInitialState: function () {
     return {
@@ -60,7 +64,7 @@ const Showcase = createReactClass({
     }
   },
 
-  componentDidUpdate: function (prevProps, prevState) {
+  componentDidUpdate: function (prevProps) {
     if (this.props !== prevProps) {
       this.handleResize()
     }

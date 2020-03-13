@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import AddReferral from '../modules/AddReferral.js'
 
+// eslint-disable-next-line
 const linkPattern = /(^|[\s\n]|<br\/?>)((?:https?|ftp):\/\/[\-A-Z0-9+\u0026\u2019@#\/%?=()~_|!:,.]*[\-A-Z0-9+\u0026@#\/%=~()_|])/gi
 
 const MetadataString = createReactClass({
@@ -20,7 +21,9 @@ const MetadataString = createReactClass({
         if (linkPattern.test(string)) {
           string = AddReferral(string)
           return (
-            <a href={string} key={index} target='_blank' rel='nofollow' style={linkStyle}>{string}</a>
+            <a href={string} key={index} target='_blank' rel='noopener noreferrer nofollow' style={linkStyle}>
+              {string}
+            </a>
           )
         } else {
           return (<div key={index}>{string}</div>)

@@ -9,6 +9,7 @@ const PageContent = createReactClass({
     fluidLayout: PropTypes.bool,
     onClick: PropTypes.func,
     onMouseOver: PropTypes.func,
+    children: PropTypes.node,
   },
 
   getDefaultProps: function () {

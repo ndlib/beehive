@@ -53,5 +53,8 @@ CustomCollectionPage.propTypes = {
       customSlug: PropTypes.string,
     }),
   }),
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
 }
 export default withRouter(CustomCollectionPage)

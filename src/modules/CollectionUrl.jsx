@@ -29,7 +29,7 @@ const itemUrl = (item) => {
 }
 
 const collectionObjectUrl = (object) => {
-  const collectionPath = window.location.pathname.match(/(?:\/[^\/]+){2}/)
+  const collectionPath = window.location.pathname.match(/(?:\/[^\/]+){2}/) // eslint-disable-line no-useless-escape
   let typePath = ''
   switch (object.additionalType) {
     case 'https://github.com/ndlib/honeycomb/wiki/Page':
@@ -50,12 +50,12 @@ const collectionObjectUrl = (object) => {
 }
 
 const sectionObjectUrl = (object) => {
-  const collectionPath = window.location.pathname.match(/(?:\/[^\/]+){5}/)
+  const collectionPath = window.location.pathname.match(/(?:\/[^\/]+){5}/) // eslint-disable-line no-useless-escape
   return collectionPath + '/sections/' + encodeURIComponent(object.id)
 }
 
 const itemObjectUrl = (object) => {
-  const collectionPath = window.location.pathname.match(/(?:\/[^\/]+){2}/)
+  const collectionPath = window.location.pathname.match(/(?:\/[^\/]+){2}/) // eslint-disable-line no-useless-escape
   const itemId = object.id ? encodeURIComponent(object.id) : object['@id'].substr(object['@id'].lastIndexOf('/') + 1)
   return collectionPath + '/items/' + itemId
 }

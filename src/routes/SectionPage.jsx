@@ -25,5 +25,6 @@ SectionPage.propTypes = {
       sectionID: PropTypes.string,
     }),
   }),
+  children: PropTypes.node,
 }
 export default SectionPage

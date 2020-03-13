@@ -22,5 +22,6 @@ PagesPage.propTypes = {
       pageID: PropTypes.string,
     }),
   }),
+  children: PropTypes.node,
 }
 export default PagesPage

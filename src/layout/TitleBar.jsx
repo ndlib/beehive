@@ -1,7 +1,12 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 
 const TitleBar = createReactClass({
+  propTypes: {
+    children: PropTypes.node,
+  },
+
   render: function () {
     let content = this.props.children
     if (!content) {

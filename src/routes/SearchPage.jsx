@@ -32,5 +32,6 @@ SearchPage.propTypes = {
       collectionID: PropTypes.string,
     }),
   }),
+  children: PropTypes.node,
 }
 export default SearchPage

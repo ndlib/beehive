@@ -1,7 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import { MenuItem, SelectField } from '@material-ui/core'
 const SearchActions = require('../../actions/SearchActions.js')
 const SearchStore = require('../../store/SearchStore.js')
 
@@ -19,15 +17,6 @@ const SearchSort = createReactClass({
 
   setSort: function (sortOption) {
     SearchActions.setSort(sortOption)
-  },
-
-  // This does not appear to be used
-  componentWillMount: function () {
-    const regex = /\S+&sort=/
-    let sortOption = ''
-    if (window.location.search.match(regex)) {
-      sortOption = window.location.search.replace(regex, '').split('&')[0]
-    }
   },
 
   sortStyle: function () {

@@ -53,7 +53,7 @@ const SiteIndexHeader = createReactClass({
                 />
               }
             >
-              <div className='coverImage'><img src='/images/home.jpg' /></div>
+              <div className='coverImage'><img src='/images/home.jpg' alt='' /></div>
             </CardMedia>
           </Card>
         </MediaQuery>
@@ -83,7 +83,7 @@ const SiteIndexHeader = createReactClass({
                 />
               }
             >
-              <div className='coverImage'><img src='/images/home.jpg' /></div>
+              <div className='coverImage'><img src='/images/home.jpg' alt='' /></div>
             </CardMedia>
           </Card>
         </MediaQuery>

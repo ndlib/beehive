@@ -23,5 +23,6 @@ ItemPage.propTypes = {
       itemID: PropTypes.string,
     }),
   }),
+  children: PropTypes.node,
 }
 export default ItemPage

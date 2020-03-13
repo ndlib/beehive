@@ -101,7 +101,7 @@ const Page = createReactClass({
     let item
     const itemId = event.target.getAttribute('item_id')
     if (itemId && this.state.collection.pages.items) {
-      item = this.state.collection.pages.items.find(function (e, i, a) {
+      item = this.state.collection.pages.items.find(function (e) {
         return e.id === itemId
       })
     }
@@ -172,7 +172,8 @@ const Page = createReactClass({
       image = collection.pages.image.contentUrl
     }
 
-    const dataUrl = `https://collections.library.nd.edu/${collection.id}/${collection.slug}/${collection.pages.id}/${collection.pages.slug}`
+    const dataUrl = `https://collections.library.nd.edu/${collection.id}/${collection.slug}/${collection.pages.id}/` +
+      collection.pages.slug
     const data = {
       '@context': 'http://schema.org',
       '@type': 'Article',

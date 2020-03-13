@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Helmet } from 'react-helmet'
 const Details = require('../display/Details.jsx')
@@ -8,6 +9,14 @@ const LoadRemote = require('../modules/LoadRemote.jsx')
 const CollectionUrl = require('../modules/CollectionUrl.jsx')
 
 const PrintableMetadata = createReactClass({
+  propTypes: {
+    match: PropTypes.shape({
+      params: PropTypes.shape({
+        itemID: PropTypes.string,
+      }),
+    }),
+  },
+
   getInitialState: function () {
     return {
       item: null,
@@ -51,7 +60,8 @@ const PrintableMetadata = createReactClass({
 
   render: function () {
     if (this.state.item && this.state.configurationLoaded) {
-      const url = `${window.location.origin}/${this.state.collection.id}/${this.state.collection.slug}/items/${this.state.item.id}`
+      const url = `${window.location.origin}/${this.state.collection.id}/${this.state.collection.slug}/items/` +
+        this.state.item.id
       return (
         <div>
           <Helmet>

@@ -107,7 +107,8 @@ const SearchHelp = createReactClass({
           </div>
           <h4>Wildcards</h4>
           <p>
-            Use an asterisk (*) for wildcard searching. This can be used as a substitute for the middle or end of a word.
+            Use an asterisk (*) for wildcard searching. This can be used as a substitute for the middle or end of a
+            word.
           </p>
           <div>
             <span>Examples:</span>
@@ -159,8 +160,8 @@ const SearchHelp = createReactClass({
           <h4>Grouping and Filtering</h4>
           <p>
             Parentheses can be used to group keywords or phrases. This is typically combined with the special words OR
-            and AND for more complex filtering logic. The minus symbol (-) or the word NOT can be used to exclude results
-            which contain a specific term.
+            and AND for more complex filtering logic. The minus symbol (-) or the word NOT can be used to exclude
+            results which contain a specific term.
           </p>
           <div>
             <span>Examples:</span>

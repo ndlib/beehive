@@ -22,5 +22,6 @@ ShowcasePage.propTypes = {
       showcaseID: PropTypes.string,
     }),
   }),
+  children: PropTypes.node,
 }
 export default ShowcasePage

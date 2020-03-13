@@ -45,7 +45,7 @@ const ShowcaseShow = createReactClass({
     }
     if (this.props !== prevProps) {
       this.initializeScrollbar()
-      this.state.outerElement[0].scrollLeft = 0
+      this.state.outerElement[0].scrollLeft = 0 // eslint-disable-line react/no-direct-mutation-state
     }
     if (this.state.hasScrolled !== prevState.hasScrolled) {
       this.updateScrollbar()
@@ -175,14 +175,12 @@ const ShowcaseShow = createReactClass({
     for (let i = 0; i < showcase.sections.length; i++) {
       articleBody += RemoveMarkup(showcase.sections[i].description)
     }
-    const dataUrl = `https://collections.library.nd.edu/${collection.id}/${collection.slug}/showcases/${showcase.id}/${showcase.slug}`
+    const dataUrl = `https://collections.library.nd.edu/${collection.id}/${collection.slug}/showcases/${showcase.id}/` +
+      showcase.slug
 
-    let showcaseSafeImage
-    if (showcase.image) {
-      showcaseSafeImage = showcase.image.contentUrl
-    } else {
-      showcaseSafeImage = 'https://collections.library.nd.edu/images/intro.jpg'
-    }
+    const showcaseSafeImage = showcase.image
+      ? showcase.image.contentUrl
+      : 'https://collections.library.nd.edu/images/intro.jpg'
 
     const data = {
       '@context': 'http://schema.org',

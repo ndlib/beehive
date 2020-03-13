@@ -174,7 +174,7 @@ const ItemContent = createReactClass({
     } else {
       return (
         <div className='item-detail-zoom' style={this.zoomStyles()}>
-          <img src={this.props.item.media.contentUrl} style={this.imgStyles()} />
+          <img src={this.props.item.media.contentUrl} style={this.imgStyles()} alt='' />
         </div>
       )
     }

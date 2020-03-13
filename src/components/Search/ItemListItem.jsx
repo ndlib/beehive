@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 const ListItem = require('./ListItem.jsx')
 const GridItem = require('./GridItem.jsx')
-const $ = require('jquery')
 
 const ItemListItem = createReactClass({
   propTypes: {

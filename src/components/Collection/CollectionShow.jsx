@@ -78,7 +78,7 @@ const CollectionShow = createReactClass({
       }
       return (
         <CardMedia overlay={CardHeader}>
-          <img src={this.image()} className='hide' />
+          <img src={this.image()} className='hide' alt='' />
           <div className='cover' style={this.cover()} />
         </CardMedia>
       )

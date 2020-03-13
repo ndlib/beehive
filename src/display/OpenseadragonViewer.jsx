@@ -193,8 +193,7 @@ const OpenseadragonViewer = createReactClass({
   },
 
   legacyOptions: function (image) {
-    let options
-    options = this.baseOptions()
+    const options = this.baseOptions()
     options.tileSources = this.legacySource(image)
     return options
   },
@@ -250,7 +249,9 @@ const OpenseadragonViewer = createReactClass({
         <a id={zoomInID} href='#zoom-in' key='zi' rel='nofollow'><ZoomInIcon className='material-icons' /></a>,
         <a id={zoomOutID} href='#zoom-out' key='zo' rel='nofollow'><ZoomOutIcon className='material-icons' /></a>,
         <a id={leftID} href='#rotate-left' key='lid' rel='nofollow'><RotateLeftIcon className='material-icons' /></a>,
-        <a id={rightID} href='#rotate-right' key='rid' rel='nofollow'><RotateRightIcon className='material-icons' /></a>,
+        <a id={rightID} href='#rotate-right' key='rid' rel='nofollow'>
+          <RotateRightIcon className='material-icons' />
+        </a>,
         <a id={homeID} href='#home' key='hid' rel='nofollow'><RefreshIcon className='material-icons' /></a>,
       ]
       if (this.props.showFullPageControl) {

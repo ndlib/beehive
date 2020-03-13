@@ -15,6 +15,7 @@ const CollectionPageHeader = createReactClass({
   propTypes: {
     collection: PropTypes.object.isRequired,
     branding: PropTypes.bool,
+    children: PropTypes.node,
   },
 
   contextTypes: {

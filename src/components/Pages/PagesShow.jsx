@@ -11,6 +11,7 @@ const PagesShow = createReactClass({
       PropTypes.string,
       PropTypes.object,
     ]).isRequired,
+    children: PropTypes.node,
   },
   headerStyle: function () {
     return {

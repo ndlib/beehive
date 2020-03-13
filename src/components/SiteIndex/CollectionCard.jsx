@@ -97,7 +97,7 @@ const CollectionCard = createReactClass({
         className='temp'
         style={{ overflow:'hidden' }}
       >
-        <img src={this.image()} style={this.imageSize()} />
+        <img src={this.image()} style={this.imageSize()} alt='' />
       </CardMedia>)
   },
 

@@ -28,7 +28,7 @@ const ShowcaseInnerContent = createReactClass({
     this.setState({ animationRun: true })
   },
 
-  shouldComponentUpdate: function (nextProps, nextState) {
+  shouldComponentUpdate: function (nextProps) {
     return JSON.stringify(this.props) !== JSON.stringify(nextProps)
   },
 

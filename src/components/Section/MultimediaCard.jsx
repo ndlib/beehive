@@ -40,6 +40,7 @@ class MultimediaCard extends Component {
         <img
           style={{ width: 'auto' }}
           src={this.props.section.item.multimedia.thumbnailUrl}
+          alt=''
         />
       )
     }

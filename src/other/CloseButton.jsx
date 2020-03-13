@@ -62,7 +62,7 @@ const CloseButton = createReactClass({
       return '/'
     }
 
-    const re = RegExp(`((?:\/[^\/]+)+)\/${stopword}`)
+    const re = RegExp(`((?:\/[^\/]+)+)\/${stopword}`) // eslint-disable-line no-useless-escape
     return re.exec(current)[1]
   },
 

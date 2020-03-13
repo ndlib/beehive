@@ -57,7 +57,7 @@ const SearchBox = createReactClass({
     this.setTerm(e.target.value)
   },
 
-  onClick: function (e) {
+  onClick: function () {
     if (this.state.active) {
       if (this.state.searchTerm !== this.state.lastSearched) {
         this.setSearchTerm(this.state.searchTerm)
