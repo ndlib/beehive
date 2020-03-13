@@ -4,15 +4,13 @@
   "version": "3.0.1",
   "license": "",
   "repository": "git@github.com:ndlib/beehive.git",
+  "homepage": "https://collections.library.nd.edu",
   "main": "main.js",
   "scripts": {
     "test": "test",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "lint": "node node_modules/eslint/bin/eslint.js ./src",
-    "build-pprd": "webpack --config ./build-conf/webpack-pprd.config.js --progress --colors",
-    "build-dev": "webpack --config ./build-conf/webpack-dev.config.js --progress --colors",
-    "watch": "webpack --watch --config ./build-conf/webpack-dev.config.js --progress --colors"
+    "lint": "node node_modules/eslint/bin/eslint.js ./src"
   },
   "dependencies": {
     "@babel/runtime": "^7.8.7",
@@ -66,6 +64,7 @@
     "fs-extra": "^8.1.0",
     "html-webpack-plugin": "^4.0.0-beta.11",
     "ie-array-find-polyfill": "^1.1.0",
+    "mini-css-extract-plugin": "^0.9.0",
     "object-assign": "^4.1.1",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "pnp-webpack-plugin": "^1.6.4",
