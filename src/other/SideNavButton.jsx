@@ -18,10 +18,6 @@ const SideNavButton = createReactClass({
     onTouchStart: PropTypes.func,
   },
 
-  contextTypes: {
-    muiTheme: PropTypes.object,
-  },
-
   getDefaultProps: function () {
     return {
       offsetTop: window.innerHeight / 2,

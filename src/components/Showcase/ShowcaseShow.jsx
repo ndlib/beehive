@@ -4,6 +4,13 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import JSONLD from '../JSONLD.jsx'
 import RemoveMarkup from '../../modules/RemoveMarkup'
+import ShowcaseTitleBar from './ShowcaseTitleBar.jsx'
+import ShowcaseBackground from './ShowcaseBackground.jsx'
+import AttentionHelp from '../../other/AttentionHelp.jsx'
+import ShowcaseInnerContent from './ShowcaseInnerContent.jsx'
+import Scroller from '../../other/Scroller.jsx'
+import CollectionHomeButton from './CollectionHomeButton.jsx'
+import BrowserUtils from '../../modules/BrowserUtils.jsx'
 const ReactDOM = require('react-dom')
 const maxShowcaseHeight = 805
 const showcaseTitleHeight = 56
@@ -11,13 +18,6 @@ const scrollPadding = 80
 const titleSectionWidthPercent = 0.85
 const minBackgroundBlur = 0.3
 const maxBackgroundBlur = 0.8
-const ShowcaseTitleBar = require('./ShowcaseTitleBar.jsx')
-const ShowcaseBackground = require('./ShowcaseBackground.jsx')
-const AttentionHelp = require('../../other/AttentionHelp.jsx')
-const ShowcaseInnerContent = require('./ShowcaseInnerContent.jsx')
-const Scroller = require('../../other/Scroller.jsx')
-const CollectionHomeButton = require('./CollectionHomeButton.jsx')
-const BrowserUtils = require('../../modules/BrowserUtils.jsx')
 const $ = require('jquery')
 
 const ShowcaseShow = createReactClass({

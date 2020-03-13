@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-const ShowcaseTitleCard = require('./ShowcaseTitleCard.jsx')
-const ShowcaseSections = require('./ShowcaseSections.jsx')
+import ShowcaseTitleCard from './ShowcaseTitleCard.jsx'
+import ShowcaseSections from './ShowcaseSections.jsx'
 
 const ShowcaseInnerContent = createReactClass({
   propTypes: {

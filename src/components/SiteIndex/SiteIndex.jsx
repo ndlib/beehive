@@ -25,6 +25,7 @@ const SiteIndex = createReactClass({
   },
 
   componentDidMount: function () {
+    document.body.className = document.body.className + ' bee-light-theme collections-bg'
     if (typeof (this.props.collections) === 'object') {
       this.setState({
         collections: this.props.collections,
@@ -40,10 +41,6 @@ const SiteIndex = createReactClass({
       collections: collections,
     })
     return true
-  },
-
-  componentWillMount: function () {
-    document.body.className = document.body.className + ' bee-light-theme collections-bg'
   },
 
   cardMedia: function () {

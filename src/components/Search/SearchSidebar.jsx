@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Paper } from '@material-ui/core'
-const SearchFacets = require('./SearchFacets.jsx')
+import SearchFacets from './SearchFacets.jsx'
 
 const SearchSidebar = createReactClass({
   propTypes: {

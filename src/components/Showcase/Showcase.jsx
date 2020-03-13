@@ -1,16 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-const ShowcaseShow = require('./ShowcaseShow.jsx')
-const CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
-const PageContent = require('../../layout/PageContent.jsx')
-const CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
-const ConfigurationActions = require('../../actions/ConfigurationActions.js')
-const ConfigurationStore = require('../../store/ConfigurationStore.js')
-const Loading = require('../../other/Loading.jsx')
-const PageTitle = require('../../modules/PageTitle.js')
-const BrowserUtils = require('../../modules/BrowserUtils.jsx')
-const LoadRemote = require('../../modules/LoadRemote.jsx')
+import ShowcaseShow from './ShowcaseShow.jsx'
+import CollectionPageHeader from '../../layout/CollectionPageHeader.jsx'
+import PageContent from '../../layout/PageContent.jsx'
+import CollectionPageFooter from '../../layout/CollectionPageFooter.jsx'
+import ConfigurationActions from '../../actions/ConfigurationActions.js'
+import ConfigurationStore from '../../store/ConfigurationStore.js'
+import Loading from '../../other/Loading.jsx'
+import PageTitle from '../../modules/PageTitle.js'
+import BrowserUtils from '../../modules/BrowserUtils.jsx'
+import LoadRemote from '../../modules/LoadRemote.jsx'
 
 const Showcase = createReactClass({
   propTypes: {

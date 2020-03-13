@@ -2,10 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Divider } from '@material-ui/core'
-const MetadataString = require('./MetadataString.jsx')
-const MetadataDate = require('./MetadataDate.jsx')
-const MetadataHTML = require('./MetadataHTML.jsx')
-const MetadataText = require('./MetadataText.jsx')
+import MetadataString from './MetadataString.jsx'
+import MetadataDate from './MetadataDate.jsx'
+import MetadataHTML from './MetadataHTML.jsx'
+import MetadataText from './MetadataText.jsx'
 
 const fieldTypeMap = {
   MetadataString: MetadataString,

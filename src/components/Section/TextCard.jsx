@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { CardContent, CardHeader } from '@material-ui/core'
-const MoreOverlay = require('./MoreOverlay.jsx')
+import MoreOverlay from './MoreOverlay.jsx'
 
 const TextCard = createReactClass({
   propTypes: {

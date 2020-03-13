@@ -4,8 +4,8 @@ import createReactClass from 'create-react-class'
 import { ListItem } from '@material-ui/core'
 import CheckBoxIcon from '@material-ui/icons/CheckBox'
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank'
-const SearchStore = require('../../store/SearchStore.js')
-const SearchActions = require('../../actions/SearchActions.js')
+import SearchStore from '../../store/SearchStore.js'
+import SearchActions from '../../actions/SearchActions.js'
 
 const FacetItem = createReactClass({
 

@@ -2,12 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Paper, Toolbar, Typography } from '@material-ui/core'
-const CloseButton = require('../../other/CloseButton.jsx')
-const SideNavButton = require('../../other/SideNavButton.jsx')
-const ItemContent = require('../Item/ItemContent.jsx')
-const SectionShowDescription = require('./SectionShowDescription.jsx')
-const BrowserUtils = require('../../modules/BrowserUtils.jsx')
-const CollectionUrl = require('../../modules/CollectionUrl.jsx')
+import CloseButton from '../../other/CloseButton.jsx'
+import SideNavButton from '../../other/SideNavButton.jsx'
+import ItemContent from '../Item/ItemContent.jsx'
+import SectionShowDescription from './SectionShowDescription.jsx'
+import BrowserUtils from '../../modules/BrowserUtils.jsx'
+import CollectionUrl from '../../modules/CollectionUrl.jsx'
 
 const SectionShow = createReactClass({
   displayName: 'Section Show',
@@ -16,10 +16,6 @@ const SectionShow = createReactClass({
     previousSection: PropTypes.object,
     nextSection: PropTypes.object,
     height: PropTypes.number,
-  },
-
-  contextTypes: {
-    muiTheme: PropTypes.object,
   },
 
   styles: function () {

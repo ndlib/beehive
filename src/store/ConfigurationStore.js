@@ -1,6 +1,6 @@
-const AppDispatcher = require('../dispatcher/AppDispatcher.jsx')
-const StoreEventEmitter = require('../middleware/StoreEventEmitter.js')
-const ActionTypes = require('../constants/ConfigurationActionTypes.jsx')
+import AppDispatcher from '../dispatcher/AppDispatcher.jsx'
+import StoreEventEmitter from '../middleware/StoreEventEmitter.js'
+import ActionTypes from '../constants/ConfigurationActionTypes.jsx'
 
 class ConfigurationStore extends StoreEventEmitter {
   constructor () {

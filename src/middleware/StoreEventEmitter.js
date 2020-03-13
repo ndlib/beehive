@@ -1,4 +1,4 @@
-const EventEmitter = require('events').EventEmitter
+const EventEmitter = require('events')
 
 // Defines a basic "StoreChanged" type of event that listeners
 // can subscribe to through helper methods.

@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Helmet } from 'react-helmet'
-const Details = require('../display/Details.jsx')
-const ConfigurationActions = require('../actions/ConfigurationActions.js')
-const ConfigurationStore = require('../store/ConfigurationStore.js')
-const LoadRemote = require('../modules/LoadRemote.jsx')
-const CollectionUrl = require('../modules/CollectionUrl.jsx')
+import Details from '../display/Details.jsx'
+import ConfigurationActions from '../actions/ConfigurationActions.js'
+import ConfigurationStore from '../store/ConfigurationStore.js'
+import LoadRemote from '../modules/LoadRemote.jsx'
+import CollectionUrl from '../modules/CollectionUrl.jsx'
 
 const PrintableMetadata = createReactClass({
   propTypes: {

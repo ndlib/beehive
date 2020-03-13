@@ -4,9 +4,9 @@ import createReactClass from 'create-react-class'
 import { IconButton, Button } from '@material-ui/core'
 import ClearIcon from '@material-ui/icons/Clear'
 import SearchIcon from '@material-ui/icons/Search'
-const SearchStore = require('../store/SearchStore.js')
-const SearchActions = require('../actions/SearchActions.js')
-const CurrentTheme = require('../modules/CurrentTheme.jsx')
+import SearchStore from '../store/SearchStore.js'
+import SearchActions from '../actions/SearchActions.js'
+import CurrentTheme from '../modules/CurrentTheme.jsx'
 
 const Styles = {
   searchTextField: {
@@ -31,10 +31,6 @@ const SearchBox = createReactClass({
     primary: PropTypes.bool,
     useStore: PropTypes.bool,
     active: PropTypes.bool,
-  },
-
-  contextTypes: {
-    muiTheme: PropTypes.object,
   },
 
   getDefaultProps: function () {

@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-const ListItem = require('./ListItem.jsx')
-const GridItem = require('./GridItem.jsx')
+import ListItem from './ListItem.jsx'
+import GridItem from './GridItem.jsx'
 
 const ItemListItem = createReactClass({
   propTypes: {

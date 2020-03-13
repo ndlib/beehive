@@ -5,7 +5,7 @@ import { Paper } from '@material-ui/core'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 
-const MetadataList = require('../display/MetadataList.jsx')
+import MetadataList from '../display/MetadataList.jsx'
 
 const Styles = {
   // The outer containing div for this component

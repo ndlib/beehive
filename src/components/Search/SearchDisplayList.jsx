@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { GridList, List, Paper } from '@material-ui/core'
 import MediaQuery from 'react-responsive'
-const SearchStore = require('../../store/SearchStore.js')
-const SearchPagination = require('./SearchPagination.jsx')
-const ItemListItem = require('./ItemListItem.jsx')
-const SearchSidebar = require('./SearchSidebar.jsx')
+import SearchStore from '../../store/SearchStore.js'
+import SearchPagination from './SearchPagination.jsx'
+import ItemListItem from './ItemListItem.jsx'
+import SearchSidebar from './SearchSidebar.jsx'
 
 const SearchDisplayList = createReactClass({
   propTypes: {

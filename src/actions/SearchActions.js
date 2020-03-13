@@ -1,5 +1,5 @@
-const AppDispatcher = require('../dispatcher/AppDispatcher.jsx')
-const SearchActionTypes = require('../constants/SearchActionTypes.jsx')
+import AppDispatcher from '../dispatcher/AppDispatcher.jsx'
+import SearchActionTypes from '../constants/SearchActionTypes.jsx'
 
 class SearchActions {
   // Init

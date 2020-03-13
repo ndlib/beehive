@@ -4,10 +4,10 @@ import createReactClass from 'create-react-class'
 import { Card, CardActions, CardMedia, CardHeader, IconButton, Paper } from '@material-ui/core'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import { Link } from 'react-router-dom'
-const Loading = require('../../other/Loading.jsx')
+import Loading from '../../other/Loading.jsx'
 
-const CollectionUrl = require('../../modules/CollectionUrl.jsx')
-const CurrentTheme = require('../../modules/CurrentTheme.jsx')
+import CollectionUrl from '../../modules/CollectionUrl.jsx'
+import CurrentTheme from '../../modules/CurrentTheme.jsx'
 
 const CollectionShow = createReactClass({
   propTypes: {

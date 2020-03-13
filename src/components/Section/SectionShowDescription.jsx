@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-const PageContent = require('../../layout/PageContent.jsx')
+import PageContent from '../../layout/PageContent.jsx'
 
 const SectionShowDescription = createReactClass({
   displayName: 'Section Show Description',

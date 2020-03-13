@@ -4,12 +4,12 @@ import createReactClass from 'create-react-class'
 import { AppBar, Paper } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import MediaQuery from 'react-responsive'
-const BrandBar = require('./BrandBar.jsx')
-const CollectionLeftNav = require('./CollectionLeftNav.jsx')
-const ConfigurationStore = require('../store/ConfigurationStore.js')
-const ConfigurationActions = require('../actions/ConfigurationActions.js')
-const SearchBox = require('./SearchBox.jsx')
-const CollectionUrl = require('../modules/CollectionUrl.jsx')
+import BrandBar from './BrandBar.jsx'
+import CollectionLeftNav from './CollectionLeftNav.jsx'
+import ConfigurationStore from '../store/ConfigurationStore.js'
+import ConfigurationActions from '../actions/ConfigurationActions.js'
+import SearchBox from './SearchBox.jsx'
+import CollectionUrl from '../modules/CollectionUrl.jsx'
 
 const CollectionPageHeader = createReactClass({
   propTypes: {
@@ -18,13 +18,13 @@ const CollectionPageHeader = createReactClass({
     children: PropTypes.node,
   },
 
-  contextTypes: {
-    muiTheme: PropTypes.object,
-  },
-
   getInitialState: function () {
     return {
-      themeVariables: this.context.muiTheme.appBar,
+      // themeVariables: this.context.muiTheme.appBar,
+      themeVariables: {
+        height: 64,
+        alternateTextColor: 'white',
+      },
       configurationLoaded: ConfigurationStore.loaded(),
     }
   },

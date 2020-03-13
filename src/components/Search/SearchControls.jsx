@@ -4,13 +4,13 @@ import { Toolbar, Button } from '@material-ui/core'
 import ViewListIcon from '@material-ui/icons/ViewList'
 import ViewModuleIcon from '@material-ui/icons/ViewModule'
 import MediaQuery from 'react-responsive'
-const SearchBox = require('../../layout/SearchBox.jsx')
-const SearchSort = require('./SearchSort.jsx')
-const SearchStore = require('../../store/SearchStore.js')
-const ConfigurationStore = require('../../store/ConfigurationStore.js')
-const SearchActions = require('../../actions/SearchActions.js')
-const CurrentTheme = require('../../modules/CurrentTheme.jsx')
-const SearchHelp = require('./SearchHelp.jsx')
+import SearchBox from '../../layout/SearchBox.jsx'
+import SearchSort from './SearchSort.jsx'
+import SearchStore from '../../store/SearchStore.js'
+import ConfigurationStore from '../../store/ConfigurationStore.js'
+import SearchActions from '../../actions/SearchActions.js'
+import CurrentTheme from '../../modules/CurrentTheme.jsx'
+import SearchHelp from './SearchHelp.jsx'
 
 const SearchControls = createReactClass({
   getInitialState: function () {

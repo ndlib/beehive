@@ -1,7 +1,3 @@
-const getCurrentPallette = (muiTheme) => {
-  return muiTheme.rawTheme.palette
-}
-
 // Reusable styles
 const lightIconStyle = () => {
   return {
@@ -34,7 +30,6 @@ const pageWidth = () => {
 }
 
 export default {
-  getCurrentPallette,
   lightIconStyle,
   darkIconStyle,
   cardHeadersCommon,

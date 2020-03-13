@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Card } from '@material-ui/core'
 import { Link, withRouter } from 'react-router-dom'
-const TextCard = require('./TextCard.jsx')
-const ImageCard = require('./ImageCard.jsx')
-const MultimediaCard = require('./MultimediaCard.jsx')
-const CollectionUrl = require('../../modules/CollectionUrl.jsx')
+import TextCard from './TextCard.jsx'
+import ImageCard from './ImageCard.jsx'
+import MultimediaCard from './MultimediaCard.jsx'
+import CollectionUrl from '../../modules/CollectionUrl.jsx'
 
 const SectionCard = createReactClass({
   propTypes: {

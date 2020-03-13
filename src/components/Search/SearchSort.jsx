@@ -1,7 +1,7 @@
 import React from 'react'
 import createReactClass from 'create-react-class'
-const SearchActions = require('../../actions/SearchActions.js')
-const SearchStore = require('../../store/SearchStore.js')
+import SearchActions from '../../actions/SearchActions.js'
+import SearchStore from '../../store/SearchStore.js'
 
 const SearchSort = createReactClass({
   getInitialState: function () {

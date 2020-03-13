@@ -4,8 +4,8 @@ import createReactClass from 'create-react-class'
 import { Divider, Drawer, Button, MenuItem } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import { Link } from 'react-router-dom'
-const CollectionUrl = require('../modules/CollectionUrl.jsx')
-const CurrentTheme = require('../modules/CurrentTheme.jsx')
+import CollectionUrl from '../modules/CollectionUrl.jsx'
+import CurrentTheme from '../modules/CurrentTheme.jsx'
 const $ = require('jquery')
 
 const CollectionLeftNav = createReactClass({

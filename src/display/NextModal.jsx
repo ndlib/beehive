@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Link } from 'react-router'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
-const PrevNext = require('../modules/PrevNextUtils.jsx')
+import PrevNext from '../modules/PrevNextUtils.jsx'
 
 const NextModal = createReactClass({
   displayName: 'Next Modal Link',
@@ -11,10 +11,6 @@ const NextModal = createReactClass({
   propTypes: {
     url: PropTypes.string.isRequired,
     offsetTop: PropTypes.number,
-  },
-
-  contextTypes: {
-    muiTheme: PropTypes.object,
   },
 
   getDefaultProps: function () {

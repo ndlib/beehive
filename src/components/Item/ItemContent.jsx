@@ -4,9 +4,9 @@ import createReactClass from 'create-react-class'
 import { Button } from '@material-ui/core'
 import AddReferral from '../../modules/AddReferral.js'
 import MediaQuery from 'react-responsive'
-const Details = require('../../display/Details.jsx')
-const OpenseadragonViewer = require('../../display/OpenseadragonViewer.jsx')
-const MultimediaViewer = require('../../layout/MultimediaViewer.jsx')
+import Details from '../../display/Details.jsx'
+import OpenseadragonViewer from '../../display/OpenseadragonViewer.jsx'
+import MultimediaViewer from '../../layout/MultimediaViewer.jsx'
 
 const ItemContent = createReactClass({
   displayName: 'ItemContent',

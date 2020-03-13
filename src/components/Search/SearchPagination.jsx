@@ -4,7 +4,7 @@ import createReactClass from 'create-react-class'
 import { Link } from 'react-router-dom'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
-const SearchStore = require('../../store/SearchStore.js')
+import SearchStore from '../../store/SearchStore.js'
 
 const SearchPagination = createReactClass({
   propTypes: {

@@ -2,8 +2,8 @@ import React from 'react'
 import createReactClass from 'create-react-class'
 import { List } from '@material-ui/core'
 import ListSubheader from '@material-ui/core/ListSubheader'
-const SearchStore = require('../../store/SearchStore.js')
-const FacetItem = require('./FacetItem.jsx')
+import SearchStore from '../../store/SearchStore.js'
+import FacetItem from './FacetItem.jsx'
 
 const SearchFacets = createReactClass({
   values: function (facet) {

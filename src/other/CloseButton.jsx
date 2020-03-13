@@ -4,7 +4,7 @@ import createReactClass from 'create-react-class'
 import { Button } from '@material-ui/core'
 import ClearIcon from '@material-ui/icons/Clear'
 import { Link } from 'react-router-dom'
-const SearchStore = require('../store/SearchStore.js')
+import SearchStore from '../store/SearchStore.js'
 
 const CloseButton = createReactClass({
   propTypes: {

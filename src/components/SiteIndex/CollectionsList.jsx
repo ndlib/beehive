@@ -1,48 +1,40 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import createReactClass from 'create-react-class'
 import { GridList } from '@material-ui/core'
 import MediaQuery from 'react-responsive'
 
-const CollectionCard = require('./CollectionCard.jsx')
+import CollectionCard from './CollectionCard.jsx'
 
-const CollectionsList = createReactClass({
-  displayName: 'Collections List',
+const reverseComponents = (components) => {
+  const temp = []
+  const len = components.length
+  for (let i = (len - 1); i !== -1; i--) {
+    temp.push(components[i])
+  }
+  return temp
+}
 
-  propTypes: {
-    collections: PropTypes.array,
-  },
+class CollectionsList extends Component {
+  constructor(props) {
+    super(props)
+    this.gridList = this.gridList.bind(this)
+  }
 
-  collectionNodes: function () {
-    return this.reverseCollection().map(function (collection, index) {
-      return (
-        <CollectionCard
-          collection={collection}
-          key={index}
-          cardHeight='450'
-        />
-      )
-    })
-  },
-
-  reverseCollection: function () {
-    const temp = []
-    const len = this.props.collections.length
-    for (let i = (len - 1); i !== -1; i--) {
-      temp.push(this.props.collections[i])
-    }
-    return temp
-  },
-
-  gridList: function (cols) {
+  gridList(cols) {
     return (
       <GridList cols={cols} cellHeight='auto' padding={24}>
-        {this.collectionNodes()}
+        {reverseComponents(this.props.collections).map((collection) => (
+          <CollectionCard
+            collection={collection}
+            key={collection['@id']}
+            cardHeight='450'
+          />
+        ))}
       </GridList>
     )
-  },
+  }
 
-  render: function () {
+  render() {
     return (
       <div>
         <MediaQuery maxWidth={650}>
@@ -56,7 +48,11 @@ const CollectionsList = createReactClass({
         </MediaQuery>
       </div>
     )
-  },
-})
+  }
+}
+
+CollectionsList.propTypes = {
+  collections: PropTypes.array,
+}
 
 export default CollectionsList

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Toolbar, Typography } from '@material-ui/core'
-const CloseButton = require('../../other/CloseButton.jsx')
+import CloseButton from '../../other/CloseButton.jsx'
 
 const ShowcaseTitleBar = createReactClass({
 

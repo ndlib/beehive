@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import PrintIcon from '@material-ui/icons/Print'
-const MetadataItem = require('./MetadataItem.jsx')
-const ConfigurationStore = require('../store/ConfigurationStore.js')
+import MetadataItem from './MetadataItem.jsx'
+import ConfigurationStore from '../store/ConfigurationStore.js'
 
 const MetadataList = createReactClass({
   propTypes: {

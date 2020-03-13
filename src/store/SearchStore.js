@@ -6,9 +6,9 @@
 // the store will emit a single SearchStoreChanged event, regardless of why it changed.
 // If a property changes that does not change the results, it will emit an individual
 // event specific to that change, such as SearchStoreSelectedItemChanged.
-const AppDispatcher = require('../dispatcher/AppDispatcher.jsx')
-const EventEmitter = require('events').EventEmitter
-const SearchActionTypes = require('../constants/SearchActionTypes.jsx')
+import AppDispatcher from '../dispatcher/AppDispatcher.jsx'
+import SearchActionTypes from '../constants/SearchActionTypes.jsx'
+const EventEmitter = require('events')
 const $ = require('jquery')
 
 class SearchStore extends EventEmitter {

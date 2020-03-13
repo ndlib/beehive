@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Paper, Toolbar, Typography } from '@material-ui/core'
 import JSONLD from '../JSONLD.jsx'
-const CloseButton = require('../../other/CloseButton.jsx')
-const SideNavButton = require('../../other/SideNavButton.jsx')
-const PageContent = require('../../layout/PageContent.jsx')
-const SearchStore = require('../../store/SearchStore.js')
-const ItemContent = require('./ItemContent.jsx')
-const BrowserUtils = require('../../modules/BrowserUtils.jsx')
-const CollecitonUrl = require('../../modules/CollectionUrl.jsx')
+import CloseButton from '../../other/CloseButton.jsx'
+import SideNavButton from '../../other/SideNavButton.jsx'
+import PageContent from '../../layout/PageContent.jsx'
+import SearchStore from '../../store/SearchStore.js'
+import ItemContent from './ItemContent.jsx'
+import BrowserUtils from '../../modules/BrowserUtils.jsx'
+import CollecitonUrl from '../../modules/CollectionUrl.jsx'
 
 const ItemShow = createReactClass({
   propTypes: {

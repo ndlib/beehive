@@ -2,16 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Paper } from '@material-ui/core'
-const SitePathCard = require('../Collection/SitePathCard.jsx')
+import SitePathCard from '../Collection/SitePathCard.jsx'
 
 const ShowcaseEndingCard = createReactClass({
   displayName: 'Showcase Ending',
   propTypes: {
     siteObject: PropTypes.object.isRequired,
-  },
-
-  contextTypes: {
-    muiTheme: PropTypes.object,
   },
 
   style: function () {

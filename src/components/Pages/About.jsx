@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import JSONLD from '../JSONLD.jsx'
 import RemoveMarkup from '../../modules/RemoveMarkup'
-const CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
-const PageContent = require('../../layout/PageContent.jsx')
-const CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
-const PagesShow = require('../Pages/PagesShow.jsx')
-const LoadRemote = require('../../modules/LoadRemote.jsx')
+import CollectionPageHeader from '../../layout/CollectionPageHeader.jsx'
+import PageContent from '../../layout/PageContent.jsx'
+import CollectionPageFooter from '../../layout/CollectionPageFooter.jsx'
+import PagesShow from '../Pages/PagesShow.jsx'
+import LoadRemote from '../../modules/LoadRemote.jsx'
 
 const About = createReactClass({
   propTypes: {

@@ -4,7 +4,7 @@ import createReactClass from 'create-react-class'
 import { Card, CardActions, CardMedia, CardHeader, IconButton } from '@material-ui/core'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import { Link } from 'react-router-dom'
-const CollectionUrl = require('../../modules/CollectionUrl.jsx')
+import CollectionUrl from '../../modules/CollectionUrl.jsx'
 
 const SitePathCard = createReactClass({
   propTypes: {

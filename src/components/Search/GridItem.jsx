@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Link } from 'react-router-dom'
 import { Card, CardHeader, CardMedia } from '@material-ui/core'
-const ItemImage = require('./ItemImage.jsx')
-const CollectionUrl = require('../../modules/CollectionUrl.jsx')
+import ItemImage from './ItemImage.jsx'
+import CollectionUrl from '../../modules/CollectionUrl.jsx'
 
 const GridItem = createReactClass({
   propTypes: {

@@ -4,17 +4,17 @@ import createReactClass from 'create-react-class'
 import JSONLD from '../JSONLD.jsx'
 import RemoveMarkup from '../../modules/RemoveMarkup'
 import MediaQuery from 'react-responsive'
-const CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
-const PageContent = require('../../layout/PageContent.jsx')
-const CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
-const PagesShow = require('./PagesShow.jsx')
-const PageTitleBar = require('./PageTitleBar.jsx')
-const SitePathCard = require('../Collection/SitePathCard.jsx')
-const PreviewLink = require('../../layout/PreviewLink.jsx')
-const ConfigurationActions = require('../../actions/ConfigurationActions.js')
-const ConfigurationStore = require('../../store/ConfigurationStore.js')
-const PageTitle = require('../../modules/PageTitle.js')
-const LoadRemote = require('../../modules/LoadRemote.jsx')
+import CollectionPageHeader from '../../layout/CollectionPageHeader.jsx'
+import PageContent from '../../layout/PageContent.jsx'
+import CollectionPageFooter from '../../layout/CollectionPageFooter.jsx'
+import PagesShow from './PagesShow.jsx'
+import PageTitleBar from './PageTitleBar.jsx'
+import SitePathCard from '../Collection/SitePathCard.jsx'
+import PreviewLink from '../../layout/PreviewLink.jsx'
+import ConfigurationActions from '../../actions/ConfigurationActions.js'
+import ConfigurationStore from '../../store/ConfigurationStore.js'
+import PageTitle from '../../modules/PageTitle.js'
+import LoadRemote from '../../modules/LoadRemote.jsx'
 
 const Page = createReactClass({
   propTypes: {

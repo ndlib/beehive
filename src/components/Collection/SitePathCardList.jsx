@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { GridList } from '@material-ui/core'
 import MediaQuery from 'react-responsive'
-const SitePathCard = require('./SitePathCard.jsx')
+import SitePathCard from './SitePathCard.jsx'
 
 const SitePathCardList = createReactClass({
   propTypes: {

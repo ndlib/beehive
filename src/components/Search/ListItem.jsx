@@ -4,8 +4,8 @@ import createReactClass from 'create-react-class'
 import { Link } from 'react-router-dom'
 import { Divider, ListItem } from '@material-ui/core'
 import RemoveMarkup from '../../modules/RemoveMarkup'
-const ItemImage = require('./ItemImage.jsx')
-const CollectionUrl = require('../../modules/CollectionUrl.jsx')
+import ItemImage from './ItemImage.jsx'
+import CollectionUrl from '../../modules/CollectionUrl.jsx'
 
 const MyListItem = createReactClass({
   propTypes: {

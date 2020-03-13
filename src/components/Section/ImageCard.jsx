@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { CardMedia } from '@material-ui/core'
-const CardCaption = require('./CardCaption.jsx')
+import CardCaption from './CardCaption.jsx'
 
 const ImageCard = createReactClass({
 

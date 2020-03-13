@@ -1,91 +1,85 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import createReactClass from 'create-react-class'
-import { Card, CardActions, CardMedia, CardContent, CardHeader, Button } from '@material-ui/core'
+import { Card, CardActions, CardMedia, CardHeader, Button } from '@material-ui/core'
 import { Link } from 'react-router-dom'
-const $ = require('jquery')
-const CollectionUrl = require('../../modules/CollectionUrl.jsx')
+import CollectionUrl from '../../modules/CollectionUrl.jsx'
 
-const CollectionCard = createReactClass({
-  propTypes: {
-    collection: PropTypes.object.isRequired,
-    headerTitle: PropTypes.string,
-  },
+const style = {
+  position: 'relative',
+  cursor: 'pointer',
+  maxHeight:'450px',
+  // padding: theme.spacing.desktopGutter,
+  height:'100%',
+  paddingBottom:'60px',
+}
 
-  style: function () {
-    return {
-      position: 'relative',
-      cursor: 'pointer',
-      maxHeight:'450px',
-      // padding: theme.spacing.desktopGutter,
-      height:'100%',
-      paddingBottom:'60px',
-    }
-  },
+const imageSize = {
+  position: 'absolute',
+  top: '0',
+  left: '0',
+  right: '0',
+  bottom: '0',
+  margin: 'auto',
+  minWidth:'50%',
+  minHeight: '50%',
+  maxWidth: 'initial',
+  maxHeight:'initial',
+  display: 'none',
+}
 
-  imageSize: function () {
-    return {
-      position: 'absolute',
-      top: '0',
-      left: '0',
-      right: '0',
-      bottom: '0',
-      margin: 'auto',
-      minWidth:'50%',
-      minHeight: '50%',
-      maxWidth: 'initial',
-      maxHeight:'initial',
-      display: 'none',
-    }
-  },
+const actionButtonsStyle = {
+  position: 'absolute',
+  bottom:'0',
+  width: '100%',
+  borderTopColor: 'rgba(0,0,0,0.12)',
+  borderTopStyle: 'solid',
+  borderTopWidth: '1px',
+}
 
-  image: function () {
-    if (this.props.collection.image) {
-      const space = ' '
-      const re = new RegExp(space, 'g')
-      return this.props.collection.image['thumbnail/medium'].contentUrl.replace(re, '%20')
-    } else {
-      return '/images/marble.jpg'
-    }
-  },
+const exploreLabelStyle = {
+  color: '#d9a91b',
+}
 
-  description: function () {
-    if (this.props.collection.description) {
-      return (
-        <CardContent style={{ height: '100px' }}>
-          {$(this.props.collection.description).text()}
-        </CardContent>
-      )
-    }
-  },
+const Header = ({ collection }) => {
+  const titleStyle = {
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+  }
+  return (
+    <CardHeader
+      title={collection.name_line_1}
+      titleStyle={titleStyle}
+      subtitle={collection.name_line_2}
+      subtitleStyle={titleStyle}
+    />
+  )
+}
 
-  headerTitle: function () {
-    if (this.props.headerTitle) {
-      return (<CardHeader title={this.props.headerTitle} />)
-    }
-  },
+Header.propTypes = {
+  collection: PropTypes.shape({
+    name_line_1: PropTypes.string,
+    name_line_2: PropTypes.string,
+  }).isRequired,
+}
 
-  CardHeader: function () {
-    const titleStyle = {
-      whiteSpace: 'nowrap',
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',
-    }
-    return (
-      <CardHeader
-        title={this.props.collection.name_line_1}
-        titleStyle={titleStyle}
-        subtitle={this.props.collection.name_line_2}
-        subtitleStyle={titleStyle}
-      />
-    )
-  },
+class CollectionCard extends Component {
+  constructor(props) {
+    super(props)
 
-  cardMedia: function () {
+    this.cardMedia = this.cardMedia.bind(this)
+    this.collectionLink = this.collectionLink.bind(this)
+  }
+
+  cardMedia() {
+    const image = this.props.collection.image
+      ? this.props.collection.image['thumbnail/medium'].contentUrl.replace(new RegExp(' ', 'g'), '%20')
+      : '/images/marble.jpg'
+
     return (
       <CardMedia
         mediaStyle={{
-          background:'url("' + this.image() + '")',
+          background:'url("' + image + '")',
           paddingBottom:'46.85%',
           backgroundSize:'cover',
           backgroundPosition:'top center',
@@ -97,62 +91,54 @@ const CollectionCard = createReactClass({
         className='temp'
         style={{ overflow:'hidden' }}
       >
-        <img src={this.image()} style={this.imageSize()} alt='' />
+        <img src={image} style={imageSize} alt='' />
       </CardMedia>)
-  },
+  }
 
-  actionButtonsStyle: function () {
-    return {
-      position: 'absolute',
-      bottom:'0',
-      width: '100%',
-      borderTopColor: 'rgba(0,0,0,0.12)',
-      borderTopStyle: 'solid',
-      borderTopWidth: '1px',
-    }
-  },
-
-  exploreLabelStyle: function () {
-    return { color: '#d9a91b' }
-  },
-
-  collectionLink: function () {
+  collectionLink() {
     if (this.props.collection.external_url) {
       return (
         <a href={CollectionUrl.collectionUrl(this.props.collection)}>
-          {this.headerTitle()}
+          {this.props.headerTitle && (
+            <CardHeader title={this.props.headerTitle} />
+          )}
           {this.cardMedia()}
-          {this.CardHeader()}
+          <Header collection={this.props.collection} />
         </a>
       )
     }
     return (
       <Link to={CollectionUrl.collectionUrl(this.props.collection)}>
-        {this.headerTitle()}
+        {this.props.headerTitle && (
+          <CardHeader title={this.props.headerTitle} />
+        )}
         {this.cardMedia()}
-        {this.CardHeader()}
+        <Header collection={this.props.collection} />
       </Link>
     )
-  },
+  }
 
-  render: function () {
+  render() {
     return (
-
-      <Card style={this.style()}>
+      <Card style={style}>
         {this.collectionLink()}
-        <CardActions style={this.actionButtonsStyle()}>
+        <CardActions style={actionButtonsStyle}>
           <Button
             href={CollectionUrl.collectionUrl(this.props.collection)}
-            style={this.exploreLabelStyle()}
+            style={exploreLabelStyle}
           >
             Explore
           </Button>
         </CardActions>
       </Card>
-
     )
-  },
-})
+  }
+}
+
+CollectionCard.propTypes = {
+  collection: PropTypes.object.isRequired,
+  headerTitle: PropTypes.string,
+}
 
 // each file will export exactly one component
 export default CollectionCard

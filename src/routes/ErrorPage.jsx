@@ -1,8 +1,8 @@
 import React from 'react'
 import createReactClass from 'create-react-class'
-const PageHeader = require('../layout/PageHeader.jsx')
-const PageContent = require('../layout/PageContent.jsx')
-const PageTitle = require('../modules/PageTitle.js')
+import PageHeader from '../layout/PageHeader.jsx'
+import PageContent from '../layout/PageContent.jsx'
+import PageTitle from '../modules/PageTitle.js'
 
 const ErrorPage = createReactClass({
   componentWillMount () {

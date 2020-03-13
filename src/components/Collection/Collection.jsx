@@ -3,16 +3,16 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import JSONLD from '../JSONLD.jsx'
 import RemoveMarkup from '../../modules/RemoveMarkup'
-const CollectionPageHeader = require('../../layout/CollectionPageHeader.jsx')
-const CollectionShow = require('./CollectionShow.jsx')
-const PageContent = require('../../layout/PageContent.jsx')
-const CollectionIntro = require('./CollectionIntro.jsx')
-const CollectionShowSitePath = require('./CollectionShowSitePath.jsx')
-const CollectionPageFooter = require('../../layout/CollectionPageFooter.jsx')
-const PageTitle = require('../../modules/PageTitle.js')
-const ConfigurationStore = require('../../store/ConfigurationStore.js')
-const ConfigurationActions = require('../../actions/ConfigurationActions.js')
-const LoadRemote = require('../../modules/LoadRemote.jsx')
+import CollectionPageHeader from '../../layout/CollectionPageHeader.jsx'
+import CollectionShow from './CollectionShow.jsx'
+import PageContent from '../../layout/PageContent.jsx'
+import CollectionIntro from './CollectionIntro.jsx'
+import CollectionShowSitePath from './CollectionShowSitePath.jsx'
+import CollectionPageFooter from '../../layout/CollectionPageFooter.jsx'
+import PageTitle from '../../modules/PageTitle.js'
+import ConfigurationStore from '../../store/ConfigurationStore.js'
+import ConfigurationActions from '../../actions/ConfigurationActions.js'
+import LoadRemote from '../../modules/LoadRemote.jsx'
 
 const Collection = createReactClass({
   propTypes: {

@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-const SitePathCard = require('../Collection/SitePathCard.jsx')
-const PagesShow = require('../Pages/PagesShow.jsx')
-const PreviewLink = require('../../layout/PreviewLink.jsx')
+import SitePathCard from '../Collection/SitePathCard.jsx'
+import PagesShow from '../Pages/PagesShow.jsx'
+import PreviewLink from '../../layout/PreviewLink.jsx'
 
 const CollectionDescription = createReactClass({
   propTypes: {

@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-const CollectionIntroCard = require('./CollectionIntroCard.jsx')
-const SitePathCardList = require('./SitePathCardList.jsx')
+import CollectionIntroCard from './CollectionIntroCard.jsx'
+import SitePathCardList from './SitePathCardList.jsx'
 
 const CollectionShowSitePath = createReactClass({
 

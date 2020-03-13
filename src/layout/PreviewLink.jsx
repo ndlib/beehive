@@ -5,8 +5,8 @@ import { Card, CardMedia, CardHeader, IconButton } from '@material-ui/core'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import { Link } from 'react-router-dom'
 import MediaQuery from 'react-responsive'
-const HoneycombImage = require('../other/HoneycombImage.jsx')
-const CollectionUrl = require('../modules/CollectionUrl.jsx')
+import HoneycombImage from '../other/HoneycombImage.jsx'
+import CollectionUrl from '../modules/CollectionUrl.jsx'
 
 const PreviewLink = createReactClass({
   propTypes: {
