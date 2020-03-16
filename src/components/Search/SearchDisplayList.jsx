@@ -1,119 +1,79 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import createReactClass from 'create-react-class'
-import { GridList, List, Paper } from '@material-ui/core'
-import MediaQuery from 'react-responsive'
+import React, { useState, useEffect } from 'react'
+import { GridList, List, Paper, useMediaQuery } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
 import SearchStore from '../../store/SearchStore.js'
 import SearchPagination from './SearchPagination.jsx'
 import ItemListItem from './ItemListItem.jsx'
 import SearchSidebar from './SearchSidebar.jsx'
 
-const SearchDisplayList = createReactClass({
-  propTypes: {
-    compact: PropTypes.bool,
+const useStyles = makeStyles({
+  header: {
+    width: '100%',
   },
-  getDefaultProps: function () {
-    return {
-      compact: false,
-    }
+  listContainer: {
+    width: props => props.isSmall ? '100%' : '74%',
   },
-
-  getInitialState: function () {
-    return {
-      sidebar: false,
-      view: SearchStore.view,
-    }
-  },
-
-  componentDidMount: function () {
-    if (SearchStore.facets && SearchStore.facets.length) {
-      this.setState({ sidebar: true })
-    }
-  },
-
-  componentWillMount: function () {
-    // View changes don't change the top level query, so we have to listen
-    // for those changes in order to force a rerender
-    SearchStore.on('SearchStoreViewChanged', this.storeViewChanged)
-  },
-
-  storeViewChanged: function () {
-    this.setState({ view: SearchStore.view })
-  },
-
-  itemList: function () {
-    const view = this.state.view
-    let itemNodes = SearchStore.items.map(function (item) {
-      return (
-        <ItemListItem
-          item={item}
-          view={view}
-          key={item['@id']}
-        />
-      )
-    })
-    if (itemNodes.length === 0) {
-      itemNodes = (
-        <div style={{ color:'rgba(0, 0, 0, 0.870588)', fontStyle:'italic', textAlign:'center' }}>
-          No matching results could be found.
-        </div>
-      )
-    }
-    if (view === 'grid') {
-      return (
-        <div>
-          <MediaQuery maxWidth={700}>
-            <GridList cols={1} cellHeight='auto' padding={20}>
-              {itemNodes}
-            </GridList>
-          </MediaQuery>
-          <MediaQuery minWidth={700} maxWidth={1280}>
-            <GridList cols={2} cellHeight='auto' padding={20}>
-              {itemNodes}
-            </GridList>
-          </MediaQuery>
-          <MediaQuery minWidth={1280}>
-            <GridList cols={3} cellHeight='auto' padding={20}>
-              {itemNodes}
-            </GridList>
-          </MediaQuery>
-        </div>
-      )
-    } else {
-      return (
-        <List>
-          {itemNodes}
-        </List>
-      )
-    }
-  },
-
-  render: function () {
-    return (
-      <div>
-        <Paper style={{ width: '100%' }} zDepth={0}>
-          <h2>Browse Collection</h2>
-        </Paper>
-        <MediaQuery maxWidth={700}>
-          <Paper zDepth={0}>
-            <SearchPagination />
-            {this.itemList()}
-            <SearchPagination />
-          </Paper>
-        </MediaQuery>
-
-        <MediaQuery minWidth={700}>
-          <SearchSidebar show={this.state.sidebar} />
-
-          <Paper style={{ width: '74%' }} zDepth={0}>
-            <SearchPagination compact={this.props.compact} />
-            {this.itemList()}
-            <SearchPagination compact={this.props.compact} />
-          </Paper>
-        </MediaQuery>
-      </div>
-    )
+  noItems: {
+    color: 'rgba(0, 0, 0, 0.870588)',
+    fontStyle: 'italic',
+    textAlign: 'center',
   },
 })
+
+const SearchDisplayList = () => {
+  const sidebar = !!(SearchStore.facets && SearchStore.facets.length)
+  const [view, setView] = useState(SearchStore.view)
+  const [storeChanged, setStoreChanged] = useState(new Date()) // eslint-disable-line no-unused-vars
+
+  useEffect(() => {
+    const action = () => setStoreChanged(new Date())
+    SearchStore.on('SearchStoreChanged', action)
+    return () => SearchStore.off('SearchStoreChanged', action)
+  })
+
+  useEffect(() => {
+    const action = () => setView(SearchStore.view)
+    SearchStore.on('SearchStoreViewChanged', action)
+    return () => SearchStore.off('SearchStoreViewChanged', action)
+  })
+
+  const isSmall = useMediaQuery('(max-width: 699px)')
+  const isLarge = useMediaQuery('(min-width: 1280px)')
+  const classes = useStyles({
+    isSmall,
+  })
+
+  const gridColumns = isLarge ? 3 : (isSmall ? 1 : 2)
+  const itemNodes = SearchStore.items.length ? SearchStore.items.map(item => (
+    <ItemListItem key={item.id} item={item} view={view} />
+  )) : (
+    <div className={classes.noItems}>
+      No matching results could be found.
+    </div>
+  )
+  return (
+    <React.Fragment>
+      <Paper className={classes.header} elevation={0}>
+        <h2>Browse Collection</h2>
+      </Paper>
+      {!isSmall && (
+        <SearchSidebar show={sidebar} />
+      )}
+      <Paper className={classes.listContainer} elevation={0}>
+        <SearchPagination />
+        {view === 'grid' ? (
+          <GridList cols={gridColumns} cellHeight='auto' spacing={20}>
+            {itemNodes}
+          </GridList>
+        ) : (
+          <List>
+            {itemNodes}
+          </List>
+        )}
+        <SearchPagination />
+      </Paper>
+    </React.Fragment>
+  )
+}
 
 export default SearchDisplayList

@@ -19,13 +19,3 @@
   width: auto;
   opacity: 1;
 }
-
-.hc-thumbnail-loading {
-  background-image: asset-url("ajax-loader.gif");
-  background-position: center;
-  background-repeat: no-repeat;
-
-  .hc-thumbnail-image {
-    opacity: 0;
-  }
-}

@@ -22,16 +22,8 @@ const cardHeadersCommon = () => {
   }
 }
 
-const pageWidth = () => {
-  return {
-    // maxWidth: '960px',
-    margin: '0 8%',
-  }
-}
-
 export default {
   lightIconStyle,
   darkIconStyle,
   cardHeadersCommon,
-  pageWidth,
 }

@@ -12,7 +12,7 @@ const withCallback = (url, callback) => {
       if (window.location.hostname !== 'localhost') {
         window.location = window.location.origin + '/404'
       } else {
-        alert('404 Redirect prevented')
+        alert('404 Redirect prevented - Check Honeycomb and solr index')
       }
     },
   })

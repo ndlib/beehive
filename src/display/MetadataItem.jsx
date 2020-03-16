@@ -46,7 +46,7 @@ const MetadataItem = createReactClass({
     return (
       <dl>
         <dt style={Styles.fieldName}>{this.props.metadata.label.toUpperCase()}</dt>
-        <Divider style={Styles.divider} inset={false} />
+        <Divider style={Styles.divider} />
         <dd style={Styles.fieldValue}>{this.map_arrays_to_values()}</dd>
       </dl>
     )

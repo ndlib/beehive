@@ -18,6 +18,12 @@ class ConfigurationStore extends StoreEventEmitter {
       },
     })
 
+    Object.defineProperty(this, 'loaded', {
+      get: function () {
+        return this._loaded
+      },
+    })
+
     AppDispatcher.register(this.receiveAction.bind(this))
   }
 
@@ -38,10 +44,6 @@ class ConfigurationStore extends StoreEventEmitter {
       default:
         break
     }
-  }
-
-  loaded () {
-    return this._loaded
   }
 
   searchEnabled () {

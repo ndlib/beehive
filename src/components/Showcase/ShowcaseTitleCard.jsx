@@ -1,121 +1,86 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import createReactClass from 'create-react-class'
-import { Card, CardContent, CardHeader } from '@material-ui/core'
-import MediaQuery from 'react-responsive'
+import { Card, CardContent, CardHeader, useMediaQuery } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
 
-const ShowcaseTitleCard = createReactClass({
-  propTypes: {
-    showcase: PropTypes.object.isRequired,
-    height: PropTypes.number,
+const useStyles = makeStyles({
+  container: {
+    display: 'inline-block',
+    verticalAlign: 'top',
+    position: 'relative',
+    padding: '5px',
+    textAlign: 'center',
+    overflow: 'hidden',
+    width: '85vw',
+    boxShadow: 'none',
+    backgroundColor: 'rgba(0,0,0,0)',
+    height: props => props.height ? (props.height + 'px') : undefined,
   },
-
-  outerStyle: function () {
-    const style = {
-      display: 'inline-block',
-      verticalAlign: 'top',
-      position: 'relative',
-      padding: '5px',
-      textAlign: 'center',
-      overflow: 'hidden',
-      width: '85vw',
-      boxShadow: 'none',
-      backgroundColor: 'rgba(0,0,0,0)',
-    }
-
-    if (this.props.height) {
-      style.height = this.props.height + 'px'
-    }
-
-    return style
+  header: {
+    textShadow: '2px 2px 3px #333333',
+    textTransform: 'uppercase',
+    color: '#fff',
+    backgroundColor: 'rgba(0,0,0,0.1)',
+    whiteSpace: 'normal',
+    lineHeight: '2em !important',
+    marginTop: props => props.height ? (Math.round(props.height * 0.15) + 'px') : undefined,
   },
-
-  headerStyle: function () {
-    let marginTop
-    if (this.props.height) {
-      marginTop = Math.round(this.props.height * 0.15) + 'px'
-    }
-    return {
-      marginTop: marginTop,
-      textShadow: '2px 2px 3px #333333',
-      textTransform: 'uppercase',
-      color: '#fff',
-      backgroundColor: 'rgba(0,0,0,0.1)',
-      whiteSpace:'normal',
-      lineHeight:'2em !important',
-    }
+  title: {
+    color: '#fff',
+    fontSize: '4vw',
+    paddingBottom: '10px',
+    lineHeight: '4.1vw',
   },
-
-  titleStyle: function () {
-    return {
-      color: '#fff',
-      fontSize: '4vw',
-      paddingBottom: '10px',
-      lineHeight:'4.1vw',
-    }
+  subtitle: {
+    color: '#fff',
+    fontSize: '3vw',
+    lineHeight:'3.1vw',
   },
-
-  subtitleStyle: function () {
-    return {
-      color: '#fff',
-      fontSize: '3vw',
-      lineHeight:'3.1vw',
-    }
-  },
-
-  textStyle: function () {
-    return {
-      color: '#fff',
-      textShadow: '1px 1px 2px #333333',
-      fontSize: '18px',
-      backgroundColor: 'rgba(0,0,0,0.1)',
-      whiteSpace: 'normal',
-    }
-  },
-
-  names: function () {
-    const names = []
-    names.push(
-      <h2 className='showcase-name-1' key={1}>{this.props.showcase.name_line_1}</h2>,
-    )
-    if (this.props.showcase.name_line_2) {
-      names.push(
-        <br key='br' />,
-      )
-      names.push(
-        <h3 className='showcase-name-2' key={2}>{this.props.showcase.name_line_2}</h3>,
-      )
-    }
-    return names
-  },
-
-  editTitle: function () {
-    window.location = this.props.showcase.editUrl
-  },
-
-  render: function () {
-    let description
-    if (this.props.showcase.description) {
-      description = this.props.showcase.description.toString()
-    }
-
-    return (
-      <Card style={this.outerStyle()}>
-        <CardHeader
-          title={this.props.showcase.name_line_1}
-          subtitle={this.props.showcase.name_line_2}
-          style={this.headerStyle()}
-          titleStyle={this.titleStyle()}
-          subtitleStyle={this.subtitleStyle()}
-        />
-        <MediaQuery minWidth={650}>
-          <CardContent style={this.textStyle()}>
-            {description}
-          </CardContent>
-        </MediaQuery>
-      </Card>
-    )
+  description: {
+    color: '#fff',
+    textShadow: '1px 1px 2px #333333',
+    fontSize: '18px',
+    backgroundColor: 'rgba(0,0,0,0.1)',
+    whiteSpace: 'normal',
   },
 })
+
+const ShowcaseTitleCard = ({ showcase, height }) => {
+  const isMobile = useMediaQuery('(max-width: 649px)')
+  const classes = useStyles({
+    height,
+  })
+  return (
+    <Card className={classes.container}>
+      <CardHeader
+        title={showcase.name_line_1}
+        subheader={showcase.name_line_2}
+        classes={{
+          root: classes.header,
+          title: classes.title,
+          subheader: classes.subtitle,
+        }}
+      />
+      {!isMobile && (
+        <CardContent className={classes.description}>
+          {showcase.description || null}
+        </CardContent>
+      )}
+    </Card>
+  )
+}
+
+ShowcaseTitleCard.propTypes = {
+  showcase: PropTypes.shape({
+    name_line_1: PropTypes.string,
+    name_line_2: PropTypes.string,
+    description: PropTypes.string,
+  }).isRequired,
+  height: PropTypes.number,
+}
+
+ShowcaseTitleCard.defaultProps = {
+  height: 0,
+}
 
 export default ShowcaseTitleCard

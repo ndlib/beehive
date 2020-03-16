@@ -1,4 +1,4 @@
-const HoneycombURL = require('../modules/HoneycombURL.js')
+import HoneycombURL from 'modules/HoneycombURL'
 
 const introUrl = (collection) => {
   let url

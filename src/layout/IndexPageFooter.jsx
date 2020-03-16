@@ -7,7 +7,7 @@ const IndexPageFooter = createReactClass({
 
   render: function () {
     return (
-      <Paper circle={false} rounded={false}>
+      <Paper square>
         <footer>
           <Link to='http://library.nd.edu' className='hesburgh-logo' style={{ float: 'left' }}>
             Hesburgh Logo

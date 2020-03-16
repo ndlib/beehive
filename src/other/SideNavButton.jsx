@@ -82,20 +82,12 @@ const SideNavButton = createReactClass({
     return styles
   },
 
-  chevron: function () {
-    if (this.props.rightIcon) {
-      return 'chevron_right'
-    } else {
-      return 'chevron_left'
-    }
-  },
-
   content: function () {
     return (
       <Button
         onMouseDown={this.props.onMouseDown}
         style={this.buttonStyles()}
-        onKeyboardFocus={this.handleKeyboardFocus}
+        onFocus={this.handleKeyboardFocus}
         onMouseLeave={this.handleMouseLeave}
         onMouseEnter={this.handleMouseEnter}
         onTouchStart={this.handleTouchStart}

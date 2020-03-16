@@ -1,72 +1,47 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import createReactClass from 'create-react-class'
 import { Toolbar, Typography } from '@material-ui/core'
-import CloseButton from '../../other/CloseButton.jsx'
+import { makeStyles } from '@material-ui/core/styles'
+import CloseButton from 'other/CloseButton'
 
-const PageTitleBar = createReactClass({
-  propTypes: {
-    title: PropTypes.string.isRequired,
-    height: PropTypes.number,
+const useStyles = makeStyles({
+  bar: {
+    minHeight: props => props.height + 'px',
+    height: props => props.height + 'px',
+    opacity: 1,
+    backgroundColor: 'rgba(51,51,51,1)',
+    zIndex: '1',
   },
-
-  getDefaultProps: function () {
-    return {
-      height: 35,
-    }
-  },
-
-  getInitialState: function () {
-    return {
-      opacity: 1,
-    }
-  },
-
-  style: function () {
-    return {
-      height: this.props.height + 'px',
-      opacity: this.state.opacity,
-      backgroundColor: 'rgba(51,51,51,1)',
-      zIndex: '1',
-    }
-  },
-
-  onScroll: function (event) {
-    const element = event.target.scrollingElement
-    const a = element.scrollTop / element.scrollHeight
-    const percentVisible = Math.log2(1 + a * 10.0)
-    this.setState({
-      opacity: percentVisible,
-    })
-  },
-
-  titleBarStyle: function () {
-    return {
-      lineHeight: this.props.height + 'px',
-      color: 'white',
-    }
-  },
-
-  closeButtonStyle: function () {
-    return {
-      marginLeft: 'auto',
-      height: '100%',
-      float: 'right',
-    }
-  },
-
-  render: function () {
-    return (
-      <Toolbar id='PageTitleBar' className='title-bar' style={this.style()}>
-        <div style={{ float:'left' }}>
-          <Typography variant='h2' style={this.titleBarStyle()}>{this.props.title}</Typography>
-        </div>
-        <div style={this.closeButtonStyle()}>
-          <CloseButton alternate height={this.props.height} />
-        </div>
-      </Toolbar>
-    )
+  title: {
+    lineHeight: props => props.height + 'px',
+    color: 'white',
+    paddingRight: '16px',
+    fontSize: '20px',
+    position: 'relative',
   },
 })
+
+const PageTitleBar = ({ title, height }) => {
+  const classes = useStyles({
+    height,
+  })
+  return (
+    <Toolbar id='PageTitleBar' className={`title-bar ${classes.bar}`}>
+      <div style={{ float:'left' }}>
+        <Typography variant='h2' className={classes.title} noWrap>{title}</Typography>
+      </div>
+      <CloseButton height={height} />
+    </Toolbar>
+  )
+}
+
+PageTitleBar.propTypes = {
+  title: PropTypes.string.isRequired,
+  height: PropTypes.number,
+}
+
+PageTitleBar.defaultProps = {
+  height: 35,
+}
 
 export default PageTitleBar

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import SiteIndex from '../components/SiteIndex/SiteIndex.jsx'
+import SiteIndex from '../components/SiteIndex'
 import HoneycombURL from '../modules/HoneycombURL.js'
 
 class SiteIndexPage extends Component {

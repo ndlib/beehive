@@ -1,43 +1,32 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import createReactClass from 'create-react-class'
 import { Button } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
 import ClearIcon from '@material-ui/icons/Clear'
 import { Link } from 'react-router-dom'
 import SearchStore from '../store/SearchStore.js'
 
-const CloseButton = createReactClass({
-  propTypes: {
-    href: PropTypes.string,
-    alternate: PropTypes.bool,
+const useStyles = makeStyles(theme => ({
+  closeButton: {
+    color: props => props.darkIcon ? theme.palette.common.black : theme.palette.common.white,
   },
-
-  getDefaultProps: function () {
-    return {
-      alternate: false,
-    }
+  icon: {
+    border: 'solid 1px',
+    verticalAlign: 'middle',
   },
-
-  color: function () {
-    if (this.props.alternate) {
-      return '#ffffff'
-    } else {
-      return '#000000'
-    }
+  container: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    marginLeft: 'auto',
+    height: '100%',
+    padding: '0',
   },
+}))
 
-  iconStyle: function () {
-    return { border:'solid 1px', verticalAlign: 'middle', width: 'initial', height: 'initial', color: this.color() }
-  },
-
+const CloseButton = ({ href, darkIcon }) => {
   // generate what the back location url is
-  href: function () {
-    if (this.props.href) {
-      return this.props.href
-    }
-
-    // go back to the search page if we have search information in the store
-
+  const destination = href || (() => {
     const current = window.location.pathname
     let stopword
 
@@ -64,20 +53,23 @@ const CloseButton = createReactClass({
 
     const re = RegExp(`((?:\/[^\/]+)+)\/${stopword}`) // eslint-disable-line no-useless-escape
     return re.exec(current)[1]
-  },
+  })()
 
-  render: function () {
-    return (
-      <Link to={this.href()}>
-        <Button
-          disableRipple
-          style={{ height: '100%', padding: 0 }}
-        >
-          <ClearIcon className='material-icons' style={this.iconStyle()} />
-        </Button>
-      </Link>
-    )
-  },
-})
+  const classes = useStyles({
+    darkIcon,
+  })
+  return (
+    <Link to={destination} className={classes.container}>
+      <Button className={classes.closeButton}>
+        <ClearIcon className={`material-icons ${classes.icon}`} />
+      </Button>
+    </Link>
+  )
+}
+
+CloseButton.propTypes = {
+  href: PropTypes.string,
+  darkIcon: PropTypes.bool,
+}
 
 export default CloseButton

@@ -1,78 +1,92 @@
-import React from 'react'
-import createReactClass from 'create-react-class'
+import React, { useState, useEffect } from 'react'
+import { FormControl, Select, MenuItem, InputLabel } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
 import SearchActions from '../../actions/SearchActions.js'
 import SearchStore from '../../store/SearchStore.js'
 
-const SearchSort = createReactClass({
-  getInitialState: function () {
-    const state = {
-      selectValue: 0,
-    }
-    return state
+const useStyles = makeStyles({
+  container: {
+    display: 'flex',
+    padding: '15px 10px',
+    alignItems: 'center',
   },
-
-  onChange: function (prop, e) {
-    this.setSort(e.target.value)
+  label: {
+    fontSize: '16px',
+    color: 'white',
+    margin: '0px',
   },
-
-  setSort: function (sortOption) {
-    SearchActions.setSort(sortOption)
+  formControl: {
+    display: 'inline-block',
+    borderRadius: '2px',
+    overflow: 'hidden',
+    minWidth: '120px',
+    verticalAlign: 'middle',
+    marginLeft: '5px',
+    backgroundColor: 'white',
   },
-
-  sortStyle: function () {
-    return ({
-      display:'inline-block',
-      borderRadius: '2px',
-      overflow: 'hidden',
-      width:'120px',
-      verticalAlign: 'middle',
-      marginLeft: '5px',
-      background: 'url(/images/arrowdown.gif) no-repeat 90% 50% #fff',
-    })
+  sortSelect: {
+    border: 'none',
+    borderRadius: '2px',
+    boxShadow: 'none',
+    appearance: 'none',
+    backgroundColor: 'transparent',
+    width: '100%',
+    color: 'black',
+    fontSize: '16px',
+    '& .MuiSelect-select': {
+      padding: '4px 6px',
+    },
   },
-
-  sortSelectStyle: function () {
-    return ({
-      background: 'transparent',
-      padding: '7px 8px',
-      border: 'none',
-      boxShadow: 'none',
-      appearance: 'none',
-      backgroundColor: 'transparent',
-      backgroundImage: 'none',
-      width: '130%',
-      color: 'black',
-    })
-  },
-
-  sortOptions: function () {
-    return SearchStore.sorts.map(function (option) {
-      return (<option key={option.value} value={option.value}>{option.name}</option>)
-    })
-  },
-
-  render: function () {
-    if (SearchStore.sorts.length > 0) {
-      return (
-        <div style={{ float: 'left', padding: '10px', paddingTop: '15px', color: 'white', fontSize: '16px' }}>
-          Sort By:
-          <div style={this.sortStyle()}>
-            <select
-              ref='searchSort'
-              onChange={() => {
-                this.onChange('selectValue')
-              }}
-              defaultValue={SearchStore.sortOption}
-              style={this.sortSelectStyle()}
-            >
-              {this.sortOptions()}
-            </select>
-          </div>
-        </div>
-      )
-    } else {
-      return null
-    }
+  dropdownItem: {
+    fontSize: '16px',
   },
 })
+
+const SearchSort = () => {
+  const [sortOption, setSortOption] = useState(SearchStore.sortOption || SearchStore.sorts[0].value)
+  const classes = useStyles()
+
+  useEffect(() => {
+    let newVal = sortOption
+    // Get the sort query param from the url
+    const regex = /\S+&sort=/
+    if (!sortOption && window.location.search.match(regex)) {
+      newVal = window.location.search.replace(regex, '').split('&')[0]
+    } else {
+      newVal = SearchStore.sortOption
+    }
+    if (newVal !== sortOption) {
+      SearchActions.setSort(sortOption)
+    }
+  }, [sortOption])
+
+  const handleChange = (event) => {
+    setSortOption(event.target.value)
+  }
+
+  if (SearchStore.sorts.length <= 0) {
+    return null
+  }
+
+  return (
+    <div className={classes.container}>
+      <InputLabel id='sortOptionsDropdownLabel' className={classes.label}>Sort By:</InputLabel>
+      <FormControl className={classes.formControl}>
+        <Select
+          labelId='sortOptionsDropdownLabel'
+          onChange={handleChange}
+          value={sortOption}
+          className={classes.sortSelect}
+        >
+          {SearchStore.sorts.map((option) => (
+            <MenuItem key={option.value} value={option.value} className={classes.dropdownItem}>
+              {option.name}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+    </div>
+  )
+}
+
 export default SearchSort

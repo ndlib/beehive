@@ -33,7 +33,7 @@ if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
 
 // We need to provide a custom onError function for httpProxyMiddleware.
 // It allows us to log custom error messages on the console.
-const onProxyError = (proxy) => {
+function onProxyError(proxy) {
   return function(err, req, res) {
     const host = req.headers && req.headers.host
     console.log(
@@ -57,7 +57,7 @@ const onProxyError = (proxy) => {
   }
 }
 
-const addMiddleware = (devServer) => {
+function addMiddleware(devServer) {
   // `proxy` lets you to specify a fallback server during development.
   // Every unrecognized request will be forwarded to it.
   const proxy = require(paths.appPackageJson).proxy
@@ -161,6 +161,12 @@ const runDevServer = (port) => {
     // in the Webpack development configuration. Note that only changes
     // to CSS are currently hot reloaded. JS changes will refresh the browser.
     hot: true,
+    // Use 'ws' instead of 'sockjs-node' on server since we're using native
+    // websockets in `webpackHotDevClient`.
+    transportMode: 'ws',
+    // Prevent a WS client from getting injected as we're already including
+    // `webpackHotDevClient`.
+    injectClient: false,
     // It is important to tell WebpackDevServer to use the same "root" path
     // as we specified in the config. In development, we always serve from /.
     publicPath: config.output.publicPath,

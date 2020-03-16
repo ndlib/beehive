@@ -1,44 +1,26 @@
-import React from 'react'
-import createReactClass from 'create-react-class'
+import React, { useEffect, useState } from 'react'
 import { List } from '@material-ui/core'
 import ListSubheader from '@material-ui/core/ListSubheader'
 import SearchStore from '../../store/SearchStore.js'
 import FacetItem from './FacetItem.jsx'
 
-const SearchFacets = createReactClass({
-  values: function (facet) {
-    if (facet.values) {
-      return (facet.values.map(function (e, index) {
-        return (
-          <FacetItem
-            field={facet.field}
-            facet={e}
-            key={index}
-          />
-        )
-      }))
-    }
-    return null
-  },
+const SearchFacets = () => {
+  const [facets, setFacets] = useState(SearchStore.facets)
 
-  facets: function () {
-    return SearchStore.facets.map(function (e, index) {
-      return (
-        <List key={index}>
-          <ListSubheader>{e.name}</ListSubheader>
-          {this.values(e)}
-        </List>
-      )
-    }.bind(this))
-  },
+  useEffect(() => {
+    const action = () => setFacets(SearchStore.facets)
+    SearchStore.on('SearchStoreChanged', action)
+    return () => SearchStore.off('SearchStoreChanged', action)
+  })
 
-  render: function () {
-    return (
-      <div>
-        {this.facets()}
-      </div>
-    )
-  },
-})
+  return facets ? facets.map(facet => (
+    <List key={facet.name}>
+      <ListSubheader>{facet.name}</ListSubheader>
+      {facet.values ? facet.values.map(valueObj => (
+        <FacetItem key={valueObj.name} field={facet.field} facet={valueObj} />
+      )) : null}
+    </List>
+  )) : null
+}
 
 export default SearchFacets

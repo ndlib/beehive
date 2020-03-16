@@ -1,62 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import createReactClass from 'create-react-class'
-import { GridList } from '@material-ui/core'
-import MediaQuery from 'react-responsive'
+import { GridList, GridListTile, useMediaQuery } from '@material-ui/core'
 import SitePathCard from './SitePathCard.jsx'
 
-const SitePathCardList = createReactClass({
-  propTypes: {
-    sitePath: PropTypes.array.isRequired,
-    intro: PropTypes.element,
-  },
+const SitePathCardList = ({ sitePath, intro }) => {
+  const columns = 1 +
+    useMediaQuery('(min-width:650px)') + useMediaQuery('(min-width:1224px)') + useMediaQuery('(min-width:1725px)')
 
-  pathNodes: function () {
-    return this.props.sitePath.map(function (siteObject, index) {
-      return (<SitePathCard siteObject={siteObject} key={index} />)
-    })
-  },
+  return (sitePath.length > 0 || intro) ? (
+    <GridList cols={columns} spacing={24} cellHeight='auto'>
+      {intro && (
+        <div key='intro'>{intro}</div>
+      )}
+      {sitePath.map(siteObject => (
+        <GridListTile key={siteObject.name}>
+          <SitePathCard siteObject={siteObject} />
+        </GridListTile>
+      ))}
+    </GridList>
+  ) : null
+}
 
-  allNodes: function () {
-    const nodes = []
-    if (this.props.intro) {
-      nodes.push(
-        <div key='intro'>{this.props.intro}</div>,
-      )
-    }
-    return nodes.concat(this.pathNodes())
-  },
-
-  gridList: function (cols) {
-    return (
-      <GridList cols={cols} padding={24} cellHeight='auto'>
-        {this.allNodes()}
-      </GridList>
-    )
-  },
-
-  render: function () {
-    if (this.props.sitePath.length > 0 || this.props.intro) {
-      return (
-        <div>
-          <MediaQuery maxWidth={650}>
-            {this.gridList(1)}
-          </MediaQuery>
-          <MediaQuery minWidth={651} maxWidth={1224}>
-            {this.gridList(2)}
-          </MediaQuery>
-          <MediaQuery minWidth={1224} maxWidth={1724}>
-            {this.gridList(3)}
-          </MediaQuery>
-          <MediaQuery minWidth={1725}>
-            {this.gridList(4)}
-          </MediaQuery>
-        </div>
-      )
-    } else {
-      return (<span />)
-    }
-  },
-})
+SitePathCardList.propTypes = {
+  sitePath: PropTypes.array.isRequired,
+  intro: PropTypes.element,
+}
 
 export default SitePathCardList

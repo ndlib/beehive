@@ -1,165 +1,139 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import createReactClass from 'create-react-class'
-import { IconButton, Button } from '@material-ui/core'
+import { useHistory } from 'react-router-dom'
+import { IconButton, Button, Tooltip } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
 import ClearIcon from '@material-ui/icons/Clear'
 import SearchIcon from '@material-ui/icons/Search'
 import SearchStore from '../store/SearchStore.js'
 import SearchActions from '../actions/SearchActions.js'
 import CurrentTheme from '../modules/CurrentTheme.jsx'
 
-const Styles = {
+const useStyles = makeStyles({
+  container: {
+    display: 'flex',
+    flexFlow: 'row nowrap',
+    margin: '14px 0',
+    flex: '1 1 auto',
+    maxWidth: '550px',
+  },
   searchTextField: {
     height: '38px',
-    width: '500px',
+    maxWidth: '500px',
+    width: props => props.staticWidth || undefined,
     verticalAlign:'top',
     paddingRight: '50px',
+    color: 'black',
+    flex: '1 1 500px',
+  },
+  searchButton: {
+    zIndex: '0',
+    minWidth: 'auto',
+    boxShadow: 'none',
+    lineHeight: '36px',
+    width: '50px',
+    height: '38px',
+    backgroundColor: '#666666',
+    borderRadius: '0',
+    '&:hover': {
+      backgroundColor: '#666666',
+    },
   },
   clearButton: {
+    boxShadow: 'none',
+    backgroundColor: 'transparent',
     marginLeft: '-41px',
     height: '25px',
     width: '40px',
     verticalAlign: 'text-bottom',
     fontSize: '16px',
     paddingTop: '6px',
+    '&:hover': {
+      backgroundColor: 'transparent',
+    },
   },
-}
-
-const SearchBox = createReactClass({
-  propTypes: {
-    collection: PropTypes.object,
-    primary: PropTypes.bool,
-    useStore: PropTypes.bool,
-    active: PropTypes.bool,
-  },
-
-  getDefaultProps: function () {
-    return {
-      primary: true,
-      active: false,
-      useStore: true,
-    }
-  },
-
-  getInitialState: function () {
-    const state = {
-      active: this.props.active,
-      lastSearched: '',
-    }
-    return state
-  },
-
-  onChange: function (e) {
-    this.setTerm(e.target.value)
-  },
-
-  onClick: function () {
-    if (this.state.active) {
-      if (this.state.searchTerm !== this.state.lastSearched) {
-        this.setSearchTerm(this.state.searchTerm)
-      } else if (!this.state.searchTerm) {
-        this.setState({ active: false })
-      }
-    } else {
-      this.setState({ active: true })
-    }
-  },
-
-  clearClick: function () {
-    this.setSearchTerm('')
-  },
-
-  setSearchTerm (searchTerm) {
-    this.setTerm(searchTerm)
-    this.setState({ lastSearched: searchTerm })
-
-    if (this.props.useStore) {
-      SearchActions.setSearchTerm(searchTerm)
-    } else {
-      const url = window.location.origin +
-        '/' + this.props.collection.id +
-        '/' + this.props.collection.slug +
-        '/search?q=' + searchTerm
-      window.location = url
-    }
-  },
-
-  componentDidMount: function () {
-    this.setTerm(SearchStore.searchTerm)
-    this.setState({ lastSearched: SearchStore.searchTerm })
-  },
-
-  setTerm: function (term) {
-    this.setState({ searchTerm: term })
-  },
-
-  inputStyle: function () {
-    return ({
-      color: (this.props.primary ? '#ffffff' : '#212121'),
-      height: '36px',
-    })
-  },
-
-  clearButton: function () {
-    if (SearchStore.searchTerm && this.state.active) {
-      return (
-        <IconButton onClick={this.clearClick} style={Styles.clearButton} tooltip='Clear Search'>
-          <ClearIcon className='material-icons' style={{ color: 'gray' }} />
-        </IconButton>
-      )
-    } else {
-
-    }
-  },
-
-  handleKeyDown: function (e) {
-    const ENTER = 13
-    if (e.keyCode === ENTER) {
-      this.onClick(e)
-    }
-  },
-
-  input: function () {
-    if (this.state.active) {
-      return (
-        <input
-          placeholder='search'
-          ref='searchBox'
-          onChange={this.onChange}
-          value={this.state.searchTerm}
-          onKeyDown={this.handleKeyDown}
-          style={Styles.searchTextField}
-        />
-      )
-    } else {
-      return (<div />)
-    }
-  },
-
-  render: function () {
-    return (
-      <div style={{ display:'inline-block', margin:'14px 0' }}>
-        {this.input()}
-        {this.clearButton()}
-        <Button
-          variant='contained'
-          backgroundColor='rgba(0, 0, 0, 0.641176)'
-          onClick={this.onClick}
-          style={{
-            zIndex: '0',
-            minWidth: 'auto',
-            boxShadow: 'none',
-            lineHeight: '36px',
-            width: '50px',
-            height: '38px',
-          }}
-          disableRipple
-        >
-          <SearchIcon className='material-icons' style={CurrentTheme.lightIconStyle()} />
-        </Button>
-      </div>
-    )
+  clearIcon: {
+    color: 'gray',
   },
 })
+
+const SearchBox = ({ collection, useStore, active, staticWidth }) => {
+  const history = useHistory()
+  const searchParams = new URLSearchParams(history.location.search)
+  const defaultTerm = SearchStore.searchTerm || searchParams.get('q')
+  const [isActive, setIsActive] = useState(active)
+  const [searchTerm, setSearchTerm] = useState(defaultTerm)
+  const [lastSearched, setLastSearched] = useState(defaultTerm)
+  const classes = useStyles({
+    staticWidth,
+  })
+
+  const onClick = () => {
+    if (isActive) {
+      if (searchTerm !== lastSearched) {
+        performSearch()
+      } else if (!searchTerm) {
+        setIsActive(false)
+      }
+    } else {
+      setIsActive(true)
+    }
+  }
+
+  const performSearch = (e, term) => {
+    if (e) {
+      e.preventDefault()
+    }
+    const newTerm = term !== undefined ? term : searchTerm
+    setSearchTerm(newTerm)
+    setLastSearched(newTerm)
+
+    if (useStore) {
+      SearchActions.setSearchTerm(newTerm)
+    } else {
+      const relativePath = `/${collection.id}/${collection.slug}/search?q=${newTerm}`
+      window.location.assign(`${window.location.origin}${relativePath}`)
+    }
+  }
+
+  return (
+    <form className={classes.container} onSubmit={performSearch}>
+      {isActive && (
+        <input
+          placeholder='search'
+          onChange={(e) => setSearchTerm(e.target.value)}
+          value={searchTerm}
+          className={classes.searchTextField}
+        />
+      )}
+      {SearchStore.searchTerm && isActive && (
+        <Tooltip title='Clear Search'>
+          <IconButton onClick={() => performSearch(null, '')} className={classes.clearButton}>
+            <ClearIcon className={`material-icons ${classes.clearIcon}`} />
+          </IconButton>
+        </Tooltip>
+      )}
+      <Button
+        variant='contained'
+        onClick={onClick}
+        className={classes.searchButton}
+        disableRipple
+      >
+        <SearchIcon className='material-icons' style={CurrentTheme.lightIconStyle()} />
+      </Button>
+    </form>
+  )
+}
+
+SearchBox.propTypes = {
+  collection: PropTypes.object,
+  useStore: PropTypes.bool,
+  active: PropTypes.bool,
+  staticWidth: PropTypes.number,
+}
+
+SearchBox.defaultProps = {
+  useStore: true,
+}
 
 export default SearchBox

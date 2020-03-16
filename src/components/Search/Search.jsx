@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import createReactClass from 'create-react-class'
-import CollectionPageHeader from '../../layout/CollectionPageHeader.jsx'
+import CollectionPageHeader from '../../layout/CollectionPageHeader'
 import PageContent from '../../layout/PageContent.jsx'
 import CollectionPageFooter from '../../layout/CollectionPageFooter.jsx'
 import SearchControls from './SearchControls.jsx'
@@ -13,170 +12,139 @@ import ConfigurationStore from '../../store/ConfigurationStore.js'
 import LoadRemote from '../../modules/LoadRemote.jsx'
 import PageTitle from '../../modules/PageTitle.js'
 
-const Search = createReactClass({
-  propTypes: {
-    compact: PropTypes.bool,
-    hits: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.array,
-    ]),
-    searchTerm: PropTypes.string,
-    sortTerm: PropTypes.string,
-    facet: PropTypes.oneOfType([ // eslint-disable-line react/no-unused-prop-types
-      PropTypes.object,
-      PropTypes.array,
-    ]),
-    start: PropTypes.number,
-    view: PropTypes.string,
-    collection: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.object,
-    ]),
-    footerHeight: PropTypes.number,
-  },
+const Search = ({ collection, hits, searchTerm, sortTerm, facet, start, view, footerHeight }) => {
+  const [readyToRender, setReadyToRender] = useState(false)
+  const [isConfigurationLoaded, setIsConfigurationLoaded] = useState(ConfigurationStore.loaded)
 
-  getDefaultProps: function () {
-    return {
-      compact: false,
-      footerHeight: 50,
-    }
-  },
-
-  getInitialState: function () {
-    return {
-      windowHeight: this.calcHeight(),
-      collection: {},
-      remoteCollectionLoaded: false,
-      readyToRender: false,
-    }
-  },
-
-  componentWillMount: function () {
-    ConfigurationStore.addChangeListener(this.configurationLoaded)
-    SearchStore.on('SearchStoreChanged', this.searchStoreChanged)
-    SearchStore.on('SearchStoreQueryFailed',
-      () => {
-        if (window.location.hostname !== 'localhost') {
-          window.location = window.location.origin + '/404'
-        } else {
-          alert('404 Redirect prevented')
+  useEffect(() => {
+    // Callback from loadremotecollection when remote collection is loaded
+    const setValues = (setCollection) => {
+      // Translates the facet option given in props to the structure the SearchStore expects.
+      let facets
+      if (facet) {
+        facets = []
+        for (let i = 0; i < facet.length; i++) {
+          const facetKey = Object.keys(facet[i])[0]
+          const facetValue = Object.keys(facet[i])[1]
+          facets.push({
+            name: facet[i][facetKey],
+            value: facet[i][facetValue],
+          })
         }
-      },
-    )
-    window.addEventListener('popstate', this.onWindowPopState)
+      }
 
-    if (typeof (this.props.collection) === 'object') {
-      this.setValues(this.props.collection)
+      ConfigurationActions.load(setCollection)
+      SearchActions.loadSearchResults(
+        setCollection,
+        hits,
+        searchTerm,
+        facets,
+        sortTerm,
+        start,
+        view,
+      )
+      return true
+    }
+
+    if (typeof (collection) === 'object') {
+      setValues(collection)
     } else {
-      LoadRemote.loadRemoteCollection(this.props.collection, this.setValues)
+      LoadRemote.loadRemoteCollection(collection, setValues)
     }
-  },
+  }, [collection, facet, hits, searchTerm, sortTerm, start, view])
 
-  componentDidMount: function () {
-    window.addEventListener('resize', this.handleResize)
-  },
+  useEffect(() => {
+    const configurationLoaded = () => {
+      setIsConfigurationLoaded(true)
+    }
+    ConfigurationStore.addChangeListener(configurationLoaded)
+    return () => ConfigurationStore.removeChangeListener(configurationLoaded)
+  })
 
-  componentWillUnmount: function () {
-    window.removeEventListener('resize', this.handleResize)
-    window.removeEventListener('popstate', this.onWindowPopState)
-    ConfigurationStore.removeChangeListener(this.configurationLoaded)
-    SearchActions.setSearchTerm('')
-  },
+  useEffect(() => {
+    const searchStoreChanged = () => {
+      if (isConfigurationLoaded) {
+        // Update the url to match the new search params whenever the store changes it
+        const oldPath = window.location.pathname + window.location.search
+        const newPath = SearchStore.searchUri()
+        if (newPath !== oldPath) {
+          window.history.pushState({ store: SearchStore.getQueryParams() }, '', newPath)
+        }
+        setReadyToRender(true)
+      }
+    }
+    SearchStore.on('SearchStoreChanged', searchStoreChanged)
+    SearchStore.on('SearchStoreViewChanged', searchStoreChanged)
+    return () => {
+      SearchStore.off('SearchStoreChanged', searchStoreChanged)
+      SearchStore.off('SearchStoreViewChanged', searchStoreChanged)
+    }
+  }, [isConfigurationLoaded])
 
-  componentWillReceiveProps: function (nextProps) {
-    if (this.props !== nextProps) {
-      if (typeof (nextProps.collection) === 'object') {
-        this.setValues(nextProps.collection)
+  useEffect(() => {
+    const searchStoreQueryFailed = () => {
+      if (window.location.hostname !== 'localhost') {
+        window.location = window.location.origin + '/404'
       } else {
-        LoadRemote.loadRemoteCollection(nextProps.collection, this.setValues)
-      }
-      this.searchStoreChanged()
-    }
-  },
-
-  handleResize: function () {
-    this.setState({
-      windowHeight: this.calcHeight(),
-    })
-  },
-
-  calcHeight: function () {
-    return window.innerHeight - (this.props.compact ? 0 : this.props.footerHeight)
-  },
-
-  searchStoreChanged: function () {
-    this.setState({
-      readyToRender: true,
-    })
-  },
-
-  configurationLoaded: function () {
-    this.setState({ configurationLoaded: true })
-  },
-
-  // Callback from loadremotecollection when remote collection is loaded
-  setValues: function (collection) {
-    ConfigurationActions.load(collection)
-    SearchActions.loadSearchResults(
-      collection,
-      this.props.hits,
-      this.props.searchTerm,
-      this.facetObject(this.props),
-      this.props.sortTerm,
-      this.props.start,
-      this.props.view)
-    return true
-  },
-
-  onWindowPopState: function (event) {
-    if (event.state.store) {
-      SearchActions.reloadSearchResults(event.state.store)
-    }
-  },
-
-  // Translates the facet option given in props to the structure the SearchStore expects.
-  facetObject: function (props) {
-    let facets
-    if (props.facet) {
-      facets = []
-      for (let i = 0; i < props.facet.length; i++) {
-        const facetKey = Object.keys(props.facet[i])[0]
-        const facetValue = Object.keys(props.facet[i])[1]
-        facets.push({
-          name: props.facet[i][facetKey],
-          value: props.facet[i][facetValue],
-        })
+        alert('404 Redirect prevented - Check Honeycomb and solr index')
       }
     }
-    return facets
-  },
+    SearchStore.on('SearchStoreQueryFailed', searchStoreQueryFailed)
+    return () => SearchStore.off('SearchStoreQueryFailed', searchStoreQueryFailed)
+  })
 
-  render: function () {
-    // All children of this object expect the collection and all data to be loaded into the SearchStore.
-    // This will prevent mounting them until ready.
-    if (!this.state.readyToRender) {
-      return null
+  useEffect(() => {
+    const onWindowPopState = (event) => {
+      if (event.state.store) {
+        SearchActions.reloadSearchResults(event.state.store)
+      }
     }
+    window.addEventListener('popstate', onWindowPopState)
+    return () => window.removeEventListener('popstate', onWindowPopState)
+  })
 
-    let pageNum = 1
-    if (this.props.start > 0) {
-      pageNum = Math.floor(this.props.start / SearchStore.rowLimit) + 1
-    }
+  // All children of this object expect the collection and all data to be loaded into the SearchStore.
+  // This will prevent mounting them until ready.
+  if (!readyToRender) {
+    return null
+  }
 
-    PageTitle(SearchStore.collection.name_line_1 + ' - Page ' + pageNum)
-    return (
-      <div>
-        {!this.props.compact && <CollectionPageHeader collection={SearchStore.collection} />}
-        <SearchControls searchStyle={{ height:'50px' }} />
-        <PageContent fluidLayout={false}>
-          <SearchDisplayList compact={this.props.compact} />
-        </PageContent>
-        {!this.props.compact && (
-          <CollectionPageFooter collection={SearchStore.collection} height={this.props.footerHeight} />
-        )}
-      </div>
-    )
-  },
-})
+  const pageNum = start > 0 ? (Math.floor(start / SearchStore.rowLimit) + 1) : 1
+  PageTitle(SearchStore.collection.name_line_1 + ' - Page ' + pageNum)
+  return (
+    <div>
+      <CollectionPageHeader collection={SearchStore.collection} />
+      <SearchControls searchStyle={{ height:'50px' }} />
+      <PageContent fluidLayout={false}>
+        <SearchDisplayList />
+      </PageContent>
+      <CollectionPageFooter collection={SearchStore.collection} height={footerHeight} />
+    </div>
+  )
+}
+
+Search.propTypes = {
+  hits: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.array,
+  ]),
+  searchTerm: PropTypes.string,
+  sortTerm: PropTypes.string,
+  facet: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array,
+  ]),
+  start: PropTypes.number,
+  view: PropTypes.string,
+  collection: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+  ]),
+  footerHeight: PropTypes.number,
+}
+
+Search.defaultProps = {
+  footerHeight: 50,
+}
 
 export default Search

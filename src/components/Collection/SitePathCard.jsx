@@ -1,127 +1,103 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import createReactClass from 'create-react-class'
-import { Card, CardActions, CardMedia, CardHeader, IconButton } from '@material-ui/core'
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import { Link } from 'react-router-dom'
-import CollectionUrl from '../../modules/CollectionUrl.jsx'
+import { Card, CardActions, CardMedia, CardHeader, IconButton } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
+import TextOverlay from 'components/Shared/TextOverlay'
+import CollectionUrl from 'modules/CollectionUrl.jsx'
 
-const SitePathCard = createReactClass({
-  propTypes: {
-    siteObject: PropTypes.object.isRequired,
-    addNextButton: PropTypes.bool,
-    fixedSize: PropTypes.bool,
-    headerTitle: PropTypes.string,
+const useStyles = makeStyles({
+  card: {
+    position: 'relative',
+    cursor: 'pointer',
+    minHeight: '400px',
+    height: props => props.fixedSize ? '400px' : 'auto',
   },
-
-  getDefaultProps: function () {
-    return {
-      addNextButton: false,
-      headerTitle: null,
-      fixedSize: true,
-    }
+  header: {
+    backgroundColor: 'white',
+    position: 'absolute',
+    width: '100%',
+    zIndex: '1',
+    display: 'block',
   },
-
-  style: function () {
-    return {
-      position: 'relative',
-      cursor: 'pointer',
-      minHeight: '400px',
-      height: this.props.fixedSize ? '400px' : 'auto',
-    }
+  headerTypography: {
+    fontSize: '24px',
+    lineHeight: '36px',
+    color: 'rgba(0, 0, 0, 0.87)',
   },
-
-  imageSize: function () {
-    return {
-      position: 'absolute',
-      top: '0',
-      left: '0',
-      right: '0',
-      margin: 'auto',
-      minWidth:'50%',
-      minHeight: '50%',
-      maxWidth: 'initial',
-      maxHeight:'initial',
-      display: 'none',
-
-    }
+  media: {
+    backgroundImage: props => 'url("' + props.image + '")',
+    backgroundPosition: 'center top',
+    backgroundSize: 'cover',
+    height: '400px',
+    overflow: 'hidden',
+    width: '100%',
   },
-
-  image: function () {
-    const space = ' '
-    const re = new RegExp(space, 'g')
-    if (this.props.siteObject.image && this.props.siteObject.image['thumbnail/medium']) {
-      return this.props.siteObject.image['thumbnail/medium'].contentUrl.replace(re, '%20')
-    } else {
-      return '/images/intro.jpg'
-    }
+  actions: {
+    position:'absolute',
+    right: '18px',
+    top: props => props.hasHeader ? '33px' : '323px',
+    zIndex: '2',
   },
+})
 
-  nextButton: function () {
-    if (this.props.addNextButton) {
-      return (
-        <CardActions
-          style={{ position:'absolute', right:'10px', top: this.props.headerTitle != null ? '33px' : '363px' }}
-        >
-          <Link to={CollectionUrl.collectionObjectUrl(this.props.siteObject)}>
-            <IconButton
-              backgroundColor='#2c5882'
-              disableRipple
-            >
+const SitePathCard = ({ siteObject, addNextButton, fixedSize, headerTitle }) => {
+  const image = (siteObject.image && siteObject.image['thumbnail/medium'])
+    ? siteObject.image['thumbnail/medium'].contentUrl.replace(new RegExp(' ', 'g'), '%20')
+    : '/images/intro.jpg'
+  const classes = useStyles({
+    fixedSize,
+    image,
+    hasHeader: !!headerTitle,
+  })
+  return (
+    <Card className={classes.card}>
+      <Link to={CollectionUrl.collectionObjectUrl(siteObject)}>
+        {headerTitle && (
+          <CardHeader
+            title={headerTitle}
+            classes={{
+              root: classes.header,
+              title: classes.headerTypography,
+            }}
+          />
+        )}
+        <CardMedia className={`collection-site-path-card ${classes.media}`}>
+          <TextOverlay title={siteObject.name_line_1 || siteObject.name} subtitle={siteObject.name_line_2} />
+        </CardMedia>
+      </Link>
+      {addNextButton && (
+        <CardActions className={classes.actions}>
+          <Link to={CollectionUrl.collectionObjectUrl(siteObject)}>
+            <IconButton disableRipple>
               <ArrowForwardIcon className='material-icons' />
             </IconButton>
           </Link>
         </CardActions>
-      )
-    }
-  },
+      )}
+    </Card>
+  )
+}
 
-  headerTitle: function () {
-    if (this.props.headerTitle) {
-      return (
-        <CardHeader
-          title={this.props.headerTitle}
-          style={{
-            backgroundColor: 'white',
-            position: 'absolute',
-            width:'100%',
-            zIndex: '1',
-          }}
-        />
-      )
-    }
-  },
+SitePathCard.propTypes = {
+  siteObject: PropTypes.shape({
+    name_line_1: PropTypes.string,
+    name_line_2: PropTypes.string,
+    name: PropTypes.string,
+    image: PropTypes.shape({
+      'thumbnail/medium': PropTypes.shape({
+        contentUrl: PropTypes.string,
+      }),
+    }),
+  }).isRequired,
+  addNextButton: PropTypes.bool,
+  fixedSize: PropTypes.bool,
+  headerTitle: PropTypes.string,
+}
 
-  CardHeader: function () {
-    return (
-      <CardHeader
-        title={this.props.siteObject.name_line_1 || this.props.siteObject.name}
-        subtitle={this.props.siteObject.name_line_2}
-      />
-    )
-  },
-
-  cardMedia: function () {
-    return (
-      <CardMedia
-        className='collection-site-path-card'
-        style={{ backgroundImage:'url("' + this.image() + '")' }}
-        overlay={this.CardHeader()}
-      />
-    )
-  },
-
-  render: function () {
-    return (
-      <Card style={this.style()}>
-        <Link to={CollectionUrl.collectionObjectUrl(this.props.siteObject)}>
-          {this.headerTitle()}
-          {this.cardMedia()}
-        </Link>
-        {this.nextButton()}
-      </Card>
-    )
-  },
-})
+SitePathCard.defaultProps = {
+  fixedSize: true,
+}
 
 export default SitePathCard

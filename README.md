@@ -13,7 +13,6 @@ It is created and managed by WSE at Hesburgh Libraries.
 
 ### Usage ###
 1. `yarn start`
-2. `yarn watch`
 
 ### Deployment - UA/Prep ###
 * `aws-vault exec libnd ./deploy-pprd.sh`

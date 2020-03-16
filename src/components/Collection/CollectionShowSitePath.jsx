@@ -1,34 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import createReactClass from 'create-react-class'
 import CollectionIntroCard from './CollectionIntroCard.jsx'
 import SitePathCardList from './SitePathCardList.jsx'
 
-const CollectionShowSitePath = createReactClass({
+const CollectionShowSitePath = ({ collection }) => {
+  const intro = collection.description ? (
+    <CollectionIntroCard collection={collection} />
+  ) : null
+  return collection.site_path ? (
+    <SitePathCardList sitePath={collection.site_path} intro={intro} />
+  ) : null
+}
 
-  propTypes: {
-    collection: PropTypes.object.isRequired,
-  },
-
-  intro: function () {
-    if (this.props.collection.description) {
-      return (
-        <CollectionIntroCard collection={this.props.collection} />
-      )
-    }
-  },
-
-  render: function () {
-    if (this.props.collection.site_path) {
-      return (
-        <SitePathCardList sitePath={this.props.collection.site_path} intro={this.intro()} />
-      )
-    } else {
-      return (
-        <div />
-      )
-    }
-  },
-})
+CollectionShowSitePath.propTypes = {
+  collection: PropTypes.shape({
+    description: PropTypes.string,
+    site_path: PropTypes.array,
+  }).isRequired,
+}
 
 export default CollectionShowSitePath

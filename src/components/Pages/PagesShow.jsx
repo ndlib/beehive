@@ -1,95 +1,58 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import createReactClass from 'create-react-class'
-import { Paper } from '@material-ui/core'
-import MediaQuery from 'react-responsive'
+import { Paper, useMediaQuery } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
 
-const PagesShow = createReactClass({
-  propTypes: {
-    title: PropTypes.string,
-    content: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.object,
-    ]).isRequired,
-    children: PropTypes.node,
+const useStyles = makeStyles({
+  header: {
+    maxWidth: '80%',
+    margin: '36px auto !important',
+    textAlign: 'center',
   },
-  headerStyle: function () {
-    return {
-      maxWidth: '80%',
-      margin: '36px auto 36px',
-      textAlign: 'center',
-    }
+  paper: {
+    boxSizing: 'border-box',
+    boxShadow: 'rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px',
+    borderRadius: '2px',
+    width: props => props.isNarrow ? '100%' : '70%',
+    margin: props => props.isNarrow ? '0px' : '0px auto',
+    padding: '2rem',
+    overflow: 'hidden',
   },
-
-  contentStyle: function (media) {
-    const style = {
-      fontSize: '16px',
-      maxWidth: '32.5em', // Should put it between 70-75 characters at 1em (16px)
-      margin: '0 auto 60px',
-    }
-    if (media === 'narrow') {
-      style.margin = '0 0'
-    }
-    return style
-  },
-
-  paperStyle: function (media) {
-    switch (media) {
-      default:
-      case 'wide':
-      case 'medium':
-        return {
-          width: '70%',
-          margin: '0 auto',
-          padding: '2rem',
-          overflow: 'hidden',
-        }
-      case 'narrow':
-        return {
-          width: '100%',
-          margin: '0 0',
-          padding: '2rem',
-          overflow: 'hidden',
-        }
-    }
-  },
-
-  depth: function (media) {
-    if (media === 'wide') {
-      return 1
-    }
-    return 0
-  },
-
-  getPaper: function (media) {
-    let pageName
-    if (this.props.title) {
-      pageName = (<h2 style={this.headerStyle()}>{this.props.title}</h2>)
-    }
-    return (
-      <Paper className='essay-content' style={this.paperStyle(media)}>
-        {pageName}
-        <div style={this.contentStyle(media)} dangerouslySetInnerHTML={{ __html:this.props.content }} />
-        {this.props.children}
-      </Paper>
-    )
-  },
-
-  render: function () {
-    return (
-      <div id='page-show'>
-        <MediaQuery minWidth={1400} key='1'>
-          {this.getPaper('wide')}
-        </MediaQuery>
-        <MediaQuery minWidth={1000} maxWidth={1400} key='2'>
-          {this.getPaper('medium')}
-        </MediaQuery>
-        <MediaQuery maxWidth={1000} key='3'>
-          {this.getPaper('narrow')}
-        </MediaQuery>
-      </div>
-    )
+  content: {
+    fontSize: '16px',
+    maxWidth: '32.5em', // Should put it between 70-75 characters at 1em (16px)
+    margin: props => props.isNarrow ? '0px' : '0px auto 60px',
   },
 })
+
+const PagesShow = ({ title, content, children }) => {
+  const isWide = useMediaQuery('(min-width: 1400px)')
+  const isNarrow = useMediaQuery('(max-width: 999px)')
+  const classes = useStyles({
+    isNarrow,
+    isWide,
+  })
+
+  return (
+    <div id='page-show'>
+      <Paper className={`essay-content ${classes.paper}`}>
+        {title && (
+          <h2 className={classes.header}>{title}</h2>
+        )}
+        <div className={classes.content} dangerouslySetInnerHTML={{ __html: content }} />
+        {children}
+      </Paper>
+    </div>
+  )
+}
+
+PagesShow.propTypes = {
+  title: PropTypes.string,
+  content: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+  ]).isRequired,
+  children: PropTypes.node,
+}
 
 export default PagesShow

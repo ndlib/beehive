@@ -1,58 +1,50 @@
-
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import createReactClass from 'create-react-class'
-import { Snackbar } from '@material-ui/core'
+import { Snackbar, SnackbarContent } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
 
-const AttentionHelp = createReactClass({
-
-  propTypes: {
-    hasScrolled: PropTypes.bool,
-  },
-
-  getInitialState: function () {
-    const state = {
-      elapsed: false,
-      open: true,
-    }
-    return state
-  },
-
-  componentDidMount: function () {
-    this.timer = setInterval(this.tick, 9000)
-  },
-
-  componentWillUnmount: function () {
-    clearInterval(this.timer)
-  },
-
-  tick: function () {
-    this.setState({ elapsed: true })
-  },
-
-  style: function () {
-    return {
-    }
-  },
-
-  render: function () {
-    let snackbar = (<div />)
-    if (!this.props.hasScrolled && this.state.elapsed && this.state.open) {
-      snackbar = (
-        <div id='attentionHelp'>
-          <Snackbar
-            message='Scroll left to right to view the showcase.'
-            autoHideDuration={5000}
-            open={this.state.open}
-            onRequestClose={() => this.setState({ open: false })}
-            ref='attentionHelp'
-            style={this.style()}
-          />
-        </div>
-      )
-    }
-    return snackbar
+const useStyles = makeStyles({
+  snackbarContent: {
+    backgroundColor: 'black',
+    opacity: '0.8 !important',
+    fontSize: '16px',
+    textAlign: 'center',
   },
 })
+
+const AttentionHelp = ({ hasScrolled }) => {
+  const [elapsed, setElapsed] = useState(false)
+  const [open, setOpen] = useState(true)
+
+  // Use a hook for the delay before showing message
+  useEffect(() => {
+    const tick = () => {
+      setElapsed(true)
+    }
+    const timer = setInterval(tick, 9000)
+    return () => clearInterval(timer)
+  })
+
+  const classes = useStyles({
+    hasScrolled,
+  })
+  if (!hasScrolled && elapsed && open) {
+    return (
+      <div id='attentionHelp'>
+        <Snackbar autoHideDuration={5000} open={open} onClose={() => setOpen(false)}>
+          <SnackbarContent
+            message='Scroll left to right to view the showcase.'
+            className={classes.snackbarContent}
+          />
+        </Snackbar>
+      </div>
+    )
+  }
+  return null
+}
+
+AttentionHelp.propTypes = {
+  hasScrolled: PropTypes.bool,
+}
 
 export default AttentionHelp

@@ -1,110 +1,77 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import createReactClass from 'create-react-class'
-import { Card, CardActions, CardMedia, CardHeader, IconButton, Paper } from '@material-ui/core'
+import { Card, CardActions, CardMedia, IconButton, Paper } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import { Link } from 'react-router-dom'
-import Loading from '../../other/Loading.jsx'
+import TextOverlay from 'components/Shared/TextOverlay'
+import Loading from 'other/Loading'
 
-import CollectionUrl from '../../modules/CollectionUrl.jsx'
-import CurrentTheme from '../../modules/CurrentTheme.jsx'
+import CollectionUrl from 'modules/CollectionUrl'
 
-const CollectionShow = createReactClass({
-  propTypes: {
-    collection: PropTypes.object.isRequired,
+const useStyles = makeStyles({
+  mediaRoot: {
+    position: 'relative',
   },
-
-  collectionLoaded: function () {
-    if (this.props.collection.name) {
-      return true
-    } else {
-      return false
-    }
+  coverImage: {
+    backgroundSize: 'cover',
+    height: '40vw',
+    maxHeight: '450px',
+    backgroundImage: props => 'url("' + props.image + '")',
+    backgroundPosition: 'top',
   },
-
-  image: function () {
-    const space = ' '
-    const re = new RegExp(space, 'g')
-    return this.props.collection.image['thumbnail/medium'].contentUrl.replace(re, '%20')
-  },
-
-  startUrl: function () {
-    let url = CollectionUrl.introUrl(this.props.collection)
-
-    if (!url) {
-      url = CollectionUrl.startSitePathUrl(this.props.collection)
-    }
-
-    return url
-  },
-
-  cover: function () {
-    return ({
-      backgroundSize:'cover',
-      height:'40vw',
-      maxHeight:'450px',
-      backgroundImage: 'url("' + this.image() + '")',
-      backgroundPosition:'top',
-    })
-  },
-
-  startButton: function () {
-    if (this.startUrl()) {
-      return (
-        <Link to={this.startUrl()} style={{ position: 'absolute', right: '0', top: '-30px' }}>
-          <IconButton
-            backgroundColor='#2c5882'
-          >
-            <ArrowForwardIcon className='material-icons' />
-          </IconButton>
-        </Link>
-      )
-    }
-  },
-
-  cardMediaSection: function () {
-    if (this.props.collection.image) {
-      let CardHeader = (null)
-      if (this.props.collection.display_page_title) {
-        CardHeader = (
-          <CardHeader
-            title={this.props.collection.name_line_1}
-            titleStyle={{ color:'white', fontSize:'34px', lineHeight:'46px' }}
-            subtitle={this.props.collection.name_line_2}
-            subtitleStyle={{ color:'rgba(255,255,255,.8)', fontSize:'18px' }}
-            style={CurrentTheme.pageWidth()}
-          />
-        )
-      }
-      return (
-        <CardMedia overlay={CardHeader}>
-          <img src={this.image()} className='hide' alt='' />
-          <div className='cover' style={this.cover()} />
-        </CardMedia>
-      )
-    } else {
-      return (
-        <CardHeader title={this.props.collection.name_line_1} subtitle={this.props.collection.name_line_2} />
-      )
-    }
-  },
-
-  render: function () {
-    if (this.collectionLoaded()) {
-      return (
-        <Paper circle={false} rounded={false}>
-          <Card>
-            {this.cardMediaSection()}
-          </Card>
-          <CardActions style={CurrentTheme.pageWidth()} className='startButton'>
-            {this.startButton()}
-          </CardActions>
-        </Paper>
-      )
-    } else {
-      return <Loading />
-    }
+  actions: {
+    margin: '0 8%',
   },
 })
+
+const CollectionShow = ({ collection }) => {
+  const image = collection.image['thumbnail/medium'].contentUrl.replace(new RegExp(' ', 'g'), '%20')
+  const startUrl = CollectionUrl.introUrl(collection) || CollectionUrl.startSitePathUrl(collection)
+  const classes = useStyles({
+    image,
+  })
+
+  if (!collection.name) {
+    return <Loading />
+  }
+
+  return (
+    <Paper square>
+      <Card>
+        <CardMedia className={classes.mediaRoot}>
+          {collection.display_page_title && (
+            <TextOverlay title={collection.name_line_1} subtitle={collection.name_line_2} addMargin />
+          )}
+          <img src={image} className='hide' alt='' />
+          <div className={`cover ${classes.coverImage}`} />
+        </CardMedia>
+      </Card>
+      <CardActions className={`startButton ${classes.actions}`}>
+        {startUrl && (
+          <Link to={startUrl} style={{ position: 'absolute', right: '0', top: '-30px' }}>
+            <IconButton>
+              <ArrowForwardIcon className='material-icons' />
+            </IconButton>
+          </Link>
+        )}
+      </CardActions>
+    </Paper>
+  )
+}
+
+CollectionShow.propTypes = {
+  collection: PropTypes.shape({
+    name: PropTypes.string,
+    name_line_1: PropTypes.string,
+    name_line_2: PropTypes.string,
+    display_page_title: PropTypes.bool,
+    image: PropTypes.shape({
+      'thumbnail/medium' : PropTypes.shape({
+        contentUrl: PropTypes.string,
+      }),
+    }),
+  }).isRequired,
+}
 
 export default CollectionShow

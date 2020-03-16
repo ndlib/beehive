@@ -23,8 +23,8 @@ const publicUrl = ''
 const env = getClientEnvironment(publicUrl)
 
 // style files regexes
-const cssRegex = /\.css$/
-const cssModuleRegex = /\.module\.css$/
+const cssRegex = /\.s?css$/
+const cssModuleRegex = /\.module\.s?css$/
 
 // common function to get style loaders
 const getStyleLoaders = (cssOptions, preProcessor) => {
@@ -53,6 +53,9 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
           }),
         ],
       },
+    },
+    {
+      loader: require.resolve('sass-loader'),
     },
   ]
   if (preProcessor) {
@@ -90,6 +93,9 @@ module.exports = {
     // initialization, it doesn't blow up the WebpackDevServer client, and
     // changing JS code would still trigger a refresh.
   ],
+  devServer: {
+    historyApiFallback: true,
+  },
   output: {
     // Next line is not used in dev but WebpackDevServer crashes without it:
     path: paths.appBuild,
