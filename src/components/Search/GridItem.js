@@ -6,6 +6,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import ItemImage from './ItemImage'
 import TextOverlay from 'components/Shared/TextOverlay'
 import CollectionUrl from 'modules/CollectionUrl'
+import MetaOnlyIcon from 'assets/images/meta-only-item.jpg'
+import ManuscriptIcon from 'assets/images/pt.icon.drk.png'
 
 const useStyles = makeStyles({
   card: {
@@ -25,7 +27,7 @@ const useStyles = makeStyles({
 const GridItem = ({ item, style }) => {
   const image = item.thumbnailURL
     ? item.thumbnailURL.replace(new RegExp(' ', 'g'), '%20')
-    : '/images/meta-only-item.jpg'
+    : MetaOnlyIcon
   const classes = useStyles({
     image,
   })
@@ -39,7 +41,7 @@ const GridItem = ({ item, style }) => {
           </CardMedia>
           {item.metadata && item.metadata.manuscript_url && (
             <img
-              src='/images/pt.icon.drk.png'
+              src={ManuscriptIcon}
               className='manuscript-icon'
               alt='Manifest Available'
               title='Manifest Available'

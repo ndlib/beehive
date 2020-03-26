@@ -4,6 +4,7 @@ import { Card, CardActions, CardMedia, CardHeader } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import CollectionLink from '../../../Shared/CollectionLink'
 import CollectionCardHeader from './CollectionCardHeader'
+import MarbleImage from 'assets/images/marble.jpg'
 
 const useStyles = makeStyles({
   card: {
@@ -56,7 +57,7 @@ const useStyles = makeStyles({
 const CollectionCard = ({ collection, headerTitle }) => {
   const image = collection.image
     ? collection.image['thumbnail/medium'].contentUrl.replace(new RegExp(' ', 'g'), '%20')
-    : '/images/marble.jpg'
+    : MarbleImage
   const classes = useStyles({
     image,
   })

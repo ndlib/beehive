@@ -11,6 +11,7 @@ import ShowcaseInnerContent from './ShowcaseInnerContent'
 import Scroller from '../../other/Scroller'
 import CollectionHomeButton from './CollectionHomeButton'
 import BrowserUtils from '../../modules/BrowserUtils'
+import DefaultIntroImage from 'assets/images/intro.jpg'
 const ReactDOM = require('react-dom')
 const maxShowcaseHeight = 805
 const showcaseTitleHeight = 56
@@ -180,7 +181,7 @@ const ShowcaseShow = createReactClass({
 
     const showcaseSafeImage = showcase.image
       ? showcase.image.contentUrl
-      : 'https://collections.library.nd.edu/images/intro.jpg'
+      : DefaultIntroImage
 
     const data = {
       '@context': 'http://schema.org',

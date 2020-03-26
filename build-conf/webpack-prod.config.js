@@ -275,6 +275,15 @@ module.exports = {
               name: 'static/media/[name].[hash:8].[ext]',
             },
           },
+          // Just like url-loader, but for SVGs and uses utf-8 encoding instead of Base64
+          {
+            test: /\.svg$/,
+            loader: require.resolve('svg-url-loader'),
+            options: {
+              limit: 10000,
+              name: 'static/media/[name].[hash:8].[ext]',
+            },
+          },
           // Process application JS with Babel.
           // The preset includes JSX, Flow, and some ESnext features.
           {

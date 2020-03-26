@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import TextOverlay from 'components/Shared/TextOverlay'
 import CollectionUrl from 'modules/CollectionUrl'
+import DefaultIntroImage from 'assets/images/intro.jpg'
 
 const useStyles = makeStyles({
   card: {
@@ -45,7 +46,7 @@ const useStyles = makeStyles({
 const SitePathCard = ({ siteObject, addNextButton, fixedSize, headerTitle }) => {
   const image = (siteObject.image && siteObject.image['thumbnail/medium'])
     ? siteObject.image['thumbnail/medium'].contentUrl.replace(new RegExp(' ', 'g'), '%20')
-    : '/images/intro.jpg'
+    : DefaultIntroImage
   const classes = useStyles({
     fixedSize,
     image,

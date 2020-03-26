@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
+import DefaultIntroImage from 'assets/images/intro.jpg'
 const $ = require('jquery')
 
 const HoneycombImage = createReactClass({
@@ -28,7 +29,7 @@ const HoneycombImage = createReactClass({
         return this.props.image.contentUrl
       }
     } else {
-      return '/images/intro.jpg'
+      return DefaultIntroImage
     }
   },
 

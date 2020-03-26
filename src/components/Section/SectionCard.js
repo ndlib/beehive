@@ -7,6 +7,7 @@ import TextCard from './TextCard'
 import ImageCard from './ImageCard'
 import MultimediaCard from './MultimediaCard'
 import CollectionUrl from '../../modules/CollectionUrl'
+import ManuscriptIcon from 'assets/images/pt.icon.drk.png'
 
 const SectionCard = createReactClass({
   propTypes: {
@@ -75,7 +76,7 @@ const SectionCard = createReactClass({
     if (item && item.metadata && item.metadata.manuscript_url) {
       return (
         <img
-          src='/images/pt.icon.drk.png'
+          src={ManuscriptIcon}
           className='manuscript-icon'
           alt='Manifest Available'
           title='Manifest Available'

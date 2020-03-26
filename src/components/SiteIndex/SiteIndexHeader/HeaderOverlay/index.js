@@ -1,10 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import DecLogo from 'assets/images/dec.logo.svg'
+import HoneycombLogo from 'assets/images/powered.png'
 
 const SiteHeaderOverlay = ({ useSmallStyle }) => {
   const titleStyle = {
     height:'0',
-    backgroundImage: 'url(/images/dec.logo.svg)',
+    backgroundImage: `url(${DecLogo})`,
     backgroundSize:'cover',
     backgroundRepeat:'none',
     overflow:'hidden',
@@ -29,7 +31,7 @@ const SiteHeaderOverlay = ({ useSmallStyle }) => {
           title='Powered by HoneyComb'
           style={{
             height:'0',
-            backgroundImage: 'url(/images/powered.png)',
+            backgroundImage: `url(${HoneycombLogo})`,
             backgroundSize:'cover',
             overflow:'hidden',
             position:'absolute',

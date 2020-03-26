@@ -1,8 +1,8 @@
 import React from 'react'
 import { Card, CardMedia, useMediaQuery } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-
 import HeaderOverlay from './HeaderOverlay'
+import CoverImage from 'assets/images/home.jpg'
 
 const useStyles = makeStyles({
   cardStyle: {
@@ -22,7 +22,7 @@ const SiteIndexHeader = () => {
   return (
     <Card className={classes.cardStyle}>
       <CardMedia className='collectionscover' style={{ height:'100%' }}>
-        <div className='coverImage'><img src='/images/home.jpg' alt='' /></div>
+        <div className='coverImage'><img src={CoverImage} alt='' /></div>
         <HeaderOverlay useSmallStyle={useSmallStyle} />
       </CardMedia>
     </Card>

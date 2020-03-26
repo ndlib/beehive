@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
+import MetaOnlyIcon from 'assets/images/meta-only-item.jpg'
 
 const useStyles = makeStyles({
   image: {
@@ -26,7 +27,7 @@ const ItemImage = ({ item, size }) => {
   const classes = useStyles()
   const imageUrl = item.thumbnailURL
     ? (size ? item.thumbnailURL.replace('/medium/', `/${size}/`) : item.thumbnailURL)
-    : '/images/meta-only-item.jpg'
+    : MetaOnlyIcon
   const altText = item.name + (item.description ? ` - ${item.description}` : '')
   return (
     <div className='bee-item-image-wrapper'>

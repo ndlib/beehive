@@ -5,6 +5,7 @@ import { Divider, ListItem, ListItemIcon, ListItemText } from '@material-ui/core
 import RemoveMarkup from '../../modules/RemoveMarkup'
 import ItemImage from './ItemImage'
 import CollectionUrl from '../../modules/CollectionUrl'
+import ManuscriptIcon from 'assets/images/pt.icon.drk.png'
 
 const MyListItem = ({ item }) => {
   return (
@@ -19,7 +20,7 @@ const MyListItem = ({ item }) => {
         {item.metadata && item.metadata.manuscript_url && (
           <ListItemIcon>
             <img
-              src='/images/pt.icon.drk.png'
+              src={ManuscriptIcon}
               className='manuscript-icon'
               alt='Manifest Available'
               title='Manifest Available'

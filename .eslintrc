@@ -47,6 +47,14 @@
     "space-before-function-paren" : 0,
     "jsx-a11y/href-no-hash"       : "off",
     "import/no-unresolved"        : 0, # It doesn't always get it right by default, and resolution is complicated
-    "import/extensions"           : [2, "never"]
+    "import/extensions"           : [2, {
+      "js"    : "never",
+      "jsx"   : "never",
+      "png"   : "always",
+      "jpeg"  : "always",
+      "jpg"   : "always",
+      "gif"   : "always",
+      "svg"   : "always"
+    }]
   }
 }
