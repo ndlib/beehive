@@ -13,11 +13,11 @@ import CollectionUrl from 'modules/CollectionUrl'
 const APP_BAR_HEIGHT = 64
 const useStyles = makeStyles(theme => ({
   headerContainer: {
-    height: props => APP_BAR_HEIGHT + 1 + `${props.branding ? 50 : 0}px`,
+    height: props => `${APP_BAR_HEIGHT + 1 + (props.branding ? 50 : 0)}px`,
   },
   appBar: {
     background: 'linear-gradient(to bottom, #5b5b5b 0%,#050505 100%)',
-    height: APP_BAR_HEIGHT + 1 + 'px',
+    height: `${APP_BAR_HEIGHT + 1}px`,
     top: props => props.branding ? '50px' : '0px',
   },
   toolbar: {
@@ -43,7 +43,7 @@ const useStyles = makeStyles(theme => ({
     paddingTop: 0,
     letterSpacing: 0,
     fontSize: 24,
-    lineHeight: APP_BAR_HEIGHT + 'px',
+    lineHeight: `${APP_BAR_HEIGHT}px`,
     color: theme.palette.common.white,
   },
   leftNav: {
@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
     flex: '0 1 auto',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    height: APP_BAR_HEIGHT + 'px',
+    height: `${APP_BAR_HEIGHT}px`,
     minWidth: '50px',
   },
   rightNav: {
@@ -60,7 +60,7 @@ const useStyles = makeStyles(theme => ({
     flex: '0 1 auto',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    height: APP_BAR_HEIGHT + 'px',
+    height: `${APP_BAR_HEIGHT}px`,
   },
   spacer: {
     flex: '1 1 auto',
@@ -69,7 +69,7 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     backgroundColor: 'white',
     position: 'fixed',
-    top: APP_BAR_HEIGHT + 'px',
+    top: `${APP_BAR_HEIGHT}px`,
     height: '1px',
     zIndex: '1000',
   },

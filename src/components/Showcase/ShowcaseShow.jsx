@@ -98,7 +98,7 @@ const ShowcaseShow = createReactClass({
       overflowX: 'hidden',
       whiteSpace: 'nowrap',
       boxSizing: 'border-box',
-      height: height + 'px',
+      height: `${height}px`,
       backgroundColor: 'rgba(0,0,0,0)',
     }
   },

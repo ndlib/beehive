@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   container: {
     color: 'lightgrey',
     paddingTop: '0',
-    maxWidth: Math.floor(window.innerWidth * 0.9) + 'px',
+    maxWidth: `${Math.floor(window.innerWidth * 0.9)}px`,
   },
 })
 

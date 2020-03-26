@@ -98,7 +98,7 @@ const ItemContent = ({ item, additionalDetails, height, minMediaHeight, mediaBot
             <MultimediaViewer
               url={item.media.embedUrl}
               autostart={false}
-              height={item.media['@type'] !== 'AudioObject' ? (calcHeight + 'px') : undefined}
+              height={item.media['@type'] !== 'AudioObject' ? `${calcHeight}px` : undefined}
             />
           )}
         </div>

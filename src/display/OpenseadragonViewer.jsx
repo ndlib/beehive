@@ -154,8 +154,8 @@ const OpenseadragonViewer = createReactClass({
       defaultZoomLevel: zoom,
       showNavigator: this.props.showNavigator,
       showFullPageControl: this.props.showFullPageControl,
-      navigatorHeight:   navigatorSize + 'px',
-      navigatorWidth:    navigatorSize + 'px',
+      navigatorHeight:   `${navigatorSize}px`,
+      navigatorWidth:    `${navigatorSize}px`,
       navigatorPosition: 'ABSOLUTE',
       navigatorTop:      `${this.props.toolbarTop}px`,
       navigatorLeft:     `${this.props.toolbarLeft}px`,
@@ -219,7 +219,7 @@ const OpenseadragonViewer = createReactClass({
     }
     return {
       // height: "" + (this.props.height ? this.props.height : 600) + "px",
-      height: height + 'px',
+      height: `${height}px`,
       overflow: 'hidden',
     }
   },
@@ -231,7 +231,7 @@ const OpenseadragonViewer = createReactClass({
     }
     return {
       fontSize: '30px',
-      top: top + 'px',
+      top: `${top}px`,
       left: `${this.props.toolbarLeft}px`,
     }
   },

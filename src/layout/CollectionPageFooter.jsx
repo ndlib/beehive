@@ -9,8 +9,8 @@ const CollectionPageFooter = ({ height }) => {
     return null
   }
   return (
-    <Paper square style={{ height: height + 'px' }}>
-      <footer style={{ height: height + 'px' }}>
+    <Paper square style={{ height: `${height}px` }}>
+      <footer style={{ height: `${height}px` }}>
         <a href='http://library.nd.edu' className='hesburgh-logo' rel='nofollow'>
           Hesburgh Logo
         </a>
