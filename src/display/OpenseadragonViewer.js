@@ -7,6 +7,7 @@ import RotateLeftIcon from '@material-ui/icons/RotateLeft'
 import RotateRightIcon from '@material-ui/icons/RotateRight'
 import RefreshIcon from '@material-ui/icons/Refresh'
 import FullscreenIcon from '@material-ui/icons/Fullscreen'
+import OpenSeadragon from 'openseadragon'
 const ReactDOM = require('react-dom')
 const navigatorSize = 100
 const $ = require('jquery')

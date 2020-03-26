@@ -6644,6 +6644,11 @@ open@^7.0.2:
     is-docker "^2.0.0"
     is-wsl "^2.1.1"
 
+openseadragon@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/openseadragon/-/openseadragon-2.1.0.tgz#336f9621db75217b8d31f9e9e650f09851a75376"
+  integrity sha1-M2+WIdt1IXuNMfnp5lDwmFGnU3Y=
+
 opn@^5.5.0:
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/opn/-/opn-5.5.0.tgz#fc7164fab56d235904c51c3b27da6758ca3b9bfc"
