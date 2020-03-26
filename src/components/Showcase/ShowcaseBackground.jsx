@@ -22,7 +22,7 @@ const ShowcaseBackground = createReactClass({
     }
     return {
       width: '100%',
-      height: this.props.height + 'px',
+      height: `${this.props.height}px`,
       display: 'block',
       position: 'absolute',
       backgroundImage: backgroundImage,
@@ -35,7 +35,7 @@ const ShowcaseBackground = createReactClass({
   coverStyle: function () {
     return {
       width: '100%',
-      height: this.props.height + 'px',
+      height: `${this.props.height}px`,
       opacity: this.props.percentBlur / 1.5,
       backgroundColor: '#000',
     }

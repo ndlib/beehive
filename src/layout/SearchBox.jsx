@@ -5,9 +5,9 @@ import { IconButton, Button, Tooltip } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import ClearIcon from '@material-ui/icons/Clear'
 import SearchIcon from '@material-ui/icons/Search'
-import SearchStore from '../store/SearchStore.js'
-import SearchActions from '../actions/SearchActions.js'
-import CurrentTheme from '../modules/CurrentTheme.jsx'
+import SearchStore from '../store/SearchStore'
+import SearchActions from '../actions/SearchActions'
+import CurrentTheme from '../modules/CurrentTheme'
 
 const useStyles = makeStyles({
   container: {

@@ -1,6 +1,6 @@
-import AppDispatcher from '../dispatcher/AppDispatcher.jsx'
-import StoreEventEmitter from '../middleware/StoreEventEmitter.js'
-import ActionTypes from '../constants/ConfigurationActionTypes.jsx'
+import AppDispatcher from '../dispatcher/AppDispatcher'
+import StoreEventEmitter from '../middleware/StoreEventEmitter'
+import ActionTypes from '../constants/ConfigurationActionTypes'
 
 class ConfigurationStore extends StoreEventEmitter {
   constructor () {

@@ -4,7 +4,7 @@ import { Button } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import ClearIcon from '@material-ui/icons/Clear'
 import { Link } from 'react-router-dom'
-import SearchStore from '../store/SearchStore.js'
+import SearchStore from '../store/SearchStore'
 
 const useStyles = makeStyles(theme => ({
   closeButton: {

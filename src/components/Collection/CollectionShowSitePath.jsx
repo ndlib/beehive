@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import CollectionIntroCard from './CollectionIntroCard.jsx'
-import SitePathCardList from './SitePathCardList.jsx'
+import CollectionIntroCard from './CollectionIntroCard'
+import SitePathCardList from './SitePathCardList'
 
 const CollectionShowSitePath = ({ collection }) => {
   const intro = collection.description ? (

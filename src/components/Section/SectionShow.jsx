@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Paper, Toolbar, Typography, useMediaQuery } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import CloseButton from '../../other/CloseButton.jsx'
-import SideNavButton from '../../other/SideNavButton.jsx'
-import ItemContent from '../Item/ItemContent.jsx'
-import SectionShowDescription from './SectionShowDescription.jsx'
-import CollectionUrl from '../../modules/CollectionUrl.jsx'
+import CloseButton from '../../other/CloseButton'
+import SideNavButton from '../../other/SideNavButton'
+import ItemContent from '../Item/ItemContent'
+import SectionShowDescription from './SectionShowDescription'
+import CollectionUrl from '../../modules/CollectionUrl'
 
 const useStyles = makeStyles({
   toolbar: {
@@ -19,7 +19,7 @@ const useStyles = makeStyles({
     fontSize: '20px',
   },
   page: {
-    height: props => props.height + 'px',
+    height: props => `${props.height}px`,
     width: '100%',
     position: 'fixed',
     backgroundColor: '#ffffff',

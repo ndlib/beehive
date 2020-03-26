@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Card } from '@material-ui/core'
 import { Link, withRouter } from 'react-router-dom'
-import TextCard from './TextCard.jsx'
-import ImageCard from './ImageCard.jsx'
-import MultimediaCard from './MultimediaCard.jsx'
-import CollectionUrl from '../../modules/CollectionUrl.jsx'
+import TextCard from './TextCard'
+import ImageCard from './ImageCard'
+import MultimediaCard from './MultimediaCard'
+import CollectionUrl from '../../modules/CollectionUrl'
 
 const SectionCard = createReactClass({
   propTypes: {
@@ -32,7 +32,7 @@ const SectionCard = createReactClass({
       position: 'relative',
       marginRight: '20px',
       marginLeft: (this.props.section.has_spacer ? '15em' : '0px'),
-      height: this.props.height + 'px',
+      height: `${this.props.height}px`,
       cursor: 'pointer',
       lineHeight: '0px',
       backgroundColor: 'rgba(51,51,51,0.95)',

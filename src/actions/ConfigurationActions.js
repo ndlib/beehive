@@ -1,6 +1,6 @@
-import AppDispatcher from '../dispatcher/AppDispatcher.jsx'
-import ActionTypes from '../constants/ConfigurationActionTypes.jsx'
-import EventEmitter from '../middleware/EventEmitter.js'
+import AppDispatcher from '../dispatcher/AppDispatcher'
+import ActionTypes from '../constants/ConfigurationActionTypes'
+import EventEmitter from '../middleware/EventEmitter'
 const $ = require('jquery')
 
 class ConfigurationActions {

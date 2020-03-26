@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { Divider, ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
 import RemoveMarkup from '../../modules/RemoveMarkup'
-import ItemImage from './ItemImage.jsx'
-import CollectionUrl from '../../modules/CollectionUrl.jsx'
+import ItemImage from './ItemImage'
+import CollectionUrl from '../../modules/CollectionUrl'
 
 const MyListItem = ({ item }) => {
   return (

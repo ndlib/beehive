@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Link } from 'react-router'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
-import PrevNext from '../modules/PrevNextUtils.jsx'
+import PrevNext from '../modules/PrevNextUtils'
 
 const PreviousModal = createReactClass({
   displayName: 'Previous Modal Link',

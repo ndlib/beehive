@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { List } from '@material-ui/core'
 import ListSubheader from '@material-ui/core/ListSubheader'
-import SearchStore from '../../store/SearchStore.js'
-import FacetItem from './FacetItem.jsx'
+import SearchStore from '../../store/SearchStore'
+import FacetItem from './FacetItem'
 
 const SearchFacets = () => {
   const [facets, setFacets] = useState(SearchStore.facets)

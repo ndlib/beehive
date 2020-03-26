@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Paper } from '@material-ui/core'
-import SitePathCard from '../Collection/SitePathCard.jsx'
+import SitePathCard from '../Collection/SitePathCard'
 
 const ShowcaseEndingCard = createReactClass({
   displayName: 'Showcase Ending',

@@ -157,8 +157,8 @@ const OpenseadragonViewer = createReactClass({
       navigatorHeight:   navigatorSize + 'px',
       navigatorWidth:    navigatorSize + 'px',
       navigatorPosition: 'ABSOLUTE',
-      navigatorTop:      this.props.toolbarTop + 'px',
-      navigatorLeft:     this.props.toolbarLeft + 'px',
+      navigatorTop:      `${this.props.toolbarTop}px`,
+      navigatorLeft:     `${this.props.toolbarLeft}px`,
       showRotationControl: true,
       immediateRender: false,
       toolbar: toolbarDiv,
@@ -232,7 +232,7 @@ const OpenseadragonViewer = createReactClass({
     return {
       fontSize: '30px',
       top: top + 'px',
-      left: this.props.toolbarLeft + 'px',
+      left: `${this.props.toolbarLeft}px`,
     }
   },
 

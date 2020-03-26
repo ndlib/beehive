@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Paper } from '@material-ui/core'
-import ShowcaseEndingCard from './ShowcaseEndingCard.jsx'
-import SectionCard from '../Section/SectionCard.jsx'
+import ShowcaseEndingCard from './ShowcaseEndingCard'
+import SectionCard from '../Section/SectionCard'
 
 const ShowcaseSections = createReactClass({
 
@@ -14,7 +14,7 @@ const ShowcaseSections = createReactClass({
 
   style: function () {
     return {
-      height: this.props.height + 'px',
+      height: `${this.props.height}px`,
       display: 'inline-block',
       paddingRight: '175px',
       boxShadow: 'none',

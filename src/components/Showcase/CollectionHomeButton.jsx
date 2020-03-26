@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { IconButton } from '@material-ui/core'
 import HomeIcon from '@material-ui/icons/Home'
-import CollectionUrl from '../../modules/CollectionUrl.jsx'
+import CollectionUrl from '../../modules/CollectionUrl'
 
 const CollectionHomeButton = createReactClass({
   propTypes: {

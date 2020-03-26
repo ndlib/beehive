@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import JSONLD from '../JSONLD.jsx'
+import JSONLD from '../JSONLD'
 import RemoveMarkup from '../../modules/RemoveMarkup'
 import CollectionPageHeader from '../../layout/CollectionPageHeader'
-import PageContent from '../../layout/PageContent.jsx'
-import CollectionPageFooter from '../../layout/CollectionPageFooter.jsx'
-import PagesShow from '../Pages/PagesShow.jsx'
-import LoadRemote from '../../modules/LoadRemote.jsx'
+import PageContent from '../../layout/PageContent'
+import CollectionPageFooter from '../../layout/CollectionPageFooter'
+import PagesShow from '../Pages/PagesShow'
+import LoadRemote from '../../modules/LoadRemote'
 
 const About = createReactClass({
   propTypes: {

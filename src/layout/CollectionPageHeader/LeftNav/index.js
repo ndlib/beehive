@@ -4,8 +4,8 @@ import { Divider, Drawer, Button, MenuList } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import MenuIcon from '@material-ui/icons/Menu'
 import NavMenuItem from './NavMenuItem'
-import CollectionUrl from 'modules/CollectionUrl.jsx'
-import CurrentTheme from 'modules/CurrentTheme.jsx'
+import CollectionUrl from 'modules/CollectionUrl'
+import CurrentTheme from 'modules/CurrentTheme'
 const $ = require('jquery')
 
 const useStyles = makeStyles({

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
 import { Card, CardMedia, CardHeader } from '@material-ui/core'
 import { Link } from 'react-router-dom'
-import CollectionUrl from '../../modules/CollectionUrl.jsx'
+import CollectionUrl from '../../modules/CollectionUrl'
 
 const CollectionIntroCard = createReactClass({
   propTypes: {

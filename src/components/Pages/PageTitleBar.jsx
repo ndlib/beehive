@@ -6,14 +6,14 @@ import CloseButton from 'other/CloseButton'
 
 const useStyles = makeStyles({
   bar: {
-    minHeight: props => props.height + 'px',
-    height: props => props.height + 'px',
+    minHeight: props => `${props.height}px`,
+    height: props => `${props.height}px`,
     opacity: 1,
     backgroundColor: 'rgba(51,51,51,1)',
     zIndex: '1',
   },
   title: {
-    lineHeight: props => props.height + 'px',
+    lineHeight: props => `${props.height}px`,
     color: 'white',
     paddingRight: '16px',
     fontSize: '20px',

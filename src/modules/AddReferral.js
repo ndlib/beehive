@@ -1,4 +1,4 @@
-import DaveURL from './DaveURL.js'
+import DaveURL from './DaveURL'
 export default function (string) {
   if (string.includes(DaveURL())) {
     const sIndex = string.indexOf('?')

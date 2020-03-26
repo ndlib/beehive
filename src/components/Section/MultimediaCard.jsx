@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { CardMedia, CardHeader, CardContent } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import LibraryMusicIcon from '@material-ui/icons/LibraryMusic'
-import CardCaption from './CardCaption.jsx'
+import CardCaption from './CardCaption'
 
 const useStyles = makeStyles({
   title: {

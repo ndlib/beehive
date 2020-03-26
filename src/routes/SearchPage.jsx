@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Search from '../components/Search//Search.jsx'
-import FacetQueryParms from '../modules/FacetQueryParams.js'
-import HoneycombURL from '../modules/HoneycombURL.js'
+import Search from '../components/Search//Search'
+import FacetQueryParms from '../modules/FacetQueryParams'
+import HoneycombURL from '../modules/HoneycombURL'
 
 const SearchPage = ({ match, children }) => {
   const queryParams = new URLSearchParams(window.location.search)

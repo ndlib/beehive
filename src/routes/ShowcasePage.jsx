@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Showcase from '../components/Showcase/Showcase.jsx'
-import HoneycombURL from '../modules/HoneycombURL.js'
+import Showcase from '../components/Showcase/Showcase'
+import HoneycombURL from '../modules/HoneycombURL'
 
 class ShowcasePage extends Component {
   render () {

@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Button, useMediaQuery } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import AddReferral from '../../modules/AddReferral.js'
-import Details from '../../display/Details.jsx'
-import OpenseadragonViewer from '../../display/OpenseadragonViewer.jsx'
-import MultimediaViewer from '../../layout/MultimediaViewer.jsx'
+import AddReferral from '../../modules/AddReferral'
+import Details from '../../display/Details'
+import OpenseadragonViewer from '../../display/OpenseadragonViewer'
+import MultimediaViewer from '../../layout/MultimediaViewer'
 
 const useStyles = makeStyles({
   outer: {
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
   },
   image: {
     maxWidth: '100%',
-    maxHeight: props => (props.calcHeight - 60) + 'px',
+    maxHeight: props => `${props.calcHeight - 60}px`,
     display: 'block',
     margin: 'auto',
   },

@@ -4,8 +4,8 @@ import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import CheckBoxIcon from '@material-ui/icons/CheckBox'
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank'
-import SearchStore from '../../store/SearchStore.js'
-import SearchActions from '../../actions/SearchActions.js'
+import SearchStore from '../../store/SearchStore'
+import SearchActions from '../../actions/SearchActions'
 
 const useStyles = makeStyles({
   container: {

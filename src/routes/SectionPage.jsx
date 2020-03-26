@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Section from '../components/Section/Section.jsx'
-import CollectionUrl from '../modules/CollectionUrl.jsx'
+import Section from '../components/Section/Section'
+import CollectionUrl from '../modules/CollectionUrl'
 
 class SectionPage extends Component {
   render () {

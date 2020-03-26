@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import ShowcaseTitleCard from './ShowcaseTitleCard.jsx'
-import ShowcaseSections from './ShowcaseSections.jsx'
+import ShowcaseTitleCard from './ShowcaseTitleCard'
+import ShowcaseSections from './ShowcaseSections'
 
 const ShowcaseInnerContent = createReactClass({
   propTypes: {
@@ -13,7 +13,7 @@ const ShowcaseInnerContent = createReactClass({
   style: function () {
     const style = {
       position: 'absolute',
-      height: this.props.height + 'px',
+      height: `${this.props.height}px`,
       top: 0,
       left: 0,
       overflowX: 'visible',

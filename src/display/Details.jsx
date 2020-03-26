@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Paper } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
-import MetadataList from '../display/MetadataList.jsx'
+import MetadataList from '../display/MetadataList'
 
 const useStyles = makeStyles({
   // The outer containing div for this component

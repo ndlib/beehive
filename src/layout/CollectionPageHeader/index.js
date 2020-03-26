@@ -13,7 +13,7 @@ import CollectionUrl from 'modules/CollectionUrl'
 const APP_BAR_HEIGHT = 64
 const useStyles = makeStyles(theme => ({
   headerContainer: {
-    height: props => APP_BAR_HEIGHT + 1 + (props.branding ? 50 : 0) + 'px',
+    height: props => APP_BAR_HEIGHT + 1 + `${props.branding ? 50 : 0}px`,
   },
   appBar: {
     background: 'linear-gradient(to bottom, #5b5b5b 0%,#050505 100%)',

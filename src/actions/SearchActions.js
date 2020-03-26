@@ -1,5 +1,5 @@
-import AppDispatcher from '../dispatcher/AppDispatcher.jsx'
-import SearchActionTypes from '../constants/SearchActionTypes.jsx'
+import AppDispatcher from '../dispatcher/AppDispatcher'
+import SearchActionTypes from '../constants/SearchActionTypes'
 
 class SearchActions {
   // Init

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { FormControl, Select, MenuItem, InputLabel } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import SearchActions from '../../actions/SearchActions.js'
-import SearchStore from '../../store/SearchStore.js'
+import SearchActions from '../../actions/SearchActions'
+import SearchStore from '../../store/SearchStore'
 
 const useStyles = makeStyles({
   container: {

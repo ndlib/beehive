@@ -2,19 +2,19 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Toolbar, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import CloseButton from '../../other/CloseButton.jsx'
+import CloseButton from '../../other/CloseButton'
 
 const useStyles = makeStyles({
   toolbar: {
     opacity: props => 1 - props.percentFade,
     backgroundColor: 'rgba(51, 51, 51, 1)',
-    height: props => props.height + 'px',
+    height: props => `${props.height}px`,
     zIndex: '200',
     overflow: 'hidden',
   },
   title: {
     color: '#fff',
-    lineHeight: props => props.height + 'px',
+    lineHeight: props => `${props.height}px`,
     fontSize: '20px',
   },
 })

@@ -5,7 +5,7 @@ import { Card, CardActions, CardMedia, CardHeader, IconButton } from '@material-
 import { makeStyles } from '@material-ui/core/styles'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import TextOverlay from 'components/Shared/TextOverlay'
-import CollectionUrl from 'modules/CollectionUrl.jsx'
+import CollectionUrl from 'modules/CollectionUrl'
 
 const useStyles = makeStyles({
   card: {

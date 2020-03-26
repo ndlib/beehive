@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import { CardContent, CardHeader } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import MoreOverlay from './MoreOverlay.jsx'
+import MoreOverlay from './MoreOverlay'
 
 const useStyles = makeStyles({
   title: {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Item from '../components/Item/Item.jsx'
-import CollectionUrl from '../modules/CollectionUrl.jsx'
+import Item from '../components/Item/Item'
+import CollectionUrl from '../modules/CollectionUrl'
 
 class ItemPage extends Component {
   render () {

@@ -1,7 +1,7 @@
 import React from 'react'
 import createReactClass from 'create-react-class'
-import PageHeader from '../../layout/PageHeader.jsx'
-import PageContent from '../../layout/PageContent.jsx'
+import PageHeader from '../../layout/PageHeader'
+import PageContent from '../../layout/PageContent'
 
 const ErrorPage = createReactClass({
   render: function () {

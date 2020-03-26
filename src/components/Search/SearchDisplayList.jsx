@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { GridList, List, Paper, useMediaQuery } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import SearchStore from '../../store/SearchStore.js'
-import SearchPagination from './SearchPagination.jsx'
-import ItemListItem from './ItemListItem.jsx'
-import SearchSidebar from './SearchSidebar.jsx'
+import SearchStore from '../../store/SearchStore'
+import SearchPagination from './SearchPagination'
+import ItemListItem from './ItemListItem'
+import SearchSidebar from './SearchSidebar'
 
 const useStyles = makeStyles({
   header: {

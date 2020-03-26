@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import CollectionIntroduction from '../components/CollectionIntroduction/CollectionIntroduction.jsx'
-import HoneycombURL from '../modules/HoneycombURL.js'
+import CollectionIntroduction from '../components/CollectionIntroduction/CollectionIntroduction'
+import HoneycombURL from '../modules/HoneycombURL'
 
 class CollectionIntroductionPage extends Component {
   render () {

@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     width: '85vw',
     boxShadow: 'none',
     backgroundColor: 'rgba(0,0,0,0)',
-    height: props => props.height ? (props.height + 'px') : undefined,
+    height: props => props.height ? `${props.height}px` : undefined,
   },
   header: {
     textShadow: '2px 2px 3px #333333',
@@ -23,7 +23,7 @@ const useStyles = makeStyles({
     backgroundColor: 'rgba(0,0,0,0.1)',
     whiteSpace: 'normal',
     lineHeight: '2em !important',
-    marginTop: props => props.height ? (Math.round(props.height * 0.15) + 'px') : undefined,
+    marginTop: props => props.height ? `${Math.round(props.height * 0.15)}px` : undefined,
   },
   title: {
     color: '#fff',

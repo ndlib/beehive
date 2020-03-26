@@ -1,14 +1,16 @@
 import React from 'react'
-import createReactClass from 'create-react-class'
+import PropTypes from 'prop-types'
 
-const Layout = createReactClass({
-  render: function () {
-    return (
-      <div>
-        {this.props.children}
-      </div>
-    )
-  },
-})
+const Layout = ({ children }) => {
+  return (
+    <div>
+      {children}
+    </div>
+  )
+}
+
+Layout.propTypes = {
+  children: PropTypes.node,
+}
 
 export default Layout

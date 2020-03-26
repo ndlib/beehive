@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import JSONLD from '../JSONLD.jsx'
+import JSONLD from '../JSONLD'
 import SiteIndexHeader from './SiteIndexHeader'
-import BrandBar from '../../layout/BrandBar.jsx'
-import PageContent from '../../layout/PageContent.jsx'
+import BrandBar from '../../layout/BrandBar'
+import PageContent from '../../layout/PageContent'
 import CollectionsList from './CollectionsList'
-import IndexPageFooter from '../../layout/IndexPageFooter.jsx'
-import LoadRemote from '../../modules/LoadRemote.jsx'
+import IndexPageFooter from '../../layout/IndexPageFooter'
+import LoadRemote from '../../modules/LoadRemote'
 
 const SiteIndex = createReactClass({
   propTypes: {

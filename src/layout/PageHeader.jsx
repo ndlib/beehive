@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import createReactClass from 'create-react-class'
-import TitleBar from '../layout/TitleBar.jsx'
+import TitleBar from '../layout/TitleBar'
 const PageHeader = createReactClass({
   displayName: 'Page Header',
 

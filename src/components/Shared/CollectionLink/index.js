@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { Button } from '@material-ui/core'
-import CollectionUrl from 'modules/CollectionUrl.jsx'
+import CollectionUrl from 'modules/CollectionUrl'
 
 const CollectionLink = ({ collection, button, className, children }) => {
   const url = CollectionUrl.collectionUrl(collection)

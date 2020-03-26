@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { GridList, GridListTile, useMediaQuery } from '@material-ui/core'
-import SitePathCard from './SitePathCard.jsx'
+import SitePathCard from './SitePathCard'
 
 const SitePathCardList = ({ sitePath, intro }) => {
   const columns = 1 +

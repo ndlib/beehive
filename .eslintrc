@@ -3,14 +3,17 @@
   "extends" : [
     "standard",
     "standard-react",
-    "react-app"
+    "react-app",
+    "plugin:import/errors",
+    "plugin:import/warnings"
   ],
   "plugins" : [
     "babel",
     "react",
     "react-hooks",
     "promise",
-    "jsx-a11y"
+    "jsx-a11y",
+    "import"
   ],
   "env" : {
     "browser" : true
@@ -42,6 +45,8 @@
     "semi"                        : [2, "never"],
     "space-in-parens"             : ["error", "never"],
     "space-before-function-paren" : 0,
-    "jsx-a11y/href-no-hash"       : "off"
+    "jsx-a11y/href-no-hash"       : "off",
+    "import/no-unresolved"        : 0, # It doesn't always get it right by default, and resolution is complicated
+    "import/extensions"           : [2, "never"]
   }
 }

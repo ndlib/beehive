@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
-import SearchStore from '../../store/SearchStore.js'
+import SearchStore from '../../store/SearchStore'
 
 const SearchPagination = () => {
   const [storeUpdated, setStoreUpdated] = useState()
