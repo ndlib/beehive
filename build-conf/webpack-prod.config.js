@@ -283,10 +283,11 @@ module.exports = {
 
             loader: require.resolve('babel-loader'),
             options: {
+              babelrc: true,
+              // This is a feature of `babel-loader` for webpack (not Babel itself).
+              // It enables caching results in ./node_modules/.cache/babel-loader/
+              // directory for faster rebuilds.
               cacheDirectory: true,
-              // Save disk space when time isn't as important
-              cacheCompression: true,
-              compact: true,
             },
           },
           // Process any JS outside of the app with Babel.
@@ -297,17 +298,7 @@ module.exports = {
             loader: require.resolve('babel-loader'),
             options: {
               babelrc: false,
-              configFile: false,
-              compact: false,
               cacheDirectory: true,
-              // Save disk space when time isn't as important
-              cacheCompression: true,
-
-              // If an error happens in a package, it's possible to be
-              // because it was compiled. Thus, we don't want the browser
-              // debugger to show the original code. Instead, the code
-              // being evaluated would be much more helpful.
-              sourceMaps: false,
             },
           },
           // "postcss" loader applies autoprefixer to our CSS.

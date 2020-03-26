@@ -18,5 +18,5 @@ NC='\033[0m'
 npm run build
 #echo ${REVISION} > public/REVISION
 
-aws s3 sync ./public s3://${BUCKET} --exclude '.*' --exclude '*.md' --delete --acl public-read --profile ${PROFILE}
+aws s3 sync ./build s3://${BUCKET} --exclude '.*' --exclude '*.md' --delete --acl public-read --profile ${PROFILE}
 echo -e "${GREEN}Deployed to ${BUCKET}.s3-website-us-east-1.amazonaws.com.${NC}"

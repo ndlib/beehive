@@ -11,5 +11,5 @@ echo -e "${RED}Building preproduction on branch ${BRANCH}${NC}"
 npm run build-pprd
 echo ${REVISION} > public/REVISION
 
-aws s3 sync ./public s3://${BUCKET} --exclude '.*' --exclude '*.md' --delete --acl public-read
+aws s3 sync ./build s3://${BUCKET} --exclude '.*' --exclude '*.md' --delete --acl public-read
 echo -e "${GREEN}Deployed to ${BUCKET}.s3-website-us-east-1.amazonaws.com.${NC}"
