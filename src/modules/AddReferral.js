@@ -1,5 +1,5 @@
-import DaveURL from './DaveURL.js'
-module.exports = function (string) {
+import DaveURL from './DaveURL'
+export default function (string) {
   if (string.includes(DaveURL())) {
     const sIndex = string.indexOf('?')
     const newReferral = '?ref=' + window.location

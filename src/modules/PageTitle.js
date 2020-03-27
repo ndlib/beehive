@@ -1,4 +1,4 @@
-module.exports = function (title, doNotConcat) {
+export default function (title, doNotConcat) {
   if (title) {
     if (doNotConcat) {
       document.title = title

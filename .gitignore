@@ -1,8 +1,10 @@
-public/resources/*
-public/images/*
-public/REVISION
 node_modules/*
 log
 tmp
 vendor
 npm-debug.log
+/build
+.env
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

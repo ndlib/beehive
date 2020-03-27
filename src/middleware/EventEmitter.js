@@ -1,3 +1,3 @@
-const EventEmitter = require('events').EventEmitter
+const EventEmitter = require('events')
 
-module.exports = new EventEmitter()
+export default new EventEmitter()

@@ -1,4 +1,4 @@
-module.exports = function (id, string) {
+export default function (id, string) {
   if (id) {
     if (string === undefined) {
       string = 'item'
@@ -21,6 +21,7 @@ module.exports = function (id, string) {
       searchStr = '?' + string + '=' + id
     }
 
+    // eslint-disable-next-line no-restricted-globals
     history.pushState({}, '', path + searchStr)
   }
 }

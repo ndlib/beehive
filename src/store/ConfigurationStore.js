@@ -1,6 +1,6 @@
-const AppDispatcher = require('../dispatcher/AppDispatcher.jsx')
-const StoreEventEmitter = require('../middleware/StoreEventEmitter.js')
-const ActionTypes = require('../constants/ConfigurationActionTypes.jsx')
+import AppDispatcher from '../dispatcher/AppDispatcher'
+import StoreEventEmitter from '../middleware/StoreEventEmitter'
+import ActionTypes from '../constants/ConfigurationActionTypes'
 
 class ConfigurationStore extends StoreEventEmitter {
   constructor () {
@@ -13,7 +13,15 @@ class ConfigurationStore extends StoreEventEmitter {
     this._enableBrowse = false
 
     Object.defineProperty(this, 'fields', {
-      get: function () { return this._fields },
+      get: function () {
+        return this._fields
+      },
+    })
+
+    Object.defineProperty(this, 'loaded', {
+      get: function () {
+        return this._loaded
+      },
     })
 
     AppDispatcher.register(this.receiveAction.bind(this))
@@ -38,10 +46,6 @@ class ConfigurationStore extends StoreEventEmitter {
     }
   }
 
-  loaded () {
-    return this._loaded
-  }
-
   searchEnabled () {
     return this._enableSearch
   }
@@ -55,4 +59,4 @@ class ConfigurationStore extends StoreEventEmitter {
   }
 }
 
-module.exports = new ConfigurationStore()
+export default new ConfigurationStore()

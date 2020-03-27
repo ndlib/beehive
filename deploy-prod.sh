@@ -5,6 +5,10 @@ RELEASE=`git fetch --tags;git show remotes/origin/master:current_release`
 REVISION=`git rev-parse HEAD`
 PROFILE=libnd-wse-admin
 
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m'
+
 #if [ "${TAG}" != "${RELEASE}" ]; then
 #  echo "\033[0;31mYou must be on tag ${RELEASE} to deploy to production.\033[0m"
 #  exit 1
@@ -12,8 +16,7 @@ PROFILE=libnd-wse-admin
 
 #echo "\033[0;31mBuilding production with tag ${TAG} (Rev ${REVISION})\033[0m"
 npm run build
-#echo ${REVISION} > public/REVISION
+#echo ${REVISION} > build/REVISION
 
-aws s3 sync ./public s3://${BUCKET} --exclude '.*' --exclude '*.md' --delete --acl public-read --profile ${PROFILE}
-echo "\033[0;31mDeployed to ${BUCKET}.s3-website-us-east-1.amazonaws.com. Rebuilding for development.\033[0m"
-npm run build-dev
+aws s3 sync ./build s3://${BUCKET} --exclude '.*' --exclude '*.md' --delete --acl public-read --profile ${PROFILE}
+echo -e "${GREEN}Deployed to ${BUCKET}.s3-website-us-east-1.amazonaws.com.${NC}"

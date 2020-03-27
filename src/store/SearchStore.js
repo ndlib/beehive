@@ -6,9 +6,9 @@
 // the store will emit a single SearchStoreChanged event, regardless of why it changed.
 // If a property changes that does not change the results, it will emit an individual
 // event specific to that change, such as SearchStoreSelectedItemChanged.
-const AppDispatcher = require('../dispatcher/AppDispatcher.jsx')
-const EventEmitter = require('events').EventEmitter
-const SearchActionTypes = require('../constants/SearchActionTypes.jsx')
+import AppDispatcher from '../dispatcher/AppDispatcher'
+import SearchActionTypes from '../constants/SearchActionTypes'
+const EventEmitter = require('events')
 const $ = require('jquery')
 
 class SearchStore extends EventEmitter {
@@ -34,20 +34,76 @@ class SearchStore extends EventEmitter {
     this._selectedItem = null
     this._view = null
 
-    Object.defineProperty(this, 'baseApiUrl', { get: function () { return this._baseApiUrl } })
-    Object.defineProperty(this, 'collection', { get: function () { return this._collection } })
-    Object.defineProperty(this, 'searchTerm', { get: function () { return this._searchTerm } })
-    Object.defineProperty(this, 'items', { get: function () { return this._items } })
-    Object.defineProperty(this, 'found', { get: function () { return this._found } })
-    Object.defineProperty(this, 'start', { get: function () { return this._start } })
-    Object.defineProperty(this, 'facets', { get: function () { return this._facets } })
-    Object.defineProperty(this, 'sorts', { get: function () { return this._sorts } })
-    Object.defineProperty(this, 'count', { get: function () { return this._count } })
-    Object.defineProperty(this, 'rowLimit', { get: function () { return this._rowLimit } })
-    Object.defineProperty(this, 'facetOption', { get: function () { return this._facetOption } })
-    Object.defineProperty(this, 'sortOption', { get: function () { return this._sortOption } })
-    Object.defineProperty(this, 'selectedItem', { get: function () { return this._selectedItem } })
-    Object.defineProperty(this, 'view', { get: function () { return this._view } })
+    Object.defineProperty(this, 'baseApiUrl', {
+      get: function () {
+        return this._baseApiUrl
+      },
+    })
+    Object.defineProperty(this, 'collection', {
+      get: function () {
+        return this._collection
+      },
+    })
+    Object.defineProperty(this, 'searchTerm', {
+      get: function () {
+        return this._searchTerm
+      },
+    })
+    Object.defineProperty(this, 'items', {
+      get: function () {
+        return this._items
+      },
+    })
+    Object.defineProperty(this, 'found', {
+      get: function () {
+        return this._found
+      },
+    })
+    Object.defineProperty(this, 'start', {
+      get: function () {
+        return this._start
+      },
+    })
+    Object.defineProperty(this, 'facets', {
+      get: function () {
+        return this._facets
+      },
+    })
+    Object.defineProperty(this, 'sorts', {
+      get: function () {
+        return this._sorts
+      },
+    })
+    Object.defineProperty(this, 'count', {
+      get: function () {
+        return this._count
+      },
+    })
+    Object.defineProperty(this, 'rowLimit', {
+      get: function () {
+        return this._rowLimit
+      },
+    })
+    Object.defineProperty(this, 'facetOption', {
+      get: function () {
+        return this._facetOption
+      },
+    })
+    Object.defineProperty(this, 'sortOption', {
+      get: function () {
+        return this._sortOption
+      },
+    })
+    Object.defineProperty(this, 'selectedItem', {
+      get: function () {
+        return this._selectedItem
+      },
+    })
+    Object.defineProperty(this, 'view', {
+      get: function () {
+        return this._view
+      },
+    })
 
     AppDispatcher.register(this.receiveAction.bind(this))
   }
@@ -181,7 +237,7 @@ class SearchStore extends EventEmitter {
   }
 
   mapHitToItem (hit) {
-    let item = {}
+    const item = {}
     item['@id'] = hit['@id']
     item.name = hit.name
     item.description = hit.description
@@ -211,14 +267,14 @@ class SearchStore extends EventEmitter {
   }
 
   searchQuery (overrides) {
-    let q = {
+    const q = {
       q: this._searchTerm,
       view: this._view,
     }
 
     if (this._facetOption && this._facetOption.length > 0) {
       for (let i = 0; i < this._facetOption.length; i++) {
-        let current = this._facetOption[i]
+        const current = this._facetOption[i]
         if (current.name && current.value) {
           q['facet[' + current.name + ']'] = current.value
         }
@@ -226,13 +282,13 @@ class SearchStore extends EventEmitter {
     }
 
     if (this._sortOption) {
-      q['sort'] = this._sortOption
+      q.sort = this._sortOption
     }
 
     if (overrides && overrides.start !== 'undefined') {
-      q['start'] = overrides.start
+      q.start = overrides.start
     } else if (this._start) {
-      q['start'] = this._start
+      q.start = this._start
     }
     return q
   }
@@ -241,9 +297,9 @@ class SearchStore extends EventEmitter {
   // This was primarily created to allow pagination to generate links using the same search, but
   // with other start values.
   searchUri (overrides) {
-    let path = this.searchPath() + '?'
-    let queryObj = this.searchQuery(overrides)
-    let queryString = Object.keys(queryObj).map((key) => `${key}=${queryObj[key]}`).join('&')
+    const path = this.searchPath() + '?'
+    const queryObj = this.searchQuery(overrides)
+    const queryString = Object.keys(queryObj).map((key) => `${key}=${queryObj[key]}`).join('&')
 
     return path + queryString
   }
@@ -303,4 +359,4 @@ class SearchStore extends EventEmitter {
   }
 }
 
-module.exports = new SearchStore()
+export default new SearchStore()

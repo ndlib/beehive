@@ -1,32 +1,60 @@
 {
-  "parser": "babel-eslint",
-  "extends": [
+  "parser"  : "babel-eslint",
+  "extends" : [
     "standard",
     "standard-react",
-    "react-app"
+    "react-app",
+    "plugin:import/errors",
+    "plugin:import/warnings"
   ],
-  "plugins": [
+  "plugins" : [
     "babel",
     "react",
-    "promise"
+    "react-hooks",
+    "promise",
+    "jsx-a11y",
+    "import"
   ],
-  "env": {
+  "env" : {
     "browser" : true
   },
-  "globals": {
+  "globals" : {
     "__DEV__"      : false,
     "__TEST__"     : false,
     "__PROD__"     : false,
     "__COVERAGE__" : false
   },
-  "rules": {
-    "comma-dangle"         : [2, "always-multiline"],
-    "key-spacing"          : 0,
-    "jsx-quotes"           : [2, "prefer-single"],
-    "max-len"              : [2, 120, 2],
-    "object-curly-spacing" : [2, "always"],
-    "no-unused-vars"       : [1, { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }],
-    "react/prop-types"     : 1,
-    "jsx-a11y/href-no-hash": "off"
+  "rules" : {
+    "brace-style"                 : [2, "1tbs"],
+    "comma-dangle"                : [2, "always-multiline"],
+    "indent"                      : ["error", 2, {"SwitchCase" : 1}],
+    "jsx-quotes"                  : [2, "prefer-single"],
+    "key-spacing"                 : 0,
+    "max-len"                     : [1, 120, 2],
+    "no-unused-vars"              : [1, { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }],
+    "no-var"                      : 1,
+    "object-curly-spacing"        : [2, "always"],
+    "prefer-const"                : [1, {
+      "destructuring"               : "any",
+      "ignoreReadBeforeAssign"      : true
+    }],
+    "react/prop-types"            : 1,
+    "react/jsx-fragments"         : 0,
+    "react/jsx-handler-names"     : 0,
+    "react-hooks/rules-of-hooks"  : "error",
+    "semi"                        : [2, "never"],
+    "space-in-parens"             : ["error", "never"],
+    "space-before-function-paren" : 0,
+    "jsx-a11y/href-no-hash"       : "off",
+    "import/no-unresolved"        : 0, # It doesn't always get it right by default, and resolution is complicated
+    "import/extensions"           : [2, {
+      "js"    : "never",
+      "jsx"   : "never",
+      "png"   : "always",
+      "jpeg"  : "always",
+      "jpg"   : "always",
+      "gif"   : "always",
+      "svg"   : "always"
+    }]
   }
 }

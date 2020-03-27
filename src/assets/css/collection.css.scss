@@ -61,14 +61,6 @@ body.collection {
   }
 }
 
-.collection-left-nav-item {
-  div:last-child {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-}
-
 .collection-short-intro-container {
   background: rgba(244, 244, 244, 0.7);
   box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.75);
