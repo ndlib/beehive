@@ -33,6 +33,13 @@ export default createMuiTheme({
           backgroundColor: 'rgba(153, 153, 153, 0.2)',
         },
       },
+      textPrimary: {
+        color: '#d9a91b',
+        '&:hover': {
+          color: '#d9a91b',
+          backgroundColor: 'rgba(153, 153, 153, 0.2)',
+        },
+      },
     },
     MuiIconButton: {
       root: {

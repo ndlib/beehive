@@ -4,8 +4,8 @@ import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import CheckBoxIcon from '@material-ui/icons/CheckBox'
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank'
-import SearchStore from '../../store/SearchStore'
-import SearchActions from '../../actions/SearchActions'
+import SearchStore from 'store/SearchStore'
+import SearchActions from 'actions/SearchActions'
 
 const useStyles = makeStyles({
   container: {
@@ -29,7 +29,7 @@ const useStyles = makeStyles({
   },
 })
 
-const FacetItem = ({ field, facet }) => {
+const FacetOption = ({ field, facet }) => {
   const valueOnClick = (e) => {
     const values = e.currentTarget.getAttribute('value').split('|')
     if (SearchStore.facetOption) {
@@ -82,9 +82,9 @@ const FacetItem = ({ field, facet }) => {
   )
 }
 
-FacetItem.propTypes = {
+FacetOption.propTypes = {
   field: PropTypes.string.isRequired,
   facet: PropTypes.object.isRequired,
 }
 
-export default FacetItem
+export default FacetOption

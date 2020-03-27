@@ -18,6 +18,12 @@ class ConfigurationStore extends StoreEventEmitter {
       },
     })
 
+    Object.defineProperty(this, 'facets', {
+      get: function () {
+        return this._facets
+      },
+    })
+
     Object.defineProperty(this, 'loaded', {
       get: function () {
         return this._loaded
