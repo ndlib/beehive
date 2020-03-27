@@ -41,8 +41,8 @@ if (env.stringified['process.env'].NODE_ENV === '"development"') {
 }
 
 // style files regexes
-const cssRegex = /\.css$/
-const cssModuleRegex = /\.module\.css$/
+const cssRegex = /\.s?css$/
+const cssModuleRegex = /\.module\.s?css$/
 
 // common function to get style loaders
 const getStyleLoaders = (cssOptions, preProcessor) => {
