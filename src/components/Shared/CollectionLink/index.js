@@ -7,7 +7,7 @@ import CollectionUrl from 'modules/CollectionUrl'
 const CollectionLink = ({ collection, button, className, children }) => {
   const url = CollectionUrl.collectionUrl(collection)
   return button ? (
-    <Button href={url} classes={className}>{children}</Button>
+    <Button href={url} color='primary' classes={className}>{children}</Button>
   ) : (
     collection.external_url ? (
       <a href={url} className={className}>{children}</a>

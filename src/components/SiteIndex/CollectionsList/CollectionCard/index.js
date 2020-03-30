@@ -48,9 +48,7 @@ const useStyles = makeStyles({
     paddingLeft: '16px',
     paddingRight: '16px',
     verticalAlign: 'middle',
-    fontSize: '14px',
     fontWeight: '500',
-    color: '#d9a91b',
   },
 })
 
