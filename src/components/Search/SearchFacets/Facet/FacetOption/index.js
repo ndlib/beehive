@@ -29,33 +29,26 @@ const useStyles = makeStyles({
   },
 })
 
-const FacetOption = ({ field, facet }) => {
+const FacetOption = ({ field, facet, shouldHide }) => {
   const valueOnClick = (e) => {
     const values = e.currentTarget.getAttribute('value').split('|')
-    if (SearchStore.facetOption) {
-      for (let i = 0; i < SearchStore.facetOption.length; i++) {
-        if (SearchStore.facetOption[i].name === values[0] && SearchStore.facetOption[i].value === values[1]) {
-          SearchStore.removeSelectedFacet({ name: values[0], value: values[1] })
-          return
-        }
-      }
+    if (SearchStore.facetOption && SearchStore.facetOption.some(opt => (
+      opt.name === values[0] && opt.value === values[1]
+    ))) {
+      SearchStore.removeSelectedFacet({ name: values[0], value: values[1] })
+    } else {
+      SearchActions.setSelectedFacet({ name: values[0], value: values[1] })
     }
-    SearchActions.setSelectedFacet({ name: values[0], value: values[1] })
   }
 
-  let isSelected = false
-  if (SearchStore.facetOption) {
-    for (let i = 0; i < SearchStore.facetOption.length; i++) {
-      if (facet.name === decodeURIComponent(SearchStore.facetOption[i].value)) {
-        isSelected = true
-      }
-    }
-  }
+  const isSelected = SearchStore.facetOption && SearchStore.facetOption.some(opt => (
+    field === opt.name && facet.name === opt.value
+  ))
 
   const classes = useStyles()
   const value = field + '|' + facet.name
 
-  if (!facet.name.trim()) {
+  if (!facet.name.trim() || (shouldHide && !isSelected)) {
     return null
   }
   return (
@@ -84,7 +77,11 @@ const FacetOption = ({ field, facet }) => {
 
 FacetOption.propTypes = {
   field: PropTypes.string.isRequired,
-  facet: PropTypes.object.isRequired,
+  facet: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    count: PropTypes.number.isRequired,
+  }).isRequired,
+  shouldHide: PropTypes.bool,
 }
 
 export default FacetOption

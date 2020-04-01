@@ -67,7 +67,7 @@ const SearchPagination = () => {
   // Am I not a people?
   // No, you are not.
   const startHuman = SearchStore.found > 0 ? SearchStore.start + 1 : 0
-  const endHuman = Math.min(SearchStore.start + SearchStore.rowLimit, SearchStore.found)
+  const endHuman = Math.min(SearchStore.start + SearchStore.rowLimit, SearchStore.found) || 0
 
   return (
     <div style={{ margin: '2em 0' }}>

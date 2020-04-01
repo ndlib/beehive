@@ -32,7 +32,7 @@ const SearchFacets = () => {
       key={facet.field}
       field={facet.field}
       label={facet.name}
-      values={facet.values}
+      options={facet.values}
       limit={numVisible[facet.field]}
       onShowMore={onShowMore}
     />
