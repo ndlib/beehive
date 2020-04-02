@@ -146,31 +146,28 @@ class SearchStore extends EventEmitter {
   executeQuery (reason) {
     reason = typeof reason !== 'undefined' ? reason : 'load'
 
-    let url = this._baseApiUrl + '?q=' + this._searchTerm
-    if (this._facetOption !== undefined && this._facetOption !== null) {
-      for (let i = 0; i < this._facetOption.length; i++) {
-        if (this._facetOption[i].name && this._facetOption[i].value) {
-          url += '&facets[' +
-            this._facetOption[i].name +
-            ']=' +
-            this._facetOption[i].value
+    const postData = {
+      q: this._searchTerm,
+      sort: this._sortOption,
+      start: this._start || 0,
+      rows: this._rowLimit,
+    }
+    // Add facets to postData. They are special because we may have an array of multiple values with the same key
+    if (this._facetOption) {
+      this._facetOption.forEach(opt => {
+        const facetKey = `facets[${opt.name}]`
+        if (!Array.isArray(postData[facetKey])) {
+          postData[facetKey] = []
         }
-      }
-    }
-    if (this._sortOption) {
-      url += '&sort=' + this._sortOption
-    }
-    if (this._start) {
-      url += '&start=' + this._start
-    }
-    if (this._rowLimit) {
-      url += '&rows=' + this._rowLimit
+        postData[facetKey].push(opt.value)
+      })
     }
 
     $.ajax({
       context: this,
-      type: 'GET',
-      url: url,
+      type: 'POST',
+      url: this._baseApiUrl,
+      data: postData,
       dataType: 'json',
       success: function (result) {
         this.setItems(result.hits)
@@ -195,26 +192,13 @@ class SearchStore extends EventEmitter {
     if (!this._facetOption) {
       this._facetOption = []
     }
-    // should we add the facet, start by assuming yes we should
-    let addFacet = true
-    // look for a facet with the same name
-    // if it is found, delete it
-    // if it has the same name and same value, we don't want to add it so
-    // set addFacet to false
-    for (let i = 0; i < this._facetOption.length; i++) {
-      if (this._facetOption[i].name === facet.name) {
-        if (this._facetOption[i].value === encodeURIComponent(facet.value)) {
-          addFacet = false
-        }
-        this._facetOption.splice(i, 1)
-      }
-    }
-    if (addFacet) {
+    // Add facet if it doesn't already exist in the list
+    if (!this._facetOption.some(opt => opt.name === facet.name && opt.value === facet.value)) {
       this._facetOption.push(facet)
+      // Reset starting item since the query has changed
+      this._start = null
+      this.executeQuery()
     }
-    // Reset starting item since the query has changed
-    this._start = null
-    this.executeQuery()
   }
 
   removeSelectedFacet (facet) {
@@ -276,7 +260,10 @@ class SearchStore extends EventEmitter {
       for (let i = 0; i < this._facetOption.length; i++) {
         const current = this._facetOption[i]
         if (current.name && current.value) {
-          q['facet[' + current.name + ']'] = current.value
+          if (!q[`facet[${current.name}]`]) {
+            q[`facet[${current.name}]`] = []
+          }
+          q[`facet[${current.name}]`].push(current.value)
         }
       }
     }
@@ -299,7 +286,13 @@ class SearchStore extends EventEmitter {
   searchUri (overrides) {
     const path = this.searchPath() + '?'
     const queryObj = this.searchQuery(overrides)
-    const queryString = Object.keys(queryObj).map((key) => `${key}=${queryObj[key]}`).join('&')
+    const queryString = Object.keys(queryObj).map((key) => {
+      if (Array.isArray(queryObj[key])) {
+        return queryObj[key].map(value => `${key}=${value}`).join('&')
+      } else {
+        return `${key}=${queryObj[key]}`
+      }
+    }).join('&')
 
     return path + queryString
   }

@@ -7,6 +7,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
 import FacetOption from './FacetOption'
 import ConfigurationStore from 'store/ConfigurationStore'
+import SearchStore from 'store/SearchStore'
 
 const useStyles = makeStyles({
   facetAccordion: {
@@ -32,12 +33,27 @@ const useStyles = makeStyles({
   },
 })
 
-const Facet = ({ field, label, values, limit, onShowMore }) => {
+const Facet = ({ field, label, options, limit, onShowMore }) => {
   const config = ConfigurationStore.facets.find(current => current.name === field) || {}
   const limitIncrement = config.limit || 5
   if (!limit) {
     limit = limitIncrement
   }
+  // If a selected facet does not have any results (usually happens due to another filter), it will not be
+  // returned as an option from Honeycomb. However, we need to treat it like it did, so the user does not
+  // get confused and can deselect it.
+  const selectedValues = (SearchStore.facetOption || []).filter(opt => opt.name === field).map(opt => opt.value)
+  selectedValues.forEach(value => {
+    const match = options.find(opt => opt.name === value)
+    if (!match) {
+      options.push({
+        '@type': 'SearchFacetValue',
+        name: value,
+        value: value,
+        count: 0,
+      })
+    }
+  })
 
   const classes = useStyles()
   return (
@@ -53,10 +69,10 @@ const Facet = ({ field, label, values, limit, onShowMore }) => {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails className={classes.facetListContainer}>
           <List style={{ width: '100%' }}>
-            {values.slice(0, limit).map(valueObj => (
-              <FacetOption key={valueObj.name} field={field} facet={valueObj} />
+            {options.map((valueObj, index) => (
+              <FacetOption key={valueObj.name} field={field} facet={valueObj} shouldHide={index >= limit} />
             ))}
-            {limit < values.length && (
+            {limit < options.length && (
               <Button color='primary' onClick={() => onShowMore(field, limitIncrement)} className={classes.showMore}>
                 Show More
               </Button>
@@ -71,7 +87,7 @@ const Facet = ({ field, label, values, limit, onShowMore }) => {
 Facet.propTypes = {
   field: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  values: PropTypes.array.isRequired,
+  options: PropTypes.array.isRequired,
   limit: PropTypes.number,
   onShowMore: PropTypes.func.isRequired,
 }

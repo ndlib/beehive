@@ -6,7 +6,7 @@ export default function (url) {
   while (facetReg !== null) {
     const string = facetReg[0].replace('facet[', '')
     const arr = string.split(']=')
-    facets.push({ name: arr[0], value: arr[1] })
+    facets.push({ name: arr[0], value: decodeURIComponent(arr[1]) })
     href = href.replace(facetReg[0], '')
     facetReg = reg.exec(href)
   }
