@@ -33,12 +33,7 @@ const CloseButton = ({ href, darkIcon }) => {
     // this should bring us up 1 level. eg section=>showcase showcase=>collection
     if (current.includes('/items/')) {
       if (SearchStore.collection) {
-        const searchQuery = SearchStore.searchQuery()
-        let queryString = '?'
-        for (const key in searchQuery) {
-          queryString += `${key}=${searchQuery[key]}&`
-        }
-        return `${SearchStore.searchPath()}${queryString}`
+        return SearchStore.searchUri()
       }
       stopword = 'items'
     } else if (current.includes('/pages/')) {
