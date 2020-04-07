@@ -34,10 +34,10 @@ const SearchFacets = () => {
     return () => SearchStore.off('SearchStoreChanged', action)
   })
 
-  const onShowMore = (facetName, increment) => {
+  const onShowAll = (facetName) => {
     setNumVisible({
       ...numVisible,
-      [facetName]: numVisible[facetName] + increment,
+      [facetName]: 9999,
     })
   }
 
@@ -48,7 +48,7 @@ const SearchFacets = () => {
       label={facet.name}
       options={facet.values}
       limit={numVisible[facet.field]}
-      onShowMore={onShowMore}
+      onShowAll={onShowAll}
     />
   )) : null
 }
