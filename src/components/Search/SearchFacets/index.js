@@ -8,7 +8,7 @@ const SearchFacets = () => {
   // Get the limit for how many of each facet to show from their configuration
   const initialLimits = {}
   ConfigurationStore.facets.forEach(facet => {
-    initialLimits[facet.name] = facet.limit || 5
+    initialLimits[facet.name] = facet.limit || (facet.limit === 0 ? 9999 : 5)
   })
 
   const [facets, setFacets] = useState(SearchStore.facets)
