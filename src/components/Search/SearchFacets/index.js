@@ -14,6 +14,20 @@ const SearchFacets = () => {
   const [facets, setFacets] = useState(SearchStore.facets)
   const [numVisible, setNumVisible] = useState(initialLimits)
 
+  const sortFacets = (a, b) => {
+    let orderA = 0
+    let orderB = 0
+    const matchA = ConfigurationStore.facets.find(cfg => cfg.name === a.field)
+    if (matchA) {
+      orderA = matchA.order || 0
+    }
+    const matchB = ConfigurationStore.facets.find(cfg => cfg.name === b.field)
+    if (matchB) {
+      orderB = matchB.order || 0
+    }
+    return orderA - orderB
+  }
+
   useEffect(() => {
     const action = () => setFacets(SearchStore.facets)
     SearchStore.on('SearchStoreChanged', action)
@@ -27,7 +41,7 @@ const SearchFacets = () => {
     })
   }
 
-  return facets ? facets.map(facet => (
+  return facets ? facets.sort(sortFacets).map(facet => (
     <Facet
       key={facet.field}
       field={facet.field}
