@@ -14,6 +14,8 @@ const SearchPage = ({ match, children }) => {
         searchTerm={queryParams.get('q') || ''}
         sortTerm={queryParams.get('sort')}
         facet={FacetQueryParms()}
+        matchMode={queryParams.get('mode')}
+        field={queryParams.get('field')}
         start={parseInt(queryParams.get('start'), 10)}
         view={queryParams.get('view')}
         currentItem={queryParams.get('item')}

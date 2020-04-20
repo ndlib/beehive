@@ -3,13 +3,17 @@ import { Toolbar, Button, useMediaQuery } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import ViewListIcon from '@material-ui/icons/ViewList'
 import ViewModuleIcon from '@material-ui/icons/ViewModule'
-import SearchBox from '../../layout/SearchBox'
+
+import FieldSelector from './FieldSelector'
+import MatchMode from './MatchMode'
 import SearchSort from './SearchSort'
-import SearchStore from '../../store/SearchStore'
-import ConfigurationStore from '../../store/ConfigurationStore'
-import SearchActions from '../../actions/SearchActions'
-import CurrentTheme from '../../modules/CurrentTheme'
 import SearchHelp from './SearchHelp'
+import SearchBox from 'layout/SearchBox'
+
+import SearchStore from 'store/SearchStore'
+import ConfigurationStore from 'store/ConfigurationStore'
+import SearchActions from 'actions/SearchActions'
+import CurrentTheme from 'modules/CurrentTheme'
 
 const useStyles = makeStyles({
   container: {
@@ -78,14 +82,18 @@ const SearchControls = () => {
   }
 
   const classes = useStyles()
-  const isSmall = useMediaQuery('(max-width: 699px)')
+  const isSmall = useMediaQuery('(max-width: 799px)')
 
   return (
     <div className={classes.container}>
       <Toolbar className={`controls ${classes.controls}`}>
         <div className={classes.leftSide}>
           {ConfigurationStore.searchEnabled() && (
-            <SearchBox primary={false} active useStore />
+            <React.Fragment>
+              <FieldSelector />
+              <MatchMode />
+              <SearchBox primary={false} active useStore />
+            </React.Fragment>
           )}
           <SearchHelp />
         </div>

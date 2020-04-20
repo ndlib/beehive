@@ -12,7 +12,7 @@ import ConfigurationStore from '../../store/ConfigurationStore'
 import LoadRemote from '../../modules/LoadRemote'
 import PageTitle from '../../modules/PageTitle'
 
-const Search = ({ collection, hits, searchTerm, sortTerm, facet, start, view, footerHeight }) => {
+const Search = ({ collection, hits, searchTerm, sortTerm, facet, matchMode, field, start, view, footerHeight }) => {
   const [readyToRender, setReadyToRender] = useState(false)
   const [isConfigurationLoaded, setIsConfigurationLoaded] = useState(ConfigurationStore.loaded)
 
@@ -40,6 +40,8 @@ const Search = ({ collection, hits, searchTerm, sortTerm, facet, start, view, fo
         searchTerm,
         facets,
         sortTerm,
+        matchMode,
+        field,
         start,
         view,
       )
@@ -51,7 +53,7 @@ const Search = ({ collection, hits, searchTerm, sortTerm, facet, start, view, fo
     } else {
       LoadRemote.loadRemoteCollection(collection, setValues)
     }
-  }, [collection, facet, hits, searchTerm, sortTerm, start, view])
+  }, [collection, facet, hits, searchTerm, sortTerm, matchMode, field, start, view])
 
   useEffect(() => {
     const configurationLoaded = () => {
@@ -134,6 +136,8 @@ Search.propTypes = {
     PropTypes.object,
     PropTypes.array,
   ]),
+  matchMode: PropTypes.string,
+  field: PropTypes.string,
   start: PropTypes.number,
   view: PropTypes.string,
   collection: PropTypes.oneOfType([
