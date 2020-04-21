@@ -6,7 +6,6 @@ import ListSubheader from '@material-ui/core/ListSubheader'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
 import FacetOption from './FacetOption'
-import ConfigurationStore from 'store/ConfigurationStore'
 import SearchStore from 'store/SearchStore'
 
 const useStyles = makeStyles({
@@ -27,18 +26,19 @@ const useStyles = makeStyles({
   },
   facetListContainer: {
     padding: '0px',
+    flexDirection: 'column',
   },
-  showMore: {
+  facetList: {
+    width: '100%',
+    maxHeight: '300px',
+    overflowY: 'auto',
+  },
+  showAll: {
     margin: '4px 8px 0px',
   },
 })
 
-const Facet = ({ field, label, options, limit, onShowMore }) => {
-  const config = ConfigurationStore.facets.find(current => current.name === field) || {}
-  const limitIncrement = config.limit || 5
-  if (!limit) {
-    limit = limitIncrement
-  }
+const Facet = ({ field, label, options, limit, onShowAll }) => {
   // If a selected facet does not have any results (usually happens due to another filter), it will not be
   // returned as an option from Honeycomb. However, we need to treat it like it did, so the user does not
   // get confused and can deselect it.
@@ -68,16 +68,16 @@ const Facet = ({ field, label, options, limit, onShowMore }) => {
           <ListSubheader disableGutters>{label}</ListSubheader>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails className={classes.facetListContainer}>
-          <List style={{ width: '100%' }}>
+          <List className={classes.facetList}>
             {options.map((valueObj, index) => (
               <FacetOption key={valueObj.name} field={field} facet={valueObj} shouldHide={index >= limit} />
             ))}
-            {limit < options.length && (
-              <Button color='primary' onClick={() => onShowMore(field, limitIncrement)} className={classes.showMore}>
-                Show More
-              </Button>
-            )}
           </List>
+          {limit < options.length && (
+            <Button color='primary' onClick={() => onShowAll(field)} className={classes.showAll}>
+              Show All ({options.length - limit})
+            </Button>
+          )}
         </ExpansionPanelDetails>
       </ExpansionPanel>
     </List>
@@ -89,7 +89,7 @@ Facet.propTypes = {
   label: PropTypes.string.isRequired,
   options: PropTypes.array.isRequired,
   limit: PropTypes.number,
-  onShowMore: PropTypes.func.isRequired,
+  onShowAll: PropTypes.func.isRequired,
 }
 
-export default Facet
+export default React.memo(Facet)

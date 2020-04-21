@@ -84,4 +84,4 @@ FacetOption.propTypes = {
   shouldHide: PropTypes.bool,
 }
 
-export default FacetOption
+export default React.memo(FacetOption)
