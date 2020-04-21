@@ -6,8 +6,8 @@
 // the store will emit a single SearchStoreChanged event, regardless of why it changed.
 // If a property changes that does not change the results, it will emit an individual
 // event specific to that change, such as SearchStoreSelectedItemChanged.
-import AppDispatcher from '../dispatcher/AppDispatcher'
-import SearchActionTypes from '../constants/SearchActionTypes'
+import AppDispatcher from 'dispatcher/AppDispatcher'
+import SearchActionTypes from 'constants/SearchActionTypes'
 const EventEmitter = require('events')
 const $ = require('jquery')
 
@@ -29,6 +29,8 @@ class SearchStore extends EventEmitter {
     // User selections that affect the data
     this._facetOption = null
     this._sortOption = null
+    this._matchMode = null
+    this._field = null
 
     // User selections that only affect the view (don't require a reload)
     this._selectedItem = null
@@ -94,6 +96,16 @@ class SearchStore extends EventEmitter {
         return this._sortOption
       },
     })
+    Object.defineProperty(this, 'matchMode', {
+      get: function () {
+        return this._matchMode
+      },
+    })
+    Object.defineProperty(this, 'field', {
+      get: function () {
+        return this._field
+      },
+    })
     Object.defineProperty(this, 'selectedItem', {
       get: function () {
         return this._selectedItem
@@ -127,6 +139,8 @@ class SearchStore extends EventEmitter {
     this._searchTerm = params.searchTerm
     this._facetOption = params.facetOption
     this._sortOption = params.sortOption
+    this._matchMode = params.matchMode
+    this._field = params.field
     this._start = params.start
     this._view = params.view ? params.view : 'list'
   }
@@ -138,6 +152,8 @@ class SearchStore extends EventEmitter {
       searchTerm: this._searchTerm,
       facetOption: this._facetOption,
       sortOption: this._sortOption,
+      matchMode: this._matchMode,
+      field: this._field,
       start: this._start,
       view: this._view,
     }
@@ -146,8 +162,19 @@ class SearchStore extends EventEmitter {
   executeQuery (reason) {
     reason = typeof reason !== 'undefined' ? reason : 'load'
 
+    let query = this._searchTerm
+    if (this._matchMode === 'exact') {
+      // Escape quotes in search term, otherwise they will terminate the quotes we add which is undesirable
+      query = `"${query.replace(/"/g, '\\"')}"`
+    }
+    if (this._field) {
+      // Matches any whitespace that is NOT between quotes.
+      const termsSplit = query.split(/\s+(?=(?:[^"]*(")[^"]*\1)*[^"]*$)/g)
+        .filter(term => term !== undefined && term !== '"')
+      query = `${this._field}:` + termsSplit.join(` ${this._field}:`)
+    }
     const postData = {
-      q: this._searchTerm,
+      q: query,
       sort: this._sortOption,
       start: this._start || 0,
       rows: this._rowLimit,
@@ -253,6 +280,9 @@ class SearchStore extends EventEmitter {
   searchQuery (overrides) {
     const q = {
       q: this._searchTerm,
+      field: (this._field && this._field !== 'all') ? this._field : null,
+      mode: (this._matchMode && this._matchMode !== 'contains') ? this._matchMode : null,
+      sort: this._sortOption,
       view: this._view,
     }
 
@@ -266,10 +296,6 @@ class SearchStore extends EventEmitter {
           q[`facet[${current.name}]`].push(current.value)
         }
       }
-    }
-
-    if (this._sortOption) {
-      q.sort = this._sortOption
     }
 
     if (overrides && overrides.start !== 'undefined') {
@@ -287,12 +313,13 @@ class SearchStore extends EventEmitter {
     const path = this.searchPath() + '?'
     const queryObj = this.searchQuery(overrides)
     const queryString = Object.keys(queryObj).map((key) => {
-      if (Array.isArray(queryObj[key])) {
-        return queryObj[key].map(value => `${key}=${value}`).join('&')
+      const values = queryObj[key]
+      if (Array.isArray(values)) {
+        return values.map(value => `${key}=${value}`).join('&')
       } else {
-        return `${key}=${queryObj[key]}`
+        return (values !== undefined && values !== null) ? `${key}=${queryObj[key]}` : ''
       }
-    }).join('&')
+    }).filter(str => str.length).join('&')
 
     return path + queryString
   }
@@ -317,6 +344,12 @@ class SearchStore extends EventEmitter {
         break
       case SearchActionTypes.SEARCH_SET_VIEW:
         this.setView(action.view)
+        break
+      case SearchActionTypes.SEARCH_SET_FIELD:
+        this.setField(action.field)
+        break
+      case SearchActionTypes.SEARCH_SET_MODE:
+        this.setMatchMode(action.mode)
         break
       default:
         break
@@ -349,6 +382,16 @@ class SearchStore extends EventEmitter {
       }
     }
     return null
+  }
+
+  setField (field) {
+    this._field = (field === 'all' ? null : field)
+    this.executeQuery()
+  }
+
+  setMatchMode (mode) {
+    this._matchMode = (mode === 'contains' ? null : mode)
+    this.executeQuery()
   }
 }
 

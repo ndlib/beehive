@@ -7,6 +7,8 @@ const SearchActionTypes = keyMirror({
   SEARCH_SET_SELECTED_FACET: null,
   SEARCH_SET_TERM: null,
   SEARCH_SET_VIEW: null,
+  SEARCH_SET_FIELD: null,
+  SEARCH_SET_MODE: null,
 })
 
 export default SearchActionTypes

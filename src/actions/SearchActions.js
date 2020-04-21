@@ -3,7 +3,7 @@ import SearchActionTypes from '../constants/SearchActionTypes'
 
 class SearchActions {
   // Init
-  loadSearchResults (collection, baseApiUrl, searchTerm, facetOption, sortOption, start, view) {
+  loadSearchResults (collection, baseApiUrl, searchTerm, facetOption, sortOption, matchMode, field, start, view) {
     AppDispatcher.dispatch({
       actionType: SearchActionTypes.SEARCH_LOAD_RESULTS,
       collection: collection,
@@ -11,6 +11,8 @@ class SearchActions {
       searchTerm: searchTerm,
       facetOption: facetOption,
       sortOption: sortOption,
+      matchMode: matchMode,
+      field: field,
       start: start,
       view: view,
     })
@@ -48,6 +50,20 @@ class SearchActions {
     AppDispatcher.dispatch({
       actionType: SearchActionTypes.SEARCH_SET_VIEW,
       view: view,
+    })
+  }
+
+  setField (field) {
+    AppDispatcher.dispatch({
+      actionType: SearchActionTypes.SEARCH_SET_FIELD,
+      field: field,
+    })
+  }
+
+  setMatchMode (mode) {
+    AppDispatcher.dispatch({
+      actionType: SearchActionTypes.SEARCH_SET_MODE,
+      mode: mode,
     })
   }
 }

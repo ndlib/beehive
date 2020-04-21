@@ -37,7 +37,7 @@ const SearchDisplayList = () => {
     return () => SearchStore.off('SearchStoreViewChanged', action)
   })
 
-  const isSmall = useMediaQuery('(max-width: 699px)')
+  const isSmall = useMediaQuery('(max-width: 799px)')
   const isLarge = useMediaQuery('(min-width: 1280px)')
   const classes = useStyles({
     isSmall,
