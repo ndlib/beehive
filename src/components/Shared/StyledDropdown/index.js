@@ -56,7 +56,6 @@ const StyledDropdown = ({ label, storeValue, defaultValue, queryParamName, setSt
     } else {
       newVal = storeValue || defaultValue
     }
-    console.log('set ' + queryParamName + ' to ' + newVal)
     if (newVal !== dropdownValue) {
       setStore(dropdownValue)
     }
