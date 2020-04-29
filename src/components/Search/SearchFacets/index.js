@@ -15,17 +15,7 @@ const SearchFacets = () => {
   const [numVisible, setNumVisible] = useState(initialLimits)
 
   const sortFacets = (a, b) => {
-    let orderA = 0
-    let orderB = 0
-    const matchA = ConfigurationStore.facets.find(cfg => cfg.name === a.field)
-    if (matchA) {
-      orderA = matchA.order || 0
-    }
-    const matchB = ConfigurationStore.facets.find(cfg => cfg.name === b.field)
-    if (matchB) {
-      orderB = matchB.order || 0
-    }
-    return orderA - orderB
+    return (a.order || 0) - (b.order || 0)
   }
 
   useEffect(() => {

@@ -10,7 +10,11 @@ const SearchSort = () => {
     return null
   }
 
-  const options = SearchStore.sorts.map(sort => ({
+  const sortOptions = (a, b) => {
+    return (a.order || 0) - (b.order || 0)
+  }
+
+  const options = SearchStore.sorts.sort(sortOptions).map(sort => ({
     name: sort.value,
     label: sort.name,
   }))
