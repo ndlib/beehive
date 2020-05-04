@@ -9,10 +9,15 @@ import ConfigurationStore from 'store/ConfigurationStore'
 const FieldSelector = () => {
   const options = [
     { name: 'all', label: 'All Fields' },
-  ].concat(Object.values(ConfigurationStore.fields).map((field) => ({
-    name: field.name + (field.type === 'date' ? '_dt' : '_t'),
-    label: field.label,
-  })))
+  ].concat(
+    Object.values(ConfigurationStore.fields)
+      .filter(field => field.fieldSearch !== false)
+      .sort((a, b) => (a.order || 0) - (b.order || 0))
+      .map((field) => ({
+        name: field.name + (field.type === 'date' ? '_dt' : '_t'),
+        label: field.label,
+      })),
+  )
   return (
     <StyledDropdown
       storeValue={SearchStore.field}
