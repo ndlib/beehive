@@ -10,6 +10,8 @@ const FieldSelector = () => {
   const options = [
     { name: 'all', label: 'All Fields' },
   ].concat(
+    // Get values for dropdown. Sort in the order specified in Honeycomb and filter out fields that should be
+    // excluded because fieldSearch === false.
     Object.values(ConfigurationStore.fields)
       .filter(field => field.fieldSearch !== false)
       .sort((a, b) => (a.order || 0) - (b.order || 0))
