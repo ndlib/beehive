@@ -17,7 +17,7 @@ const useStyles = makeStyles({
     backgroundSize: 'cover',
     height: '40vw',
     maxHeight: '450px',
-    backgroundImage: props => 'url("' + props.image + '")',
+    backgroundImage: props => props.image ? 'url("' + props.image + '")' : null,
     backgroundPosition: 'top',
   },
   actions: {
@@ -26,7 +26,9 @@ const useStyles = makeStyles({
 })
 
 const CollectionShow = ({ collection }) => {
-  const image = collection.image['thumbnail/medium'].contentUrl.replace(new RegExp(' ', 'g'), '%20')
+  const image = (collection.image && collection.image['thumbnail/medium'])
+    ? collection.image['thumbnail/medium'].contentUrl.replace(new RegExp(' ', 'g'), '%20')
+    : null
   const startUrl = CollectionUrl.introUrl(collection) || CollectionUrl.startSitePathUrl(collection)
   const classes = useStyles({
     image,
@@ -43,7 +45,9 @@ const CollectionShow = ({ collection }) => {
           {collection.display_page_title && (
             <TextOverlay title={collection.name_line_1} subtitle={collection.name_line_2} addMargin />
           )}
-          <img src={image} className='hide' alt='' />
+          {image && (
+            <img src={image} className='hide' alt='' />
+          )}
           <div className={`cover ${classes.coverImage}`} />
         </CardMedia>
       </Card>

@@ -53,7 +53,7 @@ const useStyles = makeStyles({
 })
 
 const CollectionCard = ({ collection, headerTitle }) => {
-  const image = collection.image
+  const image = (collection.image && collection.image['thumbnail/medium'])
     ? collection.image['thumbnail/medium'].contentUrl.replace(new RegExp(' ', 'g'), '%20')
     : MarbleImage
   const classes = useStyles({
