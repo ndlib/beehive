@@ -20,7 +20,7 @@ const SideNavButton = createReactClass({
 
   getDefaultProps: function () {
     return {
-      offsetTop: window.innerHeight / 2,
+      offsetTop: window.innerHeight / 2 - 30,
       rightIcon: false,
       href: '',
       onMouseDown: () => {},
@@ -43,7 +43,7 @@ const SideNavButton = createReactClass({
   buttonStyles: function () {
     const hovered = (this.state.hovered || this.state.isKeyboardFocused)
     const styles = {
-      top: `${this.props.offsetTop - 30}px`,
+      top: `${this.props.offsetTop}px`,
       opacity: hovered ? '1' : '0.7',
       backgroundColor: '#E0E0E0',
       borderRadius: '50%',

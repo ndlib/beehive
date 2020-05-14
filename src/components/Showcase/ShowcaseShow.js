@@ -140,7 +140,7 @@ const ShowcaseShow = createReactClass({
     }
     let showcaseInnerHeight = showcaseHeight - scrollPadding
 
-    let scroller = (<Scroller target='#showcase-outer' height={showcaseHeight} />)
+    let scroller = (<Scroller target='showcase-outer' height={showcaseHeight} />)
     let titleBar = (
       <ShowcaseTitleBar
         percentFade={this.state.titleSectionPercentVisible}
