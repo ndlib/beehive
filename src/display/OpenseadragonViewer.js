@@ -237,31 +237,27 @@ const OpenseadragonViewer = createReactClass({
   },
 
   renderButtons: function () {
-    if (this.props.showNavigator) {
-      const zoomInID = 'zoom-in-' + this.props.containerID
-      const zoomOutID = 'zoom-out-' + this.props.containerID
-      const homeID = 'home-' + this.props.containerID
-      const fullID = 'full-page-' + this.props.containerID
-      const leftID = 'left-' + this.props.containerID
-      const rightID = 'right-' + this.props.containerID
+    const zoomInID = 'zoom-in-' + this.props.containerID
+    const zoomOutID = 'zoom-out-' + this.props.containerID
+    const homeID = 'home-' + this.props.containerID
+    const fullID = 'full-page-' + this.props.containerID
+    const leftID = 'left-' + this.props.containerID
+    const rightID = 'right-' + this.props.containerID
 
-      const nodes = [
-        <a id={zoomInID} href='#zoom-in' key='zi' rel='nofollow'><ZoomInIcon className='material-icons' /></a>,
-        <a id={zoomOutID} href='#zoom-out' key='zo' rel='nofollow'><ZoomOutIcon className='material-icons' /></a>,
-        <a id={leftID} href='#rotate-left' key='lid' rel='nofollow'><RotateLeftIcon className='material-icons' /></a>,
+    return (
+      <React.Fragment>
+        <a id={zoomInID} href='#zoom-in' key='zi' rel='nofollow'><ZoomInIcon className='material-icons' /></a>
+        <a id={zoomOutID} href='#zoom-out' key='zo' rel='nofollow'><ZoomOutIcon className='material-icons' /></a>
+        <a id={leftID} href='#rotate-left' key='lid' rel='nofollow'><RotateLeftIcon className='material-icons' /></a>
         <a id={rightID} href='#rotate-right' key='rid' rel='nofollow'>
           <RotateRightIcon className='material-icons' />
-        </a>,
-        <a id={homeID} href='#home' key='hid' rel='nofollow'><RefreshIcon className='material-icons' /></a>,
-      ]
-      if (this.props.showFullPageControl) {
-        nodes.push(
-          <a id={fullID} href='#full-page' key='fid' rel='nofollow'><FullscreenIcon className='material-icons' /></a>,
-        )
-      }
-      return nodes
-    }
-    return null
+        </a>
+        <a id={homeID} href='#home' key='hid' rel='nofollow'><RefreshIcon className='material-icons' /></a>
+        {this.props.showFullPageControl && (
+          <a id={fullID} href='#full-page' key='fid' rel='nofollow'><FullscreenIcon className='material-icons' /></a>
+        )}
+      </React.Fragment>
+    )
   },
 
   render: function () {
