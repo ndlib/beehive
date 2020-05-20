@@ -135,7 +135,7 @@ $blockquote-gray: #777;
   }
 }
 
-.ps-container {
+.ps {
   width: 100%;
 }
 
@@ -172,22 +172,23 @@ $blockquote-gray: #777;
 .showcase-outer {
   position: relative;
 
-  > .ps-scrollbar-x-rail {
+  > .ps__scrollbar-x-rail {
     animation-duration: 0.5s;
     animation-name: scrollfadein;
     background-color: $scrollbar-rail-color;
     opacity: 0.7;
 
-    .ps-scrollbar-x {
+    .ps__scrollbar-x {
       background-color: $scrollbar-color;
     }
   }
 }
 
 // scroll bars
-.ps-container {
+.ps {
 
-  > .ps-scrollbar-x-rail {
+  > .ps__scrollbar-x-rail {
+    border-radius: 6px;
     display: block;
     height: 15px;
     margin-bottom: 10px;
@@ -196,10 +197,15 @@ $blockquote-gray: #777;
     transition: none;
     width: 50%;
 
-    .ps-scrollbar-x {
-      height: 15px;
+    .ps__scrollbar-x {
+      height: 15px !important;
+      bottom: 0px;
     }
   }
+}
+.ps.ps--active-x > .ps__scrollbar-x-rail {
+  background-color: #eee;
+  opacity: 0.5;
 }
 
 @keyframes scrollfadein {

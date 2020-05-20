@@ -27,13 +27,13 @@ $scrollbar-color: #666;
 .showcase-outer {
   position: relative;
 
-  > .ps-scrollbar-x-rail {
+  > .ps__scrollbar-x-rail {
     animation-duration: 0.5s;
     animation-name: scrollfadein;
     background-color: $scrollbar-rail-color;
     opacity: 0.7;
 
-    .ps-scrollbar-x {
+    .ps__scrollbar-x {
       background-color: $scrollbar-color;
     }
   }

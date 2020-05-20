@@ -57,7 +57,7 @@ const ShowcaseShow = createReactClass({
     this.scrollbarInitialized = true
     this.state.outerElement.perfectScrollbar({ useBothWheelAxes: true, suppressScrollY: true })
     if (BrowserUtils.ie() || this.state.mobile) {
-      this.state.outerElement.find('.ps-scrollbar-x-rail').hide()
+      this.state.outerElement.find('.ps__scrollbar-x-rail').hide()
     }
   },
 
@@ -65,7 +65,7 @@ const ShowcaseShow = createReactClass({
     if (this.scrollbarInitialized) {
       this.state.outerElement.perfectScrollbar('update')
       if (BrowserUtils.ie() || this.state.mobile) {
-        this.state.outerElement.find('.ps-scrollbar-x-rail').hide()
+        this.state.outerElement.find('.ps__scrollbar-x-rail').hide()
       }
     }
   },
