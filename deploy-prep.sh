@@ -1,5 +1,5 @@
 #!/bin/bash
-BUCKET=collections-pprd.library.nd.edu
+BUCKET=collections-prep.library.nd.edu
 BRANCH=`git rev-parse --abbrev-ref HEAD`
 REVISION=`git rev-parse HEAD`
 
