@@ -13,7 +13,7 @@ const FieldSelector = () => {
     // Get values for dropdown. Sort in the order specified in Honeycomb and filter out fields that should be
     // excluded because fieldSearch === false.
     Object.values(ConfigurationStore.fields)
-      .filter(field => field.fieldSearch !== false)
+      .filter(field => field.active !== false && field.fieldSearch !== false)
       .sort((a, b) => (a.order || 0) - (b.order || 0))
       .map((field) => ({
         name: field.name + (field.type === 'date' ? '_dt' : '_t'),
