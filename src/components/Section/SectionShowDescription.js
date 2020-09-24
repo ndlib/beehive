@@ -1,40 +1,38 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import createReactClass from 'create-react-class'
+import { makeStyles } from '@material-ui/core/styles'
 import PageContent from '../../layout/PageContent'
+import BrowserUtils from '../../modules/BrowserUtils'
 
-const SectionShowDescription = createReactClass({
-  displayName: 'Section Show Description',
-  propTypes: {
-    section: PropTypes.object.isRequired,
-    height: PropTypes.number,
+const useStyles = makeStyles({
+  style: {
+    height: props => props.height ? `${props.height}px` : '',
+    overflowY: 'scroll',
+    maxWidth: '60em',
+    margin: '0 auto',
+    paddingBottom: props => props.mobile ? '0' : '65px', // Height of title bar
   },
-
-  styles: function () {
-    if (this.props.height) {
-      return {
-        height: `${this.props.height}px`,
-        overflowY: 'scroll',
-        maxWidth: '60em',
-        margin: '0 auto',
-      }
-    } else {
-      return {}
-    }
-  },
-
-  render: function () {
-    return (
-      <PageContent>
-        <div
-          ref='sectionContent'
-          style={this.styles()}
-          dangerouslySetInnerHTML={{ __html:this.props.section.description }}
-        />
-      </PageContent>
-    )
-  },
-
 })
+
+const SectionShowDescription = (props) => {
+  const classes = useStyles({
+    height: props.height,
+    mobile: BrowserUtils.mobile(),
+  })
+
+  return (
+    <PageContent>
+      <div
+        className={props.height ? classes.style : null}
+        dangerouslySetInnerHTML={{ __html: props.section.description }}
+      />
+    </PageContent>
+  )
+}
+
+SectionShowDescription.propTypes = {
+  section: PropTypes.object.isRequired,
+  height: PropTypes.number,
+}
 
 export default SectionShowDescription
