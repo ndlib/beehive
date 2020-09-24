@@ -31,7 +31,7 @@ const CollectionLeftNav = ({ collection }) => {
   const classes = useStyles()
 
   useEffect(() => {
-    if (collection.site_path) {
+    if (!collection.site_path) {
       const url = collection['@id'] + '/site_path'
 
       $.ajax({
@@ -83,7 +83,7 @@ const CollectionLeftNav = ({ collection }) => {
           )}
           {sitePath.map(siteObject => {
             const url = CollectionUrl.collectionObjectUrl(siteObject)
-            const name = siteObject.name || siteObject.name_line_1
+            const name = siteObject.name_line_1 || siteObject.name
             return <NavMenuItem key={siteObject.id} to={url} onNavigate={closeDrawer}>{name}</NavMenuItem>
           })}
         </MenuList>
