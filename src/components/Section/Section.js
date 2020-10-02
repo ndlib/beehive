@@ -82,7 +82,7 @@ const Section = createReactClass({
 
   handleResize: function () {
     this.setState({
-      height: window.innerHeight,
+      height: this.state.mobile ? window.innerHeight : window.innerHeight - showcaseTitleHeight,
     })
   },
 

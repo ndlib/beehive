@@ -9,7 +9,7 @@ import MultimediaViewer from '../../layout/MultimediaViewer'
 
 const useStyles = makeStyles({
   outer: {
-    height: props => props.propHeight,
+    height: props => `calc(100vh - ${props.toolbarHeight + (props.showNavigator ? 65 : 0)}px)`,
     position: 'relative',
     overflow: 'auto',
   },
@@ -32,13 +32,16 @@ const useStyles = makeStyles({
   },
 })
 
-const ItemContent = ({ item, additionalDetails, height, minMediaHeight, mediaBottom }) => {
+const ItemContent = ({ item, additionalDetails, height, toolbarHeight, minMediaHeight, mediaBottom }) => {
   const [zoom, setZoom] = useState(false)
 
+  const showNavigator = useMediaQuery('(min-width: 650px)')
   const calcHeight = zoom ? window.innerHeight : Math.max(height - mediaBottom, minMediaHeight)
   const classes = useStyles({
     propHeight: height,
     calcHeight: calcHeight,
+    toolbarHeight: toolbarHeight,
+    showNavigator: showNavigator,
   })
 
   useEffect(() => {
@@ -61,7 +64,6 @@ const ItemContent = ({ item, additionalDetails, height, minMediaHeight, mediaBot
     </div>
   ) : null
 
-  const showNavigator = useMediaQuery('(min-width: 650px)')
   const isValidMedia = (item && item.media != null &&
     ['ImageObject', 'AudioObject', 'VideoObject'].includes(item.media['@type'])
   )
@@ -116,6 +118,7 @@ ItemContent.propTypes = {
   item: PropTypes.object,
   additionalDetails: PropTypes.string,
   height: PropTypes.number.isRequired,
+  toolbarHeight: PropTypes.number,
   minMediaHeight: PropTypes.number,
   // If splitting the space between media and meta
   // causes the media to go smaller than this, it
