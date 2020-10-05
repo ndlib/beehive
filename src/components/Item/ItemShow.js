@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 import { Paper, Toolbar, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
@@ -21,9 +21,9 @@ const useStyles = makeStyles({
     fontSize: '20px',
   },
   page: {
-    height: props => `${props.height}px`,
+    height: 'auto',
     width: '100%',
-    position: 'fixed',
+    position: 'relative',
     backgroundColor: '#ffffff',
     zIndex: '4',
   },
@@ -71,10 +71,15 @@ const ItemShow = ({ item, collection, title, height }) => {
     description: item.description,
     articleBody: articleBody,
   }
+
+  const toolbarRef = useRef(null)
+  if (toolbarRef.current) {
+    console.log(toolbarRef.current.clientHeight)
+  }
   return (
     <PageContent fluidLayout>
       <Paper className={classes.page}>
-        <Toolbar className={`title-bar ${classes.toolbar}`}>
+        <Toolbar className={`title-bar ${classes.toolbar}`} ref={toolbarRef}>
           <Typography variant='h2' className={classes.title}>{title}</Typography>
           <CloseButton />
         </Toolbar>
@@ -84,7 +89,11 @@ const ItemShow = ({ item, collection, title, height }) => {
         {nextItem && (
           <SideNavButton href={CollecitonUrl.itemObjectUrl(nextItem)} rightIcon />
         )}
-        <ItemContent item={item} height={height} />
+        <ItemContent
+          item={item}
+          height={height}
+          toolbarHeight={toolbarRef.current ? toolbarRef.current.clientHeight : 0}
+        />
       </Paper>
       <JSONLD data={data} />
     </PageContent>

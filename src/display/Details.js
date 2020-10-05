@@ -9,7 +9,7 @@ const useStyles = makeStyles({
   // The outer containing div for this component
   outer: {
     boxShadow: '0 -5px 5px -5px rgba(0, 0, 0, 0.16), 0 -5px 5px -5px rgba(0, 0, 0, 0.23)',
-    margin: '0 auto 50px',
+    margin: '0 auto',
     paddingBottom: '10px',
     position: 'relative',
     width: '100%',
@@ -24,7 +24,7 @@ const useStyles = makeStyles({
     padding: '10px',
     paddingTop: '35px',
     opacity: '0.8',
-    margin: '0 auto 60px',
+    margin: '0 auto',
     width: '100%',
     maxWidth: '60em',
   },

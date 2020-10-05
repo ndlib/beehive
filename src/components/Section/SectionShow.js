@@ -19,7 +19,7 @@ const useStyles = makeStyles({
     fontSize: '20px',
   },
   page: {
-    height: props => `${props.height}px`,
+    height: 'auto',
     width: '100%',
     position: 'fixed',
     backgroundColor: '#ffffff',
