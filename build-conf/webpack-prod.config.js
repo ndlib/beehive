@@ -417,7 +417,8 @@ module.exports = {
     // the HTML & assets that are part of the Webpack build.
     new WorkboxWebpackPlugin.GenerateSW({
       clientsClaim: true,
-      exclude: [/\.map$/, /asset-manifest\.json$/],
+      exclude: [/\.map$/, /asset-manifest\.json$/,
+        /static\/media\/(home|intro)(\..*)?\.jpg/],
       navigateFallback: publicUrl + '/index.html',
       navigateFallbackDenylist: [
         // Exclude URLs starting with /_, as they're likely an API call
