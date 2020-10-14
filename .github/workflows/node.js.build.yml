@@ -26,6 +26,4 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: yarn install --no-lockfile #Without the --no-lockfile option, there are dependency issues with @babel/compat-data/corejs3-shipped-proposals not being accessible by the build step
     - name: Build Project
-      run: npm run build
-      env:
-        CI: "" #Actions automatically sets env.CI to "True" which treats warnings as errors and causes the build to fail CI. If possible, we should address those warnings and remove this env workaround
+      run: yarn build
