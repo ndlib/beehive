@@ -1,0 +1,44 @@
+{
+	"info": {
+		"_postman_id": "7f839ab7-bc88-41f6-824d-35bc05235308",
+		"name": "beehive",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "scpeccol",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5c4d9bbc-629d-467a-bc73-68247d3d1676",
+						"exec": [
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{SiteURL}}",
+					"host": [
+						"{{SiteURL}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
