@@ -130,6 +130,7 @@ ItemContent.propTypes = {
 ItemContent.defaultProps = {
   minMediaHeight: 300,
   mediaBottom: 200,
+  toolbarHeight: 64,
 }
 
 export default ItemContent
