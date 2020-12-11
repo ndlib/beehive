@@ -43,6 +43,7 @@ const ItemContent = ({ item, additionalDetails, height, toolbarHeight, minMediaH
     toolbarHeight: toolbarHeight,
     showNavigator: showNavigator,
   })
+  console.log(height, calcHeight, toolbarHeight, showNavigator)
 
   useEffect(() => {
     document.body.classList.toggle('noscroll', true)
@@ -130,6 +131,7 @@ ItemContent.propTypes = {
 ItemContent.defaultProps = {
   minMediaHeight: 300,
   mediaBottom: 200,
+  toolbarHeight: 64,
 }
 
 export default ItemContent
