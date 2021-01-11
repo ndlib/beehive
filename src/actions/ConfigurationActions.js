@@ -1,6 +1,6 @@
 import AppDispatcher from '../dispatcher/AppDispatcher'
 import ActionTypes from '../constants/ConfigurationActionTypes'
-import EventEmitter from '../middleware/EventEmitter'
+import EventEmitterSingleton from '../middleware/EventEmitterSingleton'
 const $ = require('jquery')
 
 class ConfigurationActions {
@@ -20,7 +20,7 @@ class ConfigurationActions {
         })
       },
       error: function (request, status, thrownError) {
-        EventEmitter.emit('ConfigurationStoreQueryFailed', {
+        EventEmitterSingleton.emit('ConfigurationStoreQueryFailed', {
           request: request, status: status, error: thrownError,
         })
       },
