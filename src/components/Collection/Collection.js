@@ -41,7 +41,7 @@ const Collection = (props) => {
     return null
   }
   PageTitle(collection.name)
-  const url = `https://collections.library.nd.edu/${collection.id}/${collection.slug}`
+  const url = `${process.env.PUBLIC_URL}/${collection.id}/${collection.slug}`
   let data = {
     '@context': 'http://schema.org',
     '@type': 'WebSite',

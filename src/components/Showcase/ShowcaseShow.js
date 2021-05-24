@@ -176,7 +176,7 @@ const ShowcaseShow = createReactClass({
     for (let i = 0; i < showcase.sections.length; i++) {
       articleBody += RemoveMarkup(showcase.sections[i].description)
     }
-    const dataUrl = `https://collections.library.nd.edu/${collection.id}/${collection.slug}/showcases/${showcase.id}/` +
+    const dataUrl = `${process.env.PUBLIC_URL}/${collection.id}/${collection.slug}/showcases/${showcase.id}/` +
       showcase.slug
 
     const showcaseSafeImage = showcase.image

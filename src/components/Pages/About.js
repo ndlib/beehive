@@ -54,7 +54,7 @@ const About = createReactClass({
       )
     }
 
-    const dataUrl = `https://collections.library.nd.edu/${collection.id}/${collection.slug}/about`
+    const dataUrl = `${process.env.PUBLIC_URL}/${collection.id}/${collection.slug}/about`
     const data = {
       '@context': 'http://schema.org',
       '@type': 'Article',

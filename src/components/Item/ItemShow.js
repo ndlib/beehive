@@ -41,7 +41,7 @@ const ItemShow = ({ item, collection, title, height }) => {
     const dataProp = item.metadata[property]
     articleBody += `${dataProp.label}:${dataProp.values[0].value}\n`
   }
-  const dataUrl = `https://collections.library.nd.edu/${collection.id}/${collection.slug}/items/${item.id}`
+  const dataUrl = `${process.env.PUBLIC_URL}/${collection.id}/${collection.slug}/items/${item.id}`
   const data = {
     '@context': 'http://schema.org',
     '@type': 'Article',
