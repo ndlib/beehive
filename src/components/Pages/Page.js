@@ -80,7 +80,7 @@ const Page = (props) => {
   }
   const pageContent = (collection && collection.pages) ? collection.pages.content : null
   const image = (collection.pages.image && collection.pages.image.contentUrl) ? collection.pages.image.contentUrl : ''
-  const dataUrl = `https://collections.library.nd.edu/${collection.id}/${collection.slug}/${collection.pages.id}/` +
+  const dataUrl = `${process.env.PUBLIC_URL}/${collection.id}/${collection.slug}/${collection.pages.id}/` +
     collection.pages.slug
   const data = {
     '@context': 'http://schema.org',

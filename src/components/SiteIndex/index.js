@@ -56,7 +56,7 @@ const SiteIndex = createReactClass({
     const data = {
       '@context': 'http://schema.org',
       '@type': 'WebSite',
-      url: 'https://collections.library.nd.edu/',
+      url: process.env.PUBLIC_URL,
       name: 'Digital Exhibits and Collections',
       author: {
         '@type': 'Organization',

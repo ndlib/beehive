@@ -8,14 +8,30 @@
 Beehive provides an attractive frontend display for the collections and exhibits created and managed by [Honeycomb](https://github.com/ndlib/honeycomb).
 It is created and managed by WSE at Hesburgh Libraries.
 
-### Installation ###
+## Installation
+
 1. `yarn install`
 
-### Usage ###
+## Running a Development Server
+
 1. `yarn start`
 
-### Deployment - UA/Prep ###
-* `aws-vault exec libnd ./deploy-pprd.sh`
+## Deployment
 
-### Deployment - Production ###
+### UA/Prep
+
+* `aws-vault exec libnd ./deploy-prep.sh`
+
+### Production
+
 * `aws-vault exec libnd ./deploy-prod.sh`
+
+### Building for a different stage
+
+By default `npm run build` will use the URL of `https://collections.library.nd.edu` and honeycomb endpoint of `https://honeycomb.library.nd.edu`. You can override these values with the PUBLIC_URL and HONEYCOMB_URL environment variables, ex:
+
+```sh
+PUBLIC_URL=https://collections-test.library.nd.edu \
+HONEYCOMB_URL=https://honeycomb-test.library.nd.edu \
+  npm run build
+```
